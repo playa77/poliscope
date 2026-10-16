@@ -1,4 +1,4 @@
-# Society Sandbox — Global Technical Architecture and Specification
+# Poliscope — Global Technical Architecture and Specification
 
 Revision 0.2 · 2026-10-13
 
