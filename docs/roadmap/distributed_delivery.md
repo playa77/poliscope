@@ -1,99 +1,126 @@
-# Poliscope — Distributed Delivery Plan
+# Poliscope — Delivery and Staffing Plan
 
-Revision 0.2 · 2026-10-16 · Execution plan for two concurrent contributors, expandable to three. All implementation packages remain **not started**. Parent: [roadmap](../implementation_roadmap.md); requirements: [shared packages](work_packages.md), [domain packages](domain_work_packages.md), [verification](verification_matrix.md).
+Revision 0.3 · 2026-10-16 · Execution plan for one to three active contributors. All implementation packages remain **not started**. Parent: [roadmap](../implementation_roadmap.md); requirements: [shared packages](work_packages.md), [domain packages](domain_work_packages.md), [verification](verification_matrix.md).
 
-## 1. Team and work boundaries
+## 1. Staffing configurations and invariants
 
-The baseline allocation comprises contributors A and B. Each uses an independent clone, Python environment, Node dependencies, application user-data directory, SQLite database and credentials. Versioned fixtures and source definitions are distributed through Git. The runtime architecture remains as specified in T §§2 and 11.
+Select the configuration matching current available contributors at any implementation stage. A/B/C are assignment slots mapped to named people in the delivery ledger. Slots may be rebound after a departure; any remaining qualified person occupies A in solo mode. Record effective dates, availability, access, current parent/child owners, validation mode and forecast impact. Temporary absence that removes committed review or implementation capacity triggers the same reassignment process.
 
-A owns the engine stream, B the desktop stream. Both implement assigned domain modules and review the other's work. C has the assignments specified in the three-contributor matrix. Names, expertise, IANA time zones, available hours, working days, next review window, repository permissions and native runner access are filled in WP-001. Where expertise suggests a better allocation, swap named slots or record a specific transfer before work starts.
+| Active contributors | Execution | Validation | Coordination |
+|---|---|---|---|
+| 1 | A owns every parent and executes producer, consumer, content and domain children sequentially by dependency | Solo validation (SV), with independent peer review explicitly deferred | A maintains the ledger, decisions, risks, evidence and resume checkpoints |
+| 2 | A/B split engine/desktop and assigned domains; approved children run concurrently | Assigned nonauthor review; independently derived fixtures and integration checks | B maintains delivery status; A maintains numerical/architecture decisions |
+| 3 | A/B retain shared-engine/desktop boundaries; C takes listed content/domain/integration parents | Assigned nonauthor reviews, including affected consumers; C coordinates designated evidence | Responsibilities follow the matrix and recorded availability |
 
-Agent-assisted work follows the same child ledger, path ownership and review controls. The supervising contributor remains accountable for submitted changes. Concurrent tasks use isolated worktrees and exclusive child/path claims. Capacity forecasts include only allocated contributor availability.
+All configurations preserve one accountable owner per child, exclusive active path claims, versioned contracts, bounded WIP and the same functional acceptance requirements. Each environment uses an independent clone/worktree, Python environment, Node dependencies, user-data directory, SQLite database and credentials. Versioned fixtures and source definitions are distributed through Git. Runtime boundaries remain as specified in T §§2 and 11.
+
+Agent-assisted tasks follow the same ledger, isolation and validation controls. The supervising contributor remains accountable. Agents do not increase the available human roster or provide independent peer approval. Required empirical expertise, native execution and provider access are recorded as external prerequisites when unavailable.
 
 ## 2. All-package assignment matrix
 
-Each cell specifies **accountable owner / independent peer reviewer**. The owner coordinates child allocation, integration and evidence. Child authorship follows the producer/consumer allocation in §3. Assign contributor names and required specialties in the issue ledger before implementation.
+Each cell is **accountable owner / validation assignment**. `SV` denotes the solo-validation procedure in §3, not a reviewer identity. Two- and three-contributor cells specify an independent peer. Assign actual names before work starts. Parent ownership covers child allocation, integration and evidence; producer/consumer authorship follows §4. The selected column applies immediately after a recorded roster transition.
 
-In the three-contributor allocation, C owns the assigned content, evidence and integration packages. A/B retain engine/desktop stewardship, domain conformance code and desktop adapters. All contributors follow the same WIP limits.
+| Package | One contributor | Two contributors | Three contributors |
+|---|---|---|---|
+| WP-001 | A / SV | B / A | B / A |
+| WP-002 | A / SV | B / A | B / A |
+| WP-003 | A / SV | B / A | B / A |
+| WP-004 | A / SV | B / A | B / A |
+| WP-005 | A / SV | A / B | A / B |
+| WP-006 | A / SV | A / B | A / B |
+| WP-007 | A / SV | A / B | A / B |
+| WP-008 | A / SV | A / B | C / A |
+| WP-009 | A / SV | A / B | A / B |
+| WP-010 | A / SV | B / A | B / A |
+| WP-011 | A / SV | B / A | B / A |
+| WP-012 | A / SV | A / B | A / B |
+| WP-013 | A / SV | A / B | A / B |
+| WP-014 | A / SV | A / B | A / B |
+| WP-015 | A / SV | A / B | A / B |
+| WP-016 | A / SV | A / B | A / B |
+| WP-017 | A / SV | A / B | A / B |
+| WP-018 | A / SV | A / B | A / B |
+| WP-019 | A / SV | B / A | C / A |
+| WP-020 | A / SV | B / A | B / A |
+| WP-021 | A / SV | B / A | B / A |
+| WP-022 | A / SV | B / A | B / A |
+| WP-023 | A / SV | A / B | A / B |
+| WP-024 | A / SV | B / A | B / A |
+| WP-025 | A / SV | B / A | C / A |
+| WP-026 | A / SV | B / A | C / A |
+| WP-027 | A / SV | A / B | A / C |
+| WP-028 | A / SV | B / A | B / A |
+| WP-029 | A / SV | A / B | A / B |
+| WP-030 | A / SV | B / A | B / A |
+| WP-031 | A / SV | B / A | B / A |
+| WP-032 | A / SV | B / A | C / A |
+| WP-033 | A / SV | A / B | A / B |
+| WP-034 | A / SV | A / B | A / B |
+| WP-035 | A / SV | A / B | A / B |
+| WP-036 | A / SV | A / B | A / B |
+| WP-037 | A / SV | B / A | B / A |
+| WP-038 | A / SV | A / B | A / B |
+| WP-039 | A / SV | A / B | A / B |
+| WP-040 | A / SV | B / A | B / A |
+| WP-041 | A / SV | A / B | A / B |
+| WP-042 | A / SV | B / A | B / A |
+| WP-043 | A / SV | B / A | B / A |
+| WP-044 | A / SV | B / A | B / A |
+| WP-045 | A / SV | B / A | B / A |
+| WP-046 | A / SV | A / B | A / B |
+| WP-047 | A / SV | B / A | B / A |
+| WP-048 | A / SV | A / B | A / B |
+| WP-049 | A / SV | B / A | B / A |
+| WP-050 | A / SV | B / A | B / C |
+| WP-051 | A / SV | A / B | A / B |
+| WP-052 | A / SV | A / B | C / B |
+| WP-053 | A / SV | A / B | A / B |
+| WP-054 | A / SV | B / A | B / A |
+| WP-055 | A / SV | B / A | C / A |
+| WP-056 | A / SV | B / A | C / B |
+| DOM-01 provisioning | A / SV | A / B | A / C |
+| DOM-02 economy | A / SV | A / B | A / C |
+| DOM-03 governance | A / SV | B / A | B / C |
+| DOM-04 law_conflict | A / SV | B / A | B / C |
+| DOM-05 social_organization | A / SV | B / A | C / B |
+| DOM-06 knowledge_culture | A / SV | B / A | C / A |
+| DOM-07 health | A / SV | A / B | C / A |
+| DOM-08 infrastructure | A / SV | A / B | A / C |
+| DOM-09 communication | A / SV | B / A | B / C |
+| DOM-10 environment | A / SV | A / B | A / C |
+| DOM-11 meaning_identity | A / SV | B / A | C / B |
+| DOM-12 security_risk | A / SV | A / B | B / C |
 
-| Package | Two developers | Three developers |
-|---|---|---|
-| WP-001 | B / A | B / A |
-| WP-002 | B / A | B / A |
-| WP-003 | B / A | B / A |
-| WP-004 | B / A | B / A |
-| WP-005 | A / B | A / B |
-| WP-006 | A / B | A / B |
-| WP-007 | A / B | A / B |
-| WP-008 | A / B | C / A |
-| WP-009 | A / B | A / B |
-| WP-010 | B / A | B / A |
-| WP-011 | B / A | B / A |
-| WP-012 | A / B | A / B |
-| WP-013 | A / B | A / B |
-| WP-014 | A / B | A / B |
-| WP-015 | A / B | A / B |
-| WP-016 | A / B | A / B |
-| WP-017 | A / B | A / B |
-| WP-018 | A / B | A / B |
-| WP-019 | B / A | C / A |
-| WP-020 | B / A | B / A |
-| WP-021 | B / A | B / A |
-| WP-022 | B / A | B / A |
-| WP-023 | A / B | A / B |
-| WP-024 | B / A | B / A |
-| WP-025 | B / A | C / A |
-| WP-026 | B / A | C / A |
-| WP-027 | A / B | A / C |
-| WP-028 | B / A | B / A |
-| WP-029 | A / B | A / B |
-| WP-030 | B / A | B / A |
-| WP-031 | B / A | B / A |
-| WP-032 | B / A | C / A |
-| WP-033 | A / B | A / B |
-| WP-034 | A / B | A / B |
-| WP-035 | A / B | A / B |
-| WP-036 | A / B | A / B |
-| WP-037 | B / A | B / A |
-| WP-038 | A / B | A / B |
-| WP-039 | A / B | A / B |
-| WP-040 | B / A | B / A |
-| WP-041 | A / B | A / B |
-| WP-042 | B / A | B / A |
-| WP-043 | B / A | B / A |
-| WP-044 | B / A | B / A |
-| WP-045 | B / A | B / A |
-| WP-046 | A / B | A / B |
-| WP-047 | B / A | B / A |
-| WP-048 | A / B | A / B |
-| WP-049 | B / A | B / A |
-| WP-050 | B / A | B / C |
-| WP-051 | A / B | A / B |
-| WP-052 | A / B | C / B |
-| WP-053 | A / B | A / B |
-| WP-054 | B / A | B / A |
-| WP-055 | B / A | C / A |
-| WP-056 | B / A | C / B |
-| DOM-01 provisioning | A / B | A / C |
-| DOM-02 economy | A / B | A / C |
-| DOM-03 governance | B / A | B / C |
-| DOM-04 law_conflict | B / A | B / C |
-| DOM-05 social_organization | B / A | C / B |
-| DOM-06 knowledge_culture | B / A | C / A |
-| DOM-07 health | A / B | C / A |
-| DOM-08 infrastructure | A / B | A / C |
-| DOM-09 communication | B / A | B / C |
-| DOM-10 environment | A / B | A / C |
-| DOM-11 meaning_identity | B / A | C / B |
-| DOM-12 security_risk | A / B | B / C |
+If a multi-contributor child is authored by the parent's assigned reviewer, assign a different nonauthor to that child. Each contributor reviews the other author's work when both contributed to a parent. In solo mode record SV per child and aggregate it in parent evidence. Model validity is assessed against documented evidence and assumptions in every mode; specifically required external expertise remains an acceptance prerequisite.
 
-A child authored by the parent's assigned reviewer must be reviewed by the other developer (or a competent nonauthor in three-person mode). Parent evidence aggregates the independently reviewed children; a parent review cannot override missing child review. Where both developers contributed to a feature, each reviews the other's changes and independently checks the fixture/derivation they did not author. External scientific review is explicitly required only when the claim needs expertise/evidence the team lacks; unsupported effects stay labeled gaps.
+## 3. Validation and merge policy
 
-## 3. First handoffs and package splits
+### 3.1 Solo validation (SV)
 
-The following child work defines initial producer/consumer handoffs. Each child retains its parent's acceptance dependencies. The minimum scaffold and wire contract establish the initial boundary for parallel implementation.
+Solo mode supports implementation, PR merge, milestone acceptance and release preparation subject to these controls:
 
-| Child / owner | Start input | Deliverable for the other stream | Acceptance / peer |
+1. Record the active roster and `SV` in the child/PR. State behavior, changed boundaries, applicable requirements and required checks before acceptance.
+2. Derive expected numerical/procedural results separately from the implementation, using explicit worked examples, invariants or a distinct reference method. Commit the derivation with fixtures. Expected values generated by the code under test are insufficient.
+3. Run required structural, engine, desktop, content, compatibility and affected integration checks on the candidate containing current main. Use a clean isolated checkout for setup/packaging evidence. Exercise applicable failure, stale/retry, privacy and recovery paths.
+4. Perform a separate manual inspection after implementation/local checks, covering the final diff, contract/model identities, traceability, migration/recovery and residual risk. Record its checklist and outcome. This inspection is author validation, not independent peer review.
+5. Record `solo-validated; independent review deferred`, candidate SHA, check results, reviewer availability, residual risk and the deferred review item. Link each item to the affected boundary/model and prioritize by consequence. Track the backlog at every checkpoint; sustained growth reduces optional implementation capacity.
+6. Accept only when all applicable technical evidence passes. Missing required scientific evidence, specifically mandated external signoff, platform execution or authorized provider validation remains blocking for the affected claim/action. SV does not waive a product requirement or authorize release publication.
+
+When a second or third contributor becomes available, assign deferred independent-review work to a competent nonauthor before optional new work. Review current affected behavior and historical evidence where needed; preserve the original SV record. Correct defects through ordinary validated children. A pending deferred review alone does not invalidate previously accepted evidence; discovered defects block affected gates until resolved.
+
+### 3.2 Peer review and repository controls
+
+With two or three active contributors, require one nonauthor approval and review by affected boundary consumer owners. The author cannot supply their own independent approval. Keep children small enough to assign a nonauthor; if all available contributors authored a change, split independently reviewable children or obtain a qualified external nonauthor review. A reviewer who becomes unavailable is replaced through §7; if staffing falls to one, the change follows SV and its approval status is relabeled explicitly.
+
+All modes use short-lived branches, PR records and passing candidate checks containing current main. Use a merge queue where available; otherwise update/recheck the branch before merge. New behavior changes invalidate stale approval/evidence. WP-003 documents branch protection for each mode: one independent approval with multiple contributors; required checks plus recorded SV without a peer-approval requirement in solo mode. Mode changes are performed only by an authorized maintainer and are logged. If settings cannot be changed, record the permissions blocker and keep affected remote merges pending while independent work continues; do not report unavailable enforcement as active or bypass an enforced rule.
+
+Release evidence names its validation mode. Required publication authorization, scientific claims, native/provider verification and product gates are unchanged by staffing level.
+
+## 4. Initial handoffs and package splits
+
+The following child work defines the initial producer/consumer boundaries. A/B authorship and peer references in this table describe multi-contributor allocations; **with one contributor, A executes every listed child and replaces peer approval with SV**. Parent ownership in three-contributor mode remains as specified in §2. Each child retains its parent's actual acceptance dependencies. Publish and validate the minimum scaffold and wire contract before consumer coding.
+
+| Child / multi-contributor author | Start input | Deliverable for the other stream | Acceptance / peer |
 |---|---|---|---|
 | WP-001-plan / B | Current specifications and this revision | Named A/B availability, assignment ledger, ready queues, required checks and access/runner gaps | A checks model scope, critical dependencies and resource loading |
 | WP-002-layout / B, A supplies Python portion | Reviewed WP-001 scope | Minimal npm/uv roots, exact locks, directory/module boundaries and README bootstrap that launches a minimal child | A reproduces JS setup; B reproduces Python setup in independent clean checkout |
@@ -112,38 +139,36 @@ The following child work defines initial producer/consumer handoffs. Each child 
 | WP-046-context / A; WP-046-tools / B | Approved context/tool/proposal/error schemas | Python fact/context assembly and main-owned tool adapter | Nonauthor reviews each child; no tool may apply |
 | WP-048-ledger / A; WP-048-events / B | Approved usage/money/cancel fixtures | Decimal reconciliation and provider usage events/settings | Independently derived cost fixture before integrated acceptance |
 
-Deliver WP-005 incrementally by service boundary, according to consumer dependencies. WP-008's pack contracts and WP-027's conformance contract can be split ahead of full content activation/inventory. A synthetic minimum pack allows framework work; actual source content still requires WP-025/026 provenance/license review.
+Deliver WP-005 by service boundary according to consumer dependencies. WP-008's pack and WP-027's conformance contracts can precede full content activation/inventory. Synthetic packs enable framework implementation; source-derived content requires WP-025/026 provenance/license evidence. In solo mode author the contract/fixtures, producer and consumer as separate children; integrate the operation before moving to unrelated features. With more contributors, approved producer/consumer children may run concurrently. The production handshake is the initial W1 integration target; M1 requires its complete evidence.
 
-For other multi-language parents, apply the same producer/consumer split: A owns Python queries/writes/calculations; B owns main/preload/rendering/networking; parent owner integrates. Specify child ownership and dependencies before starting. The production process handshake is the initial W1 integration target. M1 completion requires its full acceptance evidence.
+## 5. Domain sequence and integration
 
-## 4. Parallel domain sequence and third-developer work
+Publish each domain's ports, owned state and mechanism card before implementation. Develop against validated WP-027 contract children; static acceptance requires the production harness, counterpart tests and content activation. Implement selected transitions under WP-034. Cross-domain acceptance edges do not impose circular development-start prerequisites.
 
-Once WP-027's contract child is merged, domain authors develop against common fixtures. Static acceptance still requires the full real harness, counterpart tests and content activation. Each domain first publishes ports/owned-state and a reviewed mechanism card, then implements static behavior, then integrates counterpart fixtures. It later implements selected transitions under WP-034. There is no requirement to finish a counterpart domain before starting the local module.
+| Batch | One contributor: sequential order | Two contributors: A | Two contributors: B | Shared checkpoint |
+|---|---|---|---|---|
+| D1 | DOM-01 → DOM-03 | DOM-01 provisioning | DOM-03 governance | Stock/service claims and institutional capacity share entities |
+| D2 | DOM-02 → DOM-04 | DOM-02 economy | DOM-04 law_conflict | Rights/entitlements, finite stock and conflicting authority |
+| D3 | DOM-08 → DOM-05 | DOM-08 infrastructure | DOM-05 social_organization | Facility reach and care/work/time share capacity |
+| D4 | DOM-10 → DOM-06 | DOM-10 environment | DOM-06 knowledge_culture | Shared land/stock and education staffing/resources |
+| D5 | DOM-07 → DOM-09 | DOM-07 health | DOM-09 communication | Eligibility, service reach and delivery limits |
+| D6 | DOM-12 → DOM-11 | DOM-12 security_risk | DOM-11 meaning_identity | Continuity/response and accommodation share capacity |
 
-| Domain batch | A: two-person lane | B: two-person lane | Shared integration checkpoint |
-|---|---|---|---|
-| D1 | DOM-01 provisioning | DOM-03 governance | Stock/service claims and institutional capacity reference shared entities |
-| D2 | DOM-02 economy | DOM-04 law_conflict | Entitlements/rights versus finite stock; conflicting authority explicit |
-| D3 | DOM-08 infrastructure | DOM-05 social_organization | Facility reach and care/work/time demands use one capacity budget |
-| D4 | DOM-10 environment | DOM-06 knowledge_culture | Shared land/stock and education resource/staff requirements |
-| D5 | DOM-07 health | DOM-09 communication | Local service eligibility/reach and information delivery limits |
-| D6 | DOM-12 security_risk | DOM-11 meaning_identity | Continuity/response and accommodation compete for real shared capacity |
+One contributor alternates the next domain child with its required projections/content/view child, and integrates each batch before expanding. Two contributors alternate assigned domain children with shared-engine or content/UI work according to their resource queues. With three contributors, A takes DOM-01/02/08/10, B DOM-03/04/09/12, C DOM-05/06/07/11; use the same batch checkpoints and counterparts, with C's domains in a serial queue. Every configuration reruns affected earlier fixtures as counterparts land. WP-032 aggregates incremental results into the all-domain education scenario.
 
-B alternates ready domain and exploration/content children; A alternates projection/harness and domain children. Each batch produces a runnable combined fixture on current main, with unresolved ports recorded as gaps. Rerun affected fixtures as counterparts are integrated. WP-032 aggregates these results into the all-domain education scenario.
+The parent roadmap's W0–W7 table defines all staffing execution modes. In three-contributor W1/W2, C prepares WP-008/019/025/026; W3/W4 adds assigned domains and WP-032 evidence; W5/W6 adds content/archive/provider review; W7 assigns C WP-052/055/056. All tasks share the same per-person capacity and WIP limits. Staffing changes resume the next unfinished child under the selected configuration, preserving accepted domain work.
 
-With C active, use the assignment matrix: A takes DOM-01/02/08/10, B DOM-03/04/09/12, C DOM-05/06/07/11. C prepares content/model cards and WP-025/026 while A/B establish their stream foundations, then alternates own domain children with paired conformance/evidence work. C's content, domain and verification work shares the capacity budget and WIP limit defined in the parent roadmap.
+## 6. Contracts, shared paths and asynchronous work
 
-The W0–W7 table in the parent roadmap remains the acceptance sequence. In three-person W1/W2, C prepares WP-008/019/025/026 children against approved contracts. In W3/W4, C owns the four assigned domains, coverage ledger and WP-032 evidence. In W5/W6, C reviews content/archive/provider integration and prepares independent release fixtures while A/B finish their queues. In W7, C coordinates WP-052/055/056; A/B still execute their native/model/trust checks and peer-review C. Update milestone forecasts using measured capacity and the revised assignments.
+Canonical Pydantic definitions reside in proposed `engine/contracts/`; `contracts/` contains generated schema/TypeScript/tool types and fixtures. WP-002 confirms actual paths. Each proposal records operation/port ID, context, units, schemas/errors, examples, producer/consumer ownership, version compatibility and migration/retirement conditions. Fixture quantities require separate derivations; TypeScript does not duplicate authoritative arithmetic.
 
-## 5. Contract evolution and shared-file ownership
+1. Publish a small contract/fixture proposal identifying affected consumers. Validate under §3 and merge before dependent consumer implementation.
+2. Merge canonical definitions, generated artifacts and fixtures together. Pin their commit/version in dependent children; regenerate types from Python.
+3. Prefer additive changes with explicit missing/unknown behavior. Test current producer/consumer and supported previous combinations. Preserve decimal-string and status semantics.
+4. Breaking changes declare the relevant protocol/schema/model identity, migration or rejection behavior, and merge order. Retain compatible adapters until consumers migrate. If coexistence is unsafe, test a coordinated producer/consumer candidate with explicit old-client rejection.
+5. Retire old fixtures/adapters through a separate validated change. Preserve required historical inspection and migration behavior for saved models/data.
 
-Contracts live with their canonical Pydantic definitions in the proposed `engine/contracts/`; `contracts/` contains generated schema/TypeScript/tool types and fixtures. WP-002 records the actual path once. A contract proposal records operation/port ID, context identity, units, input/result/error schemas, examples, producer/consumer owners, version and compatibility, and migration/retirement conditions. Fixture values are labeled synthetic, with independently derived numbers where needed; no duplicated TypeScript arithmetic.
-
-1. Producer opens a small contract/fixture change with both affected consumers identified. Consumer reviews during its next working period. Both agree before dependent code begins.
-2. Merge contract/fixtures and generated artifacts together. Consumers pin the merged commit/version in child records, then implement independently. Regenerate types from Python; do not hand-edit generated output.
-3. Prefer additive changes with explicit missing/unknown behavior. Test current producer/current consumer plus the still-supported previous consumer/producer fixture combinations. Decimal strings and unknown status cannot silently change meaning.
-4. A breaking change names a new protocol/schema/model identity as appropriate, migration or explicit rejection behavior, and a producer/consumer merge order. Keep an adapter/old path until affected consumers migrate and peer-reviewed removal is ready. If coexistence is unsafe, block old clients explicitly and merge a small coordinated producer/consumer change tested as a single candidate.
-5. Delete old fixtures/adapters only in a separate reviewed retirement change. Preserve the specified historical inspection and migration behavior for existing saves and models.
+The following steward/backup table applies to multi-contributor staffing. **In solo mode A is every steward and the backup is unavailable.** On transitions, rebind stewardship and backup to actual available people; record required expertise or access gaps rather than assigning absent contributors.
 
 | Shared area / proposed paths | Steward / backup | Concurrent editing rule |
 |---|---|---|
@@ -155,47 +180,50 @@ Contracts live with their canonical Pydantic definitions in the proposed `engine
 | Domain-local code/content/tests | Assigned domain owner / assigned reviewer | One active child per module path; cross-domain work goes through ports, not direct writes |
 | Release/evidence ledger and workflows | B / A; C / B for evidence when active | Evidence names exact candidate SHA; CI workflow implementation remains B-owned |
 
-Stewards coordinate changes and maintain documented invariants. Backups may author changes subject to independent review and CI. Path ownership controls overlapping edits; contract and paired-integration tests verify semantic compatibility. Implementation retains the monorepo and process boundaries specified in T §§2 and 15.
+Stewards coordinate semantic changes and invariants. Backups may author changes under §3. Path ownership controls overlapping edits; contract and integration tests verify semantic compatibility. Implementation retains the specified monorepo and process boundaries.
 
-## 6. Asynchronous operating rules
+Use GitHub issues/PRs as the durable delivery ledger during implementation. Record:
 
-Use GitHub issues and PRs as the delivery ledger during implementation. Package registers define the initial backlog. Record decisions, dependencies and handoffs in the shared ledger.
-
-- **WIP:** each developer has at most one active implementation child and one active review; prepare at least one independent ready fallback. While a contract proposal awaits review, select an independent approved child, research task or fixture review.
-- **Handoff:** at the end of an active working period, update the child with base SHA, branch/PR, changed paths/contract version, behavior completed, commands/results/evidence, next action, reviewer, blockers and specific decision needed. Express the next working window as a date/time interval with an explicit time zone.
-- **Review:** acknowledge a request in the next scheduled working period; aim for a substantive decision within that period for a one-to-three-day child. Review targets follow recorded availability, leave and working calendars. If delayed, record a new window, use the ready fallback and reforecast blocked dependents. C may substitute only as a competent nonauthor.
-- **Decisions:** implementation details within an approved contract are local owner decisions. Changes to shared state, boundaries, model claims, compatibility or product scope require a short written proposal, alternatives, affected packages and peer decision. Record an explicit peer decision. Refer unresolved product scope to the product decision owner with options and dependency impact; continue independent work.
-- **Integration:** merge small reviewed children as they are ready; run a real cross-stream slice at least weekly and before every gate. Collect asynchronous evidence against the same candidate SHA. B coordinates the two-person checkpoint; C coordinates designated evidence once active. Rotate actual execution to prove both setups work.
-- **Breakage:** stop merging affected changes, identify a fix/revert owner and keep main runnable. Preserve unrelated ready work. A working UI on one machine cannot waive a broken engine/contract job or another target's reported failure.
-
-Handoff record template:
+- **WIP:** one implementation child per active person, plus one validation/review item; at least one ready fallback when dependencies permit. Solo mode reserves validation capacity before taking the next implementation child.
+- **Handoff/resume:** record base/candidate SHA, branch/PR, changed paths/contracts, completed behavior, checks/evidence, next action, blocker and next working window. Solo work uses the same record for resumption and future transfer.
+- **Review/validation:** peers acknowledge requests in their next scheduled working period and aim to decide within that period for small children. Leave/availability updates the due window. Solo acceptance follows SV; record deferred independent review separately.
+- **Decisions:** local implementation choices stay with the owner. Boundary, model, compatibility or scope changes require recorded alternatives, impacts and a decision under §3. Refer unresolved product intent to the product decision owner while independent work continues.
+- **Integration:** run the production cross-boundary slice at least weekly and before gates, on a named candidate. Coordination belongs to A with one contributor, B with two and C for designated evidence with three. Rotate execution where multiple environments are available; solo uses a fresh isolated checkout for reproduction.
+- **Failure:** stop affected merges, assign fix/revert ownership and keep main runnable. Preserve unaffected ready work and evidence. Staffing loss does not waive a failing engine, contract or target check.
 
 ```text
-Child / accountable owner / peer reviewer:
-Base main SHA / branch or PR / proposed candidate SHA:
+Child / owner / current roster and slot mapping / effective date:
+Validation mode / peer if available / deferred review item:
+Base main SHA / branch or PR / candidate SHA:
 Changed paths / contract and fixture versions:
-Behavior implemented / still unavailable:
-Checks run / outcomes / evidence links:
-Next action / blocked dependency / decision requested:
-Next owner working window / next reviewer working window (time zone explicit):
+Completed behavior / unavailable behavior / checks and evidence:
+Next action / blocker / requested decision / residual risk:
+Next owner and reviewer working windows (time zones explicit):
 ```
 
-## 7. CI, merge and environment safeguards
+## 7. Staffing transitions
 
-WP-003 implements the candidate checks and repository controls below. Submit changes through short-lived child branches and PRs. Require one independent approval and, for boundary changes, review by each affected consumer owner. Apply these controls to all contributor and agent-assisted changes.
+Trigger this procedure when available implementation/review capacity changes, including planned leave, abrupt loss and a returning contributor. A joining person is allocated work only after setup, contract review and a small validated onboarding change. Until then the lower-capacity mode remains active. Rebind slots to the remaining qualified people; a transition never requires a particular original contributor to remain present.
 
-Require a passing candidate containing current main: use a merge queue where available, otherwise update the branch with current main and rerun required checks before merge. New commits invalidate approval for changed behavior and stale candidate evidence. Configure branch protection and bypass policy explicitly. Where hosting settings or permissions prevent enforcement, record the gap and apply the same checks through a documented manual procedure.
+At the effective change, record the roster and one owner for every open child/parent, pending review, contract, migration, shared path and gate. Preserve accessible WIP branches/checkpoints and their base SHA. For a planned transfer, finish a safe child or checkpoint before reassignment. For abrupt loss, transfer from the last confirmed state immediately, mark inaccessible artifacts and recover/reimplement only affected work. Review evidence for the unchanged candidate remains valid; changed behavior requires affected rechecks. Reconfigure repository review requirements through an authorized maintainer, adjust WIP/ready queues, and reforecast actual remaining effort including onboarding and deferred review.
 
-Required checks: frozen installs/no lock drift; generated-contract drift and cross-language fixture compatibility; content integrity/licensing; Python invariants and independent numerical fixtures; TypeScript/main/provider mocks; actual Electron/child/SQLite smoke for changed boundaries. Boundary/domain changes run paired tests and the existing integration slice. Until reliable path filtering is proven, run the common suite. Native target smoke/replay evidence is required at the probe and release gates; ordinary PRs do not pay for live provider calls. Performance/accessibility/scientific evidence remains governed by the verification matrix.
+| Transition | Ownership and sequencing | Validation and forecast action |
+|---|---|---|
+| 1 → 2 | Onboard the joiner; map available people to A/B; transfer B's queued parents and consumer/domain children at recorded checkpoints | Activate nonauthor review; assign deferred SV review by risk before optional new work; budget onboarding/review effort |
+| 1 → 3 | Onboard both joiners; map A/B/C directly; transfer each matrix assignment from A without duplicate active path claims | Activate peers and C's evidence queue; allocate deferred reviews across competent nonauthors; forecast all three availability intervals |
+| 2 → 1 | Map the remaining person to A; transfer every departed-owner/reviewer child and stewardship record; serialize engine/desktop/domain queues | Apply SV to new/unreviewed changes; preserve valid prior approvals, record new deferred reviews and update merge settings; reforecast solo capacity |
+| 2 → 3 | Onboard the joiner; map A/B/C; transfer C's listed parents/domains and DOM-12 to B at checkpoints | Reassign peers, including pending reviews; budget C's onboarding, evidence and review queues |
+| 3 → 1 | Map the remaining person to A regardless of former slot; consolidate all owners, stewards and review queues; preserve accessible WIP | Apply SV without waiting for departed reviewers; retain valid prior evidence, record access/expertise gaps and reforecast one-person throughput |
+| 3 → 2 | Map either surviving pair to A/B by skills/access; transfer all matrix differences, including C's work and any rebound A/B scope | Assign competent nonauthor peers, replace absent reviewers and reforecast remaining implementation/review capacity |
 
-Each environment records exact runtime/OS/architecture and pack versions. A fresh clone must bootstrap using committed npm/uv locks and documented commands, with no untracked generated files or another developer's local database. Use separate temporary user data per test run. Secret values remain in approved local/CI configuration; access to signing/provider credentials is not assumed for every contributor. Keep default tests offline and synthetic.
+Unchanged contributor count with a replacement uses the same onboarding, slot rebinding, checkpoint and peer reassignment rules. A temporary absence can later reverse through the corresponding upward transition. Completed acceptance evidence is not restarted solely because staffing changed. If no active person can complete a required scientific or platform check, record the external prerequisite and continue independent work.
 
-Before W2, verify clean setup in A's and B's independent environments. Before expanding domain implementation, verify an integrated producer/consumer operation from independently authored branches. Native support requires execution evidence for all four specified target combinations on provisioned native runners or machines.
+## 8. CI, environments and forecasting
 
-## 8. Resource loading and evidence of collaboration
+All staffing modes require frozen installs, generated-contract compatibility, content integrity/licensing, engine invariants with separate derivations, desktop/provider mocks and actual Electron/child/SQLite checks for changed boundaries. Run paired-domain and integrated-slice checks when affected. Native targets require execution evidence at probe/release gates. Default tests use synthetic data and no paid providers. Setup records exact runtime/OS/architecture/pack versions and isolated temporary user data; secrets stay in approved local/CI configuration.
 
-Use the roadmap's 60/20/10/10 capacity allocation as the initial budget. In the child forecast record implementation effort, author's correction effort, peer review effort, integration work, owner/reviewer availability, contract-ready date, external waiting time and uncertainty separately. Parent effort is rolled up once from children. Assign review and gate work to named contributors within their available capacity.
+Before W2, verify clean setup on every active contributor's environment; solo mode additionally verifies a fresh checkout independent of the working copy. Joining contributors reproduce the current candidate before transfer. Before expanding domains, verify production producer/consumer integration. All four native target combinations remain mandatory independent of contributor count.
 
-Track weekly: ready children per person, active work, review wait in working periods, blocked contract age, integration failures, shared-file conflicts, gate evidence freshness and changes in model/research scope. W1/M1 and M2 provide the first calibration. Re-estimate child work and rebalance queues if B's domain/UI/provider workload or A's engine load controls the finish. Measure throughput by accepted integrated deliverables.
+Apply the parent roadmap's per-mode capacity budget. Child estimates separate implementation, author corrections, SV or peer review, integration, owner/reviewer availability, external waiting and uncertainty. Sum effort once. Maintain forecast scenarios for all three counts, and resource-load known roster changes by effective interval. Reforecast at every roster change, after M1/M2 and at least fortnightly. Track ready work, review wait/debt, blocked contracts, integration failures, evidence freshness and model/research scope. Measure throughput by accepted integrated deliverables.
 
-Workflow acceptance requires the applicable COL-01–COL-06 evidence in the [verification matrix](verification_matrix.md). Setup, merge controls, compatibility and review-turnaround validation are **unrun** at this revision.
+Workflow acceptance requires applicable COL-01–COL-08 evidence in the [verification matrix](verification_matrix.md). Scenario plans cover all three counts and all six directed transitions. Record actual executions, simulations and inapplicable cases distinctly; a planned simulation does not certify an unexecuted contributor setup or independent review.

@@ -1,12 +1,12 @@
 # Poliscope — Twelve-Domain Work Packages
 
-Revision 0.2 · All domain packages are **not started**. Required team execution and both staffing assignments: [distributed delivery plan](distributed_delivery.md). Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
+Revision 0.3 · All domain packages are **not started**. Execution, all three staffing assignments and transitions: [distributed delivery plan](distributed_delivery.md). Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
 
 ## 1. Domain delivery contract
 
 The domain classification and state/interface responsibilities come from D §§4–5 and T §5. The candidate mechanism slices and fixtures below are proposed implementation scope, not claims of established social science. Choose parameters and empirical claims only through WP-026's evidence/model review. Synthetic fixtures are labeled hypothetical and independently derived. No package may invent universal scalar judgments for a domain.
 
-Every package is size **L**, with exactly one accountable A/B developer and the other as peer reviewer. The assigned contributors perform model, engine, product and verification responsibilities. The three-person matrix assigns C four domains and redistributes risk to B. Split into one-to-three-day mechanism/fixture/port/static/transition children; retain the parent's shared integration gate. Review authored code, interviews and evidence independently; distinguish documented hypothetical assumptions from empirical validity that the team cannot certify.
+Every package is size **L**, with one accountable owner under the current staffing column. One contributor applies SV with independent review explicitly deferred; two or three contributors assign a different peer. Assigned people cover model, engine, product and verification responsibilities within available capacity. Split parents into one-to-three-day mechanism/fixture/port/static/transition children and retain the shared integration gate. Numerical/procedural expectations require separate derivations in all modes. Empirical claims remain limited to available evidence and specifically required expertise.
 
 **Common acceptance prerequisites:** WP-027 and its transitive dependencies, including world, units, registry, shared accounts, evidence packs and the headless slice. **Development start:** either these are verified or WP-027-contract and the needed upstream contract children are reviewed and merged. Pin their SHA/versions and limitations; all real prerequisites remain required for static acceptance. Domain content inventory can be prepared earlier through WP-025/WP-026. Each package's counterpart list below is an **integration acceptance dependency**, not a prerequisite to begin coding: domains can develop against the common harness, then test paired behavior together. This explicitly avoids circular start dependencies between naturally coupled domains.
 
@@ -21,13 +21,13 @@ Every package is size **L**, with exactly one accountable A/B developer and the 
 
 All packages must demonstrate at least two relevant scopes/local groups and a boundary or overlap case; not every mechanism must claim applicability at every scope. Unsupported scopes are explicit. Paired fixtures reference shared entity/account IDs and verify finite budgets globally. Default civic answers remain unset, including choices imported from the historical source.
 
-Use the distributed plan's six paired batches. Publish ports and owned-state definitions before mechanism implementation; run counterpart fixtures after each batch against current main. Allocate B's domain work alongside content/UI and A's alongside shared services. Activate C's assignments after onboarding.
+Use the delivery plan's six batches. In solo mode A executes both domains in each batch sequentially, interleaving required content/projection/view children. With two or three contributors, split ready domain children according to the matrix. Publish ports and owned state before implementation; run counterpart fixtures after each batch against current main. Reassign unfinished work and reviews through the transition procedure without restarting accepted batches.
 
 ## 2. Domain packages
 
 ### DOM-01 — I. Resource & Material Base (`provisioning`)
 
-**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors A / C. Apply the shared validation and transition rules.
 
 **Branch scope:** production; distribution/logistics; consumption, waste and circular loops. **Sources:** D §§4, 5.2, 5.4; T §§5, 7.4. **Integration counterparts:** DOM-02, DOM-05, DOM-08, DOM-10, DOM-12.
 
@@ -44,7 +44,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-02 — II. Economy & Exchange (`economy`)
 
-**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors A / C. Apply the shared validation and transition rules.
 
 **Branch scope:** value/exchange; labor/work; ownership/property; wealth distribution. **Sources:** D §§4, 5.1–5.2; T §§5, 7.4. **Integration counterparts:** DOM-01, DOM-03, DOM-04, DOM-05, DOM-06, DOM-07, DOM-08.
 
@@ -61,7 +61,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-03 — III. Governance & Collective Decision-Making (`governance`)
 
-**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors B / C. Apply the shared validation and transition rules.
 
 **Branch scope:** political structure; decision processes; power/accountability. **Sources:** D §§4, 5.3; T §§4.2, 5.2. **Integration counterparts:** DOM-02, DOM-04, DOM-06, DOM-09, DOM-11, DOM-12.
 
@@ -78,7 +78,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-04 — IV. Law, Order & Conflict Resolution (`law_conflict`)
 
-**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors B / C. Apply the shared validation and transition rules.
 
 **Branch scope:** norms/rights; enforcement; dispute resolution; inter-group conflict. **Sources:** D §§4, 5.3; T §5. **Integration counterparts:** DOM-02, DOM-03, DOM-05, DOM-07, DOM-09, DOM-11, DOM-12.
 
@@ -95,7 +95,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-05 — V. Social Organization & Relationships (`social_organization`)
 
-**Accountable / peer:** two developers B / A; three developers C / B. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors C / B. Apply the shared validation and transition rules.
 
 **Branch scope:** households/kinship; community; life-course and care. **Sources:** D §§3.1, 4, 5.1; T §§4–5. **Integration counterparts:** DOM-01, DOM-02, DOM-04, DOM-06, DOM-07, DOM-11.
 
@@ -112,7 +112,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-06 — VI. Knowledge, Education & Culture (`knowledge_culture`)
 
-**Accountable / peer:** two developers B / A; three developers C / A. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors C / A. Apply the shared validation and transition rules.
 
 **Branch scope:** research/archives; education/training; cultural production. **Sources:** D §§4, 5.5, 5.7; T §5. **Integration counterparts:** all other domains for the D §5.7 integration path; primary service interfaces DOM-02, DOM-03, DOM-05, DOM-08, DOM-09, DOM-11.
 
@@ -129,7 +129,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-07 — VII. Health & Wellbeing (`health`)
 
-**Accountable / peer:** two developers A / B; three developers C / A. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors C / A. Apply the shared validation and transition rules.
 
 **Branch scope:** physical health; mental/emotional wellbeing; birth, life, death and care. **Sources:** D §§4–5; T §§4.3, 5. **Integration counterparts:** DOM-01, DOM-02, DOM-04, DOM-05, DOM-06, DOM-08, DOM-09, DOM-10, DOM-12.
 
@@ -146,7 +146,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-08 — VIII. Infrastructure & Built Environment (`infrastructure`)
 
-**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors A / C. Apply the shared validation and transition rules.
 
 **Branch scope:** physical infrastructure; spatial organization; digital infrastructure. **Sources:** D §§4, 5.4; T §§4–5, 8. **Integration counterparts:** DOM-01, DOM-02, DOM-03, DOM-06, DOM-07, DOM-09, DOM-10, DOM-12.
 
@@ -163,7 +163,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-09 — IX. Communication & Information (`communication`)
 
-**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors B / C. Apply the shared validation and transition rules.
 
 **Branch scope:** information flow/verification; communication; mediated information and privacy. **Sources:** D §§4, 5.5; T §5. **Integration counterparts:** DOM-03, DOM-04, DOM-06, DOM-07, DOM-08, DOM-11, DOM-12.
 
@@ -180,7 +180,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-10 — X. Environment & Human–Nature Relationship (`environment`)
 
-**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors A / C. Apply the shared validation and transition rules.
 
 **Branch scope:** stewardship; resource sustainability; land/ecosystem relations. **Sources:** D §§4, 5.4; T §§5, 7.4. **Integration counterparts:** DOM-01, DOM-06, DOM-07, DOM-08, DOM-12.
 
@@ -197,7 +197,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-11 — XI. Meaning, Values & Identity (`meaning_identity`)
 
-**Accountable / peer:** two developers B / A; three developers C / B. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors B / A; three contributors C / B. Apply the shared validation and transition rules.
 
 **Branch scope:** belief; identity/belonging; purpose, ritual and aspiration. **Sources:** D §§4, 5.5; T §§5, 9. **Integration counterparts:** DOM-03, DOM-04, DOM-05, DOM-06, DOM-09.
 
@@ -214,7 +214,7 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 
 ### DOM-12 — XII. Security & Risk Management (`security_risk`)
 
-**Accountable / peer:** two developers A / B; three developers B / C. Follow the shared contract, review and handoff rules.
+**Assignment (owner / validation):** one contributor A / SV; two contributors A / B; three contributors B / C. Apply the shared validation and transition rules.
 
 **Branch scope:** physical security; systemic risk; technological risk. **Sources:** D §§4, 5.6, 6.2; T §§5, 7.5, 8. **Integration counterparts:** all domains with exposed capacity or obligations; primary fixtures DOM-01, DOM-03, DOM-07, DOM-08, DOM-09, DOM-10.
 
@@ -240,6 +240,6 @@ Use the distributed plan's six paired batches. Publish ports and owned-state def
 | Disruption and continuity | DOM-12 with all affected domains; WP-035/036/055 | Resource, institution, channel, asset and health effects commit atomically; replay/repair demands conserve shared budgets |
 | Local scope and overlap | Every domain; WP-007/027/030 | At least two groups/scopes with weighted membership/jurisdiction overlap; no population or stock duplication |
 
-A owns shared account/reducer invariants, B owns cross-view consistency and the two-person static gate, and the domain owner coordinates its paired fixture. C takes WP-032/055 evidence when active. Each contributor supplies domain outputs on the same candidate SHA and independently reviews the assigned counterpart.
+In solo mode A validates shared invariants, cross-view consistency and all gate evidence through SV. With two contributors A owns shared account/reducer checks and B cross-view/static-gate coordination; with three C takes WP-032/055 evidence. The domain owner coordinates paired fixtures in every mode. Record outputs on one candidate SHA, separate expected derivations and the applicable validation status.
 
 An integration fixture fails if interfaces merely exchange plausible-looking UI values while their underlying entity identities, revisions, units, assumptions or accounts disagree. WP-032 owns the static all-domain gate; WP-034/WP-036 plus WP-055 own dynamic and release acceptance. Model gaps may be legitimate, but each release's declared inventory must show them explicitly and still satisfy substantive executable behavior in every domain.
