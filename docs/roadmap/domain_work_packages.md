@@ -1,6 +1,6 @@
 # Poliscope — Twelve-Domain Work Packages
 
-Revision 0.4 · All domain packages are **not started**. Agent allocation and stable package execution: [distributed delivery plan](distributed_delivery.md). Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
+Revision 0.5 · All domain packages are **not started**. Agent allocation and stable package execution: [distributed delivery plan](distributed_delivery.md). Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
 
 ## 1. Domain delivery contract
 
@@ -19,7 +19,7 @@ Every domain inventory package is size **L** and must be decomposed before execu
 
 **Coverage inventory rule:** WP-025 inventories the actual source map's three levels. Every branch and relevant source decision receives a namespaced catalog entry or an explicit provenance-only/exclusion classification with rationale. Each candidate effect lists numerical/procedural/qualitative/partial/unsupported status, evidence status, supported scopes, static/transition availability, and next research task. All-branch catalog coverage is not all-branch numerical implementation. DEC-04 fixes the released mechanism inventory before scope is claimed complete.
 
-All packages must demonstrate at least two relevant scopes/local groups and a boundary or overlap case; not every mechanism must claim applicability at every scope. Unsupported scopes are explicit. Paired fixtures reference shared entity/account IDs and verify finite budgets globally. Default civic answers remain unset, including choices imported from the historical source.
+All packages must demonstrate at least two relevant scopes/local groups and a boundary or overlap case; not every mechanism must claim applicability at every scope. Unsupported scopes are explicit. Paired fixtures reference shared entity/account IDs and verify finite budgets globally. Include allocation-to-actual-output dependencies, declared quantum/magnitude/residual behavior, and complete instance/event/draw identities where applicable. Shared uncertain causes and independence assumptions are model definitions, not consequences of separate RNG streams. Selected policy adoptions carry explicit deltas/preconditions and cannot reset dynamic stock, people, assets or pending cases. Candidate transitions remain private until complete invariant validation and durable confirmation; retained result/trace evidence survives cache eviction. Default civic answers remain unset, including choices imported from the historical source.
 
 Select ready domain packages according to prerequisites, required capabilities and compatible write scopes. One agent executes packages sequentially; up to three agents may execute compatible packages concurrently. Publish ports and owned state before implementation, and run affected counterpart fixtures at each package completion. Allocate the next package using current availability while preserving other active package plans.
 
@@ -176,7 +176,7 @@ Select ready domain packages according to prerequisites, required capabilities a
 
 **Static acceptance:** eligibility and channel reach can differ; claimed publication without delivery/verification capacity remains incomplete. Two domains compete for the same represented channel capacity; sources/explanations distinguish documentary influence from numerical dependence.
 
-**Dynamic acceptance:** declared delay affects institutional/response timing through explicit ports, not a global communication multiplier. Replay preserves delivery states and privacy/access rules; a policy change cannot expose actual application secrets or share player data.
+**Dynamic acceptance:** declared delay affects institutional/response timing through explicit ports, not a global communication multiplier. Replay preserves delivery states and privacy/access rules; a policy change cannot expose actual application secrets or share player data. Application private payloads and derived copies remain classified and referenced outside immutable simulation records; domain source/trace rendering cannot cause passive network requests or widen a turn's sharing capability.
 
 ### DOM-10 — X. Environment & Human–Nature Relationship (`environment`)
 
@@ -193,7 +193,7 @@ Select ready domain packages according to prerequisites, required capabilities a
 
 **Static acceptance:** extraction/emissions reference the same physical stocks/sinks across regions; weighted scope views cannot spend them twice. Independent units/time/area fixtures verify accounting; a chosen limit breach is distinct from a physical shortage or uncertain boundary.
 
-**Dynamic acceptance:** inflow/extraction/regeneration/loss transitions reconcile at defined time steps and retain uncertainty/coverage. Source ranges are not sampled without declared distributions; checkpoint replay preserves shared ecological state.
+**Dynamic acceptance:** inflow/extraction/regeneration/loss transitions reconcile at defined time steps and retain uncertainty/coverage. Source ranges are not sampled without declared distributions; checkpoint replay preserves shared ecological state. A declared common drought variable affects provisioning, exposure/health and ecological demand through one joint realization; unsupported dependence is qualified rather than silently independently sampled.
 
 ### DOM-11 — XI. Meaning, Values & Identity (`meaning_identity`)
 
@@ -227,7 +227,7 @@ Select ready domain packages according to prerequisites, required capabilities a
 
 **Static acceptance:** preparedness reserves are deducted once and compete with ordinary service demands; external help remains finite/conditional. Exposure/continuity findings have defined scope/time/evidence and no universal security score.
 
-**Dynamic acceptance:** the same realization replays across checkpoint/resume, unrelated module changes do not shift its random stream, and a disruption produces consistent coupled service/resource/authority findings. Failure leaves the design playable; unmodeled recovery remains an unresolved requirement.
+**Dynamic acceptance:** the same realization replays across checkpoint/resume, same-definition instances in one scope have distinct stable stream keys, unrelated module/draw insertion does not shift existing draws, and a disruption produces consistent coupled service/resource/authority findings. Failure leaves the design playable; unmodeled recovery remains an unresolved requirement.
 
 ## 3. Cross-domain integration ownership
 
