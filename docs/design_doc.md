@@ -1,4 +1,4 @@
-# Society Sandbox — Global Game Design Architecture
+# Poliscope — Global Game Design Architecture
 
 Revision 0.2 · 2026-10-13
 
@@ -10,7 +10,7 @@ Revision 0.2 · 2026-10-13
 
 ## 1. The game as a whole
 
-Society Sandbox is an educational desktop game in which a player designs and explores a single civilization as an interconnected system. The civilization can contain many households, communities, settlements, regions, institutions, and jurisdictions. The surrounding environment and external societies exist as explicit conditions and interfaces to that civilization, rather than as competing playable empires.
+Poliscope is an educational desktop game in which a player designs and explores a single civilization as an interconnected system. The civilization can contain many households, communities, settlements, regions, institutions, and jurisdictions. The surrounding environment and external societies exist as explicit conditions and interfaces to that civilization, rather than as competing playable empires.
 
 The central activity is making choices about how people live together, seeing what those choices require, and exploring the consequences of combining them. Interviews make individual choices accessible. Resource accounts, institutional relationships, service systems, demographic aggregates, and declared behavioral models make their consequences inspectable. A decision atlas and dependency matrix make the entire arrangement navigable.
 
