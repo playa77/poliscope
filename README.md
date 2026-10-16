@@ -4,9 +4,23 @@
 
 Build a civilization out of choices. Follow their consequences across food, work, governance, relationships, culture, health, infrastructure, and the environment. Revisit an assumption, take another path, and see what changes.
 
-Polyscope is a desktop simulation of one civilization as an interconnected system. You shape its institutions and material arrangements through readable, clickable interviews, inspect its resource and service accounts, and explore the relationships between your decisions.
+Poliscope is a desktop simulation of one civilization as an interconnected system. You shape its institutions and material arrangements through readable, clickable interviews, inspect its resource and service accounts, and explore the relationships between your decisions.
 
 You decide what matters. There is no campaign, prescribed ideal society, victory condition, or overall civilization score. Set your own targets, investigate a question, or simply explore.
+
+## The three-body problem
+
+Most institutional mechanisms solve one failure mode by increasing pressure toward another.
+
+Markets are extraordinarily good at decentralizing economic decision-making and preventing the state from deciding everything. Push them too far, though, and concentrated wealth starts turning economic power back into political and social power.
+
+Bureaucracies are extraordinarily good at preventing arbitrary private domination. Push them too far, and administrative power itself becomes the dominant form of arbitrary power.
+
+Strong executive authority can cut through bureaucratic paralysis and entrenched private interests. Push that far enough and you have authoritarian government.
+
+So the problem looks almost like a three-body problem. You are not choosing between good and bad systems; you are trying to maintain an unstable equilibrium among state power, administrative power, and private economic power.
+
+Poliscope is built around this. You will run into it without going looking for it: a mechanism that repairs one failure puts pressure on another, and no indicator, interview, or score will announce that you have found the right balance. The sandbox makes those shifts visible and traceable so you can watch the equilibrium move and try to hold it.
 
 ## What you can do
 
@@ -43,7 +57,7 @@ A fresh sandbox has no selected civic policies and no assigned goals. Reference 
 
 ## Twelve domains, one civilization
 
-Polyscope connects the material, institutional, social, and environmental dimensions of a society.
+Poliscope connects the material, institutional, social, and environmental dimensions of a society.
 
 | Domain | Explore |
 |---|---|
@@ -113,7 +127,7 @@ Comparison shows changed choices, assumptions, outcomes, distributions, and unre
 
 ## AI assistance and BYOK
 
-Polyscope's assistant helps explain mechanisms, clarify interview questions, trace dependencies, inspect sources, compare branches, and propose alternatives. Connect your own provider key in **Settings → AI Providers**.
+Poliscope's assistant helps explain mechanisms, clarify interview questions, trace dependencies, inspect sources, compare branches, and propose alternatives. Connect your own provider key in **Settings → AI Providers**.
 
 ### OpenRouter
 
@@ -165,7 +179,7 @@ Historical results remain inspectable even when their exact engine is unavailabl
 
 ## Models and evidence
 
-Polyscope distinguishes historical design choices, empirical evidence, hypothetical assumptions, and implemented mechanisms. Its catalogs and model packs preserve sources, versions, amendments, and coverage.
+Poliscope distinguishes historical design choices, empirical evidence, hypothetical assumptions, and implemented mechanisms. Its catalogs and model packs preserve sources, versions, amendments, and coverage.
 
 The [Society Redesign project](https://github.com/playa77/society) supplies a source corpus and reference arrangements. Its adopted choices are available for study; they do not become mandatory answers or player goals. The architecture also supports compatible content and models built from other documented assumptions.
 
@@ -191,7 +205,7 @@ Reports retain evidence and model limitations alongside results. Classroom inqui
 
 All twelve domain modules use the same world entities, scope system, accounts, units, history, and explanation contracts. The renderer does not maintain a second simulation engine, and the assistant cannot bypass those contracts.
 
-Read the [global game design architecture](docs/DESIGN.md) and [global technical architecture](docs/TECH_SPEC.md) for the full system design.
+Read the [global game design architecture](docs/design_doc.md) and [global technical architecture](docs/tech_spec.md) for the full system design.
 
 ## Development
 
