@@ -4,7 +4,7 @@ Revision 0.2 · 2026-10-13
 
 **Document scope:** the complete educational sandbox, across all twelve society domains, all supported social scales, design decisions, simulation, interviews, explanation, and exploration. This document defines the whole product. It does not define a work package, prototype, release slice, or implementation schedule.
 
-**Companion:** [Global technical architecture and specification](TECH_SPEC.md).
+**Companion:** [Global technical architecture and specification](tech_spec.md).
 
 **Authority:** freeplay with player-defined purposes; Electron and Python; BYOK with full OpenRouter support. Architecture choices are made under the user's instruction to decide the stack. Civic choices belong to the player.
 

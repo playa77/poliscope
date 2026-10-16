@@ -1,19 +1,22 @@
 # Poliscope — Implementation Roadmap
 
-Revision 0.1 · 2026-10-16 · Planning baseline; implementation has not started.
+Revision 0.2 · 2026-10-16 · Distributed delivery baseline: two developers, expandable to three; implementation has not started.
 
 ## 1. Purpose, authority, and document map
 
 This roadmap translates the [global game design](design_doc.md) and [technical specification](tech_spec.md), both revision 0.2 dated 2026-10-13, into an executable delivery plan. Those documents define product and architecture requirements; this roadmap defines implementation order, work ownership, deliverables, dependencies, and evidence of completion. Where this plan proposes fixture contents, effort ranges, repository paths, or review procedures, those are planning decisions rather than additional claims made by the specifications.
 
-The inspected repository baseline is `c837d25da60fd3ed5710e5cedddc27180f84187c`: README, license, ignore rules, and the two specifications. There are no application sources, dependency manifests, lockfiles, runnable development scripts, or tests. README development commands describe the intended workflow, not a working implementation. All work packages below begin **not started**. No milestone, native platform, scientific model, or provider capability is certified by this document.
+**Repository baseline:** `7df9b2309a56c9bf96ceecdb41b24a5c5a51d873`. The repository contains specifications and planning documents. Application sources, dependency manifests, lockfiles, build scripts and tests are pending. README development commands define the target command interface. All implementation packages are **not started**; milestone and platform/provider validation is **unrun**.
 
 | Document | Use |
 |---|---|
 | This roadmap | Scope, milestones, execution sequence, staffing, decisions, and release gates |
+| [Distributed delivery plan](roadmap/distributed_delivery.md) | Two/three-developer assignments for all 68 packages, parallel waves, contract handoffs, async review, and integration rules |
 | [Shared work packages](roadmap/work_packages.md) | WP-001–WP-056: platform, engine, storage, UI, content infrastructure, timeline, AI, portability, and delivery |
 | [Domain work packages](roadmap/domain_work_packages.md) | DOM-01–DOM-12: concrete work and validation for every domain |
 | [Verification and traceability](roadmap/verification_matrix.md) | Coverage of both specifications, integrated scenarios, test ownership, and release evidence |
+
+**Delivery configuration:** two concurrent contributors, A and B, with an optional third contributor, C. WP-001 records named assignments, skills, availability, review windows and access. The two-contributor allocation includes implementation, model review, verification, integration and delivery coordination.
 
 Read the roadmap first, then the relevant package and its prerequisites. A package ID identifies scope; its numerical position alone does not authorize starting it. Dependency fields are authoritative. Source references use **D §n** for the design document and **T §n** for the technical specification.
 
@@ -38,15 +41,15 @@ Explicit exclusions from this roadmap are multiplayer, competing playable empire
 
 ## 3. Delivery strategy and milestone gates
 
-Build the stable contracts before expanding content. Prove the offline choice-to-consequence loop with a deliberately small, labeled test fixture. Expand through a shared domain framework; do not implement twelve separate simulators. Introduce time after static state, accounts, and history are reliable. Start provider and packaging work early enough to expose platform constraints, but accept them only with integrated evidence.
+Organize work around separately owned engine and desktop streams, joined by small versioned contracts. Stabilize each needed contract before its consumers implement that boundary; do not wait for the entire engine or contract inventory before desktop work begins. Prove the offline choice-to-consequence loop with a deliberately small, labeled test fixture. Expand through a shared domain framework; do not implement twelve separate simulators. Introduce time after static state, accounts, and history are reliable. Start provider and packaging work early enough to expose platform constraints, but accept them only with integrated evidence.
 
 The planning fixture for the early vertical slice is a small resource/service arrangement with two locations, overlapping membership/jurisdiction, finite shared labor and stock, an institution, and an unresolved alternative. It is synthetic test data with documented arithmetic, not a canonical civic policy or required player starting scenario. The education relationship path in D §5.7 is later used as an integration test across all domains, not as a mandated gameplay entry point.
 
 | Milestone | Scope and work packages | Entry | Exit evidence |
 |---|---|---|---|
 | **M0 — Implementation baseline** | WP-001 | Specifications available | Requirement ledger, ownership, release coverage policy, decisions and risks recorded; source contradictions identified |
-| **M1 — Trustworthy desktop/runtime foundation** | WP-002–WP-011 | M0 | Frozen install and generated contracts work; secure desktop launches Python, handshakes, opens local storage, recovers from child failure; native packaging feasibility recorded |
-| **M2 — Offline design vertical slice** | WP-012–WP-024 | M1; package-level prerequisites satisfied | Create → inspect → preview → apply → trace → undo/fork → compare → close/reopen works offline with independently checked shared accounts; stale/duplicate requests are safe |
+| **M1 — Trustworthy desktop/runtime foundation** | WP-002–WP-011 | M0 assignments and minimum scaffold; development overlaps by §3.1 | Frozen install and generated contracts work; secure desktop launches Python, handshakes, opens local storage, recovers from child failure; native packaging feasibility recorded |
+| **M2 — Offline design vertical slice** | WP-012–WP-024 | M1 for integrated acceptance; contract-backed implementation starts during M1 | Create → inspect → preview → apply → trace → undo/fork → compare → close/reopen works offline with independently checked shared accounts; stale/duplicate requests are safe |
 | **M3 — Twelve-domain design workspace** | WP-025–WP-032 and DOM-01–DOM-12 | M2 for integrated acceptance; pack/domain preparation can start earlier | All twelve modules and source branches registered; each has reviewed executable behavior plus honest gaps; atlas, matrices, world, evidence and distribution views navigate the same world; all-domain static integration passes |
 | **M4 — Time, uncertainty, and experiments** | WP-033–WP-038; transition portions of all domain packages | M2 for generic time framework; M3 for integrated acceptance | Schedule/advance/cancel/replay/fork/compare works; shared transition reduction, multirate boundaries, lifecycle, hazards, deterministic streams and uncertainty semantics verified |
 | **M5 — Portable local ownership** | WP-039–WP-041 | M2 for design export; M4 for complete experiment archive | Full-state round trips, safe rejection, privacy defaults, reports/CSV, backup/migration, and historical read-only behavior pass with no silent recomputation |
@@ -55,43 +58,55 @@ The planning fixture for the early vertical slice is a small resource/service ar
 
 Milestone exits are conjunctive: passing a UI demo does not waive arithmetic or storage evidence. M7 requires M3, M4, M5, and M6, including all domain packages. A milestone remains blocked if a required behavior is untested or an unexplained failure remains. A scoped preview may be released earlier only with its omissions explicit; it must not be labeled complete architecture delivery.
 
-### 3.1 Dependency structure and work that can overlap
+### 3.1 Parallel execution and acceptance dependencies
+
+Milestones define integrated acceptance gates. The following waves allocate work for two contributors; the [distributed delivery plan](roadmap/distributed_delivery.md) specifies child handoffs, package ownership and the three-contributor allocation. Child work starts when its declared inputs are ready. Open acceptance items remain attached to their milestone.
+
+| Wave / gate | Developer A — engine, persistence and shared computation | Developer B — desktop, delivery and institutional content | Handoff / integration evidence |
+|---|---|---|---|
+| W0 / M0 | Requirements, numerical/model inventory, Python scaffold design | Delivery ledger, JS scaffold design, runner/access inventory | Joint ownership/availability map, ready backlog and minimal bootstrap contract |
+| W1 / M1 | WP-002 Python child; WP-005 minimum wire fixtures; WP-006–009 and Python side of WP-010 | WP-002 JS child; WP-003 CI; WP-004 packaging; TS side of WP-010 and WP-011 against fixtures | Real handshake early, then real storage; secure installed-process probe; both clean machines reproduce setup |
+| W2 / M2 | WP-012–018: registry, accounts, evaluation, traces, history; producer support for WP-019/023 | WP-020–022: shell/interviews/indicators and WP-023 UI against approved fixtures; WP-019 independent fixtures and WP-024 acceptance | Replace fixtures operation by operation; weekly real child/database slice; offline M2 gate |
+| W3 / M3 | WP-027 harness; A-owned domain children; Python projections for WP-028–031 | B-owned domain children; WP-028–031 views; WP-025/026 content tooling in reserved blocks | Two active domain slices maximum; pair tests continuously; WP-032 accepts all twelve static domains |
+| W4 / M4 | WP-033–036, WP-038 and A-owned transitions; archive format sketch for WP-039 | WP-037 timeline against fixtures, B-owned transitions, provider-key/mock preparation WP-042/043 in reserved blocks | Atomic boundary/replay contracts precede timeline integration; all selected domain transitions pass |
+| W5 / M5 | WP-039–041 engine/archives/migrations; Python parts of WP-046/048 when ready | WP-039–041 dialogs/report UI; WP-042–045 provider work after portability review capacity is reserved | Fresh-directory round trip and recovery; provider work cannot displace M5 counterpart reviews |
+| W6 / M6 | WP-046 context/tools, WP-048 costs, persistence support for WP-047/049; cross-review provider behavior | WP-044–050 adapters/streams/modalities/settings and compatibility evidence | Mock failures and grounded proposal loop integrated; separately authorized bounded live outcomes |
+| W7 / M7 | WP-051 measured engine fixes, WP-052/053 audits, numerical/model checks, native replay support | Desktop accessibility/security fixes, WP-054 artifacts, WP-055/056 evidence and delivery | Frozen candidate passes full product/native/provider requirements; both developers sign evidence they independently checked |
+
+Wave entries define per-contributor queues. Each contributor may have one implementation child and one review in progress. W3 allocates B's capacity between domain mechanisms, content tooling and UI. W4/W5 provider preparation follows current-gate implementation and review commitments. Packaging feasibility begins in W1.
 
 ```mermaid
-flowchart TD
-    M0["M0: baseline and decisions"] --> M1["M1: contracts and desktop/runtime"]
-    M1 --> M2["M2: offline design loop"]
-    M2 --> M3["M3: twelve-domain design integration"]
-    M2 --> TIME["Time framework implementation"]
-    M3 --> M4["M4: integrated experiments"]
-    TIME --> M4
-    M2 --> PORT["Archive and report implementation"]
-    M4 --> M5["M5: complete portable ownership"]
-    PORT --> M5
-    M1 --> AI["Provider infrastructure and mocks"]
-    M3 --> M6["M6: full optional BYOK integration"]
-    M4 --> M6
-    M5 --> M6
-    AI --> M6
-    M1 --> PKG["Early native packaging probes"]
-    M3 --> M7["M7: release candidate"]
-    M4 --> M7
-    M5 --> M7
-    M6 --> M7
-    PKG --> M7
+flowchart LR
+    BASE["Joint baseline and minimal scaffold"] --> WIRE["Small approved wire contracts and fixtures"]
+    WIRE --> ENGINE["A: real engine services"]
+    WIRE --> DESKTOP["B: desktop consumers and CI"]
+    ENGINE --> SLICE["Real offline integration: M2"]
+    DESKTOP --> SLICE
+    SLICE --> ADOM["A: assigned domain slices and shared services"]
+    SLICE --> BDOM["B: assigned domain slices and exploration views"]
+    ADOM --> STATIC["All-domain static gate: M3"]
+    BDOM --> STATIC
+    STATIC --> TIME["A: transitions, replay and archives"]
+    STATIC --> UX["B: timeline, portability UI and providers"]
+    TIME --> FINAL["Integrated M4-M7 gates"]
+    UX --> FINAL
 ```
 
-The likely critical path is contracts → canonical quantities/world → shared accounting/evaluation → transactional preview/apply → offline integrated loop → domain coupling → multirate/replay → complete portable state → integrated release evidence. This is a planning hypothesis; update it from actual package durations and platform/provider blockers. Provider compatibility, content licensing, and native signing can become independent critical paths.
+The probable computation critical path remains accounts → evaluation → transactional apply → domain coupling → atomic transitions/replay → portable experiments. The delivery critical path also includes reviewer availability, contract turnaround, B's domain/UI/provider queue, runner availability and model evidence. Forecast each resource separately. Adding C removes specific content/integration work from A/B; it cannot remove causal dependencies or justify dividing effort by three.
 
-Parallel work is safe only after its input contracts have fixtures and versioned schemas. Content inventory can proceed alongside engine foundations. Domain implementations can proceed independently once WP-027's harness exists, but domain acceptance waits for counterpart integration. Provider fixtures and catalog work can overlap M3/M4. Packaging probes begin in M1; final packages wait for the actual application. Performance, accessibility, privacy, and numerical review are continuous concerns, with final gates in M7.
+### 3.2 Work can start before a parent package is accepted
+
+A `Depends` field in the package register is an **acceptance dependency**. Starting implementation requires either the verified dependency or a reviewed, merged contract/fixture child covering that boundary. Such a child has its own ID, owner, reviewer, exact upstream commit and unavailable behaviors. The producer and consumer can then implement in parallel. A mock cannot authorize schema invention, scientific claims, persistence acceptance or milestone completion.
+
+WP-002, WP-003, WP-005, WP-010, WP-018, WP-023, WP-027, WP-034, WP-039, WP-046 and WP-048 need early boundary children. The distributed plan defines the bootstrap sequence and consumer start criteria. Integrate each desktop operation with its production engine service when that service becomes available. Milestone acceptance requires the integrated services.
 
 ## 4. Work package execution rules
 
-Each package defines an accountable role, dependency IDs, size class, outputs/actions, and testable acceptance criteria. Domain packages have separate **start prerequisites** and **integration acceptance dependencies** to avoid circular scheduling. References to another domain's interface do not authorize writing its state directly.
+Each package has exactly one accountable developer slot and a different peer reviewer, plus required specialties, dependency IDs, size class, outputs/actions, and testable acceptance criteria. The assignment matrix allocates all specialties within each staffing configuration. Domain packages have separate **start prerequisites** and **integration acceptance dependencies** to avoid circular scheduling. References to another domain's interface do not authorize writing its state directly.
 
 Use the following lifecycle in the issue tracker when implementation starts: `not started` → `ready` → `in progress` → `review` → `verified`, with `blocked` carrying a named prerequisite and owner. Do not infer completion from merged code alone. Link each implementation issue/PR to its package, source sections, affected contract versions, tests, evidence, and any remaining model gaps. This roadmap creates no external issues or assignments.
 
-**Ready checklist:** prerequisites verified or an explicit reviewed stub contract exists; inputs/outputs and owner agreed; evidence/fixture available; data ownership settled; package acceptance can fail for the relevant broken behavior. A stub permits development, not milestone acceptance.
+**Ready checklist:** prerequisites verified or an explicit reviewed and merged contract child exists; accountable owner, peer reviewer, affected paths, inputs/outputs and upstream SHA agreed; evidence/fixture available; data ownership settled; package acceptance can fail for the relevant broken behavior. A stub permits development, not milestone acceptance.
 
 **Common definition of done:**
 
@@ -101,7 +116,9 @@ Use the following lifecycle in the issue tracker when implementation starts: `no
 - Traceability identifies source/assumption/model status; core functionality remains offline; accessibility and privilege boundaries are preserved.
 - Documentation covers usage, limitations, and recovery; evidence links are attached; independent reviewer accepts the behavior and scope. An author does not self-certify empirical validity.
 
-**Package split rule:** split any L package or estimate above ten focused engineer-days into child issues before implementation. Preserve parent ID, dependency edges, acceptance criteria, and integration responsibility. Common reusable work must be implemented once and referenced by domains.
+**Package split rule:** split parents into reviewable children of roughly one to three focused implementation days, and split any L package before implementation. Limit each PR to one behavior or boundary change. Preserve parent ID, dependency edges, acceptance criteria, and integration responsibility. Cross-language parents allocate producer and consumer children to A and B, with one parent integration owner. Common reusable work must be implemented once and referenced by domains.
+
+Use independent clones/worktrees and private user-data databases per developer/agent. Before editing, claim a child and its paths in the shared ledger. Follow the distributed plan for asynchronous handoffs, next-working-period review, compatibility windows, shared-file coordination and candidate checks. These controls are included in the common definition of done.
 
 ## 5. Repository and command plan
 
@@ -141,25 +158,25 @@ npm run package
 
 The development command launches Electron and its managed Python engine. It must not introduce an application HTTP backend. Development tooling may use Vite's own supported development transport; runtime model IPC remains stdio. Default test commands use synthetic data and provider mocks, never paid API calls. Native packaging runs on each target OS/architecture. Any auxiliary benchmark, live-provider, or signing command must be documented when introduced and have a distinct explicit invocation.
 
-## 6. Staffing, estimates, and forecasting
+## 6. Two-developer capacity and three-developer expansion
 
-Roles below are responsibilities, not promises that this team exists. One engineer may cover multiple roles; shared ownership still needs a named integration owner.
+| Slot | Default accountability | Peer review and backup | With C present |
+|---|---|---|---|
+| **A** | Python world, shared contracts, arithmetic, storage/history, transitions, context/cost authority; assigned material/service domains | B reviews A's changes and independently derives selected expected results | Remains engine steward; transfers the listed content/health/gate parents to C |
+| **B** | Electron/main/preload/React, CI/native delivery, provider adapters, delivery ledger; assigned institutional domains | A reviews B's changes and audits trust/quantity boundaries | Remains desktop steward; transfers content/gate work and three domains to C, takes risk domain from A |
+| **C, optional** | Only after actual onboarding: content/evidence build, assigned domains and cross-stream integration evidence | A/B remain peers for C; C reviews selected A/B work | WP-008/019/025/026/032/052/055/056 and DOM-05/06/07/11 as listed in the assignment matrix |
 
-| Role | Primary responsibility | Review counterpart |
-|---|---|---|
-| Technical lead (TL) | Contracts, architecture decisions, cross-stream integration | Engine and desktop leads |
-| Engine engineer (ENG) | World, arithmetic, solvers, transitions, measurements | Model/evidence reviewer |
-| Desktop engineer (DESK) | Electron, preload, UI, provider networking | QA/security and engine reviewer |
-| Content/model engineer (MODEL) | Source extraction, domain definitions, model evidence and fixtures | Domain reviewer plus ENG |
-| Quality/release engineer (QA) | Cross-boundary tests, accessibility, native builds, recovery | Feature owner and TL |
-| Technical project manager (TPM) | Dependencies, gates, forecast, risk and scope accounting | Product/design owner |
-| Product/design owner (PRODUCT) | Interview quality, player agency, inquiry usability, release content scope | TPM and model reviewer |
+A/B denote contributor assignments. Record ownership changes in the delivery ledger before transferring work. Architecture, engine, desktop, model review, quality/security, planning and product review are allocated responsibilities. B maintains dependencies and status; A maintains numerical and architecture decisions. Both review scope and evidence. Product changes require a recorded decision against the specifications.
+
+A and B review each other's code and independently verify numerical expectations. Model records distinguish hypothetical educational assumptions from supported empirical claims. Required expertise or native execution capacity unavailable within the team is recorded as an external prerequisite and blocks the affected acceptance item.
+
+The delivery workflow supports non-overlapping working hours. WP-001 records IANA time zones, weekly availability, leave, review windows and access. Contracts, decisions, review requests and handoffs are recorded asynchronously in the shared ledger. Synchronous meetings are optional.
 
 For initial forecasting, package size classes are **S = 1–3**, **M = 4–7**, **L = 8–12 focused engineer-days**. These are explicitly provisional planning envelopes for implementation plus local tests/review corrections, not commitments or empirical estimates. Every domain package is L because evidence, interfaces, content, and fixtures must be integrated. Independent domain research, scientific review, signing procurement, provider credits/access, and platform availability are separate lead-time risks; unknown research cannot be disguised as ordinary coding effort.
 
-WP-001 must turn the package inventory into a resource-loaded forecast after owners inspect representative contracts and model sources. Sum package ranges for effort; do not divide by headcount to claim a delivery date. Schedule using dependency order, actual staffing, review capacity, integration time, platform lead times, and a separately visible uncertainty allowance. Reforecast after M1 and M2 using observed completion rates. No calendar completion date is supportable from this documentation-only baseline.
+WP-001 must turn the package inventory and the complete A/B/C assignment matrix into a resource-loaded forecast after owners inspect representative contracts and model sources. Sum package ranges for effort; do not divide by headcount to claim a delivery date. Schedule using dependency order, actual staffing, review capacity, integration time, platform lead times, and a separately visible uncertainty allowance. Reforecast after M1 and M2 using observed completion rates. No calendar completion date is supportable from this documentation-only baseline.
 
-The following roll-up makes the initial sizing explicit. It is the arithmetic sum of the provisional package classes, **not a committed estimate**. Domain effort is counted once across M3/M4; it is not included again in the shared-framework rows. Package ranges include local tests/review corrections, while independent research, external waiting time and portfolio contingency remain outside these totals.
+The following roll-up sums the provisional package size classes. It represents implementation effort; calendar forecasts require the resource-loading process below. Domain effort is counted once across M3/M4; it is not included again in the shared-framework rows. Package ranges include local tests/review corrections, while independent research, external waiting time and portfolio contingency remain outside these totals.
 
 | Work stream | Packages / size mix | Provisional focused engineer-days |
 |---|---|---|
@@ -174,9 +191,13 @@ The following roll-up makes the initial sizing explicit. It is the arithmetic su
 | M7 hardening/release | WP-051–WP-056; 1 M + 5 L | 44–67 |
 | **Total initial package envelope** | **68 packages; 26 M + 42 L** | **440–686** |
 
-These numbers are useful for exposing the scope of the complete architecture and comparing later estimates. They do not assume a domain's scientific research will fit inside a twelve-day coding package. If evidence or algorithms are not available, create explicit research children, update the forecast, and keep the required release behavior visible.
+Record model research as separate child work when evidence or algorithms are unavailable. Include its effort, prerequisites and uncertainty in the forecast while retaining the required release behavior in the scope register.
 
-Recommended starting allocation, if four contributors are available: one engine lead, one desktop lead, one content/model engineer, and one quality/release engineer, with TL/TPM responsibilities explicitly allocated. With one contributor, follow dependencies serially and retain independent review for numerical/security claims. Avoid starting all twelve domains at once before the common harness is stable.
+Plan each person's available week initially as **60% implementation/local verification, 20% peer review and corrections, 10% cross-stream integration, 10% handoffs/decisions/triage**. These provisional capacity buckets sum to 100% and apply to two or three people; measure and adjust them after W1. The 440–686 day envelope includes local testing and review corrections. Reclassify these activities when estimating children to prevent double counting. Estimate independent peer review, cross-environment integration, coordination and research explicitly. Calendar duration is calculated from dependencies and contributor availability.
+
+Produce separate two- and three-person forecasts from child effort, actual hours available, dependencies, assigned reviewer queues, expected next-working-period response, native lead times and research unknowns. Include a visible uncertainty reserve; do not fill every available hour with feature work. Report the current bottleneck, ready-work coverage and review wait separately from coding effort. Reforecast after W1/M1, M2, every two weeks thereafter, and when C joins or availability changes. No credible calendar completion date exists until those inputs are measured.
+
+C joins from a clean checkout, reproduces setup, runs the contract/harness checks, completes a small reviewed change and accepts the transferred queues. Transfer parent accountability after its current child merges; there is never a partially shared owner. Until then A/B remain accountable. If C is unavailable or leaves, the matrix's two-person assignment resumes and the forecast changes; scope and release requirements stay visible.
 
 ### 6.1 Initial performance fixtures and budgets
 
@@ -204,21 +225,27 @@ These decisions need an owner and recorded resolution, not a new round of stack 
 
 | Decision | Owner / due | Default or required outcome | Blocks if unresolved |
 |---|---|---|---|
-| DEC-01: exact dependency versions and platform support floor | TL / WP-002, WP-004 | Supported compatible stable releases, exact locks; documented OS/version matrix | Reproducible installs and native acceptance |
-| DEC-02: canonical serialization, IDs, calendar, RNG and numeric identity | ENG / WP-005, WP-006, WP-033, WP-035 | Decimal 28 digits/half-even as specified; explicit canonical and day-boundary rules; versioned RNG | Digests, replay, cross-platform reproduction |
-| DEC-03: source inventory and redistribution license | MODEL / WP-025 | Pin society source at stated revision initially; inspect actual licenses and amendment lineage; permission recorded | Distribution of imported excerpts or packs, not synthetic framework work |
-| DEC-04: initial released model inventory | PRODUCT + MODEL / WP-001, refined WP-026 | All branches classified; every domain has substantive reviewed behavior; enumerate numerical/procedural/qualitative/gap coverage | M3 content acceptance and truthful release claims |
-| DEC-05: supported solver/allocation procedures | ENG + MODEL / WP-014, WP-015 | Explicit policy-neutral implementation, limits, applicability and independent fixtures | Coupled model activation |
-| DEC-06: expected world sizes and performance budgets | TL + QA / WP-001, measured WP-019 | Confirm or explicitly revise §6.1's fixture/hardware/latency/memory targets and freeze benchmark definitions | WP-051 acceptance; no undefined “fast enough” gate |
-| DEC-07: native signing/notarization and runner availability | QA / WP-004, WP-054 | Windows x64, macOS arm64/x64, Linux x64 native execution; signing assets kept outside source | Signed/public native release where required |
-| DEC-08: provider compatibility and live validation | DESK + QA / WP-043–WP-050 | Current official OpenRouter schemas, explicit capability table, bounded authorized live test plan | Full OpenRouter compatibility claim; offline work remains independent |
-| DEC-09: privacy defaults and runtime safeguards | TL + PRODUCT / WP-039, WP-046, WP-048 | Private content excluded by default; explicit sharing; named archive/context/tool/solver limits | Import/sharing/budget acceptance |
-| DEC-10: source document cross-link cleanup | TPM / WP-001 | Record that companion links currently use absent `DESIGN.md`/`TECH_SPEC.md`; plan a documentation fix without changing specification semantics | Documentation consistency, not engine development |
+| DEC-01: exact dependency versions and platform support floor | B, reviewed by A / WP-002, WP-004 | Supported compatible stable releases, exact locks; documented OS/version matrix | Reproducible installs and native acceptance |
+| DEC-02: canonical serialization, IDs, calendar, RNG and numeric identity | A, reviewed by B / WP-005, WP-006, WP-033, WP-035 | Decimal 28 digits/half-even as specified; explicit canonical and day-boundary rules; versioned RNG | Digests, replay, cross-platform reproduction |
+| DEC-03: source inventory and redistribution license | B (C when active), reviewed by A / WP-025 | Pin society source at stated revision initially; inspect actual licenses and amendment lineage; permission recorded | Distribution of imported excerpts or packs, not synthetic framework work |
+| DEC-04: initial released model inventory | B (C for WP-026 when active), reviewed by A / WP-001, refined WP-026 | All branches classified; every domain has substantive reviewed behavior; enumerate numerical/procedural/qualitative/gap coverage | M3 content acceptance and truthful release claims |
+| DEC-05: supported solver/allocation procedures | A, reviewed by B / WP-014, WP-015 | Explicit policy-neutral implementation, limits, applicability and independent fixtures | Coupled model activation |
+| DEC-06: expected world sizes and performance budgets | A, reviewed by B / WP-001, measured WP-019 | Confirm or explicitly revise §6.1's fixture/hardware/latency/memory targets and freeze benchmark definitions | WP-051 acceptance; no undefined “fast enough” gate |
+| DEC-07: native signing/notarization and runner availability | B, reviewed by A / WP-004, WP-054 | Windows x64, macOS arm64/x64, Linux x64 native execution; signing assets kept outside source | Signed/public native release where required |
+| DEC-08: provider compatibility and live validation | B, reviewed by A (C for WP-050 when active) / WP-043–WP-050 | Current official OpenRouter schemas, explicit capability table, bounded authorized live test plan | Full OpenRouter compatibility claim; offline work remains independent |
+| DEC-09: privacy defaults and runtime safeguards | A, reviewed by B / WP-039, WP-046, WP-048 | Private content excluded by default; explicit sharing; named archive/context/tool/solver limits | Import/sharing/budget acceptance |
+| DEC-10: source document cross-link cleanup | B / roadmap revision | Companion links repaired to existing files; no specification semantics changed | Resolved documentation maintenance |
+| DEC-11: actual staffing, review coverage and access | B coordinates, A reviews / WP-001; repeat when C joins | Fill A/B names, IANA zones, hours, review windows, backup and runner/repository access; apply complete two/three-person matrix | Resource-loaded dates and unassigned starts |
+| DEC-12: contract compatibility and merge controls | A proposes, B reviews / WP-003/005 | Define supported producer/consumer version window, fixture ownership, required candidate CI and migrations; test both independent clones | Parallel consumer starts and boundary-changing merges |
 
 ## 8. Risk register and response
 
 | Risk | Early detection | Response / accountable package |
 |---|---|---|
+| Review stalls across time zones | Review waits exceed next working period, no independent ready child | Reserve peer capacity, smaller PRs, written decisions, one ready fallback per developer; WP-001/003 and distributed plan |
+| Concurrent changes break contracts/shared files | Both branches alter schema, migration, registry or lock without coordination | Named steward/backup, contract-first merge, additive window, regenerate and test candidate against current main; WP-005/009/027 |
+| Unallocated review or integration work | Model, verification or integration tasks lack a named assignee or exceed contributor capacity | Every package has A/B owner/reviewer; cap WIP, resource-load domain/UI/provider work, transfer only when C is active; WP-001 |
+| Agent tasks collide or duplicate mechanisms | Agents edit same paths or treat private branches as authoritative | Claim child/path scope, isolated worktree, shared ledger and ordinary PR/contract checks; accountable developer reviews agent work |
 | Framework becomes a resource-only simulator | Institutional domains have only prose, no procedures or capacity fixtures | Require governance, rights, care, identity and communication behavior; DOM-03/04/05/09/11 and WP-032 |
 | Duplicate world state or double allocation | Same asset/population represented with multiple spendable IDs | Canonical ownership registry, overlap fixtures, combined reducers; WP-007/015/027/034 |
 | Source prose is mistaken for validated science | Imported range converted to mean, adopted choice treated as fact | Separate origin/evidence/coverage axes, independent numerical review, blocked activation; WP-008/025/026 |
@@ -232,14 +259,14 @@ These decisions need an owner and recorded resolution, not a new round of stack 
 | AI/imported content crosses trust boundary | Tool exposes commit, generated formula executes, key leaks | Explicit operation allowlists, bounded data-only grammar, redaction and adversarial tests; WP-011/012/039/046/053 |
 | Dense UI hides exclusions or local shortages | Aggregate looks sufficient while one unreachable group lacks service | Scope/distribution fixtures, text coverage labels, usability tasks; WP-022/029/030/052 |
 
-TPM reviews risks and blocked packages at each integration checkpoint. A new requirement, model, or provider capability gets a source reference, owner, dependency impact, evidence plan, and forecast impact before entering active scope. Preserve work and source lineage; do not quietly weaken acceptance criteria to meet a date.
+B maintains risks and blocked-package records; A reviews technical impacts at each weekly integration checkpoint. With C active, C maintains integration evidence. These duties consume the capacity reserved above. A new requirement, model, or provider capability gets a source reference, owner, dependency impact, evidence plan, and forecast impact before entering active scope. Preserve work and source lineage; do not quietly weaken acceptance criteria to meet a date.
 
 ## 9. Verification, release, and immediate next work
 
 The [verification matrix](roadmap/verification_matrix.md) is the release checklist. Required evidence comprises meaningful test runs with counts and skip reasons, independent arithmetic/model review, offline desktop tasks, provider capability/failure outcomes, safe round trips, native installation results, and bounded performance/accessibility results. Unit success cannot substitute for integrated behavior.
 
-A release candidate freezes application/schema/catalog/model/numeric identities, exact locks, fixtures, pack digests, compatibility policy, and platform artifacts. QA records each gate's evidence and remaining limitations; TL accepts architecture boundaries; MODEL accepts evidence/coverage claims; PRODUCT accepts player-agency and inquiry behavior. This is an implementation review process, not a claim that approvals have already occurred.
+A release candidate freezes application/schema/catalog/model/numeric identities, exact locks, fixtures, pack digests, compatibility policy, and platform artifacts. The gate owner in the A/B/C assignment matrix records evidence and limitations; the different assigned peer reviews it. Both developers check architecture, model/evidence and player-agency criteria through the listed specialties; C takes designated gates only after onboarding. This is an implementation review process, not a claim that approvals have already occurred.
 
 Release notes must distinguish code/model defects, unsupported model effects, unavailable historical recomputation, untested provider capabilities, and platform limitations. No key or private civilization is included in diagnostics. A known limitation may be disclosed in a preview; missing required architecture behavior blocks calling the complete product delivered.
 
-Begin with WP-001 to establish the issue/evidence ledger and settle the initial coverage and performance decisions. Then implement WP-002 and WP-003, start the WP-004 native feasibility probe, and define WP-005 contracts. Prepare source inventory independently in WP-025 after WP-008 provides the provenance contract. The first product demonstration is M2's offline loop; the full implementation objective remains M7.
+W0 assigns B the delivery ledger and JavaScript/native-runner inventory, and A the model/contract risk inventory and Python bootstrap. After joint review of the layout and wire fixtures, merge WP-002's minimal scaffold and WP-003's initial checks. A implements the wire producer and core services; B implements the consumer, secure shell and packaging probe against the approved fixtures. Subsequent work follows the wave table and package assignments. M2 requires the integrated offline loop; complete delivery requires M7.
