@@ -4,7 +4,7 @@ Revision 0.2 · 2026-10-13
 
 **Scope:** the complete application's technical architecture, covering all twelve domains, all supported scopes, coupled simulation, interviews, matrix exploration, AI/BYOK, persistence, extension, and desktop operation.
 
-**Companion:** [Global game design architecture](DESIGN.md).
+**Companion:** [Global game design architecture](design_doc.md).
 
 This is a specification for a new system. Requirements and contracts below describe intended behavior; they are not claims that an application, provider adapter, or numerical model has already been implemented. Implementation sequencing and domain work packages are outside this document.
 

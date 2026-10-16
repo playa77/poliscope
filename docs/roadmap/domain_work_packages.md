@@ -1,14 +1,14 @@
 # Poliscope — Twelve-Domain Work Packages
 
-All domain packages are **not started**. Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
+Revision 0.2 · All domain packages are **not started**. Required team execution and both staffing assignments: [distributed delivery plan](distributed_delivery.md). Parent plan: [implementation roadmap](../implementation_roadmap.md); dependencies refer to the [shared package register](work_packages.md). Validation scenarios and source-section coverage are in the [verification matrix](verification_matrix.md).
 
 ## 1. Domain delivery contract
 
 The domain classification and state/interface responsibilities come from D §§4–5 and T §5. The candidate mechanism slices and fixtures below are proposed implementation scope, not claims of established social science. Choose parameters and empirical claims only through WP-026's evidence/model review. Synthetic fixtures are labeled hypothetical and independently derived. No package may invent universal scalar judgments for a domain.
 
-Every package is size **L**, owned by a MODEL engineer and an ENG counterpart, with PRODUCT reviewing interviews and an independent MODEL/QA reviewer accepting claims/tests. Split into child issues before implementation; retain the parent's shared integration gate. The same person may implement several modules, but cannot replace independent evidence review with self-certification.
+Every package is size **L**, with exactly one accountable A/B developer and the other as peer reviewer. The assigned contributors perform model, engine, product and verification responsibilities. The three-person matrix assigns C four domains and redistributes risk to B. Split into one-to-three-day mechanism/fixture/port/static/transition children; retain the parent's shared integration gate. Review authored code, interviews and evidence independently; distinguish documented hypothetical assumptions from empirical validity that the team cannot certify.
 
-**Common start prerequisites:** WP-027 and its transitive dependencies, including world, units, registry, shared accounts, evidence packs and the headless slice. Domain content inventory can be prepared earlier through WP-025/WP-026. Each package's counterpart list below is an **integration acceptance dependency**, not a prerequisite to begin coding: domains can develop against the common harness, then test paired behavior together. This explicitly avoids circular start dependencies between naturally coupled domains.
+**Common acceptance prerequisites:** WP-027 and its transitive dependencies, including world, units, registry, shared accounts, evidence packs and the headless slice. **Development start:** either these are verified or WP-027-contract and the needed upstream contract children are reviewed and merged. Pin their SHA/versions and limitations; all real prerequisites remain required for static acceptance. Domain content inventory can be prepared earlier through WP-025/WP-026. Each package's counterpart list below is an **integration acceptance dependency**, not a prerequisite to begin coding: domains can develop against the common harness, then test paired behavior together. This explicitly avoids circular start dependencies between naturally coupled domains.
 
 **Two acceptance stages:**
 
@@ -21,9 +21,13 @@ Every package is size **L**, owned by a MODEL engineer and an ENG counterpart, w
 
 All packages must demonstrate at least two relevant scopes/local groups and a boundary or overlap case; not every mechanism must claim applicability at every scope. Unsupported scopes are explicit. Paired fixtures reference shared entity/account IDs and verify finite budgets globally. Default civic answers remain unset, including choices imported from the historical source.
 
+Use the distributed plan's six paired batches. Publish ports and owned-state definitions before mechanism implementation; run counterpart fixtures after each batch against current main. Allocate B's domain work alongside content/UI and A's alongside shared services. Activate C's assignments after onboarding.
+
 ## 2. Domain packages
 
 ### DOM-01 — I. Resource & Material Base (`provisioning`)
+
+**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** production; distribution/logistics; consumption, waste and circular loops. **Sources:** D §§4, 5.2, 5.4; T §§5, 7.4. **Integration counterparts:** DOM-02, DOM-05, DOM-08, DOM-10, DOM-12.
 
@@ -40,6 +44,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-02 — II. Economy & Exchange (`economy`)
 
+**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** value/exchange; labor/work; ownership/property; wealth distribution. **Sources:** D §§4, 5.1–5.2; T §§5, 7.4. **Integration counterparts:** DOM-01, DOM-03, DOM-04, DOM-05, DOM-06, DOM-07, DOM-08.
 
 **Work breakdown:**
@@ -54,6 +60,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 **Dynamic acceptance:** settlement and recurring allocation honor dated rights/rules and retain audit traces; no double settlement on replay/retry. Policy changes have explicit effective times; unmodeled price/behavior responses remain qualitative rather than automatic market equilibrium claims.
 
 ### DOM-03 — III. Governance & Collective Decision-Making (`governance`)
+
+**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** political structure; decision processes; power/accountability. **Sources:** D §§4, 5.3; T §§4.2, 5.2. **Integration counterparts:** DOM-02, DOM-04, DOM-06, DOM-09, DOM-11, DOM-12.
 
@@ -70,6 +78,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-04 — IV. Law, Order & Conflict Resolution (`law_conflict`)
 
+**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** norms/rights; enforcement; dispute resolution; inter-group conflict. **Sources:** D §§4, 5.3; T §5. **Integration counterparts:** DOM-02, DOM-03, DOM-05, DOM-07, DOM-09, DOM-11, DOM-12.
 
 **Work breakdown:**
@@ -84,6 +94,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 **Dynamic acceptance:** cases/revisions/obligations persist across checkpoint replay and approved effective changes; pending cases are not erased by policy switches. Unspecified external enforcement cannot become guaranteed delivery or rescue.
 
 ### DOM-05 — V. Social Organization & Relationships (`social_organization`)
+
+**Accountable / peer:** two developers B / A; three developers C / B. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** households/kinship; community; life-course and care. **Sources:** D §§3.1, 4, 5.1; T §§4–5. **Integration counterparts:** DOM-01, DOM-02, DOM-04, DOM-06, DOM-07, DOM-11.
 
@@ -100,6 +112,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-06 — VI. Knowledge, Education & Culture (`knowledge_culture`)
 
+**Accountable / peer:** two developers B / A; three developers C / A. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** research/archives; education/training; cultural production. **Sources:** D §§4, 5.5, 5.7; T §5. **Integration counterparts:** all other domains for the D §5.7 integration path; primary service interfaces DOM-02, DOM-03, DOM-05, DOM-08, DOM-09, DOM-11.
 
 **Work breakdown:**
@@ -114,6 +128,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 **Dynamic acceptance:** declared training duration cannot complete instantly; skills/capacity changes occur once at the defined boundary and replay from checkpoints. Unmodeled research/cultural effects remain qualitative without preventing service/account inspection.
 
 ### DOM-07 — VII. Health & Wellbeing (`health`)
+
+**Accountable / peer:** two developers A / B; three developers C / A. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** physical health; mental/emotional wellbeing; birth, life, death and care. **Sources:** D §§4–5; T §§4.3, 5. **Integration counterparts:** DOM-01, DOM-02, DOM-04, DOM-05, DOM-06, DOM-08, DOM-09, DOM-10, DOM-12.
 
@@ -130,6 +146,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-08 — VIII. Infrastructure & Built Environment (`infrastructure`)
 
+**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** physical infrastructure; spatial organization; digital infrastructure. **Sources:** D §§4, 5.4; T §§4–5, 8. **Integration counterparts:** DOM-01, DOM-02, DOM-03, DOM-06, DOM-07, DOM-09, DOM-10, DOM-12.
 
 **Work breakdown:**
@@ -144,6 +162,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 **Dynamic acceptance:** construction does not supply capacity before modeled completion; maintenance/repair competes for shared stock/labor and replay preserves lifecycle state. Hazard damage cannot be reversed by automatic unmodeled repair.
 
 ### DOM-09 — IX. Communication & Information (`communication`)
+
+**Accountable / peer:** two developers B / A; three developers B / C. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** information flow/verification; communication; mediated information and privacy. **Sources:** D §§4, 5.5; T §5. **Integration counterparts:** DOM-03, DOM-04, DOM-06, DOM-07, DOM-08, DOM-11, DOM-12.
 
@@ -160,6 +180,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-10 — X. Environment & Human–Nature Relationship (`environment`)
 
+**Accountable / peer:** two developers A / B; three developers A / C. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** stewardship; resource sustainability; land/ecosystem relations. **Sources:** D §§4, 5.4; T §§5, 7.4. **Integration counterparts:** DOM-01, DOM-06, DOM-07, DOM-08, DOM-12.
 
 **Work breakdown:**
@@ -175,6 +197,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 
 ### DOM-11 — XI. Meaning, Values & Identity (`meaning_identity`)
 
+**Accountable / peer:** two developers B / A; three developers C / B. Follow the shared contract, review and handoff rules.
+
 **Branch scope:** belief; identity/belonging; purpose, ritual and aspiration. **Sources:** D §§4, 5.5; T §§5, 9. **Integration counterparts:** DOM-03, DOM-04, DOM-05, DOM-06, DOM-09.
 
 **Work breakdown:**
@@ -189,6 +213,8 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 **Dynamic acceptance:** dated accommodation/participation rules update obligations once, with deterministic schedule/replay and explicit unavailable effects. Editing an aspiration cannot produce stock, hazard, health or behavioral changes unless a reviewed mechanism explicitly supplies the link.
 
 ### DOM-12 — XII. Security & Risk Management (`security_risk`)
+
+**Accountable / peer:** two developers A / B; three developers B / C. Follow the shared contract, review and handoff rules.
 
 **Branch scope:** physical security; systemic risk; technological risk. **Sources:** D §§4, 5.6, 6.2; T §§5, 7.5, 8. **Integration counterparts:** all domains with exposed capacity or obligations; primary fixtures DOM-01, DOM-03, DOM-07, DOM-08, DOM-09, DOM-10.
 
@@ -213,5 +239,7 @@ All packages must demonstrate at least two relevant scopes/local groups and a bo
 | Health/care/environmental exposure | DOM-05/07/10 with DOM-01/08; WP-034/055 | Cohort demand, care time, service capacity and exposure agree at each declared boundary |
 | Disruption and continuity | DOM-12 with all affected domains; WP-035/036/055 | Resource, institution, channel, asset and health effects commit atomically; replay/repair demands conserve shared budgets |
 | Local scope and overlap | Every domain; WP-007/027/030 | At least two groups/scopes with weighted membership/jurisdiction overlap; no population or stock duplication |
+
+A owns shared account/reducer invariants, B owns cross-view consistency and the two-person static gate, and the domain owner coordinates its paired fixture. C takes WP-032/055 evidence when active. Each contributor supplies domain outputs on the same candidate SHA and independently reviews the assigned counterpart.
 
 An integration fixture fails if interfaces merely exchange plausible-looking UI values while their underlying entity identities, revisions, units, assumptions or accounts disagree. WP-032 owns the static all-domain gate; WP-034/WP-036 plus WP-055 own dynamic and release acceptance. Model gaps may be legitimate, but each release's declared inventory must show them explicitly and still satisfy substantive executable behavior in every domain.

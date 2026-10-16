@@ -1,12 +1,14 @@
 # Poliscope — Verification, Traceability and Release Evidence
 
+Revision 0.2 · Distributed delivery baseline. Assignment and workflow authority: [distributed delivery plan](distributed_delivery.md).
+
 This is the verification plan for the [implementation roadmap](../implementation_roadmap.md), [shared work packages](work_packages.md) and [domain packages](domain_work_packages.md). **No checks listed here have run against an application yet.** The repository is documentation-only at this planning baseline. Evidence links, counts and outcomes must be added during implementation; a planned check is not a passing check.
 
 D references the [global game design](../design_doc.md); T references the [technical specification](../tech_spec.md), both revision 0.2. Source sections remain authoritative for behavior; proposed fixtures below make that behavior falsifiable.
 
 ## 1. Evidence requirements and outcome vocabulary
 
-QA maintains a verification ledger keyed by requirement/scenario, candidate identities, platform and work package. For each run record:
+B maintains the two-person verification ledger; C takes designated integration/release evidence when active. Named contributors perform verification, model, security and product review within their allocated capacity. Each package/scenario has the accountable owner and different peer reviewer from the distributed plan. Maintain the ledger keyed by requirement/scenario, candidate identities, platform and work package. For each run record:
 
 - Source requirement, package/issue and reviewer; command and actual selected target; run date, relevant OS/architecture and tool/runtime versions.
 - Application/schema/catalog/model/numeric/protocol identities, source revision, pack/fixture digests, input/event/realization/result digests where relevant.
@@ -161,13 +163,28 @@ For each gate fill in candidate identities, package status, evidence links, revi
 
 | Gate | Required evidence bundle | Blocking omissions |
 |---|---|---|
-| G0 / M0 | Requirement/package ledger, roles, DEC-04 coverage, DEC-06 numeric budgets, forecast and risk owners | No accountable owner or measurable release scope |
-| G1 / M1 | Frozen setup, generated contracts, secure renderer/preload, child handshake/storage/recovery, per-target feasibility report | Runtime/contract boundary unverified; native targets silently ignored |
-| G2 / M2 | E2E-001–006 relevant cases, independent arithmetic, actual offline Electron/SQLite loop and reopened history | UI-only mocks, unexplained numeric/history failure, zero-test run |
+| G0 / M0 | Requirement/package ledger, named A/B owners and peers, actual availability/time zones, DEC-04 coverage, DEC-06 budgets, separate two/three-person forecast inputs, COL-01 | Unstaffed specialist duties, unknown reviewer capacity or no measurable scope |
+| G1 / M1 | Frozen independent setup, generated contracts, secure renderer/preload, child handshake/storage/recovery, per-target feasibility report, COL-02/03/05 | Runtime boundary unverified, second developer cannot reproduce setup, candidate checks absent or native targets silently ignored |
+| G2 / M2 | E2E-001–006 relevant cases, independent arithmetic, actual offline Electron/SQLite loop and reopened history, COL-04 | UI-only mocks, unexplained numeric/history failure, zero-test run |
 | G3 / M3 | All domain static conformance/counterpart results, source branch inventory, E2E-004/008, complete exploration workspaces | Domain only decorative, duplicate state, unclassified branches, implied unsupported effects |
 | G4 / M4 | All selected domain transitions, E2E-007/009/010, RNG/checkpoint/fast-forward equivalence and uncertainty limits | Partial transition commit, hidden skipped boundary, unexplained replay drift |
 | G5 / M5 | E2E-011/015, full design+experiment privacy-safe round trip, reports/CSV, backup/migration/historical mode | Unsafe or partial import, key/private export leak, silent historical recomputation |
 | G6 / M6 | Provider capability table, E2E-013/014, mock and bounded live outcomes, secure keys and spending/context controls | Assistant commit path, silent capability/privacy dropping, required live compatibility unverified |
-| G7 / M7 | WP-055 full trace ledger, E2E-001–017, numeric budgets, accessibility/model/security review, all native artifacts, release inventory/docs | Unexplained required failures, unmet core architecture, untested claimed native/provider support |
+| G7 / M7 | WP-055 full trace ledger, E2E-001–017, current collaboration evidence, numeric budgets, accessibility/model/security review, all native artifacts, release inventory/docs | Unexplained required failures, unmet core architecture, untested claimed native/provider support |
 
 A gate's recorded evidence must match the actual frozen candidate. A change to a mechanism, schema, pack, runtime, provider adapter or dependency requires an impact assessment and affected checks; it does not automatically invalidate unrelated evidence, and it cannot silently reuse evidence for changed behavior. WP-056 records final acceptance and publication separately.
+
+## 9. Distributed-development acceptance
+
+These checks validate the delivery workflow. All are **unrun** at this documentation-only revision. Validate the two-contributor allocation independently. COL-06 applies when C joins. Other COL evidence is required at the indicated gate and repeated only when an affected boundary/setup/process changes.
+
+| ID / owner / peer | Procedure and evidence | Gate / failure condition |
+|---|---|---|
+| COL-01 / B / A | Assign all 68 parents and initial children to actual A/B people with different peers; record zones, weekly hours, review windows, next-ready fallback, shared-path ownership, external access gaps and resource-loaded forecast inputs | M0: fail if duties are scheduled to an unstaffed specialty, two implementations require the same person's time, or C is required by the two-person plan |
+| COL-02 / B / A | A and B independently bootstrap clean clones at the same SHA with locked dependencies, documented commands and isolated user-data directories; run real child handshake plus engine/desktop checks; capture OS/runtime identities and no tracked drift | M1: fail if either requires another developer's untracked schema, DB, absolute path or global undocumented tool |
+| COL-03 / A / B | Implement an approved contract increment on producer and consumer branches; test current pair, supported previous fixtures and explicit incompatible-version rejection; integrate real operations on one candidate | M1 initially; repeat on boundary changes: fail if silent drift, numeric loss or mock-only compatibility replaces actual producer/consumer behavior |
+| COL-04 / B / A | Complete one small child with a written end-of-period handoff and review in the next agreed working window while the peer advances independent approved work; run merged offline real-engine slice and capture review wait/blocked cause | M2: fail if progress depends on an undocumented synchronous conversation or self-approval; missed service targets require queue/capacity correction and another observed handoff |
+| COL-05 / B / A | Verify required candidate checks and one-nonauthor review; demonstrate two locally green branches whose combination fails a shared contract fixture are blocked before integration. Use merge queue or branch update/recheck; record unavailable protection permissions and enforced/manual status accurately | M1: fail if stale separate-branch green runs authorize a combined failing merge, or protection is claimed without evidence |
+| COL-06 / C / A | When C joins, reproduce setup, run shared fixtures and complete a small peer-reviewed child; transfer listed parents after in-flight children merge, update reviewer/fallback queues and forecast; verify A/B can resume if C leaves | Before C takes transferred parent queues: fail if transferred work has two owners or depends on undocumented knowledge; not applicable until C joins |
+
+The gate owner collects each contributor's evidence on the same candidate SHA. Author-local tests are necessary but do not substitute for peer review or independent numerical expectations. Use workflow metrics to adjust queues, dependencies and review capacity. Existing product, platform, provider and model gates remain unchanged.
