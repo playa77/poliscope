@@ -1,12 +1,12 @@
 # Poliscope — Implementation Roadmap
 
-Revision 0.4 · 2026-10-16 · Development agents allocated at work-package boundaries; implementation has not started.
+Revision 0.5 · 2026-10-16 · Development agents allocated at work-package boundaries; implementation has not started.
 
 ## 1. Purpose, authority, and document map
 
-This roadmap translates the [global game design](design_doc.md) and [technical specification](tech_spec.md), both revision 0.2 dated 2026-10-13, into an executable delivery plan. Those documents define product and architecture requirements; this roadmap defines implementation order, work ownership, deliverables, dependencies, and evidence of completion. Where this plan proposes fixture contents, effort ranges, repository paths, or review procedures, those are planning decisions rather than additional claims made by the specifications.
+This roadmap translates the [global game design](design_doc.md) and [technical specification](tech_spec.md), both revision 0.3 dated 2026-10-16, into an executable delivery plan. Those documents define product and architecture requirements; this roadmap defines implementation order, work ownership, deliverables, dependencies, and evidence of completion. Where this plan proposes fixture contents, effort ranges, repository paths, or review procedures, those are planning decisions rather than additional claims made by the specifications.
 
-**Repository baseline:** `d12189232dce0b27fb73bd72dc976e13f4d0d655`. The repository contains specifications and planning documents. Application sources, dependency manifests, lockfiles, build scripts and tests are pending. README development commands define the target command interface. All implementation packages are **not started**; milestone and platform/provider validation is **unrun**.
+**Repository baseline:** `da1ee238fc0a30b6ca2bef0b861e070f42d140be`. The repository contains specifications and planning documents. Application sources, dependency manifests, lockfiles, build scripts and tests are pending. README development commands define the target command interface. All implementation packages are **not started**; milestone and platform/provider validation is **unrun**.
 
 | Document | Use |
 |---|---|
@@ -47,7 +47,7 @@ The planning fixture for the early vertical slice is a small resource/service ar
 
 | Milestone | Scope and work packages | Entry | Exit evidence |
 |---|---|---|---|
-| **M0 — Implementation baseline** | WP-001 | Specifications available | Requirement ledger, ownership, release coverage policy, decisions and risks recorded; source contradictions identified |
+| **M0 — Implementation baseline** | WP-001 | Specifications available | Requirement ledger, ownership, release coverage policy, decisions and risks recorded; source contradictions identified; leaf requirement IDs and explicit milestone subcase manifests recorded |
 | **M1 — Trustworthy desktop/runtime foundation** | WP-002–WP-011 | M0 allocation process and minimum scaffold; development overlaps by §3.1 | Frozen install and generated contracts work; secure desktop launches Python, handshakes, opens local storage, recovers from child failure; native packaging feasibility recorded |
 | **M2 — Offline design vertical slice** | WP-012–WP-024 | M1 for integrated acceptance; contract-backed implementation starts during M1 | Create → inspect → preview → apply → trace → undo/fork → compare → close/reopen works offline with independently checked shared accounts; stale/duplicate requests are safe |
 | **M3 — Twelve-domain design workspace** | WP-025–WP-032 and DOM-01–DOM-12 | M2 for integrated acceptance; pack/domain preparation can start earlier | All twelve modules and source branches registered; each has reviewed executable behavior plus honest gaps; atlas, matrices, world, evidence and distribution views navigate the same world; all-domain static integration passes |
@@ -96,7 +96,7 @@ The dependency graph and package contracts are stable across agent-count changes
 
 A `Depends` field in the package register is an **acceptance dependency**. Starting implementation requires either the verified dependency or a reviewed, merged contract/fixture child covering that boundary. Each executable package has its own ID, owner, controller, validation route, exact upstream commit and unavailable behaviors. Producer and consumer packages execute sequentially or concurrently as allocated at their respective starts. Contract approval follows the package validation route in the delivery plan. A mock cannot authorize schema invention, scientific claims, persistence acceptance or milestone completion.
 
-WP-002, WP-003, WP-005, WP-010, WP-018, WP-023, WP-027, WP-034, WP-039, WP-046 and WP-048 need early boundary children. The distributed plan defines the bootstrap sequence and consumer start criteria. Integrate each desktop operation with its production engine service when that service becomes available. Milestone acceptance requires the integrated services.
+WP-002, WP-003, WP-005, WP-010, WP-018, WP-023, WP-027, WP-034, WP-036, WP-039, WP-046 and WP-048 need early boundary children. Delivery §4.1 fixes the early production reader, world creation, boundary-store, sharing-envelope and spending-reservation slices so their consumers do not depend on a later integration parent. The distributed plan defines the bootstrap sequence and consumer start criteria. Integrate each desktop operation with its production engine service when that service becomes available. Milestone acceptance requires the integrated services.
 
 ## 4. Work package execution rules
 
@@ -201,17 +201,17 @@ These decisions need an owner and recorded resolution. Decision ownership is ass
 | Decision | Owner / due | Default or required outcome | Blocks if unresolved |
 |---|---|---|---|
 | DEC-01: exact dependency versions and platform support floor | Runtime/desktop package owner / WP-002, WP-004 | Supported compatible stable releases, exact locks; documented OS/version matrix | Reproducible installs and native acceptance |
-| DEC-02: canonical serialization, IDs, calendar, RNG and numeric identity | Contract/numeric package owner / WP-005, WP-006, WP-033, WP-035 | Decimal 28 digits/half-even as specified; explicit canonical and day-boundary rules; versioned RNG | Digests, replay, cross-platform reproduction |
+| DEC-02: canonical serialization, IDs, calendar, RNG and numeric identity | Contract/numeric package owner / WP-005, WP-006, WP-033, WP-035 | T §7 fixes Decimal 28 digits/half-even, declared quantum/magnitude/residual policy and rejection of lost transfers; complete stable instance/event/purpose/draw keys, explicit shared uncertainty and fork realization policy; record concrete encodings/calendar/limits | Digests, exact balances, replay, cross-platform reproduction |
 | DEC-03: source inventory and redistribution license | Source/content package owner / WP-025 | Pin society source at stated revision initially; inspect actual licenses and amendment lineage; permission recorded | Distribution of imported excerpts or packs, not synthetic framework work |
 | DEC-04: initial released model inventory | Coverage/content package owner / WP-001, refined WP-026 | All branches classified; every domain has substantive reviewed behavior; enumerate numerical/procedural/qualitative/gap coverage | M3 content acceptance and truthful release claims |
 | DEC-05: supported solver/allocation procedures | Solver/accounting package owner / WP-014, WP-015 | Explicit policy-neutral implementation, limits, applicability and independent fixtures | Coupled model activation |
 | DEC-06: expected world sizes and performance budgets | Benchmark package owner / WP-001, measured WP-019 | Confirm or explicitly revise §6.1's fixture/hardware/latency/memory targets and freeze benchmark definitions | WP-051 acceptance; no undefined “fast enough” gate |
 | DEC-07: native signing/notarization and runner availability | Native delivery package owner / WP-004, WP-054 | Windows x64, macOS arm64/x64, Linux x64 native execution; signing assets kept outside source | Signed/public native release where required |
 | DEC-08: provider compatibility and live validation | Provider compatibility package owner / WP-043–WP-050 | Current official OpenRouter schemas, explicit capability table, bounded authorized live test plan | Full OpenRouter compatibility claim; offline work remains independent |
-| DEC-09: privacy defaults and runtime safeguards | Privacy/context package owner / WP-039, WP-046, WP-048 | Private content excluded by default; explicit sharing; named archive/context/tool/solver limits | Import/sharing/budget acceptance |
+| DEC-09: privacy defaults and runtime safeguards | Privacy/context package owner / WP-031, WP-039, WP-046–WP-048 | T §§11/13/14 fix classified private stores/derived copies, whole-history export projection, safe historical admission, no passive render fetch, per-dispatch sharing capability and atomic spend reservation; record concrete retention/limits/exposure policy | Import/sharing/deletion/budget acceptance |
 | DEC-10: source document cross-link cleanup | Documentation package owner / roadmap revision | Companion links repaired to existing files; no specification semantics changed | Resolved documentation maintenance |
 | DEC-11: actual staffing, review coverage and access | Human controllers / WP-001 process; each package boundary thereafter | Record available agent identities/controllers; select ready packages and freeze each new package's owner, division of work, validation route and access | Unassigned package starts and unsupported forecasts |
-| DEC-12: contract compatibility and merge controls | Contract/CI package owner / WP-003/005 | Define supported producer/consumer version window, fixture ownership, required candidate CI and migrations; test clean isolated environments and active producer/consumer versions | Parallel consumer starts and boundary-changing merges |
+| DEC-12: contract compatibility and merge controls | Contract/CI package owner / WP-003/005 | Define supported producer/consumer and historical-read/schema windows, fixture ownership, exact milestone subcase manifests and candidate checks; bind mutation replay to payload/context before head validation and schedule policy deltas with preconditions | Consumer starts, historical inspection and boundary-changing merges |
 
 ## 8. Risk register and response
 
@@ -228,7 +228,7 @@ These decisions need an owner and recorded resolution. Decision ownership is ass
 | Source prose is mistaken for validated science | Imported range converted to mean, adopted choice treated as fact | Separate origin/evidence/coverage axes, independent numerical review, blocked activation; WP-008/025/026 |
 | Graph cycles or policies silently resolved by order | Changing file order changes a result or political winner | SCC classification, solver contracts, explicit conflicts; WP-013/014 |
 | History corruption or uncertain commit | Engine dies after database commit before IPC response | Operation IDs, transactional head movement, query/recovery tests; WP-018/041/053 |
-| Model/replay drift after changes | Matching UI bars hide changed inputs or random streams | Complete canonical identities, isolated RNG, archived models, native fixtures; WP-016/035/036/054 |
+| Model/replay drift after changes | Matching UI bars hide changed inputs, shared uncertainty or colliding random streams | Complete instance/event/draw identities, explicit dependence/fork semantics, durable accepted evidence, archived models, native fixtures; WP-016/035/036/038/054 |
 | Long model/research scope obscures progress | Domain labeled complete without evidence inventory | Time-box framework separately; record model gaps and named review work; domain exit contract and DEC-04 |
 | Provider API/capabilities drift | Catalog metadata and request controls disagree | Refreshable timestamped catalog, supported control validation, current official schema checks; WP-043/044/050 |
 | Paid retries or incorrect cost totals | Uncertain completion retried; estimate and actual both charged | Deliberate generation retry, per-request reconciliation, unknown status; WP-045/048 |
@@ -240,7 +240,7 @@ Human controllers maintain the ready queue, availability and risk register at pa
 
 ## 9. Verification, release, and immediate next work
 
-The [verification matrix](roadmap/verification_matrix.md) is the release checklist. Required evidence comprises meaningful test runs with counts and skip reasons, independently derived arithmetic fixtures and model validation under the package's recorded route, offline desktop tasks, provider capability/failure outcomes, safe round trips, native installation results, and bounded performance/accessibility results. Unit success cannot substitute for integrated behavior.
+The [verification matrix](roadmap/verification_matrix.md) is the release checklist. Its §5.1 manifest defines exact first-required subcases per milestone; §5.2 binds RT-01–14 regression obligations to those subcases and owners. Scenarios spanning milestones are aggregates, not permission to choose an unspecified subset. Every normative requirement receives a stable leaf ID with an owner, first gate and positive/negative oracle. The [dated red-team record](reviews/2026-10-16-red-team.md) preserves the original review and the documentation dispositions; all application checks remain unrun. Required evidence comprises meaningful test runs with counts and skip reasons, independently derived arithmetic fixtures and model validation under the package's recorded route, offline desktop tasks, provider capability/failure outcomes, safe round trips, native installation results, and bounded performance/accessibility results. Unit success cannot substitute for integrated behavior.
 
 A release candidate freezes application/schema/catalog/model/numeric identities, exact locks, fixtures, pack digests, compatibility policy, and platform artifacts. The gate-validation package receives an agent owner, controller and validation route at its start. It records the exact candidate, product/model/platform/provider evidence, limitations and any deferred agent review. Human controllers retain required authorization decisions. Changes to availability affect subsequent packages; existing gate-validation packages retain their agreed plan.
 

@@ -1,6 +1,6 @@
 # Poliscope — Work-Package Delivery Plan
 
-Revision 0.4 · 2026-10-16 · One to three development agents under human control. Implementation is **not started**. Parent: [roadmap](../implementation_roadmap.md); scope: [shared packages](work_packages.md), [domain packages](domain_work_packages.md), [verification](verification_matrix.md).
+Revision 0.5 · 2026-10-16 · One to three development agents under human control. Implementation is **not started**. Parent: [roadmap](../implementation_roadmap.md); scope: [shared packages](work_packages.md), [domain packages](domain_work_packages.md), [verification](verification_matrix.md).
 
 ## 1. Allocation unit and responsibilities
 
@@ -63,7 +63,7 @@ Keep source, decisions, derived fixtures, commands and evidence in Git/PR/packag
 
 ## 4. Contracts and package decomposition
 
-Define canonical Pydantic boundaries in proposed `engine/contracts/`; generate JSON Schema, TypeScript/tool types and versioned fixtures under `contracts/`. WP-002 confirms actual paths. A contract package defines operation/port identity, context, units, schema/errors, examples, producer/consumer requirements, compatibility and migration. Validate and merge it before dependent consumer packages start.
+Define canonical Pydantic boundaries in proposed `engine/contracts/`; generate JSON Schema, TypeScript/tool types and versioned fixtures under `contracts/`. Boundary contracts include durable result evidence versus caches, the trusted historical-read interface, payload-bound operation replay/status, typed policy-delta adoption, allocation-dependent outputs, numeric representability/residuals, and complete random/dependence identities. Privacy and provider boundaries include classified derivatives, whole-history projection, per-dispatch sharing capability and atomic spending grants. These are required contracts from T revision 0.3, not optional implementation interpretations. WP-002 confirms actual paths. A contract package defines operation/port identity, context, units, schema/errors, examples, producer/consumer requirements, compatibility and migration. Validate and merge it before dependent consumer packages start.
 
 Producer and consumer packages have separate scopes and may be implemented by the same agent sequentially or different agents concurrently. Their start records identify the same approved contract version. Integrate production operations as they become available; development fixtures cannot satisfy application acceptance. Breaking changes require a separately planned contract change, affected-consumer work and explicit compatibility/rejection/migration behavior. Existing active packages retain their assignment and reconcile declared dependency changes before acceptance.
 
@@ -84,6 +84,23 @@ Producer and consumer packages have separate scopes and may be implemented by th
 | WP-048 cost ledger / provider events | Separate Decimal reconciliation and networking scopes | No double charge, explicit estimate/actual/unknown states |
 
 These are capability requirements and executable splits, not named-agent allocations. Remaining packages use the same pre-execution decomposition rule. Each resulting package retains its assignment through acceptance. Parent scope, dependencies and integration requirements remain unchanged.
+
+### 4.1 Required early production children
+
+The children below are executable slices within the existing parent scopes, not new planning parents or completed assignments. Allocate them under the same start/review rules. Their listed acceptance dependencies override inheritance of the full parent's later acceptance dependencies; otherwise a consumer and its final integration parent would wait on one another. Each child needs independently derived positive/failure fixtures, a merged contract and actual production implementation before the named consumer can accept. Fixtures alone may enable development, never production acceptance.
+
+| Child | Acceptance dependencies (merged contracts and production providers) | Delivered boundary / consumer |
+|---|---|---|
+| WP-009-store | WP-002, WP-005-wire | Minimal production versioned storage/transaction primitives and bounded wire evidence/operation DTOs; full world/pack semantic validation and parent WP-009 acceptance still require WP-006/007/008 |
+| WP-010-transport | WP-002, WP-005-wire | Production handshake/correlation/error/transport primitive, independent of storage; actual storage-backed handlers attach when their providers arrive, before the full desktop lifecycle gate |
+| WP-031-classification | WP-017, WP-018, WP-023, WP-026 | Classified private references and standalone projection/derivative fixtures; consumed by sharing envelope before full notes UI or archive acceptance |
+| WP-010-history-read | WP-005, WP-009-store | Minimal bounded trusted reader for supported saved evidence, independent of numerical protocol; WP-011/early runtime and E2E-006.a/015.a |
+| WP-018-world | WP-007, WP-009-store, WP-010-transport | Production create/open/query with canonical identities before WP-019; WP-020 later consumes it |
+| WP-036-boundary-store | WP-009-store, WP-018, WP-033 | Atomic validated-boundary/evidence/operation persistence and confirmed-state reload; WP-034 consumes it before full WP-036 checkpoint/replay acceptance |
+| WP-046-envelope | WP-017, WP-018, WP-023, WP-031-classification, WP-044 | Classified per-turn capability and provider-payload authorization gateway; WP-045 consumes it before full WP-046 streaming/tool integration |
+| WP-048-reservation | WP-006, WP-009-store, WP-043, WP-044 | Atomic durable dispatch grant/amend/status primitive; WP-045 consumes it before full WP-048 usage reconciliation |
+
+WP-005-wire uses the minimal scaffold and WP-003 harness/fixture child as described in the bootstrap plan; final real-child harness acceptance does not gate that wire child. Minimum storage, transport, and classification provider children retain the approved schemas available at their boundaries and expose missing later operations explicitly. They do not depend on the consuming child's completion. WP-001 records concrete child IDs/SHAs and the resulting executable DAG before allocation; validation rejects accidental dependencies on the full consumer-dependent parent. WP-003 setup/contract fixtures can validate early children before a real end-to-end harness is complete; final package and milestone gates still require production integration. The original parent dependencies and completion requirements remain intact.
 
 ## 5. Domains and parallel compatibility
 
@@ -124,7 +141,7 @@ An unexpected interruption marks that package blocked, preserves its assignment 
 
 All packages use short-lived PR branches, required checks on a candidate containing current main and the package's recorded validation evidence. Use the repository's merge queue where available, otherwise update/recheck before merge. Changed behavior invalidates stale evidence. Agent review artifacts supplement the repository's actual account-level approval requirements.
 
-Required checks cover frozen setup, generated-contract compatibility, content integrity, engine invariants, independently derived fixtures, desktop/provider mocks and actual Electron/child/SQLite behavior. Domain/contract changes run affected counterpart and integrated-slice checks. Native and live-provider evidence remain explicit; ordinary checks use synthetic data and no paid calls. The exact checks follow each package's scope and source requirements.
+Required checks cover frozen setup, generated-contract compatibility, content integrity, engine invariants, independently derived fixtures, desktop/provider mocks and actual Electron/child/SQLite behavior. Domain/contract changes run affected counterpart and integrated-slice checks. Native and live-provider evidence remain explicit; ordinary checks use synthetic data and no paid calls. The exact checks follow each package's scope, source requirements and the explicit subcase/gate manifests in verification §5.1–5.2. WP-018 delivers production create/open/query before the headless slice; WP-020 is its UI consumer. Minimal trusted historical reads arrive with WP-010, while WP-041 extends archive/older-schema recovery. This prevents later UI/provider/recovery packages from being hidden prerequisites of early gates. A documentation disposition of an RT finding does not certify implementation or supply empirical evidence.
 
 At each completion/start boundary, controllers update available agents, ready work, reserved scopes, review backlog, integration blockers, required access and the remaining forecast. Measure agent execution/setup cost, context restoration, validation/correction cycles, integration and human waiting separately. Agent-count changes affect future start dates; they do not rewrite completed effort or active package contracts. WP-001 creates the process and templates; every package boundary executes them.
 

@@ -4,7 +4,7 @@ Status baseline: every package is **not started**. Parent plan: [implementation 
 
 ## Reading and using this register
 
-Revision 0.4 follows the [work-package delivery plan](distributed_delivery.md). Packages define scope, required capabilities, dependencies and acceptance; they do not reserve named agents for the project. Human controllers allocate a development agent and record the package execution plan before it starts. Its owner, agreed division of work and validation route remain fixed through completion. Availability is reassessed for subsequent packages at each completion/start boundary, while other active packages continue unchanged.
+Revision 0.5 follows the [work-package delivery plan](distributed_delivery.md). Packages define scope, required capabilities, dependencies and acceptance; they do not reserve named agents for the project. Human controllers allocate a development agent and record the package execution plan before it starts. Its owner, agreed division of work and validation route remain fixed through completion. Availability is reassessed for subsequent packages at each completion/start boundary, while other active packages continue unchanged.
 
 `Depends` lists acceptance prerequisites. A validated, merged contract package can authorize dependent development before the aggregate parent scope is complete; record the exact SHA and limitations. Each executable package follows its declared agent-review or solo-validation (SV) route. Human authorization and required scientific/technical evidence remain separate. Specialty abbreviations: TL = architecture/integration; ENG = engine; DESK = desktop; MODEL = content/model evidence; QA = verification/security/release; TPM = delivery coordination; PRODUCT = product intent/usability. These identify capabilities, not permanent people or agents.
 
@@ -22,7 +22,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Define the release content inventory policy: branch-by-branch coverage, minimum substantive behavior per domain, evidence review roles, and clearly labeled synthetic/reference setups. Distinguish implementation deliverables from open model research.
 - Resolve DEC-04's initial scope and DEC-06's benchmark definitions: named world-size fixtures, benchmark machine/OS, latency/throughput/memory budgets, and measurement method. Produce a dependency/resource forecast and external prerequisite register; no unsupported completion date.
 
-**Acceptance/evidence:** every D/T top-level section maps to packages and a verification owner; all 68 planning packages have capability requirements, dependencies and acceptance criteria; executable-package records require one agent owner/controller and a stable execution plan; the ready queue supports one to three agents and all six capacity changes at package boundaries; active packages remain unchanged; performance and content acceptance have measurable definitions or named blocking decision issues. Approved planning decisions are recorded, not silently substituted for specification requirements.
+- Maintain stable IDs for individual normative requirements, not only D/T top-level sections, with delivering child, first required milestone, negative oracle and evidence status. Define executable gate manifests from verification §5.1; parent scenario names cannot stand in for an unspecified subset. Record the RT-01–14 contract decisions and their regression owners from verification §5.2.
+
+**Acceptance/evidence:** every D/T top-level section maps to packages and a verification owner; all 68 planning packages have capability requirements, dependencies and acceptance criteria; executable-package records require one agent owner/controller and a stable execution plan; the ready queue supports one to three agents and all six capacity changes at package boundaries; active packages remain unchanged; performance and content acceptance have measurable definitions or named blocking decision issues. Approved planning decisions are recorded, not silently substituted for specification requirements. Gate manifests have no undefined "relevant cases", unowned mandatory subcase, or implicit future-service dependency. Documentation review records are not application acceptance.
 
 ### WP-002 — Reproducible repository scaffold and development commands
 
@@ -42,7 +44,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Wire content validation, generated-contract drift, cross-version fixtures, type checks, engine tests, desktop/provider tests and real-child desktop smoke checks into CI. Require passing checks on a candidate containing current main, using a merge queue or an updated branch. Require the package's declared nonauthor-agent review or SV checklist/deferred-review record, alongside actual repository approval rules. Keep account-level protection stable across agent-count changes; agents sharing an account cannot supply separate GitHub approval identities. New behavior changes invalidate stale approval/evidence. Add native matrix jobs as supported runners become available in WP-004/WP-054.
 - Capture command exit status, test counts, skip/expected-failure reasons, fixture versions, runtime identities, and current-run artifacts. Define where integration/performance/recovery evidence will live.
 
-**Acceptance/evidence:** a deliberately failing fixture fails the appropriate job; zero selected tests cannot be recorded as readiness; reruns do not accept stale output. Desktop tests actually launch Electron. Test data is isolated from personal civilizations and external paid providers.
+- Select exact subcases from the versioned milestone manifest. Detect missing/zero-selected mandatory cases and distinguish deferred future subcases from skipped required ones. Capture the full outbound payload/network sink for privacy tests and use an independent precision oracle for conservation edge cases.
+
+**Acceptance/evidence:** a deliberately failing fixture fails the appropriate job; zero selected tests cannot be recorded as readiness; reruns do not accept stale output. Desktop tests actually launch Electron. Test data is isolated from personal civilizations and external paid providers. A deliberately omitted mandatory subcase fails the gate, while a future-only subcase is not required prematurely.
 
 ### WP-004 — Early native packaging and platform feasibility probe
 
@@ -62,7 +66,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Generate JSON Schema, TypeScript types and tool-input schemas from Python contracts; validate both inbound and outbound messages at main. Specify version negotiation and additive/breaking change policy.
 - Commit positive/negative wire fixtures including decimal strings, unknown result versus zero, model unavailable, stale revision, malformed data, and a structurally valid but insufficient design.
 
-**Acceptance/evidence:** `contracts:check` detects drift; TS/Python fixtures round-trip without type or numeric loss; unsupported versions fail with a stable code. Valid incomplete/infeasible evaluations remain successful results with findings, rather than transport errors.
+- Include operation-status and payload-bound replay fixtures, minimal historical-read messages independent of numeric-engine compatibility, scheduled policy-delta/precondition objects, classified private references, sharing capabilities, and per-dispatch spending grants. Pin stable instance/event/draw identities and distinguish wall-clock metadata from effective simulation time.
+
+**Acceptance/evidence:** `contracts:check` detects drift; TS/Python fixtures round-trip without type or numeric loss; unsupported versions fail with a stable code. Valid incomplete/infeasible evaluations remain successful results with findings, rather than transport errors. Fixtures distinguish identical completed replay from key reuse with changed payload, and safe historical readability from permission to compute.
 
 ### WP-006 — Quantity, unit, time-base, and canonical numeric contract
 
@@ -72,7 +78,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Build extensible dimensions, conversions, stocks/flows/capacity/count/time/entitlement definitions, per-capita denominators and scope/time conversions. Treat monetary access separately from physical conversion.
 - Specify validation errors and immutable numeric runtime identity. Add independent fixtures for yields, loss, day/year factors, zero/invalid denominators, nonrepresentable or incompatible conversions, and precision boundaries.
 
-**Acceptance/evidence:** equivalent valid units produce canonical equivalent quantities; incompatible or unknown units fail; cross-language formatting never changes authoritative values. Independent calculations verify time factors, denominator populations and rounding; global Decimal context mutation cannot leak between evaluations.
+- Declare per-account quantum and permitted magnitude/resolution combinations. Reject nonzero transfers lost in the 28-digit context; expose quantization residuals under declared rules. Validate balances independently with exact quantum counts or higher precision. Include the `1E29` stock / repeated unit-withdrawal witness; a rounded balance equality is not its oracle.
+
+**Acceptance/evidence:** equivalent valid units produce canonical equivalent quantities; incompatible or unknown units fail; cross-language formatting never changes authoritative values. Independent calculations verify time factors, denominator populations and rounding; global Decimal context mutation cannot leak between evaluations. Unsupported precision fails before mutation; retained residuals and accepted transfers satisfy the declared exact balance without an arbitrary tolerance.
 
 ### WP-007 — Canonical world, scopes, membership, and state ownership
 
@@ -88,11 +96,13 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** MODEL + ENG. **Size:** M. **Depends:** WP-005, WP-006. **Sources:** D §12; T §§5–6, 18.
 
-- Define pack manifests, compatibility/dependency resolution, file digests, catalogs, mechanism references, parameter/measurement declarations and source archives. Separate app/schema/catalog/model/numeric identities.
+- Define pack manifests, execution compatibility/dependency resolution distinct from safe historical readability, file digests, catalogs, mechanism references, parameter/measurement declarations and source archives. Separate app/schema/catalog/model/numeric identities.
 - Define namespaced game IDs and citation-only source decision IDs; preserve compound questions, full alternatives, source commit, section, excerpt digest, license, adopted/superseded status and amendments.
 - Implement separate origin, modeling coverage and evidence axes; `SourceRef` and `AssumptionRef` with uncertainty, scope, rationale and validity limits. Bound data-only imports and declarations; do not execute content.
 
-**Acceptance/evidence:** digest/source/license tampering, incompatible packs, duplicate IDs and missing references are detected. Historical adoption never defaults a fresh player's answer or implies numerical coverage. A qualitative or hypothetical definition can load with honest status but cannot masquerade as a validated numerical rule.
+- Version shared uncertain-variable identities, joint/conditional distributions and explicit independence assumptions. Distinguish structurally readable archived definitions from mechanisms available for execution; historical metadata must not activate code.
+
+**Acceptance/evidence:** digest/source/license tampering, incompatible packs, duplicate IDs and missing references are detected. Historical adoption never defaults a fresh player's answer or implies numerical coverage. A qualitative or hypothetical definition can load with honest status but cannot masquerade as a validated numerical rule. A missing historical implementation permits safe data inspection when schemas are supported; invalid references remain rejected. Repeated-variable and common-cause definitions cannot silently become independent samples.
 
 ### WP-009 — SQLite bootstrap, repositories, and backup foundation
 
@@ -100,9 +110,11 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 
 - Build Python-only persistence, application user-data database selection, foreign keys, WAL, explicit transaction boundaries and durable user commits. Electron will enforce one application instance per data directory.
 - Establish migrations/version tables and storage for civilizations, scopes/entities, immutable pack/model archives, revision inputs and branches. Reserve extensions for experiment/assistant/measurement data without unversioned schema edits.
-- Implement SQLite backup API integration and controlled temporary test databases. Derived evaluation caches must be independently discardable.
+- Implement SQLite backup API integration and controlled temporary test databases. Derived acceleration caches must be independently discardable without deleting durable accepted-result evidence.
 
-**Acceptance/evidence:** invalid foreign keys roll back; failed transaction leaves the old valid state; backup reopens consistently and preserves identities. Two application instances cannot write the same data directory; cached-result deletion does not delete choices or archived evidence.
+- Store accepted-result values/coverage and trace/input/source closure durably, separate from preview/query caches, for applied revisions and confirmed boundaries. Add the context-scoped operation ledger. Keep classified private payloads/derived copies outside immutable simulation snapshots; history uses noncontent references. Quotas must fail visibly before confirmation, not evict retained evidence.
+
+**Acceptance/evidence:** invalid foreign keys roll back; failed transaction leaves the old valid state; backup reopens consistently and preserves identities. Two application instances cannot write the same data directory; cached-result deletion does not delete choices or archived evidence. Clearing every acceleration cache preserves accepted evidence, operation deduplication and private-reference boundaries; historical values remain inspectable without their numeric runtime.
 
 ### WP-010 — Engine stdio transport and process lifecycle
 
@@ -112,7 +124,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Enforce the 1 MiB message limit and paginated/chunked large responses. Handle partial reads, malformed lines, unexpected child exit, write backpressure and mismatched versions without hanging callers.
 - Main launches one child by absolute path without shell, supplies only needed environment, waits for handshake before edits, and rejects pending calls on failure. Define reconnect to last confirmed state; commit uncertainty is resolved in WP-018.
 
-**Acceptance/evidence:** fragmented/batched lines, oversize input, crash, protocol mismatch, timeout and cancellation each produce a bounded documented outcome. Shutdown leaves no orphan child. No logs or malformed child output can be mistaken for a result.
+- Deliver a minimal trusted historical-read child/interface over supported storage schemas before runtime-boundary acceptance; it can run when normal numeric-engine protocol negotiation fails and exposes no mutations. Route bounded authorized operation-status lookups and identical replay without requiring the old branch head. Full archive/schema recovery is extended by WP-041.
+
+**Acceptance/evidence:** fragmented/batched lines, oversize input, crash, protocol mismatch, timeout and cancellation each produce a bounded documented outcome. Shutdown leaves no orphan child. No logs or malformed child output can be mistaken for a result. Cold start with a normal-engine protocol mismatch reads supported saved evidence through the trusted reader, not renderer DB access or a prior UI cache.
 
 ### WP-011 — Secure main/preload API and desktop boundaries
 
@@ -122,7 +136,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Expose named, typed preload methods/events for allowed service groups; validate renderer input and engine output in main. Keep filesystem dialogs and paths, process APIs, databases and provider requests out of renderer authority.
 - Enforce one-instance/data-directory behavior and error views for handshake/crash/mismatch. Deny arbitrary operation-string forwarding, SQL, shell, filesystem reads and authenticated URL fetches.
 
-**Acceptance/evidence:** renderer/adversarial content cannot obtain Node APIs or bypass method validation; a forged/malformed message is rejected before side effects. Desktop starts and reconnects with readable last-known state, and model/protocol mismatches disable edits visibly.
+- Validate IPC sender window/frame and active document in addition to schemas. Production rendering denies passive network loads from untrusted Markdown/images/media/fonts/styles/SVG/embed references; allow only validated bounded local representations and explicit main-owned user fetches. Keep any Vite development exception narrow and absent from production.
+
+**Acceptance/evidence:** renderer/adversarial content cannot obtain Node APIs or bypass method validation; a forged/malformed message is rejected before side effects. Desktop starts and reconnects with readable last-known state, and model/protocol mismatches disable edits visibly. A controlled network sink sees no request merely from rendering malicious content; a valid message from an unauthorized frame is rejected.
 
 ## B. Shared engine and offline choice loop — M2
 
@@ -154,7 +170,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Implement explicit finite-allocation solver integration, deterministic Decimal linear elimination, and bounded iterative solver contracts with starting state, update order, criterion, tolerance and iteration limit.
 - Handle singular/inconsistent systems, missing solver, nonconvergence and budget exhaustion with explicit scoped status. Supply independent coupled fixtures and convergence/nonconvergence examples.
 
-**Acceptance/evidence:** chain, diamond and cyclic graphs produce independently derived outputs or honest unresolved/solver-failure statuses; no silent single pass replaces an equilibrium. Graph ordering is deterministic; nonnumerical cycles never invoke a numerical solver solely because they cycle.
+- Compile account/claim/allocation/actual-consumption/output nodes before SCC detection. Finite-allocation results feed downstream calculations inside the graph; never leave production at requested-input levels after allocating less. Define coupled allocation/production fixtures and materialize final accounts only from solved actual values.
+
+**Acceptance/evidence:** chain, diamond and cyclic graphs produce independently derived outputs or honest unresolved/solver-failure statuses; no silent single pass replaces an equilibrium. Graph ordering is deterministic; nonnumerical cycles never invoke a numerical solver solely because they cycle. Two services requesting 100 energy each from supply 100 report outputs based on their actual allocations, totaling at most the supported 100, and an allocation-feedback cycle has a declared solver or explicit unresolved status.
 
 ### WP-015 — Shared accounts, finite allocation, access and budgets
 
@@ -164,7 +182,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Allocate finite resources, labor/time, services and throughput only through declared procedures. Keep physical presence separate from rights/entitlements/access and required funding. Unspecified precedence stays unresolved.
 - Validate conservation and model-specific invariants; expose local/group distributions, unmet requests and unreachable surplus. Do not hide negative stocks by clamping or assume all social/monetary quantities share a physical conservation law.
 
-**Acceptance/evidence:** independent fixtures cover shared labor contention, overlapping claims, losses/residual products, stock conservation, finite imports, and food existing without household access. Actual allocations never exceed available capacity; insufficiency remains playable and traceable.
+- Make quantized account updates obey WP-006 representability/residual rules and feed actual allocation back through WP-014. Distinguish fixed physical-account reservations from provider-spending reservations delivered by WP-048; each has its own invariant and identity.
+
+**Acceptance/evidence:** independent fixtures cover shared labor contention, overlapping claims, losses/residual products, stock conservation, finite imports, and food existing without household access. Actual allocations never exceed available capacity; insufficiency remains playable and traceable. Actual output, input consumption and residual accounts reconcile under finite contention and precision edge cases.
 
 ### WP-016 — Pure evaluation orchestration, identity and safe caching
 
@@ -184,7 +204,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Build typed physical shortage, policy breach, institutional gap, uncertainty and target observations. Narrative or structured goals default empty and are evaluated after authoritative world computation; no score or ranking.
 - Produce pageable trace DAGs with mechanism/version, typed inputs/results/dependencies, scope/time and source/assumption references; supply authored explanation templates separately from AI prose.
 
-**Acceptance/evidence:** every numerical fixture output has a traversable trace; unknown and zero differ; a target edit leaves physical results/allocations unchanged. Missing coverage cannot turn green as whole-system sufficient; warning thresholds and neutral metrics follow named definitions rather than a global margin.
+- Define the minimum durable accepted-result and trace closure, with coverage, provenance and output identity; preview traces may be disposable. Mark missing legacy evidence unavailable rather than fabricated. Trace provenance/classification must prevent private payloads from entering public evidence implicitly.
+
+**Acceptance/evidence:** every numerical fixture output has a traversable trace; unknown and zero differ; a target edit leaves physical results/allocations unchanged. Missing coverage cannot turn green as whole-system sufficient; warning thresholds and neutral metrics follow named definitions rather than a global margin. Accepted values and explanation closure survive cache eviction and classify redacted or unavailable evidence honestly.
 
 ### WP-018 — Immutable revisions, pure preview, transactional apply and recovery
 
@@ -194,7 +216,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Apply validates base revision, current head, full payload and digest, then persists revision/event/results and head movement in one transaction. Operation IDs provide replayable outcomes for uncertain IPC responses.
 - Implement history list, branch rename/fork, undo/redo, preserving old futures after editing an undone head. Archive offered alternatives/rationale and model identity with decisions.
 
-**Acceptance/evidence:** preview leaves committed history/head untouched; stale or tampered apply cannot commit; duplicate operation IDs create one decision; crash after commit/before reply recovers the confirmed result. Undo/edit retains both futures and all original alternatives; no automatic history deletion.
+- Before WP-019, deliver production create/open/query services using WP-007/009 and the revision contract; WP-020 consumes these services rather than owning their first implementation. Bind durable operation keys to store/civilization/kind and canonical request including branch/base/payload/model; replay identical completed outcomes before current-head checking. Reject conflicting key reuse, expose authorized status lookup, and retain deduplication for retained history. Persist accepted evidence with each applied revision. Private notes/rationale use classified references and explicit proposal promotion rather than copied private text.
+
+**Acceptance/evidence:** preview leaves committed history/head untouched; stale or tampered apply cannot commit; duplicate operation IDs create one decision; crash after commit/before reply recovers the confirmed result. Undo/edit retains both futures and all original alternatives; no automatic history deletion. The headless create/open/query workflow runs without WP-020; retry after head advancement returns the original commit, changed-payload key reuse conflicts, and cross-context reuse cannot reveal another outcome.
 
 ### WP-019 — Independent headless vertical-slice verification
 
@@ -204,7 +228,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Exercise create/query/evaluate/preview/apply/trace/undo/fork/compare inputs/reopen, including missing data, insufficiency, conflicts, stale candidate and lost reply. Derive stock/time/allocation expectations independently of the implementation.
 - Capture repeatable result digests, current-run counts, preliminary performance measurements and evidence for scope/goal isolation. This fixture is test content, not the default civic setup.
 
-**Acceptance/evidence:** derive expected accounts separately from implementation and validate them through the declared agent-review or SV route. Record the owner/controller, candidate, derivation, inspection and any deferred review; correct defects before acceptance; the integrated service workflow passes without renderer or provider access; independently derived accounts and preserved histories match persisted/reopened data. The suite fails if conservation, stale checking, goal isolation or shared-state identity is deliberately broken. Performance findings inform DEC-06 rather than replace functional acceptance.
+- Select M2 subcases explicitly from verification §5.1. Use the production creation/query child from WP-018, not future UI service assumptions. Add completed replay after head advancement, precision-boundary rejection, allocation-dependent output, and accepted-evidence cache-eviction checks.
+
+**Acceptance/evidence:** derive expected accounts separately from implementation and validate them through the declared agent-review or SV route. Record the owner/controller, candidate, derivation, inspection and any deferred review; correct defects before acceptance; the integrated service workflow passes without renderer or provider access; independently derived accounts and preserved histories match persisted/reopened data. The suite fails if conservation, stale checking, goal isolation or shared-state identity is deliberately broken. Performance findings inform DEC-06 rather than replace functional acceptance. M2 selection names actual subcase IDs and has no hidden dependency on M3 target UI or M6 streaming.
 
 ### WP-020 — Synchronized shell, creation flow and navigation
 
@@ -244,7 +270,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Implement Python comparison services that align quantities by dimensions, scope, aggregation, time basis and model semantics; show changed choices/assumptions alongside differences.
 - Preserve missing/incompatible outcomes as labeled noncomparisons, never zeros or winners. Establish comparison DTOs reusable by timeline and assistant tools.
 
-**Acceptance/evidence:** edit after undo retains both descendants; restart preserves lineage and context. Compatible comparisons match independent deltas; incompatible scope/unit/model fixtures explain why subtraction is unavailable. No branch gets an implicit rank.
+- Compare durable historical results without silently recomputing under a new runtime; missing or redacted trace closure is shown as unavailable/incomplete evidence. Keep numeric comparability distinct from availability of an explanatory trace.
+
+**Acceptance/evidence:** edit after undo retains both descendants; restart preserves lineage and context. Compatible comparisons match independent deltas; incompatible scope/unit/model fixtures explain why subtraction is unavailable. No branch gets an implicit rank. A historical comparison reports whether each value is retained evidence, freshly computed or unavailable.
 
 ### WP-024 — Integrated offline design milestone
 
@@ -254,7 +282,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Run with provider networking unavailable and no key; check missing/partial/shortage/conflict states and engine restart. Verify all core paths by keyboard and text/status equivalents.
 - Produce M2 evidence with engine/desktop counts, independent expected numbers, saved identities and known exclusions. Confirm that mocked UI data has not replaced the actual child engine/database.
 
-**Acceptance/evidence:** M2 exit in the roadmap is demonstrated end to end offline; the UI, actual engine and reopened SQLite agree. Outstanding failures are diagnosed and assigned; a working demo cannot waive numerical/history defects.
+- Execute the exact G2 manifest: target arithmetic isolation is an engine case at M2; persisted target-editing UI is M3 and provider streaming is M6. Exercise baseline keyboard, fault/recovery and safe rendering behavior with production services; a later milestone does not defer the M2 crash/save cases.
+
+**Acceptance/evidence:** M2 exit in the roadmap is demonstrated end to end offline; the UI, actual engine and reopened SQLite agree. Outstanding failures are diagnosed and assigned; a working demo cannot waive numerical/history defects. The manifest rejects missing mandatory subcases while leaving explicitly future-only cases unrun without mislabeling the M2 gate.
 
 ## C. Content and all-domain design integration — M3
 
@@ -326,7 +356,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Support parameter/assumption preview through normal revision flow and model-gap/proposal records. Inspect archived historical definitions without silently switching to current models.
 - Implement narrative inquiry, expectation/observation notes and typed targets through scoped preview/apply/query methods. Store private-note classification for export/context consent; goals remain empty by default.
 
-**Acceptance/evidence:** a player can follow a result to its input/assumption/source, edit a supported assumption and compare branches. Goal edits leave physics unchanged; historical evidence is still readable after source/model updates; qualitative records cannot silently activate arithmetic.
+- Classify private note/rationale payloads and derived indexes, keep them referenced rather than embedded in immutable snapshots, and show which proposal content becomes ordinary design content on Apply. Preserve noncontent references after active private-payload deletion; export projection and simulation identity remain separate.
+
+**Acceptance/evidence:** a player can follow a result to its input/assumption/source, edit a supported assumption and compare branches. Goal edits leave physics unchanged; historical evidence is still readable after source/model updates; qualitative records cannot silently activate arithmetic. At M3, standalone classification/projection fixtures exclude private canaries in old notes/derived excerpts and preserve physical result identities; the production history-inclusive archive case is required at M5 through WP-039, not a hidden prerequisite of WP-031.
 
 ### WP-032 — Twelve-domain static integration and coverage gate
 
@@ -348,37 +380,45 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Schedule approved revisions and player-authored/external events with effective time, preconditions, origin and affected scope. Separate counterfactual design edits, retrospective forks and future policy adoption.
 - Advance through every required daily/weekly/seasonal/annual boundary; permit exact aggregate transitions only with defined applicability/equivalence fixtures.
 
-**Acceptance/evidence:** year-view fast-forward still records an intermediate daily shortage; same-boundary events replay identically. A future policy does not alter past states; unsupported adoption delay/transition stays a coverage gap rather than an instant effect.
+- Schedule typed policy deltas with source approved revision, affected bindings/scopes, expected binding digests, effective time and adoption preconditions. A stale/conflicting adoption is recorded and left unapplied; disjoint deltas compose. No ordinary adoption replaces a snapshot or resets dynamic state. Institutional outcomes satisfy approved preconditions only; whole-configuration replacement requires a distinct explicit operation and migration.
+
+**Acceptance/evidence:** year-view fast-forward still records an intermediate daily shortage; same-boundary events replay identically. A future policy does not alter past states; unsupported adoption delay/transition stays a coverage gap rather than an instant effect. Disjoint and conflicting adoptions approved from one base, including same-boundary events, preserve unrelated policies, accumulated assets/stocks and pending cases.
 
 ### WP-034 — Atomic transition reduction and shared dynamic invariants
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG + MODEL. **Size:** L. **Depends:** WP-015, WP-016, WP-027, WP-033. **Sources:** D §§5–6; T §§5, 8.
 
-- Implement boundary processing: due events, active mechanism resolution, proposed transitions/demands, finite-capacity/conflict resolution, combined in-memory commit, invariant checks and traces/closing state.
+- Implement boundary processing: due events, active mechanism resolution, proposed transitions/demands, finite-capacity/conflict resolution, private staging, precommit invariant/precision checks, and coordinated durable confirmation/publication with traces/closing state.
 - Extend the domain harness for construction/maintenance, education/skills, service queues, population/health where selected, ecological change, institutional procedures and response capacities. State ownership and shared accounting apply across all proposed transitions.
 - Add cancellable chunks, progress and runtime quotas. Cancellation, solver failure or invalid proposal cannot persist half a boundary; independent supported outputs remain inspectable.
 
-**Acceptance/evidence:** simultaneous domains cannot spend the same labor/stock twice; before/after conservation and model-specific invariants pass independently derived fixtures. Cancellation resumes from a confirmed boundary; missing transition behavior is explicit. Domain transition portions are tested against their accepted counterparts.
+- Stage all due events and effects privately, solve allocation-dependent outputs, and validate precision/conservation/invariants before publication. Use the accepted WP-036-boundary-store production child so confirmation persists boundary, durable evidence and operation outcome atomically before publishing memory or acknowledgment; full WP-036 replay/checkpoint acceptance follows WP-034/035. Failure before commit discards staging; crash after commit reloads the confirmed state.
+
+**Acceptance/evidence:** simultaneous domains cannot spend the same labor/stock twice; before/after conservation and model-specific invariants pass independently derived fixtures. Cancellation resumes from a confirmed boundary; missing transition behavior is explicit. Domain transition portions are tested against their accepted counterparts. Invariant failure and cancellation/crash at every stage expose only a valid confirmed boundary; no query observes an invalid candidate.
 
 ### WP-035 — Reproducible stochastic events and random-stream identity
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG; review expertise MODEL + QA. **Size:** M. **Depends:** WP-016, WP-033, WP-034. **Sources:** T §7.5, §8; D §§6.2, 13.
 
-- Specify/version deterministic RNG contract and isolated streams keyed by experiment seed, mechanism, scope and event index; pass streams explicitly to stochastic mechanisms.
+- Specify/version deterministic RNG contract and streams keyed by the complete stable instance/event/purpose/draw identity contract in T §7.5; pass streams explicitly to stochastic mechanisms.
 - Store distributions, sampling definitions, runtime identity and realized draws/events. Keep source ranges as ranges until a declared probability distribution is selected; exclude AI generation and diagram layout randomness.
 - Provide deterministic/no-hazard, authored-event and stochastic test paths with known realization fixtures and native cross-platform verification hooks.
 
-**Acceptance/evidence:** replay reproduces realizations/results; enabling an unrelated module cannot shift another module's random sequence. A source interval is never sampled without a declared model, and a changed RNG/runtime identity cannot be advertised as exact historical reproduction.
+- Resolve DEC-02 with a versioned key including stable mechanism definition/version, instance/entity, scope, purpose, event identity and named draw/index. Global list position is not event identity. Shared uncertain-variable references reuse the declared joint realization; stream separation does not imply statistical independence. Record fork seed/identity preservation versus deliberate new realization.
+
+**Acceptance/evidence:** replay reproduces realizations/results; enabling an unrelated module cannot shift another module's random sequence. A source interval is never sampled without a declared model, and a changed RNG/runtime identity cannot be advertised as exact historical reproduction. Same-definition instances in one scope do not collide; unrelated insertion/draw purposes and checkpoint resume preserve existing realizations; paired forks and new-seed forks follow their declared policy.
 
 ### WP-036 — Experiment persistence, checkpoints, pause/replay and timeline forks
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG. **Size:** L. **Depends:** WP-018, WP-034, WP-035. **Sources:** D §§6, 13; T §§8, 11.1.
 
-- Store immutable opening state/model/assumptions, approved schedules, random identity/realizations, ordered events and checkpoints. Persist confirmed boundary results with restart-safe operation semantics.
+- Deliver WP-036-boundary-store before WP-034 transition acceptance, using production storage/revision/scheduling contracts without depending on completed WP-034/035. Then store immutable opening state/model/assumptions, approved schedules, random identity/realizations, ordered events and checkpoints for parent acceptance. Persist confirmed boundary results with restart-safe operation semantics.
 - Implement create/fork/advance/pause/cancel/replay/query service operations and checkpoint intervals; combine checkpoints with intervening events without losing explanation history.
 - Fork at a past simulation state without rewriting the old run; retain distinction from design counterfactuals. Validate replay identities and report unavailable historical runtime rather than silently using a newer engine.
 
-**Acceptance/evidence:** continuous run, checkpoint-resume and recorded-event replay yield equivalent canonical state/results under the same runtime. Crash/cancel/reopen loses no confirmed transition; retrospective edits preserve the original experiment; no wall-clock dependency enters simulation state.
+- Persist each validated boundary, accepted-result evidence/closure and payload-bound operation outcome in one transaction, then publish/acknowledge. Include status lookup and completed replay before stale-head checks. Retained evidence is not a checkpoint/cache eviction target. Store adoption conflicts and instance/event/draw identities independently of presentation order.
+
+**Acceptance/evidence:** continuous run, checkpoint-resume and recorded-event replay yield equivalent canonical state/results under the same runtime. Crash/cancel/reopen loses no confirmed transition; retrospective edits preserve the original experiment; no wall-clock dependency enters simulation state. Injected crashes immediately before/after DB commit preserve exactly the confirmed boundary and recover uncertain outcomes without duplicate advancement.
 
 ### WP-037 — Timeline, event scheduling, experiment comparison and presentation
 
@@ -398,7 +438,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Surface comparative assumptions and uncertain thresholds in inspectors/reports. Reject range-to-midpoint and range-to-distribution conversions without an explicit player/model choice.
 - Add the optional registered capacity-bound calculation with a named solved variable, fixed inputs, monotone constraints, feasibility boundaries, stopping criterion and independent fixtures. Population cannot simultaneously be fixed, evolved and solved.
 
-**Acceptance/evidence:** independent bounded examples produce expected feasible/infeasible limits and range-aware findings; unsupported propagation is labeled. Changing a player target cannot invoke an optimizer or alter the bound's declared physical constraints; stochastic sampling requires a defined distribution and stream.
+- Define shared uncertain variables and explicit joint/conditional/independence semantics. Preserve dependence through repeated references and common causes; qualify unsupported propagation rather than independently resampling or silently widening/approximating. Provide independently derived repeated-variable and common-cause shortage examples.
+
+**Acceptance/evidence:** independent bounded examples produce expected feasible/infeasible limits and range-aware findings; unsupported propagation is labeled. Changing a player target cannot invoke an optimizer or alter the bound's declared physical constraints; stochastic sampling requires a defined distribution and stream. `x + (1-x)` for the same bounded variable remains 1 under an exact supported method, and declared dependent hazards preserve their joint shortage probability; unsupported methods report coverage limits.
 
 ## E. Portability, reports and recovery — M5
 
@@ -406,11 +448,13 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG + DESK; review expertise QA/security. **Size:** L. **Depends:** WP-008, WP-018, WP-026, WP-036. **Sources:** D §§13–14; T §11.2, §14.
 
-- Define separate archive format/validation and dialogs/privacy UI packages before execution, with approved fixtures before either consumer implementation; experiment histories may be fixtures until WP-036 is real. Define archive manifest/version with inputs, original choices/alternatives, branch lineage, experiments/events/realizations, assumptions, model/catalog/runtime identities, sources and optional cached results. Include data only; exclude all keys/encrypted-key blobs.
-- Validate schemas, compatible references/mechanisms, digests, paths, entry types, duplicates and decompression/file-size/count budgets before one import transaction. Reject traversal, symlinks, executable content and arbitrary formulas.
+- Define separate archive format/validation and dialogs/privacy UI packages before execution, with approved fixtures before either consumer implementation; experiment histories may be fixtures until WP-036 is real. Define archive manifest/version with inputs, original choices/alternatives, branch lineage, experiments/events/realizations, assumptions, model/catalog/runtime identities, sources, durable accepted-result/trace evidence with completeness status, and optional acceleration caches. Include data only; exclude all keys/encrypted-key blobs.
+- Validate readable schemas, internal references, digests, paths, entry types, duplicates and decompression/file-size/count budgets before one import transaction; separately classify mechanism/runtime execution compatibility and admit safe readable historical data in read-only mode. Reject traversal, symlinks, executable content and arbitrary formulas.
 - Use main-owned file dialogs and explicit include/exclude choices for transcripts, private notes and attachment material, excluded by default. Prepare/export large data in bounded chunks; do not squeeze archives into one IPC message.
 
-**Acceptance/evidence:** offline export/import into a new user-data directory preserves designs, forks, experiments and source identities; corrupted/hostile archives leave no partial civilization. Privacy fixtures prove prohibited key material is always absent and optional private content appears only when selected.
+- Ordinary exports include durable accepted-result/trace closure and a completeness manifest, separately from optional acceleration caches. Explicit evidence-reduced exports enumerate omissions. Validate structural safety/readable schemas separately from execution compatibility so missing historical mechanisms can import read-only. Apply private classification across old revisions, excerpts, indexes and evidence; emit redaction references and a projection digest without private-only hashes or content. Declare supported schema and import-identity collision behavior before archive activation.
+
+**Acceptance/evidence:** offline export/import into a new user-data directory preserves designs, forks, experiments and source identities; corrupted/hostile archives leave no partial civilization. Privacy fixtures prove prohibited key material is always absent and optional private content appears only when selected. Cache eviction plus an unavailable old runtime still permits an ordinary round-trip of retained evidence; unreadable/unsafe schemas fail without mutation, while safe absent-mechanism archives open read-only. Historical private canaries stay excluded.
 
 ### WP-040 — Markdown inquiry reports and typed CSV exports
 
@@ -427,10 +471,12 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG + DESK + QA. **Size:** L. **Depends:** WP-009, WP-018, WP-036, WP-039. **Sources:** D §13; T §§11, 14.
 
 - Complete migration backups using SQLite's backup API, schema compatibility checks, interrupted-migration handling and restore guidance. Model changes create explicit new migration/comparison branches, never rewrite historical results.
-- Support historical read-only inspection when engine/model/protocol compatibility prevents recomputation; distinguish cached historical evidence from freshly reproduced output and disable unsafe edits visibly.
+- Support historical read-only inspection when engine/model/protocol compatibility prevents recomputation; distinguish retained historical evidence from freshly reproduced output and disable unsafe edits visibly.
 - Exercise engine restart, uncertain operation recovery, disk-full/save failures, corrupt archive versus corrupt database diagnostics, bounded shutdown and user-selected restore without automatic civilization reset.
 
-**Acceptance/evidence:** backup/restore and failed migration preserve all confirmed history; model migration leaves the original branch/results readable. Save failure leaves preview visibly unsaved; an unavailable runtime yields honest historical inspection, never silent recomputation or data deletion.
+- Extend WP-010's trusted historical-read interface for portable archives and supported older storage schemas independently of numerical/protocol compatibility. Reject unreadable schemas with preservation guidance, not imported code execution. Explain evidence-reduced/legacy missing results honestly. Restore both accepted evidence and operation deduplication; document private-store deletion and backup/WAL retention limits.
+
+**Acceptance/evidence:** backup/restore and failed migration preserve all confirmed history; model migration leaves the original branch/results readable. Save failure leaves preview visibly unsaved; an unavailable runtime yields honest historical inspection, never silent recomputation or data deletion. Cold-start mismatch and absent-model imports work without prior UI caches; cache deletion cannot remove retained accepted results, and backup restore retains replay identity and redaction status.
 
 ## F. Optional assistance and full provider integration — M6
 
@@ -472,17 +518,21 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Connect cancellation/abort, request identity and partial/cancelled/failed/completed states. Reject late updates to another request; keep original revision/branch context when navigation changes.
 - Distinguish auth/credit/rate/model/provider/network failures with safe diagnostic action. Bounded metadata retry is allowed; generation after uncertain acceptance, output or tools requires a deliberate player retry rather than automatic paid regeneration.
 
-**Acceptance/evidence:** fragmented/parallel tool stream fixtures assemble correctly, malformed/incomplete streams remain explicit, and cancelled output never becomes a completed answer. Branch switching cannot relabel a reply; timeout/uncertain acceptance cannot trigger duplicate paid requests automatically.
+- Treat each initial generation and tool continuation as a distinct billable dispatch. Main sends only after a matching durable spending grant from the accepted WP-048-reservation production child and a sharing capability enforced by WP-046-envelope; cancellation and uncertain acceptance retain unresolved exposure. Preserve dispatch identity across late metadata and deliberate user retries without reusing a conflicting request binding.
+
+**Acceptance/evidence:** fragmented/parallel tool stream fixtures assemble correctly, malformed/incomplete streams remain explicit, and cancelled output never becomes a completed answer. Branch switching cannot relabel a reply; timeout/uncertain acceptance cannot trigger duplicate paid requests automatically. A continuation cannot bypass a turn/session gate and uncertain dispatch never releases reserved exposure merely because the stream was cancelled.
 
 ### WP-046 — Grounded context, read-only tools and proposal authority boundary
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** ENG + DESK; review expertise QA/security. **Size:** L. **Depends:** WP-017, WP-018, WP-023, WP-031, WP-044, WP-045. **Sources:** D §§7, 11–12; T §13.4.
 
-- Python assembles bounded manifests of relevant facts/choices/accounts/traces/sources/assumptions, pinned to civilization, revision/checkpoint, scope and task. Show the exact sharing manifest; exclude private notes, unrelated branches and attachments unless explicitly included.
+- Deliver WP-046-envelope before WP-045 dispatch acceptance, independently of the parent's streaming/tool integration; then Python assembles bounded manifests of relevant facts/choices/accounts/traces/sources/assumptions, pinned to civilization, revision/checkpoint, scope and task. Show the exact sharing manifest; exclude private notes, unrelated branches and attachments unless explicitly included.
 - Implement schema-validated context-bound read/inspect/compare/retrieve/validate/noncommitting-preview tools. Complete fragmented calls before execution; bound rounds/call counts/context and validate every argument/reference.
 - Store authored/player/AI proposal origin and coverage; route compatible mechanism/parameter proposals into the ordinary preview UI. Tool definitions must expose no apply, model edit, timeline mutation, arbitrary file/URL access, code execution or key retrieval.
 
-**Acceptance/evidence:** prompt injection, forged revision IDs and tool arguments cannot cross the allowlist or change committed state. Read-only tools use the turn's immutable context; AI proposal becomes one player-approved ordinary apply, with its source/coverage retained. No-tool models can explain supplied context with visible limits.
+- Enforce a per-turn sharing capability over state/branch/scope, classifications, provenance-derived content, profile/endpoint and cumulative limits. Authorize the complete payload before every provider dispatch, including tool results/errors, existence metadata, prior messages and continuations. Record authorized in-envelope expansions; require explicit inclusion for anything outside. Read-only access and immutable revision binding alone do not authorize disclosure.
+
+**Acceptance/evidence:** prompt injection, forged revision IDs and tool arguments cannot cross the allowlist or change committed state. Read-only tools use the turn's immutable context; AI proposal becomes one player-approved ordinary apply, with its source/coverage retained. No-tool models can explain supplied context with visible limits. Injection requesting excluded branch/private data produces no unauthorized bytes or existence metadata in provider-visible requests; revocation blocks later dispatches.
 
 ### WP-047 — Modalities, attachments, reasoning and conversation compatibility
 
@@ -492,7 +542,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Distinguish local parsing/excerpt extraction from provider-side file processing; remote processing requires explicit sharing. Keep returned nontext artifacts separate from simulation authority and subject to untrusted-content handling.
 - Preserve provider-required opaque continuation details without inventing or interpreting them; separate visible reasoning metadata. Revalidate history compatibility on model/provider changes and start a new thread when safe translation is unavailable.
 
-**Acceptance/evidence:** capability matrix covers each modality and supported output path; incompatible file/model/history combinations produce explicit explanations. Neither a model switch nor attachment reuse silently broadens shared context. Opaque private reasoning is not forwarded to an incompatible provider or treated as computed fact.
+- Track classification and ownership of originals, excerpts, thumbnails, summaries and rendered artifacts. Apply sharing capabilities on reuse/continuation and deny passive network loads, including nested SVG/CSS/media references. Deletion/export omission covers owned active derivatives; private content is not embedded in immutable result records.
+
+**Acceptance/evidence:** capability matrix covers each modality and supported output path; incompatible file/model/history combinations produce explicit explanations. Neither a model switch nor attachment reuse silently broadens shared context. Opaque private reasoning is not forwarded to an incompatible provider or treated as computed fact. A controlled sink sees no render-triggered network traffic; historical/derived canaries do not escape omission controls, and local resource decoding remains bounded.
 
 ### WP-048 — Usage reconciliation, Decimal costs and spending controls
 
@@ -502,7 +554,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Aggregate money in Python Decimal; later actual replaces that request's estimate instead of adding a second charge. Unknown cost remains unknown; distinguish currency/unit and estimate provenance.
 - Add pre-request per-turn/session gates and visible usage controls; explain provider-side hard account limits versus local estimates and in-flight overruns. Key/profile deletion and cancellation preserve honest unresolved charge observations.
 
-**Acceptance/evidence:** independent fixtures reconcile estimates→actual, usage-only events, missing totals, cancellation and late metadata without double charge or false zero. Budget gate blocks new requests as configured; no claim promises abort eliminates upstream cost.
+- Deliver the WP-048-reservation production child before WP-045 dispatch acceptance; it depends on numeric/storage/profile/request contracts, not on completed generation. Then complete atomic per-dispatch spending reservation/amendment/status/reconciliation services in Python with WP-045 usage events for parent acceptance. Key grants to dispatch ID and turn/session/profile scope, request limits, currency and estimate version; atomically count outstanding/unresolved exposure against every applicable turn/session/profile allowance. Persist before main sends, deduplicate grant requests, and block unknown estimates unless an explicit bounded-exposure policy reserves them. Retain uncertainty across crashes/cancel/key deletion and reconcile actual cost by replacing the reserved estimate.
+
+**Acceptance/evidence:** independent fixtures reconcile estimates→actual, usage-only events, missing totals, cancellation and late metadata without double charge or false zero. Budget gate blocks new requests as configured; no claim promises abort eliminates upstream cost. With allowance 1 and two simultaneous estimates of 0.6, at most one dispatch receives a grant. Tool rounds recheck gates; duplicate grants, late actuals and cancellations neither double-charge nor prematurely release exposure.
 
 ### WP-049 — Assistant workspace, provider settings and transcript lifecycle
 
@@ -512,7 +566,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Implement contextual interview clarification, question adaptation, dependency/source explanation, comparisons and structured alternative proposals through immutable turn context. Show context before send, stop/partial status, tool evidence and proposal preview controls.
 - Store optional local transcripts/turn metadata; delete independently of civilization history. Respect report/archive inclusion controls and attachment retention. Preserve authored/offline workflows when AI is disabled, fails or has no key.
 
-**Acceptance/evidence:** users can inspect context, choose route/model, stop a reply, inspect cost and apply an ordinary proposal without granting assistant mutation authority. Deleting transcripts preserves choices/history; changing branch leaves old replies correctly labeled. Offline authored interviews and reports remain functional.
+- Show the sharing envelope and cumulative disclosure manifest, explicit expansion/inclusion, private-to-design promotion and durable spending reservations/unknown exposure. Delete active transcript payloads and owned derivatives independently of public design references; document backup retention without claiming secure erasure.
+
+**Acceptance/evidence:** users can inspect context, choose route/model, stop a reply, inspect cost and apply an ordinary proposal without granting assistant mutation authority. Deleting transcripts preserves choices/history; changing branch leaves old replies correctly labeled. Offline authored interviews and reports remain functional. An accepted proposal retains only its explicitly promoted design content; deleted/unshared conversation data is absent from later contexts and unselected exports.
 
 ### WP-050 — Provider compatibility matrix and bounded live validation
 
@@ -522,7 +578,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Run separately authorized bounded live checks against current official OpenRouter contracts: authenticated metadata, representative stream/nonstream generation, tools, schema output, reasoning, supported modalities, routing controls, usage and cancellation. Record provider/model/version/date, cost ceiling and exact outcomes; never commit keys.
 - Build a public compatibility/limitations table for each capability path and the generic compatible adapter. A catalog flag or mocked success alone cannot certify live support; distinguish supported, unsupported, failed, untested and access-blocked.
 
-**Acceptance/evidence:** all required application-side capability paths pass mock/integration checks; live evidence supports the stated compatibility claims. Missing credentials/credits or a denied capability is recorded as a concrete external prerequisite, not quietly marked passed. A full OpenRouter claim is blocked by required unverified live behavior; offline capability remains separately demonstrable.
+- Add provider-visible payload assertions for tool-driven disclosure expansion and atomic concurrent/continuation budget tests. Use mocks and synthetic canaries for these cases; live success cannot substitute for privacy and local spending invariants.
+
+**Acceptance/evidence:** all required application-side capability paths pass mock/integration checks; live evidence supports the stated compatibility claims. Missing credentials/credits or a denied capability is recorded as a concrete external prerequisite, not quietly marked passed. A full OpenRouter claim is blocked by required unverified live behavior; offline capability remains separately demonstrable. Concurrent dispatch and continuation cannot bypass granted spend or sharing scope even under cancellation and late metadata.
 
 ## G. Hardening, release evidence and distribution — M7
 
@@ -554,7 +612,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Fault-inject disk full, permission loss, child crash, protocol mismatch, interrupted commit/migration/import/export, network disconnect, partial stream and forced close. Assert bounded shutdown, consistent transaction recovery and no automatic reset.
 - Scan sanitized diagnostics, prompts, engine environment fixtures, reports, archives, crash handling and logs for raw/encrypted key leaks, private data over-sharing and unintended telemetry. Use synthetic canaries, never real keys as test fixtures.
 
-**Acceptance/evidence:** no arbitrary renderer/content execution or assistant commit path; keys cannot cross prohibited boundaries. Recovery preserves last confirmed revisions/transitions, shows uncertain/unsaved states accurately and leaves provider failure isolated from civilization/history. Findings have severity, owner, fix and retest evidence.
+- Exercise the RT regression cases: cold historical reads/cache eviction, invalid staged boundaries, replay after head advancement, classified historical copies, passive renderer fetches, forged sender frames, tool-result disclosure, and spending races. Inspect all actual outgoing payloads/resources and active private derivatives with synthetic canaries.
+
+**Acceptance/evidence:** no arbitrary renderer/content execution or assistant commit path; keys cannot cross prohibited boundaries. Recovery preserves last confirmed revisions/transitions, shows uncertain/unsaved states accurately and leaves provider failure isolated from civilization/history. Findings have severity, owner, fix and retest evidence. The sink receives no unsolicited render request or out-of-envelope disclosure; no fault exposes an invalid boundary or duplicate mutation.
 
 ### WP-054 — Native build, signing, installers and bundled-engine validation
 
@@ -574,7 +634,9 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Audit branch/mechanism inventory, empirical/hypothetical evidence, unsupported effects, all result traces, source attributions and behavioral validity limits. Verify no source choice, target or generated number silently becomes physics/default policy.
 - Assemble gate evidence with passed/failed/skipped/expected-failure/unrun counts, defect classification, model limitations, native matrix and provider compatibility outcomes. Recheck only affected suites after changes, preserving the evidence identity.
 
-**Acceptance/evidence:** every requirement row has a current evidence link and owner; all required gates pass with no unexplained failures/unrun required checks. Coverage gaps are honestly named and match DEC-04; no trivial unit/format check substitutes for the intended functional workflow. Confirmed application defects remain separate from missing model mechanisms or external test prerequisites.
+- Audit leaf requirement IDs and exact milestone subcase selections from verification §5.1–5.2 against the frozen candidate. All RT-01–14 obligations need production evidence at their first required gates; a completed documentation fix is not a passing application check.
+
+**Acceptance/evidence:** every requirement row has a current evidence link and owner; all required gates pass with no unexplained failures/unrun required checks. Coverage gaps are honestly named and match DEC-04; no trivial unit/format check substitutes for the intended functional workflow. Confirmed application defects remain separate from missing model mechanisms or external test prerequisites. Gate manifests and retained evidence identify the same candidate, including explicit redaction/unavailability and declared deferred review.
 
 ### WP-056 — Release candidate freeze, documentation and handoff
 
@@ -584,4 +646,6 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 - Complete developer setup, architecture/contract contribution, content/model review, user inquiry/reporting, BYOK/privacy/spending, backup/import/export/recovery and native installation guides. Validate README commands against the actual release tree.
 - Record functional/model/security/product acceptance with agent-review or SV status, deferred review risk and any required external signoff, a recovery/rollback plan and support triage policy. Keep release authorization and artifact publication explicit; preparation does not itself publish a release.
 
-**Acceptance/evidence:** a new contributor can install/run/test from documented commands, and a native end user needs neither Python nor an AI account for core tasks. Release inventory and evidence identify the same frozen candidate; publication status is reported accurately. Complete-product delivery requires all roadmap gates, not only a downloadable package.
+- Document policy-delta adoption, representability errors/residuals, durable historical evidence versus caches, safe read-only compatibility, private-store/export projection limits, per-dispatch sharing/spend and the dated red-team closure record.
+
+**Acceptance/evidence:** a new contributor can install/run/test from documented commands, and a native end user needs neither Python nor an AI account for core tasks. Release inventory and evidence identify the same frozen candidate; publication status is reported accurately. Complete-product delivery requires all roadmap gates, not only a downloadable package. Release notes distinguish specified fixes from implemented and executed validation; no documentation-only evidence certifies application behavior.

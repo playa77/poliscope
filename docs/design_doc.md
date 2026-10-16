@@ -1,6 +1,6 @@
 # Poliscope — Global Game Design Architecture
 
-Revision 0.2 · 2026-10-13
+Revision 0.3 · 2026-10-16
 
 **Document scope:** the complete educational sandbox, across all twelve society domains, all supported social scales, design decisions, simulation, interviews, explanation, and exploration. This document defines the whole product. It does not define a work package, prototype, release slice, or implementation schedule.
 
@@ -145,11 +145,11 @@ The player can run a modeled arrangement through time, schedule changes, introdu
 
 Timing belongs to the mechanisms: infrastructure can require construction and maintenance; institutions can have adoption or decision delays; education can affect skill stocks; ecological and demographic models can update over their declared intervals. These effects require explicit models and inputs. If a chosen pack lacks a transition mechanism, the game reports that limitation instead of inventing instant completion or a delay.
 
-Experiments may be deterministic without hazards, use player-authored event schedules, or use declared stochastic processes. The random realization is reproducible and recorded. There is no compulsory disaster sequence.
+Experiments may be deterministic without hazards, use player-authored event schedules, or use declared stochastic processes. The random realization is reproducible and recorded. Shared uncertain causes and any independence assumptions are explicit; separately seeded mechanisms are not automatically statistically independent. A fork identifies whether it preserves the existing realization for comparison or chooses a new one. There is no compulsory disaster sequence.
 
 ### 6.3 Counterfactual design versus historical change
 
-“What if this society had different rules?” forks a design or past state and compares alternatives. “What happens if these rules change next year?” schedules a change in an experiment. The interface names the difference so rebuilding a hypothetical civilization is not confused with transforming an existing one.
+“What if this society had different rules?” forks a design or past state and compares alternatives. “What happens if these rules change next year?” schedules a change in an experiment. The interface names the difference so rebuilding a hypothetical civilization is not confused with transforming an existing one. A scheduled adoption previews its exact policy changes, effective scope/time, prerequisites, and transition effects. It cannot silently replace unrelated policies or reset existing people, stocks, assets, or pending cases; conflicting adoptions remain visible and unapplied until resolved. Institutional procedure outcomes may enable an approved adoption but do not silently select a new civic policy for the player.
 
 ### 6.4 Reflect and compare
 
@@ -234,7 +234,7 @@ The assistant distinguishes supported consequences from hypotheses. A proposal f
 
 BYOK is part of the product architecture. OpenRouter receives dedicated support for model discovery/selection, provider routing, capability-aware generation, streaming/cancellation, tool calling, structured outputs, reasoning metadata, usage/costs, error handling, and privacy/data-use settings. Attachment and modality handling follows actual model/provider capabilities; unsupported combinations are explicit rather than silently discarded.
 
-The player can inspect the context sent, select the model, change routing preferences, constrain requests, stop a reply, and inspect reported expenditure. Keys are protected locally and never included in a civilization save. Model/provider changes are recorded on assistant turns.
+The player can inspect the context sent, select the model, change routing preferences, constrain requests, stop a reply, and inspect reported expenditure. Sharing permissions cover tool results and subsequent requests as well as the opening prompt; broader disclosure requires explicit inclusion. Untrusted content does not load remote resources merely because it is displayed. Spending controls account for concurrent requests and tool continuations before dispatch, while still explaining uncertain upstream charges. Keys are protected locally and never included in a civilization save. Model/provider changes are recorded on assistant turns.
 
 Authored interviews, simulation, matrix exploration, history, and reports remain usable offline. AI connection failure does not invalidate a civilization. Generated explanation is labeled, and model language is not promised to be deterministic.
 
@@ -261,7 +261,7 @@ The game preserves two linked histories: the design choices and the simulated ti
 
 Undo restores a prior state without destroying subsequent exploration. Editing after undo preserves the previous future as a branch. Choices and their offered alternatives remain readable even after content updates.
 
-Reproducing a numerical result requires the same inputs, model/rule versions, initial state, event schedule, and seed or recorded random draws. Updating a model creates an explicit new comparison branch; it does not reinterpret an old save invisibly.
+Reproducing a numerical result requires the same inputs, model/rule versions, initial state, event schedule, and seed or recorded random draws. Updating a model creates an explicit new comparison branch; it does not reinterpret an old save invisibly. Accepted results and the evidence needed to explain them are durable history, not disposable caches. Ordinary portable exports preserve that evidence. If an explicitly reduced export or older save lacks it, historical mode labels the missing results/traces unavailable. Historical inspection of readable safe data remains possible without its exact numerical runtime; recomputation and editing require compatibility.
 
 Comparison aligns scopes, units, time bases, and model versions. It exposes differences across population groups and regions as well as aggregates. Where alignment is impossible, it explains the incompatibility. An absent outcome is not displayed as zero.
 
@@ -271,7 +271,7 @@ Players can export a portable civilization and an explanatory report containing 
 
 A learner's report can separate expectation from observation and name the assumption on which a conclusion depends. The assistant can help express that distinction, but the calculation and source evidence remain available directly.
 
-Saves are local and belong to the player. Sharing is an explicit export, not background telemetry. AI transcripts and private notes have independent inclusion controls; keys are never exportable as part of a civilization. A classroom does not require a central server or instructor account.
+Saves are local and belong to the player. Sharing is an explicit export, not background telemetry. AI transcripts and private notes have independent inclusion controls; keys are never exportable as part of a civilization. A classroom does not require a central server or instructor account. Inclusion controls apply across historical and derived copies, not just current notes or turns. Promoting a proposal to the design does not automatically share its conversation. Deletion removes active private payloads and their owned derived copies while preserving noncontent history references; backup retention and erasure limits are explained. Redacted exports identify omitted evidence without changing simulation outcomes.
 
 ## 15. Whole-game quality criteria
 

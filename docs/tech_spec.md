@@ -1,6 +1,6 @@
 # Poliscope — Global Technical Architecture and Specification
 
-Revision 0.2 · 2026-10-13
+Revision 0.3 · 2026-10-16
 
 **Scope:** the complete application's technical architecture, covering all twelve domains, all supported scopes, coupled simulation, interviews, matrix exploration, AI/BYOK, persistence, extension, and desktop operation.
 
@@ -57,7 +57,7 @@ flowchart TB
 
 The renderer uses `nodeIntegration: false`, `contextIsolation: true`, and `sandbox: true`. It has no direct filesystem, provider, database, or child-process access. Preload exposes named methods and events, not arbitrary Electron IPC.
 
-Main launches one engine by absolute path without a shell. Development uses the managed Python environment; packaged builds use the bundled native executable. Python owns simulation arithmetic, measurement/target calculations, numerical comparisons, and database writes. TypeScript formats results and handles network protocols; it does not implement parallel copies of society formulas.
+Main launches at most one Python service child at a time by absolute path without a shell: normally the numerical engine, or its trusted historical-reader replacement when normal compatibility fails. Development uses the managed Python environment; packaged builds use the bundled native executable. Python owns simulation arithmetic, measurement/target calculations, numerical comparisons, and database writes. TypeScript formats results and handles network protocols; it does not implement parallel copies of society formulas.
 
 ## 3. Logical system components
 
@@ -182,7 +182,7 @@ Amendments are resolved through explicit supersession links. Old integration ver
 
 ### 7.1 Quantities and units
 
-Authoritative quantities use Decimal, fixed 28-significant-digit local contexts, and round-half-even. Inputs are parsed from decimal strings, never binary floats. Unit definitions cover dimensions, scale factors, time bases, and denominator populations/groups. Display rounding is separate from stored precision.
+Authoritative quantities use Decimal, fixed 28-significant-digit local contexts, and round-half-even. Inputs are parsed from decimal strings, never binary floats. Unit definitions cover dimensions, scale factors, time bases, and denominator populations/groups. Display rounding is separate from stored precision. Each conserved account declares its storage quantum, permitted magnitude/resolution combinations, and conversion/rounding policy. Validate that accepted stock changes and balances are representable in the declared context; reject an operation with a typed precision error when a nonzero transfer would silently leave its stock unchanged. Quantized conversion/allocation remainders must be retained in explicit residual accounts under the model's declared rule, not silently lost or renamed physical consumption. Validate conservation with exact quantum counts or an independently higher-precision oracle; a rounded equality alone is insufficient. These rules do not change the 28-digit authoritative context or license arbitrary conservation tolerances.
 
 ```json
 {
@@ -198,7 +198,7 @@ The unit registry is extensible across all modules. It distinguishes stocks, flo
 
 ### 7.2 Dependency graph and solver boundaries
 
-Compile active numerical relationships into a graph of mechanism instances and typed ports. Evaluate acyclic components in stable topological order. Detect strongly connected components and handle them only through a declared solver contract.
+Compile active numerical relationships into a graph of mechanism instances and typed ports, including claims, finite-allocation nodes, actual consumption, and outputs dependent on those allocations. Build these dependencies before SCC classification: supported production cannot be calculated from requested inputs and left unchanged after a later allocation reduces actual inputs. Evaluate acyclic components in stable topological order. Detect strongly connected components and handle them only through a declared solver contract.
 
 Supported solver classes are explicit finite allocation, linear systems using deterministic Decimal elimination, and bounded iterative mechanisms with declared update order, starting state, convergence criterion, tolerance, and iteration limit. A coupled component without an applicable solver is unresolved; an iteration that fails to converge returns a solver failure. No undocumented single-pass approximation substitutes for an equilibrium.
 
@@ -212,9 +212,9 @@ An optional capacity-bound calculation can solve a designated input, such as sup
 
 1. Validate identities, scope, units, rule availability, and structural inputs.
 2. Resolve active mechanisms, policy composition, and explicit conflicts.
-3. Compile the typed calculation graph and solver components.
-4. Evaluate independent and coupled components.
-5. Construct shared capacity/resource/service accounts and resolve supported allocations.
+3. Instantiate shared account definitions and compile claims, allocation, actual-consumption, and output dependencies into the typed graph and solver components.
+4. Evaluate independent and coupled components, resolving finite allocations within their declared graph/solver contracts.
+5. Materialize accounts from the solved actual supplies, allocations, consumption, and outputs; validate balances and precision before exposing results.
 6. Compute group/scope distributions, constraints, and coverage.
 7. Evaluate measurements and separately observe optional player targets.
 8. Produce typed findings, trace graph, provenance, and canonical result identity.
@@ -237,11 +237,11 @@ Equivalent rules apply to population/time budgets, service capacity, network thr
 
 ### 7.5 Uncertainty and reproducibility
 
-Parameters can be point values, bounded ranges, or explicitly defined distributions. Source ranges are not silently converted into midpoints or probabilities. Sensitivity comparisons enumerate chosen parameter variants; probabilistic experiments require a declared distribution and sampling rule.
+Parameters can be point values, bounded ranges, or explicitly defined distributions. Source ranges are not silently converted into midpoints or probabilities. Sensitivity comparisons enumerate chosen parameter variants; probabilistic experiments require a declared distribution and sampling rule. Uncertain inputs have stable variable identities so repeated references use the same realization or constrained range. Joint distributions, shared latent causes, conditional dependencies, and any independence assumptions are explicit versioned model definitions. Separate PRNG streams do not establish statistical independence. Unsupported dependence or propagation returns qualified coverage, not an implicit independent-product probability or an unlabeled interval approximation.
 
-Random mechanisms receive isolated deterministic random streams identified by experiment seed, mechanism, scope, and event index. Stream identity prevents unrelated module changes from shifting another module's random sequence. Store numeric runtime/RNG version and realized draws or events for replay. AI generation is excluded from simulation randomness.
+Random draws have a versioned key comprising realization seed, mechanism definition/version, stable mechanism-instance or entity identity, scope, stream purpose, stable event identity, and named draw/index. An event identity is not a position in a mutable global event list. Repeated references to a declared shared uncertain variable use its own stable identity and realization; dependent mechanisms consume that value instead of independently resampling it. Adding an unrelated instance or draw purpose cannot shift existing draws. Forks record whether they preserve the realization seed and existing instance/event identities for paired comparison or deliberately use a new realization. Store the RNG/key/sampling versions, realized draws/events, and fork policy for replay. AI generation and layout randomness are excluded.
 
-Canonical serialization normalizes decimals, sorts unordered structures, preserves semantic order, and excludes timestamps/request IDs. Results include input, model, event-realization, and output digests. Reproduction requires the exact numerical/model runtime, not merely a source repository commit. Supported-platform checks verify the claimed reproducibility boundary.
+Canonical serialization normalizes decimals, sorts unordered structures, preserves semantic order, and excludes wall-clock bookkeeping timestamps/request IDs; effective simulation times and semantically ordered event identities remain included. Results include input, model, event-realization, and output digests. Reproduction requires the exact numerical/model runtime, not merely a source repository commit. Supported-platform checks verify the claimed reproducibility boundary.
 
 ## 8. Time, transitions, and experiments
 
@@ -251,16 +251,16 @@ Stocks and rates convert through the unit/time registry. Fast-forward executes a
 
 At a transition boundary:
 
-1. Apply due external events and policy changes according to documented event precedence.
-2. Resolve active mechanisms against the opening state and newly effective configuration.
+1. Read the last confirmed opening state and stage due events and approved policy deltas privately under documented event precedence.
+2. Resolve active mechanisms against that staged configuration without changing published state.
 3. Compute proposed transitions and shared demands.
 4. Resolve finite capacities and conflicting proposals through registered rules.
-5. Commit the combined transition atomically in simulation memory.
-6. Validate invariants and record traces, events, findings, and closing state.
+5. Validate the complete candidate, numeric precision, conservation, and model-specific invariants; prepare closing state, traces, findings, and realized events. Reject an invalid candidate without publishing it.
+6. In one storage transaction, persist the confirmed boundary, durable evidence, operation outcome, and checkpoint/head movement. Only after successful commit publish the new in-memory state and acknowledge it. Queries observe confirmed boundaries only. A lost acknowledgment is resolved from the durable operation record; before commit, cancellation/failure discards staging. A crash after commit reloads the newly confirmed boundary.
 
 Construction, aging, replenishment, degradation, education, health, migration, institutional processes, and risk response are transition classes supported by this framework. Their actual behavior comes from selected models, not universal defaults. Missing transition mechanisms remain visible coverage gaps.
 
-Design revision and effective timeline change are different entities. A future policy change references the approved revision and an effective time. Retrospective changes fork history. Experiments can start from a design and explicit opening state or fork an existing simulation snapshot.
+Design revision and effective timeline change are different entities. A future policy adoption references the approved revision for provenance and carries an explicit typed policy delta, expected prior policy bindings/digests at the affected scopes, effective time, preconditions, and any declared transition/migration mechanism. It does not replace the entire revision snapshot or reset dynamic stocks, cohorts, assets, or pending cases. Disjoint deltas from one base compose when their declared preconditions hold; overlapping/stale bindings yield a recorded adoption conflict and leave the affected change unapplied. Same-boundary precedence is explicit and cannot silently override a failed precondition. Whole-configuration replacement, if supported, is a distinct player-approved operation with explicit scope and migration effects. Institutional outcomes may satisfy approved adoption preconditions; they cannot authorize an unscheduled civic choice on the player's behalf. Retrospective changes fork history. Experiments can start from a design and explicit opening state or fork an existing simulation snapshot.
 
 Each experiment records opening state, model identity, assumptions, event schedule, seed/realization, and checkpoints. Work executes in cancellable chunks; cancellation never commits a partial transition. Resource/time quotas are runtime safeguards, not arbitrary narrative horizons.
 
@@ -306,7 +306,7 @@ Pydantic defines contracts; generated JSON Schema supplies TypeScript types and 
 
 | Group | Required operations |
 |---|---|
-| Runtime | Handshake, health, progress, cancellation, shutdown |
+| Runtime | Handshake, health, operation-status lookup, progress, cancellation, shutdown |
 | Catalog/model | List domains/branches/questions, inspect options/mechanisms, validate packs, read coverage/sources |
 | World | Create/open, inspect scopes/entities/topology, preview condition or structure changes |
 | Design | Evaluate, preview, apply, read trace, inspect conflicts and obligations |
@@ -324,7 +324,7 @@ Preload exposes explicit allowlisted methods. There is no arbitrary operation-st
 
 Preview reconstructs a candidate from an immutable base revision and typed changes. It returns the candidate identity, affected scopes, evaluated differences, findings, and trace links without creating a committed revision.
 
-Apply includes the complete change payload, candidate digest, base revision, and operation ID. Python revalidates and checks the candidate and current branch head, then writes the revision/events/results and advances the head in one transaction. Stale candidates return a revision conflict. Idempotent operation IDs resolve uncertainty after IPC loss without creating duplicate decisions.
+Apply includes the complete change payload, candidate digest, base revision, and operation ID. A durable operation key is scoped to data-store identity, civilization, operation kind, and operation ID; its canonical request binding includes branch/base, complete changes, candidate digest, and relevant model identity. Before ordinary current-head validation, Python checks that ledger: an identical completed request returns its original outcome even if the branch has advanced; the same key with a different request returns an operation-ID conflict without mutation. New operations revalidate the candidate/current head and persist revision/events, durable result evidence, head movement, and terminal operation outcome in one transaction. Stale new candidates return a revision conflict. An allowlisted operation-status method returns pending/completed/rejected/unknown for the same authorized context and never interprets unknown as permission to retry under a new ID. Retain committed operation bindings/outcomes for the retained history; compaction may replace payloads with protected bindings and outcome references, never forget deduplication. Apply the same rules to confirmed timeline advances and other retriable durable mutations.
 
 AI proposals use the same preview contract. Only a player's application command can commit them.
 
@@ -340,7 +340,9 @@ Python is the sole SQLite writer; Electron enforces one application instance per
 | Catalog/model archives | Immutable content, rules/version identities, schemas, evidence, digests |
 | Design revisions/events | Canonical input snapshots, parent links, selected choices, offered alternatives, rationale |
 | Branches | Named heads and lineage, preserved alternate futures |
-| Evaluations/traces | Revision/model-keyed derived caches and output identities |
+| Accepted-result evidence | Durable values, coverage, output identities, and trace/provenance closure for applied revisions and confirmed timeline boundaries |
+| Evaluation/query caches | Recomputable previews, indexes, and acceleration data; never the sole copy of accepted-result evidence |
+| Operation ledger | Context-scoped request bindings and durable mutation outcomes for replay/status lookup |
 | Experiments | Opening state, model identity, schedules, random-stream identity |
 | Timeline events/checkpoints | Effective changes, transitions, realized hazards, replay state |
 | Measurements | Scope/time results and distributions, coverage and provenance |
@@ -348,19 +350,19 @@ Python is the sole SQLite writer; Electron enforces one application instance per
 | Assistant records | Revision-scoped turns, provider/model metadata, reported usage; no keys |
 | Migrations | Schema transitions and backup/recovery metadata |
 
-Committed revisions are immutable. Complete design-input snapshots simplify reads; event history preserves explanations. Timeline checkpoints plus ordered events provide replay. Derived caches can be discarded without losing authored state or history.
+Committed revisions are immutable. Complete design-input snapshots simplify reads; event history preserves explanations. Timeline checkpoints plus ordered events provide replay. Derived caches can be discarded without losing authored state, confirmed results, or their explanatory evidence. Retain durable values/coverage and the trace/input/source closure needed to explain every accepted result at each applied revision and confirmed timeline boundary, with its model/runtime and output identities. Content-addressed deduplication and pagination may reduce storage; cache eviction must not delete this evidence. Storage quotas fail visibly before confirmation rather than silently pruning retained history. Uncommitted previews remain disposable. Legacy/imported histories lacking evidence are explicitly labeled result/trace unavailable, never reconstructed under a different runtime and called historical evidence.
 
 Undo moves a branch head. Editing after undo preserves the old future as another branch. No branch disappears through automatic cleanup. Model updates create an explicit migrated branch; old results and choice sets remain historical evidence.
 
 ### 11.2 Portable civilization
 
-A versioned portable archive contains manifests, input states, choices and alternatives, branch lineage, experiments/events, assumptions, model/content identities, source attribution, and optional cached results. It contains data, not executable engines or generated code.
+A versioned portable archive contains manifests, input states, choices and alternatives, branch lineage, experiments/events, assumptions, model/content identities, source attribution, and retained accepted-result/trace evidence with an explicit completeness manifest. Optional acceleration caches are separate. An intentional evidence-reduced export must be selected and labeled as such, enumerate omitted results/traces, and expose their unavailability on import; the ordinary portable export preserves the retained evidence. It contains data, not executable engines or generated code.
 
-Import validates schemas, relationships, compatible mechanisms, hashes, path safety, entry types, decompression budgets, and duplicates before one database transaction creates the imported civilization. Limits are configurable application safeguards. Imported executable content, traversal paths, symlinks, and arbitrary formula code are rejected.
+Import first validates structural safety: supported archive/data schemas, relationships and internal reference integrity, hashes, path safety, entry types, decompression budgets, and duplicates. It separately assesses executable mechanism/model compatibility; a missing runtime or unregistered historical mechanism does not by itself reject structurally safe readable historical data. Record compatibility and evidence-completeness status before one database transaction creates the imported civilization. Limits are configurable application safeguards. Imported executable content, traversal paths, symlinks, and arbitrary formula code are rejected.
 
-If the required historical engine/model is unavailable, the archive can be inspected in a historical read-only mode. New computation requires an explicit compatible model or migration; stored results are not advertised as freshly reproduced.
+If the required historical engine/model is unavailable, the archive can be inspected in a historical read-only mode. New computation requires an explicit compatible model or migration; stored results are not advertised as freshly reproduced. The installed trusted Python storage/archive reader exposes a versioned historical-read interface independent of the unavailable numerical engine. On a normal-engine protocol mismatch, main may launch that compatible bundled reader without the numerical engine or use it to inspect a safe backup; it does not give the renderer direct database access. The reader validates schemas and returns bounded data-only evidence, and exposes no computation or mutation methods. Unknown unsafe/unreadable schema versions are rejected with a preservation/upgrade/export diagnostic; do not silently migrate or execute imported definitions to make them readable. Cold-start historical inspection must not depend on a previous renderer cache.
 
-Exports omit keys and encrypted-key blobs always. Transcripts, private notes, and attachment material have explicit inclusion controls. Reports and CSVs include scopes, time bases, model identities, units, coverage, sources, and assumptions.
+Exports omit keys and encrypted-key blobs always. Transcripts, private notes, and attachment material have explicit inclusion controls. Reports and CSVs include scopes, time bases, model identities, units, coverage, sources, and assumptions. Private notes, transcripts, attachment originals/excerpts, and private rationale live in classified stores with explicit ownership of derived copies (indexes, summaries, caches). Immutable simulation history stores stable references/status rather than embedding those private payloads. A player-promoted proposal records only the content explicitly shown as becoming part of the design; it does not implicitly promote the source conversation. Deletion removes active owned payloads and derived copies and leaves noncontent tombstones where history needs a reference. State backup/WAL retention limits and user-selected backup disposal honestly; do not promise secure erasure. Export applies a classification-aware projection across all retained history and evidence, not only current tables. It omits excluded payloads and private-only hashes/metadata that disclose them, marks redacted references, and hashes the exported projection separately from the source; private-store references are excluded from simulation-result identity. Redaction cannot change physical results or imply that omitted evidence is complete.
 
 ## 12. Presentation and exploration architecture
 
@@ -422,7 +424,7 @@ Assistant roles include interview clarification, question adaptation, dependency
 
 Tools can read facts, inspect definitions/traces, compare existing states, validate proposals, and request noncommitting previews. No assistant tool can apply a decision, alter model code, mutate a timeline, run arbitrary code, access arbitrary files/URLs, or obtain a key.
 
-Tool arguments are schema-validated and bound to the turn's immutable context. A proposed change becomes an ordinary inspectable UI preview. The player applies it through the validated desktop action path. Generated numbers in prose never update state; authoritative widgets render Python results.
+Tool arguments are schema-validated and bound to the turn's immutable context. Main enforces a per-turn sharing capability specifying allowed state/branch/scope references, data classifications, source/attachment derivatives, history, profile/endpoint, and size/context limits. Before every provider dispatch, validate the complete payload, including tool results, errors, existence metadata, earlier messages, and continuation artifacts, against that capability and its cumulative disclosure manifest. Python returns classification/provenance for retrieved and derived data; main withholds unauthorized results rather than assuming read-only means shareable. Additional retrieval within the approved envelope is recorded in the manifest; expansion beyond it requires explicit player inclusion before sending. Navigation/model changes cannot silently broaden the envelope, and cancellation/revocation prevents further dispatches. A proposed change becomes an ordinary inspectable UI preview. The player applies it through the validated desktop action path. Generated numbers in prose never update state; authoritative widgets render Python results.
 
 Models without tools can explain supplied context; this limitation is visible. Models with tools and structured output use the supported contract. Incomplete capabilities cannot be concealed by pretending a calculation or tool call occurred.
 
@@ -438,13 +440,13 @@ Abort requests on cancellation and preserve partial/cancelled status. Cancellati
 
 Usage records separate catalog estimates, provider-reported usage/cost, unresolved usage, and cancelled-request observations. Python performs Decimal cost aggregation. A later actual cost replaces the estimate for that request rather than becoming a second charge. Unknown cost is not zero.
 
-Local per-turn/session gates constrain new requests; account-side OpenRouter limits provide hard budget control where supported. An in-flight request can exceed a local estimate. Privacy/data-use preferences are passed through supported routing controls; incompatible routing cannot be silently loosened.
+Local per-turn/session gates constrain new requests; account-side OpenRouter limits provide hard budget control where supported. Every billable dispatch, including each tool-continuation generation, first obtains an atomic reservation from the Python-owned spending ledger across all applicable configured turn, session and profile spending scopes in one transaction. Concurrent requests count outstanding reservations and unresolved exposure against each applicable scope; the same dispatch ID cannot reserve twice. Main sends only after the reservation is confirmed. Bind grants to the profile/model, request limits, currency, and estimate version; changed requests need a new or amended grant. If a conservative estimate is unavailable, block dispatch until an explicit bounded-exposure policy is selected, never treat unknown as zero. Persist request/reservation state across crashes; uncertain send/acceptance or cancellation retains exposure until a known no-send outcome, reported cost, or explicit recorded reconciliation resolves it. Actual cost replaces the reservation/estimate without double counting. Key deletion does not discard unresolved charges. An in-flight request can exceed a local estimate. Privacy/data-use preferences are passed through supported routing controls; incompatible routing cannot be silently loosened.
 
 Authored/core offline functionality remains independent of the provider. Transcripts are local optional records and can be deleted independently of civilization history.
 
 ## 14. Trust, lifecycle, and failure behavior
 
-Use a restrictive Content Security Policy and no renderer remote scripts or provider requests. Sanitize rendered Markdown/source/AI content. Block arbitrary navigation/windows; validated external source links open through main in the system browser.
+Use a restrictive Content Security Policy and no renderer remote scripts or provider requests. Sanitize rendered Markdown/source/AI content. Block arbitrary navigation/windows; validated external source links open through main in the system browser after a user action. Untrusted Markdown, sources, AI replies, attachments, and returned artifacts cannot initiate passive network loads: deny renderer network connections and remote image/media/font/style/SVG/embed resources through production CSP and URL validation, including CSS URLs and nested references. Use validated local/data/blob representations with bounded decoding where supported; main-owned remote retrieval requires an explicit fetch/share action, endpoint validation, and the applicable sharing capability. Rendering alone must generate no network traffic. Development-only Vite transport exceptions are narrowly scoped and absent from production. Main also validates the sender window/frame and active document for every preload IPC call; schema validity alone does not authorize a caller.
 
 Imported content and AI output are untrusted data. Content packs cannot execute Python, JavaScript, SQL, or shell. Trusted new mechanisms require code review, versioning, evidence, and validation before registration; generated mechanism proposals cannot bypass this boundary.
 

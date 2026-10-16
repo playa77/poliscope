@@ -1,14 +1,14 @@
 # Poliscope — Verification, Traceability and Release Evidence
 
-Revision 0.4 · Agent allocation at work-package boundaries. Assignment and workflow authority: [distributed delivery plan](distributed_delivery.md).
+Revision 0.5 · Agent allocation at work-package boundaries. Assignment and workflow authority: [distributed delivery plan](distributed_delivery.md).
 
 This is the verification plan for the [implementation roadmap](../implementation_roadmap.md), [shared work packages](work_packages.md) and [domain packages](domain_work_packages.md). **No checks listed here have run against an application yet.** The repository is documentation-only at this planning baseline. Evidence links, counts and outcomes must be added during implementation; a planned check is not a passing check.
 
-D references the [global game design](../design_doc.md); T references the [technical specification](../tech_spec.md), both revision 0.2. Source sections remain authoritative for behavior; proposed fixtures below make that behavior falsifiable.
+D references the [global game design](../design_doc.md); T references the [technical specification](../tech_spec.md), both revision 0.3 dated 2026-10-16. Source sections remain authoritative for behavior; proposed fixtures below make that behavior falsifiable. WP-001 expands each section into stable leaf requirement IDs with owner, first gate and positive/negative oracle; section-level coverage alone cannot establish complete requirement coverage.
 
 ## 1. Evidence requirements and outcome vocabulary
 
-Human controllers maintain the package/availability ledger; agents maintain evidence for their assigned packages. Each executable package records its owner/controller, division of work and validation route before start and retains them through completion. Agent review, SV, deferred review and required human approval are distinct evidence types. Key the verification ledger by requirement/scenario, candidate identity, platform and package. For each run record:
+Human controllers maintain the package/availability ledger; agents maintain evidence for their assigned packages. Each executable package records its owner/controller, division of work and validation route before start and retains them through completion. Agent review, SV, deferred review and required human approval are distinct evidence types. Key the verification ledger by requirement/scenario, candidate identity, platform and package. For each run record the exact subcase IDs from §5.1 and any RT regression obligations from §5.2, then:
 
 - Source requirement, package/issue, agent owner/controller, package validation route and assigned reviewer or review-package reference; command and actual selected target; run date, relevant OS/architecture and tool/runtime versions.
 - Application/schema/catalog/model/numeric/protocol identities, source revision, pack/fixture digests, input/event/realization/result digests where relevant.
@@ -69,9 +69,9 @@ Schema presence is insufficient. Each service group needs positive, invalid-inpu
 
 | T §10.2 service group | Packages delivering it | Required integration evidence |
 |---|---|---|
-| Runtime | WP-010–WP-011, WP-041 | Handshake/health/progress/cancel/shutdown, mismatch and child-crash recovery |
+| Runtime | WP-010–WP-011, WP-041 | Handshake/health/authorized operation-status/progress/cancel/shutdown, completed replay before head validation, trusted read-only historical interface and child-crash recovery |
 | Catalog/model | WP-008, WP-012, WP-025–WP-026, WP-028, WP-031 | List all domains/branches/questions; inspect definitions/options/coverage/sources; validate compatible and incompatible packs |
-| World | WP-007, WP-018, WP-020, WP-030 | Create/open/query scope/entity/topology; preview condition/structure changes with no committed mutation |
+| World | WP-007/009/018 production creation/query child before WP-019; WP-020/030 consumers | Create/open/query scope/entity/topology headlessly before UI acceptance; preview condition/structure changes with no committed mutation |
 | Design | WP-013–WP-018, WP-021–WP-022 | Evaluate, preview, apply, traces, conflict/obligation inspection, stale digest and idempotency |
 | History | WP-018, WP-023, WP-041 | List, undo/redo, fork/rename, compare and explicit model-migration branch |
 | Timeline | WP-033–WP-037 | Create/fork/schedule/advance/pause/cancel/replay/snapshot/results, atomic boundaries |
@@ -101,11 +101,82 @@ Fixtures below are synthetic and carry explicit model/evidence labels. Each scen
 | **E2E-012** | Attack renderer/Markdown/source/pack/preload/archive boundaries with malicious data and oversized/invalid messages | No Node/SQL/shell/code execution or arbitrary authenticated fetch; validation and bounded errors; trusted registry only; application remains recoverable | WP-011/012/039/053; M7 |
 | **E2E-013** | Test catalog/routing/privacy/schema/tool/modality/reasoning/usage capability matrix, plus auth/credit/rate/partial/cancel/redirect failures | Selected controls honored or explicitly rejected; actual route visible; keys isolated; no uncertain automatic paid retry; actual replaces estimate and unknown stays unknown; offline model intact | WP-042–WP-050/053; M6/M7 |
 | **E2E-014** | Inspect/share limited context, attempt prompt/tool injection, navigate while reply streams, propose alternative, explicitly apply, delete transcript | Tools remain read-only/context-bound; private/unrelated material excluded unless included; proposal never self-commits; origin/evidence retained; transcript deletion leaves design history intact | WP-046–WP-049/053; M6/M7 |
-| **E2E-015** | Open unavailable historical model, migrate compatible model to new branch, interrupt schema migration and restore backup | Historical results labeled read-only/cached rather than reproduced; explicit migrated branch preserves old one; backup/transaction recovery keeps confirmed state | WP-041/054; M5/M7 |
+| **E2E-015** | Open unavailable historical model, migrate compatible model to new branch, interrupt schema migration and restore backup | Historical results labeled retained/read-only, or unavailable when omitted, rather than reproduced; explicit migrated branch preserves old one; backup/transaction recovery keeps confirmed state | WP-041/054; M5/M7 |
 | **E2E-016** | Keyboard-only learner records expectation, answers/defers interview, locates assumption, compares branch, inspects matrix via list and exports observation | All core actions accessible; status has text; hypothesis/source/calculation/AI distinct; no assigned grading or goal; learner can explain consequence without AI | WP-052/055; M7 |
 | **E2E-017** | Install each native artifact on target with no Node/Python; open offline, run common numeric/replay fixture, export/import, restart and remove key | Bundled engine resolution/permissions correct; supported numeric boundary reproduced; core functional tasks pass; OS key protection/session-only fallback honest; state survives restart | WP-054/055; M7 |
 
 Additional domain fixtures must cover each package's branch inventory and selected static/transition models; the education example alone cannot certify all content or validity. Use numerical/procedural fixtures whose expectations are not generated by calling the implementation under test.
+
+### 5.1 Exact subcases and first-required gates
+
+The scenario table above describes aggregate workflows. The following manifest is normative for selecting application cases; "relevant cases" is not a selection rule. A bare ID below means its complete scenario; a suffixed ID means only the explicitly described subcase. First-required cases remain required in subsequent affected regression runs. All cases are **unrun** at this documentation baseline. Setup, structural/contract checks, per-domain acceptance and COL workflow evidence remain additional requirements at their stated gates.
+
+| Case ID | Exact case scope | First required gate / production prerequisite |
+|---|---|---|
+| E2E-001 | Complete create → preview/cancel/apply → trace → reopen offline workflow | G2; WP-018 production creation/query and WP-020/021/022 consumers |
+| E2E-002.a | Unanswered/qualitative/incomplete design, no forced progression and navigation to another domain | G2; WP-017/018/021 |
+| E2E-002.b | Engine target edit/observation leaves physical results and allocation unchanged; no target UI required | G2; WP-017/018 |
+| E2E-002.c | Persisted target/note editing UI, private classification and cross-view observation | G3; WP-031 |
+| E2E-003.a | Synthetic finite stock/labor contention, loss, reservation, finite import and group access; actual output follows allocated input; precision edge rejection/residuals | G2; WP-006/014/015/019 |
+| E2E-003.b | Corresponding production domain mechanisms/counterparts and distributions across the declared all-domain inventory | G3; WP-032 and static DOM packages |
+| E2E-004.a | Synthetic canonical overlap, single accounting and unresolved policy conflicts invariant under input order | G2; WP-007/013/019 |
+| E2E-004.b | Domain harness/counterpart and world/matrix projections for that overlap | G3; WP-027/030/032 |
+| E2E-005 | Complete stale/tampered/duplicate/lost-reply/undo workflow, including identical completed retry after head advancement, operation-status lookup and changed-payload/cross-context key reuse | G2; WP-018/023 |
+| E2E-006.a | Switch scope/branch during ordinary queries, crash/restart, cold protocol mismatch through trusted historical reader, failed save and correctly labeled last-confirmed/unsaved state; no provider streaming | G2; minimal reader in WP-010/011 and WP-018/020 |
+| E2E-006.b | Switch branch during provider streaming and reject late/cancelled updates without relabeling a reply | G6; WP-045/049 |
+| E2E-006.c | Expanded forced-close/disk/permission/protocol/network fault matrix across all production paths | G7; WP-053 |
+| E2E-007 | Complete mixed-rate/authored/stochastic run, instance/event/draw identity, paired/new-realization forks and checkpoint/replay; inject invariant failure and crashes before/after durable boundary commit | G4; WP-033–WP-036 |
+| E2E-008 | Complete all-domain entry/education/atlas/matrix/world/evidence workflow | G3; WP-028–WP-032 and static DOM packages |
+| E2E-009 | Complete future-adoption/counterfactual/disruption workflow; disjoint/conflicting same-base deltas and same-boundary ordering preserve unrelated policies, stocks/assets and pending cases | G4; WP-033–WP-037 and selected domain transitions |
+| E2E-010.a | Compatible/incompatible design comparison with independent deltas, no ranking or missing-as-zero | G2; WP-023 |
+| E2E-010.b | Sensitivity, explicit capacity bound, repeated/shared uncertain variables and common-cause dependence; qualified unsupported methods | G4; WP-035/038 |
+| E2E-011 | Complete ordinary/reduced archive, fresh-directory round trip and Markdown/CSV; invalid/hostile import is transactional; omission covers historical/derived private copies | G5; WP-039/040 (WP-053 later expands attacks) |
+| E2E-012.a | Main/preload sender/frame and schema enforcement, untrusted rendering, passive resource network sink and bounded IPC errors | G1; WP-010/011 |
+| E2E-012.b | Trusted registry/bounded expression and invalid-unit/operator/state-write attacks | G2; WP-012/014/015 |
+| E2E-012.c | Archive/portable-content path, type, hash, decompression, executable-content and transactional rejection cases | G5; WP-039/041 |
+| E2E-012.d | Full combined attachment/prompt/provider/import/renderer attack and recovery matrix | G7; WP-047/053 |
+| E2E-013 | Complete provider capability/failure/usage scenario, concurrent reservations and per-continuation dispatch gates; explicit bounded live cases remain separately authorized | G6; WP-042–WP-050 |
+| E2E-014 | Complete sharing/tool/proposal/deletion workflow; inspect every outbound payload including history, errors, tool results, artifacts and continuations; test revocation/out-of-envelope retrieval | G6; WP-046–WP-049 |
+| E2E-015.a | Applied-revision values/trace closure survive complete acceleration-cache eviction and missing numeric runtime; minimal trusted read-only inspection | G2; WP-009/010/017/018 |
+| E2E-015.b | Confirmed timeline evidence and operation outcomes survive checkpoint/cache eviction and restart | G4; WP-034/036 |
+| E2E-015.c | Structurally safe absent-mechanism archives open read-only, unreadable schemas preserve originals with a diagnostic, reduced/legacy evidence is labeled, explicit model migration and interrupted backup/restore preserve old evidence/deduplication | G5; WP-039/041 |
+| E2E-016.a | Keyboard-only core offline creation/interview/preview/account/trace/fork/comparison tasks, status text and focus recovery | G2; WP-020–WP-024 |
+| E2E-016.b | Complete learner inquiry/report task and accessibility audit across every delivered workspace | G7; WP-052/055 |
+| E2E-017 | Complete native install/offline/replay/round-trip/key-removal workflow on all four targets | G7; WP-054/055 |
+
+| Gate | New mandatory application selections (plus retained affected earlier cases) |
+|---|---|
+| G0 / M0 | No application case can pass here; verify requirement/gate manifests, allocation templates and decision records |
+| G1 / M1 | E2E-012.a; frozen setup/contracts, actual child/storage/handshake and minimal historical-reader smoke evidence |
+| G2 / M2 | E2E-001, E2E-002.a, E2E-002.b, E2E-003.a, E2E-004.a, E2E-005, E2E-006.a, E2E-010.a, E2E-012.b, E2E-015.a, E2E-016.a |
+| G3 / M3 | E2E-002.c, E2E-003.b, E2E-004.b, E2E-008; all static domain/counterpart and branch inventory checks |
+| G4 / M4 | E2E-007, E2E-009, E2E-010.b, E2E-015.b; all selected domain transition checks |
+| G5 / M5 | E2E-011, E2E-012.c, E2E-015.c |
+| G6 / M6 | E2E-006.b, E2E-013, E2E-014; provider capability matrix and explicit live evidence |
+| G7 / M7 | E2E-006.c, E2E-012.d, E2E-016.b, E2E-017; complete retained case inventory at the frozen candidate plus performance/model/accessibility/security evidence |
+
+WP-003 must fail a gate selection that silently omits a mandatory subcase, selects zero tests, substitutes a mock for a required real service, or relies on an undeclared later package. Gate completion is not blocked by explicitly future-only subcases. COL review-route conditions must be recorded: the SV inspection/deferral record applies when SV was selected, while a later nonauthor follow-up is separate evidence, not retroactive approval. Impact assessment governs reuse of unchanged earlier evidence; changed behavior needs affected reruns with candidate identities.
+
+### 5.2 Red-team regression obligations
+
+The [2026-10-16 review](../reviews/2026-10-16-red-team.md) records the baseline finding and documentation disposition. Every row below remains **unrun** until the owning production case executes. Documentation resolution is not implementation acceptance.
+
+| Finding | Required oracle / negative case | Case selection and owner |
+|---|---|---|
+| RT-01 | Evict all disposable caches; accepted values and explanatory closure survive without old runtime and round-trip normally; reduced evidence is explicit | E2E-015.a/b/c, E2E-011; WP-009/017/018/036/039/041 |
+| RT-02 | Cold protocol mismatch and safe absent-mechanism archive use trusted reader; unsafe/unreadable structures still reject without mutation | E2E-006.a, E2E-015.c; WP-010/011/039/041 |
+| RT-03 | Same-base disjoint/conflicting policy deltas and simultaneous adoptions preserve unrelated configuration and evolved state | E2E-009; WP-033/034/036 |
+| RT-04 | Invariant failure/cancel/crash at staging/validation/commit/publication exposes only valid confirmed boundaries | E2E-007, E2E-006.c; WP-034/036/053 |
+| RT-05 | Identical completed retry after head advancement returns original outcome; changed-payload key reuse conflicts; status and cross-context access are bounded | E2E-005, E2E-007; WP-005/010/018/036/041 |
+| RT-06 | Two services each requesting 100 from energy supply 100 report only allocation-supported output; coupled feedback is solved or explicitly unresolved | E2E-003.a, E2E-007; WP-014/015/016/034 |
+| RT-07 | Historical notes/turns/rationale/excerpts/indexes carry private canaries; omission and deletion cover active owned copies; projection integrity and backup limits are honest | E2E-002.c, E2E-011, E2E-014; WP-031/039/046/047/049/053 |
+| RT-08 | Injected read-only tools cannot disclose excluded payloads or existence metadata in any subsequent provider request; revocation blocks dispatch | E2E-014; WP-046/047/049/053 |
+| RT-09 | Controlled sink receives no request from rendering image/media/CSS/SVG/embed/artifact content; unauthorized sender frames fail | E2E-012.a/d, E2E-014; WP-011/047/053 |
+| RT-10 | Allowance 1 with concurrent estimates 0.6 grants at most one dispatch; continuation, cancellation, duplicate grant and late actuals obey reservations | E2E-013; WP-045/046/048/050 |
+| RT-11 | `1E29` stock and repeated withdrawals of 1 reject unsupported resolution before mutation or follow an exact declared quantum/residual policy; higher-precision oracle detects rounded-equality false passes | E2E-003.a, E2E-007; WP-006/015/034 |
+| RT-12 | Same-definition instances in one scope do not collide; unrelated insertion, named draw purposes, fork policy and checkpoint replay preserve the declared realization | E2E-007; WP-005/035 |
+| RT-13 | Same variable `x + (1-x)` has exact supported result 1; shared drought creates declared joint shortages; unsupported propagation is qualified | E2E-010.b, E2E-007; WP-008/035/038 and affected domains |
+| RT-14 | Every mandatory subcase has explicit first gate/production prerequisite; missing/zero selection fails; M3 UI and M6 stream cases cannot become hidden M2 prerequisites | §5.1 manifest check at G0, selection enforcement at G1–G7; WP-001/003/019/024/055 |
 
 ## 6. Test layers, invocation and gate policy
 
@@ -147,10 +218,10 @@ WP-050 maintains a dated model/provider-specific table with mock test IDs, live 
 | Catalog/capabilities | Full discovery/variants/search; pricing/context/modality/tools/reasoning metadata; unknown fields; timestamped refresh/cache/offline | WP-043 |
 | Routing/privacy | order/only/ignore, fallbacks, supported-parameter enforcement, documented price/privacy/data-use preferences; incompatible control rejected; actual provider/model reported | WP-044/050 |
 | Generation/structured response | Stream/nonstream, sampling/output/schema modes, local validation, finish reasons, model changes | WP-044/045/047 |
-| Fragmented tools | Parallel/indexed fragments, full validation before execution, continuation/results, bounded rounds, no-tool models, attempted mutation rejected | WP-045/046 |
+| Fragmented tools | Parallel/indexed fragments, full validation before execution, continuation/results, bounded rounds, no-tool models, attempted mutation and unauthorized result disclosure rejected | WP-045/046 |
 | Reasoning/history | Visible metadata separated; opaque continuation preserved only compatibly; no interpretation as world truth; explicit new thread when needed | WP-045/047 |
 | Modalities/files | Supported text/image/audio/video/file input/output paths, size/context checks, provenance and explicit sharing, safe artifact rendering/retention, unsupported renderer/model rejected | WP-047 |
-| Usage/cost/gates | Token categories, estimates vs actual vs unknown, generation metadata, late reconciliation, cancellation uncertainty, Decimal aggregation and new-request gates | WP-048 |
+| Usage/cost/gates | Token categories, estimates/actual/unknown, durable atomic dispatch reservations, concurrent/continuation gates, late reconciliation and cancellation uncertainty, Decimal aggregation | WP-045/048 |
 | Failure/cancellation/retry | Auth/credit/rate/model/provider failures, partial/malformed SSE, abort, late updates, deliberate paid retry, safe bounded metadata retry | WP-045/050 |
 | Context and ownership | Bounded revision/scope manifest, consent for private notes/attachments/other branches, prompt injection, read-only tools/proposals, transcript deletion independent of history | WP-046/049/053 |
 | Compatible-provider adapter | Declared common capability subset, custom endpoint validation, no OpenRouter-only assumptions, explicit unsupported feature errors | WP-042–WP-045/047/050 |
@@ -165,7 +236,7 @@ For each gate fill in candidate identities, package status, evidence links, vali
 |---|---|---|
 | G0 / M0 | Requirement/package ledger, capability definitions and package allocation/completion rules, controller/agent records, DEC-04 coverage, DEC-06 budgets, ready-queue and package-boundary forecast inputs, COL-01/07 | Unstaffed specialist duties, unknown reviewer capacity or no measurable scope |
 | G1 / M1 | Frozen independent setup, generated contracts, secure renderer/preload, child handshake/storage/recovery, per-target feasibility report, COL-02/03/05 and applicable COL-08 | Runtime boundary unverified, executing agent or clean checkout cannot reproduce setup, candidate checks absent or native targets silently ignored |
-| G2 / M2 | E2E-001–006 relevant cases, independent arithmetic, actual offline Electron/SQLite loop and reopened history, COL-04 and applicable COL-08 | UI-only mocks, unexplained numeric/history failure, zero-test run |
+| G2 / M2 | Exact G2 selections in §5.1, independent arithmetic, actual offline Electron/SQLite loop, retained evidence/reopened history, COL-04 and the declared COL-08 SV/deferral route when selected | UI-only mocks, unexplained numeric/history failure, zero-test run |
 | G3 / M3 | All domain static conformance/counterpart results, source branch inventory, E2E-004/008, complete exploration workspaces | Domain only decorative, duplicate state, unclassified branches, implied unsupported effects |
 | G4 / M4 | All selected domain transitions, E2E-007/009/010, RNG/checkpoint/fast-forward equivalence and uncertainty limits | Partial transition commit, hidden skipped boundary, unexplained replay drift |
 | G5 / M5 | E2E-011/015, full design+experiment privacy-safe round trip, reports/CSV, backup/migration/historical mode | Unsafe or partial import, key/private export leak, silent historical recomputation |
@@ -178,7 +249,7 @@ A gate's recorded evidence must match the actual frozen candidate. A change to a
 
 All operational workflow checks are **unrun** at this documentation-only baseline. Plans cover one to three development agents under human control. Availability changes govern new allocations at package boundaries; ownership and the agreed execution plan remain stable within each active package. Scenarios distinguish document checks, dry runs, agent technical review and actual human approval.
 
-The responsible agent for a verification package is selected at that package's start. Human controllers retain allocation and required authorization decisions. Every gate aggregates the contributing packages' exact candidates, validation routes and outcomes; no global agent-count setting changes accepted evidence or active package requirements.
+The responsible agent for a verification package is selected at that package's start. Human controllers retain allocation and required authorization decisions. Every gate aggregates the contributing packages' exact candidates, validation routes, mandatory subcase IDs and outcomes; no global agent-count setting changes accepted evidence or active package requirements.
 
 | ID | Procedure / evidence | Gate / failure condition |
 |---|---|---|
