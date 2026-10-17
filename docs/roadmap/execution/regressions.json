@@ -1,0 +1,221 @@
+{
+  "version": 1,
+  "findings": {
+    "RT-01": {
+      "contract_decision": "Evict all disposable caches; accepted values and explanatory closure survive without old runtime and round-trip normally; reduced evidence is explicit",
+      "source_owners": "E2E-015.a/b/c, E2E-011; WP-009/017/018/036/039/041",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-015.a",
+        "E2E-015.b",
+        "E2E-015.c",
+        "E2E-011"
+      ],
+      "regression_children": [
+        "WP-009-repositories",
+        "WP-017-traces",
+        "WP-036-boundary-store",
+        "WP-039-archive"
+      ],
+      "first_gate": "G2",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-02": {
+      "contract_decision": "Cold protocol mismatch and safe absent-mechanism archive use trusted reader; unsafe/unreadable structures still reject without mutation",
+      "source_owners": "E2E-006.a, E2E-015.c; WP-010/011/039/041",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-006.a",
+        "E2E-015.c"
+      ],
+      "regression_children": [
+        "WP-010-history-read",
+        "WP-011-ipc",
+        "WP-039-archive"
+      ],
+      "first_gate": "G2",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-03": {
+      "contract_decision": "Same-base disjoint/conflicting policy deltas and simultaneous adoptions preserve unrelated configuration and evolved state",
+      "source_owners": "E2E-009; WP-033/034/036",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-009"
+      ],
+      "regression_children": [
+        "WP-033-adoption",
+        "WP-034-invariants"
+      ],
+      "first_gate": "G4",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-04": {
+      "contract_decision": "Invariant failure/cancel/crash at staging/validation/commit/publication exposes only valid confirmed boundaries",
+      "source_owners": "E2E-007, E2E-006.c; WP-034/036/053",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-007",
+        "E2E-006.c"
+      ],
+      "regression_children": [
+        "WP-034-invariants",
+        "WP-036-boundary-store",
+        "WP-053-faults"
+      ],
+      "first_gate": "G4",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-05": {
+      "contract_decision": "Identical completed retry after head advancement returns original outcome; changed-payload key reuse conflicts; status and cross-context access are bounded",
+      "source_owners": "E2E-005, E2E-007; WP-005/010/018/036/041",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-005",
+        "E2E-007"
+      ],
+      "regression_children": [
+        "WP-018-apply",
+        "WP-036-boundary-store"
+      ],
+      "first_gate": "G2",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-06": {
+      "contract_decision": "Two services each requesting 100 from energy supply 100 report only allocation-supported output; coupled feedback is solved or explicitly unresolved",
+      "source_owners": "E2E-003.a, E2E-007; WP-014/015/016/034",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-003.a",
+        "E2E-007"
+      ],
+      "regression_children": [
+        "WP-014-compiler",
+        "WP-015-allocation",
+        "WP-034-invariants"
+      ],
+      "first_gate": "G2",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-07": {
+      "contract_decision": "Historical notes/turns/rationale/excerpts/indexes carry private canaries; omission and deletion cover active owned copies; projection integrity and backup limits are honest",
+      "source_owners": "E2E-002.c, E2E-011, E2E-014; WP-031/039/046/047/049/053",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-002.c",
+        "E2E-011",
+        "E2E-014"
+      ],
+      "regression_children": [
+        "WP-031-classification",
+        "WP-039-archive",
+        "WP-049-lifecycle"
+      ],
+      "first_gate": "G3",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-08": {
+      "contract_decision": "Injected read-only tools cannot disclose excluded payloads or existence metadata in any subsequent provider request; revocation blocks dispatch",
+      "source_owners": "E2E-014; WP-046/047/049/053",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-014"
+      ],
+      "regression_children": [
+        "WP-046-envelope",
+        "WP-046-tools"
+      ],
+      "first_gate": "G6",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-09": {
+      "contract_decision": "Controlled sink receives no request from rendering image/media/CSS/SVG/embed/artifact content; unauthorized sender frames fail",
+      "source_owners": "E2E-012.a/d, E2E-014; WP-011/047/053",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-012.a",
+        "E2E-012.d",
+        "E2E-014"
+      ],
+      "regression_children": [
+        "WP-011-ipc",
+        "WP-047-rendering"
+      ],
+      "first_gate": "G1",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-10": {
+      "contract_decision": "Allowance 1 with concurrent estimates 0.6 grants at most one dispatch; continuation, cancellation, duplicate grant and late actuals obey reservations",
+      "source_owners": "E2E-013; WP-045/046/048/050",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-013"
+      ],
+      "regression_children": [
+        "WP-045-dispatch",
+        "WP-048-reservation"
+      ],
+      "first_gate": "G6",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-11": {
+      "contract_decision": "`1E29` stock and repeated withdrawals of 1 reject unsupported resolution before mutation or follow an exact declared quantum/residual policy; higher-precision oracle detects rounded-equality false passes",
+      "source_owners": "E2E-003.a, E2E-007; WP-006/015/034",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-003.a",
+        "E2E-007"
+      ],
+      "regression_children": [
+        "WP-006-numeric",
+        "WP-015-accounts",
+        "WP-034-invariants"
+      ],
+      "first_gate": "G2",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-12": {
+      "contract_decision": "Same-definition instances in one scope do not collide; unrelated insertion, named draw purposes, fork policy and checkpoint replay preserve the declared realization",
+      "source_owners": "E2E-007; WP-005/035",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-007"
+      ],
+      "regression_children": [
+        "WP-005-timeline",
+        "WP-035-random"
+      ],
+      "first_gate": "G4",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-13": {
+      "contract_decision": "Same variable `x + (1-x)` has exact supported result 1; shared drought creates declared joint shortages; unsupported propagation is qualified",
+      "source_owners": "E2E-010.b, E2E-007; WP-008/035/038 and affected domains",
+      "status": "specified; production regression unrun",
+      "cases": [
+        "E2E-010.b",
+        "E2E-007"
+      ],
+      "regression_children": [
+        "WP-008-packs",
+        "WP-035-random",
+        "WP-038-uncertainty"
+      ],
+      "first_gate": "G4",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    },
+    "RT-14": {
+      "contract_decision": "Every mandatory subcase has explicit first gate/production prerequisite; missing/zero selection fails; M3 UI and M6 stream cases cannot become hidden M2 prerequisites",
+      "source_owners": "§5.1 manifest check at G0, selection enforcement at G1–G7; WP-001/003/019/024/055",
+      "status": "specified; production regression unrun",
+      "cases": [],
+      "regression_children": [
+        "WP-001-requirements",
+        "WP-003-harness",
+        "WP-003-ci"
+      ],
+      "first_gate": "G0",
+      "decision": "Retain the source contract exactly; satisfy each linked first-gate production case. No documentation disposition counts as application evidence."
+    }
+  }
+}

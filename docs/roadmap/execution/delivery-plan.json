@@ -1,0 +1,2085 @@
+{
+  "version": 1,
+  "base_sha": "4b9cac6fd994491db92518fccebf4e9142b42e03",
+  "children": {
+    "WP-001-baseline": {
+      "parent": "WP-001",
+      "scope": "baseline",
+      "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
+      "status": "verified; solo-validated; agent review deferred",
+      "requires": [],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-001-requirements": {
+      "parent": "WP-001",
+      "scope": "requirements",
+      "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
+      "status": "verified; solo-validated; agent review deferred",
+      "requires": [
+        "WP-001-baseline"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-001-decisions": {
+      "parent": "WP-001",
+      "scope": "decisions",
+      "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
+      "status": "verified; solo-validated; agent review deferred",
+      "requires": [
+        "WP-001-requirements"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-002-layout": {
+      "parent": "WP-002",
+      "scope": "layout",
+      "capabilities": "TL + DESK + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-001-decisions"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-002-python": {
+      "parent": "WP-002",
+      "scope": "python",
+      "capabilities": "TL + DESK + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-002-layout"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-002-desktop": {
+      "parent": "WP-002",
+      "scope": "desktop",
+      "capabilities": "TL + DESK + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-002-layout"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-002-commands": {
+      "parent": "WP-002",
+      "scope": "commands",
+      "capabilities": "TL + DESK + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-002-python",
+        "WP-002-desktop"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-003-harness": {
+      "parent": "WP-003",
+      "scope": "harness",
+      "capabilities": "QA; review expertise ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-002-commands"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-003 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-003-ci": {
+      "parent": "WP-003",
+      "scope": "ci",
+      "capabilities": "QA; review expertise ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-003-harness"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-003 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-003-integration": {
+      "parent": "WP-003",
+      "scope": "integration",
+      "capabilities": "QA; review expertise ENG + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-003 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-004-probe": {
+      "parent": "WP-004",
+      "scope": "probe",
+      "capabilities": "QA + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-003-ci",
+        "WP-011-shell"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-004 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-004-native-matrix": {
+      "parent": "WP-004",
+      "scope": "native matrix",
+      "capabilities": "QA + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-004 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-005-wire": {
+      "parent": "WP-005",
+      "scope": "wire",
+      "capabilities": "ENG + TL",
+      "status": "planned",
+      "requires": [
+        "WP-003-harness"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-005-world": {
+      "parent": "WP-005",
+      "scope": "world",
+      "capabilities": "ENG + TL",
+      "status": "planned",
+      "requires": [
+        "WP-005-wire"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-005-evidence": {
+      "parent": "WP-005",
+      "scope": "evidence",
+      "capabilities": "ENG + TL",
+      "status": "planned",
+      "requires": [
+        "WP-005-world"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-005-timeline": {
+      "parent": "WP-005",
+      "scope": "timeline",
+      "capabilities": "ENG + TL",
+      "status": "planned",
+      "requires": [
+        "WP-005-evidence",
+        "WP-033-adoption"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-005-privacy": {
+      "parent": "WP-005",
+      "scope": "privacy",
+      "capabilities": "ENG + TL",
+      "status": "planned",
+      "requires": [
+        "WP-005-evidence",
+        "WP-031-classification",
+        "WP-044-structured"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-006-numeric": {
+      "parent": "WP-006",
+      "scope": "numeric",
+      "capabilities": "ENG; review expertise MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-005-world"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-006 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-007-identities": {
+      "parent": "WP-007",
+      "scope": "identities",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-006-numeric"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-007 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-007-membership": {
+      "parent": "WP-007",
+      "scope": "membership",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-007-identities"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-007 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-008-packs": {
+      "parent": "WP-008",
+      "scope": "packs",
+      "capabilities": "MODEL + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-005-evidence",
+        "WP-006-numeric"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-008 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-009-store": {
+      "parent": "WP-009",
+      "scope": "store",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-002-commands",
+        "WP-005-wire"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-009 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-009-repositories": {
+      "parent": "WP-009",
+      "scope": "repositories",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-009 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-010-transport": {
+      "parent": "WP-010",
+      "scope": "transport",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-002-commands",
+        "WP-005-wire"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-010 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-010-history-read": {
+      "parent": "WP-010",
+      "scope": "history read",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-005-evidence",
+        "WP-009-store"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-010 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-010-lifecycle": {
+      "parent": "WP-010",
+      "scope": "lifecycle",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-010 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-011-shell": {
+      "parent": "WP-011",
+      "scope": "shell",
+      "capabilities": "DESK; review expertise TL/QA",
+      "status": "planned",
+      "requires": [
+        "WP-010-transport",
+        "WP-010-history-read"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-011 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-011-ipc": {
+      "parent": "WP-011",
+      "scope": "ipc",
+      "capabilities": "DESK; review expertise TL/QA",
+      "status": "planned",
+      "requires": [
+        "WP-011-shell"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-011 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-012-contract": {
+      "parent": "WP-012",
+      "scope": "contract",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-007-membership",
+        "WP-008-packs"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-012 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-012-registry": {
+      "parent": "WP-012",
+      "scope": "registry",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-012-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-012 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-012-expressions": {
+      "parent": "WP-012",
+      "scope": "expressions",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-012-registry"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-012 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-013-policy": {
+      "parent": "WP-013",
+      "scope": "policy",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-012-registry"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-013 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-014-compiler": {
+      "parent": "WP-014",
+      "scope": "compiler",
+      "capabilities": "ENG; review expertise MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-015-allocation"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-014 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-014-solvers": {
+      "parent": "WP-014",
+      "scope": "solvers",
+      "capabilities": "ENG; review expertise MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-014-compiler"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-014 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-015-accounts": {
+      "parent": "WP-015",
+      "scope": "accounts",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-013-policy"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-015 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-015-allocation": {
+      "parent": "WP-015",
+      "scope": "allocation",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-015-accounts"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-015 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-016-evaluation": {
+      "parent": "WP-016",
+      "scope": "evaluation",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-014-solvers"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-016 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-016-identity-cache": {
+      "parent": "WP-016",
+      "scope": "identity cache",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-016-evaluation",
+        "WP-008-packs"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-016 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-017-measurements": {
+      "parent": "WP-017",
+      "scope": "measurements",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-016-identity-cache"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-017 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-017-traces": {
+      "parent": "WP-017",
+      "scope": "traces",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-017-measurements"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-017 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-018-world": {
+      "parent": "WP-018",
+      "scope": "world",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-007-membership",
+        "WP-009-store",
+        "WP-010-transport"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-018-preview": {
+      "parent": "WP-018",
+      "scope": "preview",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-018-world",
+        "WP-017-traces"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-018-apply": {
+      "parent": "WP-018",
+      "scope": "apply",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-018-preview"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-019-fixtures": {
+      "parent": "WP-019",
+      "scope": "fixtures",
+      "capabilities": "QA + ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-018-apply"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-019 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-019-verification": {
+      "parent": "WP-019",
+      "scope": "verification",
+      "capabilities": "QA + ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-019-fixtures"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-019 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-020-creation": {
+      "parent": "WP-020",
+      "scope": "creation",
+      "capabilities": "DESK; review expertise PRODUCT",
+      "status": "planned",
+      "requires": [
+        "WP-011-ipc",
+        "WP-018-world"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-020 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-020-navigation": {
+      "parent": "WP-020",
+      "scope": "navigation",
+      "capabilities": "DESK; review expertise PRODUCT",
+      "status": "planned",
+      "requires": [
+        "WP-020-creation"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-020 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-021-cards": {
+      "parent": "WP-021",
+      "scope": "cards",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": [
+        "WP-020-navigation",
+        "WP-018-preview"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-021-preview-ui": {
+      "parent": "WP-021",
+      "scope": "preview ui",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": [
+        "WP-021-cards",
+        "WP-018-apply"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-021-proposals": {
+      "parent": "WP-021",
+      "scope": "proposals",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-022-overview": {
+      "parent": "WP-022",
+      "scope": "overview",
+      "capabilities": "DESK + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-021-preview-ui"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-022 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-022-inspectors": {
+      "parent": "WP-022",
+      "scope": "inspectors",
+      "capabilities": "DESK + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-022-overview",
+        "WP-017-traces"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-022 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-023-contract": {
+      "parent": "WP-023",
+      "scope": "contract",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-018-apply"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-023-comparison": {
+      "parent": "WP-023",
+      "scope": "comparison",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-023-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-023-history-ui": {
+      "parent": "WP-023",
+      "scope": "history ui",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-023-comparison",
+        "WP-022-inspectors"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-024-offline-gate": {
+      "parent": "WP-024",
+      "scope": "offline gate",
+      "capabilities": "QA + PRODUCT; review expertise TL + MODEL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-024 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-025-inventory": {
+      "parent": "WP-025",
+      "scope": "inventory",
+      "capabilities": "MODEL; review expertise PRODUCT + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-008-packs"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-025 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-025-importer": {
+      "parent": "WP-025",
+      "scope": "importer",
+      "capabilities": "MODEL; review expertise PRODUCT + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-025-inventory"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-025 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-026-coverage": {
+      "parent": "WP-026",
+      "scope": "coverage",
+      "capabilities": "MODEL + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-025-importer",
+        "WP-017-traces",
+        "WP-012-expressions"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-026 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-026-activation": {
+      "parent": "WP-026",
+      "scope": "activation",
+      "capabilities": "MODEL + ENG",
+      "status": "planned",
+      "requires": [
+        "WP-026-coverage"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-026 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-026-setups": {
+      "parent": "WP-026",
+      "scope": "setups",
+      "capabilities": "MODEL + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-026 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-027-contract": {
+      "parent": "WP-027",
+      "scope": "contract",
+      "capabilities": "ENG + QA + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-019-verification",
+        "WP-026-activation"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-027 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-027-harness": {
+      "parent": "WP-027",
+      "scope": "harness",
+      "capabilities": "ENG + QA + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-027-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-027 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-028-query": {
+      "parent": "WP-028",
+      "scope": "query",
+      "capabilities": "DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-028 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-028-atlas-ui": {
+      "parent": "WP-028",
+      "scope": "atlas ui",
+      "capabilities": "DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-028 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-029-projection": {
+      "parent": "WP-029",
+      "scope": "projection",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-029 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-029-matrix-ui": {
+      "parent": "WP-029",
+      "scope": "matrix ui",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-029 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-030-world-ui": {
+      "parent": "WP-030",
+      "scope": "world ui",
+      "capabilities": "DESK + ENG + MODEL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-030 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-031-classification": {
+      "parent": "WP-031",
+      "scope": "classification",
+      "capabilities": "DESK + ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-017-traces",
+        "WP-018-apply",
+        "WP-023-comparison",
+        "WP-026-activation"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-031 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-031-evidence-ui": {
+      "parent": "WP-031",
+      "scope": "evidence ui",
+      "capabilities": "DESK + ENG + MODEL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-031 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-031-notes": {
+      "parent": "WP-031",
+      "scope": "notes",
+      "capabilities": "DESK + ENG + MODEL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-031 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-032-counterparts": {
+      "parent": "WP-032",
+      "scope": "counterparts",
+      "capabilities": "TL + QA + MODEL + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-032 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-032-static-gate": {
+      "parent": "WP-032",
+      "scope": "static gate",
+      "capabilities": "TL + QA + MODEL + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-032 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-033-calendar": {
+      "parent": "WP-033",
+      "scope": "calendar",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-006-numeric",
+        "WP-012-registry",
+        "WP-018-apply"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-033 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-033-adoption": {
+      "parent": "WP-033",
+      "scope": "adoption",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-033-calendar"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-033 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-034-contract": {
+      "parent": "WP-034",
+      "scope": "contract",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-015-allocation",
+        "WP-016-evaluation",
+        "WP-027-harness",
+        "WP-033-adoption",
+        "WP-036-boundary-store"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-034-reducer": {
+      "parent": "WP-034",
+      "scope": "reducer",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-034-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-034-invariants": {
+      "parent": "WP-034",
+      "scope": "invariants",
+      "capabilities": "ENG + MODEL",
+      "status": "planned",
+      "requires": [
+        "WP-034-reducer"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-035-random": {
+      "parent": "WP-035",
+      "scope": "random",
+      "capabilities": "ENG; review expertise MODEL + QA",
+      "status": "planned",
+      "requires": [
+        "WP-034-invariants"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-035 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-036-boundary-store": {
+      "parent": "WP-036",
+      "scope": "boundary store",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-009-store",
+        "WP-018-apply",
+        "WP-033-adoption",
+        "WP-005-timeline"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-036-checkpoints": {
+      "parent": "WP-036",
+      "scope": "checkpoints",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-036-boundary-store",
+        "WP-035-random"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-036-replay": {
+      "parent": "WP-036",
+      "scope": "replay",
+      "capabilities": "ENG",
+      "status": "planned",
+      "requires": [
+        "WP-036-checkpoints"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-037-timeline-ui": {
+      "parent": "WP-037",
+      "scope": "timeline ui",
+      "capabilities": "DESK + ENG + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-037 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-038-uncertainty": {
+      "parent": "WP-038",
+      "scope": "uncertainty",
+      "capabilities": "ENG + MODEL; review expertise PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-038-sensitivity": {
+      "parent": "WP-038",
+      "scope": "sensitivity",
+      "capabilities": "ENG + MODEL; review expertise PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-038-capacity": {
+      "parent": "WP-038",
+      "scope": "capacity",
+      "capabilities": "ENG + MODEL; review expertise PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-039-contract": {
+      "parent": "WP-039",
+      "scope": "contract",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-008-packs",
+        "WP-018-apply",
+        "WP-026-activation",
+        "WP-036-replay"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-039 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-039-archive": {
+      "parent": "WP-039",
+      "scope": "archive",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-039 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-039-dialogs": {
+      "parent": "WP-039",
+      "scope": "dialogs",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-039 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-040-reports": {
+      "parent": "WP-040",
+      "scope": "reports",
+      "capabilities": "ENG + DESK + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-040 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-041-migration": {
+      "parent": "WP-041",
+      "scope": "migration",
+      "capabilities": "ENG + DESK + QA",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-041 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-041-recovery": {
+      "parent": "WP-041",
+      "scope": "recovery",
+      "capabilities": "ENG + DESK + QA",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-041 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-042-profiles": {
+      "parent": "WP-042",
+      "scope": "profiles",
+      "capabilities": "DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-011-ipc"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-042 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-042-keys": {
+      "parent": "WP-042",
+      "scope": "keys",
+      "capabilities": "DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-042-profiles"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-042 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-042-network": {
+      "parent": "WP-042",
+      "scope": "network",
+      "capabilities": "DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-042-keys"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-042 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-043-adapter": {
+      "parent": "WP-043",
+      "scope": "adapter",
+      "capabilities": "DESK",
+      "status": "planned",
+      "requires": [
+        "WP-042-network"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-043 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-044-requests": {
+      "parent": "WP-044",
+      "scope": "requests",
+      "capabilities": "DESK; review expertise TL/QA",
+      "status": "planned",
+      "requires": [
+        "WP-043-adapter"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-044 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-044-routing": {
+      "parent": "WP-044",
+      "scope": "routing",
+      "capabilities": "DESK; review expertise TL/QA",
+      "status": "planned",
+      "requires": [
+        "WP-044-requests"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-044 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-044-structured": {
+      "parent": "WP-044",
+      "scope": "structured",
+      "capabilities": "DESK; review expertise TL/QA",
+      "status": "planned",
+      "requires": [
+        "WP-044-routing"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-044 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-045-contract": {
+      "parent": "WP-045",
+      "scope": "contract",
+      "capabilities": "DESK + QA",
+      "status": "planned",
+      "requires": [
+        "WP-044-structured"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-045 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-045-stream": {
+      "parent": "WP-045",
+      "scope": "stream",
+      "capabilities": "DESK + QA",
+      "status": "planned",
+      "requires": [
+        "WP-045-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-045 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-045-dispatch": {
+      "parent": "WP-045",
+      "scope": "dispatch",
+      "capabilities": "DESK + QA",
+      "status": "planned",
+      "requires": [
+        "WP-045-stream",
+        "WP-046-envelope",
+        "WP-048-reservation"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-045 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-046-envelope": {
+      "parent": "WP-046",
+      "scope": "envelope",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-017-traces",
+        "WP-018-apply",
+        "WP-023-comparison",
+        "WP-031-classification",
+        "WP-044-structured",
+        "WP-005-privacy"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-046 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-046-context": {
+      "parent": "WP-046",
+      "scope": "context",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-046-envelope",
+        "WP-045-dispatch"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-046 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-046-tools": {
+      "parent": "WP-046",
+      "scope": "tools",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "status": "planned",
+      "requires": [
+        "WP-046-context"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-046 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-047-attachments": {
+      "parent": "WP-047",
+      "scope": "attachments",
+      "capabilities": "DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-047 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-047-reasoning": {
+      "parent": "WP-047",
+      "scope": "reasoning",
+      "capabilities": "DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-047 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-047-rendering": {
+      "parent": "WP-047",
+      "scope": "rendering",
+      "capabilities": "DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-047 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-048-reservation": {
+      "parent": "WP-048",
+      "scope": "reservation",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-006-numeric",
+        "WP-009-store",
+        "WP-043-adapter",
+        "WP-044-structured",
+        "WP-045-contract"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-048 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-048-reconciliation": {
+      "parent": "WP-048",
+      "scope": "reconciliation",
+      "capabilities": "ENG + DESK",
+      "status": "planned",
+      "requires": [
+        "WP-048-reservation",
+        "WP-045-dispatch"
+      ],
+      "merged_sha": null,
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "WP-048 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-049-settings": {
+      "parent": "WP-049",
+      "scope": "settings",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-049 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-049-assistant-ui": {
+      "parent": "WP-049",
+      "scope": "assistant ui",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-049 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-049-lifecycle": {
+      "parent": "WP-049",
+      "scope": "lifecycle",
+      "capabilities": "DESK + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-049 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-050-mock-matrix": {
+      "parent": "WP-050",
+      "scope": "mock matrix",
+      "capabilities": "QA + DESK; review expertise TL/PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-050 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-050-live": {
+      "parent": "WP-050",
+      "scope": "live",
+      "capabilities": "QA + DESK; review expertise TL/PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-050 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-051-fixtures": {
+      "parent": "WP-051",
+      "scope": "fixtures",
+      "capabilities": "ENG + DESK + QA",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-051 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-051-benchmarks": {
+      "parent": "WP-051",
+      "scope": "benchmarks",
+      "capabilities": "ENG + DESK + QA",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-051 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-051-optimization": {
+      "parent": "WP-051",
+      "scope": "optimization",
+      "capabilities": "ENG + DESK + QA",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-051 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-052-accessibility": {
+      "parent": "WP-052",
+      "scope": "accessibility",
+      "capabilities": "QA + PRODUCT + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-052 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-052-usability": {
+      "parent": "WP-052",
+      "scope": "usability",
+      "capabilities": "QA + PRODUCT + DESK",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-052 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-053-threat": {
+      "parent": "WP-053",
+      "scope": "threat",
+      "capabilities": "QA/security + TL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-053 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-053-privacy": {
+      "parent": "WP-053",
+      "scope": "privacy",
+      "capabilities": "QA/security + TL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-053 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-053-faults": {
+      "parent": "WP-053",
+      "scope": "faults",
+      "capabilities": "QA/security + TL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-053 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-054-bundle": {
+      "parent": "WP-054",
+      "scope": "bundle",
+      "capabilities": "QA + DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-054 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-054-install": {
+      "parent": "WP-054",
+      "scope": "install",
+      "capabilities": "QA + DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-054 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-054-signing": {
+      "parent": "WP-054",
+      "scope": "signing",
+      "capabilities": "QA + DESK + ENG",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-054 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-055-trace-audit": {
+      "parent": "WP-055",
+      "scope": "trace audit",
+      "capabilities": "QA + MODEL + PRODUCT; review expertise TL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-055 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-055-product-gate": {
+      "parent": "WP-055",
+      "scope": "product gate",
+      "capabilities": "QA + MODEL + PRODUCT; review expertise TL",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-055 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-056-freeze": {
+      "parent": "WP-056",
+      "scope": "freeze",
+      "capabilities": "TPM + QA + TL + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-056 acceptance in packages.json; exact child criteria required at start"
+    },
+    "WP-056-handoff": {
+      "parent": "WP-056",
+      "scope": "handoff",
+      "capabilities": "TPM + QA + TL + PRODUCT",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "WP-056 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-01-interface": {
+      "parent": "DOM-01",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-01 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-01-static": {
+      "parent": "DOM-01",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-01 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-01-fixtures": {
+      "parent": "DOM-01",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-01 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-01-transition": {
+      "parent": "DOM-01",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-01 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-02-interface": {
+      "parent": "DOM-02",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-02 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-02-static": {
+      "parent": "DOM-02",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-02 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-02-fixtures": {
+      "parent": "DOM-02",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-02 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-02-transition": {
+      "parent": "DOM-02",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-02 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-03-interface": {
+      "parent": "DOM-03",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-03 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-03-static": {
+      "parent": "DOM-03",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-03 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-03-fixtures": {
+      "parent": "DOM-03",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-03 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-03-transition": {
+      "parent": "DOM-03",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-03 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-04-interface": {
+      "parent": "DOM-04",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-04 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-04-static": {
+      "parent": "DOM-04",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-04 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-04-fixtures": {
+      "parent": "DOM-04",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-04 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-04-transition": {
+      "parent": "DOM-04",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-04 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-05-interface": {
+      "parent": "DOM-05",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-05 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-05-static": {
+      "parent": "DOM-05",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-05 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-05-fixtures": {
+      "parent": "DOM-05",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-05 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-05-transition": {
+      "parent": "DOM-05",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-05 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-06-interface": {
+      "parent": "DOM-06",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-06 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-06-static": {
+      "parent": "DOM-06",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-06 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-06-fixtures": {
+      "parent": "DOM-06",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-06 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-06-transition": {
+      "parent": "DOM-06",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-06 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-07-interface": {
+      "parent": "DOM-07",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-07 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-07-static": {
+      "parent": "DOM-07",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-07 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-07-fixtures": {
+      "parent": "DOM-07",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-07 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-07-transition": {
+      "parent": "DOM-07",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-07 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-08-interface": {
+      "parent": "DOM-08",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-08 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-08-static": {
+      "parent": "DOM-08",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-08 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-08-fixtures": {
+      "parent": "DOM-08",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-08 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-08-transition": {
+      "parent": "DOM-08",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-08 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-09-interface": {
+      "parent": "DOM-09",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-09 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-09-static": {
+      "parent": "DOM-09",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-09 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-09-fixtures": {
+      "parent": "DOM-09",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-09 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-09-transition": {
+      "parent": "DOM-09",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-09 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-10-interface": {
+      "parent": "DOM-10",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-10 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-10-static": {
+      "parent": "DOM-10",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-10 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-10-fixtures": {
+      "parent": "DOM-10",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-10 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-10-transition": {
+      "parent": "DOM-10",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-10 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-11-interface": {
+      "parent": "DOM-11",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-11 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-11-static": {
+      "parent": "DOM-11",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-11 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-11-fixtures": {
+      "parent": "DOM-11",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-11 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-11-transition": {
+      "parent": "DOM-11",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-11 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-12-interface": {
+      "parent": "DOM-12",
+      "scope": "interface",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-12 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-12-static": {
+      "parent": "DOM-12",
+      "scope": "static",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-12 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-12-fixtures": {
+      "parent": "DOM-12",
+      "scope": "fixtures",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-12 acceptance in packages.json; exact child criteria required at start"
+    },
+    "DOM-12-transition": {
+      "parent": "DOM-12",
+      "scope": "transition",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "status": "planned",
+      "requires": null,
+      "merged_sha": null,
+      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
+      "acceptance_ref": "DOM-12 acceptance in packages.json; exact child criteria required at start"
+    }
+  },
+  "early_dag": [
+    "WP-001-baseline",
+    "WP-001-requirements",
+    "WP-001-decisions",
+    "WP-002-layout",
+    "WP-002-python",
+    "WP-002-desktop",
+    "WP-002-commands",
+    "WP-003-harness",
+    "WP-005-wire",
+    "WP-009-store",
+    "WP-010-transport",
+    "WP-005-world",
+    "WP-005-evidence",
+    "WP-006-numeric",
+    "WP-007-identities",
+    "WP-007-membership",
+    "WP-008-packs",
+    "WP-010-history-read",
+    "WP-018-world",
+    "WP-011-shell",
+    "WP-011-ipc",
+    "WP-003-ci",
+    "WP-004-probe",
+    "WP-012-contract",
+    "WP-012-registry",
+    "WP-012-expressions",
+    "WP-013-policy",
+    "WP-015-accounts",
+    "WP-015-allocation",
+    "WP-014-compiler",
+    "WP-014-solvers",
+    "WP-016-evaluation",
+    "WP-016-identity-cache",
+    "WP-017-measurements",
+    "WP-017-traces",
+    "WP-018-preview",
+    "WP-018-apply",
+    "WP-019-fixtures",
+    "WP-019-verification",
+    "WP-020-creation",
+    "WP-020-navigation",
+    "WP-021-cards",
+    "WP-021-preview-ui",
+    "WP-022-overview",
+    "WP-022-inspectors",
+    "WP-023-contract",
+    "WP-023-comparison",
+    "WP-023-history-ui",
+    "WP-025-inventory",
+    "WP-025-importer",
+    "WP-026-coverage",
+    "WP-026-activation",
+    "WP-027-contract",
+    "WP-027-harness",
+    "WP-031-classification",
+    "WP-033-calendar",
+    "WP-033-adoption",
+    "WP-005-timeline",
+    "WP-036-boundary-store",
+    "WP-034-contract",
+    "WP-034-reducer",
+    "WP-034-invariants",
+    "WP-035-random",
+    "WP-036-checkpoints",
+    "WP-036-replay",
+    "WP-039-contract",
+    "WP-042-profiles",
+    "WP-042-keys",
+    "WP-042-network",
+    "WP-043-adapter",
+    "WP-044-requests",
+    "WP-044-routing",
+    "WP-044-structured",
+    "WP-005-privacy",
+    "WP-045-contract",
+    "WP-046-envelope",
+    "WP-048-reservation",
+    "WP-045-stream",
+    "WP-045-dispatch",
+    "WP-046-context",
+    "WP-046-tools",
+    "WP-048-reconciliation"
+  ],
+  "merge_rule": "All prerequisite contracts/providers need verified evidence and a merged SHA before dependent consumer acceptance; reviewed merged contract children may enable development only. No future merge SHA is invented."
+}

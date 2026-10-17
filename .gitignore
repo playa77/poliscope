@@ -123,3 +123,6 @@ Desktop.ini
 
 # Keep dependency locks, Python version pins, PyInstaller .spec files,
 # generated contract schemas, content packs, sources, fixtures, and docs tracked.
+
+# Local implementation scratch files
+/work/

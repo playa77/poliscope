@@ -1,0 +1,264 @@
+{
+  "version": 1,
+  "cases": {
+    "E2E-001": {
+      "delivering_children": [
+        "WP-018-apply",
+        "WP-020-creation",
+        "WP-021-preview-ui",
+        "WP-022-inspectors"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-002.a": {
+      "delivering_children": [
+        "WP-017-measurements",
+        "WP-021-cards"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-002.b": {
+      "delivering_children": [
+        "WP-017-measurements"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-002.c": {
+      "delivering_children": [
+        "WP-031-notes",
+        "WP-031-classification"
+      ],
+      "verification_child": "WP-032-static-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-003.a": {
+      "delivering_children": [
+        "WP-006-numeric",
+        "WP-015-allocation",
+        "WP-019-verification"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-003.b": {
+      "delivering_children": [
+        "WP-032-counterparts"
+      ],
+      "verification_child": "WP-032-static-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-004.a": {
+      "delivering_children": [
+        "WP-007-membership",
+        "WP-013-policy",
+        "WP-019-verification"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-004.b": {
+      "delivering_children": [
+        "WP-027-harness",
+        "WP-030-world-ui",
+        "WP-032-counterparts"
+      ],
+      "verification_child": "WP-032-static-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-005": {
+      "delivering_children": [
+        "WP-018-apply",
+        "WP-023-history-ui"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-006.a": {
+      "delivering_children": [
+        "WP-010-history-read",
+        "WP-010-lifecycle",
+        "WP-018-apply",
+        "WP-020-navigation"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-006.b": {
+      "delivering_children": [
+        "WP-045-stream",
+        "WP-049-assistant-ui"
+      ],
+      "verification_child": "WP-050-mock-matrix",
+      "evidence_status": "unrun"
+    },
+    "E2E-006.c": {
+      "delivering_children": [
+        "WP-053-faults"
+      ],
+      "verification_child": "WP-055-product-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-007": {
+      "delivering_children": [
+        "WP-034-invariants",
+        "WP-035-random",
+        "WP-036-replay"
+      ],
+      "verification_child": "WP-036-replay",
+      "evidence_status": "unrun"
+    },
+    "E2E-008": {
+      "delivering_children": [
+        "WP-028-atlas-ui",
+        "WP-029-matrix-ui",
+        "WP-030-world-ui",
+        "WP-031-evidence-ui",
+        "WP-032-static-gate"
+      ],
+      "verification_child": "WP-032-static-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-009": {
+      "delivering_children": [
+        "WP-033-adoption",
+        "WP-034-invariants",
+        "WP-037-timeline-ui",
+        "DOM-12-transition"
+      ],
+      "verification_child": "WP-036-replay",
+      "evidence_status": "unrun"
+    },
+    "E2E-010.a": {
+      "delivering_children": [
+        "WP-023-comparison"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-010.b": {
+      "delivering_children": [
+        "WP-035-random",
+        "WP-038-uncertainty",
+        "WP-038-capacity"
+      ],
+      "verification_child": "WP-036-replay",
+      "evidence_status": "unrun"
+    },
+    "E2E-011": {
+      "delivering_children": [
+        "WP-039-archive",
+        "WP-040-reports"
+      ],
+      "verification_child": "WP-041-recovery",
+      "evidence_status": "unrun"
+    },
+    "E2E-012.a": {
+      "delivering_children": [
+        "WP-010-transport",
+        "WP-011-ipc"
+      ],
+      "verification_child": "WP-003-integration",
+      "evidence_status": "unrun"
+    },
+    "E2E-012.b": {
+      "delivering_children": [
+        "WP-012-expressions",
+        "WP-014-solvers",
+        "WP-015-allocation"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-012.c": {
+      "delivering_children": [
+        "WP-039-archive",
+        "WP-041-recovery"
+      ],
+      "verification_child": "WP-041-recovery",
+      "evidence_status": "unrun"
+    },
+    "E2E-012.d": {
+      "delivering_children": [
+        "WP-047-rendering",
+        "WP-053-threat"
+      ],
+      "verification_child": "WP-055-product-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-013": {
+      "delivering_children": [
+        "WP-045-dispatch",
+        "WP-048-reservation",
+        "WP-050-mock-matrix",
+        "WP-050-live"
+      ],
+      "verification_child": "WP-050-mock-matrix",
+      "evidence_status": "unrun"
+    },
+    "E2E-014": {
+      "delivering_children": [
+        "WP-046-tools",
+        "WP-047-attachments",
+        "WP-049-lifecycle"
+      ],
+      "verification_child": "WP-050-mock-matrix",
+      "evidence_status": "unrun"
+    },
+    "E2E-015.a": {
+      "delivering_children": [
+        "WP-009-repositories",
+        "WP-010-history-read",
+        "WP-017-traces",
+        "WP-018-apply"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-015.b": {
+      "delivering_children": [
+        "WP-036-boundary-store",
+        "WP-036-replay"
+      ],
+      "verification_child": "WP-036-replay",
+      "evidence_status": "unrun"
+    },
+    "E2E-015.c": {
+      "delivering_children": [
+        "WP-039-archive",
+        "WP-041-migration"
+      ],
+      "verification_child": "WP-041-recovery",
+      "evidence_status": "unrun"
+    },
+    "E2E-016.a": {
+      "delivering_children": [
+        "WP-020-navigation",
+        "WP-021-preview-ui",
+        "WP-022-inspectors",
+        "WP-023-history-ui",
+        "WP-024-offline-gate"
+      ],
+      "verification_child": "WP-024-offline-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-016.b": {
+      "delivering_children": [
+        "WP-052-accessibility",
+        "WP-052-usability"
+      ],
+      "verification_child": "WP-055-product-gate",
+      "evidence_status": "unrun"
+    },
+    "E2E-017": {
+      "delivering_children": [
+        "WP-054-install",
+        "WP-055-product-gate"
+      ],
+      "verification_child": "WP-055-product-gate",
+      "evidence_status": "unrun"
+    }
+  }
+}

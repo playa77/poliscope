@@ -1,5 +1,9 @@
 # Poliscope — Shared Implementation Work Packages
 
+Execution update (2026-10-17): WP-001 is verified under the recorded SV route;
+see parent acceptance and evidence in the [execution ledger](execution/README.md).
+Other planning packages remain not started.
+
 Status baseline: every package is **not started**. Parent plan: [implementation roadmap](../implementation_roadmap.md). Companion registers: [domains](domain_work_packages.md) and [verification](verification_matrix.md).
 
 ## Reading and using this register

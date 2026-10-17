@@ -209,6 +209,11 @@ Read the [global game design architecture](docs/design_doc.md) and [global techn
 
 ## Development
 
+WP-001 delivery baseline is complete under solo validation. The desktop and engine
+scaffold is pending; the npm/uv commands below describe the planned interface and
+are not runnable yet. See the [execution ledger](docs/roadmap/execution/README.md)
+for current scope, verification commands and next work.
+
 Development requires **Node.js 24 LTS**, **Python 3.12**, and **uv**. Clone the repository and run the following from its root:
 
 ```sh

@@ -1,5 +1,9 @@
 # Poliscope — Work-Package Delivery Plan
 
+Execution update (2026-10-17): WP-001 is complete under sequential SV execution;
+see the [execution ledger](execution/README.md). The revision text below retains
+the original planning baseline, not current execution status.
+
 Revision 0.5 · 2026-10-16 · One to three development agents under human control. Implementation is **not started**. Parent: [roadmap](../implementation_roadmap.md); scope: [shared packages](work_packages.md), [domain packages](domain_work_packages.md), [verification](verification_matrix.md).
 
 ## 1. Allocation unit and responsibilities

@@ -1,5 +1,9 @@
 # Poliscope — Implementation Roadmap
 
+Execution update (2026-10-17): WP-001 and G0/M0 planning acceptance are complete
+under SV; see the [execution ledger](roadmap/execution/README.md). Application
+gates remain open. Statements below describe the original planning baseline.
+
 Revision 0.5 · 2026-10-16 · Development agents allocated at work-package boundaries; implementation has not started.
 
 ## 1. Purpose, authority, and document map

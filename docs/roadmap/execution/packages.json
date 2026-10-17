@@ -1,0 +1,665 @@
+{
+  "version": 1,
+  "packages": {
+    "WP-001": {
+      "title": "Delivery baseline, requirement ledger, and implementation decisions",
+      "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
+      "size": "M",
+      "acceptance_dependencies": "none",
+      "acceptance": "every D/T top-level section maps to packages and a verification owner; all 68 planning packages have capability requirements, dependencies and acceptance criteria; executable-package records require one agent owner/controller and a stable execution plan; the ready queue supports one to three agents and all six capacity changes at package boundaries; active packages remain unchanged; performance and content acceptance have measurable definitions or named blocking decision issues. Approved planning decisions are recorded, not silently substituted for specification requirements. Gate manifests have no undefined \"relevant cases\", unowned mandatory subcase, or implicit future-service dependency. Documentation review records are not application acceptance.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "verified; solo-validated; agent review deferred"
+    },
+    "WP-002": {
+      "title": "Reproducible repository scaffold and development commands",
+      "capabilities": "TL + DESK + ENG",
+      "size": "M",
+      "acceptance_dependencies": "WP-001",
+      "acceptance": "a clean checkout installs with `npm ci` and `uv sync --frozen --python 3.12` without lock changes; commands run from the repository root and propagate failures. Another developer can follow the instructions without undocumented global tools. Runtime/code remains intentionally minimal until later packages.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-003": {
+      "title": "Test harnesses, CI, and evidence capture",
+      "capabilities": "QA; review expertise ENG + DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-002",
+      "acceptance": "a deliberately failing fixture fails the appropriate job; zero selected tests cannot be recorded as readiness; reruns do not accept stale output. Desktop tests actually launch Electron. Test data is isolated from personal civilizations and external paid providers. A deliberately omitted mandatory subcase fails the gate, while a future-only subcase is not required prematurely.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-004": {
+      "title": "Early native packaging and platform feasibility probe",
+      "capabilities": "QA + DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-002, WP-003",
+      "acceptance": "per-target result distinguishes launch success, failure, and unrun; packaged engine does not require user Python. Remaining platform prerequisites have concrete resolutions and block the relevant release claim. This probe certifies process/bundle feasibility, not application functionality.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-005": {
+      "title": "Versioned contracts, schema generation, and compatibility rules",
+      "capabilities": "ENG + TL",
+      "size": "M",
+      "acceptance_dependencies": "WP-002, WP-003",
+      "acceptance": "`contracts:check` detects drift; TS/Python fixtures round-trip without type or numeric loss; unsupported versions fail with a stable code. Valid incomplete/infeasible evaluations remain successful results with findings, rather than transport errors. Fixtures distinguish identical completed replay from key reuse with changed payload, and safe historical readability from permission to compute.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-006": {
+      "title": "Quantity, unit, time-base, and canonical numeric contract",
+      "capabilities": "ENG; review expertise MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-005",
+      "acceptance": "equivalent valid units produce canonical equivalent quantities; incompatible or unknown units fail; cross-language formatting never changes authoritative values. Independent calculations verify time factors, denominator populations and rounding; global Decimal context mutation cannot leak between evaluations. Unsupported precision fails before mutation; retained residuals and accepted transfers satisfy the declared exact balance without an arbitrary tolerance.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-007": {
+      "title": "Canonical world, scopes, membership, and state ownership",
+      "capabilities": "ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-005, WP-006",
+      "acceptance": "watershed/political-region overlap and a cross-settlement care network refer to single underlying stocks/cohorts; aggregation does not duplicate them. A goal cannot mutate conditions/state; invalid membership/identity fails structurally. Two domains cannot independently own/spend the same asset capacity.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-008": {
+      "title": "Pack, source, evidence, and model identity contracts",
+      "capabilities": "MODEL + ENG",
+      "size": "M",
+      "acceptance_dependencies": "WP-005, WP-006",
+      "acceptance": "digest/source/license tampering, incompatible packs, duplicate IDs and missing references are detected. Historical adoption never defaults a fresh player's answer or implies numerical coverage. A qualitative or hypothetical definition can load with honest status but cannot masquerade as a validated numerical rule. A missing historical implementation permits safe data inspection when schemas are supported; invalid references remain rejected. Repeated-variable and common-cause definitions cannot silently become independent samples.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-009": {
+      "title": "SQLite bootstrap, repositories, and backup foundation",
+      "capabilities": "ENG",
+      "size": "M",
+      "acceptance_dependencies": "WP-007, WP-008",
+      "acceptance": "invalid foreign keys roll back; failed transaction leaves the old valid state; backup reopens consistently and preserves identities. Two application instances cannot write the same data directory; cached-result deletion does not delete choices or archived evidence. Clearing every acceleration cache preserves accepted evidence, operation deduplication and private-reference boundaries; historical values remain inspectable without their numeric runtime.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-010": {
+      "title": "Engine stdio transport and process lifecycle",
+      "capabilities": "ENG + DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-005, WP-009",
+      "acceptance": "fragmented/batched lines, oversize input, crash, protocol mismatch, timeout and cancellation each produce a bounded documented outcome. Shutdown leaves no orphan child. No logs or malformed child output can be mistaken for a result. Cold start with a normal-engine protocol mismatch reads supported saved evidence through the trusted reader, not renderer DB access or a prior UI cache.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-011": {
+      "title": "Secure main/preload API and desktop boundaries",
+      "capabilities": "DESK; review expertise TL/QA",
+      "size": "M",
+      "acceptance_dependencies": "WP-005, WP-010",
+      "acceptance": "renderer/adversarial content cannot obtain Node APIs or bypass method validation; a forged/malformed message is rejected before side effects. Desktop starts and reconnects with readable last-known state, and model/protocol mismatches disable edits visibly. A controlled network sink sees no request merely from rendering malicious content; a valid message from an unauthorized frame is rejected.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-012": {
+      "title": "Mechanism registry and bounded declarative composition",
+      "capabilities": "ENG + MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-006, WP-007, WP-008",
+      "acceptance": "two synthetic domains register and exchange typed references without direct cross-module writes. Bad operators/units, execution payloads and undeclared state mutations are rejected. A structurally valid definition without model evidence is not automatically approved scientifically.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-013": {
+      "title": "Scoped policy composition and institutional conflict resolution",
+      "capabilities": "ENG + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-007, WP-012",
+      "acceptance": "overlapping local/regional policies and competing institutions produce explicit unresolved findings until a chosen rule resolves them. Reordering inputs changes no political outcome. Independent unconflicted results remain available.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-014": {
+      "title": "Numerical dependency compiler and declared solver components",
+      "capabilities": "ENG; review expertise MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-006, WP-012, WP-013, WP-015",
+      "acceptance": "chain, diamond and cyclic graphs produce independently derived outputs or honest unresolved/solver-failure statuses; no silent single pass replaces an equilibrium. Graph ordering is deterministic; nonnumerical cycles never invoke a numerical solver solely because they cycle. Two services requesting 100 energy each from supply 100 report outputs based on their actual allocations, totaling at most the supported 100, and an allocation-feedback cycle has a declared solver or explicit unresolved status.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-015": {
+      "title": "Shared accounts, finite allocation, access and budgets",
+      "capabilities": "ENG + MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-006, WP-007, WP-012, WP-013",
+      "acceptance": "independent fixtures cover shared labor contention, overlapping claims, losses/residual products, stock conservation, finite imports, and food existing without household access. Actual allocations never exceed available capacity; insufficiency remains playable and traceable. Actual output, input consumption and residual accounts reconcile under finite contention and precision edge cases.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-016": {
+      "title": "Pure evaluation orchestration, identity and safe caching",
+      "capabilities": "ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-008, WP-013, WP-014, WP-015",
+      "acceptance": "repeated equal canonical inputs give equal results/digests; changed meaningful input/model produces the appropriate changed identity. Injected I/O/randomness is detected in pure evaluation tests. Structural invalidity errors differ from successful insufficient results and dependent missing/failed coverage.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-017": {
+      "title": "Measurements, goal isolation, findings, and trace services",
+      "capabilities": "ENG + MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-016",
+      "acceptance": "every numerical fixture output has a traversable trace; unknown and zero differ; a target edit leaves physical results/allocations unchanged. Missing coverage cannot turn green as whole-system sufficient; warning thresholds and neutral metrics follow named definitions rather than a global margin. Accepted values and explanation closure survive cache eviction and classify redacted or unavailable evidence honestly.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-018": {
+      "title": "Immutable revisions, pure preview, transactional apply and recovery",
+      "capabilities": "ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-009, WP-010, WP-016, WP-017",
+      "acceptance": "preview leaves committed history/head untouched; stale or tampered apply cannot commit; duplicate operation IDs create one decision; crash after commit/before reply recovers the confirmed result. Undo/edit retains both futures and all original alternatives; no automatic history deletion. The headless create/open/query workflow runs without WP-020; retry after head advancement returns the original commit, changed-payload key reuse conflicts, and cross-context reuse cannot reveal another outcome.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-019": {
+      "title": "Independent headless vertical-slice verification",
+      "capabilities": "QA + ENG + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-018",
+      "acceptance": "derive expected accounts separately from implementation and validate them through the declared agent-review or SV route. Record the owner/controller, candidate, derivation, inspection and any deferred review; correct defects before acceptance; the integrated service workflow passes without renderer or provider access; independently derived accounts and preserved histories match persisted/reopened data. The suite fails if conservation, stale checking, goal isolation or shared-state identity is deliberately broken. Performance findings inform DEC-06 rather than replace functional acceptance. M2 selection names actual subcase IDs and has no hidden dependency on M3 target UI or M6 streaming.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-020": {
+      "title": "Synchronized shell, creation flow and navigation",
+      "capabilities": "DESK; review expertise PRODUCT",
+      "size": "M",
+      "acceptance_dependencies": "WP-011, WP-018",
+      "acceptance": "changing branches/scopes cannot display stale results as current; no view maintains its own authoritative civilization. A new sandbox has no injected policies/goals; navigation permits entry through every registered domain regardless of unanswered dependencies.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-021": {
+      "title": "Interviews, alternatives, parameter editing and preview/apply UI",
+      "capabilities": "DESK + PRODUCT",
+      "size": "L",
+      "acceptance_dependencies": "WP-017, WP-018, WP-020",
+      "acceptance": "keyboard-only select → inspect → preview → cancel changes no history; Apply records rationale/full alternatives and one revision. Stale apply refreshes safely; unsupported proposals remain inspectable without executing prose/code; deferring does not block unrelated inquiry.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-022": {
+      "title": "Overview, diagnostic indicators, distributions and trace inspectors",
+      "capabilities": "DESK + MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-017, WP-020, WP-021",
+      "acceptance": "every displayed authoritative quantity opens its corresponding definition/trace; a local unreachable shortage remains visible beside aggregate surplus. All result statuses render distinctly without color dependence; no target edit changes arithmetic or introduces a score.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-023": {
+      "title": "History, undo/fork and compatible design comparisons",
+      "capabilities": "ENG + DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-018, WP-020, WP-022",
+      "acceptance": "edit after undo retains both descendants; restart preserves lineage and context. Compatible comparisons match independent deltas; incompatible scope/unit/model fixtures explain why subtraction is unavailable. No branch gets an implicit rank. A historical comparison reports whether each value is retained evidence, freshly computed or unavailable.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-024": {
+      "title": "Integrated offline design milestone",
+      "capabilities": "QA + PRODUCT; review expertise TL + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-019, WP-021, WP-022, WP-023",
+      "acceptance": "M2 exit in the roadmap is demonstrated end to end offline; the UI, actual engine and reopened SQLite agree. Outstanding failures are diagnosed and assigned; a working demo cannot waive numerical/history defects. The manifest rejects missing mandatory subcases while leaving explicitly future-only cases unrun without mislabeling the M2 gate.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-025": {
+      "title": "Society corpus inventory and provenance-preserving importer",
+      "capabilities": "MODEL; review expertise PRODUCT + ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-008",
+      "acceptance": "every source domain/branch and imported decision is accounted for in an inventory report; rerun on identical inputs produces identical outputs; later supersession wins only through explicit links. If source access/license is unavailable, synthetic framework work proceeds while source-derived release content remains blocked and labeled.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-026": {
+      "title": "Content build, validation, reviewed model activation and setups",
+      "capabilities": "MODEL + ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-012, WP-017, WP-025",
+      "acceptance": "invalid references, bad digests, absent attribution and unsupported numerical activation fail validation; every activated rule links to reviewed evidence/fixtures. A new blank sandbox selects neither reference policies nor goals. Rebuilt packs retain stable identities when unchanged.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-027": {
+      "title": "Domain conformance harness and interface ownership registry",
+      "capabilities": "ENG + QA + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-019, WP-026",
+      "acceptance": "a conforming synthetic module passes and deliberate double-write/double-spend/invalid-unit modules fail. Every DOM package can start against stable shared fixtures; counterpart acceptance dependencies and unresolved ownership are visible. Domain-specific engines/databases are rejected by review.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-028": {
+      "title": "Decision atlas and full question/alternative search",
+      "capabilities": "DESK + ENG",
+      "size": "M",
+      "acceptance_dependencies": "WP-020, WP-021, WP-026, WP-027",
+      "acceptance": "queries retrieve selected and unanswered alternatives with correct filters and pagination; source-maintenance records do not become civic questions. Opening an item preserves revision/scope and presents all archived alternatives even after a catalog update.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-029": {
+      "title": "Sparse domain/decision/scope matrices and relationship drill-down",
+      "capabilities": "ENG + DESK",
+      "size": "L",
+      "acceptance_dependencies": "WP-017, WP-023, WP-027, WP-028",
+      "acceptance": "asymmetric and mixed-type cells display correct direction/type; filtering does not fabricate independence or causality. Drill-down reaches the same account/trace as the interview; all list actions are keyboard-equivalent and large sparse fixtures stay bounded.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-030": {
+      "title": "World, institutions, topology and distribution exploration",
+      "capabilities": "DESK + ENG + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-007, WP-022, WP-027, WP-029",
+      "acceptance": "editing a shared asset/obligation appears consistently in domain, matrix and world views; overlapping jurisdiction is representable without cloning entities. Diagram layout changes cannot alter simulation inputs/results; tables reveal the same relationships.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-031": {
+      "title": "Evidence/models workspace, assumptions, goals and notes",
+      "capabilities": "DESK + ENG + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-017, WP-021, WP-023, WP-026",
+      "acceptance": "a player can follow a result to its input/assumption/source, edit a supported assumption and compare branches. Goal edits leave physics unchanged; historical evidence is still readable after source/model updates; qualitative records cannot silently activate arithmetic. At M3, standalone classification/projection fixtures exclude private canaries in old notes/derived excerpts and preserve physical result identities; the production history-inclusive archive case is required at M5 through WP-039, not a hidden prerequisite of WP-031.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-032": {
+      "title": "Twelve-domain static integration and coverage gate",
+      "capabilities": "TL + QA + MODEL + PRODUCT",
+      "size": "L",
+      "acceptance_dependencies": "WP-024, WP-028, WP-029, WP-030, WP-031; static deliverables of DOM-01–DOM-12",
+      "acceptance": "all twelve static modules pass the conformance harness and counterpart checks; the shared education fixture exposes independent shortages, rights/access issues and unresolved gaps without double-counting or assigning a score. Every source branch is represented/classified; absent implementation is labeled, never implied complete by catalog presence. M3 evidence leaves domain transition work explicitly open for M4.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-033": {
+      "title": "Calendar, multirate scheduling and effective changes",
+      "capabilities": "ENG + MODEL",
+      "size": "M",
+      "acceptance_dependencies": "WP-006, WP-012, WP-018",
+      "acceptance": "year-view fast-forward still records an intermediate daily shortage; same-boundary events replay identically. A future policy does not alter past states; unsupported adoption delay/transition stays a coverage gap rather than an instant effect. Disjoint and conflicting adoptions approved from one base, including same-boundary events, preserve unrelated policies, accumulated assets/stocks and pending cases.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-034": {
+      "title": "Atomic transition reduction and shared dynamic invariants",
+      "capabilities": "ENG + MODEL",
+      "size": "L",
+      "acceptance_dependencies": "WP-015, WP-016, WP-027, WP-033",
+      "acceptance": "simultaneous domains cannot spend the same labor/stock twice; before/after conservation and model-specific invariants pass independently derived fixtures. Cancellation resumes from a confirmed boundary; missing transition behavior is explicit. Domain transition portions are tested against their accepted counterparts. Invariant failure and cancellation/crash at every stage expose only a valid confirmed boundary; no query observes an invalid candidate.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-035": {
+      "title": "Reproducible stochastic events and random-stream identity",
+      "capabilities": "ENG; review expertise MODEL + QA",
+      "size": "M",
+      "acceptance_dependencies": "WP-016, WP-033, WP-034",
+      "acceptance": "replay reproduces realizations/results; enabling an unrelated module cannot shift another module's random sequence. A source interval is never sampled without a declared model, and a changed RNG/runtime identity cannot be advertised as exact historical reproduction. Same-definition instances in one scope do not collide; unrelated insertion/draw purposes and checkpoint resume preserve existing realizations; paired forks and new-seed forks follow their declared policy.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-036": {
+      "title": "Experiment persistence, checkpoints, pause/replay and timeline forks",
+      "capabilities": "ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-018, WP-034, WP-035",
+      "acceptance": "continuous run, checkpoint-resume and recorded-event replay yield equivalent canonical state/results under the same runtime. Crash/cancel/reopen loses no confirmed transition; retrospective edits preserve the original experiment; no wall-clock dependency enters simulation state. Injected crashes immediately before/after DB commit preserve exactly the confirmed boundary and recover uncertain outcomes without duplicate advancement.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-037": {
+      "title": "Timeline, event scheduling, experiment comparison and presentation",
+      "capabilities": "DESK + ENG + PRODUCT",
+      "size": "M",
+      "acceptance_dependencies": "WP-023, WP-030, WP-036",
+      "acceptance": "scheduling a future policy and forking a past state have visibly different histories and results. Cancel cannot display an uncommitted boundary as saved. Comparison explains incompatible clocks/models and never substitutes zero for missing outcomes.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-038": {
+      "title": "Uncertainty, sensitivity and optional capacity-bound solving",
+      "capabilities": "ENG + MODEL; review expertise PRODUCT",
+      "size": "L",
+      "acceptance_dependencies": "WP-014, WP-017, WP-023, WP-036",
+      "acceptance": "independent bounded examples produce expected feasible/infeasible limits and range-aware findings; unsupported propagation is labeled. Changing a player target cannot invoke an optimizer or alter the bound's declared physical constraints; stochastic sampling requires a defined distribution and stream. `x + (1-x)` for the same bounded variable remains 1 under an exact supported method, and declared dependent hazards preserve their joint shortage probability; unsupported methods report coverage limits.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-039": {
+      "title": "Versioned portable archives and transactional safe import/export",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "size": "L",
+      "acceptance_dependencies": "WP-008, WP-018, WP-026, WP-036",
+      "acceptance": "offline export/import into a new user-data directory preserves designs, forks, experiments and source identities; corrupted/hostile archives leave no partial civilization. Privacy fixtures prove prohibited key material is always absent and optional private content appears only when selected. Cache eviction plus an unavailable old runtime still permits an ordinary round-trip of retained evidence; unreadable/unsafe schemas fail without mutation, while safe absent-mechanism archives open read-only. Historical private canaries stay excluded.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-040": {
+      "title": "Markdown inquiry reports and typed CSV exports",
+      "capabilities": "ENG + DESK + PRODUCT",
+      "size": "M",
+      "acceptance_dependencies": "WP-022, WP-031, WP-037, WP-039",
+      "acceptance": "report/CSV quantities match Python results and comparability semantics; missing/unmodeled values are labeled rather than zero. A recipient can distinguish hypothesis, calculation, historical source and optional AI explanation; text/CSV escaping round-trips safely.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-041": {
+      "title": "Schema/model migrations, historical mode and recovery workflows",
+      "capabilities": "ENG + DESK + QA",
+      "size": "L",
+      "acceptance_dependencies": "WP-009, WP-018, WP-036, WP-039",
+      "acceptance": "backup/restore and failed migration preserve all confirmed history; model migration leaves the original branch/results readable. Save failure leaves preview visibly unsaved; an unavailable runtime yields honest historical inspection, never silent recomputation or data deletion. Cold-start mismatch and absent-model imports work without prior UI caches; cache deletion cannot remove retained accepted results, and backup restore retains replay identity and redaction status.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-042": {
+      "title": "Provider profiles, secure keys and main-owned networking",
+      "capabilities": "DESK; review expertise QA/security",
+      "size": "L",
+      "acceptance_dependencies": "WP-011",
+      "acceptance": "protected and unavailable-backend fixtures behave correctly; profile switch/redirect cannot leak a key to another host or engine child. Removal cancels in-flight work; storage/log/archive/renderer APIs contain neither raw keys nor key blobs outside the approved store.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-043": {
+      "title": "Provider adapter contracts and live capability/catalog metadata",
+      "capabilities": "DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-042",
+      "acceptance": "mock current/unknown/stale/removed models and metadata evolve without data loss; unsupported controls/modalities cannot be silently enabled. Key-status errors are safe and actionable. Endpoint/schema evidence and later live outcomes are tracked separately from mock coverage.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-044": {
+      "title": "Typed request builder, routing, generation controls and structured output",
+      "capabilities": "DESK; review expertise TL/QA",
+      "size": "L",
+      "acceptance_dependencies": "WP-043",
+      "acceptance": "request snapshots match current documented schemas; unsupported selected controls fail before send or show a specific provider rejection. Structured-invalid responses do not become valid proposals; fallback occurs only when configured and actual identity is reported when available.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-045": {
+      "title": "Generation, fragmented SSE, cancellation and deliberate retry",
+      "capabilities": "DESK + QA",
+      "size": "L",
+      "acceptance_dependencies": "WP-044",
+      "acceptance": "fragmented/parallel tool stream fixtures assemble correctly, malformed/incomplete streams remain explicit, and cancelled output never becomes a completed answer. Branch switching cannot relabel a reply; timeout/uncertain acceptance cannot trigger duplicate paid requests automatically. A continuation cannot bypass a turn/session gate and uncertain dispatch never releases reserved exposure merely because the stream was cancelled.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-046": {
+      "title": "Grounded context, read-only tools and proposal authority boundary",
+      "capabilities": "ENG + DESK; review expertise QA/security",
+      "size": "L",
+      "acceptance_dependencies": "WP-017, WP-018, WP-023, WP-031, WP-044, WP-045",
+      "acceptance": "prompt injection, forged revision IDs and tool arguments cannot cross the allowlist or change committed state. Read-only tools use the turn's immutable context; AI proposal becomes one player-approved ordinary apply, with its source/coverage retained. No-tool models can explain supplied context with visible limits. Injection requesting excluded branch/private data produces no unauthorized bytes or existence metadata in provider-visible requests; revocation blocks later dispatches.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-047": {
+      "title": "Modalities, attachments, reasoning and conversation compatibility",
+      "capabilities": "DESK + ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-039, WP-043, WP-045, WP-046",
+      "acceptance": "capability matrix covers each modality and supported output path; incompatible file/model/history combinations produce explicit explanations. Neither a model switch nor attachment reuse silently broadens shared context. Opaque private reasoning is not forwarded to an incompatible provider or treated as computed fact. A controlled sink sees no render-triggered network traffic; historical/derived canaries do not escape omission controls, and local resource decoding remains bounded.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-048": {
+      "title": "Usage reconciliation, Decimal costs and spending controls",
+      "capabilities": "ENG + DESK",
+      "size": "M",
+      "acceptance_dependencies": "WP-006, WP-009, WP-043, WP-045",
+      "acceptance": "independent fixtures reconcile estimates→actual, usage-only events, missing totals, cancellation and late metadata without double charge or false zero. Budget gate blocks new requests as configured; no claim promises abort eliminates upstream cost. With allowance 1 and two simultaneous estimates of 0.6, at most one dispatch receives a grant. Tool rounds recheck gates; duplicate grants, late actuals and cancellations neither double-charge nor prematurely release exposure.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-049": {
+      "title": "Assistant workspace, provider settings and transcript lifecycle",
+      "capabilities": "DESK + PRODUCT",
+      "size": "L",
+      "acceptance_dependencies": "WP-037, WP-042, WP-046, WP-047, WP-048",
+      "acceptance": "users can inspect context, choose route/model, stop a reply, inspect cost and apply an ordinary proposal without granting assistant mutation authority. Deleting transcripts preserves choices/history; changing branch leaves old replies correctly labeled. Offline authored interviews and reports remain functional. An accepted proposal retains only its explicitly promoted design content; deleted/unshared conversation data is absent from later contexts and unselected exports.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-050": {
+      "title": "Provider compatibility matrix and bounded live validation",
+      "capabilities": "QA + DESK; review expertise TL/PRODUCT",
+      "size": "L",
+      "acceptance_dependencies": "WP-043, WP-044, WP-045, WP-046, WP-047, WP-048, WP-049",
+      "acceptance": "all required application-side capability paths pass mock/integration checks; live evidence supports the stated compatibility claims. Missing credentials/credits or a denied capability is recorded as a concrete external prerequisite, not quietly marked passed. A full OpenRouter claim is blocked by required unverified live behavior; offline capability remains separately demonstrable. Concurrent dispatch and continuation cannot bypass granted spend or sharing scope even under cancellation and late metadata.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-051": {
+      "title": "Scale fixtures, dependency caching and responsiveness budgets",
+      "capabilities": "ENG + DESK + QA",
+      "size": "L",
+      "acceptance_dependencies": "WP-032, WP-037, WP-038, WP-049",
+      "acceptance": "agreed numeric budgets are met with current-run measurements or release is blocked by a named performance issue. Warm/cold cache outputs agree; renderer remains usable while work is cancellable; optimizations preserve canonical digests and no data ownership boundary is bypassed.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-052": {
+      "title": "Accessibility, prose clarity and educational usability",
+      "capabilities": "QA + PRODUCT + DESK",
+      "size": "L",
+      "acceptance_dependencies": "WP-024, WP-028, WP-029, WP-030, WP-031, WP-037, WP-040, WP-049",
+      "acceptance": "every core action is keyboard-completable, graph-only information has accessible equivalents, and blocking accessibility defects are resolved. Usability evidence shows a reader can identify which state a result describes and explain its assumption/coverage without requiring AI.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-053": {
+      "title": "Threat review, privacy audit and fault-injection recovery",
+      "capabilities": "QA/security + TL",
+      "size": "L",
+      "acceptance_dependencies": "WP-011, WP-039, WP-041, WP-042, WP-046, WP-049",
+      "acceptance": "no arbitrary renderer/content execution or assistant commit path; keys cannot cross prohibited boundaries. Recovery preserves last confirmed revisions/transitions, shows uncertain/unsaved states accurately and leaves provider failure isolated from civilization/history. Findings have severity, owner, fix and retest evidence. The sink receives no unsolicited render request or out-of-envelope disclosure; no fault exposes an invalid boundary or duplicate mutation.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-054": {
+      "title": "Native build, signing, installers and bundled-engine validation",
+      "capabilities": "QA + DESK + ENG",
+      "size": "L",
+      "acceptance_dependencies": "WP-004, WP-041, WP-049, WP-053",
+      "acceptance": "all four native target combinations run the bundled engine and pass declared invariants/replay and desktop smoke checks. Missing runner/signing/notarization is explicit and blocks the affected distribution claim. Artifact checksums and version/digest mapping are retained; packaged behavior is not inferred from development mode.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-055": {
+      "title": "Whole-product end-to-end validation and model evidence audit",
+      "capabilities": "QA + MODEL + PRODUCT; review expertise TL",
+      "size": "L",
+      "acceptance_dependencies": "WP-032, WP-037, WP-038, WP-040, WP-041, WP-050, WP-051, WP-052, WP-053, WP-054; full DOM-01–DOM-12",
+      "acceptance": "every requirement row has a current evidence link and owner; all required gates pass with no unexplained failures/unrun required checks. Coverage gaps are honestly named and match DEC-04; no trivial unit/format check substitutes for the intended functional workflow. Confirmed application defects remain separate from missing model mechanisms or external test prerequisites. Gate manifests and retained evidence identify the same candidate, including explicit redaction/unavailability and declared deferred review.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "WP-056": {
+      "title": "Release candidate freeze, documentation and handoff",
+      "capabilities": "TPM + QA + TL + PRODUCT",
+      "size": "M",
+      "acceptance_dependencies": "WP-055",
+      "acceptance": "a new contributor can install/run/test from documented commands, and a native end user needs neither Python nor an AI account for core tasks. Release inventory and evidence identify the same frozen candidate; publication status is reported accurately. Complete-product delivery requires all roadmap gates, not only a downloadable package. Release notes distinguish specified fixes from implemented and executed validation; no documentation-only evidence certifies application behavior.",
+      "source": "docs/roadmap/work_packages.md",
+      "status": "not started"
+    },
+    "DOM-01": {
+      "title": "I. Resource & Material Base (`provisioning`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-02, DOM-05, DOM-08, DOM-10, DOM-12.",
+      "acceptance": {
+        "static": "independent fixtures prove `opening + inflows = closing + outflows + losses`, yield/residual correctness, single reservation deduction and shared labor contention. A distant surplus with no throughput cannot satisfy a local claim; an access-denied group can lack food while aggregate food exists.",
+        "dynamic": "production/delivery/use boundaries conserve stock across checkpoint replay; pause/cancel cannot commit half a movement. Recycling returns only declared yields; seasonal/daily schedules cannot double-spend the same supply. Missing production or logistics models remain visible gaps."
+      },
+      "branches": "production; distribution/logistics; consumption, waste and circular loops.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-02": {
+      "title": "II. Economy & Exchange (`economy`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-03, DOM-04, DOM-05, DOM-06, DOM-07, DOM-08.",
+      "acceptance": {
+        "static": "stock exists but a group lacks entitlement; different declared access procedures allocate the same fixed stock differently without changing total supply. Work/care/training demands compete for one population/time budget. Unspecified allocation precedence yields conflict/unresolved status.",
+        "dynamic": "settlement and recurring allocation honor dated rights/rules and retain audit traces; no double settlement on replay/retry. Policy changes have explicit effective times; unmodeled price/behavior responses remain qualitative rather than automatic market equilibrium claims."
+      },
+      "branches": "value/exchange; labor/work; ownership/property; wealth distribution.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-03": {
+      "title": "III. Governance & Collective Decision-Making (`governance`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-02, DOM-04, DOM-06, DOM-09, DOM-11, DOM-12.",
+      "acceptance": {
+        "static": "overlapping jurisdiction or incompatible policy bindings yield a named institutional conflict until a declared resolution applies; file/ID order never chooses the authority. Representation/eligibility procedures match independent examples and administrative claims share labor/capacity with other services.",
+        "dynamic": "a delayed procedure does not take effect early or conjure capacity; event ordering/replay preserves the same stage/outcome. Disclosure delay can interact with communication, oversight and risk response without inventing behavioral legitimacy effects."
+      },
+      "branches": "political structure; decision processes; power/accountability.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-04": {
+      "title": "IV. Law, Order & Conflict Resolution (`law_conflict`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-02, DOM-03, DOM-05, DOM-07, DOM-09, DOM-11, DOM-12.",
+      "acceptance": {
+        "static": "an eligible claimant with no available service retains both the right and the unmet claim. Adjudication cannot process more cases than declared capacity; conflicting authority remains explicit. Independent procedural fixtures verify outcome/rationale and group distribution.",
+        "dynamic": "cases/revisions/obligations persist across checkpoint replay and approved effective changes; pending cases are not erased by policy switches. Unspecified external enforcement cannot become guaranteed delivery or rescue."
+      },
+      "branches": "norms/rights; enforcement; dispute resolution; inter-group conflict.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-05": {
+      "title": "V. Social Organization & Relationships (`social_organization`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-02, DOM-04, DOM-06, DOM-07, DOM-11.",
+      "acceptance": {
+        "static": "one cohort shared by several community networks is counted once in civilization population and time supply. Care, employment and learning compete for the same represented time budget; a declared care obligation can remain unmet and is inspectable by affected group.",
+        "dynamic": "changing an arrangement updates obligations/membership coherently at its declared boundary without duplicating people or capacity. Cohort/household transitions replay identically; missing migration/life-course behavior is labeled instead of fabricated."
+      },
+      "branches": "households/kinship; community; life-course and care.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-06": {
+      "title": "VI. Knowledge, Education & Culture (`knowledge_culture`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; all other domains for the D §5.7 integration path; primary service interfaces DOM-02, DOM-03, DOM-05, DOM-08, DOM-09, DOM-11.",
+      "acceptance": {
+        "static": "the education integration fixture follows the same people/assets/accounts through provisioning, economy, care, health, authority/rights, information, ecology, identity and risk. Staffing or facility shortages constrain service, while unsupported learning/social effects remain explicit.",
+        "dynamic": "declared training duration cannot complete instantly; skills/capacity changes occur once at the defined boundary and replay from checkpoints. Unmodeled research/cultural effects remain qualitative without preventing service/account inspection."
+      },
+      "branches": "research/archives; education/training; cultural production.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-07": {
+      "title": "VII. Health & Wellbeing (`health`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-02, DOM-04, DOM-05, DOM-06, DOM-08, DOM-09, DOM-10, DOM-12.",
+      "acceptance": {
+        "static": "aggregate staffed capacity can coexist with a locally inaccessible group; entitlement does not create actual treatment capacity. Independent fixtures check demand denominators, cohort totals and competing staff/time/supplies.",
+        "dynamic": "selected transitions remain bounded and reconcile population/services exactly as their model states, with explicit exposure timing and replay. Unavailable health/demographic models return coverage gaps rather than claimed causal forecasts."
+      },
+      "branches": "physical health; mental/emotional wellbeing; birth, life, death and care.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-08": {
+      "title": "VIII. Infrastructure & Built Environment (`infrastructure`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-02, DOM-03, DOM-06, DOM-07, DOM-09, DOM-10, DOM-12.",
+      "acceptance": {
+        "static": "a surplus service cannot cross a disconnected or undersized link; a facility ID supplies finite capacity once to competing domains. Housing/service quantities have dimensions and group/location denominators, and diagrams/tables show the same topology.",
+        "dynamic": "construction does not supply capacity before modeled completion; maintenance/repair competes for shared stock/labor and replay preserves lifecycle state. Hazard damage cannot be reversed by automatic unmodeled repair."
+      },
+      "branches": "physical infrastructure; spatial organization; digital infrastructure.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-09": {
+      "title": "IX. Communication & Information (`communication`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-03, DOM-04, DOM-06, DOM-07, DOM-08, DOM-11, DOM-12.",
+      "acceptance": {
+        "static": "eligibility and channel reach can differ; claimed publication without delivery/verification capacity remains incomplete. Two domains compete for the same represented channel capacity; sources/explanations distinguish documentary influence from numerical dependence.",
+        "dynamic": "declared delay affects institutional/response timing through explicit ports, not a global communication multiplier. Replay preserves delivery states and privacy/access rules; a policy change cannot expose actual application secrets or share player data. Application private payloads and derived copies remain classified and referenced outside immutable simulation records; domain source/trace rendering cannot cause passive network requests or widen a turn's sharing capability."
+      },
+      "branches": "information flow/verification; communication; mediated information and privacy.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-10": {
+      "title": "X. Environment & Human–Nature Relationship (`environment`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-06, DOM-07, DOM-08, DOM-12.",
+      "acceptance": {
+        "static": "extraction/emissions reference the same physical stocks/sinks across regions; weighted scope views cannot spend them twice. Independent units/time/area fixtures verify accounting; a chosen limit breach is distinct from a physical shortage or uncertain boundary.",
+        "dynamic": "inflow/extraction/regeneration/loss transitions reconcile at defined time steps and retain uncertainty/coverage. Source ranges are not sampled without declared distributions; checkpoint replay preserves shared ecological state. A declared common drought variable affects provisioning, exposure/health and ecological demand through one joint realization; unsupported dependence is qualified rather than silently independently sampled."
+      },
+      "branches": "stewardship; resource sustainability; land/ecosystem relations.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-11": {
+      "title": "XI. Meaning, Values & Identity (`meaning_identity`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-03, DOM-04, DOM-05, DOM-06, DOM-09.",
+      "acceptance": {
+        "static": "two groups with different accommodation needs can share institutions/resources and generate inspectable capacity/rights conflicts. The procedure produces executable eligibility/obligation results; catalog text alone does not pass. Neither player goals nor inherited source commitments silently alter world state.",
+        "dynamic": "dated accommodation/participation rules update obligations once, with deterministic schedule/replay and explicit unavailable effects. Editing an aspiration cannot produce stock, hazard, health or behavioral changes unless a reviewed mechanism explicitly supplies the link."
+      },
+      "branches": "belief; identity/belonging; purpose, ritual and aspiration.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    },
+    "DOM-12": {
+      "title": "XII. Security & Risk Management (`security_risk`)",
+      "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
+      "size": "L",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; all domains with exposed capacity or obligations; primary fixtures DOM-01, DOM-03, DOM-07, DOM-08, DOM-09, DOM-10.",
+      "acceptance": {
+        "static": "preparedness reserves are deducted once and compete with ordinary service demands; external help remains finite/conditional. Exposure/continuity findings have defined scope/time/evidence and no universal security score.",
+        "dynamic": "the same realization replays across checkpoint/resume, same-definition instances in one scope have distinct stable stream keys, unrelated module/draw insertion does not shift existing draws, and a disruption produces consistent coupled service/resource/authority findings. Failure leaves the design playable; unmodeled recovery remains an unresolved requirement."
+      },
+      "branches": "physical security; systemic risk; technological risk.",
+      "source": "docs/roadmap/domain_work_packages.md",
+      "status": "not started"
+    }
+  }
+}
