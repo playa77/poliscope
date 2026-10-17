@@ -1,0 +1,301 @@
+{
+  "version": 1,
+  "source": "docs/roadmap/verification_matrix.md \u00a75.1",
+  "cases": {
+    "E2E-001": {
+      "scope": "Complete create \u2192 preview/cancel/apply \u2192 trace \u2192 reopen offline workflow",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-018 production creation/query and WP-020/021/022 consumers"
+    },
+    "E2E-002.a": {
+      "scope": "Unanswered/qualitative/incomplete design, no forced progression and navigation to another domain",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-017/018/021"
+    },
+    "E2E-002.b": {
+      "scope": "Engine target edit/observation leaves physical results and allocation unchanged; no target UI required",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-017/018"
+    },
+    "E2E-002.c": {
+      "scope": "Persisted target/note editing UI, private classification and cross-view observation",
+      "first_gate": "G3",
+      "prerequisite": "G3; WP-031"
+    },
+    "E2E-003.a": {
+      "scope": "Synthetic finite stock/labor contention, loss, reservation, finite import and group access; actual output follows allocated input; precision edge rejection/residuals",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-006/014/015/019"
+    },
+    "E2E-003.b": {
+      "scope": "Corresponding production domain mechanisms/counterparts and distributions across the declared all-domain inventory",
+      "first_gate": "G3",
+      "prerequisite": "G3; WP-032 and static DOM packages"
+    },
+    "E2E-004.a": {
+      "scope": "Synthetic canonical overlap, single accounting and unresolved policy conflicts invariant under input order",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-007/013/019"
+    },
+    "E2E-004.b": {
+      "scope": "Domain harness/counterpart and world/matrix projections for that overlap",
+      "first_gate": "G3",
+      "prerequisite": "G3; WP-027/030/032"
+    },
+    "E2E-005": {
+      "scope": "Complete stale/tampered/duplicate/lost-reply/undo workflow, including identical completed retry after head advancement, operation-status lookup and changed-payload/cross-context key reuse",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-018/023"
+    },
+    "E2E-006.a": {
+      "scope": "Switch scope/branch during ordinary queries, crash/restart, cold protocol mismatch through trusted historical reader, failed save and correctly labeled last-confirmed/unsaved state; no provider streaming",
+      "first_gate": "G2",
+      "prerequisite": "G2; minimal reader in WP-010/011 and WP-018/020"
+    },
+    "E2E-006.b": {
+      "scope": "Switch branch during provider streaming and reject late/cancelled updates without relabeling a reply",
+      "first_gate": "G6",
+      "prerequisite": "G6; WP-045/049"
+    },
+    "E2E-006.c": {
+      "scope": "Expanded forced-close/disk/permission/protocol/network fault matrix across all production paths",
+      "first_gate": "G7",
+      "prerequisite": "G7; WP-053"
+    },
+    "E2E-007": {
+      "scope": "Complete mixed-rate/authored/stochastic run, instance/event/draw identity, paired/new-realization forks and checkpoint/replay; inject invariant failure and crashes before/after durable boundary commit",
+      "first_gate": "G4",
+      "prerequisite": "G4; WP-033\u2013WP-036"
+    },
+    "E2E-008": {
+      "scope": "Complete all-domain entry/education/atlas/matrix/world/evidence workflow",
+      "first_gate": "G3",
+      "prerequisite": "G3; WP-028\u2013WP-032 and static DOM packages"
+    },
+    "E2E-009": {
+      "scope": "Complete future-adoption/counterfactual/disruption workflow; disjoint/conflicting same-base deltas and same-boundary ordering preserve unrelated policies, stocks/assets and pending cases",
+      "first_gate": "G4",
+      "prerequisite": "G4; WP-033\u2013WP-037 and selected domain transitions"
+    },
+    "E2E-010.a": {
+      "scope": "Compatible/incompatible design comparison with independent deltas, no ranking or missing-as-zero",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-023"
+    },
+    "E2E-010.b": {
+      "scope": "Sensitivity, explicit capacity bound, repeated/shared uncertain variables and common-cause dependence; qualified unsupported methods",
+      "first_gate": "G4",
+      "prerequisite": "G4; WP-035/038"
+    },
+    "E2E-011": {
+      "scope": "Complete ordinary/reduced archive, fresh-directory round trip and Markdown/CSV; invalid/hostile import is transactional; omission covers historical/derived private copies",
+      "first_gate": "G5",
+      "prerequisite": "G5; WP-039/040 (WP-053 later expands attacks)"
+    },
+    "E2E-012.a": {
+      "scope": "Main/preload sender/frame and schema enforcement, untrusted rendering, passive resource network sink and bounded IPC errors",
+      "first_gate": "G1",
+      "prerequisite": "G1; WP-010/011"
+    },
+    "E2E-012.b": {
+      "scope": "Trusted registry/bounded expression and invalid-unit/operator/state-write attacks",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-012/014/015"
+    },
+    "E2E-012.c": {
+      "scope": "Archive/portable-content path, type, hash, decompression, executable-content and transactional rejection cases",
+      "first_gate": "G5",
+      "prerequisite": "G5; WP-039/041"
+    },
+    "E2E-012.d": {
+      "scope": "Full combined attachment/prompt/provider/import/renderer attack and recovery matrix",
+      "first_gate": "G7",
+      "prerequisite": "G7; WP-047/053"
+    },
+    "E2E-013": {
+      "scope": "Complete provider capability/failure/usage scenario, concurrent reservations and per-continuation dispatch gates; explicit bounded live cases remain separately authorized",
+      "first_gate": "G6",
+      "prerequisite": "G6; WP-042\u2013WP-050"
+    },
+    "E2E-014": {
+      "scope": "Complete sharing/tool/proposal/deletion workflow; inspect every outbound payload including history, errors, tool results, artifacts and continuations; test revocation/out-of-envelope retrieval",
+      "first_gate": "G6",
+      "prerequisite": "G6; WP-046\u2013WP-049"
+    },
+    "E2E-015.a": {
+      "scope": "Applied-revision values/trace closure survive complete acceleration-cache eviction and missing numeric runtime; minimal trusted read-only inspection",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-009/010/017/018"
+    },
+    "E2E-015.b": {
+      "scope": "Confirmed timeline evidence and operation outcomes survive checkpoint/cache eviction and restart",
+      "first_gate": "G4",
+      "prerequisite": "G4; WP-034/036"
+    },
+    "E2E-015.c": {
+      "scope": "Structurally safe absent-mechanism archives open read-only, unreadable schemas preserve originals with a diagnostic, reduced/legacy evidence is labeled, explicit model migration and interrupted backup/restore preserve old evidence/deduplication",
+      "first_gate": "G5",
+      "prerequisite": "G5; WP-039/041"
+    },
+    "E2E-016.a": {
+      "scope": "Keyboard-only core offline creation/interview/preview/account/trace/fork/comparison tasks, status text and focus recovery",
+      "first_gate": "G2",
+      "prerequisite": "G2; WP-020\u2013WP-024"
+    },
+    "E2E-016.b": {
+      "scope": "Complete learner inquiry/report task and accessibility audit across every delivered workspace",
+      "first_gate": "G7",
+      "prerequisite": "G7; WP-052/055"
+    },
+    "E2E-017": {
+      "scope": "Complete native install/offline/replay/round-trip/key-removal workflow on all four targets",
+      "first_gate": "G7",
+      "prerequisite": "G7; WP-054/055"
+    }
+  },
+  "gates": {
+    "G0": [],
+    "G1": [
+      "E2E-012.a"
+    ],
+    "G2": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-003.a",
+      "E2E-004.a",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-010.a",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-015.a",
+      "E2E-016.a"
+    ],
+    "G3": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-002.c",
+      "E2E-003.a",
+      "E2E-003.b",
+      "E2E-004.a",
+      "E2E-004.b",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-008",
+      "E2E-010.a",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-015.a",
+      "E2E-016.a"
+    ],
+    "G4": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-002.c",
+      "E2E-003.a",
+      "E2E-003.b",
+      "E2E-004.a",
+      "E2E-004.b",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-007",
+      "E2E-008",
+      "E2E-009",
+      "E2E-010.a",
+      "E2E-010.b",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-015.a",
+      "E2E-015.b",
+      "E2E-016.a"
+    ],
+    "G5": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-002.c",
+      "E2E-003.a",
+      "E2E-003.b",
+      "E2E-004.a",
+      "E2E-004.b",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-007",
+      "E2E-008",
+      "E2E-009",
+      "E2E-010.a",
+      "E2E-010.b",
+      "E2E-011",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-012.c",
+      "E2E-015.a",
+      "E2E-015.b",
+      "E2E-015.c",
+      "E2E-016.a"
+    ],
+    "G6": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-002.c",
+      "E2E-003.a",
+      "E2E-003.b",
+      "E2E-004.a",
+      "E2E-004.b",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-006.b",
+      "E2E-007",
+      "E2E-008",
+      "E2E-009",
+      "E2E-010.a",
+      "E2E-010.b",
+      "E2E-011",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-012.c",
+      "E2E-013",
+      "E2E-014",
+      "E2E-015.a",
+      "E2E-015.b",
+      "E2E-015.c",
+      "E2E-016.a"
+    ],
+    "G7": [
+      "E2E-001",
+      "E2E-002.a",
+      "E2E-002.b",
+      "E2E-002.c",
+      "E2E-003.a",
+      "E2E-003.b",
+      "E2E-004.a",
+      "E2E-004.b",
+      "E2E-005",
+      "E2E-006.a",
+      "E2E-006.b",
+      "E2E-006.c",
+      "E2E-007",
+      "E2E-008",
+      "E2E-009",
+      "E2E-010.a",
+      "E2E-010.b",
+      "E2E-011",
+      "E2E-012.a",
+      "E2E-012.b",
+      "E2E-012.c",
+      "E2E-012.d",
+      "E2E-013",
+      "E2E-014",
+      "E2E-015.a",
+      "E2E-015.b",
+      "E2E-015.c",
+      "E2E-016.a",
+      "E2E-016.b",
+      "E2E-017"
+    ]
+  }
+}

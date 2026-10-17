@@ -41,6 +41,15 @@ or treating planned behavior as implemented behavior.
 
 ## Work packages and handoffs
 
+- Use one full work package per task and one branch based on current `main`.
+  Complete implementation and relevant checks, commit the complete change set,
+  push the branch, and open a regular (non-draft) PR against `main` before handing
+  back. Report the PR URL, actual scope, checks and limitations. Do not merge
+  without user authorization or label an uncommitted workspace as delivered.
+- Finish the full allocated work package before handing back. When the request
+  covers a planning parent, complete its necessary children and parent acceptance;
+  decomposition is not a reason to stop after one child. If completion is blocked,
+  preserve the assignment and evidence and identify the concrete blocker.
 - For implementation work, identify the executable package and its prerequisites.
   Record scope, owner/controller, base commit, contract versions, deliverables,
   validation route, and acceptance criteria in the project's package records.

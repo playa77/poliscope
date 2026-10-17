@@ -1,0 +1,76 @@
+{
+  "version": 1,
+  "decision": "DEC-06",
+  "status": "Definitions frozen for initial implementation; measurements unrun",
+  "reference": {
+    "minimum": "native desktop, four modern CPU cores, 16 GiB RAM, SSD",
+    "exact_machine": null,
+    "blocker": "PERF-REF-001",
+    "owner": "WP-019-verification selects and records exact native hardware/OS/power mode before first benchmark claim; WP-051-benchmarks enforces release budgets"
+  },
+  "fixtures": {
+    "classroom-v1": {
+      "scopes": 20,
+      "cohorts": 40,
+      "assets": 100,
+      "decision_instances": 300,
+      "active_typed_edges": 2000
+    },
+    "exploratory-v1": {
+      "scopes": 200,
+      "cohorts": 400,
+      "assets": 1000,
+      "decision_instances": 3000,
+      "active_typed_edges": 30000
+    },
+    "history-v1": {
+      "committed_revisions": 1000,
+      "named_branches": 20,
+      "pageable_trace_nodes": 100000
+    }
+  },
+  "workload_contract": {
+    "domains": 12,
+    "topology": "Two settlements share cohort/time budgets across overlapping watershed/jurisdiction scopes. Repeat finite resource/service chains; include policy conflicts, a declared linear SCC and explicit unsupported SCC, local delivery bottlenecks and group access. Scale by stable namespaced fixture IDs, not copied spendable stock.",
+    "dynamic": "365 integer days, daily service/allocation and stock loss, weekly finite delivery, seasonal input, annual cohort/service update, dated disjoint/conflicting policy adoptions, deterministic disruption/repair claims. Every supported boundary executes; stochastic throughput measured separately.",
+    "history": "One root and 20 named branches referencing 1000 immutable revisions; 100000 trace nodes share explanatory dependencies; bounded pages never load the whole graph into one response.",
+    "independent_oracle": "WP-019-fixtures freezes exact coefficients, yields, account quantum, SCC matrices, event schedule, pack/model/runtime IDs and content digests before measurement. Hand-derived exact totals and replay digests precede optimization. No trivial disconnected workload can certify this contract.",
+    "generation": "Deterministic stable-ID generator, no network or actual user data. WP-019-fixtures implements fixture bytes and retains digests; currently no executable workload exists."
+  },
+  "budgets": {
+    "preview_small_p95_ms": 1000,
+    "preview_large_p95_ms": 5000,
+    "warm_page_p95_ms": 300,
+    "page_max_records": 100,
+    "ui_feedback_p95_ms": 200,
+    "cancel_ack_or_boundary_status_ms": 1000,
+    "small_365_day_run_ms": 30000,
+    "large_combined_peak_bytes": 2147483648,
+    "ipc_max_bytes": 1048576
+  },
+  "measurement": {
+    "samples_min": 30,
+    "cache_states": [
+      "cold",
+      "warm"
+    ],
+    "percentile": "nearest-rank p95 at sorted sample ceil(0.95*n); raw durations retained",
+    "clock": "monotonic high-resolution process timer; label renderer interaction, main IPC and engine compute separately",
+    "memory": "sample combined main/renderer/engine resident-set peak over workload; retain sampling interval and process identities",
+    "metadata": [
+      "candidate SHA and working-tree digest",
+      "OS/architecture/kernel",
+      "CPU model/core count",
+      "RAM/storage",
+      "power mode",
+      "Node/Python/Electron versions",
+      "app/schema/model/numeric/fixture versions and digests",
+      "command and configuration",
+      "cold/warm raw samples",
+      "passed/failed/skipped/unrun counts",
+      "latency/throughput/peak-memory/cancel outcomes"
+    ],
+    "exclusions": "Network/provider generation latency reported separately, never subtracted from a local engine failure. Large/stochastic throughput reported separately. Solver-specific budget/status fixed with selected component.",
+    "rebaseline": "Record DEC-06 amendment, reason, old/new budgets and forecast impact before accepting changed scope; no silent waiver after failing a run."
+  }
+}
