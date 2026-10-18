@@ -165,7 +165,7 @@
       "requires": [
         "WP-005-wire"
       ],
-      "merged_sha": null,
+      "merged_sha": "1775a361b3cdf0ad2d94fc3c7518dbaa4ddfcc9d",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-005-world.md; parent acceptance remains additional"
     },
@@ -173,13 +173,13 @@
       "parent": "WP-005",
       "scope": "evidence",
       "capabilities": "ENG + TL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-005-world"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-005-evidence.md; parent acceptance remains additional"
     },
     "WP-005-timeline": {
       "parent": "WP-005",

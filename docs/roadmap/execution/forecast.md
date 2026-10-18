@@ -98,3 +98,9 @@ are complete under SV; see [record](WP-005-world.md). After merge,
 WP-005-evidence becomes ready. Store/transport retain their independent merged
 wire prerequisites. One sequential agent remains; no throughput forecast or
 application-gate claim is inferred from contract completion.
+
+WP-005-evidence update (2026-10-18): PR #11 is merged at `1775a36`.
+The evidence contract package runs sequentially under SV; see
+[record](WP-005-evidence.md). Timeline remains blocked on WP-033-adoption;
+reassess ready store/transport work after merge. No application gate or native
+platform acceptance follows from contract fixtures.

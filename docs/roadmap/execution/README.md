@@ -33,7 +33,9 @@ requires all its original deliverables, including full leaf traceability.
 | WP-002 parent | verified; solo-validated; agent review deferred | WP-001 verified | Full scaffold, frozen installs, root commands and native bootstrap shell; [scope/evidence](WP-002.md) |
 | WP-003 harness/CI/integration | solo-validated; agent review deferred | WP-002 merged at `d86aa12` | Candidate-bound evidence, isolated fixtures and Linux CI; [scope/evidence](WP-003.md) |
 | WP-005-wire | verified; solo-validated; agent review deferred | PR #9 merged at `3cac56b` | Protocol-1 contract merged in PR #10 at `e0e1828`; [scope/evidence](WP-005-wire.md) |
-| WP-005-world | solo-validated; agent review deferred | PR #10 merged at `e0e1828` | Bounded world inspection DTOs, generated schemas and shared fixtures; [scope/evidence](WP-005-world.md) |
+| WP-005-world | verified; solo-validated; agent review deferred | PR #10 merged at `e0e1828` | Bounded world inspection DTOs, generated schemas and shared fixtures; [scope/evidence](WP-005-world.md) |
+
+| WP-005-evidence | solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -107,12 +109,11 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 Templates live in `.github/ISSUE_TEMPLATE/work-package.md`. Creating this local
 template sends no external messages and creates no hosted issues.
 
-## Current boundary after PR #10
+## Current boundary after PR #11
 
-PR #9 merged at `3cac56b`; PR #10 merged at `e0e1828`. WP-003 and
-[WP-005-wire](WP-005-wire.md) are complete under SV. One agent remains.
-[WP-005-world](WP-005-world.md) adds the next bounded contract on that baseline.
-Parent WP-005 remains open for evidence/timeline/privacy children. After this
-package merges, reassess WP-005-evidence; WP-009-store and WP-010-transport also
-have their merged wire prerequisite. No consumer service or application gate is
-certified by the DTO package.
+PR #11 merged WP-005-world at `1775a361b3cdf0ad2d94fc3c7518dbaa4ddfcc9d`.
+[WP-005-evidence](WP-005-evidence.md) follows on that baseline with one sequential
+agent and SV validation. Parent WP-005 remains open for timeline/privacy contracts;
+WP-005-timeline also requires WP-033-adoption. After this package merges, reassess
+ready WP-009-store / WP-010-transport work against their actual prerequisites.
+No consumer service or application gate is certified by these DTO packages.

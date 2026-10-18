@@ -74,3 +74,50 @@ relationship kinds, inheritance/modeling/origin enums, exact quantities, unknown
 pagination and negative inputs. Python and TypeScript reject malformed types,
 schemas, decimals and oversized lists/frames in both directions. Synthetic DTO
 validity does not certify production world or simulation behavior.
+
+## Evaluation evidence, evidence schema 1
+
+Canonical `engine/poliscope_engine/contracts/evidence.py` adds `evidence.inspect`, `evaluation` summaries
+and `evidence_page` results. This is a coordinated additive extension on protocol
+1; regenerate consumers before dispatch. Existing runtime/world fixtures remain
+supported; there is no legacy evidence adapter. No evaluation service is added.
+The summary is a result projection for future producers, not a new evaluate or
+preview command. `complete` describes evaluation completion, never an overall
+civilization score or universal sufficiency verdict.
+
+Evidence reads bind immutable revision and result IDs, collection, cursor and
+limit (1–100). Pages repeat context, catalog/model/numeric identities, scope and
+effective time. Five independent pages hold outputs, findings, sources, assumptions
+and traces. The 100-item/100-reference caps and 1 MiB aggregate frame limit both
+apply. Producers must paginate summary finding/trace references as well as pages;
+summary references are bounded entry points, not a claim to include the closure.
+Services own cursor/result authorization, request/response correlation, matching
+scope/time/context, graph closure and keeping observation and coverage statuses
+consistent. Structural validation cannot prove these relationships.
+
+Coverage distinguishes known, partial, missing input, unmodeled, conflict, solver
+failure and not applicable. Known observations contain quantities, labels or
+references; unavailable observations require an explicit unknown reason, with no
+numeric slot. Partial observations may carry qualified known or unknown values.
+Quantity spelling, units, time basis and denominator are preserved. Coverage
+explanations, covered/excluded scopes and missing inputs stay explicit. Incomplete,
+infeasible and unresolved summaries remain successful results with findings;
+`STALE_REVISION`, `MODEL_UNAVAILABLE` and `DATABASE_FAILURE` are operation errors.
+Unknown evidence schemas fail `INVALID_MESSAGE`, as world schema errors do.
+
+Findings distinguish physical shortage, selected-policy breach, institutional gap,
+uncertainty and player-target observation, with rule/affected/provenance links.
+Source references pin repository, document, revision, location, SHA-256 excerpt
+digest, license and historical status with explicit supersession references.
+Historical status (current/amended/superseded/disputed/unknown) describes document
+lineage, never scientific validity or model coverage. Assumptions separately pin
+scope, definition/version, origin, uncertainty form/definition and rationale.
+Uncertainty references describe model data, not executable expressions or implied
+probabilities. Trace nodes carry mechanism/version, scope/time, typed input/output
+ports, child dependencies and source/assumption/trace references. Future producers
+must independently validate calculations and referenced content/licenses.
+
+All fixtures are synthetic. These contracts do not certify scientific evidence,
+trace closure, retained historical readability, computation compatibility,
+result hashing, storage, exports or privacy. Classified private payloads are not
+source/assumption rationale: future privacy contracts/services own that boundary.
