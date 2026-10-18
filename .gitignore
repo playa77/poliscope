@@ -126,3 +126,6 @@ Desktop.ini
 
 # Local implementation scratch files
 /work/
+
+# Candidate-bound synthetic test evidence
+/artifacts/

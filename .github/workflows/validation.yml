@@ -1,0 +1,53 @@
+name: Validation
+on:
+  pull_request:
+  push:
+    branches: [main]
+  merge_group:
+permissions:
+  contents: read
+jobs:
+  checks:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require candidate containing current main
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor origin/main HEAD
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv python install 3.12
+      - run: npm ci
+      - run: uv sync --frozen --python 3.12
+      - run: git diff --exit-code -- package-lock.json uv.lock
+      - run: npm run content:validate && npm run contracts:check && npm run typecheck
+      - run: uv run --frozen python scripts/check_roadmap.py && uv run --frozen python scripts/check_baseline.py
+      - name: Require declared validation route
+        run: uv run --frozen python scripts/check_review_record.py
+      - run: uv run --frozen python scripts/evidence.py engine --output artifacts/engine
+      - run: uv run --frozen python scripts/evidence.py unit --output artifacts/unit
+      - name: Build native Linux smoke candidate
+        run: npm run package
+      - name: Launch actual Electron with bundled Python
+        run: xvfb-run -a uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop
+      - name: Recheck evidence and current baseline
+        run: |
+          uv run --frozen python scripts/evidence.py verify --output artifacts/engine
+          uv run --frozen python scripts/evidence.py verify --output artifacts/unit
+          uv run --frozen python scripts/evidence.py verify --output artifacts/desktop
+          git fetch origin main
+          git merge-base --is-ancestor origin/main HEAD
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          path: artifacts/
+          if-no-files-found: error

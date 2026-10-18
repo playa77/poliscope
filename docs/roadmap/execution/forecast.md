@@ -86,3 +86,8 @@ throughput or a forecast for implementation packages. No reliable complete
 active-time accounting exists for the earlier turn, so duration/rate is explicitly
 unavailable rather than fabricated. Subsequent start records capture it from the
 beginning. Ready-queue updates and allocations occur at every package completion.
+
+WP-003 update (2026-10-18): harness/CI/integration implemented under SV; see
+[record](WP-003.md). Hosted CI awaits PR execution. WP-005 contract work is next
+after merge; WP-004 retains WP-011-shell prerequisite. Native access remains
+unverified beyond Linux scaffold smoke. No measured delivery rate is available.
