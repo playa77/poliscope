@@ -1,6 +1,9 @@
 {
   "files": [
     "fixtures.json",
+    "history.schema.json",
+    "history.ts",
+    "saved-evidence.schema.json",
     "tool-inputs.json",
     "wire.schema.json",
     "wire.ts"

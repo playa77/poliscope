@@ -121,3 +121,44 @@ All fixtures are synthetic. These contracts do not certify scientific evidence,
 trace closure, retained historical readability, computation compatibility,
 result hashing, storage, exports or privacy. Classified private payloads are not
 source/assumption rationale: future privacy contracts/services own that boundary.
+
+## Historical interface 1
+
+`history.schema.json` and `history.ts` describe a separate, one-shot historical
+interface. It negotiates no numerical protocol, loads no numerical models and
+returns only `mode: stored_historical` evidence. `saved-evidence.schema.json`
+validates the supported retained JSON envelope: `history_schema: 1`, one existing
+`EvaluationSummary`, and five typed collections (`outputs`, `findings`, `sources`,
+`assumptions`, `traces`), each at most 100 items. The entire stored envelope must
+fit the storage 1 MiB UTF-8 limit. Store it via trusted Python `retain_evidence`
+under the main-selected context ID and summary result ID. Generic old JSON is not
+implicitly upgraded to this envelope. Reference closure, scientific validity and
+private payload exclusion remain the producing repository's responsibilities.
+
+A `HistoryRequest` contains `history_protocol: 1`, full revision context, result
+ID, collection (`summary` or a collection above), integer offset 0–100 and limit
+1–100. Pages return existing evidence DTOs; `next_cursor` is the decimal next
+offset, or null. No cursor lookup, SQL, path, computation or mutation operation is
+accepted over stdin. Main supplies an absolute database path, opaque storage
+context ID, and trusted context/result grant at process launch. Every request and
+returned result is bound to that grant. IDs do not themselves authorize a renderer.
+A future shell must validate sender/document and selected store before using main's
+primitive. There is no public renderer API or automatic engine-failure fallback yet.
+
+The reader serves one LF-terminated UTF-8 JSON request, writes one response, then
+exits. Requests/responses include LF in the 1 MiB bound. Invalid requests and
+unsupported/unreadable stores return stable bounded error codes without raw data,
+SQL, paths or diagnostics. Main caps both output streams, kills after 10 seconds,
+permits one active reader per controller and rejects invalid/mismatched responses.
+Only storage schema 1 is readable; foreign/altered/future schemas are preserved
+with no migration. SQLite opens `mode=ro` and query-only, with extension loading
+and trusted schema disabled, exact schema validation, a statement work budget and
+bounded lengths. It reads committed WAL state; SQLite may maintain its normal
+shared-memory sidecar. Main database and WAL contents are not rewritten.
+
+The installed native engine executable's `--history-read` entry selects this
+trusted reader before numerical runtime startup. In development main launches
+isolated Python's `poliscope_engine.history`. The caller stops the numerical child
+before launching its replacement; automatic lifecycle coordination is WP-010-
+lifecycle/WP-011. Older-schema/archive recovery remains WP-041. This interface
+proves safe structural readability, not reproduction of historical computations.

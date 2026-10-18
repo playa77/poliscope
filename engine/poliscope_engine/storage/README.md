@@ -58,3 +58,10 @@ Tests use temporary synthetic databases, independent SQL assertions, process exi
 real SQLite disk-full/write-lock errors, and live-WAL backup checks. They do not
 certify Electron ownership, full world repositories, historical reader access,
 privacy-safe exports, native targets or any application gate.
+
+Schema-1 retained evidence now has a supported read-only consumer in
+`poliscope_engine.history`. Its launch grant and bounded envelope are documented
+in `contracts/README.md`; raw generic evidence is rejected unless it validates
+that envelope. The reader never constructs Store, creates a database or migrates
+one. This does not supply production world/evaluation repositories or private
+payload classification.

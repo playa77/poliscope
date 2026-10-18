@@ -2,23 +2,22 @@
 import schema from '../../contracts/wire.schema.json';
 import type { WireMessage } from '../../contracts/wire';
 
-type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
-const definitions = schema.$defs as Record<string, Schema>;
-function valid(value: unknown, rule: Schema): boolean {
-  if (rule.$ref) return valid(value, definitions[rule.$ref.split('/').at(-1)!]);
+export type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
+export function valid(value: unknown, rule: Schema, definitions: Record<string, Schema> = schema.$defs as Record<string, Schema>): boolean {
+  if (rule.$ref) return valid(value, definitions[rule.$ref.split('/').at(-1)!], definitions);
   if ('const' in rule) return value === rule.const;
   if (rule.enum) return rule.enum.includes(value);
-  if (rule.anyOf) return rule.anyOf.some(r => valid(value, r));
-  if (rule.oneOf) return rule.oneOf.filter(r => valid(value, r)).length === 1;
+  if (rule.anyOf) return rule.anyOf.some(r => valid(value, r, definitions));
+  if (rule.oneOf) return rule.oneOf.filter(r => valid(value, r, definitions)).length === 1;
   switch (rule.type) {
     case 'null': return value === null;
     case 'string': return typeof value === 'string' && !/\p{Surrogate}/u.test(value) && [...value].length >= (rule.minLength ?? 0) && [...value].length <= (rule.maxLength ?? Infinity) && (!rule.pattern || new RegExp(rule.pattern, 'u').exec(value)?.[0] === value);
     case 'integer': return typeof value === 'number' && Number.isSafeInteger(value) && value >= (rule.minimum ?? -Infinity) && value <= (rule.maximum ?? Infinity);
-    case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every(v => valid(v, rule.items!));
+    case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every(v => valid(v, rule.items!, definitions));
     case 'object': {
       if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
       const object = value as Record<string, unknown>;
-      return (rule.required ?? []).every(k => Object.hasOwn(object, k)) && Object.entries(object).every(([k, v]) => Object.hasOwn(rule.properties ?? {}, k) ? valid(v, rule.properties![k]) : rule.additionalProperties !== false);
+      return (rule.required ?? []).every(k => Object.hasOwn(object, k)) && Object.entries(object).every(([k, v]) => Object.hasOwn(rule.properties ?? {}, k) ? valid(v, rule.properties![k], definitions) : rule.additionalProperties !== false);
     }
     default: throw new Error('Unsupported wire schema vocabulary');
   }
