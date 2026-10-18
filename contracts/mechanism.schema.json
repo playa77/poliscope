@@ -1,0 +1,916 @@
+{
+  "$defs": {
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "account_input_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Account Input Ref",
+          "type": "string"
+        },
+        "allocation_input_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Allocation Input Ref",
+          "type": "string"
+        },
+        "amount_output_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Amount Output Ref",
+          "type": "string"
+        },
+        "dependent_output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Dependent Output Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "resource",
+            "service",
+            "population",
+            "time"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "amount_output_ref",
+        "account_input_ref",
+        "allocation_input_ref",
+        "dependent_output_refs"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "Diagnostic": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Output Refs",
+          "type": "array"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "title": "Severity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "severity",
+        "description",
+        "input_refs",
+        "output_refs"
+      ],
+      "title": "Diagnostic",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "InputPort": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "missing_behavior": {
+          "enum": [
+            "propagate",
+            "omit"
+          ],
+          "title": "Missing Behavior",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "value_type",
+        "required",
+        "missing_behavior"
+      ],
+      "title": "InputPort",
+      "type": "object"
+    },
+    "LabelType": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "LabelType",
+      "type": "object"
+    },
+    "OutputPort": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "missing_behavior": {
+          "const": "propagate",
+          "title": "Missing Behavior",
+          "type": "string"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "value_type",
+        "input_refs",
+        "missing_behavior"
+      ],
+      "title": "OutputPort",
+      "type": "object"
+    },
+    "OwnedState": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "owner_domain": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Owner Domain",
+          "type": "string"
+        },
+        "partition": {
+          "const": "dynamic_state",
+          "title": "Partition",
+          "type": "string"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "owner_domain",
+        "partition",
+        "value_type"
+      ],
+      "title": "OwnedState",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "composition_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Identity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "semantics": {
+          "enum": [
+            "exclusive",
+            "composable",
+            "floor",
+            "ceiling",
+            "delegated"
+          ],
+          "title": "Semantics",
+          "type": "string"
+        }
+      },
+      "required": [
+        "semantics",
+        "composition_rule"
+      ],
+      "title": "Policy",
+      "type": "object"
+    },
+    "Precondition": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "failure_behavior": {
+          "enum": [
+            "not_applicable",
+            "conflict"
+          ],
+          "title": "Failure Behavior",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "input_refs",
+        "description",
+        "failure_behavior"
+      ],
+      "title": "Precondition",
+      "type": "object"
+    },
+    "Procedure": {
+      "additionalProperties": false,
+      "description": "Versioned reference only: no Python module path, formula or graph here.",
+      "properties": {
+        "implementation": {
+          "$ref": "#/$defs/Identity"
+        },
+        "kind": {
+          "enum": [
+            "trusted_python",
+            "declarative_graph"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "implementation"
+      ],
+      "title": "Procedure",
+      "type": "object"
+    },
+    "QuantityType": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityType",
+      "type": "object"
+    },
+    "ReferenceType": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_kind"
+      ],
+      "title": "ReferenceType",
+      "type": "object"
+    },
+    "Support": {
+      "additionalProperties": false,
+      "properties": {
+        "static": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Procedure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Procedure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "static",
+        "transition"
+      ],
+      "title": "Support",
+      "type": "object"
+    },
+    "TraceDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Output Refs",
+          "type": "array"
+        },
+        "state_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "State Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "input_refs",
+        "output_refs",
+        "state_refs",
+        "description"
+      ],
+      "title": "TraceDefinition",
+      "type": "object"
+    },
+    "ValidationFixture": {
+      "additionalProperties": false,
+      "properties": {
+        "fixture": {
+          "$ref": "#/$defs/Identity"
+        },
+        "property_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Property Refs",
+          "type": "array"
+        },
+        "purpose": {
+          "enum": [
+            "positive",
+            "invalid_input",
+            "missing_input",
+            "conservation",
+            "boundedness"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fixture",
+        "purpose",
+        "property_refs"
+      ],
+      "title": "ValidationFixture",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "assumption_refs": {
+      "items": {
+        "maxLength": 256,
+        "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Assumption Refs",
+      "type": "array"
+    },
+    "claims": {
+      "items": {
+        "$ref": "#/$defs/Claim"
+      },
+      "maxItems": 100,
+      "title": "Claims",
+      "type": "array"
+    },
+    "contract_version": {
+      "const": 1,
+      "title": "Contract Version",
+      "type": "integer"
+    },
+    "coverage_limits": {
+      "maxLength": 4096,
+      "minLength": 1,
+      "title": "Coverage Limits",
+      "type": "string"
+    },
+    "diagnostics": {
+      "items": {
+        "$ref": "#/$defs/Diagnostic"
+      },
+      "maxItems": 100,
+      "title": "Diagnostics",
+      "type": "array"
+    },
+    "domain": {
+      "enum": [
+        "provisioning",
+        "economy",
+        "governance",
+        "law_conflict",
+        "social_organization",
+        "knowledge_culture",
+        "health",
+        "infrastructure",
+        "communication",
+        "environment",
+        "meaning_identity",
+        "security_risk"
+      ],
+      "title": "Domain",
+      "type": "string"
+    },
+    "entity_kinds": {
+      "items": {
+        "enum": [
+          "civilization",
+          "location",
+          "population_cohort",
+          "household_arrangement",
+          "community_arrangement",
+          "institution",
+          "asset",
+          "network",
+          "resource",
+          "service",
+          "account",
+          "external_interface",
+          "decision",
+          "event"
+        ],
+        "type": "string"
+      },
+      "maxItems": 15,
+      "minItems": 1,
+      "title": "Entity Kinds",
+      "type": "array"
+    },
+    "evidence": {
+      "enum": [
+        "unreviewed",
+        "hypothetical",
+        "supported",
+        "disputed"
+      ],
+      "title": "Evidence",
+      "type": "string"
+    },
+    "fixtures": {
+      "items": {
+        "$ref": "#/$defs/ValidationFixture"
+      },
+      "maxItems": 100,
+      "title": "Fixtures",
+      "type": "array"
+    },
+    "id": {
+      "maxLength": 256,
+      "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+      "title": "Id",
+      "type": "string"
+    },
+    "inputs": {
+      "items": {
+        "$ref": "#/$defs/InputPort"
+      },
+      "maxItems": 100,
+      "title": "Inputs",
+      "type": "array"
+    },
+    "modeling": {
+      "enum": [
+        "numerical",
+        "procedural",
+        "qualitative",
+        "partial",
+        "unsupported"
+      ],
+      "title": "Modeling",
+      "type": "string"
+    },
+    "origin": {
+      "enum": [
+        "authored",
+        "imported",
+        "player_proposed",
+        "ai_proposed"
+      ],
+      "title": "Origin",
+      "type": "string"
+    },
+    "outputs": {
+      "items": {
+        "$ref": "#/$defs/OutputPort"
+      },
+      "maxItems": 100,
+      "title": "Outputs",
+      "type": "array"
+    },
+    "owned_state": {
+      "items": {
+        "$ref": "#/$defs/OwnedState"
+      },
+      "maxItems": 100,
+      "title": "Owned State",
+      "type": "array"
+    },
+    "policy": {
+      "anyOf": [
+        {
+          "$ref": "#/$defs/Policy"
+        },
+        {
+          "type": "null"
+        }
+      ]
+    },
+    "preconditions": {
+      "items": {
+        "$ref": "#/$defs/Precondition"
+      },
+      "maxItems": 100,
+      "title": "Preconditions",
+      "type": "array"
+    },
+    "properties": {
+      "items": {
+        "maxLength": 256,
+        "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Properties",
+      "type": "array"
+    },
+    "read_partitions": {
+      "items": {
+        "enum": [
+          "conditions",
+          "design",
+          "assumptions",
+          "dynamic_state",
+          "observations",
+          "goals"
+        ],
+        "type": "string"
+      },
+      "maxItems": 6,
+      "title": "Read Partitions",
+      "type": "array"
+    },
+    "scope_kinds": {
+      "items": {
+        "enum": [
+          "household",
+          "community",
+          "settlement",
+          "region",
+          "civilization",
+          "global_external"
+        ],
+        "type": "string"
+      },
+      "maxItems": 6,
+      "minItems": 1,
+      "title": "Scope Kinds",
+      "type": "array"
+    },
+    "source_refs": {
+      "items": {
+        "maxLength": 256,
+        "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Source Refs",
+      "type": "array"
+    },
+    "support": {
+      "$ref": "#/$defs/Support"
+    },
+    "traces": {
+      "items": {
+        "$ref": "#/$defs/TraceDefinition"
+      },
+      "maxItems": 100,
+      "title": "Traces",
+      "type": "array"
+    },
+    "version": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    },
+    "write_state_refs": {
+      "items": {
+        "maxLength": 256,
+        "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+        "type": "string"
+      },
+      "maxItems": 100,
+      "title": "Write State Refs",
+      "type": "array"
+    }
+  },
+  "required": [
+    "contract_version",
+    "id",
+    "version",
+    "domain",
+    "scope_kinds",
+    "entity_kinds",
+    "inputs",
+    "outputs",
+    "owned_state",
+    "write_state_refs",
+    "read_partitions",
+    "preconditions",
+    "support",
+    "claims",
+    "policy",
+    "origin",
+    "modeling",
+    "evidence",
+    "source_refs",
+    "assumption_refs",
+    "coverage_limits",
+    "diagnostics",
+    "traces",
+    "fixtures",
+    "properties"
+  ],
+  "title": "MechanismDefinition",
+  "type": "object"
+}

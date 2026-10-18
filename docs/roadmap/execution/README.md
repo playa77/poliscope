@@ -181,3 +181,14 @@ pack archives, source/license integrity, versioned identity/dependency contracts
 and explicit uncertainty relationships. One agent and SV inspection remain in
 effect. Reassess WP-012-contract after merge. Production content, trusted numerical
 mechanisms, persistence and full application/native gates remain separate.
+
+## Current boundary after PR #21
+
+PR #21 merged WP-008-packs at `b946dbf30e65b039d6c7868d3db204f5c99c1301`.
+[WP-012-contract](WP-012-contract.md) delivers the next sequential child: versioned,
+data-only mechanism declarations, typed scoped ports, owned state, claims and
+allocation dependencies, explicit support/coverage and evidence/fixture metadata.
+One agent and SV inspection remain in effect. Reassess WP-012-registry after merge
+for trusted registration, external reference resolution and activation checks;
+WP-012-expressions retains bounded graph/operator validation and execution.
+No scientific, full-parent or application acceptance is claimed.
