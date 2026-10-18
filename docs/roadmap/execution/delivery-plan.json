@@ -345,12 +345,12 @@
       "parent": "WP-012",
       "scope": "contract",
       "capabilities": "ENG + MODEL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-007-membership",
         "WP-008-packs"
       ],
-      "merged_sha": null,
+      "merged_sha": "683e9a371712d20d114057f3b7c139a83a8829ea",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-012-contract.md"
     },
@@ -358,13 +358,13 @@
       "parent": "WP-012",
       "scope": "registry",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-012-contract"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-012 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-012-registry.md; parent acceptance remains additional"
     },
     "WP-012-expressions": {
       "parent": "WP-012",
