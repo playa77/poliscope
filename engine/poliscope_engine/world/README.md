@@ -31,6 +31,28 @@ assumptions, state and observations remain byte-for-byte preserved in the base
 snapshot. Unknown values stay unknown; quantity strings are checked by the
 canonical numeric runtime and never converted through float.
 
-This child provides identity and state-change structure. Relationship validation,
-containment acyclicity, memberships/weighted aggregation, external-interface
+This child provides identity and state-change structure. External-interface
 semantics, durable revisions and public commands remain subsequent packages.
+
+`world.membership.WorldGraph` adds immutable RelationshipDTO v1 snapshots. Every
+endpoint exists; relationship IDs share the world namespace. Only containment
+must be acyclic; jurisdiction and network cycles are permitted. `related` returns
+detached incident edges; `with_relationships` validates a complete replacement.
+Containment does not implicitly define aggregating membership or inherit rules.
+
+Aggregating edges point from canonical entities to scopes. Cohort membership
+requires a cohort and an explicit rule. A partition ID identifies one indivisible
+member across multiple scope views: a union counts that member once. Weighted
+edges declare disjoint shares; selected weights add exactly and cannot exceed one.
+Different partition IDs for one member, or mixed weight/partition declarations,
+are ambiguous and rejected. Callers must select partition rules for overlapping
+observational views rather than labeling duplicate full weights as disjoint.
+Nonaggregating relationships never enter sums. These are structural declarations,
+not evidence that a modeled partition corresponds to real populations/resources.
+
+`aggregate` sums direct members for an explicit property/state partition. It uses
+canonical entity values, exact numeric arithmetic, and matching units, time bases,
+denominator scopes and effective simulation times. Missing/unknown members and
+empty selections return explicit unknowns. No unit conversion, containment
+rollup, inferred population measure, average, allocation or resource spending is
+introduced. Relationships do not create owners or duplicate registry stock slots.
