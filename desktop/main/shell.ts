@@ -14,6 +14,9 @@ export function validateSelection(value: unknown): HistorySelection {
       !valid(selection.request, definitions.HistoryRequest, definitions) || selection.request.collection !== 'summary' || selection.request.offset !== 0 || selection.request.limit !== 1) throw new Error('Invalid history selection');
   return structuredClone(selection);
 }
+export function validatePage(collection: unknown, offset: unknown): void {
+  if (typeof collection !== 'string' || !collections.includes(collection) || typeof offset !== 'number' || !Number.isInteger(offset) || offset < 0 || offset > 100 || (collection === 'summary' && offset !== 0)) throw new Error('Invalid historical page');
+}
 /** All launches share this controller; the path and exact grant never leave main. */
 export class DesktopShell {
   private engine = new BootstrapEngine();
@@ -46,10 +49,10 @@ export class DesktopShell {
     });
   }
   historyPage(collection: unknown, offset: unknown) {
-    if (typeof collection !== 'string' || !collections.includes(collection) || typeof offset !== 'number' || !Number.isInteger(offset) || offset < 0 || offset > 100 || (collection === 'summary' && offset !== 0)) throw new Error('Invalid historical page');
+    validatePage(collection, offset);
     return this.run(async () => {
       if (!this.selected || !this.historical) throw new Error('Select historical evidence first');
-      return this.read({ ...this.selected.selection.request, collection: collection as HistoryRequest['collection'], offset, limit: collection === 'summary' ? 1 : 10 });
+      return this.read({ ...this.selected.selection.request, collection: collection as HistoryRequest['collection'], offset: offset as number, limit: collection === 'summary' ? 1 : 10 });
     });
   }
   private async read(request: HistoryRequest) {

@@ -38,8 +38,8 @@ requires all its original deliverables, including full leaf traceability.
 | WP-009-store | verified; solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
 | WP-010-transport | verified; solo-validated; agent review deferred | PR #13 merged at `3785021`; WP-002 / WP-005-wire | Production stdio producer and main consumer; [scope/evidence](WP-010-transport.md) |
 | WP-010-history-read | verified; solo-validated; agent review deferred | PR #14 merged at `0b828b5`; WP-005-evidence / WP-009-store | Bounded schema-1 trusted historical reader and main-only launch; [scope/evidence](WP-010-history-read.md) |
-
-| WP-011-shell | solo-validated; agent review deferred | PR #15 merged at `b56f7cf` | Selected historical store, read-only desktop and single-child reconnect; [scope/evidence](WP-011-shell.md) |
+| WP-011-shell | verified; solo-validated; agent review deferred | PR #15 merged at `b56f7cf` | Selected historical evidence desktop; PR #16 merged at `51b6764`; [scope/evidence](WP-011-shell.md) |
+| WP-011-ipc | solo-validated; agent review deferred | PR #16 merged at `51b6764` | Named IPC validation, bounded errors, production resource/permission policy and hostile renderer checks; [scope/evidence](WP-011-ipc.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -130,3 +130,13 @@ PR #15 merged WP-010-history-read at `b56f7cf`. The current sequential allocatio
 [WP-011-shell](WP-011-shell.md): main-owned store selection, historical presentation,
 single-child replacement, reconnect and per-data-directory instance ownership.
 WP-011-ipc remains subsequent work; no application gate is claimed.
+
+## Current boundary after PR #16
+
+PR #16 merged WP-011-shell at `51b6764b881d977194c30e1ed8fc359caa2f58a3`.
+[WP-011-ipc](WP-011-ipc.md) completes the sequential bounded desktop IPC/resource
+boundary on that baseline, including packaged hostile-content/sink and caller
+checks. One sequential agent and SV validation remain in effect. Future service
+groups, source-link/fetch UI, OS sandbox enforcement and native release gates
+retain separate acceptance. Reassess WP-006-numeric and WP-004-probe next; no
+application milestone is claimed.
