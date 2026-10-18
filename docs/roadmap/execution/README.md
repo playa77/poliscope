@@ -29,8 +29,8 @@ requires all its original deliverables, including full leaf traceability.
 | WP-001-baseline | solo-validated; agent review deferred | None | Package template, execution ledger and machine-readable gate selection; [evidence](WP-001-baseline.md) |
 | WP-001-requirements | solo-validated; agent review deferred | WP-001-baseline | 1,053 clauses, all 34 top-level mappings, all 68 planning parents, 178 candidate child scopes and concrete early DAG; see [traceability](traceability.md) |
 | WP-001-decisions | solo-validated; agent review deferred | WP-001-requirements | DEC-01–12 dispositions, initial domain inventory, benchmark definitions, RT-01–14 ownership, resource forecast and allocation dry runs; see [decisions](decisions.md) |
-| WP-002-layout/python/desktop/commands | implemented; validation in progress | WP-001 merged at `ab9d957` | Sequential child contracts and evidence in [WP-002](WP-002.md) |
-| WP-002 parent | implemented; validation in progress | WP-001 verified | Full scaffold, frozen installs, root commands and native bootstrap shell; [scope/evidence](WP-002.md) |
+| WP-002-layout/python/desktop/commands | verified; solo-validated; agent review deferred | WP-001 merged at `ab9d957` | Sequential child contracts and evidence in [WP-002](WP-002.md) |
+| WP-002 parent | verified; solo-validated; agent review deferred | WP-001 verified | Full scaffold, frozen installs, root commands and native bootstrap shell; [scope/evidence](WP-002.md) |
 | WP-003-harness | next after WP-002 merge | WP-002 commands | Full test/evidence harness, then CI; record a new start contract |
 
 Reassess ready work and available agents at each boundary. Record owner,

@@ -40,7 +40,7 @@
       "parent": "WP-002",
       "scope": "layout",
       "capabilities": "TL + DESK + ENG",
-      "status": "implemented; validation in progress",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-001-decisions"
       ],
@@ -52,7 +52,7 @@
       "parent": "WP-002",
       "scope": "python",
       "capabilities": "TL + DESK + ENG",
-      "status": "implemented; validation in progress",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-layout"
       ],
@@ -64,7 +64,7 @@
       "parent": "WP-002",
       "scope": "desktop",
       "capabilities": "TL + DESK + ENG",
-      "status": "implemented; validation in progress",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-layout"
       ],
@@ -76,7 +76,7 @@
       "parent": "WP-002",
       "scope": "commands",
       "capabilities": "TL + DESK + ENG",
-      "status": "implemented; validation in progress",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-python",
         "WP-002-desktop"

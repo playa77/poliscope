@@ -17,7 +17,7 @@
       "acceptance_dependencies": "WP-001",
       "acceptance": "a clean checkout installs with `npm ci` and `uv sync --frozen --python 3.12` without lock changes; commands run from the repository root and propagate failures. Another developer can follow the instructions without undocumented global tools. Runtime/code remains intentionally minimal until later packages.",
       "source": "docs/roadmap/work_packages.md",
-      "status": "not started"
+      "status": "verified; solo-validated; agent review deferred; PR merge pending"
     },
     "WP-003": {
       "title": "Test harnesses, CI, and evidence capture",
@@ -186,7 +186,7 @@
       "capabilities": "DESK + PRODUCT",
       "size": "L",
       "acceptance_dependencies": "WP-017, WP-018, WP-020",
-      "acceptance": "keyboard-only select → inspect → preview → cancel changes no history; Apply records rationale/full alternatives and one revision. Stale apply refreshes safely; unsupported proposals remain inspectable without executing prose/code; deferring does not block unrelated inquiry.",
+      "acceptance": "keyboard-only select \u2192 inspect \u2192 preview \u2192 cancel changes no history; Apply records rationale/full alternatives and one revision. Stale apply refreshes safely; unsupported proposals remain inspectable without executing prose/code; deferring does not block unrelated inquiry.",
       "source": "docs/roadmap/work_packages.md",
       "status": "not started"
     },
@@ -284,7 +284,7 @@
       "title": "Twelve-domain static integration and coverage gate",
       "capabilities": "TL + QA + MODEL + PRODUCT",
       "size": "L",
-      "acceptance_dependencies": "WP-024, WP-028, WP-029, WP-030, WP-031; static deliverables of DOM-01–DOM-12",
+      "acceptance_dependencies": "WP-024, WP-028, WP-029, WP-030, WP-031; static deliverables of DOM-01\u2013DOM-12",
       "acceptance": "all twelve static modules pass the conformance harness and counterpart checks; the shared education fixture exposes independent shortages, rights/access issues and unresolved gaps without double-counting or assigning a score. Every source branch is represented/classified; absent implementation is labeled, never implied complete by catalog presence. M3 evidence leaves domain transition work explicitly open for M4.",
       "source": "docs/roadmap/work_packages.md",
       "status": "not started"
@@ -429,7 +429,7 @@
       "capabilities": "ENG + DESK",
       "size": "M",
       "acceptance_dependencies": "WP-006, WP-009, WP-043, WP-045",
-      "acceptance": "independent fixtures reconcile estimates→actual, usage-only events, missing totals, cancellation and late metadata without double charge or false zero. Budget gate blocks new requests as configured; no claim promises abort eliminates upstream cost. With allowance 1 and two simultaneous estimates of 0.6, at most one dispatch receives a grant. Tool rounds recheck gates; duplicate grants, late actuals and cancellations neither double-charge nor prematurely release exposure.",
+      "acceptance": "independent fixtures reconcile estimates\u2192actual, usage-only events, missing totals, cancellation and late metadata without double charge or false zero. Budget gate blocks new requests as configured; no claim promises abort eliminates upstream cost. With allowance 1 and two simultaneous estimates of 0.6, at most one dispatch receives a grant. Tool rounds recheck gates; duplicate grants, late actuals and cancellations neither double-charge nor prematurely release exposure.",
       "source": "docs/roadmap/work_packages.md",
       "status": "not started"
     },
@@ -491,7 +491,7 @@
       "title": "Whole-product end-to-end validation and model evidence audit",
       "capabilities": "QA + MODEL + PRODUCT; review expertise TL",
       "size": "L",
-      "acceptance_dependencies": "WP-032, WP-037, WP-038, WP-040, WP-041, WP-050, WP-051, WP-052, WP-053, WP-054; full DOM-01–DOM-12",
+      "acceptance_dependencies": "WP-032, WP-037, WP-038, WP-040, WP-041, WP-050, WP-051, WP-052, WP-053, WP-054; full DOM-01\u2013DOM-12",
       "acceptance": "every requirement row has a current evidence link and owner; all required gates pass with no unexplained failures/unrun required checks. Coverage gaps are honestly named and match DEC-04; no trivial unit/format check substitutes for the intended functional workflow. Confirmed application defects remain separate from missing model mechanisms or external test prerequisites. Gate manifests and retained evidence identify the same candidate, including explicit redaction/unavailability and declared deferred review.",
       "source": "docs/roadmap/work_packages.md",
       "status": "not started"
@@ -574,7 +574,7 @@
       "title": "VI. Knowledge, Education & Culture (`knowledge_culture`)",
       "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
       "size": "L",
-      "acceptance_dependencies": "WP-027 and its transitive dependencies; all other domains for the D §5.7 integration path; primary service interfaces DOM-02, DOM-03, DOM-05, DOM-08, DOM-09, DOM-11.",
+      "acceptance_dependencies": "WP-027 and its transitive dependencies; all other domains for the D \u00a75.7 integration path; primary service interfaces DOM-02, DOM-03, DOM-05, DOM-08, DOM-09, DOM-11.",
       "acceptance": {
         "static": "the education integration fixture follows the same people/assets/accounts through provisioning, economy, care, health, authority/rights, information, ecology, identity and risk. Staffing or facility shortages constrain service, while unsupported learning/social effects remain explicit.",
         "dynamic": "declared training duration cannot complete instantly; skills/capacity changes occur once at the defined boundary and replay from checkpoints. Unmodeled research/cultural effects remain qualitative without preventing service/account inspection."
@@ -623,7 +623,7 @@
       "status": "not started"
     },
     "DOM-10": {
-      "title": "X. Environment & Human–Nature Relationship (`environment`)",
+      "title": "X. Environment & Human\u2013Nature Relationship (`environment`)",
       "capabilities": "ENG + MODEL + QA; DESK for shared-view integration",
       "size": "L",
       "acceptance_dependencies": "WP-027 and its transitive dependencies; DOM-01, DOM-06, DOM-07, DOM-08, DOM-12.",
