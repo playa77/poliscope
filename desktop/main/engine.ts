@@ -1,3 +1,4 @@
+import { EngineTransport } from './transport';
 import { spawn, type ChildProcessWithoutNullStreams } from 'node:child_process';
 import { isAbsolute, join } from 'node:path';
 
@@ -13,40 +14,28 @@ export class BootstrapEngine {
   status: BootstrapStatus = { state: 'starting', detail: 'Starting local engine' };
   private child?: ChildProcessWithoutNullStreams;
   private stopping = false;
+  private transport?: EngineTransport;
   start(packaged: boolean, root: string, resources: string) {
     if (this.child) throw new Error('Engine already started');
     const { executable, args } = engineCommand(packaged, root, resources);
-    const child = spawn(executable, args, { shell: false, windowsHide: true, stdio: 'pipe' });
+    const child = spawn(executable, args, { shell: false, windowsHide: true, stdio: 'pipe', env: Object.fromEntries(['SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'LANG', 'LC_ALL'].flatMap(key => process.env[key] === undefined ? [] : [[key, process.env[key]!]])) });
     this.child = child;
-    const timer = setTimeout(() => fail('Engine startup timed out'), 10_000);
-    let received = false;
-    let buffer = '';
-    const fail = (detail: string) => {
-      clearTimeout(timer);
-      this.status = { state: 'failed', detail };
+    const transport = new EngineTransport(child.stdout, child.stdin, () => {
+      if (!this.stopping) this.status = { state: 'failed', detail: 'Local engine transport failed' };
       child.kill();
-    };
-    child.on('error', () => fail('Managed engine could not start; run frozen uv setup'));
-    child.stdout.on('data', (data: Buffer) => {
-      if (received) return fail('Unexpected bootstrap output');
-      buffer += data.toString('utf8');
-      if (Buffer.byteLength(buffer) > 1024) return fail('Engine bootstrap output exceeded limit');
-      if (!buffer.includes('\n')) return;
-      try {
-        const identity: unknown = JSON.parse(buffer.trim());
-        if (!identity || typeof identity !== 'object' ||
-            Object.keys(identity).sort().join(',') !== 'kind,version' ||
-            !('kind' in identity) || identity.kind !== 'bootstrap-ready' ||
-            !('version' in identity) || identity.version !== '0.1.0') throw new Error();
-        received = true;
-        clearTimeout(timer);
-        this.status = { state: 'ready', detail: 'Local engine ready' };
-      } catch { fail('Invalid engine bootstrap identity'); }
+      const escalation = setTimeout(() => { if (child.exitCode === null && child.signalCode === null) child.kill('SIGKILL'); }, 1000);
+      escalation.unref();
+      child.once('exit', () => clearTimeout(escalation));
     });
+    this.transport = transport;
+    child.on('error', () => transport.fail(new Error('Managed engine could not start')));
+    void transport.handshake().then(() => {
+      if (!this.stopping) this.status = { state: 'ready', detail: 'Local engine ready' };
+    }).catch(() => transport.fail(new Error('Engine handshake failed')));
     // Drain diagnostics, never forward uncontrolled child output to the renderer.
     child.stderr.resume();
     child.on('exit', () => {
-      clearTimeout(timer);
+      transport.fail(new Error('Local engine stopped'));
       if (!this.stopping) this.status = { state: 'failed', detail: 'Local engine stopped' };
     });
   }
@@ -55,10 +44,14 @@ export class BootstrapEngine {
     const child = this.child;
     if (!child || child.exitCode !== null || child.signalCode !== null) return Promise.resolve();
     return new Promise((resolve) => {
-      const timer = setTimeout(() => child.kill(), 1500);
-      child.once('exit', () => { clearTimeout(timer); resolve(); });
-      child.once('error', () => { clearTimeout(timer); resolve(); });
-      child.stdin.end();
+      let finished = false;
+      const finish = () => { if (finished) return; finished = true; clearTimeout(terminate); clearTimeout(kill); clearTimeout(deadline); resolve(); };
+      const terminate = setTimeout(() => child.kill(), 1500);
+      const kill = setTimeout(() => child.kill('SIGKILL'), 2500);
+      const deadline = setTimeout(finish, 3500);
+      child.once('exit', finish);
+      child.once('error', finish);
+      void this.transport?.request('runtime.shutdown', {}).finally(() => child.stdin.end()).catch(() => {});
     });
   }
 }

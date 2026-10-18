@@ -284,14 +284,14 @@
       "parent": "WP-010",
       "scope": "transport",
       "capabilities": "ENG + DESK",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-002-commands",
         "WP-005-wire"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-010 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-010-transport.md"
     },
     "WP-010-history-read": {
       "parent": "WP-010",

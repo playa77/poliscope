@@ -35,8 +35,8 @@ requires all its original deliverables, including full leaf traceability.
 | WP-005-wire | verified; solo-validated; agent review deferred | PR #9 merged at `3cac56b` | Protocol-1 contract merged in PR #10 at `e0e1828`; [scope/evidence](WP-005-wire.md) |
 | WP-005-world | verified; solo-validated; agent review deferred | PR #10 merged at `e0e1828` | Bounded world inspection DTOs, generated schemas and shared fixtures; [scope/evidence](WP-005-world.md) |
 | WP-005-evidence | verified; solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
-
-| WP-009-store | solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
+| WP-009-store | verified; solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
+| WP-010-transport | solo-validated; agent review deferred | PR #13 merged at `3785021`; WP-002 / WP-005-wire | Production stdio producer and main consumer; [scope/evidence](WP-010-transport.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -110,13 +110,11 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 Templates live in `.github/ISSUE_TEMPLATE/work-package.md`. Creating this local
 template sends no external messages and creates no hosted issues.
 
-## Current boundary after PR #12
+## Current boundary after PR #13
 
-PR #12 merged WP-005-evidence at `500998751c1fb1ce95ac4f48362a69f450caa871`.
-[WP-009-store](WP-009-store.md) completed on that baseline with one sequential agent
-and SV validation. Distributed delivery §4.1 enables this production storage child
-from WP-002 and WP-005-wire; full domain/pack repositories and WP-009 parent
-acceptance retain the later WP-006/007/008 prerequisites. After merge reassess
-WP-010-transport and WP-010-history-read; the latter still needs its exact bounded
-trusted-reader contract and authorization scope. WP-005-timeline/privacy remain
-blocked on their recorded providers. No application gate is claimed.
+PR #13 merged WP-009-store at `3785021ae0c8032e80413d16c23aff81a18a034c`.
+[WP-010-transport](WP-010-transport.md) completed on that baseline with one
+sequential agent and SV validation. The producer and main consumer use merged
+protocol-1 contracts; historical reads still need their separate bounded trusted
+reader and authorization scope. WP-005-timeline/privacy remain blocked on their
+recorded providers. No application gate is claimed.

@@ -19,8 +19,9 @@ Run `npm ci`, then `uv sync --frozen --python 3.12` from the repository root.
 
 `npm run dev` runs Forge/Vite and launches the absolute repository `.venv`
 Python through main, with no shell. It needs a graphical desktop. Main owns one
-child and closes its stdin on shutdown, with a bounded kill fallback. The child
-only reports a bootstrap identity; it provides no application service yet.
+child, negotiates the protocol-1 handshake before reporting readiness, and sends
+a runtime shutdown request with bounded TERM/KILL fallbacks. Health, status and
+cancellation primitives are available; world/evidence services remain unavailable.
 The renderer reports actual startup status, with no automatic civic choices.
 
 Private runtime files belong under Electron's OS user-data directory. Optional
