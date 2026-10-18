@@ -163,3 +163,12 @@ owners and partition-bound pure candidate validation. One agent and SV inspectio
 remain in effect. Reassess WP-007-membership next for containment, overlapping
 membership and aggregation. Account spending, external interface mechanisms,
 durable world repositories and full parent/application gates remain separate.
+
+## Current boundary after PR #19
+
+PR #19 merged WP-007-identities at `e8f0c65`. The next sequential allocation is
+[WP-007-membership](WP-007-membership.md): independent relationship snapshots,
+containment validation, explicit direct membership and exact canonical union
+aggregation. One agent and SV inspection remain in effect. External interfaces,
+account spending, durable publication and full parent/application acceptance
+remain separate. Reassess WP-008-packs and WP-004-probe after this child merges.
