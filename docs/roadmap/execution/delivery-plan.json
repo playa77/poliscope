@@ -8,7 +8,7 @@
       "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
       "status": "verified; solo-validated; agent review deferred",
       "requires": [],
-      "merged_sha": "ab9d957",
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
@@ -20,7 +20,7 @@
       "requires": [
         "WP-001-baseline"
       ],
-      "merged_sha": "ab9d957",
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
@@ -32,7 +32,7 @@
       "requires": [
         "WP-001-requirements"
       ],
-      "merged_sha": "ab9d957",
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
