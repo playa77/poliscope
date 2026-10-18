@@ -3,6 +3,8 @@
     "fixtures.json",
     "history.schema.json",
     "history.ts",
+    "pack.schema.json",
+    "pack.ts",
     "saved-evidence.schema.json",
     "tool-inputs.json",
     "wire.schema.json",
