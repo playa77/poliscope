@@ -104,3 +104,10 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 
 Templates live in `.github/ISSUE_TEMPLATE/work-package.md`. Creating this local
 template sends no external messages and creates no hosted issues.
+
+## WP-003 merged; runtime contract allocation
+
+PR #9 merged at `3cac56b`; WP-003 is complete under SV. One agent remains.
+[WP-005-wire](WP-005-wire.md) is the next allocated executable package, based on
+that merged harness. Parent WP-005 remains open for world/evidence/timeline/privacy
+children; WP-010 consumers may start only after the wire contract merges.
