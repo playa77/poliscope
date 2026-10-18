@@ -320,12 +320,12 @@
       "parent": "WP-011",
       "scope": "shell",
       "capabilities": "DESK; review expertise TL/QA",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-010-transport",
         "WP-010-history-read"
       ],
-      "merged_sha": null,
+      "merged_sha": "51b6764b881d977194c30e1ed8fc359caa2f58a3",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-011-shell.md"
     },
@@ -333,13 +333,13 @@
       "parent": "WP-011",
       "scope": "ipc",
       "capabilities": "DESK; review expertise TL/QA",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-011-shell"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-011 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-011-ipc.md"
     },
     "WP-012-contract": {
       "parent": "WP-012",

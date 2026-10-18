@@ -29,6 +29,7 @@ test('packaged shell launches its bundled engine with an isolated secure rendere
       return [prefs.nodeIntegration, prefs.contextIsolation, prefs.sandbox];
     })).toEqual([false, true, true]);
     const summary = JSON.parse(fixtures.find(f => f.name === 'evidence:incomplete')!.frame).result;
+    summary.coverage.explanation = '<img src="https://untrusted.invalid/leak" onerror="alert(1)"> ![remote](https://untrusted.invalid/markdown) <svg onload="alert(2)">';
     const saved = { history_schema: 1, summary, outputs: [], findings: [], sources: [], assumptions: [], traces: [] };
     const setup = spawnSync(resolve('.venv/bin/python'), ['-I', '-c', `import sys\nfrom pathlib import Path\nfrom poliscope_engine.storage.store import Store\nwith Store(Path(sys.argv[1])) as s:\n with s.transaction():\n  s.add_context('selected', '{}')\n  s.retain_evidence('selected', sys.argv[2], sys.argv[3])`, data, summary.result_id, JSON.stringify(saved)], { encoding: 'utf8', timeout: 5000 });
     expect(setup.status, setup.stderr).toBe(0);
@@ -42,6 +43,8 @@ test('packaged shell launches its bundled engine with an isolated secure rendere
     await expect(page.getByRole('heading', { name: 'Stored historical evidence — read only' })).toBeVisible();
     await expect(page.getByRole('status')).toContainText('Stored historical evidence');
     await expect(page.getByText(`Coverage: ${summary.coverage.status}`, { exact: false })).toBeVisible();
+    await expect(page.getByText(summary.coverage.explanation, { exact: false })).toBeVisible();
+    await expect(page.locator('main img, main svg')).toHaveCount(0);
     await page.getByRole('button', { name: 'Read collection' }).click();
     await expect(page.getByText('Collection: outputs', { exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Reconnect local engine' }).click();
