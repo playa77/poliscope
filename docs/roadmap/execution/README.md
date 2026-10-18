@@ -36,7 +36,8 @@ requires all its original deliverables, including full leaf traceability.
 | WP-005-world | verified; solo-validated; agent review deferred | PR #10 merged at `e0e1828` | Bounded world inspection DTOs, generated schemas and shared fixtures; [scope/evidence](WP-005-world.md) |
 | WP-005-evidence | verified; solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
 | WP-009-store | verified; solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
-| WP-010-transport | solo-validated; agent review deferred | PR #13 merged at `3785021`; WP-002 / WP-005-wire | Production stdio producer and main consumer; [scope/evidence](WP-010-transport.md) |
+| WP-010-transport | verified; solo-validated; agent review deferred | PR #13 merged at `3785021`; WP-002 / WP-005-wire | Production stdio producer and main consumer; [scope/evidence](WP-010-transport.md) |
+| WP-010-history-read | solo-validated; agent review deferred | PR #14 merged at `0b828b5`; WP-005-evidence / WP-009-store | Bounded schema-1 trusted historical reader and main-only launch; [scope/evidence](WP-010-history-read.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -110,11 +111,13 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 Templates live in `.github/ISSUE_TEMPLATE/work-package.md`. Creating this local
 template sends no external messages and creates no hosted issues.
 
-## Current boundary after PR #13
+## Current boundary after PR #14
 
-PR #13 merged WP-009-store at `3785021ae0c8032e80413d16c23aff81a18a034c`.
-[WP-010-transport](WP-010-transport.md) completed on that baseline with one
-sequential agent and SV validation. The producer and main consumer use merged
-protocol-1 contracts; historical reads still need their separate bounded trusted
-reader and authorization scope. WP-005-timeline/privacy remain blocked on their
-recorded providers. No application gate is claimed.
+PR #14 merged WP-010-transport at `0b828b53d2c6a4642ffa8a31259065f98922d215`.
+[WP-010-history-read](WP-010-history-read.md) completes the bounded independent
+saved-evidence reader on that baseline. One sequential agent and SV validation
+remain in effect. The reader's main-owned grant is not a public renderer access
+boundary. Reassess WP-011-shell next for historical-mode presentation, single-child
+replacement and selected-store authorization; IPC sender validation and full
+lifecycle/application gates retain their own acceptance. WP-005-timeline/privacy
+remain blocked on their recorded providers. No application gate is claimed.
