@@ -1,0 +1,199 @@
+[
+  {
+    "contract_version": 1,
+    "id": "synthetic:supply",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement"
+    ],
+    "entity_kinds": [
+      "resource"
+    ],
+    "inputs": [],
+    "outputs": [
+      {
+        "id": "synthetic:available",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [
+      "conditions"
+    ],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "synthetic:supply-implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "numerical",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:source"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Synthetic fixture only; no scientific validity or activation asserted.",
+    "diagnostics": [],
+    "traces": [
+      {
+        "id": "synthetic:supply-trace",
+        "input_refs": [],
+        "output_refs": [
+          "synthetic:available"
+        ],
+        "state_refs": [],
+        "description": "Synthetic supply trace"
+      }
+    ],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:positive",
+          "version": "v1"
+        },
+        "purpose": "positive",
+        "property_refs": []
+      }
+    ],
+    "properties": []
+  },
+  {
+    "contract_version": 1,
+    "id": "synthetic:demand",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "synthetic:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "synthetic:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "synthetic:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "synthetic:supported",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "synthetic:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [
+      "conditions"
+    ],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "synthetic:demand-implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "synthetic:claim",
+        "kind": "resource",
+        "amount_output_ref": "synthetic:requested",
+        "account_input_ref": "synthetic:account",
+        "allocation_input_ref": "synthetic:allocated",
+        "dependent_output_refs": [
+          "synthetic:supported"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "numerical",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:source"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Synthetic fixture only; no scientific validity or activation asserted.",
+    "diagnostics": [],
+    "traces": [
+      {
+        "id": "synthetic:demand-trace",
+        "input_refs": [
+          "synthetic:allocated"
+        ],
+        "output_refs": [
+          "synthetic:supported"
+        ],
+        "state_refs": [],
+        "description": "Allocated output, no foreign write"
+      }
+    ],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:positive",
+          "version": "v1"
+        },
+        "purpose": "positive",
+        "property_refs": []
+      }
+    ],
+    "properties": []
+  }
+]

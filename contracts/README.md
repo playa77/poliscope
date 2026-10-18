@@ -174,3 +174,46 @@ closure, namespace uniqueness and declared dependency consistency. Schema parsin
 alone does not establish these semantic invariants or license/scientific validity.
 No pack command or renderer import surface is added. See the pack service README
 for the historical-read/execution boundary and supported import bounds.
+
+## Mechanism declaration contract 1
+
+`mechanism.schema.json` and `mechanism.ts` derive from
+`engine/poliscope_engine/contracts/mechanisms.py`. The two synthetic domains in
+`mechanism-fixtures.json` are validated during generation; generated
+`mechanism-fixtures.ts` also checks them against TypeScript with `satisfies`.
+They demonstrate matching quantity types and allocation-dependent outputs, without
+registering, binding, executing or mutating state.
+
+The contract declares stable/versioned IDs, domain/scopes/entity kinds, typed
+ports, required/optional input behavior, explicit output dependencies, owned
+dynamic-state proposals, static/transition implementation references,
+preconditions, shared-account claims, policy composition, evidence/assumptions,
+coverage limits, traces/diagnostics and validation fixtures/properties. All
+fields are bounded and extra fields are forbidden. Required inputs and dependent
+outputs propagate missing coverage; optional omission has no implicit value.
+Claims distinguish requested amounts from actual allocation and require dependent
+outputs to declare their allocation input. Shared account identity comes through
+a required reference port; a claim never creates a separate account copy.
+
+Canonical `MechanismDefinition` validation additionally checks local ID uniqueness,
+reference closure, exact claim/allocation type metadata, declared state ownership
+and transition support. JSON Schema and TypeScript alone do not perform these
+cross-field checks. Callers must revalidate serialized data at trust boundaries;
+frozen models contain mutable lists and are not a trusted registry or state store.
+
+Implementation references are opaque versioned data. They cannot name code to
+import, supply a shell command, embed a formula or authorize a graph operator.
+Qualitative/unsupported drafts have no procedures. An unreviewed or hypothetical
+numerical declaration may be inspected structurally; parsing never changes its
+evidence status or authorizes activation. Text is displayed as untrusted data.
+
+`WP-012-registry` must resolve units/time/denominator definitions against the
+numeric/world registries; check source/assumption, domain ownership and scoped
+cross-domain references; resolve trusted implementation IDs and enforce evidence
+and fixture review before activation. It must check every proposal against the
+registered state owner and submit changes to shared transactional reduction.
+`WP-012-expressions` owns the registered operator allowlist, unit inference,
+size/depth limits and evaluation. Dependency/SCC solving, actual allocation,
+missing-coverage execution, policy resolution, persistence, pack attachment,
+conformance integration and scientific validation remain downstream obligations.
+The v1 declaration adds no IPC command and changes no pack or wire version.
