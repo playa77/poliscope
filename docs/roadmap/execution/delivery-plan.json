@@ -173,11 +173,11 @@
       "parent": "WP-005",
       "scope": "evidence",
       "capabilities": "ENG + TL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-005-world"
       ],
-      "merged_sha": null,
+      "merged_sha": "500998751c1fb1ce95ac4f48362a69f450caa871",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-005-evidence.md; parent acceptance remains additional"
     },
@@ -261,14 +261,14 @@
       "parent": "WP-009",
       "scope": "store",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-002-commands",
         "WP-005-wire"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-009 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-009-store.md; parent acceptance remains additional"
     },
     "WP-009-repositories": {
       "parent": "WP-009",

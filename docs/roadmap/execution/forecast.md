@@ -104,3 +104,9 @@ The evidence contract package runs sequentially under SV; see
 [record](WP-005-evidence.md). Timeline remains blocked on WP-033-adoption;
 reassess ready store/transport work after merge. No application gate or native
 platform acceptance follows from contract fixtures.
+
+WP-009-store update (2026-10-18): PR #12 merged at `5009987`. One sequential
+agent completed the early production versioned SQLite/transaction foundation
+under SV; see [record](WP-009-store.md). Full domain repositories retain later
+WP-006/007/008 dependencies. Reassess ready WP-010-transport and the bounded
+historical-reader contract after merge. Application/native acceptance stays open.
