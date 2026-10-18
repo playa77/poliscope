@@ -1,2 +1,2 @@
 import { defineConfig } from 'vitest/config';
-export default defineConfig({ test: { include: ['tests/desktop/**/*.test.ts'] } });
+export default defineConfig({ test: { allowOnly: !process.env.CI, include: ['tests/desktop/**/*.test.ts'] } });

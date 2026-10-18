@@ -55,3 +55,53 @@ these checks do not certify future packs or a wire schema generator. `npm test`
 runs bootstrap desktop unit tests and the existing roadmap tests. Python tests
 use `uv run --frozen pytest`. WP-003 adds the full evidence/CI harness; no
 milestone gate selection is passed by the bootstrap checks alone.
+
+## Candidate-bound validation evidence
+
+WP-003 adds an evidence runner; it does not certify an application milestone.
+From the repository root, use a **new** output directory for each invocation:
+
+```sh
+uv run --frozen python scripts/evidence.py engine --output artifacts/engine
+uv run --frozen python scripts/evidence.py unit --output artifacts/unit
+npm run package
+# On headless Linux, prefix the next command with xvfb-run -a.
+uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop
+uv run --frozen python scripts/evidence.py verify --output artifacts/engine
+```
+
+Each directory contains JUnit and evidence JSON: command/exit, collected test
+identities/counts, skip/expected-failure reasons, runtimes, synthetic fixture hash,
+source candidate hash, start/end and unique run ID. Output directories cannot be
+reused. Verification rejects candidate drift, report modification, zero tests,
+failures and skips. Reports use synthetic data only; never upload personal data
+or secrets. `POLISCOPE_USER_DATA` is temporary per run; Electron adds its own
+per-test directory. Python fixtures offer isolated paths for future databases.
+The provider fixture is an in-memory full-payload sink with an invalid hostname
+and synthetic key; it makes no network requests. Its tests establish fixture
+behavior, not production sharing enforcement. The exact Fraction oracle detects
+Decimal precision loss without reimplementing Decimal arithmetic.
+
+For full milestone runs, use `scripts/check_gate_evidence.py SELECTION DIR...`.
+Selection retains the version-1 gate manifest format, but `tests` now identifies
+exact JUnit testcase names prefixed by the case ID and a space or colon. Every
+target must occur exactly once across fresh passing reports. Missing mandatory
+cases and premature future cases fail. Production-service declarations still
+require code inspection; naming a test cannot establish production integration.
+No application selection is committed while production prerequisites are absent.
+
+GitHub Validation runs frozen setup, validators, type checks, pytest, Vitest and
+packaged Electron on Linux. PR merge candidates and merge-group candidates must
+contain fetched current main, rechecked at completion. Maintainers must make
+`Validation / checks` a required check and use an up-to-date branch or merge queue;
+this workflow does not change repository protection or create independent review
+identities. New code requires fresh evidence and the package review route.
+Native Windows/macOS jobs await WP-004/WP-054 runner verification. Current empty
+content/contracts validators fail closed; generated-contract and cross-version
+checks must be supplied by WP-005 with its first real schemas/fixtures.
+
+CI artifacts use run ID/attempt and include current reports even on failure.
+Future integration, recovery and performance evidence belongs under
+`artifacts/integration`, `artifacts/recovery` and `artifacts/performance` with the
+same candidate/runtime identity rules and the benchmark contract. These paths
+are evidence locations, not claims those scenarios have run.

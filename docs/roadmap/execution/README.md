@@ -31,7 +31,7 @@ requires all its original deliverables, including full leaf traceability.
 | WP-001-decisions | solo-validated; agent review deferred | WP-001-requirements | DEC-01–12 dispositions, initial domain inventory, benchmark definitions, RT-01–14 ownership, resource forecast and allocation dry runs; see [decisions](decisions.md) |
 | WP-002-layout/python/desktop/commands | verified; solo-validated; agent review deferred | WP-001 merged at `ab9d957` | Sequential child contracts and evidence in [WP-002](WP-002.md) |
 | WP-002 parent | verified; solo-validated; agent review deferred | WP-001 verified | Full scaffold, frozen installs, root commands and native bootstrap shell; [scope/evidence](WP-002.md) |
-| WP-003-harness | next after WP-002 merge | WP-002 commands | Full test/evidence harness, then CI; record a new start contract |
+| WP-003 harness/CI/integration | solo-validated; agent review deferred | WP-002 merged at `d86aa12` | Candidate-bound evidence, isolated fixtures and Linux CI; [scope/evidence](WP-003.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and

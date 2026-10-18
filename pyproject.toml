@@ -20,4 +20,5 @@ build-backend = "hatchling.build"
 packages = ["engine/poliscope_engine"]
 
 [tool.pytest.ini_options]
-testpaths = ["tests/engine", "tests/roadmap"]
+testpaths = ["tests/engine", "tests/roadmap", "tests/harness"]
+xfail_strict = true
