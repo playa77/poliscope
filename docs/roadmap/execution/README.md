@@ -3,7 +3,8 @@
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
 scope authority; this directory records execution rather than rewriting their
-historical baseline. WP-001 and G0/M0 planning acceptance are complete under SV;
+historical baseline. WP-001 and G0/M0 planning acceptance are complete under SV; WP-002 adds the
+minimal desktop/managed-engine scaffold ([evidence](WP-002.md));
 no application milestone has passed. [Parent acceptance](WP-001.md) records the
 full checklist, evidence and explicitly permitted named decision blockers.
 
@@ -20,7 +21,7 @@ The existing `/workspace/poliscope` checkout is reserved to this sole agent;
 there are no competing writers or application runtime data. Future concurrent
 allocations require isolated checkouts and nonoverlapping write reservations.
 
-WP-001 is split before execution into these children. Parent acceptance still
+Execution includes the following bounded children. Parent acceptance still
 requires all its original deliverables, including full leaf traceability.
 
 | Child | Status | Dependencies | Scope / next action |
@@ -28,8 +29,9 @@ requires all its original deliverables, including full leaf traceability.
 | WP-001-baseline | solo-validated; agent review deferred | None | Package template, execution ledger and machine-readable gate selection; [evidence](WP-001-baseline.md) |
 | WP-001-requirements | solo-validated; agent review deferred | WP-001-baseline | 1,053 clauses, all 34 top-level mappings, all 68 planning parents, 178 candidate child scopes and concrete early DAG; see [traceability](traceability.md) |
 | WP-001-decisions | solo-validated; agent review deferred | WP-001-requirements | DEC-01–12 dispositions, initial domain inventory, benchmark definitions, RT-01–14 ownership, resource forecast and allocation dry runs; see [decisions](decisions.md) |
-| WP-002-layout | eligible for next allocation | Verified WP-001 baseline | Define minimum shared paths/toolchain/command boundaries before allocating Python and desktop scaffolds; actual start record required |
-| WP-002 parent | not started | WP-001 verified | Frozen Python/desktop installs, locks and root command interface remain its complete acceptance scope |
+| WP-002-layout/python/desktop/commands | implemented; validation in progress | WP-001 merged at `ab9d957` | Sequential child contracts and evidence in [WP-002](WP-002.md) |
+| WP-002 parent | implemented; validation in progress | WP-001 verified | Full scaffold, frozen installs, root commands and native bootstrap shell; [scope/evidence](WP-002.md) |
+| WP-003-harness | next after WP-002 merge | WP-002 commands | Full test/evidence harness, then CI; record a new start contract |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -93,7 +95,7 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 |---|---|
 | Repository refresh | Pull succeeded; HEAD matches origin/main at the base SHA; Codex / each package start |
 | Python | 3.12.14 available for bootstrap checks; WP-002 owns frozen uv setup |
-| Node/uv dependencies | Not probed or pinned by this child; WP-002 owns exact versions and clean-checkout installs |
+| Node/uv dependencies | WP-002 pins exact tools and dependency locks; see its clean-checkout evidence |
 | Native runners/signing | Unverified; WP-004 inventories Windows x64, macOS arm64/x64 and Linux x64; blocks native claims |
 | Corpus license/inventory | Unverified; WP-025 owns pinned source/license evidence; blocks redistribution, not synthetic tooling |
 | Reference benchmark desktop | Definitions frozen; PERF-REF-001 records exact native machine selection/measurement prerequisite for WP-019/051 |

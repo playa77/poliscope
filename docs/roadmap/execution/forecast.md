@@ -8,10 +8,10 @@ contracts before allocation. Do not count parents and children as separate effor
 
 ## Integration path and ready queue
 
-After WP-001 acceptance the next eligible scope is **WP-002-layout**. Allocate it
-with the template, source SHA, fixed owner/controller, write scope and validation
-route before editing. Its output enables separate Python/desktop scaffolds, then
-root commands, harness/CI and wire contract. Verified dependencies or actual
+WP-002 layout, Python, desktop and commands execute sequentially under the
+[WP-002 parent contract](WP-002.md). After its validation and merge, the next
+eligible scope is **WP-003-harness**, followed by CI and wire work. Allocate it
+with a new source SHA, fixed owner/controller, write scope and validation route. Verified dependencies or actual
 reviewed merged boundary children authorize development. A null merge SHA means
 no merged evidence exists; it must never be interpreted as a passed contract.
 
@@ -60,8 +60,8 @@ Repository account/branch protections are not modified by staffing changes.
 | Dependency | Current observation | Owner duty / next evidence | Effect on forecast |
 |---|---|---|---|
 | Git remote | Session pull matched base main SHA; unrelated working edits preserved | Every package start refreshes safely | Setup/reconciliation time measured, never reset/clean to refresh |
-| Python tooling | Python 3.12.14 runs bootstrap checks | WP-002-python establishes uv and frozen lock | Frozen setup/clean checkout remain G1 work |
-| Node/desktop tooling | No dependency install or launch attempted here | WP-002-desktop pins Node 24/Electron/Forge/Vite/React/TS and locks | Native libraries/downloads may add setup time; do not claim runnable app |
+| Python tooling | Python 3.12.14 / uv 0.12.23 pinned with uv lock | WP-002 records managed and clean-checkout setup | Frozen setup/clean checkout remain G1 work |
+| Node/desktop tooling | Node 24.19.0 and npm 11.9.0 pinned; desktop launch/package checks in WP-002 | WP-002-desktop records pinned dependencies and actual smoke evidence | Native libraries/downloads may add setup time; do not claim runnable app |
 | CI/branch access | No CI workflow or remote approval rules changed | WP-003-ci checks actual repository capabilities and required candidate rules | Shared account cannot produce independent GitHub identities |
 | Source/license | No corpus excerpt retrieved/copied | CONTENT-001 / WP-025-inventory | License/source lead time can block content distribution |
 | Benchmarks | Workload/budgets fixed, no exact native machine selected | PERF-REF-001 / WP-019 and WP-051 | Missing machine blocks performance claim, not framework implementation |

@@ -209,10 +209,12 @@ Read the [global game design architecture](docs/design_doc.md) and [global techn
 
 ## Development
 
-WP-001 delivery baseline is complete under solo validation. The desktop and engine
-scaffold is pending; the npm/uv commands below describe the planned interface and
-are not runnable yet. See the [execution ledger](docs/roadmap/execution/README.md)
-for current scope, verification commands and next work.
+WP-001 planning and WP-002 runtime scaffold are complete under solo validation.
+The commands below install, run, check and package the minimal desktop and engine.
+Simulation, storage, content and provider features remain pending. See the
+[development guide](docs/development.md) for exact tool versions, OS prerequisites,
+headless checks and current limitations, and the
+[execution ledger](docs/roadmap/execution/README.md) for package evidence.
 
 Development requires **Node.js 24 LTS**, **Python 3.12**, and **uv**. Clone the repository and run the following from its root:
 
@@ -243,9 +245,14 @@ npm run package
 
 Native packages are built on their target operating system and architecture. Signing and notarization use local or CI configuration, never committed credentials.
 
-Tests cover independent numerical fixtures, conservation, scope aggregation, coupled mechanisms, timeline replay, history, archive safety, provider behavior, and desktop interaction. Ordinary tests use provider mocks; paid live-provider checks are explicit opt-in tests.
+Current tests cover roadmap integrity, bootstrap process lifecycle, engine path
+selection and the packaged Electron shell with its bundled engine. Content and
+contract commands explicitly validate empty inventories until their production
+packages arrive. Numerical, storage, timeline, archive and provider tests remain
+future work. Paid live-provider checks will require explicit opt-in.
 
-Enter development BYOK credentials through the application's settings. Keep real civilizations, transcripts, keys, and local configuration outside tracked source files.
+BYOK settings are not implemented yet. Keep real civilizations, transcripts, keys,
+and local configuration outside tracked source files.
 
 ## Contributing
 
