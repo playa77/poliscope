@@ -149,13 +149,13 @@
       "parent": "WP-005",
       "scope": "wire",
       "capabilities": "ENG + TL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-003-harness"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-005-wire.md; parent acceptance remains additional"
     },
     "WP-005-world": {
       "parent": "WP-005",

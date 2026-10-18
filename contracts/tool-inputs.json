@@ -1,0 +1,565 @@
+{
+  "$defs": {
+    "CancelRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "operation": {
+          "const": "runtime.cancel",
+          "title": "Operation",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/OperationParams"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "operation",
+        "params"
+      ],
+      "title": "CancelRequest",
+      "type": "object"
+    },
+    "CancelResult": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "cancel",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "requested",
+            "already_finished",
+            "unknown"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "operation_id",
+        "state"
+      ],
+      "title": "CancelResult",
+      "type": "object"
+    },
+    "Empty": {
+      "additionalProperties": false,
+      "properties": {},
+      "title": "Empty",
+      "type": "object"
+    },
+    "Error": {
+      "additionalProperties": false,
+      "properties": {
+        "error": {
+          "$ref": "#/$defs/ErrorDetail"
+        },
+        "id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Id"
+        },
+        "kind": {
+          "const": "error",
+          "title": "Kind",
+          "type": "string"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "kind",
+        "error"
+      ],
+      "title": "Error",
+      "type": "object"
+    },
+    "ErrorDetail": {
+      "additionalProperties": false,
+      "properties": {
+        "code": {
+          "enum": [
+            "UNSUPPORTED_PROTOCOL",
+            "INVALID_MESSAGE",
+            "MESSAGE_TOO_LARGE",
+            "UNKNOWN_OPERATION",
+            "INTERNAL_ERROR",
+            "CANCELLED"
+          ],
+          "title": "Code",
+          "type": "string"
+        },
+        "message": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Message",
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "message"
+      ],
+      "title": "ErrorDetail",
+      "type": "object"
+    },
+    "HandshakeParams": {
+      "additionalProperties": false,
+      "properties": {
+        "supported_protocols": {
+          "items": {
+            "const": 1,
+            "type": "integer"
+          },
+          "maxItems": 1,
+          "minItems": 1,
+          "title": "Supported Protocols",
+          "type": "array"
+        }
+      },
+      "required": [
+        "supported_protocols"
+      ],
+      "title": "HandshakeParams",
+      "type": "object"
+    },
+    "HandshakeRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "operation": {
+          "const": "runtime.handshake",
+          "title": "Operation",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/HandshakeParams"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "operation",
+        "params"
+      ],
+      "title": "HandshakeRequest",
+      "type": "object"
+    },
+    "HandshakeResult": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "handshake",
+          "title": "Kind",
+          "type": "string"
+        },
+        "versions": {
+          "$ref": "#/$defs/Versions"
+        }
+      },
+      "required": [
+        "kind",
+        "versions"
+      ],
+      "title": "HandshakeResult",
+      "type": "object"
+    },
+    "HealthRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "operation": {
+          "const": "runtime.health",
+          "title": "Operation",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/Empty"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "operation",
+        "params"
+      ],
+      "title": "HealthRequest",
+      "type": "object"
+    },
+    "HealthResult": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "health",
+          "title": "Kind",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "busy",
+            "stopping"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "state"
+      ],
+      "title": "HealthResult",
+      "type": "object"
+    },
+    "OperationParams": {
+      "additionalProperties": false,
+      "properties": {
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "operation_id"
+      ],
+      "title": "OperationParams",
+      "type": "object"
+    },
+    "Progress": {
+      "additionalProperties": false,
+      "properties": {
+        "completed": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Completed",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "progress",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        },
+        "total": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Total"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "kind",
+        "operation_id",
+        "completed",
+        "total"
+      ],
+      "title": "Progress",
+      "type": "object"
+    },
+    "ShutdownRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "operation": {
+          "const": "runtime.shutdown",
+          "title": "Operation",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/Empty"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "operation",
+        "params"
+      ],
+      "title": "ShutdownRequest",
+      "type": "object"
+    },
+    "ShutdownResult": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "shutdown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "state": {
+          "const": "stopping",
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "state"
+      ],
+      "title": "ShutdownResult",
+      "type": "object"
+    },
+    "StatusRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "operation": {
+          "const": "runtime.operation_status",
+          "title": "Operation",
+          "type": "string"
+        },
+        "params": {
+          "$ref": "#/$defs/OperationParams"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "operation",
+        "params"
+      ],
+      "title": "StatusRequest",
+      "type": "object"
+    },
+    "StatusResult": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "operation_status",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "unknown",
+            "running",
+            "completed",
+            "failed",
+            "cancelled"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "operation_id",
+        "state"
+      ],
+      "title": "StatusResult",
+      "type": "object"
+    },
+    "Success": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "result",
+          "title": "Kind",
+          "type": "string"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        },
+        "result": {
+          "discriminator": {
+            "mapping": {
+              "cancel": "#/$defs/CancelResult",
+              "handshake": "#/$defs/HandshakeResult",
+              "health": "#/$defs/HealthResult",
+              "operation_status": "#/$defs/StatusResult",
+              "shutdown": "#/$defs/ShutdownResult"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/HandshakeResult"
+            },
+            {
+              "$ref": "#/$defs/HealthResult"
+            },
+            {
+              "$ref": "#/$defs/StatusResult"
+            },
+            {
+              "$ref": "#/$defs/CancelResult"
+            },
+            {
+              "$ref": "#/$defs/ShutdownResult"
+            }
+          ],
+          "title": "Result"
+        }
+      },
+      "required": [
+        "protocol",
+        "id",
+        "kind",
+        "result"
+      ],
+      "title": "Success",
+      "type": "object"
+    },
+    "Versions": {
+      "additionalProperties": false,
+      "properties": {
+        "application": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Application",
+          "type": "string"
+        },
+        "protocol": {
+          "const": 1,
+          "title": "Protocol",
+          "type": "integer"
+        },
+        "schema_version": {
+          "const": 1,
+          "title": "Schema Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "application",
+        "schema_version",
+        "protocol"
+      ],
+      "title": "Versions",
+      "type": "object"
+    }
+  },
+  "inputs": {
+    "CancelRequest": {
+      "$ref": "#/$defs/OperationParams"
+    },
+    "HandshakeRequest": {
+      "$ref": "#/$defs/HandshakeParams"
+    },
+    "HealthRequest": {
+      "$ref": "#/$defs/Empty"
+    },
+    "ShutdownRequest": {
+      "$ref": "#/$defs/Empty"
+    },
+    "StatusRequest": {
+      "$ref": "#/$defs/OperationParams"
+    }
+  }
+}

@@ -1,0 +1,142 @@
+[
+  {
+    "name": "handshake",
+    "frame": "{\"protocol\":1,\"id\":\"request:\\u03b1\",\"operation\":\"runtime.handshake\",\"params\":{\"supported_protocols\":[1]}}\n",
+    "code": null
+  },
+  {
+    "name": "health",
+    "frame": "{\"protocol\":1,\"id\":\"request:\\u03b1\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": null
+  },
+  {
+    "name": "operation_status",
+    "frame": "{\"protocol\":1,\"id\":\"request:\\u03b1\",\"operation\":\"runtime.operation_status\",\"params\":{\"operation_id\":\"operation:1\"}}\n",
+    "code": null
+  },
+  {
+    "name": "cancel",
+    "frame": "{\"protocol\":1,\"id\":\"request:\\u03b1\",\"operation\":\"runtime.cancel\",\"params\":{\"operation_id\":\"operation:1\"}}\n",
+    "code": null
+  },
+  {
+    "name": "shutdown",
+    "frame": "{\"protocol\":1,\"id\":\"request:\\u03b1\",\"operation\":\"runtime.shutdown\",\"params\":{}}\n",
+    "code": null
+  },
+  {
+    "name": "result-handshake",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"result\",\"result\":{\"kind\":\"handshake\",\"versions\":{\"application\":\"0.1.0\",\"schema_version\":1,\"protocol\":1}}}\n",
+    "code": null
+  },
+  {
+    "name": "result-health",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"result\",\"result\":{\"kind\":\"health\",\"state\":\"ready\"}}\n",
+    "code": null
+  },
+  {
+    "name": "result-operation_status",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"result\",\"result\":{\"kind\":\"operation_status\",\"operation_id\":\"operation:1\",\"state\":\"unknown\"}}\n",
+    "code": null
+  },
+  {
+    "name": "result-cancel",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"result\",\"result\":{\"kind\":\"cancel\",\"operation_id\":\"operation:1\",\"state\":\"requested\"}}\n",
+    "code": null
+  },
+  {
+    "name": "result-shutdown",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"result\",\"result\":{\"kind\":\"shutdown\",\"state\":\"stopping\"}}\n",
+    "code": null
+  },
+  {
+    "name": "error",
+    "frame": "{\"protocol\":1,\"id\":null,\"kind\":\"error\",\"error\":{\"code\":\"INVALID_MESSAGE\",\"message\":\"Invalid message\"}}\n",
+    "code": null
+  },
+  {
+    "name": "progress-None",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"progress\",\"operation_id\":\"operation:1\",\"completed\":0,\"total\":null}\n",
+    "code": null
+  },
+  {
+    "name": "progress-10",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"kind\":\"progress\",\"operation_id\":\"operation:1\",\"completed\":0,\"total\":10}\n",
+    "code": null
+  },
+  {
+    "name": "old",
+    "frame": "{\"protocol\":0,\"id\":\"request:1\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": "UNSUPPORTED_PROTOCOL"
+  },
+  {
+    "name": "future",
+    "frame": "{\"protocol\":2,\"id\":\"request:1\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": "UNSUPPORTED_PROTOCOL"
+  },
+  {
+    "name": "bool-version",
+    "frame": "{\"protocol\":true,\"id\":\"request:1\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": "UNSUPPORTED_PROTOCOL"
+  },
+  {
+    "name": "unknown-operation",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"operation\":\"invented\",\"params\":{}}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "extra",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"operation\":\"runtime.health\",\"params\":{},\"extra\":1}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "params",
+    "frame": "{\"protocol\":1,\"id\":\"request:1\",\"operation\":\"runtime.health\",\"params\":{\"unexpected\":1}}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "empty-id",
+    "frame": "{\"protocol\":1,\"id\":\"\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "bad-json",
+    "frame": "{\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "missing-lf",
+    "frame": "{}",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "multiple",
+    "frame": "{}\n{}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "float-version",
+    "frame": "{\"protocol\":1.0}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "nested-bool",
+    "frame": "{\"protocol\":1,\"id\":\"r\",\"operation\":\"runtime.handshake\",\"params\":{\"supported_protocols\":[true]}}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "float-count",
+    "frame": "{\"protocol\":1,\"id\":\"r\",\"kind\":\"progress\",\"operation_id\":\"o\",\"completed\":1.0,\"total\":null}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "unsafe-count",
+    "frame": "{\"protocol\":1,\"id\":\"r\",\"kind\":\"progress\",\"operation_id\":\"o\",\"completed\":9007199254740992,\"total\":null}\n",
+    "code": "INVALID_MESSAGE"
+  },
+  {
+    "name": "surrogate-id",
+    "frame": "{\"protocol\":1,\"id\":\"\\ud800\",\"operation\":\"runtime.health\",\"params\":{}}\n",
+    "code": "INVALID_MESSAGE"
+  }
+]

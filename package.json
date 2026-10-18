@@ -15,7 +15,7 @@
   "scripts": {
     "dev": "node scripts/desktop.mjs start",
     "content:validate": "node scripts/check-inventory.mjs content",
-    "contracts:check": "node scripts/check-inventory.mjs contracts",
+    "contracts:check": "uv run --frozen python scripts/generate_contracts.py --check",
     "typecheck": "tsc --noEmit",
     "test": "vitest run && uv run --frozen python -m unittest discover -s tests/roadmap -v",
     "test:desktop": "npm run package && playwright test",
