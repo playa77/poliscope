@@ -3,3 +3,9 @@ body { margin: 0; } main { max-width: 46rem; margin: 12vh auto; padding: 2rem; }
 h1 { font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.1; font-weight: 500; }
 p { line-height: 1.7; } .eyebrow { color: #c5d49a; letter-spacing: .1em; text-transform: uppercase; }
 [role=status] { border-top: 1px solid #697974; padding-top: 1.5rem; }
+section { margin-top: 2rem; } fieldset { border: 1px solid #697974; }
+label { display: block; margin: .8rem 0; } input, select { display: block; padding: .5rem; width: min(90%, 30rem); }
+button { padding: .6rem 1rem; margin: .5rem 0; cursor: pointer; } button:disabled { cursor: wait; }
+dt { margin-top: .5rem; font-weight: bold; } dd { margin-left: 0; overflow-wrap: anywhere; }
+pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #102321; padding: 1rem; }
+[role=alert] { border: 1px solid #e5be86; padding: 1rem; }

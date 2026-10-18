@@ -37,7 +37,9 @@ requires all its original deliverables, including full leaf traceability.
 | WP-005-evidence | verified; solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
 | WP-009-store | verified; solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
 | WP-010-transport | verified; solo-validated; agent review deferred | PR #13 merged at `3785021`; WP-002 / WP-005-wire | Production stdio producer and main consumer; [scope/evidence](WP-010-transport.md) |
-| WP-010-history-read | solo-validated; agent review deferred | PR #14 merged at `0b828b5`; WP-005-evidence / WP-009-store | Bounded schema-1 trusted historical reader and main-only launch; [scope/evidence](WP-010-history-read.md) |
+| WP-010-history-read | verified; solo-validated; agent review deferred | PR #14 merged at `0b828b5`; WP-005-evidence / WP-009-store | Bounded schema-1 trusted historical reader and main-only launch; [scope/evidence](WP-010-history-read.md) |
+
+| WP-011-shell | solo-validated; agent review deferred | PR #15 merged at `b56f7cf` | Selected historical store, read-only desktop and single-child reconnect; [scope/evidence](WP-011-shell.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -121,3 +123,10 @@ boundary. Reassess WP-011-shell next for historical-mode presentation, single-ch
 replacement and selected-store authorization; IPC sender validation and full
 lifecycle/application gates retain their own acceptance. WP-005-timeline/privacy
 remain blocked on their recorded providers. No application gate is claimed.
+
+## Current boundary after PR #15
+
+PR #15 merged WP-010-history-read at `b56f7cf`. The current sequential allocation is
+[WP-011-shell](WP-011-shell.md): main-owned store selection, historical presentation,
+single-child replacement, reconnect and per-data-directory instance ownership.
+WP-011-ipc remains subsequent work; no application gate is claimed.
