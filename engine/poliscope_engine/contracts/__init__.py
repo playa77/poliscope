@@ -3,6 +3,7 @@ from typing import Annotated, Literal
 from pydantic import Field, TypeAdapter, ValidationError
 from .base import Contract, Identifier
 from .world import WorldInspectParams, WorldPageResult
+from .evidence import EvidenceInspectParams, EvidencePageResult, EvaluationSummary
 import json
 
 MAX_FRAME_BYTES = 1_048_576
@@ -43,6 +44,10 @@ class WorldInspectRequest(Request):
     operation: Literal['world.inspect']
     params: WorldInspectParams
 
+class EvidenceInspectRequest(Request):
+    operation: Literal['evidence.inspect']
+    params: EvidenceInspectParams
+
 class Versions(Contract):
     application: Identifier
     schema_version: Literal[1]
@@ -74,10 +79,10 @@ class Success(Contract):
     protocol: Literal[1]
     id: Identifier
     kind: Literal['result']
-    result: Annotated[HandshakeResult | HealthResult | StatusResult | CancelResult | ShutdownResult | WorldPageResult, Field(discriminator='kind')]
+    result: Annotated[HandshakeResult | HealthResult | StatusResult | CancelResult | ShutdownResult | WorldPageResult | EvaluationSummary | EvidencePageResult, Field(discriminator='kind')]
 
 class ErrorDetail(Contract):
-    code: Literal['UNSUPPORTED_PROTOCOL', 'INVALID_MESSAGE', 'MESSAGE_TOO_LARGE', 'UNKNOWN_OPERATION', 'INTERNAL_ERROR', 'CANCELLED']
+    code: Literal['UNSUPPORTED_PROTOCOL', 'INVALID_MESSAGE', 'MESSAGE_TOO_LARGE', 'UNKNOWN_OPERATION', 'INTERNAL_ERROR', 'CANCELLED', 'STALE_REVISION', 'MODEL_UNAVAILABLE', 'DATABASE_FAILURE']
     message: Annotated[str, Field(min_length=1, max_length=1024)]
 
 class Error(Contract):
@@ -94,7 +99,7 @@ class Progress(Contract):
     completed: Annotated[int, Field(ge=0, le=9007199254740991)]
     total: Annotated[int, Field(ge=1, le=9007199254740991)] | None
 
-WireMessage = HandshakeRequest | HealthRequest | StatusRequest | CancelRequest | ShutdownRequest | WorldInspectRequest | Success | Error | Progress
+WireMessage = HandshakeRequest | HealthRequest | StatusRequest | CancelRequest | ShutdownRequest | WorldInspectRequest | EvidenceInspectRequest | Success | Error | Progress
 adapter = TypeAdapter(WireMessage)
 
 class WireError(ValueError):
