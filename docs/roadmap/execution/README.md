@@ -34,8 +34,9 @@ requires all its original deliverables, including full leaf traceability.
 | WP-003 harness/CI/integration | solo-validated; agent review deferred | WP-002 merged at `d86aa12` | Candidate-bound evidence, isolated fixtures and Linux CI; [scope/evidence](WP-003.md) |
 | WP-005-wire | verified; solo-validated; agent review deferred | PR #9 merged at `3cac56b` | Protocol-1 contract merged in PR #10 at `e0e1828`; [scope/evidence](WP-005-wire.md) |
 | WP-005-world | verified; solo-validated; agent review deferred | PR #10 merged at `e0e1828` | Bounded world inspection DTOs, generated schemas and shared fixtures; [scope/evidence](WP-005-world.md) |
+| WP-005-evidence | verified; solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
 
-| WP-005-evidence | solo-validated; agent review deferred | PR #11 merged at `1775a36` | Evaluation coverage/findings, source/assumption lineage and traces; [scope/evidence](WP-005-evidence.md) |
+| WP-009-store | solo-validated; agent review deferred | PR #12 merged at `5009987`; WP-002 / WP-005-wire | Versioned SQLite transaction foundation; [scope/evidence](WP-009-store.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -109,11 +110,13 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 Templates live in `.github/ISSUE_TEMPLATE/work-package.md`. Creating this local
 template sends no external messages and creates no hosted issues.
 
-## Current boundary after PR #11
+## Current boundary after PR #12
 
-PR #11 merged WP-005-world at `1775a361b3cdf0ad2d94fc3c7518dbaa4ddfcc9d`.
-[WP-005-evidence](WP-005-evidence.md) follows on that baseline with one sequential
-agent and SV validation. Parent WP-005 remains open for timeline/privacy contracts;
-WP-005-timeline also requires WP-033-adoption. After this package merges, reassess
-ready WP-009-store / WP-010-transport work against their actual prerequisites.
-No consumer service or application gate is certified by these DTO packages.
+PR #12 merged WP-005-evidence at `500998751c1fb1ce95ac4f48362a69f450caa871`.
+[WP-009-store](WP-009-store.md) completed on that baseline with one sequential agent
+and SV validation. Distributed delivery §4.1 enables this production storage child
+from WP-002 and WP-005-wire; full domain/pack repositories and WP-009 parent
+acceptance retain the later WP-006/007/008 prerequisites. After merge reassess
+WP-010-transport and WP-010-history-read; the latter still needs its exact bounded
+trusted-reader contract and authorization scope. WP-005-timeline/privacy remain
+blocked on their recorded providers. No application gate is claimed.
