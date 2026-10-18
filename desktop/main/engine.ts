@@ -42,15 +42,19 @@ export class BootstrapEngine {
   stop(): Promise<void> {
     this.stopping = true;
     const child = this.child;
-    if (!child || child.exitCode !== null || child.signalCode !== null) return Promise.resolve();
-    return new Promise((resolve) => {
+    if (!child || !child.pid || child.exitCode !== null || child.signalCode !== null) return Promise.resolve();
+    return new Promise((resolve, reject) => {
       let finished = false;
       const finish = () => { if (finished) return; finished = true; clearTimeout(terminate); clearTimeout(kill); clearTimeout(deadline); resolve(); };
       const terminate = setTimeout(() => child.kill(), 1500);
       const kill = setTimeout(() => child.kill('SIGKILL'), 2500);
-      const deadline = setTimeout(finish, 3500);
+      const deadline = setTimeout(() => {
+        if (finished) return;
+        finished = true;
+        clearTimeout(terminate); clearTimeout(kill);
+        reject(new Error('Engine exit unconfirmed'));
+      }, 3500);
       child.once('exit', finish);
-      child.once('error', finish);
       void this.transport?.request('runtime.shutdown', {}).finally(() => child.stdin.end()).catch(() => {});
     });
   }
