@@ -26,3 +26,27 @@ describe('absolute engine selection', () => {
     await engine.stop();
   });
 });
+
+import { mkdtemp, mkdir, writeFile, chmod, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
+it.runIf(process.platform !== 'win32')('kills an unresponsive child even when it ignores graceful shutdown and SIGTERM', async () => {
+  const root = await mkdtemp(join(tmpdir(), 'poliscope-stubborn-'));
+  const executable = join(root, '.venv/bin/python');
+  await mkdir(join(root, '.venv/bin'), { recursive: true });
+  await writeFile(executable, `#!${resolve('.venv/bin/python')}\nimport sys,json,signal,os\nfrom pathlib import Path\nsignal.signal(signal.SIGTERM, signal.SIG_IGN)\nPath(${JSON.stringify(join(root, 'pid'))}).write_text(str(os.getpid()))\nfor line in sys.stdin:\n r=json.loads(line)\n if r['operation']=='runtime.handshake':\n  print(json.dumps(dict(protocol=1,id=r['id'],kind='result',result=dict(kind='handshake',versions=dict(application='0.1.0',schema_version=1,protocol=1)))),flush=True)\n`);
+  await chmod(executable, 0o700);
+  const engine = new BootstrapEngine();
+  let pid: number | undefined;
+  try {
+    engine.start(false, root, '');
+    await expect.poll(() => engine.status.state).toBe('ready');
+    pid = Number(await readFile(join(root, 'pid'), 'utf8'));
+    await engine.stop();
+    expect(() => process.kill(pid!, 0)).toThrow();
+  } finally {
+    if (pid) { try { process.kill(pid, 'SIGKILL'); } catch {} }
+    await engine.stop();
+    await rm(root, { recursive: true, force: true });
+  }
+});
