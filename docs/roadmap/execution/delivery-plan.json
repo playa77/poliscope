@@ -212,7 +212,7 @@
       "parent": "WP-006",
       "scope": "numeric",
       "capabilities": "ENG; review expertise MODEL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-005-world"
       ],
@@ -333,11 +333,11 @@
       "parent": "WP-011",
       "scope": "ipc",
       "capabilities": "DESK; review expertise TL/QA",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-011-shell"
       ],
-      "merged_sha": null,
+      "merged_sha": "1a2b343f1a260f6b64fc427cfa17088959c78f84",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-011-ipc.md"
     },
