@@ -96,9 +96,11 @@ contain fetched current main, rechecked at completion. Maintainers must make
 `Validation / checks` a required check and use an up-to-date branch or merge queue;
 this workflow does not change repository protection or create independent review
 identities. New code requires fresh evidence and the package review route.
-Native Windows/macOS jobs await WP-004/WP-054 runner verification. Current empty
-content/contracts validators fail closed; generated-contract and cross-version
-checks must be supplied by WP-005 with its first real schemas/fixtures.
+Native Windows/macOS jobs await WP-004/WP-054 runner verification. The empty
+content inventory fails closed. WP-005-wire/world now provide generated schemas,
+TypeScript/tool inputs and shared positive/negative compatibility fixtures;
+`npm run contracts:check` checks regeneration and registered artifacts.
+See `contracts/README.md` for the runtime/world boundary and service limitations.
 
 CI artifacts use run ID/attempt and include current reports even on failure.
 Future integration, recovery and performance evidence belongs under

@@ -93,7 +93,7 @@
       "requires": [
         "WP-002-commands"
       ],
-      "merged_sha": null,
+      "merged_sha": "3cac56b3a33a28a9dd69f89901f892c6930d7fbb",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-003.md"
     },
@@ -105,7 +105,7 @@
       "requires": [
         "WP-003-harness"
       ],
-      "merged_sha": null,
+      "merged_sha": "3cac56b3a33a28a9dd69f89901f892c6930d7fbb",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-003.md"
     },
@@ -118,7 +118,7 @@
         "WP-003-harness",
         "WP-003-ci"
       ],
-      "merged_sha": null,
+      "merged_sha": "3cac56b3a33a28a9dd69f89901f892c6930d7fbb",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-003.md"
     },
@@ -149,11 +149,11 @@
       "parent": "WP-005",
       "scope": "wire",
       "capabilities": "ENG + TL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-003-harness"
       ],
-      "merged_sha": null,
+      "merged_sha": "e0e18287cda3a45d52f22e98518ea6553134f580",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-005-wire.md; parent acceptance remains additional"
     },
@@ -161,13 +161,13 @@
       "parent": "WP-005",
       "scope": "world",
       "capabilities": "ENG + TL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-005-wire"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-005 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-005-world.md; parent acceptance remains additional"
     },
     "WP-005-evidence": {
       "parent": "WP-005",

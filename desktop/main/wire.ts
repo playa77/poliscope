@@ -2,7 +2,7 @@
 import schema from '../../contracts/wire.schema.json';
 import type { WireMessage } from '../../contracts/wire';
 
-type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; minimum?: number; maximum?: number };
+type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
 const definitions = schema.$defs as Record<string, Schema>;
 function valid(value: unknown, rule: Schema): boolean {
   if (rule.$ref) return valid(value, definitions[rule.$ref.split('/').at(-1)!]);
@@ -12,7 +12,7 @@ function valid(value: unknown, rule: Schema): boolean {
   if (rule.oneOf) return rule.oneOf.filter(r => valid(value, r)).length === 1;
   switch (rule.type) {
     case 'null': return value === null;
-    case 'string': return typeof value === 'string' && !/\p{Surrogate}/u.test(value) && [...value].length >= (rule.minLength ?? 0) && [...value].length <= (rule.maxLength ?? Infinity);
+    case 'string': return typeof value === 'string' && !/\p{Surrogate}/u.test(value) && [...value].length >= (rule.minLength ?? 0) && [...value].length <= (rule.maxLength ?? Infinity) && (!rule.pattern || new RegExp(rule.pattern, 'u').exec(value)?.[0] === value);
     case 'integer': return typeof value === 'number' && Number.isSafeInteger(value) && value >= (rule.minimum ?? -Infinity) && value <= (rule.maximum ?? Infinity);
     case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every(v => valid(v, rule.items!));
     case 'object': {

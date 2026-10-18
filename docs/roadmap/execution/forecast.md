@@ -91,3 +91,10 @@ WP-003 update (2026-10-18): harness/CI/integration implemented under SV; see
 [record](WP-003.md). Hosted CI awaits PR execution. WP-005 contract work is next
 after merge; WP-004 retains WP-011-shell prerequisite. Native access remains
 unverified beyond Linux scaffold smoke. No measured delivery rate is available.
+
+WP-005-world update (2026-10-18): PRs #9/#10 are merged; current base is
+`e0e18287cda3a45d52f22e98518ea6553134f580`. World inspection contracts and fixtures
+are complete under SV; see [record](WP-005-world.md). After merge,
+WP-005-evidence becomes ready. Store/transport retain their independent merged
+wire prerequisites. One sequential agent remains; no throughput forecast or
+application-gate claim is inferred from contract completion.
