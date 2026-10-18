@@ -41,7 +41,7 @@ requires all its original deliverables, including full leaf traceability.
 | WP-011-shell | verified; solo-validated; agent review deferred | PR #15 merged at `b56f7cf` | Selected historical evidence desktop; PR #16 merged at `51b6764`; [scope/evidence](WP-011-shell.md) |
 | WP-011-ipc | verified; solo-validated; agent review deferred | PR #16 merged at `51b6764` | Named IPC validation, bounded errors, production resource/permission policy and hostile renderer checks; [scope/evidence](WP-011-ipc.md) |
 
-| WP-006-numeric | solo-validated; agent review deferred | WP-005-world merged at `1775a36`; base PR #17 at `1a2b343` | Exact Decimal/unit/account semantics and residual transfer staging; [scope/evidence](WP-006-numeric.md) |
+| WP-006-numeric | verified; solo-validated; agent review deferred | WP-005-world merged at `1775a36`; base PR #17 at `1a2b343` | Exact Decimal/unit/account semantics and residual transfer staging; [scope/evidence](WP-006-numeric.md) |
 
 Reassess ready work and available agents at each boundary. Record owner,
 controller, scope, dependencies, exact upstream SHA, validation route and
@@ -153,3 +153,13 @@ and SV validation remain in effect. Spatial aggregation, store publication,
 calendar selection and domain mechanisms retain their own acceptance. Reassess
 WP-007-identities and WP-004-probe after merge; native runner availability still
 limits platform claims. No application milestone or full parent gate is claimed.
+
+## Current boundary after PR #18
+
+PR #18 merged WP-006-numeric at `1195f1ce4636e28eaa0142f98806820cab028619`.
+[WP-007-identities](WP-007-identities.md) delivers the next sequential child:
+immutable canonical identity registry, explicit population roles, unique state
+owners and partition-bound pure candidate validation. One agent and SV inspection
+remain in effect. Reassess WP-007-membership next for containment, overlapping
+membership and aggregation. Account spending, external interface mechanisms,
+durable world repositories and full parent/application gates remain separate.

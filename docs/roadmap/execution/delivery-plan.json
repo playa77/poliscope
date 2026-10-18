@@ -212,11 +212,11 @@
       "parent": "WP-006",
       "scope": "numeric",
       "capabilities": "ENG; review expertise MODEL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-005-world"
       ],
-      "merged_sha": null,
+      "merged_sha": "1195f1ce4636e28eaa0142f98806820cab028619",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-006 acceptance in packages.json; exact child criteria required at start"
     },
@@ -224,7 +224,7 @@
       "parent": "WP-007",
       "scope": "identities",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-006-numeric"
       ],
