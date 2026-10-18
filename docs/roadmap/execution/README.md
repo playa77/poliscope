@@ -172,3 +172,12 @@ containment validation, explicit direct membership and exact canonical union
 aggregation. One agent and SV inspection remain in effect. External interfaces,
 account spending, durable publication and full parent/application acceptance
 remain separate. Reassess WP-008-packs and WP-004-probe after this child merges.
+
+## Current boundary after PR #20
+
+PR #20 merged WP-007-membership at `cbf71c1a72673346cd3ed705ecb1b1c99c3ea9a5`.
+[WP-008-packs](WP-008-packs.md) is the next sequential allocation: bounded data-only
+pack archives, source/license integrity, versioned identity/dependency contracts,
+and explicit uncertainty relationships. One agent and SV inspection remain in
+effect. Reassess WP-012-contract after merge. Production content, trusted numerical
+mechanisms, persistence and full application/native gates remain separate.

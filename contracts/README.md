@@ -162,3 +162,15 @@ isolated Python's `poliscope_engine.history`. The caller stops the numerical chi
 before launching its replacement; automatic lifecycle coordination is WP-010-
 lifecycle/WP-011. Older-schema/archive recovery remains WP-041. This interface
 proves safe structural readability, not reproduction of historical computations.
+
+## Data-only pack format 1
+
+`pack.schema.json` and `pack.ts` derive from `contracts/packs.py` separately from
+the wire protocol. They describe bounded inline-text manifests, separate runtime
+identities, pinned dependency digests, source/license archives, full alternatives,
+typed parameters/measurements, scoped assumptions and versioned uncertainty
+relationships. `packs.PackArchive` additionally verifies reference and digest
+closure, namespace uniqueness and declared dependency consistency. Schema parsing
+alone does not establish these semantic invariants or license/scientific validity.
+No pack command or renderer import surface is added. See the pack service README
+for the historical-read/execution boundary and supported import bounds.
