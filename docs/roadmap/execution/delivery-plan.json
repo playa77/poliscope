@@ -8,7 +8,7 @@
       "capabilities": "TPM + TL; review expertise PRODUCT, MODEL, QA",
       "status": "verified; solo-validated; agent review deferred",
       "requires": [],
-      "merged_sha": null,
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
@@ -20,7 +20,7 @@
       "requires": [
         "WP-001-baseline"
       ],
-      "merged_sha": null,
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
@@ -32,7 +32,7 @@
       "requires": [
         "WP-001-requirements"
       ],
-      "merged_sha": null,
+      "merged_sha": "ab9d9578c7c7dfdc1444a7c67cd819bc68751f89",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-001 acceptance in packages.json; exact child criteria required at start"
     },
@@ -40,50 +40,50 @@
       "parent": "WP-002",
       "scope": "layout",
       "capabilities": "TL + DESK + ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-001-decisions"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-002.md: sequential child acceptance contracts and full parent evidence"
     },
     "WP-002-python": {
       "parent": "WP-002",
       "scope": "python",
       "capabilities": "TL + DESK + ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-layout"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-002.md: sequential child acceptance contracts and full parent evidence"
     },
     "WP-002-desktop": {
       "parent": "WP-002",
       "scope": "desktop",
       "capabilities": "TL + DESK + ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-layout"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-002.md: sequential child acceptance contracts and full parent evidence"
     },
     "WP-002-commands": {
       "parent": "WP-002",
       "scope": "commands",
       "capabilities": "TL + DESK + ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-002-python",
         "WP-002-desktop"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-002 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-002.md: sequential child acceptance contracts and full parent evidence"
     },
     "WP-003-harness": {
       "parent": "WP-003",

@@ -1,0 +1,44 @@
+{
+  "name": "poliscope",
+  "productName": "Poliscope",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local society sandbox \u2014 runtime scaffold",
+  "author": "Poliscope contributors",
+  "license": "MIT",
+  "main": ".vite/build/main.cjs",
+  "engines": {
+    "node": "24.19.0",
+    "npm": "11.9.0"
+  },
+  "packageManager": "npm@11.9.0",
+  "scripts": {
+    "dev": "node scripts/desktop.mjs start",
+    "content:validate": "node scripts/check-inventory.mjs content",
+    "contracts:check": "node scripts/check-inventory.mjs contracts",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run && uv run --frozen python -m unittest discover -s tests/roadmap -v",
+    "test:desktop": "npm run package && playwright test",
+    "build:engine": "uv run --frozen python scripts/build_engine.py",
+    "package": "npm run build:engine && node scripts/desktop.mjs package"
+  },
+  "dependencies": {
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "@tanstack/react-query": "5.104.4",
+    "recharts": "3.10.1"
+  },
+  "devDependencies": {
+    "electron": "44.9.0",
+    "@electron-forge/cli": "8.0.1",
+    "@electron-forge/plugin-vite": "8.0.1",
+    "vite": "8.3.4",
+    "@vitejs/plugin-react": "6.1.2",
+    "typescript": "7.0.2",
+    "@types/node": "24.19.2",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "vitest": "5.0.5",
+    "@playwright/test": "1.64.1"
+  }
+}
