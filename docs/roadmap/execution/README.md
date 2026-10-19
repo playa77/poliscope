@@ -245,3 +245,14 @@ One sequential agent and SV inspection remain in effect. Reassess WP-014-compile
 after merge for typed claim/allocation/actual-output dependencies. Coupled graph
 solving, durable publication and full parent/application/native acceptance remain
 separate; no default civic rule or scientific validity is inferred.
+
+## Current boundary after PR #27
+
+PR #27 merged WP-015-allocation at `4db0de133c5fad0b8c47012579770a685a97278c`.
+[WP-014-compiler](WP-014-compiler.md) delivers review-gated typed static dependencies,
+shared account/claim/allocation/actual-consumption expansion, production feedback,
+stable condensation ordering and explicit unresolved cycles. Institutional and
+documentary cycles remain separate. One sequential agent and SV inspection remain
+in effect. Reassess WP-014-solvers after merge for declared finite/linear/iterative
+execution and actual-output/final-account integration. No numerical evaluation,
+scientific validity or full parent/application/native acceptance is claimed.
