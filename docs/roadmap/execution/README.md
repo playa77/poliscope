@@ -342,3 +342,16 @@ requirements and model gaps; private rationale is separately stored behind
 classified references. Numerical social mechanisms, imported corpus, indicators,
 comparison tools and the full offline/application gate retain their later packages.
 Reassess WP-022 after merge; independent agent review remains deferred.
+
+## Current boundary after PR #35
+
+PR #35 merged WP-021 interviews and guarded preview/apply at
+`3452af0388761954f7672b3d5179d4209c507b7c`. [WP-022](WP-022.md) is the full
+sequential overview/inspectors allocation on that refreshed baseline. It reads
+retained evidence independently of numerical callbacks, preserves scoped diagnostic
+and coverage semantics, exposes exact accounts/distributions and paged calculation
+lineage, and compares optional session targets after evaluation. One agent and SV
+inspection remain in effect. Indicator visibility and exploratory session targets
+are temporary presentation state; accepted goals/commitments retain their original
+revision. Reassess WP-023 after merge. Domain model/corpus, portable exports,
+provider services and cumulative application/native/scientific gates remain separate.

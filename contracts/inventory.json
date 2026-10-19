@@ -21,6 +21,8 @@
     "mechanism-fixtures.ts",
     "mechanism.schema.json",
     "mechanism.ts",
+    "overview.schema.json",
+    "overview.ts",
     "pack.schema.json",
     "pack.ts",
     "policy.schema.json",

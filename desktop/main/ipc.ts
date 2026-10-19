@@ -24,6 +24,9 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('overview:read', 1, input => { if (!workspaceValid(input, 'OverviewQuery')) throw new Error(); return shell.overview(input); }, workspaceReply('OverviewPage'));
+  handle('overview:target', 1, input => { if (!workspaceValid(input, 'TargetQuery')) throw new Error(); return shell.target(input); }, workspaceReply('TargetReply'));
+  handle('overview:chart', 1, input => { if (!workspaceValid(input, 'ChartQuery')) throw new Error(); return shell.chart(input); }, workspaceReply('ChartReply'));
   handle('workspace:choose', 0, () => shell.chooseWorkspace(chooseWorkspace), reply => reply === null || workspaceReply('WorkspaceCatalogue')(reply));
   handle('workspace:catalogue', 0, () => shell.workspaceCatalogue(), workspaceReply('WorkspaceCatalogue'));
   handle('workspace:create', 1, input => { if (!workspaceValid(input, 'CreateOptions')) throw new Error(); return shell.createWorld(input); }, workspaceReply('WorkspaceState'));

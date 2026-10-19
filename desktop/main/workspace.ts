@@ -1,14 +1,17 @@
 /** Main-only launch and selection grants. Renderer never supplies a path or operation. */
+import { isDeepStrictEqual } from 'node:util';
 import { execFile } from 'node:child_process';
 import { isAbsolute } from 'node:path';
 import { randomUUID } from 'node:crypto';
 import { engineCommand } from './engine';
 import { valid, type Schema } from './wire';
 import schema from '../../contracts/workspace.schema.json';
+import overviewSchema from '../../contracts/overview.schema.json';
+import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery, ChartReply } from '../../contracts/overview';
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -128,6 +131,19 @@ export class WorkspaceController {
     if (this.candidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
     this.candidate = undefined;
   }
+  private async observationRequest(input: unknown, type: string, operation: string, replyType: string) {
+    if (!workspaceValid(input, type)) throw new Error('Invalid observation request');
+    const query = structuredClone(input as OverviewQuery | TargetQuery | ChartQuery);
+    if (!this.selected || Object.entries(this.selected.context).some(([k, v]) => query.context[k as keyof typeof query.context] !== v)) throw new Error('Observation is outside selected context');
+    const result = await this.request(operation, query, replyType) as OverviewPage | TargetReply | ChartReply;
+    if (!isDeepStrictEqual(result.query, query)) throw new Error('Observation binding mismatch');
+    if ('versions' in result && (JSON.stringify(result.versions) !== JSON.stringify(this.selected.versions) ||
+        JSON.stringify(result.effective_time) !== JSON.stringify(this.selected.effective_time))) throw new Error('Observation model/time mismatch');
+    return result;
+  }
+  async overview(input: unknown): Promise<OverviewPage> { return await this.observationRequest(input, 'OverviewQuery', 'overview', 'OverviewPage') as OverviewPage; }
+  async target(input: unknown): Promise<TargetReply> { return await this.observationRequest(input, 'TargetQuery', 'target', 'TargetReply') as TargetReply; }
+  async chart(input: unknown): Promise<ChartReply> { return await this.observationRequest(input, 'ChartQuery', 'chart', 'ChartReply') as ChartReply; }
   async page(input: unknown): Promise<WorkspacePage> {
     if (!workspaceValid(input, 'WorkspacePageRequest')) throw new Error('Invalid page');
     const query = input as WorkspacePageRequest;
