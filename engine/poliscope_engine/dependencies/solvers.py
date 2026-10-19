@@ -42,6 +42,7 @@ class NumericalResult:
     diagnostics: tuple[tuple[tuple[tuple[str, ...], ...], str], ...]
     batch_json: str | None
     operations: int
+    edges: tuple[tuple[tuple[str, ...], tuple[str, ...]], ...]
 
 
 def linear_eliminate(matrix, rhs, spend):
@@ -74,9 +75,18 @@ def linear_eliminate(matrix, rhs, spend):
     return [row[n] for row in a]
 
 
-def execute(request, registry, world):
+def execute(request, registry, world, *, conditions=(), input_statuses=()):
     request = ExecutionRequest.model_validate_json(request.model_dump_json())
     graph = compile_dependencies(request.dependencies, registry, world)
+    from poliscope_engine.evaluation.conditions import validate_conditions, check_conditions
+    condition_rules = validate_conditions(conditions, request.dependencies, registry, world)
+    overridden = dict(input_statuses)
+    input_keys = {n.key for n in graph.nodes if n.key[0] == 'input'}
+    if len(overridden) != len(input_statuses) or any(
+            key not in input_keys or
+            code not in ('conflict', 'missing_input', 'unmodeled')
+            for key, code in overridden.items()):
+        raise DependencyError('invalid_input_statuses')
     dep = request.dependencies
     nodes = {n.key: n for n in graph.nodes}
     instances = {i.id: i for i in dep.instances}
@@ -202,8 +212,12 @@ def execute(request, registry, world):
         if kind == 'output':
             instance = instances[key[1]]
             definition = definitions[key[1]]
+            if definition.support.static is None:
+                raise Failure('unmodeled')
             if definition.preconditions:
-                raise Failure('precondition_evaluation_required')
+                code = check_conditions(key[1], definition, condition_rules, state)
+                if code is not None:
+                    raise Failure(code)
             port = next(p for p in definition.outputs if p.id == key[2])
             inputs = {p: VALUE.validate_json(state['input', key[1], p].model_dump_json()) for p in port.input_refs
                       if ('input', key[1], p) in state}
@@ -340,8 +354,12 @@ def execute(request, registry, world):
         for component in graph.components:
             keys = component.nodes
             external = [p for k in keys for p in parents[k] if p not in keys]
-            if any(statuses.get(p) != 'known' for p in external):
-                code = 'blocked'
+            if any(k in overridden for k in keys):
+                code = next(overridden[k] for k in keys if k in overridden)
+            elif any(statuses.get(p) != 'known' for p in external):
+                causes = {statuses.get(p) for p in external if statuses.get(p) != 'known'}
+                code = ('conflict' if 'conflict' in causes else
+                        'not_applicable' if causes == {'not_applicable'} else 'blocked')
             elif any(k in ambiguous_funding for k in keys):
                 code = 'missing_joint_funding_procedure'
             elif any(k in missing for k in keys):
@@ -367,4 +385,4 @@ def execute(request, registry, world):
     complete = all(s == 'known' for s in statuses.values())
     return NumericalResult(request.model_dump_json(), graph.digest, graph.model, RUNTIME_ID, tuple((k, v.model_dump_json()) for k, v in sorted(values.items())),
         tuple(sorted(statuses.items())), tuple(diagnostics),
-        batch.model_dump_json() if complete and batch is not None else None, operations)
+        batch.model_dump_json() if complete and batch is not None else None, operations, graph.edges)

@@ -267,3 +267,15 @@ in effect. WP-016 retains precondition/policy/evaluation orchestration, coverage
 cache identity and durable publication. Coupled finite SCCs without an applicable
 solver and missing joint funding procedures remain explicit unresolved states.
 No scientific or application milestone acceptance is claimed.
+
+## Current boundary after PR #29
+
+PR #29 merged WP-014-solvers at `8c791c0`.
+[WP-016](WP-016.md) is the next sequential allocation: pure evaluation orchestration,
+explicit input/policy/precondition resolution, numerical/account integration,
+coverage, distributions, trace dependencies and complete deterministic identities
+with bounded host-local caching. One agent and SV inspection remain in effect.
+The authoritative pure WP-016 scope excludes durable publication despite older
+solver handoff notes; persistence remains WP-018/store work. Reassess WP-017 after
+merge. Measurements, optional player targets, sampling, public IPC, native platform
+and full application/scientific acceptance retain their own gates.
