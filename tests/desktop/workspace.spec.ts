@@ -110,6 +110,17 @@ with Store(Path(sys.argv[1])) as store:
     await page.getByRole('combobox', { name: 'Scope', exact: true }).selectOption('other');
     await expect(page.getByRole('cell', { name: '20 people', exact: true })).toBeVisible();
     await expect(page.getByRole('cell', { name: '10 people', exact: true })).toHaveCount(0);
+    // Applying at another scope advances the revision without returning Home.
+    await page.locator('.domain-grid button').nth(6).click();
+    const interview = page.getByRole('region', { name: 'Domain interview' });
+    await expect(interview.getByRole('radio')).toHaveCount(4);
+    await interview.getByRole('radio').first().check();
+    await interview.getByRole('button', { name: 'Preview draft', exact: true }).click();
+    await page.getByRole('button', { name: 'Apply draft', exact: true }).click();
+    await expect(page.getByText('Applied one design revision.', { exact: false })).toBeVisible();
+    await expect(page.getByRole('combobox', { name: 'Scope', exact: true })).toHaveValue('other');
+    await expect(page.getByRole('cell', { name: '20 people', exact: true })).toBeVisible();
+    await expect(interview).toContainText('Scope: other');
     await page.getByLabel('Open civilization and branch').selectOption('civ:one/alternative');
     await expect(page.getByRole('cell', { name: '10 people', exact: true })).toBeVisible();
     const revision = page.getByLabel('Read a retained revision', { exact: false });
@@ -117,5 +128,6 @@ with Store(Path(sys.argv[1])) as store:
     await expect(page.getByText('Historical revision — read only', { exact: false })).toBeVisible();
     await expect(page.getByRole('cell', { name: '10 people', exact: true })).toBeVisible();
     await expect(page.getByRole('combobox', { name: 'Scope', exact: true }).locator('option')).toHaveCount(1);
+    await expect(interview.getByRole('radio').first()).toBeDisabled();
   } finally { await app.close(); await rm(directory, { recursive: true, force: true }); }
 });

@@ -1,0 +1,1145 @@
+{
+  "$defs": {
+    "BranchState": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "forked_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RevisionContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "redo": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Redo",
+          "type": "array"
+        },
+        "revision_contract": {
+          "const": 1,
+          "title": "Revision Contract",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision_contract",
+        "context",
+        "name",
+        "sequence",
+        "redo",
+        "forked_from"
+      ],
+      "title": "BranchState",
+      "type": "object"
+    },
+    "Definition": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "evidence": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "historical_status": {
+          "enum": [
+            "adopted",
+            "alternative",
+            "amended",
+            "superseded",
+            "provenance",
+            "unspecified"
+          ],
+          "title": "Historical Status",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "domain",
+            "branch",
+            "question",
+            "option",
+            "mechanism",
+            "parameter",
+            "measurement",
+            "fixture"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mechanism_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "modeling": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_proposed",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "original_text": {
+          "maxLength": 131072,
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParameterDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "parent_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Ref"
+        },
+        "source_decision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Decision Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "supersedes_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Supersedes Refs",
+          "type": "array"
+        },
+        "variable_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Variable Refs",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "kind",
+        "parent_ref",
+        "original_text",
+        "source_decision_id",
+        "source_refs",
+        "assumption_refs",
+        "supersedes_refs",
+        "mechanism_refs",
+        "variable_refs",
+        "origin",
+        "modeling",
+        "evidence",
+        "historical_status"
+      ],
+      "title": "Definition",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "InterviewApply": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_digest"
+      ],
+      "title": "InterviewApply",
+      "type": "object"
+    },
+    "InterviewCommit": {
+      "additionalProperties": false,
+      "properties": {
+        "interview_contract": {
+          "const": 1,
+          "title": "Interview Contract",
+          "type": "integer"
+        },
+        "state": {
+          "$ref": "#/$defs/WorkspaceState"
+        },
+        "status": {
+          "enum": [
+            "applied",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "interview_contract",
+        "status",
+        "state"
+      ],
+      "title": "InterviewCommit",
+      "type": "object"
+    },
+    "InterviewEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "choice_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Choice Id",
+          "type": "string"
+        },
+        "land_area": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Land Area"
+        },
+        "population": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Population"
+        },
+        "proposal": {
+          "anyOf": [
+            {
+              "maxLength": 1024,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Proposal"
+        },
+        "query": {
+          "$ref": "#/$defs/InterviewQuery"
+        },
+        "rationale": {
+          "maxLength": 2048,
+          "title": "Rationale",
+          "type": "string"
+        }
+      },
+      "required": [
+        "query",
+        "choice_id",
+        "proposal",
+        "population",
+        "land_area",
+        "rationale"
+      ],
+      "title": "InterviewEdit",
+      "type": "object"
+    },
+    "InterviewOption": {
+      "additionalProperties": false,
+      "properties": {
+        "benefit": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Benefit",
+          "type": "string"
+        },
+        "cost": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Cost",
+          "type": "string"
+        },
+        "definition": {
+          "$ref": "#/$defs/Definition"
+        },
+        "label": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "mechanism": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Mechanism",
+          "type": "string"
+        }
+      },
+      "required": [
+        "definition",
+        "label",
+        "benefit",
+        "cost",
+        "mechanism"
+      ],
+      "title": "InterviewOption",
+      "type": "object"
+    },
+    "InterviewPreview": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Accounts",
+          "type": "array"
+        },
+        "affected_scope_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Affected Scope Ids",
+          "type": "array"
+        },
+        "after": {
+          "items": {
+            "$ref": "#/$defs/PartitionValueDTO"
+          },
+          "maxItems": 2,
+          "title": "After",
+          "type": "array"
+        },
+        "alternatives": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 5,
+          "minItems": 3,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "before": {
+          "items": {
+            "$ref": "#/$defs/PartitionValueDTO"
+          },
+          "maxItems": 2,
+          "title": "Before",
+          "type": "array"
+        },
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        },
+        "changed_value_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Changed Value Ids",
+          "type": "array"
+        },
+        "coverage": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "dependencies": {
+          "items": {
+            "maxLength": 1024,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "findings": {
+          "items": {
+            "maxLength": 1024,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Findings",
+          "type": "array"
+        },
+        "interview_contract": {
+          "const": 1,
+          "title": "Interview Contract",
+          "type": "integer"
+        },
+        "query": {
+          "$ref": "#/$defs/InterviewQuery"
+        },
+        "selected_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Selected Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "interview_contract",
+        "query",
+        "candidate_digest",
+        "affected_scope_ids",
+        "changed_value_ids",
+        "coverage",
+        "findings",
+        "dependencies",
+        "accounts",
+        "alternatives",
+        "selected_id",
+        "before",
+        "after"
+      ],
+      "title": "InterviewPreview",
+      "type": "object"
+    },
+    "InterviewQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "domain_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "domain_id"
+      ],
+      "title": "InterviewQuery",
+      "type": "object"
+    },
+    "InterviewQuestion": {
+      "additionalProperties": false,
+      "properties": {
+        "clarification": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Clarification",
+          "type": "string"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/PartitionValueDTO"
+          },
+          "maxItems": 2,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "current_commitment": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Current Commitment"
+        },
+        "definition": {
+          "$ref": "#/$defs/Definition"
+        },
+        "dependencies": {
+          "items": {
+            "maxLength": 1024,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Dependencies",
+          "type": "array"
+        },
+        "interview_contract": {
+          "const": 1,
+          "title": "Interview Contract",
+          "type": "integer"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/InterviewOption"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Options",
+          "type": "array"
+        },
+        "query": {
+          "$ref": "#/$defs/InterviewQuery"
+        }
+      },
+      "required": [
+        "interview_contract",
+        "query",
+        "definition",
+        "options",
+        "clarification",
+        "dependencies",
+        "conditions",
+        "current_commitment"
+      ],
+      "title": "InterviewQuestion",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage Limits",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Time Basis Id",
+          "type": "string"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope_id",
+        "unit_id",
+        "time_basis_id",
+        "interpretation",
+        "coverage_limits"
+      ],
+      "title": "MeasurementDeclaration",
+      "type": "object"
+    },
+    "ParameterDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "validity_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Validity Limits",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "scope_id",
+        "value",
+        "validity_limits"
+      ],
+      "title": "ParameterDeclaration",
+      "type": "object"
+    },
+    "PartitionValueDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "partition": {
+          "enum": [
+            "conditions",
+            "design",
+            "assumptions",
+            "dynamic_state",
+            "observations",
+            "goals"
+          ],
+          "title": "Partition",
+          "type": "string"
+        },
+        "property_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Property Id",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "id",
+        "entity_id",
+        "scope_id",
+        "partition",
+        "property_id",
+        "value",
+        "effective_time",
+        "provenance"
+      ],
+      "title": "PartitionValueDTO",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "WorkspaceState": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "$ref": "#/$defs/BranchState"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "goal_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Goal Count",
+          "type": "integer"
+        },
+        "mechanism_count": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Mechanism Count",
+          "type": "integer"
+        },
+        "policy_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Policy Count",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "branch",
+        "context",
+        "versions",
+        "effective_time",
+        "goal_count",
+        "policy_count",
+        "mechanism_count"
+      ],
+      "title": "WorkspaceState",
+      "type": "object"
+    },
+    "WorldProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_input",
+            "ai_proposed",
+            "derived"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "origin",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "WorldProvenance",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/InterviewQuery"
+    },
+    {
+      "$ref": "#/$defs/InterviewQuestion"
+    },
+    {
+      "$ref": "#/$defs/InterviewEdit"
+    },
+    {
+      "$ref": "#/$defs/InterviewPreview"
+    },
+    {
+      "$ref": "#/$defs/InterviewApply"
+    },
+    {
+      "$ref": "#/$defs/InterviewCommit"
+    }
+  ]
+}

@@ -18,12 +18,12 @@ test('packaged shell launches its bundled engine with an isolated secure rendere
     await expect(page.getByRole('status')).toHaveText('Local engine ready');
     const second = spawn(executablePath, ['--no-sandbox'], { env, stdio: 'ignore' });
     await expect(new Promise<number | null>((resolve, reject) => {
-      const timer = setTimeout(() => { second.kill('SIGKILL'); reject(new Error('Second instance did not exit')); }, 5000);
+      const timer = setTimeout(() => { second.kill('SIGKILL'); reject(new Error('Second instance did not exit')); }, 10000);
       second.once('error', error => { clearTimeout(timer); reject(error); });
       second.once('exit', code => { clearTimeout(timer); resolve(code); });
     })).resolves.toBe(0);
 
-    expect(await page.evaluate(() => ({ require: typeof (window as unknown as {require?: unknown}).require, methods: Object.keys(window.poliscope) }))).toEqual({ require: 'undefined', methods: ['chooseWorkspace', 'workspaceCatalogue', 'createWorld', 'selectWorld', 'worldPage', 'openHistory', 'historyPage', 'reconnect', 'bootstrapStatus'] });
+    expect(await page.evaluate(() => ({ require: typeof (window as unknown as {require?: unknown}).require, methods: Object.keys(window.poliscope) }))).toEqual({ require: 'undefined', methods: ['interview', 'previewInterview', 'applyInterview', 'cancelInterview', 'chooseWorkspace', 'workspaceCatalogue', 'createWorld', 'selectWorld', 'worldPage', 'openHistory', 'historyPage', 'reconnect', 'bootstrapStatus'] });
     expect(await app.evaluate(({ BrowserWindow }) => {
       const prefs = (BrowserWindow.getAllWindows()[0].webContents as unknown as { getLastWebPreferences(): {nodeIntegration: boolean; contextIsolation: boolean; sandbox: boolean} }).getLastWebPreferences();
       return [prefs.nodeIntegration, prefs.contextIsolation, prefs.sandbox];

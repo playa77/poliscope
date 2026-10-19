@@ -29,6 +29,10 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   handle('workspace:create', 1, input => { if (!workspaceValid(input, 'CreateOptions')) throw new Error(); return shell.createWorld(input); }, workspaceReply('WorkspaceState'));
   handle('workspace:select', 1, input => { if (!workspaceValid(input, 'WorkspaceSelection')) throw new Error(); return shell.selectWorld(input); }, workspaceReply('WorkspaceState'));
   handle('workspace:page', 1, input => { if (!workspaceValid(input, 'WorkspacePageRequest')) throw new Error(); return shell.worldPage(input); }, workspaceReply('WorkspacePage'));
+  handle('interview:read', 1, input => { if (!workspaceValid(input, 'InterviewQuery')) throw new Error(); return shell.interview(input); }, workspaceReply('InterviewQuestion'));
+  handle('interview:preview', 1, input => { if (!workspaceValid(input, 'InterviewEdit')) throw new Error(); return shell.previewInterview(input); }, workspaceReply('InterviewPreview'));
+  handle('interview:apply', 1, input => { if (!workspaceValid(input, 'InterviewApply')) throw new Error(); return shell.applyInterview(input); }, workspaceReply('InterviewCommit'));
+  handle('interview:cancel', 0, () => shell.cancelInterview(), reply => reply === undefined);
   handle('bootstrap:status', 0, () => shell.status, reply => {
     if (!reply || typeof reply !== 'object' || Object.keys(reply).sort().join() !== 'detail,state') return false;
     const status = reply as { state: unknown; detail: unknown };

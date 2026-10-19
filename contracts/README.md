@@ -266,3 +266,17 @@ additive structural relaxation avoids injecting a synthetic civic mechanism to
 create a sandbox. The starting workspace model explicitly has no numerical social
 mechanisms; empty observations are not scientific evidence or a coverage claim.
 Existing nonempty requests retain their validation and execution rules.
+
+`interview.schema.json` and `interview.ts` are generated from Python interview v1.
+They expose only context/scope/domain queries, bounded typed drafts, data-only
+question/option projections, a digest-only Apply grant and confirmed/stale state.
+They never grant arbitrary revision changes, operation IDs, paths or mechanisms.
+Templates reuse the pack `Definition` contract; original synthetic wording and
+complete cards are retained in the decision alternatives' design values. Imported
+corpus registration remains a later content package.
+
+Main owns the one pending candidate and mutation identity. Python reconstructs
+changes from the immutable base and validates exact Decimal conditions, scope and
+candidate identity before production revision Apply. Private rationale text stays
+outside immutable history/evidence/operation bindings in `private-interviews/`
+beside the selected store. Revisions hold only classified private references.

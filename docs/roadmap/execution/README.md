@@ -328,3 +328,17 @@ One agent and SV inspection remain in effect. Reassess WP-021 interviews,
 alternatives and preview/apply UI after merge; these controls, domain numerical
 models, simulation checkpoints and provider integration retain separate acceptance.
 No scientific or cumulative application/native milestone is claimed.
+
+## Current boundary after PR #34
+
+PR #34 merged WP-020 sandbox creation/navigation at
+`478611041fd620413fa82fdf7f3e56957c7e67af`.
+[WP-021](WP-021.md) allocates the complete cards, preview-ui and proposals parent
+to one sequential owner with SV inspection. Original synthetic contextual templates
+reuse the Definition content contract; no society corpus is inferred. Condition
+variants and qualitative commitments use the production immutable preview/apply
+service. Full alternatives retain original wording, scope, origin/evidence,
+requirements and model gaps; private rationale is separately stored behind
+classified references. Numerical social mechanisms, imported corpus, indicators,
+comparison tools and the full offline/application gate retain their later packages.
+Reassess WP-022 after merge; independent agent review remains deferred.

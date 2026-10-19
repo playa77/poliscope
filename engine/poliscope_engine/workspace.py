@@ -96,6 +96,13 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation in ('interview', 'preview-interview', 'apply-interview'):
+        from poliscope_engine import interviews
+        if operation == 'interview':
+            return interviews.question(service, data)
+        if operation == 'preview-interview':
+            return interviews.stage(service, data, identity)[3]
+        return interviews.apply(service, data, identity)
     if operation == 'catalogue':
         if data != {}:
             raise ValueError('invalid_catalogue')
@@ -116,7 +123,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['catalogue', 'create', 'select', 'page'], required=True)
+    parser.add_argument('--operation', choices=['catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:

@@ -5,8 +5,10 @@ import { randomUUID } from 'node:crypto';
 import { engineCommand } from './engine';
 import { valid, type Schema } from './wire';
 import schema from '../../contracts/workspace.schema.json';
+import interviewSchema from '../../contracts/interview.schema.json';
+import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = schema.$defs as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -19,6 +21,7 @@ export function decodeWorkspace(frame: Buffer, type: string): unknown {
   return value;
 }
 export class WorkspaceController {
+  private candidate?: { edit: InterviewEdit; identity: string; preview: InterviewPreview; applying: boolean };
   private directory?: string;
   private storeId?: string;
   get active(): boolean { return Boolean(this.directory && this.storeId); }
@@ -26,7 +29,7 @@ export class WorkspaceController {
   private selected?: WorkspaceState;
   private branches?: WorkspaceCatalogue['branches'];
   constructor(private packaged: boolean, private root: string, private resources: string) {}
-  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; }
+  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; }
   private async request(operation: string, input: unknown, type: string, identity = 'unused'): Promise<unknown> {
     if (!this.directory) throw new Error('Select a store first');
     const command = engineCommand(this.packaged, this.root, this.resources);
@@ -79,7 +82,51 @@ export class WorkspaceController {
         state.context.data_store_id !== this.storeId || state.branch.context.civilization_id !== selection.civilization_id ||
         state.branch.context.branch_id !== selection.branch_id || state.branch.context.data_store_id !== this.storeId) throw new Error('Workspace response binding mismatch');
     this.selected = state;
+    this.candidate = undefined;
     return state;
+  }
+  private authorizeInterview(query: InterviewQuery) {
+    if (!this.selected || JSON.stringify(query.context) !== JSON.stringify(this.selected.context)) throw new Error('Interview outside selected context');
+  }
+  async interview(input: unknown): Promise<InterviewQuestion> {
+    if (!workspaceValid(input, 'InterviewQuery')) throw new Error('Invalid interview');
+    const query = input as InterviewQuery;
+    this.authorizeInterview(query);
+    const result = await this.request('interview', query, 'InterviewQuestion') as InterviewQuestion;
+    if (JSON.stringify(result.query) !== JSON.stringify(query)) throw new Error('Interview binding mismatch');
+    return result;
+  }
+  async previewInterview(input: unknown): Promise<InterviewPreview> {
+    if (!workspaceValid(input, 'InterviewEdit') || this.candidate?.applying) throw new Error('Resolve pending apply first');
+    const edit = structuredClone(input as InterviewEdit);
+    this.authorizeInterview(edit.query);
+    if (this.selected!.context.revision_id !== this.selected!.branch.context.revision_id) throw new Error('Historical state is read only');
+    this.candidate = undefined;
+    const identity = randomUUID();
+    const preview = await this.request('preview-interview', edit, 'InterviewPreview', identity) as InterviewPreview;
+    if (JSON.stringify(preview.query) !== JSON.stringify(edit.query) || preview.selected_id !== edit.choice_id || !preview.alternatives.includes(edit.choice_id)) throw new Error('Preview binding mismatch');
+    this.candidate = { edit, identity, preview, applying: false };
+    return preview;
+  }
+  async applyInterview(input: unknown): Promise<InterviewCommit> {
+    if (!workspaceValid(input, 'InterviewApply')) throw new Error('Invalid apply');
+    const candidate = this.candidate;
+    if (!candidate || candidate.preview.candidate_digest !== (input as InterviewApply).candidate_digest) throw new Error('No granted candidate');
+    this.authorizeInterview(candidate.edit.query);
+    candidate.applying = true;
+    const result = await this.request('apply-interview', { edit: candidate.edit, candidate_digest: candidate.preview.candidate_digest }, 'InterviewCommit', candidate.identity) as InterviewCommit;
+    const previous = candidate.edit.query.context, current = result.state.context;
+    if (current.data_store_id !== previous.data_store_id || current.civilization_id !== previous.civilization_id || current.branch_id !== previous.branch_id ||
+        JSON.stringify(result.state.versions) !== JSON.stringify(this.selected!.versions) ||
+        JSON.stringify(result.state.effective_time) !== JSON.stringify(this.selected!.effective_time) ||
+        (result.status === 'applied' && current.revision_id === previous.revision_id)) throw new Error('Apply binding mismatch');
+    this.selected = result.state;
+    this.candidate = undefined;
+    return result;
+  }
+  async cancelInterview(): Promise<void> {
+    if (this.candidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
+    this.candidate = undefined;
   }
   async page(input: unknown): Promise<WorkspacePage> {
     if (!workspaceValid(input, 'WorkspacePageRequest')) throw new Error('Invalid page');
