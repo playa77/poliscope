@@ -382,13 +382,13 @@
       "parent": "WP-013",
       "scope": "policy",
       "capabilities": "ENG + MODEL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-007-membership",
         "WP-012-registry",
         "WP-012-expressions"
       ],
-      "merged_sha": null,
+      "merged_sha": "2048425e20a1a1b32dc6033f712cd390925e3202",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-013-policy.md; parent acceptance remains additional"
     },
@@ -420,13 +420,13 @@
       "parent": "WP-015",
       "scope": "accounts",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-013-policy"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-015 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-015-accounts.md"
     },
     "WP-015-allocation": {
       "parent": "WP-015",

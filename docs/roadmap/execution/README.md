@@ -223,3 +223,14 @@ jurisdiction, host-selected authority/scope rules, and typed inspectable conflic
 One sequential agent and SV inspection remain in effect. Reassess WP-015-accounts
 after merge. Finite allocation, numerical graph compilation, durable publication
 and full parent/application acceptance remain separate; no scientific claim.
+
+## Current boundary after PR #25
+
+PR #25 merged WP-013-policy at `2048425e20a1a1b32dc6033f712cd390925e3202`.
+[WP-015-accounts](WP-015-accounts.md) delivers shared account materialization:
+strict actual-posting/claim/reservation contracts, exact quantum conservation,
+single-deduction physical holds, inspectable unmet demand and disjoint subtotals.
+One sequential agent and SV inspection remain in effect. Reassess
+WP-015-allocation after merge for declared finite procedures, access/funding and
+transformation actuals. Numerical graph integration, durable publication and full
+parent/application acceptance remain separate.

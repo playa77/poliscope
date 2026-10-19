@@ -1,5 +1,7 @@
 {
   "files": [
+    "account.schema.json",
+    "account.ts",
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",
