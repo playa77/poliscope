@@ -473,7 +473,7 @@
       "requires": [
         "WP-016-identity-cache"
       ],
-      "merged_sha": null,
+      "merged_sha": "13dae88279e68c9b120a42a39887760bbd722d5b",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-017.md"
     },
@@ -485,7 +485,7 @@
       "requires": [
         "WP-017-measurements"
       ],
-      "merged_sha": null,
+      "merged_sha": "13dae88279e68c9b120a42a39887760bbd722d5b",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-017.md"
     },
@@ -493,7 +493,7 @@
       "parent": "WP-018",
       "scope": "world",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-007-membership",
         "WP-009-store",
@@ -501,32 +501,32 @@
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
     "WP-018-preview": {
       "parent": "WP-018",
       "scope": "preview",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-018-world",
         "WP-017-traces"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
     "WP-018-apply": {
       "parent": "WP-018",
       "scope": "apply",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-018-preview"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-018 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
     "WP-019-fixtures": {
       "parent": "WP-019",

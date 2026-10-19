@@ -65,3 +65,10 @@ in `contracts/README.md`; raw generic evidence is rejected unless it validates
 that envelope. The reader never constructs Store, creates a database or migrates
 one. This does not supply production world/evaluation repositories or private
 payload classification.
+
+WP-018's `revisions` repository now supplies production immutable world/history,
+preview/apply, append-only branch state and transactional accepted-result closure
+on these unchanged schema-1 primitives. `read_context` and bounded indexed
+`record_page` expose retained metadata/record reads to trusted repositories.
+No schema migration or raw renderer SQL access is added. See
+`../revisions/README.md` for limits, authorization, operation replay and chunking.

@@ -290,3 +290,15 @@ accounting trace DAGs, detached accepted-evidence closure and classified public
 projections. One sequential agent and SV inspection remain in effect. Reassess
 WP-018 immutable revisions/preview/apply after merge; durable acceptance, IPC/UI,
 portable archives and application/native/scientific gates remain separate.
+
+## Current boundary after PR #31
+
+PR #31 merged WP-017 measurements/traces at
+`13dae88279e68c9b120a42a39887760bbd722d5b`.
+[WP-018](WP-018.md) covers world creation/open/query, immutable revisions, pure
+base-bound preview, transactional apply, accepted evidence and operation recovery,
+plus rename/fork/undo/redo with retained alternate futures. One sequential agent
+and SV inspection remain in effect. Reassess WP-019's independent headless slice
+after merge; author-written service tests do not certify that independent gate.
+Public IPC/UI integration, model migration, archives and application/native gates
+retain separate acceptance.

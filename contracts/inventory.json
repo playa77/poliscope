@@ -23,6 +23,8 @@
     "pack.ts",
     "policy.schema.json",
     "policy.ts",
+    "revision.schema.json",
+    "revision.ts",
     "saved-evidence.schema.json",
     "solver.schema.json",
     "solver.ts",
