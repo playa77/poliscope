@@ -256,3 +256,14 @@ documentary cycles remain separate. One sequential agent and SV inspection remai
 in effect. Reassess WP-014-solvers after merge for declared finite/linear/iterative
 execution and actual-output/final-account integration. No numerical evaluation,
 scientific validity or full parent/application/native acceptance is claimed.
+
+## Current boundary after PR #28
+
+PR #28 merged WP-014-compiler at `ad81c319388064c217b5ce232b0b60cd616a45ba`.
+[WP-014-solvers](WP-014-solvers.md) is the next sequential allocation: reviewed
+graph execution, declared Decimal linear and bounded iterative solvers, finite
+allocation actuals and final-account staging. One agent and SV inspection remain
+in effect. WP-016 retains precondition/policy/evaluation orchestration, coverage,
+cache identity and durable publication. Coupled finite SCCs without an applicable
+solver and missing joint funding procedures remain explicit unresolved states.
+No scientific or application milestone acceptance is claimed.

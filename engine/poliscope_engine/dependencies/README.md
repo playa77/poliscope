@@ -46,3 +46,52 @@ choices. WP-014-solvers owns finite allocation, linear/iterative execution,
 actual-output values, funding/entitlement dependencies and final-account staging.
 No callback runs, numerical result is inferred, account materializes, policy is
 selected, scientific validity is established or application milestone passes.
+
+## Numerical execution
+
+`solvers.execute(ExecutionRequest, registry, world)` recompiles the static graph,
+adds host funding/transformation dependencies before SCC classification, and
+executes the condensation graph under an operation budget.
+
+The trusted static implementation callback protocol is
+`callback(output_id, inputs) -> WorldValue`. Inputs contain only that output's
+declared input references and are detached snapshots in a read-only mapping.
+Callbacks must be pure, deterministic and bounded application code. Imported
+packs cannot register code. Registered declarative graphs also execute through
+the existing reviewed arithmetic evaluator. Missing inputs propagate; optional
+omission stays absent. Preconditions require the future evaluation coordinator:
+a declared, unevaluated precondition produces an explicit gap rather than an
+unconditional output. Policy resolution and coverage orchestration stay outside
+this executor.
+
+Host-selected linear plans declare each SCC node's affine equation using only
+compiled incoming edges. Stable first-nonzero pivots and elimination use the
+runtime's fresh Decimal28 half-even context. Singular, inconsistent, excessive
+residual and arithmetic failures are explicit. Iterative plans retain their
+starting values, full update order, simultaneous/sequential mode, absolute
+residual tolerance in each node's declared quantity units, and iteration limit.
+Residuals are checked against actual reviewed node execution, including port
+bindings; a small step alone does not establish convergence. These solvers apply
+to quantity input/output SCCs. Coupled finite allocation SCCs without an applicable
+solver stay `missing_solver`; no single pass or unconstrained numerical estimate
+is substituted for a conserved allocation.
+
+Finite plans call the shared exact allocator with explicit access, funding,
+entitlements, order, procedure and transformation coefficients. Runtime claim
+mappings connect mechanism claim IDs to shared account claim IDs. Actual
+fulfillment drives downstream outputs. Graph account producers stage their solved
+quantities once; finite transformation postings use solved actual inputs.
+A target cannot have both graph and finite transformation production authority.
+Separate allocation groups contending for funding (including funding that is
+another group's requested resource) need a joint declared procedure; stable IDs
+never choose that priority. Other groups' physical holds remain unavailable.
+
+Results retain the complete execution request, compilation identity, model and
+numeric runtime, detached known values, per-node statuses, diagnostics and spent
+operations. The compilation digest alone does not identify runtime funding or
+solver choices: use the retained full request as well. No cache identity or
+execution capability is supplied. A final account batch is returned only when
+every numerical node is known. Independent known outputs remain inspectable when
+another component fails. All state is temporary; no persistence or public IPC is
+introduced. Structural/numerical success establishes no scientific validity or
+full application milestone.
