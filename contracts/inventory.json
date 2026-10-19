@@ -11,6 +11,8 @@
     "mechanism.ts",
     "pack.schema.json",
     "pack.ts",
+    "policy.schema.json",
+    "policy.ts",
     "saved-evidence.schema.json",
     "tool-inputs.json",
     "wire.schema.json",

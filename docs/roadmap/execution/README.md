@@ -212,3 +212,14 @@ bounded data-only operator DAGs, typed exact arithmetic, missing propagation and
 graph-content-bound review. One agent and SV inspection remain in effect.
 Policy resolution, cross-mechanism runtime/solver execution and durable state
 publication retain separate acceptance; no application gate is claimed.
+
+
+## Current boundary after PR #24
+
+PR #24 merged WP-012-expressions at `487a28348c40f75e82bf2e46ed184b56295a9c03`.
+[WP-013-policy](WP-013-policy.md) delivers scoped institutional resolution:
+mechanism-declared exclusive/composable/bounds/delegation semantics, explicit
+jurisdiction, host-selected authority/scope rules, and typed inspectable conflicts.
+One sequential agent and SV inspection remain in effect. Reassess WP-015-accounts
+after merge. Finite allocation, numerical graph compilation, durable publication
+and full parent/application acceptance remain separate; no scientific claim.

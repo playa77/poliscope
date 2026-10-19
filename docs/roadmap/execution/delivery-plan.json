@@ -370,11 +370,11 @@
       "parent": "WP-012",
       "scope": "expressions",
       "capabilities": "ENG + MODEL",
-      "status": "solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-012-registry"
       ],
-      "merged_sha": null,
+      "merged_sha": "487a28348c40f75e82bf2e46ed184b56295a9c03",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-012-expressions.md; parent acceptance remains additional"
     },
@@ -382,13 +382,15 @@
       "parent": "WP-013",
       "scope": "policy",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
-        "WP-012-registry"
+        "WP-007-membership",
+        "WP-012-registry",
+        "WP-012-expressions"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-013 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-013-policy.md; parent acceptance remains additional"
     },
     "WP-014-compiler": {
       "parent": "WP-014",
