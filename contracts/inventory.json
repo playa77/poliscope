@@ -13,6 +13,8 @@
     "fixtures.json",
     "history.schema.json",
     "history.ts",
+    "measurement.schema.json",
+    "measurement.ts",
     "mechanism-fixtures.json",
     "mechanism-fixtures.ts",
     "mechanism.schema.json",

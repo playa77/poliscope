@@ -33,6 +33,10 @@ def normalize(value, field=None):
         result = {k: normalize(v, k) for k, v in value.items()}
         if value.get('kind') == 'quantity' and 'value' in value:
             result['value'] = canonical(parse(value['value']))
+        # Measurement procedure operands are semantic sequences, unlike port
+        # declarations. Difference and ratio must retain authored input order.
+        if value.get('aggregation') == 'same_scope' and 'procedure' in value:
+            result['inputs'] = [normalize(v) for v in value['inputs']]
         # StartingValue contains a decimal value without a WorldValue tag.
         if 'node' in value and isinstance(value.get('value'), str):
             result['value'] = canonical(parse(value['value']))
