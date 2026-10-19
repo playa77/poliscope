@@ -47,3 +47,37 @@ not a database commit. Revisions, stale candidates, account spending, transactio
 publication, execution isolation and evaluated transition effects belong to their
 separate services. Activation returns a detached declaration for inspection;
 consumers must not treat it as a transferable authorization token.
+
+## Bounded expression graphs (contract 1)
+
+The host supplies `ExpressionGraph` objects to the immutable registry. Procedure
+identity resolves an exact graph ID/version. Graph snapshots are detached, and
+activation requires a `Review.graph_digest` matching its canonical SHA-256 in
+addition to the declaration/model and existing evidence/fixture checks. Imported
+text cannot manufacture host review. Editing a graph with the same ID invalidates
+review. Operator semantics are pinned to the model/runtime; changes require new
+versions and review. Pack transport for graphs is not a public execution API.
+
+Graphs contain at most 256 nodes with depth at most 32, 100 outputs and 100 state
+proposals. Every node, even unused nodes, is validated. Stable ID order resolves
+topological ties; cycles and dangling references fail. Registered v1 operators
+are add, subtract, minimum, maximum (exact same quantity metadata), and multiply/
+divide by an explicit unit-scale-one dimensionless indicator. No implicit unit,
+time or population conversion and no arbitrary dimensional formula is inferred.
+Constants are exact quantity strings. Input nodes can pass typed labels and
+canonical entity references; arithmetic accepts quantities only. There are no
+loops, imports, callbacks, code strings or extension names loaded from content.
+
+`evaluate_graph` rechecks activation and returns detached `(outputs, state_values)`.
+It uses the exact Decimal runtime; division by zero and unrepresentable results
+fail. Missing or explicitly unknown inputs become `None` and propagate along
+all dependent arithmetic paths; optional omitted inputs receive no invented
+numeric default. Output dependency declarations must exactly match graph inputs,
+including allocation dependencies. Callers retain original unknown reasons for
+coverage reporting. This is local arithmetic, not a complete mechanism scheduler:
+preconditions, policy conflicts, finite allocation, trace publication and
+cross-mechanism solving belong to their respective runtime packages. State maps
+must exactly match declared transition writes (and are empty for static graphs).
+They carry no mutation authority: validated contextual proposals must still pass
+`stage_changes` and subsequent transaction/revision checks before publication.
+Structural validation and synthetic arithmetic establish no scientific validity.

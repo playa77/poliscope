@@ -62,8 +62,14 @@ test('packaged renderer rejects forged IPC and passive hostile resources and rem
     expect(await app.evaluate(({ dialog }) => (dialog as typeof dialog & { attempted: boolean }).attempted)).toBe(false);
     await page.evaluate(() => { location.hash = 'stale-document'; });
     expect(await page.evaluate(async () => { try { await window.poliscope.bootstrapStatus(); return 'accepted'; } catch (error) { return String(error); } })).toContain('Desktop request rejected');
+    // Keep the stale URL through a background status poll so the rejected
+    // request is reflected in React Query, rather than racing its 500ms timer.
+    await expect(page.getByRole('status')).toHaveText('Local engine unavailable');
     await page.evaluate(() => { history.replaceState(null, '', location.href.split('#')[0]); });
     expect(await page.evaluate(() => window.poliscope.bootstrapStatus())).toHaveProperty('state', 'ready');
+    // The direct IPC result precedes React Query's next poll/render. Assert
+    // recovery through the UI before proceeding to further hostile probes.
+    await expect(page.getByRole('status')).toHaveText('Local engine ready');
 
     const documentURL = page.url();
     // Deliberately inject DOM beyond the application's text-only presentation.
@@ -87,7 +93,7 @@ test('packaged renderer rejects forged IPC and passive hostile resources and rem
     expect(hits).toBe(0);
     // Chromium cancels this navigation before commit; Playwright's frame URL
     // becomes empty. Inspect and interact with the live document via Electron.
-    expect(await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(`({ url: location.href, status: document.querySelector('[role="status"]').textContent })`))).toEqual({ url: documentURL, status: 'Local engine ready' });
+    await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(`({ url: location.href, status: document.querySelector('[role="status"]').textContent })`))).toEqual({ url: documentURL, status: 'Local engine ready' });
     await app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.executeJavaScript(`Array.from(document.querySelectorAll('button')).find(button => button.textContent === 'Reconnect local engine').click()`));
     await expect.poll(() => app.evaluate(({ BrowserWindow }) => BrowserWindow.getAllWindows()[0].webContents.executeJavaScript('window.poliscope.bootstrapStatus()'))).toHaveProperty('state', 'ready');
   } finally {
