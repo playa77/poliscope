@@ -164,7 +164,7 @@ class MechanismRegistry:
         if value_type.denominator_scope_id is not None:
             world.scope(value_type.denominator_scope_id)
 
-    def activate(self, identity, version, *, phase, world: WorldRegistry, scope_id, entity_id):
+    def activate(self, identity, version, *, phase, world: WorldRegistry, scope_id, entity_id, allow_unmodeled=False):
         """Validate an activation context; no callback or numerical rule runs."""
         definition = self.definition(identity, version)
         if phase not in ('static', 'transition'):
@@ -177,6 +177,8 @@ class MechanismRegistry:
             self._type(port.value_type, world)
         procedure = getattr(definition.support, phase)
         if procedure is None:
+            if allow_unmodeled and phase == 'static' and definition.modeling in ('qualitative', 'unsupported'):
+                return definition
             raise MechanismError('unsupported_phase')
         digest = None
         if procedure.kind == 'declarative_graph':

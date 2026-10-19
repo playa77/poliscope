@@ -6,6 +6,8 @@
     "allocation.ts",
     "dependency.schema.json",
     "dependency.ts",
+    "evaluation.schema.json",
+    "evaluation.ts",
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",

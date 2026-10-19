@@ -224,3 +224,10 @@ linear equations or bounded iteration, explicit tolerance/order/starting state,
 and operation quota. Runtime validation additionally checks exact compiled SCC
 membership, applicability, graph edge closure, typed account mappings and joint
 funding contention. These are pure engine contracts with no new wire operation.
+
+`evaluation.schema.json` and `evaluation.ts` derive from canonical
+`EvaluationDesign` / `EvaluationResult` in `contracts/evaluation.py`. They cover
+bounded static evaluation plans, explicit value/policy/precondition bindings,
+realization evidence, typed coverage, trace edges, final accounts and canonical
+identities. WorldGraph/host registry authority and fresh external-reference checks
+remain runtime responsibilities. This adds no wire method or persistence format.

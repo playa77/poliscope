@@ -113,7 +113,7 @@ def compile_dependencies(request, registry, world):
     if len(instances) != len(request.instances):
         raise DependencyError('duplicate_instance')
     definitions = {i.id: registry.activate(i.mechanism_id, i.mechanism_version,
-        phase='static', world=world, scope_id=i.scope_id, entity_id=i.entity_id)
+        phase='static', world=world, scope_id=i.scope_id, entity_id=i.entity_id, allow_unmodeled=True)
         for i in request.instances}
     nodes, edges, missing, supplied = {}, set(), set(), set()
     inputs, outputs = {}, {}
@@ -133,6 +133,8 @@ def compile_dependencies(request, registry, world):
             key = add(('output', identity, port.id), port.value_type)
             outputs[key] = port
             edges.update((('input', identity, p), key) for p in port.input_refs)
+            edges.update((('input', identity, p), key)
+                         for condition in definition.preconditions for p in condition.input_refs)
         if len(nodes) > 25000 or len(edges) > 50000:
             raise DependencyError('dependency_budget_exhausted')
 
