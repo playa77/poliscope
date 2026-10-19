@@ -18,8 +18,11 @@ An allowed choice declares a per-call maximum additional access quantity. Denial
 keeps physical stock and unmet demand visible. Funding and entitlement requirements
 consume separate finite budget/ledger accounts per actually allocated input unit;
 they never create physical capacity. Shared requirements contend in the same
-explicit global order. Scope and period must match; hosts must explicitly supply
-period-bound monetary/entitlement budgets when allocating period-bound resources.
+explicit global order. Scope must match. Periods must match except that undated physical stock can
+consume an explicitly selected dated capacity budget (for example labor hours).
+This does not accrue hours or infer a period; the selected finite account and
+its period remain in the request and accounting trace. Hosts must explicitly
+supply period-bound monetary/entitlement budgets for period-bound resources.
 
 Existing actuals reduce remaining claims; outstanding physical holds are available
 only to their claim. Fulfillment replaces those holds once. Unreserved allocation

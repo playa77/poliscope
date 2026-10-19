@@ -302,3 +302,17 @@ and SV inspection remain in effect. Reassess WP-019's independent headless slice
 after merge; author-written service tests do not certify that independent gate.
 Public IPC/UI integration, model migration, archives and application/native gates
 retain separate acceptance.
+
+
+## Current boundary after PR #32
+
+PR #32 merged WP-018 immutable revisions/preview/apply at
+`3114c5f3b9dff81a0a3d8717a986765ee786f7de`.
+[WP-019](WP-019.md) completes the independently derived synthetic headless slice
+under the existing sequential SV route: production create/query/evaluate/preview/
+apply/trace/undo/fork/reopen, finite stock and labor, recovery, retained alternatives,
+complete accepted evidence, explicit M2 engine subcase selection and four detected
+invariant mutations. It also corrects the discovered dated-capacity/undated-stock
+integration gap and versions evaluator semantics. No renderer, provider, native,
+scientific or full application gate is claimed. Reassess WP-020 creation/navigation
+after merge. Reference-desktop and scaled benchmark acceptance remain open.
