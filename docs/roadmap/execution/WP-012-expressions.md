@@ -52,3 +52,26 @@ Outcome: **solo-validated; agent review deferred**. Full allocated expression
 child is complete. Reassess WP-013-policy after merge. Mechanism scheduling,
 preconditions/policy enforcement, finite allocations, cross-mechanism solving,
 trace/coverage publication and durable state changes retain consumer acceptance.
+
+## PR #24 CI follow-up
+
+Initial hosted Validation run `39205798712` failed the packaged security test at
+its immediate final renderer-status assertion. Engine/unit/contracts and native
+packaging passed. The test deliberately invalidates the caller URL, so React
+Query's 500ms background poll can observe an IPC rejection. A direct successful
+IPC request after restoring the URL does not synchronously refresh the query's
+rendered error state; canceled hostile navigation also crosses frame lifecycle
+boundaries. The immediate DOM equality raced those asynchronous updates.
+
+The test now holds the stale URL until the renderer shows the rejected poll,
+restores the authorized URL and waits for rendered recovery, and polls the live
+Electron document after canceled navigation. It still requires the exact original
+URL and ready text, no network sink hits, all forged IPC rejections and working
+reconnect. No production security policy or assertion expectation was relaxed.
+
+Follow-up validation: Linux x64 packaging succeeded; both packaged desktop tests
+passed five consecutive runs (10/10) on a local Xorg dummy display. Typecheck,
+content inventory, contract drift, validation-route and whitespace checks passed.
+This supersedes the earlier statement that native packaging was unrun for this
+candidate; Windows/macOS and full application gates remain unverified. Hosted CI
+must pass on the updated PR before merge readiness is claimed.
