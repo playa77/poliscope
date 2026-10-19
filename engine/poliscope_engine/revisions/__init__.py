@@ -57,6 +57,20 @@ class Revisions:
                 store.add_context('revision-service:v1', metadata)
             self.data_store_id = json.loads(metadata)['data_store_id']
 
+    def catalogue(self):
+        """Latest confirmed branches of the main-authorized local store."""
+        latest = {}
+        for scope, kind, _, payload in self.store.revision_catalogue_rows():
+            if (scope, kind) in latest:
+                continue
+            state = BranchState.model_validate_json(payload)
+            if self._context(state.context) != scope or self._kind(state.context.branch_id) != kind:
+                raise RevisionError('invalid_branch_catalogue')
+            latest[scope, kind] = state
+        if len(latest) > 1000:
+            raise RevisionError('branch_catalogue_too_large')
+        return list(latest.values())
+
     def _scope(self, store_id, civ):
         TypeAdapter(Identifier).validate_python(civ, strict=True)
         if store_id != self.data_store_id:

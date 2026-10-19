@@ -1,3 +1,4 @@
+import { WorkspaceController } from './workspace';
 import { isAbsolute } from 'node:path';
 import type { HistoryRequest } from '../../contracts/history';
 import type { HistorySelection, ShellStatus } from '../shell';
@@ -26,8 +27,34 @@ export class DesktopShell {
   private closing = false;
   private historical = false;
   private detail = 'Stored historical evidence; simulation and edits unavailable';
-  constructor(private packaged: boolean, private root: string, private resources: string) {}
-  get status(): ShellStatus { return this.historical ? { state: 'historical', detail: this.detail } : { ...this.engine.status }; }
+  private workspace: WorkspaceController;
+  private workspaceQueued = 0;
+  private workspaceTail: Promise<unknown> = Promise.resolve();
+  private workspaceRun<T>(action: () => Promise<T>): Promise<T> {
+    if (this.workspaceQueued >= 32 || this.closing) return Promise.reject(new Error('Workspace queue full'));
+    this.workspaceQueued++;
+    const pending = this.workspaceTail.then(() => this.run(action)).finally(() => { this.workspaceQueued--; });
+    this.workspaceTail = pending.catch(() => {});
+    return pending;
+  }
+  constructor(private packaged: boolean, private root: string, private resources: string) {
+    this.workspace = new WorkspaceController(packaged, root, resources);
+  }
+  chooseWorkspace(choose: () => Promise<string | undefined>) {
+    return this.workspaceRun(async () => {
+      const directory = await choose();
+      if (!directory) return null;
+      await this.engine.stop();
+      this.selected = undefined;
+      this.historical = false;
+      return this.workspace.choose(directory);
+    });
+  }
+  workspaceCatalogue() { return this.workspaceRun(() => this.workspace.catalogue()); }
+  createWorld(input: unknown) { return this.workspaceRun(() => this.workspace.create(input)); }
+  selectWorld(input: unknown) { return this.workspaceRun(() => this.workspace.select(input)); }
+  worldPage(input: unknown) { return this.workspaceRun(() => this.workspace.page(input)); }
+  get status(): ShellStatus { if (this.workspace.active) return { state: 'ready', detail: 'Local sandbox ready' }; return this.historical ? { state: 'historical', detail: this.detail } : { ...this.engine.status }; }
   start() { this.engine.start(this.packaged, this.root, this.resources); }
   private run<T>(action: () => Promise<T>): Promise<T> {
     if (this.closing || this.active) return Promise.reject(new Error('Desktop service busy'));
@@ -43,6 +70,7 @@ export class DesktopShell {
       if (!database) return null;
       if (!isAbsolute(database)) throw new Error('Invalid selected store');
       await this.engine.stop(); // Reject if exit is unconfirmed: no replacement child.
+      this.workspace.clear();
       this.selected = { database, selection };
       this.historical = true;
       return this.read(selection.request);
@@ -69,6 +97,7 @@ export class DesktopShell {
   reconnect() {
     return this.run(async () => {
       await this.engine.stop();
+      this.workspace.clear();
       this.selected = undefined;
       this.historical = false;
       this.engine = new BootstrapEngine();

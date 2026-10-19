@@ -30,7 +30,9 @@
     "solver.ts",
     "tool-inputs.json",
     "wire.schema.json",
-    "wire.ts"
+    "wire.ts",
+    "workspace.schema.json",
+    "workspace.ts"
   ],
   "status": "runtime-wire-v1",
   "version": 1

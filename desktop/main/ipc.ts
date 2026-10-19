@@ -1,3 +1,4 @@
+import { workspaceValid } from './workspace';
 import type { IpcMainInvokeEvent } from 'electron';
 import type { DesktopShell } from './shell';
 import { validateSelection, validatePage } from './shell';
@@ -8,7 +9,7 @@ export const IPC_ERROR = 'Desktop request rejected. Retry or reconnect.';
 type Register = (channel: string, handler: (event: IpcMainInvokeEvent, ...args: unknown[]) => Promise<unknown>) => void;
 /** No renderer-controlled channel or operation name reaches a service. */
 export function registerShellIPC(register: Register, authorize: (event: IpcMainInvokeEvent) => void,
-  shell: DesktopShell, choose: () => Promise<string | undefined>): void {
+  shell: DesktopShell, choose: () => Promise<string | undefined>, chooseWorkspace: () => Promise<string | undefined> = async () => undefined): void {
   function handle(channel: string, arity: number, action: (...args: unknown[]) => unknown | Promise<unknown>, check: (reply: unknown) => boolean) {
     register(channel, async (event, ...args) => {
       try {
@@ -22,6 +23,12 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   }
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
+  const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('workspace:choose', 0, () => shell.chooseWorkspace(chooseWorkspace), reply => reply === null || workspaceReply('WorkspaceCatalogue')(reply));
+  handle('workspace:catalogue', 0, () => shell.workspaceCatalogue(), workspaceReply('WorkspaceCatalogue'));
+  handle('workspace:create', 1, input => { if (!workspaceValid(input, 'CreateOptions')) throw new Error(); return shell.createWorld(input); }, workspaceReply('WorkspaceState'));
+  handle('workspace:select', 1, input => { if (!workspaceValid(input, 'WorkspaceSelection')) throw new Error(); return shell.selectWorld(input); }, workspaceReply('WorkspaceState'));
+  handle('workspace:page', 1, input => { if (!workspaceValid(input, 'WorkspacePageRequest')) throw new Error(); return shell.worldPage(input); }, workspaceReply('WorkspacePage'));
   handle('bootstrap:status', 0, () => shell.status, reply => {
     if (!reply || typeof reply !== 'object' || Object.keys(reply).sort().join() !== 'detail,state') return false;
     const status = reply as { state: unknown; detail: unknown };

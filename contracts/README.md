@@ -250,3 +250,19 @@ that exact request after uncertain replies. The host must authorize store and
 civilization selection. These contracts do not add renderer IPC capabilities or
 waive transport bounds. Production service and persistence/recovery semantics are
 in `engine/poliscope_engine/revisions/README.md`.
+
+## Workspace boundary v1
+
+`workspace.schema.json` and `workspace.ts` define bounded creation options,
+selected-store branch/domain/setup directories, state metadata and scope-bound
+world pages. They are generated from Python `contracts/workspace.py`. Main owns
+folder selection, child operations and context grants; the renderer supplies no
+path, registry, executable, SQL, or arbitrary method. Every result binds the store,
+civilization, branch, revision, model/time and selected scope. Named IPC grants
+cover create/open/query only; preview/apply remain separate consumer work.
+
+An unanswered design now permits an empty mechanism-instance collection. This
+additive structural relaxation avoids injecting a synthetic civic mechanism to
+create a sandbox. The starting workspace model explicitly has no numerical social
+mechanisms; empty observations are not scientific evidence or a coverage claim.
+Existing nonempty requests retain their validation and execution rules.

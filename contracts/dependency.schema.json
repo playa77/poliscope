@@ -388,7 +388,6 @@
         "$ref": "#/$defs/MechanismInstance"
       },
       "maxItems": 100,
-      "minItems": 1,
       "title": "Instances",
       "type": "array"
     },

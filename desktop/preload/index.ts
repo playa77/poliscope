@@ -1,6 +1,11 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  chooseWorkspace: () => ipcRenderer.invoke('workspace:choose'),
+  workspaceCatalogue: () => ipcRenderer.invoke('workspace:catalogue'),
+  createWorld: options => ipcRenderer.invoke('workspace:create', options),
+  selectWorld: selection => ipcRenderer.invoke('workspace:select', selection),
+  worldPage: request => ipcRenderer.invoke('workspace:page', request),
   openHistory: (selection) => ipcRenderer.invoke('history:open', selection),
   historyPage: (collection, offset) => ipcRenderer.invoke('history:page', collection, offset),
   reconnect: () => ipcRenderer.invoke('runtime:reconnect'),

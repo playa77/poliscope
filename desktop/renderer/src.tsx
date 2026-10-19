@@ -1,3 +1,4 @@
+import { Workspace } from './workspace';
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
@@ -7,13 +8,14 @@ import './style.css';
 declare global { interface Window { poliscope: ShellAPI } }
 function App() {
   const status = useQuery({ queryKey: ['bootstrap'], queryFn: () => window.poliscope.bootstrapStatus(), refetchInterval: 500, retry: false });
+  const [workspaceGeneration, setWorkspaceGeneration] = useState(0);
   const [result, setResult] = useState<HistoryReply>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [collection, setCollection] = useState<HistoryRequest['collection']>('outputs');
   async function action(work: () => Promise<HistoryReply | void>) {
     setBusy(true); setError('');
-    try { const next = await work(); if (next) setResult(next); }
+    try { const next = await work(); if (next) { setResult(next); setWorkspaceGeneration(n => n + 1); } }
     catch { setResult(null); setError('The request could not complete. Your original store is preserved. Retry or select another store.'); }
     finally { setBusy(false); void status.refetch(); }
   }
@@ -28,9 +30,9 @@ function App() {
   }
   const saved = result && 'result' in result ? result.result : undefined;
   return <main><p className="eyebrow">Poliscope</p><h1>A society, open to possibility.</h1>
-    <p>Civilization design and simulation are coming in later work packages.</p>
+    <Workspace key={workspaceGeneration} />
     <p role="status">{status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine'}</p>
-    <button disabled={busy} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); })}>Reconnect local engine</button>
+    <button disabled={busy} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>
     <section aria-labelledby="history-heading"><h2 id="history-heading">Read saved historical evidence</h2>
       <p>Supply the retained result’s identities, then choose its SQLite store. Reading stored evidence does not reproduce a simulation or enable edits. Supported saved-evidence schema: 1.</p>
       <form onSubmit={open}><fieldset disabled={busy}><legend>Saved result selection</legend>

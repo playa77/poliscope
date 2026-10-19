@@ -49,7 +49,7 @@ class ContextRelationship(Contract):
 
 class DependencyRequest(Contract):
     contract_version: Literal[1]
-    instances: Annotated[list[MechanismInstance], Field(min_length=1, max_length=100)]
+    instances: Annotated[list[MechanismInstance], Field(max_length=100)]
     bindings: Annotated[list[NumericalBinding], Field(max_length=1000)]
     fixed_inputs: Annotated[list[FixedInput], Field(max_length=1000)]
     claims: Annotated[list[ClaimBinding], Field(max_length=1000)]

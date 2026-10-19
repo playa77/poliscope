@@ -11,6 +11,7 @@ export function valid(value: unknown, rule: Schema, definitions: Record<string, 
   if (rule.oneOf) return rule.oneOf.filter(r => valid(value, r, definitions)).length === 1;
   switch (rule.type) {
     case 'null': return value === null;
+    case 'boolean': return typeof value === 'boolean';
     case 'string': return typeof value === 'string' && !/\p{Surrogate}/u.test(value) && [...value].length >= (rule.minLength ?? 0) && [...value].length <= (rule.maxLength ?? Infinity) && (!rule.pattern || new RegExp(rule.pattern, 'u').exec(value)?.[0] === value);
     case 'integer': return typeof value === 'number' && Number.isSafeInteger(value) && value >= (rule.minimum ?? -Infinity) && value <= (rule.maximum ?? Infinity);
     case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every(v => valid(v, rule.items!, definitions));

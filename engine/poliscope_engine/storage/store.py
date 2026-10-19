@@ -94,6 +94,22 @@ class Store:
     transaction so callers can atomically retain records, evidence and outcomes.
     """
 
+    def revision_catalogue_rows(self):
+        """Bounded immutable branch journal discovery; no caches/private payloads."""
+        cursor = self._connection.execute(
+            "SELECT r.context_id, r.kind, r.id, r.payload FROM records AS r "
+            "WHERE r.kind GLOB 'branch:*' AND r.id = "
+            "(SELECT MAX(latest.id) FROM records AS latest "
+            "WHERE latest.context_id=r.context_id AND latest.kind=r.kind) "
+            "ORDER BY r.context_id, r.kind")
+        rows, size = [], 0
+        for row in cursor:
+            size += len(row[3].encode('utf-8'))
+            if len(rows) >= 1000 or size > MAX_TEXT_BYTES:
+                raise StorageError('branch catalogue exceeds discovery limit')
+            rows.append(row)
+        return rows
+
     def __init__(self, user_data: Path):
         self.path = database_path(user_data)
         self.path.parent.mkdir(parents=True, exist_ok=True)

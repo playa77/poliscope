@@ -36,6 +36,10 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',
         properties: ['openFile'], filters: [{ name: 'SQLite store', extensions: ['sqlite3', 'sqlite', 'db'] }] });
       return result.canceled ? undefined : result.filePaths[0];
+    }, async () => {
+      const result = await dialog.showOpenDialog(window!, { title: 'Choose a local sandbox folder',
+        properties: ['openDirectory', 'createDirectory'] });
+      return result.canceled ? undefined : result.filePaths[0];
     });
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();
