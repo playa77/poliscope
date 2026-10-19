@@ -8,6 +8,7 @@ import './style.css';
 declare global { interface Window { poliscope: ShellAPI } }
 function App() {
   const status = useQuery({ queryKey: ['bootstrap'], queryFn: () => window.poliscope.bootstrapStatus(), refetchInterval: 500, retry: false });
+  const [draft, setDraft] = useState(false);
   const [workspaceGeneration, setWorkspaceGeneration] = useState(0);
   const [result, setResult] = useState<HistoryReply>(null);
   const [busy, setBusy] = useState(false);
@@ -30,12 +31,12 @@ function App() {
   }
   const saved = result && 'result' in result ? result.result : undefined;
   return <main><p className="eyebrow">Poliscope</p><h1>A society, open to possibility.</h1>
-    <Workspace key={workspaceGeneration} />
+    <Workspace key={workspaceGeneration} onDraftChange={setDraft} />
     <p role="status">{status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine'}</p>
-    <button disabled={busy} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>
+    <button disabled={busy || draft} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>
     <section aria-labelledby="history-heading"><h2 id="history-heading">Read saved historical evidence</h2>
       <p>Supply the retained result’s identities, then choose its SQLite store. Reading stored evidence does not reproduce a simulation or enable edits. Supported saved-evidence schema: 1.</p>
-      <form onSubmit={open}><fieldset disabled={busy}><legend>Saved result selection</legend>
+      <form onSubmit={open}><fieldset disabled={busy || draft}><legend>Saved result selection</legend>
         {['storage_context_id', 'data_store_id', 'civilization_id', 'branch_id', 'revision_id', 'result_id'].map(name => <label key={name}>{name.replaceAll('_', ' ')}<input name={name} required maxLength={128} /></label>)}
         <button type="submit">Choose store and read</button>
       </fieldset></form>
@@ -46,11 +47,11 @@ function App() {
       <dl>{Object.entries({ ...saved.context, ...saved.versions, result_id: saved.result_id, scope_id: saved.scope_id,
         tick: saved.effective_time.tick, calendar: saved.effective_time.calendar_id }).map(([key, value]) => <React.Fragment key={key}><dt>{key.replaceAll('_', ' ')}</dt><dd>{value}</dd></React.Fragment>)}</dl>
       {saved.kind === 'evaluation' ? <><p>Outcome: {saved.outcome}</p><p>Coverage: {saved.coverage.status} — {saved.coverage.explanation}</p></> : <><p>Collection: {saved.page.kind}</p><pre>{JSON.stringify(saved.page.items, null, 2)}</pre>
-        {saved.page.next_cursor !== null && <button disabled={busy} onClick={() => void action(() => window.poliscope.historyPage(saved.page.kind, Number(saved.page.next_cursor)))}>Next page</button>}</>}
+        {saved.page.next_cursor !== null && <button disabled={busy || draft} onClick={() => void action(() => window.poliscope.historyPage(saved.page.kind, Number(saved.page.next_cursor)))}>Next page</button>}</>}
       <label>Evidence collection<select value={collection} onChange={event => setCollection(event.target.value as HistoryRequest['collection'])}>
         {['summary', 'outputs', 'findings', 'sources', 'assumptions', 'traces'].map(value => <option key={value}>{value}</option>)}
       </select></label>
-      <button disabled={busy} onClick={() => void action(() => window.poliscope.historyPage(collection, 0))}>Read collection</button>
+      <button disabled={busy || draft} onClick={() => void action(() => window.poliscope.historyPage(collection, 0))}>Read collection</button>
     </section>}
   </main>;
 }

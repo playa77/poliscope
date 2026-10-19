@@ -556,12 +556,12 @@
       "parent": "WP-020",
       "scope": "creation",
       "capabilities": "DESK; review expertise PRODUCT",
-      "status": "verified; solo-validated; agent review deferred",
+      "status": "merged; solo-validated; agent review deferred",
       "requires": [
         "WP-011-ipc",
         "WP-018-world"
       ],
-      "merged_sha": null,
+      "merged_sha": "478611041fd620413fa82fdf7f3e56957c7e67af",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-020.md"
     },
@@ -569,11 +569,11 @@
       "parent": "WP-020",
       "scope": "navigation",
       "capabilities": "DESK; review expertise PRODUCT",
-      "status": "verified; solo-validated; agent review deferred",
+      "status": "merged; solo-validated; agent review deferred",
       "requires": [
         "WP-020-creation"
       ],
-      "merged_sha": null,
+      "merged_sha": "478611041fd620413fa82fdf7f3e56957c7e67af",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-020.md"
     },
@@ -581,37 +581,41 @@
       "parent": "WP-021",
       "scope": "cards",
       "capabilities": "DESK + PRODUCT",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-020-navigation",
         "WP-018-preview"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
     "WP-021-preview-ui": {
       "parent": "WP-021",
       "scope": "preview ui",
       "capabilities": "DESK + PRODUCT",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-021-cards",
         "WP-018-apply"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
     "WP-021-proposals": {
       "parent": "WP-021",
       "scope": "proposals",
       "capabilities": "DESK + PRODUCT",
-      "status": "planned",
-      "requires": null,
+      "status": "verified; solo-validated; agent review deferred",
+      "requires": [
+        "WP-021-cards",
+        "WP-018-preview",
+        "WP-018-apply"
+      ],
       "merged_sha": null,
-      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
-      "acceptance_ref": "WP-021 acceptance in packages.json; exact child criteria required at start"
+      "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
+      "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
     "WP-022-overview": {
       "parent": "WP-022",

@@ -75,6 +75,7 @@ pnpm-debug.log*
 *.keystore
 
 # Private runtime state and personal exports
+private-interviews/
 /user-data/
 /.local/
 /runtime/

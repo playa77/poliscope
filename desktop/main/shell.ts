@@ -29,6 +29,7 @@ export class DesktopShell {
   private detail = 'Stored historical evidence; simulation and edits unavailable';
   private workspace: WorkspaceController;
   private workspaceQueued = 0;
+  private interviewGeneration = 0;
   private workspaceTail: Promise<unknown> = Promise.resolve();
   private workspaceRun<T>(action: () => Promise<T>): Promise<T> {
     if (this.workspaceQueued >= 32 || this.closing) return Promise.reject(new Error('Workspace queue full'));
@@ -41,6 +42,7 @@ export class DesktopShell {
     this.workspace = new WorkspaceController(packaged, root, resources);
   }
   chooseWorkspace(choose: () => Promise<string | undefined>) {
+    this.interviewGeneration++;
     return this.workspaceRun(async () => {
       const directory = await choose();
       if (!directory) return null;
@@ -51,9 +53,19 @@ export class DesktopShell {
     });
   }
   workspaceCatalogue() { return this.workspaceRun(() => this.workspace.catalogue()); }
-  createWorld(input: unknown) { return this.workspaceRun(() => this.workspace.create(input)); }
-  selectWorld(input: unknown) { return this.workspaceRun(() => this.workspace.select(input)); }
+  createWorld(input: unknown) { this.interviewGeneration++; return this.workspaceRun(() => this.workspace.create(input)); }
+  selectWorld(input: unknown) { this.interviewGeneration++; return this.workspaceRun(() => this.workspace.select(input)); }
   worldPage(input: unknown) { return this.workspaceRun(() => this.workspace.page(input)); }
+  interview(input: unknown) {
+    const generation = ++this.interviewGeneration;
+    return this.workspaceRun(() => {
+      if (generation !== this.interviewGeneration) throw new Error('Interview read superseded');
+      return this.workspace.interview(input);
+    });
+  }
+  previewInterview(input: unknown) { return this.workspaceRun(() => this.workspace.previewInterview(input)); }
+  applyInterview(input: unknown) { return this.workspaceRun(() => this.workspace.applyInterview(input)); }
+  cancelInterview() { return this.workspaceRun(() => this.workspace.cancelInterview()); }
   get status(): ShellStatus { if (this.workspace.active) return { state: 'ready', detail: 'Local sandbox ready' }; return this.historical ? { state: 'historical', detail: this.detail } : { ...this.engine.status }; }
   start() { this.engine.start(this.packaged, this.root, this.resources); }
   private run<T>(action: () => Promise<T>): Promise<T> {

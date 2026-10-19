@@ -28,3 +28,10 @@ th, td { padding: .6rem; border-bottom: 1px solid #cad6cb; }
 textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
 :focus-visible { outline: 3px solid #9d4c15; outline-offset: 3px; }
 @media (max-width: 760px) { .workspace-layout { grid-template-columns: 1fr; } .workspace-layout aside { grid-column: 1; } .workspace-header { align-items: start; flex-direction: column; } }
+.interview { margin-block: 1.5rem; border-top: 1px solid #54645c; padding-block: 1rem; }
+.interview h5 { font-size: 1.15rem; line-height: 1.55; margin-block: 1rem; }
+.option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; }
+.option-card { border: 1px solid #607068; padding: 1rem; border-radius: .5rem; display: flex; flex-direction: column; gap: .7rem; }
+.option-card:has(input:checked) { outline: 3px solid #94c2ac; }
+.option-card input { width: auto; align-self: flex-start; }
+.interview pre { white-space: pre-wrap; overflow-wrap: anywhere; }
