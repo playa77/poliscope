@@ -203,3 +203,12 @@ One sequential agent and SV inspection remain in effect. Reassess
 WP-012-expressions after merge for bounded graph validation/execution. Runtime
 evaluation, durable state publication and full parent/application acceptance
 remain separate; scientific validity is not established by registration.
+
+## Current boundary after PR #23
+
+PR #23 merged WP-012-registry at `862ad9cb45550bb07a6e60438abc1d7279fdf41e`.
+[WP-012-expressions](WP-012-expressions.md) is the next sequential allocation:
+bounded data-only operator DAGs, typed exact arithmetic, missing propagation and
+graph-content-bound review. One agent and SV inspection remain in effect.
+Policy resolution, cross-mechanism runtime/solver execution and durable state
+publication retain separate acceptance; no application gate is claimed.

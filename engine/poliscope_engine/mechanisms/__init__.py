@@ -53,9 +53,14 @@ class Review:
     model_version: str
     evidence_review_ref: str
     independent_fixture_review_ref: str
+    graph_digest: str | None = None
 
     def __post_init__(self):
-        if not all(type(v) is str and v for v in self.__dict__.values()):
+        required = (self.declaration_digest, self.model_id, self.model_version,
+                    self.evidence_review_ref, self.independent_fixture_review_ref)
+        if (not all(type(v) is str and v for v in required) or
+                self.graph_digest is not None and
+                (type(self.graph_digest) is not str or not self.graph_digest)):
             raise MechanismError('invalid_review')
 
 
@@ -70,22 +75,28 @@ class MechanismRegistry:
     implementations: tuple[Implementation, ...]
     reviews: tuple[Review, ...]
     _definitions: tuple[str, ...]
+    _graphs: tuple[str, ...]
 
     def __init__(self, *, model, units, times=(), source_ids=(), assumption_ids=(),
-                 fixture_ids=(), implementations=(), reviews=(), definitions=()):
+                 fixture_ids=(), implementations=(), reviews=(), definitions=(), graphs=()):
         model = tuple(model)
         if len(model) != 2 or not all(type(v) is str and v for v in model):
             raise MechanismError('invalid_model')
         times, implementations, reviews = tuple(times), tuple(implementations), tuple(reviews)
+        from .expressions import snapshot as graph_snapshot
+        graphs = tuple(graph_snapshot(g) for g in graphs)
         definitions = tuple(snapshot(d) for d in definitions)
         for keys in ([t.id for t in times], [i.key for i in implementations],
-                     [r.declaration_digest for r in reviews], [(d.id, d.version) for d in definitions]):
+                     [(r.declaration_digest, r.graph_digest) for r in reviews],
+                     [(g.id, g.version) for g in graphs],
+                     [(d.id, d.version) for d in definitions]):
             if len(keys) != len(set(keys)):
                 raise MechanismError('duplicate_identity')
         for name, value in dict(model=model, units=units, times=times,
                 source_ids=frozenset(source_ids), assumption_ids=frozenset(assumption_ids),
                 fixture_ids=frozenset(fixture_ids), implementations=implementations, reviews=reviews,
-                _definitions=tuple(d.model_dump_json() for d in definitions)).items():
+                _definitions=tuple(d.model_dump_json() for d in definitions),
+                _graphs=tuple(g.model_dump_json() for g in graphs)).items():
             object.__setattr__(self, name, value)
 
     @property
@@ -98,11 +109,23 @@ class MechanismRegistry:
                 return definition
         raise MechanismError('unknown_mechanism')
 
+    @property
+    def graphs(self):
+        from poliscope_engine.contracts.expressions import ExpressionGraph
+        return tuple(map(ExpressionGraph.model_validate_json, self._graphs))
+
+    def _graph(self, procedure):
+        graph = next((g for g in self.graphs if (g.id, g.version) ==
+                     (procedure.implementation.id, procedure.implementation.version)), None)
+        if graph is None:
+            raise MechanismError('graph_validation_required')
+        return graph
+
     def with_definition(self, definition):
         return MechanismRegistry(model=self.model, units=self.units, times=self.times,
             source_ids=self.source_ids, assumption_ids=self.assumption_ids,
             fixture_ids=self.fixture_ids, implementations=self.implementations,
-            reviews=self.reviews, definitions=(*self.definitions, definition))
+            reviews=self.reviews, definitions=(*self.definitions, definition), graphs=self.graphs)
 
     def with_pack_definition(self, archive: PackArchive, *, path, identity, version):
         """Attach exact validated archived JSON, never a separately supplied DTO."""
@@ -155,11 +178,16 @@ class MechanismRegistry:
         procedure = getattr(definition.support, phase)
         if procedure is None:
             raise MechanismError('unsupported_phase')
-        if procedure.kind != 'trusted_python':
-            raise MechanismError('graph_validation_required')
-        key = procedure.implementation.id, procedure.implementation.version, phase
-        if key not in {i.key for i in self.implementations}:
-            raise MechanismError('unknown_implementation')
+        digest = None
+        if procedure.kind == 'declarative_graph':
+            from .expressions import compile_graph, graph_digest
+            graph = self._graph(procedure)
+            compile_graph(graph, definition, phase, self, world)
+            digest = graph_digest(graph)
+        else:
+            key = procedure.implementation.id, procedure.implementation.version, phase
+            if key not in {i.key for i in self.implementations}:
+                raise MechanismError('unknown_implementation')
         if definition.policy and definition.policy.composition_rule:
             rule = definition.policy.composition_rule
             if (rule.id, rule.version, 'composition') not in {i.key for i in self.implementations}:
@@ -167,7 +195,7 @@ class MechanismRegistry:
         fixtures = {(f.fixture.id, f.fixture.version) for f in definition.fixtures}
         if not fixtures or not fixtures <= self.fixture_ids:
             raise MechanismError('unresolved_fixtures')
-        review = next((r for r in self.reviews if r.declaration_digest == declaration_digest(definition)), None)
+        review = next((r for r in self.reviews if r.declaration_digest == declaration_digest(definition) and r.graph_digest == digest), None)
         if review is None or (review.model_id, review.model_version) != self.model:
             raise MechanismError('review_required')
         ownership = {o.key: o.writer_id for o in world.owners}
@@ -175,6 +203,16 @@ class MechanismRegistry:
             if ownership.get((entity_id, state.id, 'dynamic_state')) != definition.domain:
                 raise MechanismError('foreign_state_owner')
         return definition  # detached inspection result, not a transferable capability
+
+    def evaluate_graph(self, identity, version, *, phase, world, scope_id, entity_id, inputs):
+        """Review-gated local arithmetic; outputs/state values do not commit effects."""
+        definition = self.activate(identity, version, phase=phase, world=world,
+                                   scope_id=scope_id, entity_id=entity_id)
+        procedure = getattr(definition.support, phase)
+        if procedure.kind != 'declarative_graph':
+            raise MechanismError('not_a_graph')
+        from .expressions import evaluate_graph
+        return evaluate_graph(self._graph(procedure), definition, phase, self, world, inputs)
 
     def bind(self, producer, consumer, *, output_id, input_id, world,
              scope_id, producer_entity_id, consumer_entity_id):
