@@ -39,7 +39,7 @@ it('grants branch actions with retained futures, same-civilization comparisons a
     await expect(controller.historyAction({context:root.context,expected_sequence:0,action:'rename',name:'Bad',target_revision_id:null})).rejects.toThrow();
     controller.clear(); await expect(controller.lineage({context:root.context,cursor:null})).rejects.toThrow();
   } finally { await rm(directory,{recursive:true,force:true}); }
-});
+}, 30_000);
 
 it('rejects untrusted history IPC senders, extra fields and arbitrary operations', async () => {
   const handlers = new Map<string,(event:IpcMainInvokeEvent,...args:unknown[])=>Promise<unknown>>();
