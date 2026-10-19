@@ -238,3 +238,15 @@ queries, complete local accepted-evidence closures and explicit public projectio
 These host-service contracts do not add renderer IPC authority. Python owns all
 measurement/threshold/target arithmetic; retained data does not require a live
 model registry. See `engine/poliscope_engine/measurements/README.md` for boundaries.
+
+## Revision services v1
+
+`revision.schema.json` and `revision.ts` are generated from canonical Python
+contracts for create, preview/apply, branch movement and bounded history queries.
+Complete input snapshots, typed ordered changes, candidate/output differences,
+archived alternatives and classified noncontent rationale references are explicit.
+Apply carries the original request, digest and operation ID; consumers must replay
+that exact request after uncertain replies. The host must authorize store and
+civilization selection. These contracts do not add renderer IPC capabilities or
+waive transport bounds. Production service and persistence/recovery semantics are
+in `engine/poliscope_engine/revisions/README.md`.

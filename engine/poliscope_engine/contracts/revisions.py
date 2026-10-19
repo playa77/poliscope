@@ -4,7 +4,7 @@ from pydantic import Field
 from .base import Contract, Identifier
 from .world import (WorldVersions, RevisionContext, EntityDTO, ScopeDTO,
                     PartitionValueDTO, RelationshipDTO, Partition)
-from .evaluation import EvaluationDesign, AssumptionValue, Digest
+from .evaluation import EvaluationDesign, AssumptionValue, Digest, NodeObservation
 from .measurements import IndicatorDefinition, PlayerGoal, EvidenceReference, MeasurementReport
 
 Rows = Field(max_length=1000)
@@ -78,6 +78,12 @@ class PreviewRequest(Contract):
     decision: DecisionArchive
 
 
+class ObservationDifference(Contract):
+    node: Annotated[list[Identifier], Field(min_length=1, max_length=10)]
+    before: NodeObservation | None
+    after: NodeObservation | None
+
+
 class Candidate(Contract):
     revision_contract: Literal[1]
     request: PreviewRequest
@@ -87,6 +93,7 @@ class Candidate(Contract):
     affected_scope_ids: Annotated[list[Identifier], Rows]
     changed_value_ids: Annotated[list[Identifier], Rows]
     report: MeasurementReport
+    differences: Annotated[list[ObservationDifference], Field(max_length=50000)]
 
 
 class ApplyRequest(Contract):
@@ -138,6 +145,7 @@ class RevisionRecord(Contract):
     inputs: RevisionInputs
     decision: DecisionArchive
     evidence_digest: Digest
+    applied_preview: PreviewRequest | None
 
 
 class HistoryQuery(Contract):

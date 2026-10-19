@@ -951,6 +951,14 @@
           "title": "Changed Value Ids",
           "type": "array"
         },
+        "differences": {
+          "items": {
+            "$ref": "#/$defs/ObservationDifference"
+          },
+          "maxItems": 50000,
+          "title": "Differences",
+          "type": "array"
+        },
         "evidence_digest": {
           "pattern": "^sha256:[0-9a-f]{64}$",
           "title": "Evidence Digest",
@@ -981,7 +989,8 @@
         "evidence_digest",
         "affected_scope_ids",
         "changed_value_ids",
-        "report"
+        "report",
+        "differences"
       ],
       "title": "Candidate",
       "type": "object"
@@ -2776,6 +2785,49 @@
       "title": "NumericalBinding",
       "type": "object"
     },
+    "ObservationDifference": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NodeObservation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "before": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/NodeObservation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "node": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "minItems": 1,
+          "title": "Node",
+          "type": "array"
+        }
+      },
+      "required": [
+        "node",
+        "before",
+        "after"
+      ],
+      "title": "ObservationDifference",
+      "type": "object"
+    },
     "ObservationFinding": {
       "additionalProperties": false,
       "properties": {
@@ -3893,6 +3945,16 @@
     "RevisionRecord": {
       "additionalProperties": false,
       "properties": {
+        "applied_preview": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PreviewRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
         "context": {
           "$ref": "#/$defs/RevisionContext"
         },
@@ -3932,7 +3994,8 @@
         "parent_id",
         "inputs",
         "decision",
-        "evidence_digest"
+        "evidence_digest",
+        "applied_preview"
       ],
       "title": "RevisionRecord",
       "type": "object"

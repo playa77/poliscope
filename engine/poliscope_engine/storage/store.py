@@ -170,6 +170,29 @@ class Store:
         self._require_transaction()
         self._connection.execute('INSERT INTO contexts VALUES (?,?)', (_key(context_id), _json(metadata)))
 
+    def read_context(self, context_id: str) -> str | None:
+        row = self._connection.execute('SELECT metadata FROM contexts WHERE id=?',
+                                       (_key(context_id),)).fetchone()
+        return row[0] if row else None
+
+    def record_page(self, context_id: str, kind: str, *, after: str | None = None,
+                    limit: int = 100, descending: bool = False) -> list[tuple[str, str]]:
+        """Bounded immutable-record index; journal keys use zero-padded sequence IDs."""
+        if type(limit) is not int or not 1 <= limit <= 100:
+            raise StorageError('invalid page limit')
+        if type(descending) is not bool:
+            raise StorageError('invalid page order')
+        params = [_key(context_id), _key(kind)]
+        predicate = ''
+        if after is not None:
+            predicate = ' AND id ' + ('<' if descending else '>') + ' ?'
+            params.append(_key(after))
+        params.append(limit)
+        order = 'DESC' if descending else 'ASC'
+        return self._connection.execute(
+            'SELECT id,payload FROM records WHERE context_id=? AND kind=?' + predicate +
+            ' ORDER BY id ' + order + ' LIMIT ?', params).fetchall()
+
     def add_record(self, context_id: str, kind: str, record_id: str, payload: str) -> None:
         self._require_transaction()
         self._connection.execute('INSERT INTO records VALUES (?,?,?,?)',
