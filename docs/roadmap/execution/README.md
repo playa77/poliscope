@@ -355,3 +355,16 @@ inspection remain in effect. Indicator visibility and exploratory session target
 are temporary presentation state; accepted goals/commitments retain their original
 revision. Reassess WP-023 after merge. Domain model/corpus, portable exports,
 provider services and cumulative application/native/scientific gates remain separate.
+
+## Current boundary after PR #36
+
+PR #36 merged WP-022 overview and evidence inspectors at
+`c59b00910387a21a2ce07c23409a05e101de152a`. [WP-023](WP-023.md) is the full
+sequential history/contract/comparison allocation on that refreshed baseline.
+It exposes lineage, archived alternatives, explicit local-only rationale reads,
+undo/redo/rename/historical fork/restore and named retained futures. Data-only
+comparisons use accepted results and exact compatible Python deltas; missing or
+incompatible quantities retain reasons, independently of trace availability.
+One agent and SV inspection remain in effect. Reassess WP-024's complete offline
+milestone manifest after merge; native/scientific and other cumulative gates are
+not implied by this package's synthetic Linux checks.

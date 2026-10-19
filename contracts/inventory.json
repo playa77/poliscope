@@ -4,6 +4,8 @@
     "account.ts",
     "allocation.schema.json",
     "allocation.ts",
+    "comparison.schema.json",
+    "comparison.ts",
     "dependency.schema.json",
     "dependency.ts",
     "evaluation.schema.json",

@@ -712,7 +712,8 @@
             "undo",
             "redo",
             "fork",
-            "rename"
+            "rename",
+            "restore"
           ],
           "title": "Action",
           "type": "string"
@@ -762,6 +763,20 @@
           "const": 1,
           "title": "Revision Contract",
           "type": "integer"
+        },
+        "target_revision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Target Revision Id"
         }
       },
       "required": [

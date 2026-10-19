@@ -6,12 +6,14 @@ import { randomUUID } from 'node:crypto';
 import { engineCommand } from './engine';
 import { valid, type Schema } from './wire';
 import schema from '../../contracts/workspace.schema.json';
+import comparisonSchema from '../../contracts/comparison.schema.json';
+import type { RationaleQuery, RationaleReply, LineageQuery, LineagePage, HistoryAction, CompareQuery, ComparePage } from '../../contracts/comparison';
 import overviewSchema from '../../contracts/overview.schema.json';
 import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery, ChartReply } from '../../contracts/overview';
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -25,6 +27,7 @@ export function decodeWorkspace(frame: Buffer, type: string): unknown {
 }
 export class WorkspaceController {
   private candidate?: { edit: InterviewEdit; identity: string; preview: InterviewPreview; applying: boolean };
+  private pendingHistory?: { query: HistoryAction; identity: string };
   private directory?: string;
   private storeId?: string;
   get active(): boolean { return Boolean(this.directory && this.storeId); }
@@ -32,7 +35,7 @@ export class WorkspaceController {
   private selected?: WorkspaceState;
   private branches?: WorkspaceCatalogue['branches'];
   constructor(private packaged: boolean, private root: string, private resources: string) {}
-  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; }
+  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; }
   private async request(operation: string, input: unknown, type: string, identity = 'unused'): Promise<unknown> {
     if (!this.directory) throw new Error('Select a store first');
     const command = engineCommand(this.packaged, this.root, this.resources);
@@ -139,6 +142,56 @@ export class WorkspaceController {
     if (!isDeepStrictEqual(result.query, query)) throw new Error('Observation binding mismatch');
     if ('versions' in result && (JSON.stringify(result.versions) !== JSON.stringify(this.selected.versions) ||
         JSON.stringify(result.effective_time) !== JSON.stringify(this.selected.effective_time))) throw new Error('Observation model/time mismatch');
+    return result;
+  }
+  private authorizeHistory(context: LineageQuery['context']) {
+    if (!this.selected || !isDeepStrictEqual(context, this.selected.context)) throw new Error('History outside selected context');
+  }
+  async rationale(input: unknown): Promise<RationaleReply> {
+    if (!workspaceValid(input, 'RationaleQuery')) throw new Error('Invalid rationale request');
+    const query = structuredClone(input as RationaleQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('rationale', query, 'RationaleReply') as RationaleReply;
+    if (!isDeepStrictEqual(result.query, query)) throw new Error('Private rationale binding mismatch');
+    return result;
+  }
+  async lineage(input: unknown): Promise<LineagePage> {
+    if (!workspaceValid(input, 'LineageQuery')) throw new Error('Invalid lineage');
+    const query = structuredClone(input as LineageQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('lineage', query, 'LineagePage') as LineagePage;
+    if (!isDeepStrictEqual(result.query, query) || result.branch.context.data_store_id !== this.storeId ||
+        result.branch.context.civilization_id !== query.context.civilization_id || result.branch.context.branch_id !== query.context.branch_id ||
+        result.items.some(r => r.context.data_store_id !== this.storeId || r.context.civilization_id !== query.context.civilization_id)) throw new Error('Lineage binding mismatch');
+    return result;
+  }
+  async compare(input: unknown): Promise<ComparePage> {
+    if (!workspaceValid(input, 'CompareQuery')) throw new Error('Invalid comparison');
+    const query = structuredClone(input as CompareQuery);
+    this.authorizeHistory(query.context);
+    if (query.other.data_store_id !== this.storeId || query.other.civilization_id !== query.context.civilization_id ||
+        !this.branches?.some(b => b.context.branch_id === query.other.branch_id && b.context.civilization_id === query.other.civilization_id)) throw new Error('Comparison outside store grant');
+    const result = await this.request('compare', query, 'ComparePage') as ComparePage;
+    if (!isDeepStrictEqual(result.query, query) || !isDeepStrictEqual(result.left_versions, this.selected!.versions)) throw new Error('Comparison binding mismatch');
+    return result;
+  }
+  async historyAction(input: unknown): Promise<WorkspaceState> {
+    if (!workspaceValid(input, 'HistoryAction') || this.candidate) throw new Error('Resolve interview draft first');
+    const query = structuredClone(input as HistoryAction);
+    // Replay the identical operation after an uncertain reply, preserving identity.
+    if (this.pendingHistory && !isDeepStrictEqual(this.pendingHistory.query, query)) throw new Error('Resolve pending history action');
+    this.authorizeHistory(query.context);
+    if (!isDeepStrictEqual(query.context, this.selected!.branch.context)) throw new Error('Select the branch head before changing history');
+    this.pendingHistory ??= { query, identity: randomUUID() };
+    const result = await this.request('history-action', query, 'WorkspaceState', this.pendingHistory.identity) as WorkspaceState;
+    if (result.context.data_store_id !== this.storeId || result.context.civilization_id !== query.context.civilization_id ||
+        result.context.branch_id !== (query.action === 'fork' ? 'fork:' + this.pendingHistory.identity : query.context.branch_id) ||
+        !isDeepStrictEqual(result.context, result.branch.context) ||
+        result.branch.sequence !== (query.action === 'fork' ? 0 : query.expected_sequence + 1) ||
+        ((query.action === 'fork' || query.action === 'restore') && result.context.revision_id !== (query.target_revision_id ?? query.context.revision_id)) ||
+        ((query.action === 'fork' || query.action === 'rename') && result.branch.name !== query.name)) throw new Error('History action binding mismatch');
+    this.pendingHistory = undefined; this.selected = result;
+    this.branches = [...(this.branches ?? []).filter(b => b.context.civilization_id !== result.context.civilization_id || b.context.branch_id !== result.context.branch_id), result.branch];
     return result;
   }
   async overview(input: unknown): Promise<OverviewPage> { return await this.observationRequest(input, 'OverviewQuery', 'overview', 'OverviewPage') as OverviewPage; }

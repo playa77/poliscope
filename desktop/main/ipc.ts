@@ -24,6 +24,10 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('design-history:rationale', 1, input => { if (!workspaceValid(input, 'RationaleQuery')) throw new Error(); return shell.rationale(input); }, workspaceReply('RationaleReply'));
+  handle('design-history:lineage', 1, input => { if (!workspaceValid(input, 'LineageQuery')) throw new Error(); return shell.lineage(input); }, workspaceReply('LineagePage'));
+  handle('design-history:compare', 1, input => { if (!workspaceValid(input, 'CompareQuery')) throw new Error(); return shell.compare(input); }, workspaceReply('ComparePage'));
+  handle('design-history:action', 1, input => { if (!workspaceValid(input, 'HistoryAction')) throw new Error(); return shell.historyAction(input); }, workspaceReply('WorkspaceState'));
   handle('overview:read', 1, input => { if (!workspaceValid(input, 'OverviewQuery')) throw new Error(); return shell.overview(input); }, workspaceReply('OverviewPage'));
   handle('overview:target', 1, input => { if (!workspaceValid(input, 'TargetQuery')) throw new Error(); return shell.target(input); }, workspaceReply('TargetReply'));
   handle('overview:chart', 1, input => { if (!workspaceValid(input, 'ChartQuery')) throw new Error(); return shell.chart(input); }, workspaceReply('ChartReply'));

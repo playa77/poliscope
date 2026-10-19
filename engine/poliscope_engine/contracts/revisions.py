@@ -124,7 +124,8 @@ class BranchRequest(Contract):
     operation_id: Identifier
     context: RevisionContext
     expected_sequence: Annotated[int, Field(ge=0, le=9007199254740991)]
-    action: Literal['undo', 'redo', 'fork', 'rename']
+    action: Literal['undo', 'redo', 'fork', 'rename', 'restore']
+    target_revision_id: Identifier | None = None
     new_branch_id: Identifier | None
     name: Annotated[str, Field(min_length=1, max_length=256)] | None
 

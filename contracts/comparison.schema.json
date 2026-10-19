@@ -1,0 +1,1348 @@
+{
+  "$defs": {
+    "BranchState": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "forked_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RevisionContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "redo": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Redo",
+          "type": "array"
+        },
+        "revision_contract": {
+          "const": 1,
+          "title": "Revision Contract",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision_contract",
+        "context",
+        "name",
+        "sequence",
+        "redo",
+        "forked_from"
+      ],
+      "title": "BranchState",
+      "type": "object"
+    },
+    "ChoiceSummary": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "wording": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Wording",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "wording"
+      ],
+      "title": "ChoiceSummary",
+      "type": "object"
+    },
+    "ComparePage": {
+      "additionalProperties": false,
+      "properties": {
+        "changes": {
+          "items": {
+            "$ref": "#/$defs/DesignDifference"
+          },
+          "maxItems": 10,
+          "title": "Changes",
+          "type": "array"
+        },
+        "comparison_contract": {
+          "const": 1,
+          "title": "Comparison Contract",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ComparisonRow"
+          },
+          "maxItems": 10,
+          "title": "Items",
+          "type": "array"
+        },
+        "left_evidence": {
+          "enum": [
+            "complete",
+            "unavailable"
+          ],
+          "title": "Left Evidence",
+          "type": "string"
+        },
+        "left_versions": {
+          "$ref": "#/$defs/WorldVersions"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "query": {
+          "$ref": "#/$defs/CompareQuery"
+        },
+        "right_evidence": {
+          "enum": [
+            "complete",
+            "unavailable"
+          ],
+          "title": "Right Evidence",
+          "type": "string"
+        },
+        "right_versions": {
+          "$ref": "#/$defs/WorldVersions"
+        }
+      },
+      "required": [
+        "comparison_contract",
+        "query",
+        "left_evidence",
+        "right_evidence",
+        "left_versions",
+        "right_versions",
+        "items",
+        "changes",
+        "next_cursor"
+      ],
+      "title": "ComparePage",
+      "type": "object"
+    },
+    "CompareQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cursor"
+        },
+        "other": {
+          "$ref": "#/$defs/RevisionContext"
+        }
+      },
+      "required": [
+        "context",
+        "other",
+        "cursor"
+      ],
+      "title": "CompareQuery",
+      "type": "object"
+    },
+    "ComparisonRow": {
+      "additionalProperties": false,
+      "properties": {
+        "delta": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "label": "#/$defs/LabelValue",
+                  "quantity": "#/$defs/QuantityValue",
+                  "reference": "#/$defs/ReferenceValue",
+                  "unknown": "#/$defs/UnknownValue"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/QuantityValue"
+                },
+                {
+                  "$ref": "#/$defs/UnknownValue"
+                },
+                {
+                  "$ref": "#/$defs/LabelValue"
+                },
+                {
+                  "$ref": "#/$defs/ReferenceValue"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delta"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "left": {
+          "$ref": "#/$defs/ComparisonValue"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 30,
+          "title": "Reasons",
+          "type": "array"
+        },
+        "right": {
+          "$ref": "#/$defs/ComparisonValue"
+        }
+      },
+      "required": [
+        "id",
+        "left",
+        "right",
+        "delta",
+        "reasons"
+      ],
+      "title": "ComparisonRow",
+      "type": "object"
+    },
+    "ComparisonValue": {
+      "additionalProperties": false,
+      "properties": {
+        "definition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IndicatorDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementObservation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin": {
+          "enum": [
+            "retained_evidence",
+            "unavailable"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "trace_state": {
+          "enum": [
+            "complete",
+            "incomplete",
+            "unavailable"
+          ],
+          "title": "Trace State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "origin",
+        "definition",
+        "observation",
+        "trace_state"
+      ],
+      "title": "ComparisonValue",
+      "type": "object"
+    },
+    "DesignDifference": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "After"
+        },
+        "before": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Before"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "value",
+            "assumption",
+            "policy",
+            "goal",
+            "reference"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "before",
+        "after"
+      ],
+      "title": "DesignDifference",
+      "type": "object"
+    },
+    "DiagnosticRule": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "category": {
+          "enum": [
+            "physical_shortage",
+            "selected_policy_breach",
+            "institutional_gap",
+            "uncertainty"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "lt",
+            "le",
+            "eq",
+            "ne",
+            "ge",
+            "gt"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "threshold": {
+          "$ref": "#/$defs/QuantityValue"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "operation",
+        "threshold",
+        "category",
+        "interpretation",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "DiagnosticRule",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "HistoryAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "undo",
+            "redo",
+            "fork",
+            "rename",
+            "restore"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "expected_sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Expected Sequence",
+          "type": "integer"
+        },
+        "name": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Name"
+        },
+        "target_revision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Target Revision Id"
+        }
+      },
+      "required": [
+        "context",
+        "expected_sequence",
+        "action",
+        "target_revision_id",
+        "name"
+      ],
+      "title": "HistoryAction",
+      "type": "object"
+    },
+    "IndicatorDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "const": "same_scope",
+          "title": "Aggregation",
+          "type": "string"
+        },
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "diagnostics": {
+          "items": {
+            "$ref": "#/$defs/DiagnosticRule"
+          },
+          "maxItems": 100,
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/MeasurementInput"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "procedure": {
+          "enum": [
+            "identity",
+            "sum",
+            "mean",
+            "minimum",
+            "maximum",
+            "difference",
+            "ratio"
+          ],
+          "title": "Procedure",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "procedure",
+        "inputs",
+        "unit_id",
+        "scope_id",
+        "aggregation",
+        "time_basis_id",
+        "denominator_scope_id",
+        "coverage",
+        "interpretation",
+        "source_refs",
+        "assumption_refs",
+        "diagnostics"
+      ],
+      "title": "IndicatorDefinition",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "LineagePage": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "$ref": "#/$defs/BranchState"
+        },
+        "can_undo": {
+          "title": "Can Undo",
+          "type": "boolean"
+        },
+        "comparison_contract": {
+          "const": 1,
+          "title": "Comparison Contract",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/LineageRow"
+          },
+          "maxItems": 10,
+          "title": "Items",
+          "type": "array"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "query": {
+          "$ref": "#/$defs/LineageQuery"
+        }
+      },
+      "required": [
+        "comparison_contract",
+        "query",
+        "can_undo",
+        "branch",
+        "items",
+        "next_cursor"
+      ],
+      "title": "LineagePage",
+      "type": "object"
+    },
+    "LineageQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cursor"
+        }
+      },
+      "required": [
+        "context",
+        "cursor"
+      ],
+      "title": "LineageQuery",
+      "type": "object"
+    },
+    "LineageRow": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/ChoiceSummary"
+          },
+          "maxItems": 100,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "parent_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Id"
+        },
+        "rationale": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrivateReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "selected_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Id"
+        }
+      },
+      "required": [
+        "context",
+        "parent_id",
+        "selected_id",
+        "alternatives",
+        "rationale"
+      ],
+      "title": "LineageRow",
+      "type": "object"
+    },
+    "MeasurementInput": {
+      "additionalProperties": false,
+      "properties": {
+        "node": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "title": "Node",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node",
+        "scope_id"
+      ],
+      "title": "MeasurementInput",
+      "type": "object"
+    },
+    "MeasurementObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "definition_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "diagnostic": {
+          "enum": [
+            "neutral",
+            "within_named_thresholds",
+            "flagged",
+            "unavailable"
+          ],
+          "title": "Diagnostic",
+          "type": "string"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "indicator_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Indicator Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "trace_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Trace Refs",
+          "type": "array"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "indicator_id",
+        "definition_version",
+        "scope_id",
+        "effective_time",
+        "status",
+        "reason",
+        "value",
+        "diagnostic",
+        "trace_refs",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "MeasurementObservation",
+      "type": "object"
+    },
+    "PrivateReference": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "redacted",
+            "deleted",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "visibility": {
+          "const": "private",
+          "title": "Visibility",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "visibility",
+        "status"
+      ],
+      "title": "PrivateReference",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "RationaleQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        }
+      },
+      "required": [
+        "context"
+      ],
+      "title": "RationaleQuery",
+      "type": "object"
+    },
+    "RationaleReply": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "const": "private",
+          "title": "Classification",
+          "type": "string"
+        },
+        "comparison_contract": {
+          "const": 1,
+          "title": "Comparison Contract",
+          "type": "integer"
+        },
+        "query": {
+          "$ref": "#/$defs/RationaleQuery"
+        },
+        "reference": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PrivateReference"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "text": {
+          "anyOf": [
+            {
+              "maxLength": 2048,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Text"
+        }
+      },
+      "required": [
+        "comparison_contract",
+        "query",
+        "classification",
+        "reference",
+        "text"
+      ],
+      "title": "RationaleReply",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "WorkspaceState": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "$ref": "#/$defs/BranchState"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "goal_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Goal Count",
+          "type": "integer"
+        },
+        "mechanism_count": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Mechanism Count",
+          "type": "integer"
+        },
+        "policy_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Policy Count",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "branch",
+        "context",
+        "versions",
+        "effective_time",
+        "goal_count",
+        "policy_count",
+        "mechanism_count"
+      ],
+      "title": "WorkspaceState",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/RationaleQuery"
+    },
+    {
+      "$ref": "#/$defs/RationaleReply"
+    },
+    {
+      "$ref": "#/$defs/LineageQuery"
+    },
+    {
+      "$ref": "#/$defs/LineagePage"
+    },
+    {
+      "$ref": "#/$defs/HistoryAction"
+    },
+    {
+      "$ref": "#/$defs/CompareQuery"
+    },
+    {
+      "$ref": "#/$defs/ComparePage"
+    },
+    {
+      "$ref": "#/$defs/WorkspaceState"
+    }
+  ]
+}

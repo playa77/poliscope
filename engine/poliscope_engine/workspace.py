@@ -96,6 +96,11 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation in ('lineage', 'compare', 'history-action', 'rationale'):
+        from poliscope_engine import comparison
+        if operation == 'history-action':
+            return comparison.action(service, data, identity)
+        return {'lineage': comparison.lineage, 'compare': comparison.compare, 'rationale': comparison.rationale}[operation](service, data)
     if operation in ('overview', 'target', 'chart'):
         from poliscope_engine import overview
         return {'overview': overview.page, 'target': overview.target, 'chart': overview.chart}[operation](service, data)
@@ -126,7 +131,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:
