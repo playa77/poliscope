@@ -49,3 +49,7 @@ textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
 .evidence-inspector h5 { font-size: 1rem; margin-bottom: .5rem; }
 .evidence-inspector details { margin-block: .5rem; }
 summary { cursor: pointer; padding-block: .4rem; }
+
+.design-history { overflow-wrap: anywhere; }
+.design-history table { table-layout: fixed; }
+.design-history td, .design-history th { vertical-align: top; }

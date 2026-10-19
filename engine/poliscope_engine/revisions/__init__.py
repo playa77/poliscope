@@ -314,12 +314,24 @@ class Revisions:
                 inputs=inputs, decision=request.preview.decision, evidence_digest=evidence.closure_digest,
                 applied_preview=request.preview)
             self._persist(scope, record, evidence)
+            if state.redo:
+                self._retain_future(scope, state)
             state = checked(BranchState, state.model_copy(update=dict(context=new_context,
                 sequence=state.sequence + 1, redo=[])))
             self._save_branch(scope, state)
             outcome = MutationOutcome(revision_contract=1, context=new_context, branch_sequence=state.sequence)
             self.store.complete_operation(scope, key, binding, outcome.model_dump_json())
             return outcome
+
+    def _retain_future(self, scope, state):
+        # Preserve a named head before abandoning a future. Stable IDs make
+        # recovery idempotent within the enclosing transaction.
+        head = state.redo[0] if state.redo else state.context.revision_id
+        identity = 'retained:' + digest(dict(context=state.context, sequence=state.sequence))
+        future = checked(BranchState, state.model_copy(update=dict(sequence=0, redo=[],
+            name='Retained future · ' + state.name[:220], forked_from=state.context,
+            context=state.context.model_copy(update=dict(branch_id=identity, revision_id=head)))))
+        self._save_branch(scope, future)
 
     def change_branch(self, request):
         request = checked(BranchRequest, request)
@@ -335,12 +347,23 @@ class Revisions:
                 raise RevisionError('invalid_new_branch')
             if (request.action in ('fork', 'rename')) != (request.name is not None):
                 raise RevisionError('invalid_branch_name')
+            target = state.context
+            if request.target_revision_id is not None:
+                if request.action not in ('fork', 'restore'):
+                    raise RevisionError('unexpected_target_revision')
+                target = state.context.model_copy(update={'revision_id': request.target_revision_id})
+                self.read(target)
             updates = dict(sequence=state.sequence + 1)
             if request.action == 'fork':
                 if self.store.record_page(scope, self._kind(request.new_branch_id), limit=1):
                     raise RevisionError('branch_exists')
-                updates = dict(sequence=0, redo=[], name=request.name, forked_from=state.context,
-                    context=state.context.model_copy(update={'branch_id': request.new_branch_id}))
+                updates = dict(sequence=0, redo=[], name=request.name, forked_from=target,
+                    context=target.model_copy(update={'branch_id': request.new_branch_id}))
+            elif request.action == 'restore':
+                if request.target_revision_id is None:
+                    raise RevisionError('restore_requires_target')
+                self._retain_future(scope, state)
+                updates.update(context=target, redo=[])
             elif request.action == 'rename':
                 updates['name'] = request.name
             elif request.action == 'undo':

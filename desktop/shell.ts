@@ -1,3 +1,4 @@
+import type { RationaleQuery, RationaleReply, LineageQuery, LineagePage, HistoryAction, CompareQuery, ComparePage } from '../contracts/comparison';
 import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery, ChartReply } from '../contracts/overview';
 import type { InterviewQuery, InterviewQuestion, InterviewEdit, InterviewPreview, InterviewApply, InterviewCommit } from '../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../contracts/workspace';
@@ -6,6 +7,10 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  rationale(query: RationaleQuery): Promise<RationaleReply>;
+  lineage(query: LineageQuery): Promise<LineagePage>;
+  compare(query: CompareQuery): Promise<ComparePage>;
+  historyAction(query: HistoryAction): Promise<WorkspaceState>;
   overview(query: OverviewQuery): Promise<OverviewPage>;
   target(query: TargetQuery): Promise<TargetReply>;
   chart(query: ChartQuery): Promise<ChartReply>;

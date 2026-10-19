@@ -625,7 +625,7 @@
       "requires": [
         "WP-021-preview-ui"
       ],
-      "merged_sha": null,
+      "merged_sha": "c59b00910387a21a2ce07c23409a05e101de152a",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-022.md"
     },
@@ -638,7 +638,7 @@
         "WP-022-overview",
         "WP-017-traces"
       ],
-      "merged_sha": null,
+      "merged_sha": "c59b00910387a21a2ce07c23409a05e101de152a",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-022.md"
     },
@@ -646,38 +646,38 @@
       "parent": "WP-023",
       "scope": "contract",
       "capabilities": "ENG + DESK",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-018-apply"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
     "WP-023-comparison": {
       "parent": "WP-023",
       "scope": "comparison",
       "capabilities": "ENG + DESK",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-023-contract"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
     "WP-023-history-ui": {
       "parent": "WP-023",
       "scope": "history ui",
       "capabilities": "ENG + DESK",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-023-comparison",
         "WP-022-inspectors"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-023 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
     "WP-024-offline-gate": {
       "parent": "WP-024",

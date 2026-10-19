@@ -52,7 +52,7 @@ function harness() {
 }
 it('rejects unauthorized and malformed requests before any service or dialog call', async () => {
   const h = harness();
-  expect([...h.handlers.keys()].sort()).toEqual(['bootstrap:status', 'history:open', 'history:page', 'interview:apply', 'interview:cancel', 'interview:preview', 'interview:read', 'overview:chart', 'overview:read', 'overview:target', 'runtime:reconnect', 'workspace:catalogue', 'workspace:choose', 'workspace:create', 'workspace:page', 'workspace:select']);
+  expect([...h.handlers.keys()].sort()).toEqual(['bootstrap:status', 'design-history:action', 'design-history:compare', 'design-history:lineage', 'design-history:rationale', 'history:open', 'history:page', 'interview:apply', 'interview:cancel', 'interview:preview', 'interview:read', 'overview:chart', 'overview:read', 'overview:target', 'runtime:reconnect', 'workspace:catalogue', 'workspace:choose', 'workspace:create', 'workspace:page', 'workspace:select']);
   h.authorize.mockImplementationOnce(() => { throw new Error('/private/store/path'); });
   await expect(h.call('history:open', selection)).rejects.toThrow(IPC_ERROR);
   for (const [channel, args] of [
