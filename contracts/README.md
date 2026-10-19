@@ -217,3 +217,10 @@ size/depth limits and evaluation. Dependency/SCC solving, actual allocation,
 missing-coverage execution, policy resolution, persistence, pack attachment,
 conformance integration and scientific validation remain downstream obligations.
 The v1 declaration adds no IPC command and changes no pack or wire version.
+
+`solver.schema.json` and `solver.ts` derive from canonical `ExecutionRequest` in
+`contracts/solvers.py`: host-selected finite procedures and runtime claim mapping,
+linear equations or bounded iteration, explicit tolerance/order/starting state,
+and operation quota. Runtime validation additionally checks exact compiled SCC
+membership, applicability, graph edge closure, typed account mappings and joint
+funding contention. These are pure engine contracts with no new wire operation.

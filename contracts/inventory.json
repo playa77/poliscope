@@ -20,6 +20,8 @@
     "policy.schema.json",
     "policy.ts",
     "saved-evidence.schema.json",
+    "solver.schema.json",
+    "solver.ts",
     "tool-inputs.json",
     "wire.schema.json",
     "wire.ts"
