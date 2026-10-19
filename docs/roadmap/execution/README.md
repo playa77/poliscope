@@ -192,3 +192,14 @@ One agent and SV inspection remain in effect. Reassess WP-012-registry after mer
 for trusted registration, external reference resolution and activation checks;
 WP-012-expressions retains bounded graph/operator validation and execution.
 No scientific, full-parent or application acceptance is claimed.
+
+## Current boundary after PR #22
+
+PR #22 merged WP-012-contract at `683e9a371712d20d114057f3b7c139a83a8829ea`.
+[WP-012-registry](WP-012-registry.md) delivers immutable registration, trusted
+implementation and review checks, external reference resolution, exact pack
+attachment, typed cross-domain bindings and owned-state proposal guards.
+One sequential agent and SV inspection remain in effect. Reassess
+WP-012-expressions after merge for bounded graph validation/execution. Runtime
+evaluation, durable state publication and full parent/application acceptance
+remain separate; scientific validity is not established by registration.
