@@ -1,0 +1,1376 @@
+{
+  "$defs": {
+    "BranchState": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "forked_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RevisionContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "redo": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Redo",
+          "type": "array"
+        },
+        "revision_contract": {
+          "const": 1,
+          "title": "Revision Contract",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision_contract",
+        "context",
+        "name",
+        "sequence",
+        "redo",
+        "forked_from"
+      ],
+      "title": "BranchState",
+      "type": "object"
+    },
+    "CreateOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "land_area": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Land Area"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "population": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Population"
+        },
+        "scope_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Name",
+          "type": "string"
+        },
+        "setup": {
+          "enum": [
+            "blank",
+            "reference:small-settlement"
+          ],
+          "title": "Setup",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "setup",
+        "scope_name",
+        "population",
+        "land_area"
+      ],
+      "title": "CreateOptions",
+      "type": "object"
+    },
+    "DomainEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "status": {
+          "const": "unanswered",
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "status"
+      ],
+      "title": "DomainEntry",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "EntityDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        }
+      },
+      "required": [
+        "id",
+        "entity_kind",
+        "label",
+        "provenance"
+      ],
+      "title": "EntityDTO",
+      "type": "object"
+    },
+    "EntityPage": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/EntityDTO"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "kind": {
+          "const": "entities",
+          "title": "Kind",
+          "type": "string"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "kind",
+        "items"
+      ],
+      "title": "EntityPage",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MechanismBindingDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "inheritance": {
+          "enum": [
+            "exclusive",
+            "composable",
+            "floor",
+            "ceiling",
+            "delegated"
+          ],
+          "title": "Inheritance",
+          "type": "string"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "modeling_status": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling Status",
+          "type": "string"
+        },
+        "parameters": {
+          "items": {
+            "$ref": "#/$defs/ParameterAssignment"
+          },
+          "maxItems": 100,
+          "title": "Parameters",
+          "type": "array"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_id",
+        "mechanism_id",
+        "mechanism_version",
+        "scope_id",
+        "inheritance",
+        "modeling_status",
+        "parameters",
+        "provenance"
+      ],
+      "title": "MechanismBindingDTO",
+      "type": "object"
+    },
+    "MechanismPage": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/MechanismBindingDTO"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "kind": {
+          "const": "mechanisms",
+          "title": "Kind",
+          "type": "string"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "kind",
+        "items"
+      ],
+      "title": "MechanismPage",
+      "type": "object"
+    },
+    "MembershipPartition": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "partition",
+          "title": "Kind",
+          "type": "string"
+        },
+        "partition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Partition Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "partition_id"
+      ],
+      "title": "MembershipPartition",
+      "type": "object"
+    },
+    "MembershipWeight": {
+      "additionalProperties": false,
+      "description": "Explicit weight or partition; never implicit equal or duplicate membership.",
+      "properties": {
+        "kind": {
+          "const": "weight",
+          "title": "Kind",
+          "type": "string"
+        },
+        "weight": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Weight",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "weight"
+      ],
+      "title": "MembershipWeight",
+      "type": "object"
+    },
+    "NonAggregating": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "non_aggregating",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "NonAggregating",
+      "type": "object"
+    },
+    "ParameterAssignment": {
+      "additionalProperties": false,
+      "properties": {
+        "parameter_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Parameter Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "parameter_id",
+        "value"
+      ],
+      "title": "ParameterAssignment",
+      "type": "object"
+    },
+    "PartitionValueDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "partition": {
+          "enum": [
+            "conditions",
+            "design",
+            "assumptions",
+            "dynamic_state",
+            "observations",
+            "goals"
+          ],
+          "title": "Partition",
+          "type": "string"
+        },
+        "property_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Property Id",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "id",
+        "entity_id",
+        "scope_id",
+        "partition",
+        "property_id",
+        "value",
+        "effective_time",
+        "provenance"
+      ],
+      "title": "PartitionValueDTO",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RelationshipDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "discriminator": {
+            "mapping": {
+              "non_aggregating": "#/$defs/NonAggregating",
+              "partition": "#/$defs/MembershipPartition",
+              "weight": "#/$defs/MembershipWeight"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/MembershipWeight"
+            },
+            {
+              "$ref": "#/$defs/MembershipPartition"
+            },
+            {
+              "$ref": "#/$defs/NonAggregating"
+            }
+          ],
+          "title": "Aggregation"
+        },
+        "from_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "From Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "relationship_kind": {
+          "enum": [
+            "containment",
+            "geographic_overlap",
+            "cohort_membership",
+            "jurisdiction",
+            "ownership",
+            "obligation",
+            "supplies",
+            "consumes",
+            "access",
+            "connectivity",
+            "information_channel",
+            "source_supersession"
+          ],
+          "title": "Relationship Kind",
+          "type": "string"
+        },
+        "relationship_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Relationship Version",
+          "type": "string"
+        },
+        "to_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "To Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "relationship_version",
+        "relationship_kind",
+        "from_id",
+        "to_id",
+        "aggregation",
+        "provenance"
+      ],
+      "title": "RelationshipDTO",
+      "type": "object"
+    },
+    "RelationshipPage": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/RelationshipDTO"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "kind": {
+          "const": "relationships",
+          "title": "Kind",
+          "type": "string"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "kind",
+        "items"
+      ],
+      "title": "RelationshipPage",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "ScopeDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_kind": {
+          "enum": [
+            "household",
+            "community",
+            "settlement",
+            "region",
+            "civilization",
+            "global_external"
+          ],
+          "title": "Scope Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "scope_kind",
+        "label",
+        "provenance"
+      ],
+      "title": "ScopeDTO",
+      "type": "object"
+    },
+    "ScopePage": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ScopeDTO"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "kind": {
+          "const": "scopes",
+          "title": "Kind",
+          "type": "string"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "kind",
+        "items"
+      ],
+      "title": "ScopePage",
+      "type": "object"
+    },
+    "SetupEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "enum": [
+            "blank",
+            "reference:small-settlement"
+          ],
+          "title": "Id",
+          "type": "string"
+        },
+        "land_area": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Land Area"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "population": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Population"
+        },
+        "reference": {
+          "title": "Reference",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "reference",
+        "population",
+        "land_area"
+      ],
+      "title": "SetupEntry",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "ValuePage": {
+      "additionalProperties": false,
+      "properties": {
+        "items": {
+          "items": {
+            "$ref": "#/$defs/PartitionValueDTO"
+          },
+          "maxItems": 100,
+          "title": "Items",
+          "type": "array"
+        },
+        "kind": {
+          "const": "values",
+          "title": "Kind",
+          "type": "string"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        }
+      },
+      "required": [
+        "next_cursor",
+        "kind",
+        "items"
+      ],
+      "title": "ValuePage",
+      "type": "object"
+    },
+    "WorkspaceCatalogue": {
+      "additionalProperties": false,
+      "properties": {
+        "branches": {
+          "items": {
+            "$ref": "#/$defs/BranchState"
+          },
+          "maxItems": 1000,
+          "title": "Branches",
+          "type": "array"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "domains": {
+          "items": {
+            "$ref": "#/$defs/DomainEntry"
+          },
+          "maxItems": 12,
+          "title": "Domains",
+          "type": "array"
+        },
+        "setups": {
+          "items": {
+            "$ref": "#/$defs/SetupEntry"
+          },
+          "maxItems": 10,
+          "title": "Setups",
+          "type": "array"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "data_store_id",
+        "branches",
+        "domains",
+        "setups"
+      ],
+      "title": "WorkspaceCatalogue",
+      "type": "object"
+    },
+    "WorkspacePage": {
+      "additionalProperties": false,
+      "properties": {
+        "result": {
+          "$ref": "#/$defs/WorldPageResult"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "scope_id",
+        "result"
+      ],
+      "title": "WorkspacePage",
+      "type": "object"
+    },
+    "WorkspacePageRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "collection": {
+          "enum": [
+            "scopes",
+            "entities",
+            "values",
+            "relationships"
+          ],
+          "title": "Collection",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cursor"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "collection",
+        "cursor"
+      ],
+      "title": "WorkspacePageRequest",
+      "type": "object"
+    },
+    "WorkspaceSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Revision Id"
+        }
+      },
+      "required": [
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "WorkspaceSelection",
+      "type": "object"
+    },
+    "WorkspaceState": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "$ref": "#/$defs/BranchState"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "goal_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Goal Count",
+          "type": "integer"
+        },
+        "mechanism_count": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Mechanism Count",
+          "type": "integer"
+        },
+        "policy_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Policy Count",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "branch",
+        "context",
+        "versions",
+        "effective_time",
+        "goal_count",
+        "policy_count",
+        "mechanism_count"
+      ],
+      "title": "WorkspaceState",
+      "type": "object"
+    },
+    "WorldPageResult": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "kind": {
+          "const": "world_page",
+          "title": "Kind",
+          "type": "string"
+        },
+        "page": {
+          "discriminator": {
+            "mapping": {
+              "entities": "#/$defs/EntityPage",
+              "mechanisms": "#/$defs/MechanismPage",
+              "relationships": "#/$defs/RelationshipPage",
+              "scopes": "#/$defs/ScopePage",
+              "values": "#/$defs/ValuePage"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/ScopePage"
+            },
+            {
+              "$ref": "#/$defs/EntityPage"
+            },
+            {
+              "$ref": "#/$defs/RelationshipPage"
+            },
+            {
+              "$ref": "#/$defs/ValuePage"
+            },
+            {
+              "$ref": "#/$defs/MechanismPage"
+            }
+          ],
+          "title": "Page"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        }
+      },
+      "required": [
+        "kind",
+        "context",
+        "versions",
+        "effective_time",
+        "page"
+      ],
+      "title": "WorldPageResult",
+      "type": "object"
+    },
+    "WorldProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_input",
+            "ai_proposed",
+            "derived"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "origin",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "WorldProvenance",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/CreateOptions"
+    },
+    {
+      "$ref": "#/$defs/WorkspaceCatalogue"
+    },
+    {
+      "$ref": "#/$defs/WorkspaceSelection"
+    },
+    {
+      "$ref": "#/$defs/WorkspaceState"
+    },
+    {
+      "$ref": "#/$defs/WorkspacePageRequest"
+    },
+    {
+      "$ref": "#/$defs/WorkspacePage"
+    }
+  ]
+}

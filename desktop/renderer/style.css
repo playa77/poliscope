@@ -1,5 +1,5 @@
 :root { font-family: system-ui, sans-serif; color: #e8e9dc; background: #172c2a; }
-body { margin: 0; } main { max-width: 46rem; margin: 12vh auto; padding: 2rem; }
+body { margin: 0; } main { max-width: 82rem; margin: 3vh auto; padding: 2rem; }
 h1 { font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.1; font-weight: 500; }
 p { line-height: 1.7; } .eyebrow { color: #c5d49a; letter-spacing: .1em; text-transform: uppercase; }
 [role=status] { border-top: 1px solid #697974; padding-top: 1.5rem; }
@@ -9,3 +9,22 @@ button { padding: .6rem 1rem; margin: .5rem 0; cursor: pointer; } button:disable
 dt { margin-top: .5rem; font-weight: bold; } dd { margin-left: 0; overflow-wrap: anywhere; }
 pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #102321; padding: 1rem; }
 [role=alert] { border: 1px solid #e5be86; padding: 1rem; }
+.sandbox { border-block: 1px solid #cad6cb; padding-block: 2rem; margin-block: 1.5rem; }
+.workspace-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+.workspace-header h2 { margin-top: 0; }
+.workspace-layout { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; margin-block: 1.5rem; }
+.workspace-layout nav { display: flex; flex-direction: column; gap: .5rem; }
+.workspace-layout nav button { text-align: left; }
+button[aria-current="page"], button[aria-pressed="true"] { background: #254e3c; color: white; }
+.domain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .5rem; }
+.domain-grid button { text-align: left; }
+.domain-grid small { display: block; font-weight: normal; margin-top: .4rem; }
+.state-banner { padding: 1rem; background: #203b34; border: 1px solid #b7c9bd; margin-top: 1rem; }
+.state-banner span { display: block; overflow-wrap: anywhere; font-size: .85rem; margin-block: .35rem; }
+.workspace-body { min-width: 0; }
+.workspace-layout aside { grid-column: 2; padding: 1rem; border: 1px solid #b7c9bd; overflow-wrap: anywhere; }
+table { width: 100%; border-collapse: collapse; text-align: left; }
+th, td { padding: .6rem; border-bottom: 1px solid #cad6cb; }
+textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
+:focus-visible { outline: 3px solid #9d4c15; outline-offset: 3px; }
+@media (max-width: 760px) { .workspace-layout { grid-template-columns: 1fr; } .workspace-layout aside { grid-column: 1; } .workspace-header { align-items: start; flex-direction: column; } }

@@ -556,26 +556,26 @@
       "parent": "WP-020",
       "scope": "creation",
       "capabilities": "DESK; review expertise PRODUCT",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-011-ipc",
         "WP-018-world"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-020 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-020.md"
     },
     "WP-020-navigation": {
       "parent": "WP-020",
       "scope": "navigation",
       "capabilities": "DESK; review expertise PRODUCT",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-020-creation"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-020 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-020.md"
     },
     "WP-021-cards": {
       "parent": "WP-021",

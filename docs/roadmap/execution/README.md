@@ -316,3 +316,15 @@ invariant mutations. It also corrects the discovered dated-capacity/undated-stoc
 integration gap and versions evaluator semantics. No renderer, provider, native,
 scientific or full application gate is claimed. Reassess WP-020 creation/navigation
 after merge. Reference-desktop and scaled benchmark acceptance remain open.
+
+## Current boundary after PR #33
+
+PR #33 merged the independently derived WP-019 headless slice at
+`d0509d2`. [WP-020](WP-020.md) is the full sequential creation/navigation allocation:
+production revision-backed local sandbox creation and reopen, explicit editable
+reference conditions, shared selected-state context, twelve-domain navigation,
+scoped Python queries, retained-revision presentation and main-owned IPC grants.
+One agent and SV inspection remain in effect. Reassess WP-021 interviews,
+alternatives and preview/apply UI after merge; these controls, domain numerical
+models, simulation checkpoints and provider integration retain separate acceptance.
+No scientific or cumulative application/native milestone is claimed.

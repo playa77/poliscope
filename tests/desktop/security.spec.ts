@@ -51,6 +51,7 @@ test('packaged renderer rejects forged IPC and passive hostile resources and rem
       try {
         await attacker.loadURL(frameURL);
         const errors = await attacker.webContents.executeJavaScript(`Promise.all(${JSON.stringify([
+          ['workspace:choose', []], ['workspace:catalogue', []], ['workspace:create', [{ name: 'Forged', setup: 'blank', scope_name: 'Home', population: null, land_area: null }]], ['workspace:select', [{ civilization_id: 'civ', branch_id: 'main', revision_id: null }]], ['workspace:page', [{ context: selection.request.context, scope_id: 'home', collection: 'values', cursor: null }]],
           ['bootstrap:status', []], ['history:open', [selection]], ['history:page', ['summary', 0]], ['runtime:reconnect', []],
         ])}.map(async ([channel,args]) => { try { await require('electron').ipcRenderer.invoke(channel,...args); return 'accepted'; } catch(e) { return String(e); } }))`);
         await attacker.webContents.executeJavaScript(`new Promise(resolve => { const frame = document.createElement('iframe'); frame.onload = resolve; frame.src = ${JSON.stringify(frameURL)}; document.body.append(frame); })`);

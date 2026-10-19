@@ -203,6 +203,9 @@ def test_detachment_revalidation_and_content_identity():
     assert len(json.loads(result.request_json)['instances']) == 1
     with pytest.raises(FrozenInstanceError):
         result.digest = 'changed'
+    # An unanswered sandbox now legitimately has no mechanism instances.
+    compile(req)
+    req.instances.append(request().instances[0].model_copy(update={'id': ''}))
     with pytest.raises(ValidationError):
         compile(req)
     d = plain()
