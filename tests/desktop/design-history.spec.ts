@@ -40,7 +40,10 @@ test('packaged history preserves old futures, historical inspection, exact conte
     await page.getByRole('button',{name:'History and comparison',exact:true}).click();
     let history = page.getByRole('region',{name:'Design history',exact:true});
     await expect(history.getByRole('table',{name:'Retained design lineage · all futures in this civilization'}).getByRole('row')).toHaveCount(3);
-    await history.getByRole('button',{name:'Undo design change',exact:true}).focus(); await page.keyboard.press('Enter');
+    const undoButton = history.getByRole('button',{name:'Undo design change',exact:true});
+    await expect(undoButton).toBeEnabled();
+    await undoButton.focus(); await expect(undoButton).toBeFocused();
+    await page.keyboard.press('Enter');
     await expect(history.getByRole('button',{name:'Redo design change',exact:true})).toBeEnabled();
     await history.getByRole('button',{name:'Redo design change',exact:true}).click();
     await expect(history.getByRole('button',{name:'Redo design change',exact:true})).toBeDisabled();
