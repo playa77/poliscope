@@ -6,7 +6,7 @@ import type { WorkspaceState } from '../../contracts/workspace';
 function display(row: PartitionValueDTO) {
   return row.value.kind === 'quantity' ? `${row.value.value} ${row.value.unit_id}` : row.value.kind === 'unknown' ? 'Unknown' : 'Not a quantity';
 }
-function Commitment({ text }: { text: string }) {
+export function Commitment({ text }: { text: string }) {
   try {
     const saved: unknown = JSON.parse(text);
     if (saved && typeof saved === 'object' && 'option' in saved && saved.option && typeof saved.option === 'object' &&

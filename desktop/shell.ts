@@ -1,3 +1,4 @@
+import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery, ChartReply } from '../contracts/overview';
 import type { InterviewQuery, InterviewQuestion, InterviewEdit, InterviewPreview, InterviewApply, InterviewCommit } from '../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../contracts/workspace';
 import type { HistoryRequest, HistoryResult, HistoryError } from '../contracts/history';
@@ -5,6 +6,9 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  overview(query: OverviewQuery): Promise<OverviewPage>;
+  target(query: TargetQuery): Promise<TargetReply>;
+  chart(query: ChartQuery): Promise<ChartReply>;
   interview(query: InterviewQuery): Promise<InterviewQuestion>;
   previewInterview(edit: InterviewEdit): Promise<InterviewPreview>;
   applyInterview(candidate: InterviewApply): Promise<InterviewCommit>;

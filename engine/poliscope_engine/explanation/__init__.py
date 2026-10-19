@@ -163,6 +163,9 @@ def trace_page(report, query):
             selected.add(node)
             pending.extend(indexed[node].dependency_refs)
     rows = [t for t in report.traces if t.id in selected]
+    # Open the requested calculation before traversing its dependency closure.
+    if query.root_id is not None:
+        rows.sort(key=lambda t: t.id != query.root_id)
     scope = digest(dict(report=report.report_digest, root=query.root_id))
     offset = 0
     if query.cursor is not None:

@@ -586,7 +586,7 @@
         "WP-020-navigation",
         "WP-018-preview"
       ],
-      "merged_sha": null,
+      "merged_sha": "3452af0388761954f7672b3d5179d4209c507b7c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
@@ -599,7 +599,7 @@
         "WP-021-cards",
         "WP-018-apply"
       ],
-      "merged_sha": null,
+      "merged_sha": "3452af0388761954f7672b3d5179d4209c507b7c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
@@ -613,7 +613,7 @@
         "WP-018-preview",
         "WP-018-apply"
       ],
-      "merged_sha": null,
+      "merged_sha": "3452af0388761954f7672b3d5179d4209c507b7c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-021.md"
     },
@@ -621,26 +621,26 @@
       "parent": "WP-022",
       "scope": "overview",
       "capabilities": "DESK + MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-021-preview-ui"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-022 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-022.md"
     },
     "WP-022-inspectors": {
       "parent": "WP-022",
       "scope": "inspectors",
       "capabilities": "DESK + MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-022-overview",
         "WP-017-traces"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-022 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-022.md"
     },
     "WP-023-contract": {
       "parent": "WP-023",

@@ -2,7 +2,7 @@
 import schema from '../../contracts/wire.schema.json';
 import type { WireMessage } from '../../contracts/wire';
 
-export type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
+export type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; prefixItems?: Schema[]; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
 export function valid(value: unknown, rule: Schema, definitions: Record<string, Schema> = schema.$defs as Record<string, Schema>): boolean {
   if (rule.$ref) return valid(value, definitions[rule.$ref.split('/').at(-1)!], definitions);
   if ('const' in rule) return value === rule.const;
@@ -14,7 +14,7 @@ export function valid(value: unknown, rule: Schema, definitions: Record<string, 
     case 'boolean': return typeof value === 'boolean';
     case 'string': return typeof value === 'string' && !/\p{Surrogate}/u.test(value) && [...value].length >= (rule.minLength ?? 0) && [...value].length <= (rule.maxLength ?? Infinity) && (!rule.pattern || new RegExp(rule.pattern, 'u').exec(value)?.[0] === value);
     case 'integer': return typeof value === 'number' && Number.isSafeInteger(value) && value >= (rule.minimum ?? -Infinity) && value <= (rule.maximum ?? Infinity);
-    case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every(v => valid(v, rule.items!, definitions));
+    case 'array': return Array.isArray(value) && value.length >= (rule.minItems ?? 0) && value.length <= (rule.maxItems ?? Infinity) && value.every((v, i) => { const itemRule = rule.prefixItems?.[i] ?? rule.items; return itemRule !== undefined && valid(v, itemRule, definitions); });
     case 'object': {
       if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
       const object = value as Record<string, unknown>;

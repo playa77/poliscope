@@ -35,3 +35,17 @@ textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
 .option-card:has(input:checked) { outline: 3px solid #94c2ac; }
 .option-card input { width: auto; align-self: flex-start; }
 .interview pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.overview { border-block: 1px solid #607068; padding-block: 1rem; }
+.indicator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
+.indicator { border: 1px solid #78948b; border-left-width: 7px; border-radius: .4rem; padding: 1rem; margin-top: 1rem; }
+.indicator h5 { font-size: 1.05rem; margin: 0; }
+.indicator p { font-size: .9rem; }
+.tone-green { border-left-color: #85c78c; } .tone-orange { border-left-color: #f4be76; }
+.tone-red { border-left-color: #f59d97; } .tone-gray { border-left-color: #a6aeb1; }
+.tone-neutral { border-left-color: #a0bdcf; }
+.quantity { font-size: 1.15rem; }
+.overview input[type=checkbox] { display: inline; width: auto; margin-right: .5rem; }
+.evidence-inspector { border: 1px solid #a4b9b0; padding: 1rem; margin-block: 1rem; overflow-wrap: anywhere; }
+.evidence-inspector h5 { font-size: 1rem; margin-bottom: .5rem; }
+.evidence-inspector details { margin-block: .5rem; }
+summary { cursor: pointer; padding-block: .4rem; }

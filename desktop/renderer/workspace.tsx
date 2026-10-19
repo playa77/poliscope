@@ -1,3 +1,4 @@
+import { Overview, Inspector } from './overview';
 import { Interview } from './interview';
 import React, { useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
@@ -41,6 +42,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
   const [view, setView] = useState(VIEWS[0]);
   const [domain, setDomain] = useState('');
   const [inspector, setInspector] = useState(false);
+  const [conditionInspector, setConditionInspector] = useState<string>();
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState('');
   const [options, setOptions] = useState<CreateOptions>({ name: '', setup: 'blank', scope_name: 'Home', population: null, land_area: null });
@@ -61,7 +63,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
     finally { if (id === generation.current) setBusy(false); }
   }
   function selectState(next: WorkspaceState) {
-    setState(next); setScope('');
+    setState(next); setScope(''); setConditionInspector(undefined);
   }
   return <section className="sandbox" aria-labelledby="sandbox-heading">
     <header className="workspace-header"><div><p className="eyebrow">Local sandbox</p><h2 id="sandbox-heading">Design a society. Begin anywhere.</h2></div>
@@ -102,7 +104,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
           <span>Branch: {state.context.branch_id} · {state.context.revision_id === state.branch.context.revision_id ? 'Confirmed design revision' : 'Historical revision — read only'}</span>
           <span>Revision: {state.context.revision_id}</span><span>Model: {state.versions.model_id} · Tick: {state.effective_time.tick} · Calendar: {state.effective_time.calendar_id}</span>
           <label>Scope<select disabled={loading || !scopes.data?.length} value={selectedScope} onChange={e => {
-            void client.cancelQueries({ queryKey: ['world'] }); setScope(e.target.value);
+            void client.cancelQueries({ queryKey: ['world'] }); setScope(e.target.value); setConditionInspector(undefined);
           }}>{scopes.data?.map(s => <option key={s.id} value={s.id}>{s.label} ({s.scope_kind})</option>)}</select></label>
           <label>Read a retained revision (leave blank for current branch head)<input key={`${state.context.civilization_id}/${state.context.branch_id}`} name="revision-id" maxLength={128} onKeyDown={e => {
             if (e.key === 'Enter' && !loading) { e.preventDefault(); const revision = e.currentTarget.value;
@@ -114,6 +116,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
           <article className="workspace-body"><h3>{view}</h3>
             <p>{state.goal_count} declared goals · {state.policy_count} selected policies · {state.mechanism_count} registered mechanisms</p>
             <p>{state.mechanism_count === 0 ? 'This starting model has no numerical social mechanisms. Qualitative commitments have no calculated social effects; observations below are authored conditions.' : 'This saved model contains mechanism bindings. Synthetic qualitative interviews are available; execution requires the matching registered model.'}</p>
+            {view === 'Civilization overview' && selectedScope && <Overview key={JSON.stringify([state.context, selectedScope, state.versions])} state={state} scope={selectedScope} />}
             <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => setDomain(d.id)}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
             {domain && <section aria-label="Selected domain"><h4>{catalogue.domains.find(d => d.id === domain)?.name}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>
               {selectedScope && <Interview key={JSON.stringify([state.context, selectedScope, domain])}
@@ -123,7 +126,8 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
             {view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
             <h4>Starting conditions · {scopes.data?.find(s => s.id === selectedScope)?.label ?? 'Loading scope'}</h4>
             {(scopes.isError || values.isError) && <p role="alert">This state could not be read. Reopen the branch to retry.</p>}
-            {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}
+            {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}
+            {conditionInspector && <Inspector key={JSON.stringify([state.context, selectedScope, conditionInspector])} state={state} scope={selectedScope} selection={{ collection: 'conditions', id: conditionInspector }} close={() => setConditionInspector(undefined)} />}
             <button aria-expanded={inspector} onClick={() => setInspector(!inspector)}>State inspector</button>
           </article>
           {inspector && <aside aria-label="State inspector"><h3>State identity</h3><dl>{Object.entries({ ...state.context, ...state.versions, scope_id: selectedScope }).map(([key, value]) => <React.Fragment key={key}><dt>{key.replaceAll('_', ' ')}</dt><dd>{value}</dd></React.Fragment>)}</dl><p>All views read the same Python-owned world. Temporary navigation and filters stay in this session.</p></aside>}
