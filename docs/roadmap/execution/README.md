@@ -279,3 +279,14 @@ The authoritative pure WP-016 scope excludes durable publication despite older
 solver handoff notes; persistence remains WP-018/store work. Reassess WP-017 after
 merge. Measurements, optional player targets, sampling, public IPC, native platform
 and full application/scientific acceptance retain their own gates.
+
+## Current boundary after PR #30
+
+PR #30 merged the complete WP-016 evaluation/identity/cache package at
+`bba4ead98bf26c3d04e6a49b3c31cfd0305ff39a`.
+[WP-017](WP-017.md) covers both measurements and trace services: pure named
+observations, optional isolated goals, typed findings, complete calculation and
+accounting trace DAGs, detached accepted-evidence closure and classified public
+projections. One sequential agent and SV inspection remain in effect. Reassess
+WP-018 immutable revisions/preview/apply after merge; durable acceptance, IPC/UI,
+portable archives and application/native/scientific gates remain separate.

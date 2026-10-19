@@ -231,3 +231,10 @@ bounded static evaluation plans, explicit value/policy/precondition bindings,
 realization evidence, typed coverage, trace edges, final accounts and canonical
 identities. WorldGraph/host registry authority and fresh external-reference checks
 remain runtime responsibilities. This adds no wire method or persistence format.
+
+`measurement.schema.json` / `measurement.ts` define WP-017 versioned indicators,
+post-evaluation goals, typed findings, condensed calculation traces, bounded trace
+queries, complete local accepted-evidence closures and explicit public projections.
+These host-service contracts do not add renderer IPC authority. Python owns all
+measurement/threshold/target arithmetic; retained data does not require a live
+model registry. See `engine/poliscope_engine/measurements/README.md` for boundaries.
