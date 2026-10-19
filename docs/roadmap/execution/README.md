@@ -234,3 +234,14 @@ One sequential agent and SV inspection remain in effect. Reassess
 WP-015-allocation after merge for declared finite procedures, access/funding and
 transformation actuals. Numerical graph integration, durable publication and full
 parent/application acceptance remain separate.
+
+## Current boundary after PR #26
+
+PR #26 merged WP-015-accounts at `69f6772802cf9a9ec86bf7df0ae16738d0977879`.
+[WP-015-allocation](WP-015-allocation.md) delivers declared global priority and
+ordered all-or-nothing procedures, separate access/funding/entitlement budgets,
+reservation fulfillment and exact actual-input product/residual/loss accounting.
+One sequential agent and SV inspection remain in effect. Reassess WP-014-compiler
+after merge for typed claim/allocation/actual-output dependencies. Coupled graph
+solving, durable publication and full parent/application/native acceptance remain
+separate; no default civic rule or scientific validity is inferred.

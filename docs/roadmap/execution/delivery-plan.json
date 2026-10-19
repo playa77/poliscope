@@ -424,7 +424,7 @@
       "requires": [
         "WP-013-policy"
       ],
-      "merged_sha": null,
+      "merged_sha": "69f6772802cf9a9ec86bf7df0ae16738d0977879",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-015-accounts.md"
     },
@@ -432,13 +432,13 @@
       "parent": "WP-015",
       "scope": "allocation",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "solo-validated; agent review deferred",
       "requires": [
         "WP-015-accounts"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-015 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-015-allocation.md"
     },
     "WP-016-evaluation": {
       "parent": "WP-016",
