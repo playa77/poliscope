@@ -51,7 +51,11 @@ def allocate(request: AllocationRequest, units: Registry) -> AllocationEvaluatio
             account = definitions[requirement.account_id]
             rate = quantity(requirement.per_unit)
             if (rate <= 0 or account.invariant == 'physical'
-                    or account.scope_id != source.scope_id or account.period_id != source.period_id):
+                    or account.scope_id != source.scope_id
+                    or (account.period_id != source.period_id
+                        and not (source.kind == 'stock' and source.invariant == 'physical'
+                                 and source.period_id is None
+                                 and account.kind == 'capacity' and account.period_id is not None))):
                 fail('incompatible_requirement')
             step = common_step(step, quantity(account.quantum) / rate)
         mass = quantity(choice.loss_per_unit)

@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "kind": "bounded-headless-package-selection",
+  "package": "WP-019",
+  "gate_claim": false,
+  "service": "production-python-services-and-sqlite",
+  "cases": [
+    {"id": "E2E-002.b", "tests": ["tests/engine/test_headless_slice.py::test_complete_headless_workflow_and_retained_futures"]},
+    {"id": "E2E-003.a", "tests": ["tests/engine/test_headless_slice.py::test_complete_headless_workflow_and_retained_futures", "tests/engine/test_headless_slice.py::test_visible_gaps_and_precision_rejection", "tests/engine/test_headless_slice.py::test_period_allowance_does_not_erase_other_requirement_guards"]},
+    {"id": "E2E-004.a", "tests": ["tests/engine/test_headless_slice.py::test_overlap_and_policy_conflicts_are_order_invariant"]},
+    {"id": "E2E-015.a", "tests": ["tests/engine/test_headless_slice.py::test_complete_headless_workflow_and_retained_futures"]}
+  ],
+  "partial_cases": [
+    {"id": "E2E-005", "scope": "Engine stale/tampered/duplicate/conflicting/cross-context/lost-reply/status/replay/undo/fork; WP-023 consumer remains", "tests": ["tests/engine/test_headless_slice.py::test_stale_tampered_conflicting_and_lost_reply", "tests/engine/test_headless_slice.py::test_complete_headless_workflow_and_retained_futures"]}
+  ],
+  "deferred_cases": ["E2E-001", "E2E-002.a", "E2E-006.a", "E2E-010.a", "E2E-012.b", "E2E-016.a"],
+  "note": "This is not a cumulative G2 gate selection. UI, hostile-contract and comparison acceptance stay with their declared owners. The complete G2 manifest is unchanged."
+}

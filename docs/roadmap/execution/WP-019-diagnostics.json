@@ -1,0 +1,167 @@
+{
+  "kind": "preliminary-cloud-diagnostics",
+  "runs": 30,
+  "platform": "Linux-6.18.55-x86_64-with-glibc2.41",
+  "python": "3.12.14",
+  "timings": [
+    {
+      "create_ns": 51188206,
+      "preview_ns": 66031388,
+      "apply_ns": 113190672
+    },
+    {
+      "create_ns": 65427827,
+      "preview_ns": 85935892,
+      "apply_ns": 107482600
+    },
+    {
+      "create_ns": 76661900,
+      "preview_ns": 68169876,
+      "apply_ns": 83260743
+    },
+    {
+      "create_ns": 53791479,
+      "preview_ns": 67885005,
+      "apply_ns": 75253417
+    },
+    {
+      "create_ns": 62132002,
+      "preview_ns": 66059008,
+      "apply_ns": 75442231
+    },
+    {
+      "create_ns": 69445062,
+      "preview_ns": 70956192,
+      "apply_ns": 74112018
+    },
+    {
+      "create_ns": 63336290,
+      "preview_ns": 77912786,
+      "apply_ns": 73995382
+    },
+    {
+      "create_ns": 89092274,
+      "preview_ns": 77456922,
+      "apply_ns": 71865799
+    },
+    {
+      "create_ns": 52857167,
+      "preview_ns": 65950624,
+      "apply_ns": 81880977
+    },
+    {
+      "create_ns": 117227418,
+      "preview_ns": 94204137,
+      "apply_ns": 72961342
+    },
+    {
+      "create_ns": 55538516,
+      "preview_ns": 68647023,
+      "apply_ns": 77413994
+    },
+    {
+      "create_ns": 75228769,
+      "preview_ns": 65472337,
+      "apply_ns": 70514790
+    },
+    {
+      "create_ns": 57226957,
+      "preview_ns": 66230036,
+      "apply_ns": 75468562
+    },
+    {
+      "create_ns": 61052413,
+      "preview_ns": 83831396,
+      "apply_ns": 68699942
+    },
+    {
+      "create_ns": 58224741,
+      "preview_ns": 62789487,
+      "apply_ns": 71715212
+    },
+    {
+      "create_ns": 55005238,
+      "preview_ns": 87938728,
+      "apply_ns": 74274535
+    },
+    {
+      "create_ns": 49321850,
+      "preview_ns": 59683502,
+      "apply_ns": 67610064
+    },
+    {
+      "create_ns": 49508745,
+      "preview_ns": 87374141,
+      "apply_ns": 75290029
+    },
+    {
+      "create_ns": 51029831,
+      "preview_ns": 65314746,
+      "apply_ns": 71777844
+    },
+    {
+      "create_ns": 53553436,
+      "preview_ns": 79084459,
+      "apply_ns": 68252351
+    },
+    {
+      "create_ns": 48346700,
+      "preview_ns": 58258149,
+      "apply_ns": 71283346
+    },
+    {
+      "create_ns": 56950800,
+      "preview_ns": 57756289,
+      "apply_ns": 90811713
+    },
+    {
+      "create_ns": 54121404,
+      "preview_ns": 58923161,
+      "apply_ns": 68881259
+    },
+    {
+      "create_ns": 51372807,
+      "preview_ns": 59355931,
+      "apply_ns": 89796370
+    },
+    {
+      "create_ns": 49927714,
+      "preview_ns": 58755753,
+      "apply_ns": 68235847
+    },
+    {
+      "create_ns": 57177344,
+      "preview_ns": 56988745,
+      "apply_ns": 87152038
+    },
+    {
+      "create_ns": 48951522,
+      "preview_ns": 59283844,
+      "apply_ns": 65055463
+    },
+    {
+      "create_ns": 61040485,
+      "preview_ns": 62216352,
+      "apply_ns": 83362985
+    },
+    {
+      "create_ns": 52193769,
+      "preview_ns": 56300430,
+      "apply_ns": 61583667
+    },
+    {
+      "create_ns": 46051532,
+      "preview_ns": 68108919,
+      "apply_ns": 85889269
+    }
+  ],
+  "result_identities": {
+    "canonical_version": 1,
+    "input_digest": "sha256:5d2eedcd386d16beec794aec0aa7c5fa0c28af5a6212f14a1b841720231764c6",
+    "model_digest": "sha256:eff0a1f74b69ffdc02b916418590bfbdb2d3153fab310e9cb6be714e6a821550",
+    "realization_digest": "sha256:0150cb9075834573d6f4140b430e5f95c734571c795a1004dd77d2fcec79ff17",
+    "cache_key": "sha256:08b7a96b6427bb126efcc4ac85f74d948fb15d6fa55edc59e4d702a715f2d986",
+    "output_digest": "sha256:93037952e2b36c8a9bc84e4305ef2991c6b98eb3b1b46559b137a994a4547763"
+  },
+  "fixture_sha256": "56d845f5accdad889d469800f6f60a09bffad6653b12c3c96ad5b3c2bc425d1f"
+}

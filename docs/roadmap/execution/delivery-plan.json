@@ -499,7 +499,7 @@
         "WP-009-store",
         "WP-010-transport"
       ],
-      "merged_sha": null,
+      "merged_sha": "3114c5f3b9dff81a0a3d8717a986765ee786f7de",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
@@ -512,7 +512,7 @@
         "WP-018-world",
         "WP-017-traces"
       ],
-      "merged_sha": null,
+      "merged_sha": "3114c5f3b9dff81a0a3d8717a986765ee786f7de",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
@@ -524,7 +524,7 @@
       "requires": [
         "WP-018-preview"
       ],
-      "merged_sha": null,
+      "merged_sha": "3114c5f3b9dff81a0a3d8717a986765ee786f7de",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-018.md"
     },
@@ -532,25 +532,25 @@
       "parent": "WP-019",
       "scope": "fixtures",
       "capabilities": "QA + ENG + MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-018-apply"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-019 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-019.md"
     },
     "WP-019-verification": {
       "parent": "WP-019",
       "scope": "verification",
       "capabilities": "QA + ENG + MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-019-fixtures"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-019 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "docs/roadmap/execution/WP-019.md"
     },
     "WP-020-creation": {
       "parent": "WP-020",

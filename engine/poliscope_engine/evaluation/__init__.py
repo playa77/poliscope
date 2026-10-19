@@ -19,7 +19,8 @@ from poliscope_engine.policies import resolve
 from .identity import serialized, digest
 from .conditions import validate_conditions
 
-EVALUATOR_ID = 'pure-static-v1'
+# v2 admits explicit dated capacity requirements for undated physical stock.
+EVALUATOR_ID = 'pure-static-v2'
 PYTHON_RUNTIME = tuple(sys.version_info[:3])
 VALUE = TypeAdapter(WorldValue)
 
