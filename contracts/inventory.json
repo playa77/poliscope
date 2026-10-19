@@ -4,6 +4,8 @@
     "account.ts",
     "allocation.schema.json",
     "allocation.ts",
+    "dependency.schema.json",
+    "dependency.ts",
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",

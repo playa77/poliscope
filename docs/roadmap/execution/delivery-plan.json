@@ -396,13 +396,13 @@
       "parent": "WP-014",
       "scope": "compiler",
       "capabilities": "ENG; review expertise MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred",
       "requires": [
         "WP-015-allocation"
       ],
       "merged_sha": null,
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
-      "acceptance_ref": "WP-014 acceptance in packages.json; exact child criteria required at start"
+      "acceptance_ref": "WP-014-compiler.md; parent acceptance remains additional"
     },
     "WP-014-solvers": {
       "parent": "WP-014",
@@ -436,7 +436,7 @@
       "requires": [
         "WP-015-accounts"
       ],
-      "merged_sha": null,
+      "merged_sha": "4db0de133c5fad0b8c47012579770a685a97278c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-015-allocation.md"
     },
