@@ -69,7 +69,7 @@ class UnknownValue(Contract):
 
 class LabelValue(Contract):
     kind: Literal['label']
-    value: Annotated[str, Field(max_length=4096)]
+    value: Annotated[str, Field(max_length=131072)]
 
 
 class ReferenceValue(Contract):

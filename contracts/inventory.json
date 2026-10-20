@@ -4,6 +4,8 @@
     "account.ts",
     "allocation.schema.json",
     "allocation.ts",
+    "atlas.schema.json",
+    "atlas.ts",
     "comparison.schema.json",
     "comparison.ts",
     "content.schema.json",

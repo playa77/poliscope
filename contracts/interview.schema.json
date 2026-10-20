@@ -464,8 +464,8 @@
             "minLength": 1,
             "type": "string"
           },
-          "maxItems": 5,
-          "minItems": 3,
+          "maxItems": 101,
+          "minItems": 1,
           "title": "Alternatives",
           "type": "array"
         },
@@ -563,6 +563,20 @@
           "title": "Domain Id",
           "type": "string"
         },
+        "question_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
         "scope_id": {
           "maxLength": 256,
           "minLength": 1,
@@ -598,7 +612,7 @@
         "current_commitment": {
           "anyOf": [
             {
-              "maxLength": 4096,
+              "maxLength": 131072,
               "type": "string"
             },
             {
@@ -629,8 +643,8 @@
           "items": {
             "$ref": "#/$defs/InterviewOption"
           },
-          "maxItems": 4,
-          "minItems": 3,
+          "maxItems": 100,
+          "minItems": 1,
           "title": "Options",
           "type": "array"
         },
@@ -660,7 +674,7 @@
           "type": "string"
         },
         "value": {
-          "maxLength": 4096,
+          "maxLength": 131072,
           "title": "Value",
           "type": "string"
         }

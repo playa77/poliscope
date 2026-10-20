@@ -34,7 +34,7 @@ test('E2E-005 packaged interview cancel apply stale rejection qualitative propos
     const interview = page.getByRole('region', { name: 'Domain interview' });
     await expect(interview.getByRole('radio')).toHaveCount(4);
     await interview.getByText('Original wording and source', { exact: true }).focus(); await page.keyboard.press('Enter');
-    await expect(interview).toContainText('No external source or historical adopted option');
+    await expect(interview).toContainText('Source adoption is historical context');
     await interview.getByRole('radio').first().focus(); await page.keyboard.press('Space');
     await expect(page.getByLabel('Open civilization and branch')).toBeDisabled();
     await interview.getByLabel('Preview population (people)').fill('125');

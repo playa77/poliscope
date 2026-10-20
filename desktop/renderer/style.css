@@ -53,3 +53,7 @@ summary { cursor: pointer; padding-block: .4rem; }
 .design-history { overflow-wrap: anywhere; }
 .design-history table { table-layout: fixed; }
 .design-history td, .design-history th { vertical-align: top; }
+
+.atlas pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; }
+.atlas fieldset { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+.atlas li { margin-block: 1rem; }

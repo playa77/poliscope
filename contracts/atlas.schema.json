@@ -1,0 +1,1029 @@
+{
+  "$defs": {
+    "ArchivedSource": {
+      "additionalProperties": false,
+      "properties": {
+        "commit": {
+          "pattern": "^[0-9a-f]{40}$",
+          "title": "Commit",
+          "type": "string"
+        },
+        "excerpt_file": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_./-]+$",
+          "title": "Excerpt File",
+          "type": "string"
+        },
+        "license_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "License Digest",
+          "type": "string"
+        },
+        "reference": {
+          "$ref": "#/$defs/SourceRef"
+        }
+      },
+      "required": [
+        "reference",
+        "commit",
+        "excerpt_file",
+        "license_digest"
+      ],
+      "title": "ArchivedSource",
+      "type": "object"
+    },
+    "AtlasEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "archive": {
+          "enum": [
+            "retained",
+            "current_catalog"
+          ],
+          "title": "Archive",
+          "type": "string"
+        },
+        "branch_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 200,
+          "title": "Branch Refs",
+          "type": "array"
+        },
+        "domain_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Domain Refs",
+          "type": "array"
+        },
+        "interview": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/InterviewQuery"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "issues": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Issues",
+          "type": "array"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Definition"
+          },
+          "maxItems": 100,
+          "title": "Options",
+          "type": "array"
+        },
+        "question": {
+          "$ref": "#/$defs/Definition"
+        },
+        "selected_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Id"
+        }
+      },
+      "required": [
+        "question",
+        "options",
+        "domain_refs",
+        "branch_refs",
+        "selected_id",
+        "archive",
+        "issues",
+        "interview"
+      ],
+      "title": "AtlasEntry",
+      "type": "object"
+    },
+    "AtlasLabel": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 131072,
+          "title": "Label",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "label"
+      ],
+      "title": "AtlasLabel",
+      "type": "object"
+    },
+    "AtlasPage": {
+      "additionalProperties": false,
+      "properties": {
+        "atlas_contract": {
+          "const": 1,
+          "title": "Atlas Contract",
+          "type": "integer"
+        },
+        "branches": {
+          "items": {
+            "$ref": "#/$defs/AtlasLabel"
+          },
+          "maxItems": 200,
+          "title": "Branches",
+          "type": "array"
+        },
+        "catalog_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Catalog Digest",
+          "type": "string"
+        },
+        "domains": {
+          "items": {
+            "$ref": "#/$defs/AtlasLabel"
+          },
+          "maxItems": 12,
+          "title": "Domains",
+          "type": "array"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/AtlasEntry"
+          },
+          "maxItems": 5,
+          "title": "Items",
+          "type": "array"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "query": {
+          "$ref": "#/$defs/AtlasQuery"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/AtlasLabel"
+          },
+          "maxItems": 100,
+          "title": "Sources",
+          "type": "array"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "atlas_contract",
+        "query",
+        "catalog_digest",
+        "items",
+        "total",
+        "next_cursor",
+        "domains",
+        "branches",
+        "sources"
+      ],
+      "title": "AtlasPage",
+      "type": "object"
+    },
+    "AtlasQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Branch Ref"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "domain_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Domain Ref"
+        },
+        "evidence": {
+          "anyOf": [
+            {
+              "enum": [
+                "unreviewed",
+                "hypothetical",
+                "supported",
+                "disputed"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Evidence"
+        },
+        "issues": {
+          "default": "any",
+          "enum": [
+            "any",
+            "open",
+            "none"
+          ],
+          "title": "Issues",
+          "type": "string"
+        },
+        "modeling": {
+          "anyOf": [
+            {
+              "enum": [
+                "numerical",
+                "procedural",
+                "qualitative",
+                "partial",
+                "unsupported"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Modeling"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "search": {
+          "default": "",
+          "maxLength": 256,
+          "title": "Search",
+          "type": "string"
+        },
+        "selection": {
+          "default": "any",
+          "enum": [
+            "any",
+            "selected",
+            "unanswered",
+            "proposed"
+          ],
+          "title": "Selection",
+          "type": "string"
+        },
+        "source_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Ref"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id"
+      ],
+      "title": "AtlasQuery",
+      "type": "object"
+    },
+    "AtlasSourcePage": {
+      "additionalProperties": false,
+      "properties": {
+        "atlas_contract": {
+          "const": 1,
+          "title": "Atlas Contract",
+          "type": "integer"
+        },
+        "license_text": {
+          "maxLength": 131072,
+          "title": "License Text",
+          "type": "string"
+        },
+        "next_offset": {
+          "anyOf": [
+            {
+              "maximum": 131072,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Offset"
+        },
+        "query": {
+          "$ref": "#/$defs/AtlasSourceQuery"
+        },
+        "source": {
+          "$ref": "#/$defs/ArchivedSource"
+        },
+        "text": {
+          "maxLength": 12000,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "atlas_contract",
+        "query",
+        "source",
+        "text",
+        "license_text",
+        "next_offset"
+      ],
+      "title": "AtlasSourcePage",
+      "type": "object"
+    },
+    "AtlasSourceQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 131072,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "source_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "source_ref"
+      ],
+      "title": "AtlasSourceQuery",
+      "type": "object"
+    },
+    "Definition": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "evidence": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "historical_status": {
+          "enum": [
+            "adopted",
+            "alternative",
+            "amended",
+            "superseded",
+            "provenance",
+            "unspecified"
+          ],
+          "title": "Historical Status",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "domain",
+            "branch",
+            "question",
+            "option",
+            "mechanism",
+            "parameter",
+            "measurement",
+            "fixture"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mechanism_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "modeling": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_proposed",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "original_text": {
+          "maxLength": 131072,
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParameterDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "parent_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Ref"
+        },
+        "source_decision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Decision Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "supersedes_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Supersedes Refs",
+          "type": "array"
+        },
+        "variable_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Variable Refs",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "kind",
+        "parent_ref",
+        "original_text",
+        "source_decision_id",
+        "source_refs",
+        "assumption_refs",
+        "supersedes_refs",
+        "mechanism_refs",
+        "variable_refs",
+        "origin",
+        "modeling",
+        "evidence",
+        "historical_status"
+      ],
+      "title": "Definition",
+      "type": "object"
+    },
+    "InterviewQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "domain_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "domain_id"
+      ],
+      "title": "InterviewQuery",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage Limits",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Time Basis Id",
+          "type": "string"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope_id",
+        "unit_id",
+        "time_basis_id",
+        "interpretation",
+        "coverage_limits"
+      ],
+      "title": "MeasurementDeclaration",
+      "type": "object"
+    },
+    "ParameterDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "validity_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Validity Limits",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "scope_id",
+        "value",
+        "validity_limits"
+      ],
+      "title": "ParameterDeclaration",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "SourceRef": {
+      "additionalProperties": false,
+      "properties": {
+        "document_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Document Id",
+          "type": "string"
+        },
+        "excerpt_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Excerpt Digest",
+          "type": "string"
+        },
+        "historical_status": {
+          "enum": [
+            "current",
+            "amended",
+            "superseded",
+            "disputed",
+            "unknown"
+          ],
+          "title": "Historical Status",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "license_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "License Id",
+          "type": "string"
+        },
+        "location": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Location",
+          "type": "string"
+        },
+        "repository_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Repository Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        },
+        "supersedes_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Supersedes Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "repository_id",
+        "document_id",
+        "revision_id",
+        "location",
+        "excerpt_digest",
+        "license_id",
+        "historical_status",
+        "supersedes_refs"
+      ],
+      "title": "SourceRef",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/AtlasQuery"
+    },
+    {
+      "$ref": "#/$defs/AtlasPage"
+    },
+    {
+      "$ref": "#/$defs/AtlasSourceQuery"
+    },
+    {
+      "$ref": "#/$defs/AtlasSourcePage"
+    }
+  ]
+}

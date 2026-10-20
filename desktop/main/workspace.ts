@@ -1,3 +1,5 @@
+import atlasSchema from '../../contracts/atlas.schema.json';
+import type { AtlasQuery, AtlasPage, AtlasSourceQuery, AtlasSourcePage } from '../../contracts/atlas';
 /** Main-only launch and selection grants. Renderer never supplies a path or operation. */
 import { isDeepStrictEqual } from 'node:util';
 import { execFile } from 'node:child_process';
@@ -13,7 +15,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -94,12 +96,31 @@ export class WorkspaceController {
   private authorizeInterview(query: InterviewQuery) {
     if (!this.selected || JSON.stringify(query.context) !== JSON.stringify(this.selected.context)) throw new Error('Interview outside selected context');
   }
+  async atlas(input: unknown): Promise<AtlasPage> {
+    if (!workspaceValid(input, 'AtlasQuery')) throw new Error('Invalid atlas query');
+    const query = structuredClone(input as AtlasQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('atlas', query, 'AtlasPage') as AtlasPage;
+    // Python defaults are explicit in the echoed query.
+    const expected = { search: '', domain_ref: null, branch_ref: null, source_ref: null, selection: 'any', modeling: null, evidence: null, issues: 'any', cursor: null, ...query };
+    if (!isDeepStrictEqual(result.query, expected) || result.items.some(row => row.interview &&
+      (!isDeepStrictEqual(row.interview.context, query.context) || row.interview.scope_id !== query.scope_id))) throw new Error('Atlas binding mismatch');
+    return result;
+  }
+  async atlasSource(input: unknown): Promise<AtlasSourcePage> {
+    if (!workspaceValid(input, 'AtlasSourceQuery')) throw new Error('Invalid atlas source query');
+    const query = structuredClone(input as AtlasSourceQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('atlas-source', query, 'AtlasSourcePage') as AtlasSourcePage;
+    if (!isDeepStrictEqual(result.query, { offset: 0, ...query }) || result.source.reference.id !== query.source_ref) throw new Error('Atlas source binding mismatch');
+    return result;
+  }
   async interview(input: unknown): Promise<InterviewQuestion> {
     if (!workspaceValid(input, 'InterviewQuery')) throw new Error('Invalid interview');
     const query = input as InterviewQuery;
     this.authorizeInterview(query);
     const result = await this.request('interview', query, 'InterviewQuestion') as InterviewQuestion;
-    if (JSON.stringify(result.query) !== JSON.stringify(query)) throw new Error('Interview binding mismatch');
+    if (!isDeepStrictEqual(result.query, { ...query, question_id: query.question_id ?? null })) throw new Error('Interview binding mismatch');
     return result;
   }
   async previewInterview(input: unknown): Promise<InterviewPreview> {
@@ -110,7 +131,7 @@ export class WorkspaceController {
     this.candidate = undefined;
     const identity = randomUUID();
     const preview = await this.request('preview-interview', edit, 'InterviewPreview', identity) as InterviewPreview;
-    if (JSON.stringify(preview.query) !== JSON.stringify(edit.query) || preview.selected_id !== edit.choice_id || !preview.alternatives.includes(edit.choice_id)) throw new Error('Preview binding mismatch');
+    if (!isDeepStrictEqual(preview.query, { ...edit.query, question_id: edit.query.question_id ?? null }) || preview.selected_id !== edit.choice_id || !preview.alternatives.includes(edit.choice_id)) throw new Error('Preview binding mismatch');
     this.candidate = { edit, identity, preview, applying: false };
     return preview;
   }
