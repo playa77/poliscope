@@ -62,7 +62,8 @@ for (const id of ['E2E-001', 'E2E-016.a']) test(id + ' offline keyboard producti
     await press(page, page.locator('.domain-grid button').first());
     let interview = page.getByRole('region', { name: 'Domain interview' });
     await press(page, interview.getByText('Original wording and source', { exact: true }));
-    await expect(interview).toContainText('No external source or historical adopted option');
+    await expect(interview).toContainText('Source adoption is historical context; only Apply records a player choice');
+    await expect(interview).toContainText('These are original synthetic exploration templates.');
     await press(page, interview.getByRole('radio').first(), 'Space');
     await type(page, interview.getByLabel('Preview population (people)'), '125');
     await press(page, interview.getByRole('button', { name: 'Preview draft', exact: true }));
