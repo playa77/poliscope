@@ -1,3 +1,5 @@
+import matrixSchema from '../../contracts/matrix.schema.json';
+import type { MatrixQuery, MatrixPage, MatrixModelQuery, MatrixModelReply } from '../../contracts/matrix';
 import atlasSchema from '../../contracts/atlas.schema.json';
 import type { AtlasQuery, AtlasPage, AtlasSourceQuery, AtlasSourcePage } from '../../contracts/atlas';
 /** Main-only launch and selection grants. Renderer never supplies a path or operation. */
@@ -15,7 +17,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -95,6 +97,28 @@ export class WorkspaceController {
   }
   private authorizeInterview(query: InterviewQuery) {
     if (!this.selected || JSON.stringify(query.context) !== JSON.stringify(this.selected.context)) throw new Error('Interview outside selected context');
+  }
+  async matrixModel(input: unknown): Promise<MatrixModelReply> {
+    if (!workspaceValid(input, 'MatrixModelQuery')) throw new Error('Invalid model query');
+    const query = structuredClone(input as MatrixModelQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('matrix-model', query, 'MatrixModelReply') as MatrixModelReply;
+    if (!isDeepStrictEqual(result.query, query) || (result.mechanism && (query.kind !== 'mechanism' || result.mechanism.id !== query.identity)) ||
+        (result.policy_rule && result.policy_rule.identity.id !== query.identity) || (result.allocation_rule && result.allocation_rule.id !== query.identity) ||
+        (result.condition_rule && result.condition_rule.identity.id !== query.identity)) throw new Error('Matrix model binding mismatch');
+    return result;
+  }
+  async matrix(input: unknown): Promise<MatrixPage> {
+    if (!workspaceValid(input, 'MatrixQuery')) throw new Error('Invalid matrix query');
+    const query = structuredClone(input as MatrixQuery);
+    this.authorizeHistory(query.context);
+    const result = await this.request('matrix', query, 'MatrixPage') as MatrixPage;
+    const expected = { axis: 'domain', relationship_type: null, provenance: 'any', row_id: null, column_id: null, cursor: null, detail_cursor: null, ...query };
+    if (!isDeepStrictEqual(result.query, expected) || !isDeepStrictEqual(result.versions, this.selected!.versions) ||
+        !isDeepStrictEqual(result.effective_time, this.selected!.effective_time) || result.relationships.some(r =>
+          [...r.interviews, ...r.sources, ...r.inspectors].some(q => !isDeepStrictEqual(q.context, query.context)) ||
+          [...r.interviews, ...r.inspectors].some(q => q.scope_id !== query.scope_id))) throw new Error('Matrix binding mismatch');
+    return result;
   }
   async atlas(input: unknown): Promise<AtlasPage> {
     if (!workspaceValid(input, 'AtlasQuery')) throw new Error('Invalid atlas query');

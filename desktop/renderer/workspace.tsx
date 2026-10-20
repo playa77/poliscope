@@ -1,3 +1,4 @@
+import { Matrix, initialMatrixFilters, type MatrixFilters } from './matrix';
 import { Atlas, initialAtlasFilters, type AtlasFilters } from './atlas';
 import { DesignHistory } from './design-history';
 import { Overview, Inspector } from './overview';
@@ -44,6 +45,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
   const [view, setView] = useState(VIEWS[0]);
   const [domain, setDomain] = useState('');
   const [atlasFilters, setAtlasFilters] = useState<AtlasFilters>(initialAtlasFilters);
+  const [matrixFilters, setMatrixFilters] = useState<MatrixFilters>(initialMatrixFilters);
   const [questionId, setQuestionId] = useState<string | null>(null);
   const [inspector, setInspector] = useState(false);
   const [conditionInspector, setConditionInspector] = useState<string>();
@@ -124,13 +126,15 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
             {view === 'History and comparison' && <DesignHistory key={JSON.stringify(state.context)} state={state} disabled={loading} onSelected={async next => { selectState(next); setCatalogue(await window.poliscope.workspaceCatalogue()); await client.invalidateQueries({ queryKey: ['world'] }); }} />}
             {selectedScope && <div hidden={view !== 'Decision atlas'}><Atlas state={state} scope={selectedScope} active={view === 'Decision atlas'} disabled={dirty} filters={atlasFilters} setFilters={setAtlasFilters}
               onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} onHistory={() => setView('History and comparison')} /></div>}
+            {view === 'Dependency matrix' && selectedScope && <Matrix state={state} scope={selectedScope} disabled={dirty} filters={matrixFilters} setFilters={setMatrixFilters}
+              onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} />}
             <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { setDomain(d.id); setQuestionId(null); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
             {domain && <section aria-label="Selected domain" id="selected-interview" tabIndex={-1}><h4>{catalogue.domains.find(d => d.id === domain)?.name ?? 'Source question · domain mapping unresolved'}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>
               {selectedScope && <Interview key={JSON.stringify([state.context, selectedScope, domain, questionId])}
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}
                 historical={state.context.revision_id !== state.branch.context.revision_id} onDirty={draftChanged}
                 onConfirmed={(next, message) => { draftChanged(false); setNotice(message); setState(next); void client.invalidateQueries({ queryKey: ['world'] }); }} />}</section>}
-            {view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
+            {view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
             <h4>Starting conditions · {scopes.data?.find(s => s.id === selectedScope)?.label ?? 'Loading scope'}</h4>
             {(scopes.isError || values.isError) && <p role="alert">This state could not be read. Reopen the branch to retry.</p>}
             {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}

@@ -1,0 +1,2322 @@
+{
+  "$defs": {
+    "AllocationChoice": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "enum": [
+            "allowed",
+            "denied",
+            "unknown"
+          ],
+          "title": "Access",
+          "type": "string"
+        },
+        "access_limit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Access Limit",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "funding_known": {
+          "title": "Funding Known",
+          "type": "boolean"
+        },
+        "loss_per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Loss Per Unit",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "$ref": "#/$defs/TransformationOutput"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/FundingRequirement"
+          },
+          "maxItems": 100,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "access",
+        "access_limit",
+        "funding_known",
+        "requirements",
+        "outputs",
+        "loss_per_unit",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationChoice",
+      "type": "object"
+    },
+    "AtlasSourceQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 131072,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "source_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Ref",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "source_ref"
+      ],
+      "title": "AtlasSourceQuery",
+      "type": "object"
+    },
+    "Claim": {
+      "additionalProperties": false,
+      "properties": {
+        "account_input_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Account Input Ref",
+          "type": "string"
+        },
+        "allocation_input_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Allocation Input Ref",
+          "type": "string"
+        },
+        "amount_output_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Amount Output Ref",
+          "type": "string"
+        },
+        "dependent_output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Dependent Output Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "resource",
+            "service",
+            "population",
+            "time"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "amount_output_ref",
+        "account_input_ref",
+        "allocation_input_ref",
+        "dependent_output_refs"
+      ],
+      "title": "Claim",
+      "type": "object"
+    },
+    "ConditionRule": {
+      "additionalProperties": false,
+      "properties": {
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "input_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Input Id",
+          "type": "string"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "eq",
+            "ne",
+            "lt",
+            "le",
+            "gt",
+            "ge",
+            "known"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "precondition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Precondition Id",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "label": "#/$defs/LabelValue",
+                  "quantity": "#/$defs/QuantityValue",
+                  "reference": "#/$defs/ReferenceValue",
+                  "unknown": "#/$defs/UnknownValue"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/QuantityValue"
+                },
+                {
+                  "$ref": "#/$defs/UnknownValue"
+                },
+                {
+                  "$ref": "#/$defs/LabelValue"
+                },
+                {
+                  "$ref": "#/$defs/ReferenceValue"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "identity",
+        "instance_id",
+        "precondition_id",
+        "input_id",
+        "operation",
+        "value"
+      ],
+      "title": "ConditionRule",
+      "type": "object"
+    },
+    "Diagnostic": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Output Refs",
+          "type": "array"
+        },
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ],
+          "title": "Severity",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "severity",
+        "description",
+        "input_refs",
+        "output_refs"
+      ],
+      "title": "Diagnostic",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "FinitePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/AllocationChoice"
+          },
+          "maxItems": 1000,
+          "title": "Choices",
+          "type": "array"
+        },
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "enum": [
+                "priority",
+                "all_or_nothing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Procedure"
+        }
+      },
+      "required": [
+        "id",
+        "procedure",
+        "claim_order",
+        "choices",
+        "mechanism_ref"
+      ],
+      "title": "FinitePlan",
+      "type": "object"
+    },
+    "FundingRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "funding",
+            "entitlement"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "kind"
+      ],
+      "title": "FundingRequirement",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "InputPort": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "missing_behavior": {
+          "enum": [
+            "propagate",
+            "omit"
+          ],
+          "title": "Missing Behavior",
+          "type": "string"
+        },
+        "required": {
+          "title": "Required",
+          "type": "boolean"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "value_type",
+        "required",
+        "missing_behavior"
+      ],
+      "title": "InputPort",
+      "type": "object"
+    },
+    "InterviewQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "domain_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Domain Id",
+          "type": "string"
+        },
+        "question_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Question Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "domain_id"
+      ],
+      "title": "InterviewQuery",
+      "type": "object"
+    },
+    "LabelType": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "LabelType",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MatrixCell": {
+      "additionalProperties": false,
+      "properties": {
+        "activation": {
+          "enum": [
+            "documentary",
+            "declared",
+            "observed",
+            "unavailable"
+          ],
+          "title": "Activation",
+          "type": "string"
+        },
+        "column_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Column Id",
+          "type": "string"
+        },
+        "count": {
+          "minimum": 1,
+          "title": "Count",
+          "type": "integer"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "provenance": {
+          "enum": [
+            "documentary",
+            "model",
+            "retained_execution"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "relationship_type": {
+          "enum": [
+            "requires",
+            "supplies",
+            "competes",
+            "conflicts",
+            "influences",
+            "supersedes"
+          ],
+          "title": "Relationship Type",
+          "type": "string"
+        },
+        "row_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Row Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "row_id",
+        "column_id",
+        "relationship_type",
+        "provenance",
+        "activation",
+        "coverage",
+        "count"
+      ],
+      "title": "MatrixCell",
+      "type": "object"
+    },
+    "MatrixEndpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "branches": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 200,
+          "title": "Branches",
+          "type": "array"
+        },
+        "decisions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Decisions",
+          "type": "array"
+        },
+        "domains": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Domains",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "scopes": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Scopes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "label",
+        "domains",
+        "branches",
+        "decisions",
+        "alternatives",
+        "scopes"
+      ],
+      "title": "MatrixEndpoint",
+      "type": "object"
+    },
+    "MatrixModelQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "identity": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Identity",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "mechanism",
+            "rule"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "kind",
+        "identity"
+      ],
+      "title": "MatrixModelQuery",
+      "type": "object"
+    },
+    "MatrixModelReply": {
+      "additionalProperties": false,
+      "properties": {
+        "allocation_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/FinitePlan"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "condition_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ConditionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "matrix_contract": {
+          "const": 1,
+          "title": "Matrix Contract",
+          "type": "integer"
+        },
+        "mechanism": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MechanismDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "policy_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ResolutionRule"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "query": {
+          "$ref": "#/$defs/MatrixModelQuery"
+        },
+        "status": {
+          "enum": [
+            "retained",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "matrix_contract",
+        "query",
+        "status",
+        "mechanism",
+        "policy_rule",
+        "allocation_rule",
+        "condition_rule"
+      ],
+      "title": "MatrixModelReply",
+      "type": "object"
+    },
+    "MatrixPage": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Catalog Digest",
+          "type": "string"
+        },
+        "cell_total": {
+          "minimum": 0,
+          "title": "Cell Total",
+          "type": "integer"
+        },
+        "cells": {
+          "items": {
+            "$ref": "#/$defs/MatrixCell"
+          },
+          "maxItems": 25,
+          "title": "Cells",
+          "type": "array"
+        },
+        "detail_next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Detail Next Cursor"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "evidence_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Evidence Digest",
+          "type": "string"
+        },
+        "evidence_state": {
+          "enum": [
+            "complete",
+            "unavailable"
+          ],
+          "title": "Evidence State",
+          "type": "string"
+        },
+        "matrix_contract": {
+          "const": 1,
+          "title": "Matrix Contract",
+          "type": "integer"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "query": {
+          "$ref": "#/$defs/MatrixQuery"
+        },
+        "relationship_total": {
+          "minimum": 0,
+          "title": "Relationship Total",
+          "type": "integer"
+        },
+        "relationships": {
+          "items": {
+            "$ref": "#/$defs/MatrixRelationship"
+          },
+          "maxItems": 10,
+          "title": "Relationships",
+          "type": "array"
+        },
+        "unmapped_count": {
+          "minimum": 0,
+          "title": "Unmapped Count",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        }
+      },
+      "required": [
+        "matrix_contract",
+        "query",
+        "versions",
+        "effective_time",
+        "catalog_digest",
+        "evidence_digest",
+        "evidence_state",
+        "cells",
+        "relationships",
+        "cell_total",
+        "relationship_total",
+        "next_cursor",
+        "detail_next_cursor",
+        "unmapped_count"
+      ],
+      "title": "MatrixPage",
+      "type": "object"
+    },
+    "MatrixQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "axis": {
+          "default": "domain",
+          "enum": [
+            "domain",
+            "branch",
+            "decision",
+            "scope",
+            "selected_alternative"
+          ],
+          "title": "Axis",
+          "type": "string"
+        },
+        "column_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Column Id"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "detail_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Detail Cursor"
+        },
+        "provenance": {
+          "default": "any",
+          "enum": [
+            "any",
+            "documentary",
+            "model",
+            "retained_execution"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "relationship_type": {
+          "anyOf": [
+            {
+              "enum": [
+                "requires",
+                "supplies",
+                "competes",
+                "conflicts",
+                "influences",
+                "supersedes"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Relationship Type"
+        },
+        "row_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Row Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id"
+      ],
+      "title": "MatrixQuery",
+      "type": "object"
+    },
+    "MatrixRelationship": {
+      "additionalProperties": false,
+      "properties": {
+        "activation": {
+          "enum": [
+            "documentary",
+            "declared",
+            "observed",
+            "unavailable"
+          ],
+          "title": "Activation",
+          "type": "string"
+        },
+        "column": {
+          "$ref": "#/$defs/MatrixEndpoint"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "explanation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Explanation",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "inspectors": {
+          "items": {
+            "$ref": "#/$defs/OverviewQuery"
+          },
+          "maxItems": 100,
+          "title": "Inspectors",
+          "type": "array"
+        },
+        "interviews": {
+          "items": {
+            "$ref": "#/$defs/InterviewQuery"
+          },
+          "maxItems": 100,
+          "title": "Interviews",
+          "type": "array"
+        },
+        "magnitude": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "label": "#/$defs/LabelValue",
+                  "quantity": "#/$defs/QuantityValue",
+                  "reference": "#/$defs/ReferenceValue",
+                  "unknown": "#/$defs/UnknownValue"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/QuantityValue"
+                },
+                {
+                  "$ref": "#/$defs/UnknownValue"
+                },
+                {
+                  "$ref": "#/$defs/LabelValue"
+                },
+                {
+                  "$ref": "#/$defs/ReferenceValue"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Magnitude"
+        },
+        "mechanism_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "provenance": {
+          "enum": [
+            "documentary",
+            "model",
+            "retained_execution"
+          ],
+          "title": "Provenance",
+          "type": "string"
+        },
+        "relationship_type": {
+          "enum": [
+            "requires",
+            "supplies",
+            "competes",
+            "conflicts",
+            "influences",
+            "supersedes"
+          ],
+          "title": "Relationship Type",
+          "type": "string"
+        },
+        "row": {
+          "$ref": "#/$defs/MatrixEndpoint"
+        },
+        "rule_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Rule Refs",
+          "type": "array"
+        },
+        "sources": {
+          "items": {
+            "$ref": "#/$defs/AtlasSourceQuery"
+          },
+          "maxItems": 100,
+          "title": "Sources",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "relationship_type",
+        "row",
+        "column",
+        "provenance",
+        "activation",
+        "coverage",
+        "magnitude",
+        "explanation",
+        "mechanism_refs",
+        "rule_refs",
+        "interviews",
+        "sources",
+        "inspectors"
+      ],
+      "title": "MatrixRelationship",
+      "type": "object"
+    },
+    "MechanismDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/Claim"
+          },
+          "maxItems": 100,
+          "title": "Claims",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "coverage_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage Limits",
+          "type": "string"
+        },
+        "diagnostics": {
+          "items": {
+            "$ref": "#/$defs/Diagnostic"
+          },
+          "maxItems": 100,
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "domain": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "entity_kinds": {
+          "items": {
+            "enum": [
+              "civilization",
+              "location",
+              "population_cohort",
+              "household_arrangement",
+              "community_arrangement",
+              "institution",
+              "asset",
+              "network",
+              "resource",
+              "service",
+              "account",
+              "external_interface",
+              "decision",
+              "event"
+            ],
+            "type": "string"
+          },
+          "maxItems": 15,
+          "minItems": 1,
+          "title": "Entity Kinds",
+          "type": "array"
+        },
+        "evidence": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "fixtures": {
+          "items": {
+            "$ref": "#/$defs/ValidationFixture"
+          },
+          "maxItems": 100,
+          "title": "Fixtures",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/InputPort"
+          },
+          "maxItems": 100,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "modeling": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_proposed",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "$ref": "#/$defs/OutputPort"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "owned_state": {
+          "items": {
+            "$ref": "#/$defs/OwnedState"
+          },
+          "maxItems": 100,
+          "title": "Owned State",
+          "type": "array"
+        },
+        "policy": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Policy"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "preconditions": {
+          "items": {
+            "$ref": "#/$defs/Precondition"
+          },
+          "maxItems": 100,
+          "title": "Preconditions",
+          "type": "array"
+        },
+        "properties": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Properties",
+          "type": "array"
+        },
+        "read_partitions": {
+          "items": {
+            "enum": [
+              "conditions",
+              "design",
+              "assumptions",
+              "dynamic_state",
+              "observations",
+              "goals"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Read Partitions",
+          "type": "array"
+        },
+        "scope_kinds": {
+          "items": {
+            "enum": [
+              "household",
+              "community",
+              "settlement",
+              "region",
+              "civilization",
+              "global_external"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Scope Kinds",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "support": {
+          "$ref": "#/$defs/Support"
+        },
+        "traces": {
+          "items": {
+            "$ref": "#/$defs/TraceDefinition"
+          },
+          "maxItems": 100,
+          "title": "Traces",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        },
+        "write_state_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Write State Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "version",
+        "domain",
+        "scope_kinds",
+        "entity_kinds",
+        "inputs",
+        "outputs",
+        "owned_state",
+        "write_state_refs",
+        "read_partitions",
+        "preconditions",
+        "support",
+        "claims",
+        "policy",
+        "origin",
+        "modeling",
+        "evidence",
+        "source_refs",
+        "assumption_refs",
+        "coverage_limits",
+        "diagnostics",
+        "traces",
+        "fixtures",
+        "properties"
+      ],
+      "title": "MechanismDefinition",
+      "type": "object"
+    },
+    "OutputPort": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "missing_behavior": {
+          "const": "propagate",
+          "title": "Missing Behavior",
+          "type": "string"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "value_type",
+        "input_refs",
+        "missing_behavior"
+      ],
+      "title": "OutputPort",
+      "type": "object"
+    },
+    "OverviewQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "all_scopes": {
+          "title": "All Scopes",
+          "type": "boolean"
+        },
+        "collection": {
+          "enum": [
+            "indicators",
+            "conditions",
+            "accounts",
+            "findings",
+            "policies",
+            "goals",
+            "references",
+            "traces"
+          ],
+          "title": "Collection",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cursor"
+        },
+        "item_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Item Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "collection",
+        "item_id",
+        "cursor",
+        "all_scopes"
+      ],
+      "title": "OverviewQuery",
+      "type": "object"
+    },
+    "OwnedState": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "owner_domain": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Owner Domain",
+          "type": "string"
+        },
+        "partition": {
+          "const": "dynamic_state",
+          "title": "Partition",
+          "type": "string"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "owner_domain",
+        "partition",
+        "value_type"
+      ],
+      "title": "OwnedState",
+      "type": "object"
+    },
+    "Policy": {
+      "additionalProperties": false,
+      "properties": {
+        "composition_rule": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Identity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "semantics": {
+          "enum": [
+            "exclusive",
+            "composable",
+            "floor",
+            "ceiling",
+            "delegated"
+          ],
+          "title": "Semantics",
+          "type": "string"
+        }
+      },
+      "required": [
+        "semantics",
+        "composition_rule"
+      ],
+      "title": "Policy",
+      "type": "object"
+    },
+    "Precondition": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "failure_behavior": {
+          "enum": [
+            "not_applicable",
+            "conflict"
+          ],
+          "title": "Failure Behavior",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "input_refs",
+        "description",
+        "failure_behavior"
+      ],
+      "title": "Precondition",
+      "type": "object"
+    },
+    "Procedure": {
+      "additionalProperties": false,
+      "description": "Versioned reference only: no Python module path, formula or graph here.",
+      "properties": {
+        "implementation": {
+          "$ref": "#/$defs/Identity"
+        },
+        "kind": {
+          "enum": [
+            "trusted_python",
+            "declarative_graph"
+          ],
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "implementation"
+      ],
+      "title": "Procedure",
+      "type": "object"
+    },
+    "QuantityType": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityType",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceType": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_kind"
+      ],
+      "title": "ReferenceType",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "ResolutionRule": {
+      "additionalProperties": false,
+      "description": "Host-selected, versioned rule; content metadata cannot register itself.\n\nExact participants prevent a rule silently extending to newly added policies.\nAuthority and scope identify the institution authorizing this resolution.",
+      "properties": {
+        "authority_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "operation": {
+          "enum": [
+            "select",
+            "sum",
+            "bounds"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "parameter_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Parameter Id",
+          "type": "string"
+        },
+        "participant_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Participant Ids",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "selected_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "identity",
+        "authority_id",
+        "scope_id",
+        "entity_id",
+        "parameter_id",
+        "participant_ids",
+        "operation",
+        "selected_id",
+        "source_refs"
+      ],
+      "title": "ResolutionRule",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "Support": {
+      "additionalProperties": false,
+      "properties": {
+        "static": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Procedure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "transition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Procedure"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "static",
+        "transition"
+      ],
+      "title": "Support",
+      "type": "object"
+    },
+    "TraceDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "input_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Input Refs",
+          "type": "array"
+        },
+        "output_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Output Refs",
+          "type": "array"
+        },
+        "state_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "State Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "input_refs",
+        "output_refs",
+        "state_refs",
+        "description"
+      ],
+      "title": "TraceDefinition",
+      "type": "object"
+    },
+    "TransformationOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "product",
+            "residual"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "role"
+      ],
+      "title": "TransformationOutput",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "ValidationFixture": {
+      "additionalProperties": false,
+      "properties": {
+        "fixture": {
+          "$ref": "#/$defs/Identity"
+        },
+        "property_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Property Refs",
+          "type": "array"
+        },
+        "purpose": {
+          "enum": [
+            "positive",
+            "invalid_input",
+            "missing_input",
+            "conservation",
+            "boundedness"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        }
+      },
+      "required": [
+        "fixture",
+        "purpose",
+        "property_refs"
+      ],
+      "title": "ValidationFixture",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/MatrixQuery"
+    },
+    {
+      "$ref": "#/$defs/MatrixPage"
+    },
+    {
+      "$ref": "#/$defs/MatrixModelQuery"
+    },
+    {
+      "$ref": "#/$defs/MatrixModelReply"
+    }
+  ]
+}

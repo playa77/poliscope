@@ -9,7 +9,7 @@ export const initialAtlasFilters: AtlasFilters = { search: '', domain_ref: null,
 export function atlasKey(state: WorkspaceState, scope: string, query: unknown) {
   return ['world', 'atlas', state.context, state.versions, state.effective_time, scope, query];
 }
-function Source({ state, identity }: { state: WorkspaceState; identity: string }) {
+export function Source({ state, identity }: { state: WorkspaceState; identity: string }) {
   const [offset, setOffset] = useState(0);
   const query = { context: state.context, source_ref: identity, offset };
   const result = useQuery({ queryKey: atlasKey(state, '', query), retry: false, queryFn: () => window.poliscope.atlasSource(query) });
