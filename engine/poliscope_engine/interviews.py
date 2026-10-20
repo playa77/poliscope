@@ -103,15 +103,32 @@ def definition(identity, kind, parent, text, origin='authored'):
 
 def question(service, data):
     query = InterviewQuery.model_validate(data)
-    if query.domain_id not in ['domain:' + str(i) for i in range(1, 13)]:
+    if query.domain_id not in ['domain:' + str(i) for i in range(1, 13)] and not (query.domain_id == 'domain:all' and query.question_id is not None):
         raise ValueError('unknown_domain')
     record = service.read(query.context)
     if query.scope_id not in {s.id for s in record.inputs.scopes}:
         raise ValueError('unknown_scope')
-    index = int(query.domain_id.split(':')[1]) - 1
+    index = int(query.domain_id.split(':')[1]) - 1 if query.domain_id != 'domain:all' else 0
     from poliscope_engine.content import bundled_release
     template = next(t for t in bundled_release().metadata.templates
                     if t.domain_ref == f'society:domain/{index + 1:02}')
+    if query.question_id is not None:
+        from poliscope_engine.atlas import entries
+        row = next((r for r in entries(service, record, query.scope_id) if r.question.id == query.question_id), None)
+        if row is None or row.interview is None or row.interview.domain_id != query.domain_id:
+            raise ValueError('unknown_question')
+        # Reuse rich authored cards when available; imported prose remains data.
+        cards = {o.id: dict(label=template.labels[n], benefit=template.benefits[n], cost=template.costs[n],
+                           mechanism=template.mechanisms[n] + ' ' + template.coverage)
+                 for n, o in enumerate(template.options)}
+        options = [dict(definition=o, **cards.get(o.id, dict(label=o.id, benefit='Not evaluated',
+                    cost='Source requirements are unreviewed', mechanism=LIMIT))) for o in row.options]
+        prior = next((v.value.value for v in record.inputs.values if v.id == commitment_id(query) and v.value.kind == 'label'), None)
+        return InterviewQuestion(interview_contract=1, query=query, definition=row.question, options=options,
+            clarification='Source adoption is historical context. No source option is a player default. Preview before Apply. Numerical source claims are not activated models.',
+            dependencies=row.issues[:12],
+            conditions=[v for v in record.inputs.values if v.scope_id == query.scope_id and v.id in ('population:value', 'land:value')]
+                if index == 0 and row.question.id == template.question.id else [], current_commitment=prior)
     options = [dict(definition=option, label=template.labels[n], benefit=template.benefits[n],
                     cost=template.costs[n], mechanism=template.mechanisms[n] + ' ' + template.coverage)
                for n, option in enumerate(template.options)]
@@ -126,7 +143,10 @@ def question(service, data):
 
 
 def commitment_id(query):
-    return 'interview:' + digest(dict(scope=query.scope_id, domain=query.domain_id))[:40]
+    key = dict(scope=query.scope_id, domain=query.domain_id)
+    if query.question_id is not None and not query.question_id.startswith('interview:domain-'):
+        key['question'] = query.question_id
+    return 'interview:' + digest(key)[:40]
 
 
 def stage(service, data, identity):
@@ -151,6 +171,12 @@ def stage(service, data, identity):
             if number < 0 or (field == 'population' and number != number.to_integral_value()):
                 raise ValueError('invalid_condition')
     base = service.read(edit.query.context).inputs.model_dump(mode='json')
+    domain_refs = ['society:domain/' + edit.query.domain_id.split(':')[1].zfill(2)]
+    branch_refs = []
+    if edit.query.question_id is not None:
+        from poliscope_engine.atlas import entries
+        location = next(r for r in entries(service, service.read(edit.query.context), edit.query.scope_id) if r.question.id == edit.query.question_id)
+        domain_refs, branch_refs = location.domain_refs, location.branch_refs
     for condition in q.conditions:
         owner = next((o for o in base['owners'] if (o['entity_id'], o['property_id'], o['partition']) ==
                       (condition.entity_id, condition.property_id, condition.partition)), None)
@@ -159,13 +185,17 @@ def stage(service, data, identity):
     cid = commitment_id(edit.query)
 
     def changes(option):
+        archived_options = {o.definition.id: o.definition.model_dump(mode='json') for o in q.options}
+        archived_options[option.id] = option.model_dump(mode='json')
         inputs = json.loads(json.dumps(base))
         # Constrained host-authored structure edit. No arbitrary renderer graph.
         if not any(e['id'] == cid + ':entity' for e in inputs['entities']):
-            inputs['entities'].append(dict(id=cid + ':entity', entity_kind='decision', label=TOPICS[int(edit.query.domain_id.split(':')[1])-1][0], provenance=PROVENANCE))
+            inputs['entities'].append(dict(id=cid + ':entity', entity_kind='decision', label=TOPICS[int(edit.query.domain_id.split(':')[1])-1][0] if q.definition.id.startswith('interview:domain-') else q.definition.id, provenance=PROVENANCE))
             inputs['owners'].append(dict(entity_id=cid + ':entity', property_id='interview:commitment', partition='design', writer_id='player'))
         metadata = dict(question=q.definition.model_dump(mode='json'), option=option.model_dump(mode='json'),
                         scope_id=edit.query.scope_id, coverage=LIMIT, dependencies=q.dependencies,
+                        options=list(archived_options.values()),
+                        domain_refs=domain_refs, branch_refs=branch_refs,
                         card=next((dict(label=o.label, benefit=o.benefit, cost=o.cost, mechanism=o.mechanism) for o in q.options if o.definition.id == option.id),
                                   dict(label='Player qualitative alternative', benefit='Unreviewed proposal', cost='Unspecified requirements', mechanism=LIMIT)))
         value = dict(id=cid, entity_id=cid + ':entity', scope_id=edit.query.scope_id, partition='design', property_id='interview:commitment',
@@ -183,7 +213,7 @@ def stage(service, data, identity):
                 row['provenance'] = PROVENANCE
         return [dict(kind='replace_inputs', inputs=inputs)]
 
-    alternatives = [dict(id=o.definition.id, changes=changes(o.definition)) for o in options]
+    alternatives = [dict(id=o.definition.id, changes=changes(o.definition)) for o in options if o.definition.id != 'player:proposal']
     if is_proposal:
         alternatives.append(dict(id='player:proposal', changes=changes(proposed)))
     chosen = next(a for a in alternatives if a['id'] == edit.choice_id)

@@ -13,6 +13,7 @@ class InterviewQuery(Contract):
     context: RevisionContext
     scope_id: Identifier
     domain_id: Identifier
+    question_id: Identifier | None = None
 
 class InterviewOption(Contract):
     definition: Definition
@@ -25,11 +26,11 @@ class InterviewQuestion(Contract):
     interview_contract: Literal[1]
     query: InterviewQuery
     definition: Definition
-    options: Annotated[list[InterviewOption], Field(min_length=3, max_length=4)]
+    options: Annotated[list[InterviewOption], Field(min_length=1, max_length=100)]
     clarification: Text
     dependencies: Annotated[list[Text], Field(max_length=12)]
     conditions: Annotated[list[PartitionValueDTO], Field(max_length=2)]
-    current_commitment: Annotated[str, Field(max_length=4096)] | None
+    current_commitment: Annotated[str, Field(max_length=131072)] | None
 
 class InterviewEdit(Contract):
     query: InterviewQuery
@@ -50,7 +51,7 @@ class InterviewPreview(Contract):
     findings: Annotated[list[Text], Field(max_length=100)]
     dependencies: Annotated[list[Text], Field(max_length=12)]
     accounts: Annotated[list[Identifier], Field(max_length=100)]
-    alternatives: Annotated[list[Identifier], Field(min_length=3, max_length=5)]
+    alternatives: Annotated[list[Identifier], Field(min_length=1, max_length=101)]
     selected_id: Identifier
     before: Annotated[list[PartitionValueDTO], Field(max_length=2)]
     after: Annotated[list[PartitionValueDTO], Field(max_length=2)]

@@ -417,3 +417,16 @@ Real domain models, empirical review, WP-034 transition scheduling/publication,
 Windows native evidence and cumulative G3/M3 acceptance remain separate.
 Reassess WP-028 decision atlas/search after merge; independent agent review is
 deferred under the existing SV route.
+
+## Current boundary after PR #42
+
+PR #42 merged WP-027 shared domain conformance at
+`54ca36dc74b7e7ceb155f7c1ed9c246c4a12f153`.
+[WP-028](WP-028.md) allocates the complete decision atlas and full question/
+alternative search package to Codex `/root`, one sequential owner under SV.
+Source adoption remains historical context; source-maintenance records remain
+provenance. Retained player commitments use archived complete alternatives;
+read-only discovery shares the selected revision/scope and the existing guarded
+interview preview/apply path. Numerical domain models, paired-domain acceptance,
+Windows native evidence and cumulative G3/M3 remain separate. Reassess WP-029
+sparse matrices after merge; independent agent review remains deferred.

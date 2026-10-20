@@ -65,14 +65,14 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed }:
   if (question.isError) return <p role="alert">Interview could not be read. <button onClick={() => void question.refetch()}>Retry interview read</button></p>;
   const q = question.data;
   return <section className="interview" aria-label="Domain interview"><h5>{q.definition.original_text}</h5>
-    <p>Origin: {q.definition.origin} synthetic template · Evidence: {q.definition.evidence} · Modeling: {q.definition.modeling} · Version: {q.definition.version}</p>
+    <p>Origin: {q.definition.origin} · Evidence: {q.definition.evidence} · Modeling: {q.definition.modeling} · Version: {q.definition.version}</p>
     <p>Scope: {query.scope_id} · Revision: {query.context.revision_id}</p>
-    <details><summary>Original wording and source</summary><p>{q.definition.original_text}</p><p>Original Poliscope synthetic template, {q.definition.id}. No external source or historical adopted option is claimed. MIT repository license. Source references: {q.definition.source_refs.join(', ') || 'none'}. Assumption references: {q.definition.assumption_refs.join(', ') || 'none'}.</p></details>
+    <details><summary>Original wording and source</summary><p>{q.definition.original_text}</p><p>Definition {q.definition.id}. Source adoption is historical context; only Apply records a player choice. Inspect source text and license in the Decision atlas. Source references: {q.definition.source_refs.join(', ') || 'none'}. Assumption references: {q.definition.assumption_refs.join(', ') || 'none'}.</p></details>
     <details><summary>Clarification and dependencies</summary><p>{q.clarification}</p><ul>{q.dependencies.map(d => <li key={d}>{d}</li>)}</ul></details>
     {q.current_commitment && <details className="current-commitment"><summary>Current qualitative commitment</summary><Commitment text={q.current_commitment} /></details>}
     {historical && <p>This is a retained revision. Open the current branch head to edit.</p>}
     <fieldset disabled={historical || busy || uncertain}><legend>Explore one alternative</legend>
-      <div className="option-grid">{q.options.map(o => <label className="option-card" key={o.definition.id}>
+      <div className="option-grid">{q.options.filter(o => o.definition.id !== 'player:proposal').map(o => <label className="option-card" key={o.definition.id}>
         <input type="radio" name="interview-option" checked={edit?.choice_id === o.definition.id} onChange={() => choose(o.definition.id)} />
         <strong>{o.label}</strong><span>{o.definition.original_text}</span><span>Possible benefit: {o.benefit}</span><span>Cost and requirements: {o.cost}</span><span>{o.mechanism}</span>
       </label>)}</div>

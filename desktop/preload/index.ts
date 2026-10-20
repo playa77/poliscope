@@ -1,6 +1,8 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  atlas: query => ipcRenderer.invoke('atlas:read', query),
+  atlasSource: query => ipcRenderer.invoke('atlas:source', query),
   rationale: query => ipcRenderer.invoke('design-history:rationale', query),
   lineage: query => ipcRenderer.invoke('design-history:lineage', query),
   compare: query => ipcRenderer.invoke('design-history:compare', query),

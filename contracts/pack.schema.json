@@ -572,7 +572,7 @@
           "type": "string"
         },
         "value": {
-          "maxLength": 4096,
+          "maxLength": 131072,
           "title": "Value",
           "type": "string"
         }

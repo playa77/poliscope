@@ -1,3 +1,4 @@
+import type { AtlasQuery, AtlasPage, AtlasSourceQuery, AtlasSourcePage } from '../contracts/atlas';
 import type { RationaleQuery, RationaleReply, LineageQuery, LineagePage, HistoryAction, CompareQuery, ComparePage } from '../contracts/comparison';
 import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery, ChartReply } from '../contracts/overview';
 import type { InterviewQuery, InterviewQuestion, InterviewEdit, InterviewPreview, InterviewApply, InterviewCommit } from '../contracts/interview';
@@ -7,6 +8,8 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  atlas(query: AtlasQuery): Promise<AtlasPage>;
+  atlasSource(query: AtlasSourceQuery): Promise<AtlasSourcePage>;
   rationale(query: RationaleQuery): Promise<RationaleReply>;
   lineage(query: LineageQuery): Promise<LineagePage>;
   compare(query: CompareQuery): Promise<ComparePage>;
