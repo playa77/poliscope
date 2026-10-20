@@ -1,0 +1,2573 @@
+{
+  "contract_version": 1,
+  "modules": [
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/01/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-01: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/01/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-01: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/01/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-01: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "provisioning",
+      "identity": {
+        "id": "domain:provisioning",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/02/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-02: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/02/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-02: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/02/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-02: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/02/4",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-02: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "economy",
+      "identity": {
+        "id": "domain:economy",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/03/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/03/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/03/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "governance",
+      "identity": {
+        "id": "domain:governance",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/04/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/4",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "law_conflict",
+      "identity": {
+        "id": "domain:law_conflict",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/05/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-05: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/05/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-05: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/05/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-05: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "social_organization",
+      "identity": {
+        "id": "domain:social_organization",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/06/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-06: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/06/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-06: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/06/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-06: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "knowledge_culture",
+      "identity": {
+        "id": "domain:knowledge_culture",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/07/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-07: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/07/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-07: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/07/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-07: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "health",
+      "identity": {
+        "id": "domain:health",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/08/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-08: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/08/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-08: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/08/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-08: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "infrastructure",
+      "identity": {
+        "id": "domain:infrastructure",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/09/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-09: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/09/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-09: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/09/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-09: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "communication",
+      "identity": {
+        "id": "domain:communication",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/10/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-10: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/10/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-10: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/10/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-10: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "environment",
+      "identity": {
+        "id": "domain:environment",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/11/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-11: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/11/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-11: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/11/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-11: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "meaning_identity",
+      "identity": {
+        "id": "domain:meaning_identity",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/12/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-12: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/12/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-12: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/12/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-12: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "security_risk",
+      "identity": {
+        "id": "domain:security_risk",
+        "version": "v1"
+      },
+      "interfaces": [],
+      "mechanisms": [],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
+    }
+  ],
+  "pairs": [
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "economy"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-02",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-05",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-06",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-07",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-08",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-10",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-12",
+      "integration_owner": "provisioning",
+      "interface_refs": [],
+      "limits": "DOM-01 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "governance"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-03",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "law_conflict"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-04",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-05",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-06",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-07",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-08",
+      "integration_owner": "economy",
+      "interface_refs": [],
+      "limits": "DOM-02 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "law_conflict"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-04",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-06",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-08",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-09",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "meaning_identity"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-11",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-12",
+      "integration_owner": "governance",
+      "interface_refs": [],
+      "limits": "DOM-03 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-05",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-06",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-07",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-09",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "meaning_identity"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-11",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-12",
+      "integration_owner": "law_conflict",
+      "interface_refs": [],
+      "limits": "DOM-04 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "social_organization",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-05:DOM-06",
+      "integration_owner": "social_organization",
+      "interface_refs": [],
+      "limits": "DOM-05 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "social_organization",
+        "health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-05:DOM-07",
+      "integration_owner": "social_organization",
+      "interface_refs": [],
+      "limits": "DOM-05 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "social_organization",
+        "meaning_identity"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-05:DOM-11",
+      "integration_owner": "social_organization",
+      "interface_refs": [],
+      "limits": "DOM-05 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-07",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-08",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-09",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-10",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "meaning_identity"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-11",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "knowledge_culture",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-06:DOM-12",
+      "integration_owner": "knowledge_culture",
+      "interface_refs": [],
+      "limits": "DOM-06 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "health",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-07:DOM-08",
+      "integration_owner": "health",
+      "interface_refs": [],
+      "limits": "DOM-07 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "health",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-07:DOM-09",
+      "integration_owner": "health",
+      "interface_refs": [],
+      "limits": "DOM-07 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "health",
+        "environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-07:DOM-10",
+      "integration_owner": "health",
+      "interface_refs": [],
+      "limits": "DOM-07 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "health",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-07:DOM-12",
+      "integration_owner": "health",
+      "interface_refs": [],
+      "limits": "DOM-07 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "infrastructure",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-08:DOM-09",
+      "integration_owner": "infrastructure",
+      "interface_refs": [],
+      "limits": "DOM-08 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "infrastructure",
+        "environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-08:DOM-10",
+      "integration_owner": "infrastructure",
+      "interface_refs": [],
+      "limits": "DOM-08 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "infrastructure",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-08:DOM-12",
+      "integration_owner": "infrastructure",
+      "interface_refs": [],
+      "limits": "DOM-08 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "communication",
+        "meaning_identity"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-09:DOM-11",
+      "integration_owner": "communication",
+      "interface_refs": [],
+      "limits": "DOM-09 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "communication",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-09:DOM-12",
+      "integration_owner": "communication",
+      "interface_refs": [],
+      "limits": "DOM-09 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "environment",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:domain-conformance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-10:DOM-12",
+      "integration_owner": "environment",
+      "interface_refs": [],
+      "limits": "DOM-10 owns fixture integration; counterpart owners must supply real ports and reviewed behavior. Shared IDs are synthetic reference anchors, with no inferred capacity or effects. Static/dynamic counterpart acceptance remains open.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "stock",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "water",
+          "entity_kind": "resource"
+        },
+        {
+          "entity_id": "shared:asset",
+          "entity_kind": "asset"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "pending_counterpart"
+    }
+  ]
+}

@@ -1,0 +1,667 @@
+{
+  "$defs": {
+    "BranchCoverage": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "evidence_status": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence Status",
+          "type": "string"
+        },
+        "limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Limits",
+          "type": "string"
+        },
+        "mechanism_refs": {
+          "items": {
+            "$ref": "#/$defs/Identity"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "next_task": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Next Task",
+          "type": "string"
+        },
+        "scope_kinds": {
+          "items": {
+            "enum": [
+              "household",
+              "community",
+              "settlement",
+              "region",
+              "civilization",
+              "global_external"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Scope Kinds",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "static_available": {
+          "title": "Static Available",
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "implemented",
+            "partial",
+            "qualitative",
+            "unresolved",
+            "unsupported"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "transition_available": {
+          "title": "Transition Available",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "branch_id",
+        "mechanism_refs",
+        "status",
+        "evidence_status",
+        "scope_kinds",
+        "static_available",
+        "transition_available",
+        "source_refs",
+        "limits",
+        "next_task"
+      ],
+      "title": "BranchCoverage",
+      "type": "object"
+    },
+    "DomainInterface": {
+      "additionalProperties": false,
+      "properties": {
+        "direction": {
+          "enum": [
+            "input",
+            "output"
+          ],
+          "title": "Direction",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/Identity"
+        },
+        "port_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Port Id",
+          "type": "string"
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/SharedReference"
+          },
+          "maxItems": 100,
+          "title": "References",
+          "type": "array"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "id",
+        "mechanism",
+        "port_id",
+        "direction",
+        "value_type",
+        "references"
+      ],
+      "title": "DomainInterface",
+      "type": "object"
+    },
+    "DomainModule": {
+      "additionalProperties": false,
+      "properties": {
+        "authorities": {
+          "items": {
+            "$ref": "#/$defs/StateAuthority"
+          },
+          "maxItems": 100,
+          "title": "Authorities",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "coverage": {
+          "items": {
+            "$ref": "#/$defs/BranchCoverage"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Coverage",
+          "type": "array"
+        },
+        "domain": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "interfaces": {
+          "items": {
+            "$ref": "#/$defs/DomainInterface"
+          },
+          "maxItems": 100,
+          "title": "Interfaces",
+          "type": "array"
+        },
+        "mechanisms": {
+          "items": {
+            "$ref": "#/$defs/Identity"
+          },
+          "maxItems": 100,
+          "title": "Mechanisms",
+          "type": "array"
+        },
+        "persistence": {
+          "const": "shared_store",
+          "title": "Persistence",
+          "type": "string"
+        },
+        "runtime": {
+          "const": "shared_engine",
+          "title": "Runtime",
+          "type": "string"
+        },
+        "transitions": {
+          "items": {
+            "$ref": "#/$defs/TransitionExpectation"
+          },
+          "maxItems": 100,
+          "title": "Transitions",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "identity",
+        "domain",
+        "mechanisms",
+        "interfaces",
+        "authorities",
+        "coverage",
+        "transitions",
+        "runtime",
+        "persistence"
+      ],
+      "title": "DomainModule",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "LabelType": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "LabelType",
+      "type": "object"
+    },
+    "PairedDomainContract": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "domains": {
+          "items": {
+            "enum": [
+              "provisioning",
+              "economy",
+              "governance",
+              "law_conflict",
+              "social_organization",
+              "knowledge_culture",
+              "health",
+              "infrastructure",
+              "communication",
+              "environment",
+              "meaning_identity",
+              "security_risk"
+            ],
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Domains",
+          "type": "array"
+        },
+        "fixture_refs": {
+          "items": {
+            "$ref": "#/$defs/Identity"
+          },
+          "maxItems": 100,
+          "title": "Fixture Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "integration_owner": {
+          "anyOf": [
+            {
+              "enum": [
+                "provisioning",
+                "economy",
+                "governance",
+                "law_conflict",
+                "social_organization",
+                "knowledge_culture",
+                "health",
+                "infrastructure",
+                "communication",
+                "environment",
+                "meaning_identity",
+                "security_risk"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Integration Owner"
+        },
+        "interface_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Interface Refs",
+          "type": "array"
+        },
+        "limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Limits",
+          "type": "string"
+        },
+        "owner_status": {
+          "enum": [
+            "designated",
+            "unresolved"
+          ],
+          "title": "Owner Status",
+          "type": "string"
+        },
+        "shared_references": {
+          "items": {
+            "$ref": "#/$defs/SharedReference"
+          },
+          "maxItems": 100,
+          "title": "Shared References",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "pending_counterpart",
+            "ready_for_conformance"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "domains",
+        "integration_owner",
+        "owner_status",
+        "shared_references",
+        "interface_refs",
+        "fixture_refs",
+        "status",
+        "limits"
+      ],
+      "title": "PairedDomainContract",
+      "type": "object"
+    },
+    "QuantityType": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityType",
+      "type": "object"
+    },
+    "ReferenceType": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_kind"
+      ],
+      "title": "ReferenceType",
+      "type": "object"
+    },
+    "SharedReference": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id",
+        "entity_kind"
+      ],
+      "title": "SharedReference",
+      "type": "object"
+    },
+    "StateAuthority": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "owner": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Owner",
+          "type": "string"
+        },
+        "partition": {
+          "enum": [
+            "conditions",
+            "design",
+            "assumptions",
+            "dynamic_state",
+            "observations",
+            "goals"
+          ],
+          "title": "Partition",
+          "type": "string"
+        },
+        "property_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Property Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "entity_id",
+        "property_id",
+        "partition",
+        "owner"
+      ],
+      "title": "StateAuthority",
+      "type": "object"
+    },
+    "TransitionExpectation": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/Identity"
+        },
+        "property_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Property Refs",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "proposal_only",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mechanism",
+        "entity_id",
+        "scope_id",
+        "property_refs",
+        "status"
+      ],
+      "title": "TransitionExpectation",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/DomainModule"
+    },
+    {
+      "$ref": "#/$defs/PairedDomainContract"
+    }
+  ]
+}
