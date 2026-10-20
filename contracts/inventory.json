@@ -23,6 +23,8 @@
     "history.ts",
     "interview.schema.json",
     "interview.ts",
+    "matrix.schema.json",
+    "matrix.ts",
     "measurement.schema.json",
     "measurement.ts",
     "mechanism-fixtures.json",

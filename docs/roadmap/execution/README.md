@@ -430,3 +430,15 @@ read-only discovery shares the selected revision/scope and the existing guarded
 interview preview/apply path. Numerical domain models, paired-domain acceptance,
 Windows native evidence and cumulative G3/M3 remain separate. Reassess WP-029
 sparse matrices after merge; independent agent review remains deferred.
+
+## Current boundary after PR #43
+
+PR #43 merged WP-028 atlas/search and its complete-suite repair at
+`465bf67aa143dee7924ab5e86375c4b72f87d34e`.
+[WP-029](WP-029.md) allocates the complete sparse matrix/relationship drill-down
+package to Codex `/root`, one sequential owner under SV. Explicit documentary,
+model and retained execution relationships keep direction, counts, quantities,
+activation and coverage separate. Bounded cell/list pages use the same retained
+account/trace/source/choice readers and expose unresolved mappings. Reassess
+WP-030 world/institutions/topology after merge. Real domain mechanisms, scientific
+review, Windows native evidence and cumulative G3/M3 remain separate acceptance.

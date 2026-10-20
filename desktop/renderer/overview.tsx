@@ -163,9 +163,11 @@ export function Inspector({ state, scope, selection, close }: { state: Workspace
     {row?.kind === 'commitment' && <><h5>{row.label} · qualitative selected commitment</h5>{row.condition.value.kind === 'label' ? <Commitment text={row.condition.value.value} /> : <p>{valueText(row.condition.value)}</p>}<p>Scope {row.condition.scope_id} · origin {row.condition.provenance.origin}. No numerical effects are assigned to this prose.</p></>}
     {row?.kind === 'policy' && <><h5>Selected policy commitment</h5><p>{row.policy.mechanism.id} · {row.policy.mechanism.version} · authority {row.policy.authority_id} · scope {row.policy.scope_id}</p><p>{row.policy.parameter_id}: {valueText(row.policy.value)}</p></>}
     {row?.kind === 'goal' && <><h5>Player target / question</h5><p>{row.definition.question}</p><p>{row.definition.operation} {row.definition.threshold && valueText(row.definition.threshold)}</p><p>{row.observation.status} · {row.observation.matched === true ? 'Within your target' : row.observation.matched === false ? 'Outside your target' : row.observation.reason}</p></>}
+    {selection.collection === 'traces' && <Traces key={root ?? selection.id} state={state} scope={scope} root={root ?? selection.id} reference={setReference} follow={setRoot} />}
+    {selection.collection === 'references' && <Reference state={state} scope={scope} id={selection.id} />}
     <h5>Python calculation trace</h5>{roots.map(id => <button key={id} onClick={() => setRoot(id)}>Open calculation {id}</button>)}
-    {row && roots.length === 0 && <p>No calculation trace is recorded for this object.</p>}
-    {root && <Traces key={root} state={state} scope={scope} root={root} reference={setReference} follow={setRoot} />}
+    {row && row.kind !== 'trace' && roots.length === 0 && <p>No calculation trace is recorded for this object.</p>}
+    {root && selection.collection !== 'traces' && <Traces key={root} state={state} scope={scope} root={root} reference={setReference} follow={setRoot} />}
     <h5>Sources and assumptions</h5>{refs && [...refs.source_refs, ...('assumption_refs' in refs ? refs.assumption_refs : [])].map(id => <button key={id} onClick={() => setReference(id)}>Evidence {id}</button>)}
     {refs && refs.source_refs.length === 0 && (!('assumption_refs' in refs) || refs.assumption_refs.length === 0) && <p>No source or assumption references are recorded for this object.</p>}
     {reference && <Reference key={reference} state={state} scope={scope} id={reference} />}

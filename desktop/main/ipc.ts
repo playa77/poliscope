@@ -24,6 +24,8 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('matrix:model', 1, input => { if (!workspaceValid(input, 'MatrixModelQuery')) throw new Error(); return shell.matrixModel(input); }, workspaceReply('MatrixModelReply'));
+  handle('matrix:read', 1, input => { if (!workspaceValid(input, 'MatrixQuery')) throw new Error(); return shell.matrix(input); }, workspaceReply('MatrixPage'));
   handle('atlas:read', 1, input => { if (!workspaceValid(input, 'AtlasQuery')) throw new Error(); return shell.atlas(input); }, workspaceReply('AtlasPage'));
   handle('atlas:source', 1, input => { if (!workspaceValid(input, 'AtlasSourceQuery')) throw new Error(); return shell.atlasSource(input); }, workspaceReply('AtlasSourcePage'));
   handle('design-history:rationale', 1, input => { if (!workspaceValid(input, 'RationaleQuery')) throw new Error(); return shell.rationale(input); }, workspaceReply('RationaleReply'));

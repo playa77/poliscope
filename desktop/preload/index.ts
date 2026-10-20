@@ -1,6 +1,8 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  matrixModel: query => ipcRenderer.invoke('matrix:model', query),
+  matrix: query => ipcRenderer.invoke('matrix:read', query),
   atlas: query => ipcRenderer.invoke('atlas:read', query),
   atlasSource: query => ipcRenderer.invoke('atlas:source', query),
   rationale: query => ipcRenderer.invoke('design-history:rationale', query),
