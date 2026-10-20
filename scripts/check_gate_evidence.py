@@ -5,6 +5,7 @@ That judgment remains part of the package's SV/nonauthor inspection.
 """
 import argparse
 import json
+import re
 from pathlib import Path
 from check_roadmap import validate_manifest, validate_selection
 from evidence import ROOT, verify
@@ -18,8 +19,9 @@ def validate(selection, records, manifest):
     for case in selection['cases']:
         for target in case['tests']:
             # Targets are exact JUnit testcase names. Every application test must
-            # put its exact case ID in the name, followed by a space or colon.
-            if not (target.startswith(case['id'] + ' ') or target.startswith(case['id'] + ':')):
+            # carry its exact case ID followed by a space or colon. Pytest uses
+            # the explicit parametrized test_offline_gate[case ID ...] name.
+            if not re.match(r'^(?:test_offline_gate\[)?' + re.escape(case['id']) + r'[ :]', target):
                 raise ValueError(f"{case['id']}: target must carry its case ID")
             matches = [test for test in executed if test['name'] == target]
             if len(matches) != 1:

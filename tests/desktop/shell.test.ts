@@ -65,3 +65,26 @@ it.each([false, true])('cold reads selected store after normal engine or failed 
     await expect(shell.historyPage('summary', 0)).rejects.toThrow('Select');
   } finally { await shell.stop(); await rm(directory, { recursive: true, force: true }); }
 });
+
+it('E2E-006.a cold protocol mismatch preserves store and enables only trusted historical reads', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'poliscope-cold-mismatch-'));
+  const root = join(directory, 'runtime');
+  await mkdir(join(root, '.venv/bin'), { recursive: true });
+  // Fault producer speaks an unsupported protocol; saved data still uses the real reader.
+  await writeFile(join(root, '.venv/bin/python'), `#!/usr/bin/python3\nimport os,sys,json,time\nif 'poliscope_engine.history' in sys.argv:\n os.execv(${JSON.stringify(resolve('.venv/bin/python'))}, [${JSON.stringify(resolve('.venv/bin/python'))}] + sys.argv[1:])\nr=json.loads(sys.stdin.readline())\nprint(json.dumps(dict(protocol=2,id=r['id'],kind='result',result=dict(kind='handshake',versions=dict(application='future',schema_version=1,protocol=2)))),flush=True)\ntime.sleep(30)\n`, { mode: 0o755 });
+  const saved = { history_schema: 1, summary, outputs: [], findings: [], sources: [], assumptions: [], traces: [] };
+  const setup = spawnSync(resolve('.venv/bin/python'), ['-I', '-c', `import sys\nfrom pathlib import Path\nfrom poliscope_engine.storage.store import Store\nwith Store(Path(sys.argv[1])) as s:\n with s.transaction():\n  s.add_context('selected','{}')\n  s.retain_evidence('selected',sys.argv[2],sys.argv[3])`, directory, summary.result_id, JSON.stringify(saved)], { encoding: 'utf8' });
+  const shell = new DesktopShell(false, root, '');
+  try {
+    expect(setup.status, setup.stderr).toBe(0);
+    shell.start(); await expect.poll(() => shell.status.state).toBe('failed');
+    await expect(shell.createWorld({ name: 'Blocked', setup: 'blank', scope_name: 'Home', population: null, land_area: null })).rejects.toThrow('Select a store');
+    expect(await shell.openHistory(selection, async () => join(directory, 'poliscope.sqlite3'))).toEqual({ history_protocol: 1, mode: 'stored_historical', result: summary });
+    expect(shell.status.state).toBe('historical');
+    await expect(shell.previewInterview({})).rejects.toThrow();
+    const page = await shell.historyPage('outputs', 0);
+    expect(page && 'result' in page && page.result.kind === 'evidence_page' && page.result.page.items).toEqual([]);
+    await shell.reconnect(); await expect.poll(() => shell.status.state).toBe('failed');
+    expect(await shell.openHistory(selection, async () => join(directory, 'poliscope.sqlite3'))).toEqual({ history_protocol: 1, mode: 'stored_historical', result: summary });
+  } finally { await shell.stop(); await rm(directory, { recursive: true, force: true }); }
+}, 30_000);

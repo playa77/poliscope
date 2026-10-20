@@ -1,5 +1,5 @@
 import { Commitment } from './interview';
-import React, { useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import { BarChart, Bar, XAxis, YAxis, ResponsiveContainer } from 'recharts';
 import type { WorkspaceState } from '../../contracts/workspace';
@@ -132,6 +132,12 @@ function DistributionRow({ row: r, inspect }: { row: OverviewRow; inspect: () =>
   return <tr><th>{name}</th><td>{scope}</td><td><button onClick={inspect}>{text}</button></td></tr>;
 }
 export function Inspector({ state, scope, selection, close }: { state: WorkspaceState; scope: string; selection: Selection; close: () => void }) {
+  const closeButton = useRef<HTMLButtonElement>(null);
+  useEffect(() => {
+    const origin = document.activeElement;
+    closeButton.current?.focus();
+    return () => { if (origin instanceof HTMLElement && origin.isConnected) origin.focus(); };
+  }, []);
   const detail = useQuery({ queryKey: [...contextKey(state, scope, 'inspector'), selection], retry: false,
     queryFn: () => window.poliscope.overview(request(state, scope, selection.collection, true, selection.id)) });
   const [root, setRoot] = useState<string>();
@@ -139,7 +145,7 @@ export function Inspector({ state, scope, selection, close }: { state: Workspace
   const row = detail.data?.items[0];
   const refs = row?.kind === 'indicator' ? row.observation : row?.kind === 'condition' || row?.kind === 'commitment' ? row.condition.provenance : row?.kind === 'finding' ? row.finding : row?.kind === 'account' ? row.definition : undefined;
   const roots = row?.kind === 'indicator' ? row.observation.trace_refs : row?.kind === 'account' ? row.trace_refs : row?.kind === 'finding' ? row.finding.trace_refs : [];
-  return <aside aria-label="Evidence inspector" className="evidence-inspector"><h4>Definition and evidence</h4><button onClick={close}>Close evidence inspector</button>
+  return <aside aria-label="Evidence inspector" className="evidence-inspector"><h4>Definition and evidence</h4><button ref={closeButton} onClick={close}>Close evidence inspector</button>
     <p>Revision: {state.context.revision_id} · model {state.versions.model_id} · tick {state.effective_time.tick} · scope {scope}</p>
     {detail.isFetching && <p>Reading definition and evidence…</p>}
     {detail.isError && <Retry retry={() => void detail.refetch()} />}
