@@ -377,3 +377,16 @@ PR #37 merged WP-023 at `59e35302bf12fb009ac35e256aea0a71681fcc3c`.
 to the same sequential owner under SV. Exact G2 subcases, actual bundled engine/
 SQLite, offline and fault/keyboard workflows are required. Native feasibility,
 independent review and COL-04 identity replacement remain explicitly unclaimed.
+
+## Current boundary after PRs #38 and #39
+
+PR #38 merged WP-024's exact offline application selection at
+`1e11f307e93e191ca2720cc02e338b10d0f9670b`; PR #39 merged the owner's Windows x64 /
+Linux x64 platform scope at `17be59874470ddf91f8b4c9273bf23036f074b57`.
+[WP-025](WP-025.md) allocates the complete sequential corpus inventory/importer
+package to Codex `/root` under SV. The exact source revision is available with
+an MIT notice; every map leaf and ledger alternative is accounted for in the
+[pinned inventory](society/inventory.json) and [source review](society/review.md).
+Model/evidence review, production catalog build/activation and domain numerical
+coverage remain WP-026 and subsequent packages. Native Windows evidence and
+COL-04 identity replacement remain open; this continuation does not satisfy them.

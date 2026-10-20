@@ -1,0 +1,2726 @@
+{
+  "archive_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+  "changelog_ids": [
+    "CL-016",
+    "CL-015",
+    "CL-014",
+    "CL-013",
+    "CL-012",
+    "CL-011",
+    "CL-010",
+    "CL-009",
+    "CL-008",
+    "CL-001",
+    "CL-002",
+    "CL-003",
+    "CL-004",
+    "CL-005",
+    "CL-006",
+    "CL-007"
+  ],
+  "content_layers": {
+    "activated_mechanisms": [],
+    "evidence_claims": [
+      {
+        "source": "01-1-1_food-agriculture-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-1_food-agriculture-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-2_energy-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-2_energy-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-3_materials-manufacturing-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-3_materials-manufacturing-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-4_water-sanitation-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-4_water-sanitation-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-authority-arbitration-spec.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-integration.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-1-resource-balance-sheet.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-1_transport-of-goods-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-1_transport-of-goods-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-2_storage-supply-chains-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-2_storage-supply-chains-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-3_allocation-mechanisms-full.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-3_allocation-mechanisms-log.md",
+        "status": "unreviewed"
+      },
+      {
+        "source": "01-2-integration.md",
+        "status": "unreviewed"
+      }
+    ],
+    "model_candidates": [
+      {
+        "source": "01-1-1_food-agriculture-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-1_food-agriculture-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-2_energy-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-2_energy-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-3_materials-manufacturing-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-3_materials-manufacturing-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-4_water-sanitation-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-4_water-sanitation-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-authority-arbitration-spec.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-integration.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-1-resource-balance-sheet.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-1_transport-of-goods-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-1_transport-of-goods-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-2_storage-supply-chains-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-2_storage-supply-chains-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-3_allocation-mechanisms-full.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-3_allocation-mechanisms-log.md",
+        "status": "unsupported"
+      },
+      {
+        "source": "01-2-integration.md",
+        "status": "unsupported"
+      }
+    ],
+    "provenance": [
+      "DEC-018",
+      "DEC-023",
+      "DEC-024"
+    ],
+    "reference_design": [
+      "DEC-001",
+      "DEC-002",
+      "DEC-003",
+      "DEC-004",
+      "DEC-005",
+      "DEC-006",
+      "DEC-007",
+      "DEC-008",
+      "DEC-009",
+      "DEC-010",
+      "DEC-011",
+      "DEC-012",
+      "DEC-013",
+      "DEC-014",
+      "DEC-015",
+      "DEC-016",
+      "DEC-017",
+      "DEC-019",
+      "DEC-020",
+      "DEC-021",
+      "DEC-022"
+    ],
+    "selected_player_policies": []
+  },
+  "decisions": [
+    {
+      "amends": [
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-001",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-001/option/A",
+        "society:DEC-001/option/B",
+        "society:DEC-001/option/C",
+        "society:DEC-001/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-001/option/A",
+          "qualifier": null,
+          "source_label": "DEC-001-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-001/option/B",
+          "qualifier": null,
+          "source_label": "DEC-001-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-001/option/C",
+          "qualifier": null,
+          "source_label": "DEC-001-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-001/option/D",
+          "qualifier": null,
+          "source_label": "DEC-001-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How should the water-food trade-off be resolved in arid and\nsemi-arid regions?",
+      "recorded_decision": "alt-A. Environmental flow floor declared inviolable in all watersheds;\nthe food branch's 70% caloric self-sufficiency target amended to tier by water\navailability (arid: 70% for water-thin production, 30–40% for water-thick staples;\nresidual via a designed inter-regional grain flows band with firm delivery\nobligations). Slogan recorded: \"food targets bend, not rivers.\"",
+      "round_ids": [
+        "DEC-001"
+      ],
+      "source_excerpt_digest": "sha256:51705cd631dff14c3d0d9fd89d84b32a460ad30379f7c1afc4ef14609f22918e",
+      "source_lines": [
+        39,
+        117
+      ],
+      "supersedes": [],
+      "title": "Arid-region water allocation vs. food self-sufficiency"
+    },
+    {
+      "amends": [
+        "01-1-2_energy-log.md",
+        "01-1-3_materials-manufacturing-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-002",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-002/option/A",
+        "society:DEC-002/option/B",
+        "society:DEC-002/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-002/option/A",
+          "qualifier": null,
+          "source_label": "DEC-002-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-002/option/B",
+          "qualifier": null,
+          "source_label": "DEC-002-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-002/option/C",
+          "qualifier": null,
+          "source_label": "DEC-002-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "When budgets conflict (land, water, energy, labor), what should the\njoint resource balance sheet treat as the fixed constraint and what as the flexing\nvariable?",
+      "recorded_decision": "alt-A. Population is the output variable; water/land/energy/labor\nbudgets are the constraints.",
+      "round_ids": [
+        "DEC-002"
+      ],
+      "source_excerpt_digest": "sha256:2381a621e9b033e7e8f5b960aa383eae70ef8e5cc12366020b92b6a821364d3f",
+      "source_lines": [
+        119,
+        189
+      ],
+      "supersedes": [],
+      "title": "Joint resource balance sheet: framing precedent"
+    },
+    {
+      "amends": [
+        "01-1-3_materials-manufacturing-log.md",
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-003",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-003/option/A",
+        "society:DEC-003/option/B",
+        "society:DEC-003/option/C",
+        "society:DEC-003/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-003/option/A",
+          "qualifier": null,
+          "source_label": "DEC-003-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-003/option/B",
+          "qualifier": null,
+          "source_label": "DEC-003-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-003/option/C",
+          "qualifier": null,
+          "source_label": "DEC-003-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-003/option/D",
+          "qualifier": null,
+          "source_label": "DEC-003-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How should the 20–30% biomass polymer pillar be sourced, and what\nhappens to the 15% arable-land cap?",
+      "recorded_decision": "alt-A. Residue-first sourcing; 15% cap replaced outright with a 5%\nexception-only cap; food-branch land-surplus certification no longer required.",
+      "round_ids": [
+        "DEC-003"
+      ],
+      "source_excerpt_digest": "sha256:9cf9d4e68c0d67803893626f98c766bec8e57bc32f8f59910f0c0e373c42c353",
+      "source_lines": [
+        191,
+        256
+      ],
+      "supersedes": [
+        "DEC-002.2"
+      ],
+      "title": "Biomass polymer feedstock sourcing vs. food land"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-004",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-004/option/A",
+        "society:DEC-004/option/B",
+        "society:DEC-004/option/C",
+        "society:DEC-004/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-004/option/A",
+          "qualifier": null,
+          "source_label": "DEC-004-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-004/option/B",
+          "qualifier": null,
+          "source_label": "DEC-004-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-004/option/C",
+          "qualifier": null,
+          "source_label": "DEC-004-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-004/option/D",
+          "qualifier": null,
+          "source_label": "DEC-004-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How should the node handle the four-authority arbitration gap before\nDomain III exists?",
+      "recorded_decision": "alt-A. Formal problem specification written; mechanism explicitly\ndeferred; Domain III owns the mechanism question, the node owns the problem.",
+      "round_ids": [
+        "DEC-004"
+      ],
+      "source_excerpt_digest": "sha256:dacb36c0f1184c8770035a78d61de25d8d1fe7fcde20603e47b76901d8ff811a",
+      "source_lines": [
+        258,
+        338
+      ],
+      "supersedes": [],
+      "title": "Sectoral authority arbitration: problem specified, mechanism deferred"
+    },
+    {
+      "amends": [
+        "01-1-2_energy-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-005",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-005/option/A",
+        "society:DEC-005/option/B",
+        "society:DEC-005/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-005/option/A",
+          "qualifier": null,
+          "source_label": "DEC-005-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-005/option/B",
+          "qualifier": null,
+          "source_label": "DEC-005-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-005/option/C",
+          "qualifier": null,
+          "source_label": "DEC-005-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How should the nuclear share be handled in water-stressed arid\nregions to break the dry-cooling efficiency feedback loop?",
+      "recorded_decision": "alt-A. Nuclear share tiered by water stress; hybrid dry cooling\nmandated in stressed regions; displaced share filled by solar+storage overbuild\nand HVDC imports.",
+      "round_ids": [
+        "DEC-005"
+      ],
+      "source_excerpt_digest": "sha256:d122a3589391438fb2679302673fef03201cdfcbcca5d81204e758c6f5a07507",
+      "source_lines": [
+        340,
+        402
+      ],
+      "supersedes": [],
+      "title": "Nuclear share under dry cooling in water-stressed regions"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-006",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-006/option/A",
+        "society:DEC-006/option/B",
+        "society:DEC-006/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-006/option/A",
+          "qualifier": null,
+          "source_label": "DEC-006-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-006/option/B",
+          "qualifier": null,
+          "source_label": "DEC-006-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-006/option/C",
+          "qualifier": null,
+          "source_label": "DEC-006-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How should freight be assigned to modes given the restated\n4,000–6,000 kWh/cap/yr buildings+transport electricity band — by price signals\n alone, or by structure?",
+      "recorded_decision": "alt-A. Rail-vs-road gap (~65–115 kWh/cap/yr on arid grain-band\nfreight alone; rail 0.03–0.05 vs road 0.7–1.0 kWh/t-km) is the binding lever —\nmode structure, not price.",
+      "round_ids": [
+        "DEC-006"
+      ],
+      "source_excerpt_digest": "sha256:0c3a50a8cc1de8eb69b1d65af8a92258cf20dc97fe67b7cd7099037eadf103a2",
+      "source_lines": [
+        419,
+        473
+      ],
+      "supersedes": [],
+      "title": "Freight allocation mechanism: modal hierarchy vs. road pricing"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-007",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-007/option/A",
+        "society:DEC-007/option/B",
+        "society:DEC-007/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-007/option/A",
+          "qualifier": null,
+          "source_label": "DEC-007-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-007/option/B",
+          "qualifier": null,
+          "source_label": "DEC-007-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-007/option/C",
+          "qualifier": null,
+          "source_label": "DEC-007-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Do the node's three largest freight flows ride one shared\ncorridor class or three per-sector logistics networks?",
+      "recorded_decision": "alt-A. Booked-not-traded capacity on shared spines; grain band and\nammonia reservations precede discretionary freight.",
+      "round_ids": [
+        "DEC-007"
+      ],
+      "source_excerpt_digest": "sha256:3e9abc9ed7aa11366b2ac283a2f7cf9c5eaa0676198160b09d6c96c0aeb65542",
+      "source_lines": [
+        475,
+        525
+      ],
+      "supersedes": [],
+      "title": "One freight spine class (≥1.5 Mt/yr corridors) shared by grain band, ammonia, and components"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-008",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-008/option/A",
+        "society:DEC-008/option/B"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-008/option/A",
+          "qualifier": null,
+          "source_label": "DEC-008-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-008/option/B",
+          "qualifier": null,
+          "source_label": "DEC-008-alt-B",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Should the Regional Transport Authority be designed as a fourth\nsectoral authority now, with the collision table extended, or left unspecified\nuntil Domain III?",
+      "recorded_decision": "alt-A; the authority-arbitration spec gains the RTA rows (to be\ninserted at the next revision of that file).",
+      "round_ids": [
+        "DEC-008"
+      ],
+      "source_excerpt_digest": "sha256:76446838e0bf7bd500c2f969612caffd0d3d7687b79a8eb0e0df65a2a48522df",
+      "source_lines": [
+        527,
+        566
+      ],
+      "supersedes": [],
+      "title": "RTA joins the sectoral-authority set; three new collision rows"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-009",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-009/option/A",
+        "society:DEC-009/option/B",
+        "society:DEC-009/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-009/option/A",
+          "qualifier": null,
+          "source_label": "DEC-009-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-009/option/B",
+          "qualifier": null,
+          "source_label": "DEC-009-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-009/option/C",
+          "qualifier": null,
+          "source_label": "DEC-009-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "(a) Who gets the declining e-fuel budget, and (b) do critical\ngoods carry buffer stock or ride just-in-time plus emergency response?",
+      "recorded_decision": "alt-A both parts. Sixth resource class (critical-goods buffers)\njoins the no-market/allocated lineage (energy, water primary allocation, and\nspine capacity precede it).",
+      "round_ids": [
+        "DEC-009"
+      ],
+      "source_excerpt_digest": "sha256:5979efc42f9bef37b09f8a77d4fd998d84300bb84b71b1fe1353eebbdc1578e5",
+      "source_lines": [
+        568,
+        618
+      ],
+      "supersedes": [],
+      "title": "e-Fuel allocation order and buffer-stock extension of the no-market lineage"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-010",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-010/option/A",
+        "society:DEC-010/option/B",
+        "society:DEC-010/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-010/option/A",
+          "qualifier": null,
+          "source_label": "DEC-010-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-010/option/B",
+          "qualifier": null,
+          "source_label": "DEC-010-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-010/option/C",
+          "qualifier": null,
+          "source_label": "DEC-010-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "DEC-009 mandated a six-week buffer of \"critical goods\" but left\n\"critical\" example-defined. How is the buffer class defined so it can't expand\ninto general social overhead?",
+      "recorded_decision": "alt-A. Node buffer arithmetic (2M-person region): grain\n25–29 kt, ammonia 1.2–1.8 kt, treatment chemicals 0.2–0.4 kt, medicines\n0.1–0.4 kt — total 27–32 kt, ~15–40 M USD of node warehouse structure, plus\n~6–14 kWh/cap/yr cold-chain electricity inside the buildings+transport band.",
+      "round_ids": [
+        "DEC-010"
+      ],
+      "source_excerpt_digest": "sha256:b0aac62ad367db09965471f61e22dd55322d154b6a705d5190a8844f61df53ee",
+      "source_lines": [
+        620,
+        679
+      ],
+      "supersedes": [],
+      "title": "Storage classification: closed four-class system vs. qualitative \"critical goods\""
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-011",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-011/option/A",
+        "society:DEC-011/option/B",
+        "society:DEC-011/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-011/option/A",
+          "qualifier": null,
+          "source_label": "DEC-011-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-011/option/B",
+          "qualifier": null,
+          "source_label": "DEC-011-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-011/option/C",
+          "qualifier": null,
+          "source_label": "DEC-011-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Who allocates scarce storage during flow interruptions — booked\nreservations or a storage market?",
+      "recorded_decision": "alt-A. Storage joins the no-financial-markets lineage (energy\nPPAs, water hierarchy, spine capacity booking) as its allocated-infrastructure\ninstance.",
+      "round_ids": [
+        "DEC-011"
+      ],
+      "source_excerpt_digest": "sha256:898055f35a3ca546c14d2994efb3f850eb180a0990af8bf6ca91bf91554c6a2f",
+      "source_lines": [
+        681,
+        733
+      ],
+      "supersedes": [],
+      "title": "Storage capacity booked like track; one stock ledger per region"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-012",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-012/option/A",
+        "society:DEC-012/option/B",
+        "society:DEC-012/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-012/option/A",
+          "qualifier": null,
+          "source_label": "DEC-012-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-012/option/B",
+          "qualifier": null,
+          "source_label": "DEC-012-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-012/option/C",
+          "qualifier": null,
+          "source_label": "DEC-012-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Does the grain band — a designed, firm-delivery dependency —\ncarry a supplier-diversity requirement like the materials log's, and at what\nthreshold?",
+      "recorded_decision": "alt-A. The 60% threshold is a deliberate, named relaxation of the\nmaterials log's 40% supplier floor for substitutable origins.",
+      "round_ids": [
+        "DEC-012"
+      ],
+      "source_excerpt_digest": "sha256:52a210d907fbf4c053c46ddd89794610dedfec964bc865249c940b6a28cc0098",
+      "source_lines": [
+        735,
+        790
+      ],
+      "supersedes": [],
+      "title": "Dual-origin rule for the grain band and other monoflows"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-013",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-013/option/A",
+        "society:DEC-013/option/B"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-013/option/A",
+          "qualifier": null,
+          "source_label": "DEC-013-alt-A",
+          "status": "chosen_tentatively"
+        },
+        {
+          "id": "society:DEC-013/option/B",
+          "qualifier": null,
+          "source_label": "DEC-013-alt-B",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Are Class B stock levels public, and does interruption response\nrun on pre-written protocols or operator discretion?",
+      "recorded_decision": "alt-A, status tentative — the publication cadence and rationing\npre-delegation both need confirmation from Domain II (negotiation design) and\nDomain IV (legal recognition) before firming. Flagged as the first\ncross-domain-confirmation purchase since DEC-001; nothing in I.1/I.2 depends on\nit before that confirmation.",
+      "round_ids": [
+        "DEC-013"
+      ],
+      "source_excerpt_digest": "sha256:c514065ed316ba09a7a7944ee9b4ed3a9848803968e45fab217f26deb5d748c2",
+      "source_lines": [
+        792,
+        842
+      ],
+      "supersedes": [],
+      "title": "Stock publicity and pre-written interruption protocols (tentative)"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-014",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-014/option/A",
+        "society:DEC-014/option/B",
+        "society:DEC-014/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-014/option/A",
+          "qualifier": null,
+          "source_label": "DEC-014-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-014/option/B",
+          "qualifier": null,
+          "source_label": "DEC-014-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-014/option/C",
+          "qualifier": null,
+          "source_label": "DEC-014-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "When a scarce input must be curtailed, who is protected and in\nwhat order — pre-agreed classes or case-by-case boards?",
+      "recorded_decision": "alt-A. Real-world basis: the EU's 2022 gas demand-reduction\nregulation (Council Regulation (EU) 2022/1854) protected-consumer classes —\nworked because pre-agreed, not negotiated mid-crisis.",
+      "round_ids": [
+        "DEC-014"
+      ],
+      "source_excerpt_digest": "sha256:333ab1e585125616f7b69407d734768d6c3822b3f7c3a3aaca471b04e399d1bb",
+      "source_lines": [
+        844,
+        898
+      ],
+      "supersedes": [],
+      "title": "Priority classes for curtailable scarce inputs"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-015",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-015/option/A",
+        "society:DEC-015/option/B",
+        "society:DEC-015/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-015/option/A",
+          "qualifier": null,
+          "source_label": "DEC-015-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-015/option/B",
+          "qualifier": null,
+          "source_label": "DEC-015-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-015/option/C",
+          "qualifier": null,
+          "source_label": "DEC-015-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "At what numeric thresholds does goods rationing activate, and\nwho holds the ladder?",
+      "recorded_decision": "alt-A, ladder stages firm; the R3 famine-commons mechanism\nitself is Domain II's to design (existing DEC-001 mutual-famine-security\nresidue — the food log's own open tension: if Domain II cannot guarantee\nfamine-secure band delivery, R3's arithmetic changes and the ladder is\nrevised).",
+      "round_ids": [
+        "DEC-015"
+      ],
+      "source_excerpt_digest": "sha256:0921f8b69c7b12e11767d4bce1357e77c19b5c6e39924019c8b48e50b1577923",
+      "source_lines": [
+        900,
+        955
+      ],
+      "supersedes": [],
+      "title": "Food/goods ration ladder with pre-numeric triggers"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-016",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-016/option/A",
+        "society:DEC-016/option/B",
+        "society:DEC-016/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-016/option/A",
+          "qualifier": null,
+          "source_label": "DEC-016-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-016/option/B",
+          "qualifier": null,
+          "source_label": "DEC-016-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-016/option/C",
+          "qualifier": null,
+          "source_label": "DEC-016-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "How does the ordinary (Class C) consumer economy allocate when\na good goes scarce — price escalation or ration-by-points?",
+      "recorded_decision": "alt-A. Points architecture is an in-kind instrument, not a\ncurrency: transfer prohibited, expiry mandatory — Domain II designs retail\nchannels and the instrument's accounting class.",
+      "round_ids": [
+        "DEC-016"
+      ],
+      "source_excerpt_digest": "sha256:9f26ec8f7fb727762313f49fb5a1ddcd58083865cdd062d401f1315e8eae41c9",
+      "source_lines": [
+        957,
+        1011
+      ],
+      "supersedes": [],
+      "title": "Class C ordinary goods: fixed prices, non-transferable points, no price rationing"
+    },
+    {
+      "amends": [],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-017",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-017/option/A",
+        "society:DEC-017/option/B"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-017/option/A",
+          "qualifier": null,
+          "source_label": "DEC-017-alt-A",
+          "status": "chosen_tentatively"
+        },
+        {
+          "id": "society:DEC-017/option/B",
+          "qualifier": null,
+          "source_label": "DEC-017-alt-B",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Who administers an active ration ladder, and how is it\nenforced?",
+      "recorded_decision": "alt-A, tentative — needs Domain III's arbitration-mechanism\nfit and Domain IV's civil-process confirmation before firming, per the\nstorage log's pre-delegation pattern. Second cross-domain-confirmation\npurchase of the node (after DEC-013); nothing depends on it before that\nconfirmation.",
+      "round_ids": [
+        "DEC-017"
+      ],
+      "source_excerpt_digest": "sha256:f94a526e70f0701030791026d71e35c1043ef782ead8a852375dde47489a8907",
+      "source_lines": [
+        1013,
+        1061
+      ],
+      "supersedes": [],
+      "title": "Ration administration rides the RTA's machinery; civil-claims enforcement (tentative)"
+    },
+    {
+      "amends": [],
+      "classification": "provenance",
+      "evidence_status": "unreviewed",
+      "id": "DEC-018",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-018/option/A",
+        "society:DEC-018/option/B",
+        "society:DEC-018/option/C",
+        "society:DEC-018/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-018/option/A",
+          "qualifier": null,
+          "source_label": "DEC-018-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-018/option/B",
+          "qualifier": null,
+          "source_label": "DEC-018-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-018/option/C",
+          "qualifier": null,
+          "source_label": "DEC-018-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-018/option/D",
+          "qualifier": null,
+          "source_label": "DEC-018-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "The I.2 integration review ended \"Not settled\" with a 7-item\nresolution list; with a one-work-package-per-session discipline, which item\ndoes this session take first?",
+      "recorded_decision": "alt-A. Session shape confirmed in-session as: amend the\ntransport log (Decision 1 of the session, DEC-019) and, in the same session,\nrecompute the R-ladder against the corrected corridor arithmetic and amend\nstorage + allocation logs (DEC-020) — because the buffer sits on spine nodes\nwhose qualifying threshold just changed; leaving the ladder unfixed between\nsessions would leave the repo knowingly holding an emergency plan that runs\ndry before its most serious stage.",
+      "round_ids": [
+        "DEC-018"
+      ],
+      "source_excerpt_digest": "sha256:e4c32f3f9b985aba184f2d64c2b86a20a36933bae7af4a25d898f5df70a57cad",
+      "source_lines": [
+        1063,
+        1113
+      ],
+      "supersedes": [],
+      "title": "Integration-fix session scoping: which resolution item first"
+    },
+    {
+      "amends": [
+        "DEC-007"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-019",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-019/option/A",
+        "society:DEC-019/option/B",
+        "society:DEC-019/option/C",
+        "society:DEC-019/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-019/option/A",
+          "qualifier": null,
+          "source_label": "DEC-019-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-019/option/B",
+          "qualifier": null,
+          "source_label": "DEC-019-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-019/option/C",
+          "qualifier": null,
+          "source_label": "DEC-019-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-019/option/D",
+          "qualifier": null,
+          "source_label": "DEC-019-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Transport Decision 2 admits corridors to spine status at\n≥1.5 Mt/yr forecast load, but an arid region's named node flows (grain band\n0.22–0.25 Mt/yr, own-food ammonia ~13 kt/yr, steel/components 0.4–0.6 Mt/yr)\nsum to ≈0.7–1.1 Mt/yr even double-counted — while the same decision text\nclaims arid regions get \"spine build-out priority\" under that test. How do\narid corridors qualify?",
+      "recorded_decision": "alt-A. Amended into `01-2-1_transport-of-goods-full.md`\n(Decision 2 amendment block) and the Transport log §1 (AMENDED entry). The\n≥1.5 Mt/yr test stands for regions with navigable water or dense corridor\nnetworks; arid/non-navigable regions qualify at ≥0.5 Mt/yr. All other spine\nrules unchanged: designation cycle, booked capacity, tripartite board, buffer\nsiting at spine nodes, warehouse fit-out. A 10-year spine review may re-tier\na region whose flow mix crosses classes.",
+      "round_ids": [
+        "DEC-019"
+      ],
+      "source_excerpt_digest": "sha256:36c9a749462464d40321de2522dd80f0d56dad4b9f3c0d9ed5d90f1cda2d5dbf",
+      "source_lines": [
+        1115,
+        1182
+      ],
+      "supersedes": [],
+      "title": "Arid tier for the spine eligibility threshold (I.2.1 revision)"
+    },
+    {
+      "amends": [
+        "DEC-015",
+        "01-2-2_storage-supply-chains-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-020",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-020/option/A",
+        "society:DEC-020/option/B",
+        "society:DEC-020/option/C",
+        "society:DEC-020/option/D"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-020/option/A",
+          "qualifier": null,
+          "source_label": "DEC-020-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-020/option/B",
+          "qualifier": null,
+          "source_label": "DEC-020-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-020/option/C",
+          "qualifier": null,
+          "source_label": "DEC-020-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-020/option/D",
+          "qualifier": null,
+          "source_label": "DEC-020-alt-D",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "The R-ladder's age-based triggers (R1 >2 wk; R2 >4 wk; R3\n>8 wk) scheduled the full-emergency stage R3 two weeks after the\nbuffer's full-stretch exhaustion (~wk 5.65–6.03, verified by recompute);\nR3's stated sustenance premise (\"buffer at full stretch\") was therefore\narithmetically false exactly at the ladder's failure mode. How is the ladder\nre-cut?",
+      "recorded_decision": "alt-A. Amended into `01-2-3_allocation-mechanisms-full.md`\n(Decision 2 ladder rewrite + amendment block) and the Allocation log §1\n(AMENDED entry); the Storage log §2 gains a RESOLVED cross-ref (its quarterly\nstock publication is now the ladder's primary trigger surface; annual\nstock-ledger audit reviews the freeboard threshold value).",
+      "round_ids": [
+        "DEC-020"
+      ],
+      "source_excerpt_digest": "sha256:e46e602dfe577e5db8015acc59963b5dd44af27e1994b260a86b31cb179b9e35",
+      "source_lines": [
+        1184,
+        1257
+      ],
+      "supersedes": [],
+      "title": "Ration-ladder triggers re-anchored to buffer state (I.2.3 + I.2.2 revision)"
+    },
+    {
+      "amends": [
+        "01-2-3_allocation-mechanisms-log.md"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-021",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-021/round/1/option/A",
+        "society:DEC-021/round/1/option/B",
+        "society:DEC-021/round/1/option/C",
+        "society:DEC-021/round/2/option/A",
+        "society:DEC-021/round/2/option/B",
+        "society:DEC-021/round/2/option/C",
+        "society:DEC-021/round/3/option/A",
+        "society:DEC-021/round/3/option/B",
+        "society:DEC-021/round/3/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-021/round/1/option/A",
+          "qualifier": "ownership",
+          "source_label": "DEC-021-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-021/round/1/option/B",
+          "qualifier": "ownership",
+          "source_label": "DEC-021-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-021/round/1/option/C",
+          "qualifier": "ownership",
+          "source_label": "DEC-021-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-021/round/2/option/A",
+          "qualifier": "rule",
+          "source_label": "DEC-021-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-021/round/2/option/B",
+          "qualifier": "rule",
+          "source_label": "DEC-021-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-021/round/2/option/C",
+          "qualifier": "rule",
+          "source_label": "DEC-021-alt-C",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-021/round/3/option/A",
+          "qualifier": "class",
+          "source_label": "DEC-021-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-021/round/3/option/B",
+          "qualifier": "class",
+          "source_label": "DEC-021-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-021/round/3/option/C",
+          "qualifier": "class",
+          "source_label": "DEC-021-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "The node holds three published scarcity-ordering schemes with\nno crosswalk governing co-occurring scarcity — the water log's allocation\nhierarchy + staged drought protocol (env. flows > domestic > essential >\nag > industrial > non-essential; Stage 3 cap 150 L/p/d, Stage 4 50 L/p/d),\nAllocation Decision 1's P1–P4 priority classes (life-support > critical\ninfrastructure > food-chain > everything else), and transport Decision 3's\ne-fuel order (aviation first, shipping second, surplus to ag machinery) —\nand the register carries no e-fuel priority class. Overlapping claimants\nsit at different heights on different ladders (agriculture below domestic\non water but P3 on inputs; industrial P4 on goods but above non-essential\non water). Who owns the crosswalk, which ladder governs co-occurring\nscarcity, and what class do e-fuels carry?",
+      "recorded_decision": "all three alt-A's (A / 1 / A as presented in the\ninterview rounds). Recorded as DEC-021.1 (allocation owns, register\nhosts), DEC-021.2 (per-resource precedence, no supremacy clause,\ncompound case → spec §2.11), DEC-021.3 (mission-propelled class).\nAmended into `01-2-3_allocation-mechanisms-full.md` (Decision 1\namendment block + §1 AMENDED mirror entry + §2 residual), the Allocation\nlog (§1 AMENDED entry + §2 residual), the Water log and Transport log\n(each a cross-ref entry + mirrored full-doc §3 line), and the arbitration\nspec (§2.11 row added).",
+      "round_ids": [
+        "DEC-021/round/1",
+        "DEC-021/round/2",
+        "DEC-021/round/3"
+      ],
+      "source_excerpt_digest": "sha256:d9aad866141c25257e147f9942fadb87b589093ee1520626c78aa393a79abba9",
+      "source_lines": [
+        1259,
+        1410
+      ],
+      "supersedes": [],
+      "title": "Scarcity-ladder crosswalk: ownership, governing rule, e-fuel class (I.2.3 fix, resolves Contradiction C)"
+    },
+    {
+      "amends": [
+        "01-1-authority-arbitration-spec.md",
+        "DEC-008"
+      ],
+      "classification": "reference_design",
+      "evidence_status": "unreviewed",
+      "id": "DEC-022",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-022/round/0/option/1",
+        "society:DEC-022/round/0/option/2",
+        "society:DEC-022/round/0/option/3",
+        "society:DEC-022/round/1/option/2.1",
+        "society:DEC-022/round/1/option/1.1",
+        "society:DEC-022/round/1/option/3.1",
+        "society:DEC-022/round/2/option/A",
+        "society:DEC-022/round/2/option/B",
+        "society:DEC-022/round/2/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-022/round/0/option/1",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-1",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-022/round/0/option/2",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-2",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-022/round/0/option/3",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-3",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-022/round/1/option/2.1",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-2.1",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-022/round/1/option/1.1",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-1.1",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-022/round/1/option/3.1",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-3.1",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-022/round/2/option/A",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-022/round/2/option/B",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-022/round/2/option/C",
+          "qualifier": null,
+          "source_label": "DEC-022-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "The RTA now holds nine functions (track, catenary, licensing,\nspine designation, buffer custody, classification register, storage ledger,\nWMS, priority classes — plus ration administration added by I.2.3), each\nbranch's concentration flag having assessed only its own slice; the\nintegration review §4 finding 1 diagnoses the compounded institution as the\nessay's concentrated-institution decay profile at its strongest, and rules\nthe node needs a deliberate RTA-span review (I.1's Blocker-2-equivalent)\nor an intra-RTA division design. How is the nine-function concentration\nresolved, given that the arbitration spec §5 binds the node against adding\na sixth sectoral authority until Domain III answers?",
+      "recorded_decision": "alt-1 (internal division) + alt-2.1 (dual-key KPI review) +\nalt-A (selective amendment). Recorded as **DEC-022.1** (two divisions,\nfunction map below), **DEC-022.2** (dual-key review machinery), and\n**DEC-022.3** (selective-amendment propagation scope).",
+      "round_ids": [
+        "DEC-022/round/0",
+        "DEC-022/round/1",
+        "DEC-022/round/2"
+      ],
+      "source_excerpt_digest": "sha256:73348061fbdf0bb09a3ea29d2a30b6344a92cd847f06236a4320161c93756826",
+      "source_lines": [
+        1412,
+        1542
+      ],
+      "supersedes": [],
+      "title": "RTA span review: two internal divisions + dual-key decay review (resolves I.2 integration §4 finding 1, resolution item 6)"
+    },
+    {
+      "amends": [],
+      "classification": "provenance",
+      "evidence_status": "unreviewed",
+      "id": "DEC-023",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-023/option/A",
+        "society:DEC-023/option/B",
+        "society:DEC-023/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-023/option/A",
+          "qualifier": null,
+          "source_label": "DEC-023-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-023/option/B",
+          "qualifier": null,
+          "source_label": "DEC-023-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-023/option/C",
+          "qualifier": null,
+          "source_label": "DEC-023-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "A full re-run of the session check across the ledger found four log↔full asymmetries from the 2026-10-11 DEC-019/020 integration-fix session: (1) the Transport log §1 never received the DEC-019 amended spine entry (the Transport full's closing block has it, and the DEC-019 record and CL-012 say the log does); (2) the Transport full's §2 arid-gap bullet still reads \"resolution waits on Domain III\" — stale against its own §1 entry and the log; (3) the Storage full never received the DEC-020 resolved cross-ref its log carries; (4) the Allocation full's closing block carries the DEC-021 amended mirror entry but not the DEC-020 one. How much does the pass repair?",
+      "recorded_decision": "alt-A. Repairs applied same session: (1) DEC-019 amended entry restored to `01-2-1_transport-of-goods-log.md` §1, verbatim from the Transport full's closing block; (2) the Transport full §2 arid-gap bullet updated to the resolved state (arid tier ≥0.5 Mt/yr; residual: exact spine list waits on Domain III; ammonia-denominator tail kept); (3) DEC-020 resolved cross-ref mirrored into `01-2-2_storage-supply-chains-full.md` §2; (4) DEC-020 amended entry mirrored into `01-2-3_allocation-mechanisms-full.md`'s closing block at the log's position, text verbatim.",
+      "round_ids": [
+        "DEC-023"
+      ],
+      "source_excerpt_digest": "sha256:5122bdfd49b6b248b7576ad24b1bb6cd2c0046ef97c95a66fa25052041abd46a",
+      "source_lines": [
+        1544,
+        1568
+      ],
+      "supersedes": [],
+      "title": "Reconciliation pass: repair all four log↔full asymmetries (DEC-019/020 era)"
+    },
+    {
+      "amends": [],
+      "classification": "provenance",
+      "evidence_status": "unreviewed",
+      "id": "DEC-024",
+      "model_status": "unsupported",
+      "option_ids": [
+        "society:DEC-024/option/A",
+        "society:DEC-024/option/B",
+        "society:DEC-024/option/C"
+      ],
+      "option_statuses": [
+        {
+          "id": "society:DEC-024/option/A",
+          "qualifier": null,
+          "source_label": "DEC-024-alt-A",
+          "status": "chosen"
+        },
+        {
+          "id": "society:DEC-024/option/B",
+          "qualifier": null,
+          "source_label": "DEC-024-alt-B",
+          "status": "not_chosen"
+        },
+        {
+          "id": "society:DEC-024/option/C",
+          "qualifier": null,
+          "source_label": "DEC-024-alt-C",
+          "status": "not_chosen"
+        }
+      ],
+      "question": "Of §B's 48 index lines, the 38 for DEC-001–020 use older shorthand label styles (35 as `DEC-019-B:`, 3 — DEC-018 only — as `DEC-018-B (alt-B):`), while the ledger's ID rule and all decision bodies write alternates as `DEC-NNN-alt-<letter>`. The check matches canonical labels, so re-auditing any of the first twenty decisions reports every rejected option as unindexed. What happens to the older labels?",
+      "recorded_decision": "alt-A. `verify_session.py` check 3 updated: when the verified decision is DEC ≤020, the legacy label forms are accepted (derived from the fork id: `DEC-018-alt-B` → `DEC-018-B`, including the `(alt-B)` suffix form); DEC ≥021 keeps the strict canonical match. SKILL.md pitfall note updated to record the boundary.",
+      "round_ids": [
+        "DEC-024"
+      ],
+      "source_excerpt_digest": "sha256:da4e7f95646668127f24cd64d1d7820187fbfac00724bcf1f2dd58c8cc30a583",
+      "source_lines": [
+        1570,
+        1594
+      ],
+      "supersedes": [],
+      "title": "Preserved-alternatives index labels: checker tolerance for the pre-DEC-021 styles"
+    }
+  ],
+  "domains": [
+    {
+      "branches": [
+        {
+          "id": "society:domain/01/1",
+          "leaves": [
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-1-1_food-agriculture-full.md",
+                "01-1-1_food-agriculture-log.md"
+              ],
+              "id": "society:domain/01/1/1",
+              "title": "food/agriculture"
+            },
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-1-2_energy-full.md",
+                "01-1-2_energy-log.md"
+              ],
+              "id": "society:domain/01/1/2",
+              "title": "energy generation & distribution"
+            },
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-1-3_materials-manufacturing-full.md",
+                "01-1-3_materials-manufacturing-log.md"
+              ],
+              "id": "society:domain/01/1/3",
+              "title": "raw materials & manufacturing"
+            },
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-1-4_water-sanitation-full.md",
+                "01-1-4_water-sanitation-log.md"
+              ],
+              "id": "society:domain/01/1/4",
+              "title": "water & sanitation"
+            }
+          ],
+          "title": "Production systems"
+        },
+        {
+          "id": "society:domain/01/2",
+          "leaves": [
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-2-1_transport-of-goods-full.md",
+                "01-2-1_transport-of-goods-log.md"
+              ],
+              "id": "society:domain/01/2/1",
+              "title": "transport of goods"
+            },
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-2-2_storage-supply-chains-full.md",
+                "01-2-2_storage-supply-chains-log.md"
+              ],
+              "id": "society:domain/01/2/2",
+              "title": "storage & supply chains"
+            },
+            {
+              "coverage": "source_design_only",
+              "documents": [
+                "01-2-3_allocation-mechanisms-full.md",
+                "01-2-3_allocation-mechanisms-log.md"
+              ],
+              "id": "society:domain/01/2/3",
+              "title": "allocation mechanisms (market/commons/rationing)"
+            }
+          ],
+          "title": "Distribution & logistics"
+        },
+        {
+          "id": "society:domain/01/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/01/3/1",
+              "title": "consumption norms"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/01/3/2",
+              "title": "waste management/recycling"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/01/3/3",
+              "title": "circular resource loops"
+            }
+          ],
+          "title": "Consumption & waste"
+        }
+      ],
+      "id": "society:domain/01",
+      "roman": "I",
+      "title": "Resource & Material Base (Provisioning)"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/02/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/1/1",
+              "title": "money/currency systems"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/1/2",
+              "title": "market vs. planned vs. gift economies"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/1/3",
+              "title": "pricing/valuation"
+            }
+          ],
+          "title": "Value & exchange mechanisms"
+        },
+        {
+          "id": "society:domain/02/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/2/1",
+              "title": "division of labor"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/2/2",
+              "title": "employment/livelihood structures"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/2/3",
+              "title": "automation's relationship to work-value"
+            }
+          ],
+          "title": "Labor & work"
+        },
+        {
+          "id": "society:domain/02/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/3/1",
+              "title": "private/common/state regimes"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/3/2",
+              "title": "land tenure"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/3/3",
+              "title": "intellectual property"
+            }
+          ],
+          "title": "Ownership & property"
+        },
+        {
+          "id": "society:domain/02/4",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/4/1",
+              "title": "redistribution mechanisms"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/4/2",
+              "title": "inheritance"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/02/4/3",
+              "title": "inequality management"
+            }
+          ],
+          "title": "Wealth distribution"
+        }
+      ],
+      "id": "society:domain/02",
+      "roman": "II",
+      "title": "Economy & Exchange"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/03/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/1/1",
+              "title": "scale of governance (local–global)"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/1/2",
+              "title": "representation models"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/1/3",
+              "title": "sovereignty/jurisdiction"
+            }
+          ],
+          "title": "Political structure"
+        },
+        {
+          "id": "society:domain/03/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/2/1",
+              "title": "voting/consensus mechanisms"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/2/2",
+              "title": "deliberation structures"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/2/3",
+              "title": "expertise vs. popular input"
+            }
+          ],
+          "title": "Decision processes"
+        },
+        {
+          "id": "society:domain/03/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/3/1",
+              "title": "checks and balances"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/3/2",
+              "title": "transparency"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/03/3/3",
+              "title": "corruption prevention"
+            }
+          ],
+          "title": "Power & accountability"
+        }
+      ],
+      "id": "society:domain/03",
+      "roman": "III",
+      "title": "Governance & Collective Decision-Making"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/04/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/1/1",
+              "title": "legislation/rule-making"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/1/2",
+              "title": "rights & obligations"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/1/3",
+              "title": "codified law vs. cultural norms"
+            }
+          ],
+          "title": "Normative systems"
+        },
+        {
+          "id": "society:domain/04/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/2/1",
+              "title": "policing/monitoring"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/2/2",
+              "title": "sanctions & punishment"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/2/3",
+              "title": "rehabilitation"
+            }
+          ],
+          "title": "Enforcement"
+        },
+        {
+          "id": "society:domain/04/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/3/1",
+              "title": "judicial systems"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/3/2",
+              "title": "mediation/arbitration"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/3/3",
+              "title": "restorative justice"
+            }
+          ],
+          "title": "Dispute resolution"
+        },
+        {
+          "id": "society:domain/04/4",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/4/1",
+              "title": "diplomacy"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/4/2",
+              "title": "defense/security"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/04/4/3",
+              "title": "war prevention"
+            }
+          ],
+          "title": "Inter-group conflict"
+        }
+      ],
+      "id": "society:domain/04",
+      "roman": "IV",
+      "title": "Law, Order & Conflict Resolution"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/05/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/1/1",
+              "title": "family structures"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/1/2",
+              "title": "child-rearing"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/1/3",
+              "title": "partnership/marriage norms"
+            }
+          ],
+          "title": "Kinship & household"
+        },
+        {
+          "id": "society:domain/05/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/2/1",
+              "title": "local organization"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/2/2",
+              "title": "social roles & status"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/2/3",
+              "title": "belonging/inclusion-exclusion"
+            }
+          ],
+          "title": "Community structures"
+        },
+        {
+          "id": "society:domain/05/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/3/1",
+              "title": "rites of passage"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/3/2",
+              "title": "aging & elder role"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/05/3/3",
+              "title": "care for dependents"
+            }
+          ],
+          "title": "Life-course"
+        }
+      ],
+      "id": "society:domain/05",
+      "roman": "V",
+      "title": "Social Organization & Relationships"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/06/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/1/1",
+              "title": "science/research systems"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/1/2",
+              "title": "innovation processes"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/1/3",
+              "title": "preservation/archives"
+            }
+          ],
+          "title": "Knowledge production"
+        },
+        {
+          "id": "society:domain/06/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/2/1",
+              "title": "formal education"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/2/2",
+              "title": "vocational/skill training"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/2/3",
+              "title": "lifelong learning"
+            }
+          ],
+          "title": "Education & transmission"
+        },
+        {
+          "id": "society:domain/06/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/3/1",
+              "title": "arts/creative expression"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/3/2",
+              "title": "language(s)"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/06/3/3",
+              "title": "media & storytelling"
+            }
+          ],
+          "title": "Culture & expression"
+        }
+      ],
+      "id": "society:domain/06",
+      "roman": "VI",
+      "title": "Knowledge, Education & Culture"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/07/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/1/1",
+              "title": "healthcare delivery"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/1/2",
+              "title": "disease prevention/public health"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/1/3",
+              "title": "nutrition"
+            }
+          ],
+          "title": "Physical health"
+        },
+        {
+          "id": "society:domain/07/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/2/1",
+              "title": "mental health support"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/2/2",
+              "title": "stress/work-life balance"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/2/3",
+              "title": "social connection & loneliness"
+            }
+          ],
+          "title": "Mental & emotional wellbeing"
+        },
+        {
+          "id": "society:domain/07/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/3/1",
+              "title": "reproduction/birth"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/3/2",
+              "title": "end-of-life care"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/07/3/3",
+              "title": "death/mourning rituals"
+            }
+          ],
+          "title": "Life & death"
+        }
+      ],
+      "id": "society:domain/07",
+      "roman": "VII",
+      "title": "Health & Wellbeing"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/08/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/1/1",
+              "title": "housing"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/1/2",
+              "title": "transportation networks"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/1/3",
+              "title": "utilities (power/water/sanitation)"
+            }
+          ],
+          "title": "Physical infrastructure"
+        },
+        {
+          "id": "society:domain/08/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/2/1",
+              "title": "urban/rural planning"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/2/2",
+              "title": "land-use zoning"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/2/3",
+              "title": "population distribution/density"
+            }
+          ],
+          "title": "Spatial organization"
+        },
+        {
+          "id": "society:domain/08/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/3/1",
+              "title": "communication networks"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/3/2",
+              "title": "data systems"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/08/3/3",
+              "title": "digital access/equity"
+            }
+          ],
+          "title": "Digital infrastructure"
+        }
+      ],
+      "id": "society:domain/08",
+      "roman": "VIII",
+      "title": "Infrastructure & the Built Environment"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/09/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/1/1",
+              "title": "media systems"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/1/2",
+              "title": "verification/truth mechanisms"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/1/3",
+              "title": "free speech vs. regulation"
+            }
+          ],
+          "title": "Information flow"
+        },
+        {
+          "id": "society:domain/09/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/2/1",
+              "title": "language & translation"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/2/2",
+              "title": "public discourse forums"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/2/3",
+              "title": "symbolic/nonverbal communication"
+            }
+          ],
+          "title": "Interpersonal/collective communication"
+        },
+        {
+          "id": "society:domain/09/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/3/1",
+              "title": "digital platforms"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/3/2",
+              "title": "privacy & surveillance"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/09/3/3",
+              "title": "AI-mediated communication"
+            }
+          ],
+          "title": "Technology-mediated communication"
+        }
+      ],
+      "id": "society:domain/09",
+      "roman": "IX",
+      "title": "Communication & Information"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/10/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/1/1",
+              "title": "biodiversity/conservation"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/1/2",
+              "title": "climate stability"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/1/3",
+              "title": "pollution control"
+            }
+          ],
+          "title": "Ecological stewardship"
+        },
+        {
+          "id": "society:domain/10/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/2/1",
+              "title": "renewable vs. finite use"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/2/2",
+              "title": "carrying capacity/population"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/2/3",
+              "title": "long-term planetary stewardship"
+            }
+          ],
+          "title": "Resource sustainability"
+        },
+        {
+          "id": "society:domain/10/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/3/1",
+              "title": "land relationship models"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/3/2",
+              "title": "urban vs. wild space balance"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/10/3/3",
+              "title": "animal relations/ethics"
+            }
+          ],
+          "title": "Human-nature interface"
+        }
+      ],
+      "id": "society:domain/10",
+      "roman": "X",
+      "title": "Environment & Human-Nature Relationship"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/11/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/1/1",
+              "title": "religion/spirituality"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/1/2",
+              "title": "secular philosophy/ethics"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/1/3",
+              "title": "pluralism & tolerance"
+            }
+          ],
+          "title": "Belief systems"
+        },
+        {
+          "id": "society:domain/11/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/2/1",
+              "title": "individual identity"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/2/2",
+              "title": "group/cultural identity"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/2/3",
+              "title": "global/cosmopolitan identity"
+            }
+          ],
+          "title": "Identity & belonging"
+        },
+        {
+          "id": "society:domain/11/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/3/1",
+              "title": "meaning-making structures"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/3/2",
+              "title": "ritual & ceremony"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/11/3/3",
+              "title": "aspiration/progress narratives"
+            }
+          ],
+          "title": "Purpose & motivation"
+        }
+      ],
+      "id": "society:domain/11",
+      "roman": "XI",
+      "title": "Meaning, Values & Identity"
+    },
+    {
+      "branches": [
+        {
+          "id": "society:domain/12/1",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/1/1",
+              "title": "crime prevention"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/1/2",
+              "title": "defense/military"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/1/3",
+              "title": "emergency response"
+            }
+          ],
+          "title": "Physical security"
+        },
+        {
+          "id": "society:domain/12/2",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/2/1",
+              "title": "pandemic preparedness"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/2/2",
+              "title": "disaster resilience"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/2/3",
+              "title": "existential risk management"
+            }
+          ],
+          "title": "Systemic risk"
+        },
+        {
+          "id": "society:domain/12/3",
+          "leaves": [
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/3/1",
+              "title": "AI governance"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/3/2",
+              "title": "biotech safety"
+            },
+            {
+              "coverage": "map_only",
+              "documents": [],
+              "id": "society:domain/12/3/3",
+              "title": "cybersecurity"
+            }
+          ],
+          "title": "Technological risk"
+        }
+      ],
+      "id": "society:domain/12",
+      "roman": "XII",
+      "title": "Security & Risk Management"
+    }
+  ],
+  "files": [
+    {
+      "archived": true,
+      "bytes": 5297,
+      "digest": "sha256:6022a7943d557d31d2996406611072a7e3a1b6b494277107a11e9189244012a3",
+      "map_leaf_id": null,
+      "path": "00_broad_structure.md",
+      "role": "classification_map"
+    },
+    {
+      "archived": true,
+      "bytes": 28073,
+      "digest": "sha256:b33e4ba73d033fc674d350a8cf659fb229ee65306883ab76b4cdc766f29b98db",
+      "map_leaf_id": "society:domain/01/1/1",
+      "path": "01-1-1_food-agriculture-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 10400,
+      "digest": "sha256:0386dcecdff940225e5623ddc741dc47e8ec9e5e8ef95c9fdc5d692bafb530da",
+      "map_leaf_id": "society:domain/01/1/1",
+      "path": "01-1-1_food-agriculture-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 37096,
+      "digest": "sha256:f2565f777905d45ed3730cff5aa21bcbaef53313dd80850677b1db5dcf0b22ac",
+      "map_leaf_id": "society:domain/01/1/2",
+      "path": "01-1-2_energy-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 12951,
+      "digest": "sha256:8e75a56670e43054d986e10d8afc1215b76def628c4f8c10cd119fb23aed4c6d",
+      "map_leaf_id": "society:domain/01/1/2",
+      "path": "01-1-2_energy-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 53864,
+      "digest": "sha256:d54ef1d75b90fd003d0fef97d2754dbc29151e14068a2d8eeb336ac0ccaa3f85",
+      "map_leaf_id": "society:domain/01/1/3",
+      "path": "01-1-3_materials-manufacturing-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 17529,
+      "digest": "sha256:2d6c5cb10d9f02f0bb1ecbe84bb45ceb22681f99026ccd4962f34308d2ea2d73",
+      "map_leaf_id": "society:domain/01/1/3",
+      "path": "01-1-3_materials-manufacturing-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 49348,
+      "digest": "sha256:08ff7ddf11b1e413499c5d923968009d49df777f265897158c2bfa0d72bb7bc4",
+      "map_leaf_id": "society:domain/01/1/4",
+      "path": "01-1-4_water-sanitation-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 21938,
+      "digest": "sha256:9bc442a828aa02eaef5d34d9de65612a38744ba496794e57223fe28b0a8d1811",
+      "map_leaf_id": "society:domain/01/1/4",
+      "path": "01-1-4_water-sanitation-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 17699,
+      "digest": "sha256:ddb2010d1751ebb2f9b1e9b1747c961280daade8b064de6f019dc3409f2863b9",
+      "map_leaf_id": null,
+      "path": "01-1-authority-arbitration-spec.md",
+      "role": "integration_model_candidates"
+    },
+    {
+      "archived": true,
+      "bytes": 30183,
+      "digest": "sha256:6613fed15311c6a86c88c5c149bb3ae6e0a6d1185ab7e5c83accd249bd571370",
+      "map_leaf_id": null,
+      "path": "01-1-integration.md",
+      "role": "integration_model_candidates"
+    },
+    {
+      "archived": true,
+      "bytes": 14373,
+      "digest": "sha256:1ebfaae7ac305545a7a46478f15d2282182920e9744b58885fad17e4d8d48099",
+      "map_leaf_id": null,
+      "path": "01-1-resource-balance-sheet.md",
+      "role": "integration_model_candidates"
+    },
+    {
+      "archived": true,
+      "bytes": 29481,
+      "digest": "sha256:607ec9865648563a6b8fe6c48ca0bd54fa84a896ccf5944fcd63d15404b9a8cf",
+      "map_leaf_id": "society:domain/01/2/1",
+      "path": "01-2-1_transport-of-goods-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 11346,
+      "digest": "sha256:77814e9dfba07fcb8a2072e55946dc2a831d2f58837dcff998b548aa3b0720ae",
+      "map_leaf_id": "society:domain/01/2/1",
+      "path": "01-2-1_transport-of-goods-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 25783,
+      "digest": "sha256:dc1a25f7eafc3f57b4bd5012b96f7a74197c23713b0e553f729c123a05d0dd56",
+      "map_leaf_id": "society:domain/01/2/2",
+      "path": "01-2-2_storage-supply-chains-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 8261,
+      "digest": "sha256:4c20b50a79a83571628ddc4ca54aaaf9249b7052beb1003f6bdfc652cc4745f5",
+      "map_leaf_id": "society:domain/01/2/2",
+      "path": "01-2-2_storage-supply-chains-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 33751,
+      "digest": "sha256:eb3891bdd960b118821a84612f0b9998bfa46451ff751609d5bf29adbfe8cd7f",
+      "map_leaf_id": "society:domain/01/2/3",
+      "path": "01-2-3_allocation-mechanisms-full.md",
+      "role": "branch_full"
+    },
+    {
+      "archived": true,
+      "bytes": 11638,
+      "digest": "sha256:f0dabf034353e7985eefdd4ab95897da8f0a709ee21d56ac12103aa79a2cac11",
+      "map_leaf_id": "society:domain/01/2/3",
+      "path": "01-2-3_allocation-mechanisms-log.md",
+      "role": "branch_log"
+    },
+    {
+      "archived": true,
+      "bytes": 25328,
+      "digest": "sha256:5187b432808da19d3af35096792b03f6afbfff6e99bc38da9bad1c1170b9affd",
+      "map_leaf_id": null,
+      "path": "01-2-integration.md",
+      "role": "integration_model_candidates"
+    },
+    {
+      "archived": true,
+      "bytes": 6961,
+      "digest": "sha256:2a54afb66142577bd4f73a8edadb5940aa3f7118f59137010053b3842577c327",
+      "map_leaf_id": null,
+      "path": "01_project_context_prompt.md",
+      "role": "project_provenance"
+    },
+    {
+      "archived": false,
+      "bytes": 62590,
+      "digest": "sha256:d44f23cd0d62ab0d2dc4d46f73a221a91049d3fa7e9c1a3549ecbedca810205c",
+      "map_leaf_id": null,
+      "path": "02_AI-Essay.pdf",
+      "role": "essay_context_binary"
+    },
+    {
+      "archived": true,
+      "bytes": 1316,
+      "digest": "sha256:5ebefd334fff62f86c8c074f8dfde283ee01db9f3cef62ce3ec571c8717d856a",
+      "map_leaf_id": null,
+      "path": "03_running_log.md",
+      "role": "project_provenance"
+    },
+    {
+      "archived": true,
+      "bytes": 3361,
+      "digest": "sha256:94459c4c156412e21ceef78a348ae655433e3476343fc192d86d2f4e0d38d9a5",
+      "map_leaf_id": null,
+      "path": "04_project_integration-tier1-into-node_prompt.md",
+      "role": "project_provenance"
+    },
+    {
+      "archived": true,
+      "bytes": 3069,
+      "digest": "sha256:d27c91bd78f0fde2d5f0df83cfbc8a37bbaa68259893b65b5caf5e59d056d90d",
+      "map_leaf_id": null,
+      "path": "05_project_integration-tier2-node-integration_prompt.md",
+      "role": "project_provenance"
+    },
+    {
+      "archived": true,
+      "bytes": 110500,
+      "digest": "sha256:2f1451d2398522b406fa562cac43790367741c18e0cf60dc0d25cf36f3971fdf",
+      "map_leaf_id": null,
+      "path": "06_global_decision_ledger.md",
+      "role": "decision_history"
+    },
+    {
+      "archived": true,
+      "bytes": 10827,
+      "digest": "sha256:7c257eb77d6dfaced037703558da38439c7b6f6cb6eb170110b0558ff7532e9d",
+      "map_leaf_id": null,
+      "path": "AGENTS.md",
+      "role": "project_provenance"
+    },
+    {
+      "archived": true,
+      "bytes": 1064,
+      "digest": "sha256:c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7",
+      "map_leaf_id": null,
+      "path": "LICENSE",
+      "role": "license"
+    },
+    {
+      "archived": true,
+      "bytes": 9876,
+      "digest": "sha256:0904dca40f4da797f91fa00155df968c5c18752c6bb7b12dfd7d519b71126337",
+      "map_leaf_id": null,
+      "path": "master_prompt_society_redesign.md",
+      "role": "project_provenance"
+    }
+  ],
+  "format_version": 1,
+  "license": {
+    "digest": "sha256:c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7",
+    "id": "society-mit",
+    "redistribution": "repository notice permits documentation redistribution with retained notice",
+    "spdx": "MIT"
+  },
+  "limitations": [
+    "All imported quantities and causal claims require model/evidence review.",
+    "No player selection, executable mechanism, numerical parameter or default setup is created.",
+    "PDF essay inventoried by digest as optional context; format-1 archives support text only.",
+    "External citations are source claims; third-party works are not fetched or relicensed."
+  ],
+  "preserved_alternative_index_labels": [
+    "DEC-024-alt-B:",
+    "DEC-024-alt-C:",
+    "DEC-023-alt-B:",
+    "DEC-023-alt-C:",
+    "DEC-022-alt-2:",
+    "DEC-022-alt-3:",
+    "DEC-022-alt-1.1:",
+    "DEC-022-alt-3.1:",
+    "DEC-022-alt-B:",
+    "DEC-022-alt-C:",
+    "DEC-021-alt-B (ownership):",
+    "DEC-021-alt-C (rule):",
+    "DEC-021-alt-B (class):",
+    "DEC-021-alt-C (class):",
+    "DEC-001-B:",
+    "DEC-001-C:",
+    "DEC-001-D:",
+    "DEC-002-B:",
+    "DEC-002-C:",
+    "DEC-003-B:",
+    "DEC-003-C:",
+    "DEC-003-D:",
+    "DEC-004-B:",
+    "DEC-004-C:",
+    "DEC-004-D:",
+    "DEC-005-B:",
+    "DEC-005-C:",
+    "DEC-006-B:",
+    "DEC-007-B:",
+    "DEC-007-C:",
+    "DEC-008-B:",
+    "DEC-009-C:",
+    "DEC-010-B:",
+    "DEC-010-C:",
+    "DEC-011-B:",
+    "DEC-012-B:",
+    "DEC-012-C:",
+    "DEC-013-B:",
+    "DEC-014-B:",
+    "DEC-015-B:",
+    "DEC-016-B:",
+    "DEC-016-C:",
+    "DEC-017-B:",
+    "DEC-018-B (alt-B):",
+    "DEC-018-C (alt-C):",
+    "DEC-018-D (alt-D):",
+    "DEC-019-B:",
+    "DEC-019-C:",
+    "DEC-019-D:",
+    "DEC-020-B:",
+    "DEC-020-C:",
+    "DEC-020-D:"
+  ],
+  "repository": "playa77/society",
+  "revision": "9ff539997dbd1bd3fa99deabcf6bc5907602df60",
+  "system_decisions": [
+    {
+      "classification": "provenance",
+      "id": "DEC-SYS-001",
+      "source_excerpt_digest": "sha256:ae8dd03553f990b23793131e3e51d0ed3319024ee5c233699a3ea70dbb26fff4"
+    }
+  ],
+  "unindexed_alternatives": [
+    "society:DEC-006/option/C",
+    "society:DEC-009/option/B",
+    "society:DEC-011/option/C",
+    "society:DEC-014/option/C",
+    "society:DEC-015/option/C",
+    "society:DEC-021/round/1/option/C",
+    "society:DEC-021/round/2/option/B"
+  ]
+}

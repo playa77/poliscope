@@ -109,3 +109,12 @@ Future integration, recovery and performance evidence belongs under
 `artifacts/integration`, `artifacts/recovery` and `artifacts/performance` with the
 same candidate/runtime identity rules and the benchmark contract. These paths
 are evidence locations, not claims those scenarios have run.
+
+## Pinned society source import
+
+`uv run --frozen python scripts/import_society.py /path/to/society /path/to/new-output`
+reads the pinned Git revision and creates a data-only reference pack plus inventory.
+It requires no network and refuses an existing output directory. This is a corpus
+review candidate; it does not install content or select player policies. See the
+[importer boundary](../engine/poliscope_engine/corpus/README.md) and
+[pinned source review](roadmap/execution/society/review.md) before using its claims.
