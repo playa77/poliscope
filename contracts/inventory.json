@@ -10,6 +10,8 @@
     "content.ts",
     "dependency.schema.json",
     "dependency.ts",
+    "domain.schema.json",
+    "domain.ts",
     "evaluation.schema.json",
     "evaluation.ts",
     "expression.schema.json",

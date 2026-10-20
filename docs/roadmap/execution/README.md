@@ -402,3 +402,18 @@ optional qualitative reference setups impose no player policies or goals.
 Reassess WP-027 domain conformance/interface ownership after merge. Empirical
 model approval, domain numerical coverage, historical setup UI, Windows evidence
 and COL-04 identity replacement retain their separate acceptance.
+
+## Current boundary after PR #41
+
+PR #41 merged WP-026 immutable content/review activation at
+`b86e365d6488bbcc744b839c7a17932bccd50e15`.
+[WP-027](WP-027.md) allocates the complete domain contract/conformance parent to
+Codex `/root`, one sequential agent under SV. Shared fixtures preserve canonical
+resource/account/asset/cohort/institution identities; the harness uses production
+mechanism, world, policy, account and pure evaluation services. All twelve domain
+and 38 branch templates retain explicit missing behavior; 44 counterpart pairs
+retain pending acceptance and designated domain-package integration ownership.
+Real domain models, empirical review, WP-034 transition scheduling/publication,
+Windows native evidence and cumulative G3/M3 acceptance remain separate.
+Reassess WP-028 decision atlas/search after merge; independent agent review is
+deferred under the existing SV route.

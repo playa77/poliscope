@@ -1,0 +1,919 @@
+{
+  "definitions": [
+    {
+      "assumption_refs": [],
+      "claims": [
+        {
+          "account_input_ref": "synthetic:account",
+          "allocation_input_ref": "synthetic:allocated",
+          "amount_output_ref": "synthetic:requested",
+          "dependent_output_refs": [
+            "synthetic:supported"
+          ],
+          "id": "synthetic:claim",
+          "kind": "resource"
+        }
+      ],
+      "contract_version": 1,
+      "coverage_limits": "Synthetic fixture only; no scientific validity or activation asserted.",
+      "diagnostics": [],
+      "domain": "economy",
+      "entity_kinds": [
+        "account"
+      ],
+      "evidence": "hypothetical",
+      "fixtures": [
+        {
+          "fixture": {
+            "id": "synthetic:positive",
+            "version": "v1"
+          },
+          "property_refs": [],
+          "purpose": "positive"
+        }
+      ],
+      "id": "synthetic:demand",
+      "inputs": [
+        {
+          "id": "synthetic:allocated",
+          "missing_behavior": "propagate",
+          "required": true,
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        },
+        {
+          "id": "synthetic:account",
+          "missing_behavior": "propagate",
+          "required": true,
+          "value_type": {
+            "entity_kind": "account",
+            "kind": "reference"
+          }
+        },
+        {
+          "id": "synthetic:need",
+          "missing_behavior": "propagate",
+          "required": true,
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        }
+      ],
+      "modeling": "numerical",
+      "origin": "authored",
+      "outputs": [
+        {
+          "id": "synthetic:requested",
+          "input_refs": [
+            "synthetic:need"
+          ],
+          "missing_behavior": "propagate",
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        },
+        {
+          "id": "synthetic:supported",
+          "input_refs": [
+            "synthetic:allocated"
+          ],
+          "missing_behavior": "propagate",
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        }
+      ],
+      "owned_state": [],
+      "policy": null,
+      "preconditions": [],
+      "properties": [],
+      "read_partitions": [
+        "conditions"
+      ],
+      "scope_kinds": [
+        "settlement"
+      ],
+      "source_refs": [
+        "synthetic:source"
+      ],
+      "support": {
+        "static": {
+          "implementation": {
+            "id": "synthetic:demand-implementation",
+            "version": "v1"
+          },
+          "kind": "trusted_python"
+        },
+        "transition": null
+      },
+      "traces": [
+        {
+          "description": "Allocated output, no foreign write",
+          "id": "synthetic:demand-trace",
+          "input_refs": [
+            "synthetic:allocated"
+          ],
+          "output_refs": [
+            "synthetic:supported"
+          ],
+          "state_refs": []
+        }
+      ],
+      "version": "v1",
+      "write_state_refs": []
+    },
+    {
+      "assumption_refs": [],
+      "claims": [],
+      "contract_version": 1,
+      "coverage_limits": "Synthetic fixture only; no scientific validity or activation asserted.",
+      "diagnostics": [],
+      "domain": "provisioning",
+      "entity_kinds": [
+        "resource"
+      ],
+      "evidence": "hypothetical",
+      "fixtures": [
+        {
+          "fixture": {
+            "id": "synthetic:positive",
+            "version": "v1"
+          },
+          "property_refs": [],
+          "purpose": "positive"
+        }
+      ],
+      "id": "synthetic:qualitative",
+      "inputs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "outputs": [
+        {
+          "id": "synthetic:available",
+          "input_refs": [],
+          "missing_behavior": "propagate",
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        }
+      ],
+      "owned_state": [],
+      "policy": null,
+      "preconditions": [],
+      "properties": [],
+      "read_partitions": [
+        "conditions"
+      ],
+      "scope_kinds": [
+        "settlement"
+      ],
+      "source_refs": [
+        "synthetic:source"
+      ],
+      "support": {
+        "static": null,
+        "transition": null
+      },
+      "traces": [],
+      "version": "v1",
+      "write_state_refs": []
+    },
+    {
+      "assumption_refs": [],
+      "claims": [],
+      "contract_version": 1,
+      "coverage_limits": "Synthetic fixture only; no scientific validity or activation asserted.",
+      "diagnostics": [],
+      "domain": "provisioning",
+      "entity_kinds": [
+        "resource"
+      ],
+      "evidence": "hypothetical",
+      "fixtures": [
+        {
+          "fixture": {
+            "id": "synthetic:positive",
+            "version": "v1"
+          },
+          "property_refs": [],
+          "purpose": "positive"
+        }
+      ],
+      "id": "synthetic:access-policy",
+      "inputs": [
+        {
+          "id": "synthetic:limit",
+          "missing_behavior": "propagate",
+          "required": true,
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        }
+      ],
+      "modeling": "numerical",
+      "origin": "authored",
+      "outputs": [
+        {
+          "id": "synthetic:available",
+          "input_refs": [],
+          "missing_behavior": "propagate",
+          "value_type": {
+            "denominator_scope_id": null,
+            "kind": "quantity",
+            "time_basis_id": null,
+            "unit_id": "kg"
+          }
+        }
+      ],
+      "owned_state": [],
+      "policy": {
+        "composition_rule": null,
+        "semantics": "exclusive"
+      },
+      "preconditions": [],
+      "properties": [],
+      "read_partitions": [
+        "conditions"
+      ],
+      "scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "source_refs": [
+        "synthetic:source"
+      ],
+      "support": {
+        "static": {
+          "implementation": {
+            "id": "synthetic:supply-implementation",
+            "version": "v1"
+          },
+          "kind": "trusted_python"
+        },
+        "transition": null
+      },
+      "traces": [],
+      "version": "v1",
+      "write_state_refs": []
+    }
+  ],
+  "expected": {
+    "accounts": {
+      "labor": [
+        "2",
+        "0",
+        "2"
+      ],
+      "product": [
+        "70",
+        "0",
+        "70"
+      ],
+      "residual": [
+        "20",
+        "0",
+        "20"
+      ],
+      "stock": [
+        "0",
+        "0",
+        "0"
+      ]
+    },
+    "claims": {
+      "a": [
+        "60",
+        "20"
+      ],
+      "b": [
+        "40",
+        "40"
+      ]
+    },
+    "outcome": "insufficient",
+    "outputs": {
+      "a": "60",
+      "b": "40"
+    }
+  },
+  "identity": {
+    "id": "synthetic:domain-conformance",
+    "version": "v1"
+  },
+  "inputs": {
+    "assumptions": [],
+    "design": {
+      "assumption_inputs": [],
+      "conditions": [],
+      "contract_version": 1,
+      "effective_time": {
+        "calendar_id": "calendar",
+        "tick": 0
+      },
+      "execution": {
+        "allocations": [
+          {
+            "choices": [
+              {
+                "access": "allowed",
+                "access_limit": "100",
+                "claim_id": "a",
+                "funding_known": true,
+                "loss_per_unit": "0.1",
+                "mechanism_ref": "synthetic:selected-access",
+                "outputs": [
+                  {
+                    "account_id": "product",
+                    "per_unit": "0.7",
+                    "role": "product"
+                  },
+                  {
+                    "account_id": "residual",
+                    "per_unit": "0.2",
+                    "role": "residual"
+                  }
+                ],
+                "requirements": [
+                  {
+                    "account_id": "labor",
+                    "kind": "funding",
+                    "per_unit": "0.1"
+                  }
+                ],
+                "source_refs": []
+              },
+              {
+                "access": "allowed",
+                "access_limit": "100",
+                "claim_id": "b",
+                "funding_known": true,
+                "loss_per_unit": "0.1",
+                "mechanism_ref": "synthetic:selected-access",
+                "outputs": [
+                  {
+                    "account_id": "product",
+                    "per_unit": "0.7",
+                    "role": "product"
+                  },
+                  {
+                    "account_id": "residual",
+                    "per_unit": "0.2",
+                    "role": "residual"
+                  }
+                ],
+                "requirements": [
+                  {
+                    "account_id": "labor",
+                    "kind": "funding",
+                    "per_unit": "0.1"
+                  }
+                ],
+                "source_refs": []
+              }
+            ],
+            "claim_order": [
+              "a",
+              "b"
+            ],
+            "id": "shared",
+            "mechanism_ref": "synthetic:selected-priority",
+            "procedure": "priority"
+          }
+        ],
+        "batch": {
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "stock",
+              "invariant": "physical",
+              "kind": "stock",
+              "maximum": "1000",
+              "opening": "100",
+              "period_id": null,
+              "quantum": "0.01",
+              "scope_id": "east",
+              "source_refs": [],
+              "unit_id": "kg"
+            },
+            {
+              "contract_version": 1,
+              "id": "product",
+              "invariant": "physical",
+              "kind": "stock",
+              "maximum": "1000",
+              "opening": "0",
+              "period_id": null,
+              "quantum": "0.01",
+              "scope_id": "east",
+              "source_refs": [],
+              "unit_id": "kg"
+            },
+            {
+              "contract_version": 1,
+              "id": "residual",
+              "invariant": "physical",
+              "kind": "stock",
+              "maximum": "1000",
+              "opening": "0",
+              "period_id": null,
+              "quantum": "0.01",
+              "scope_id": "east",
+              "source_refs": [],
+              "unit_id": "kg"
+            },
+            {
+              "contract_version": 1,
+              "id": "labor",
+              "invariant": "budget",
+              "kind": "capacity",
+              "maximum": "1000",
+              "opening": "12",
+              "period_id": "day:0",
+              "quantum": "0.01",
+              "scope_id": "east",
+              "source_refs": [],
+              "unit_id": "hours"
+            }
+          ],
+          "claims": [
+            {
+              "account_id": "stock",
+              "claimant_id": "water",
+              "id": "a",
+              "requested": "80",
+              "source_refs": []
+            },
+            {
+              "account_id": "stock",
+              "claimant_id": "water",
+              "id": "b",
+              "requested": "80",
+              "source_refs": []
+            }
+          ],
+          "contract_version": 1,
+          "postings": [
+            {
+              "amount": "10",
+              "claim_id": null,
+              "destination_id": "stock",
+              "id": "finite-import",
+              "kind": "import",
+              "mechanism_ref": "synthetic:finite-import",
+              "reservation_id": null,
+              "source_id": null,
+              "source_refs": []
+            },
+            {
+              "amount": "10",
+              "claim_id": null,
+              "destination_id": null,
+              "id": "initial-loss",
+              "kind": "loss",
+              "mechanism_ref": "synthetic:finite-import",
+              "reservation_id": null,
+              "source_id": "stock",
+              "source_refs": []
+            }
+          ],
+          "reservations": [
+            {
+              "account_id": "stock",
+              "amount": "40",
+              "claim_id": "b",
+              "id": "hold-b"
+            }
+          ],
+          "subtotals": []
+        },
+        "claims": [
+          {
+            "account_claim_id": "a",
+            "claim_id": "synthetic:claim",
+            "instance_id": "a"
+          },
+          {
+            "account_claim_id": "b",
+            "claim_id": "synthetic:claim",
+            "instance_id": "b"
+          }
+        ],
+        "contract_version": 1,
+        "dependencies": {
+          "account_producers": [],
+          "bindings": [],
+          "claims": [
+            {
+              "account_id": "stock",
+              "allocation_id": "shared",
+              "claim_id": "synthetic:claim",
+              "instance_id": "a"
+            },
+            {
+              "account_id": "stock",
+              "allocation_id": "shared",
+              "claim_id": "synthetic:claim",
+              "instance_id": "b"
+            }
+          ],
+          "contract_version": 1,
+          "fixed_inputs": [
+            {
+              "consumer": {
+                "instance_id": "a",
+                "port_id": "synthetic:need"
+              },
+              "value": {
+                "denominator_scope_id": null,
+                "kind": "quantity",
+                "time_basis_id": null,
+                "unit_id": "kg",
+                "value": "80"
+              }
+            },
+            {
+              "consumer": {
+                "instance_id": "b",
+                "port_id": "synthetic:need"
+              },
+              "value": {
+                "denominator_scope_id": null,
+                "kind": "quantity",
+                "time_basis_id": null,
+                "unit_id": "kg",
+                "value": "80"
+              }
+            }
+          ],
+          "instances": [
+            {
+              "entity_id": "stock",
+              "id": "a",
+              "mechanism_id": "synthetic:demand",
+              "mechanism_version": "v1",
+              "scope_id": "east"
+            },
+            {
+              "entity_id": "stock",
+              "id": "b",
+              "mechanism_id": "synthetic:demand",
+              "mechanism_version": "v1",
+              "scope_id": "east"
+            }
+          ],
+          "relationships": []
+        },
+        "operation_limit": 100000,
+        "solvers": []
+      },
+      "policies": [],
+      "policy_inputs": [],
+      "policy_rules": [],
+      "realization": {
+        "event_ids": [],
+        "identity": {
+          "id": "synthetic:realization",
+          "version": "v1"
+        },
+        "seed": null,
+        "values": []
+      },
+      "realization_inputs": [],
+      "world_inputs": []
+    },
+    "entities": [
+      {
+        "entity_kind": "civilization",
+        "id": "civ",
+        "label": "Synthetic civ",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "stock",
+        "label": "Synthetic stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "resource",
+        "id": "water",
+        "label": "Synthetic water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "product",
+        "label": "Synthetic product",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "residual",
+        "label": "Synthetic residual",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "labor",
+        "label": "Synthetic labor",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "east-authority",
+        "label": "Synthetic east-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "region-authority",
+        "label": "Synthetic region-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "asset",
+        "id": "shared:asset",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "population_cohort",
+        "id": "shared:cohort",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "goals": [],
+    "measurements": [
+      {
+        "aggregation": "same_scope",
+        "assumption_refs": [],
+        "coverage": "known",
+        "denominator_scope_id": null,
+        "diagnostics": [],
+        "id": "east-output",
+        "inputs": [
+          {
+            "node": [
+              "output",
+              "a",
+              "synthetic:supported"
+            ],
+            "scope_id": "east"
+          }
+        ],
+        "interpretation": "Allocated input, not requested input",
+        "name": "Synthetic east actual input",
+        "procedure": "identity",
+        "scope_id": "east",
+        "source_refs": [],
+        "time_basis_id": null,
+        "unit_id": "kg",
+        "version": "v1"
+      }
+    ],
+    "owners": [
+      {
+        "entity_id": "water",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "writer_id": "fixture"
+      }
+    ],
+    "populations": [
+      {
+        "entity_id": "shared:cohort",
+        "role": "fixed_input"
+      }
+    ],
+    "references": [],
+    "relationships": [
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "west"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "watershed"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "region"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "east-authority",
+        "id": "authority-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "region-authority",
+        "id": "authority-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "region"
+      }
+    ],
+    "scopes": [
+      {
+        "id": "east",
+        "label": "Synthetic east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "west",
+        "label": "Synthetic west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "watershed",
+        "label": "Synthetic watershed",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      },
+      {
+        "id": "region",
+        "label": "Synthetic region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      }
+    ],
+    "values": [
+      {
+        "effective_time": {
+          "calendar_id": "calendar",
+          "tick": 0
+        },
+        "entity_id": "water",
+        "id": "water-value",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_id": "east",
+        "value": {
+          "denominator_scope_id": null,
+          "kind": "quantity",
+          "time_basis_id": null,
+          "unit_id": "kg",
+          "value": "100"
+        }
+      }
+    ],
+    "versions": {
+      "catalog_id": "synthetic:catalog",
+      "model_id": "synthetic:model",
+      "numeric_runtime_id": "decimal28-half-even-exact-v1",
+      "world_schema": 1
+    }
+  }
+}
