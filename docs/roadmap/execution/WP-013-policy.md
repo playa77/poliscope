@@ -48,7 +48,7 @@ roadmap/baseline and whitespace checks pass. Linux x64 engine and Electron
 packaging pass. Final candidate-bound engine/unit evidence is recorded and verified
 under `/tmp/poliscope-policy-engine` and `/tmp/poliscope-policy-unit`.
 Local packaged desktop launch is unrun (no virtual display runner in this image);
-hosted CI owns the existing packaged desktop tests. Windows/macOS, independent
+hosted CI owns the existing packaged desktop tests. Windows, independent
 review and full application gates remain unverified.
 
 Outcome: **solo-validated; agent review deferred**. Full allocated policy child is

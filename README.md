@@ -41,8 +41,9 @@ Download the appropriate package from this repository's **Releases** page:
 | Platform | Supported architecture |
 |---|---|
 | Windows | x64 |
-| macOS | Apple Silicon and Intel |
 | Linux | x64 |
+
+This version targets Windows x64 and Linux x64 only; see the [platform scope decision](docs/platform_scope.md).
 
 The desktop packages include the Python engine. You do not need Python, Node.js, a server, or an AI account to play.
 
@@ -243,7 +244,7 @@ Build a native desktop package with:
 npm run package
 ```
 
-Native packages are built on their target operating system and architecture. Signing and notarization use local or CI configuration, never committed credentials.
+Native packages are built on their target operating system and architecture. Signing uses local or CI configuration, never committed credentials.
 
 Current tests cover roadmap integrity, bootstrap process lifecycle, engine path
 selection and the packaged Electron shell with its bundled engine. Content and

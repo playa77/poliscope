@@ -51,7 +51,7 @@ roadmap/baseline and whitespace checks pass; locks unchanged. Final
 candidate-bound engine/unit evidence is recorded and verified under
 `/tmp/poliscope-solvers-engine` and `/tmp/poliscope-solvers-unit`. Home caches are
 read-only; commands use the `/tmp/poliscope-uv` cache. Desktop launch/packaging and
-native Windows/macOS checks are unrun for this pure engine change.
+native Windows checks are unrun for this pure engine change.
 
 Outcome: **solo-validated; agent review deferred**. The allocated solver child is
 complete. Coupled finite SCCs without an applicable solver remain explicitly

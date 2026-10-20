@@ -59,7 +59,7 @@ PyInstaller builds the native Linux executable. Its `--history-read` entry reads
 a real schema-1 store with live WAL, preserves the main database bytes and returns
 the original summary with explicit stored-history labeling. The same executable's
 normal protocol-1 handshake still works. No numerical model or renderer cache is
-required. Full Electron packaging/launch and Windows/macOS behavior are unrun for
+required. Full Electron packaging/launch and Windows behavior are unrun for
 this package; this does not certify fallback UI, application gates or native release
 support. No providers, personal data or paid services were used.
 

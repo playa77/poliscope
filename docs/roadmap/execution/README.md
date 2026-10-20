@@ -106,7 +106,7 @@ used for the recorded results; no commit/merge is implied by a tree digest.
 | Repository refresh | Pull succeeded; HEAD matches origin/main at the base SHA; Codex / each package start |
 | Python | 3.12.14 available for bootstrap checks; WP-002 owns frozen uv setup |
 | Node/uv dependencies | WP-002 pins exact tools and dependency locks; see its clean-checkout evidence |
-| Native runners/signing | Unverified; WP-004 inventories Windows x64, macOS arm64/x64 and Linux x64; blocks native claims |
+| Native runners/signing | Unverified; WP-004 inventories Windows x64 and Linux x64; blocks native claims |
 | Corpus license/inventory | Unverified; WP-025 owns pinned source/license evidence; blocks redistribution, not synthetic tooling |
 | Reference benchmark desktop | Definitions frozen; PERF-REF-001 records exact native machine selection/measurement prerequisite for WP-019/051 |
 | Provider credentials/paid checks | Not requested or inspected; WP-050 needs explicit bounded authorization for live checks |

@@ -54,7 +54,7 @@ typecheck, generated contracts, content inventory, roadmap/baseline, validation
 route and whitespace checks pass. Lockfiles unchanged. Linux x64 engine and
 Electron packaging pass. Runtime caches use `/tmp` because the default home cache
 is read-only. Local packaged desktop launch is unrun (no virtual display runner);
-hosted CI owns those scenarios. Windows/macOS and independent review remain
+hosted CI owns those scenarios. Windows and independent review remain
 unverified. Final candidate-bound evidence is recorded and verified under
 `/tmp/poliscope-allocation-engine` and `/tmp/poliscope-allocation-unit`.
 

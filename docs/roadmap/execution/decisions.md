@@ -14,12 +14,16 @@ not invented assignments of people or GitHub approval identities.
 | DEC-04 | Freeze the initial selected inventory in `release-inventory.json`: every domain/branch classified and at least one substantive executable mechanism per domain; one common world and shared budgets. All chosen mechanisms are synthetic educational hypotheses until reviewed. Ordinary new sandboxes retain empty policies/goals. | Initial scope resolved; exact source-map leaves blocked by CONTENT-001 before G3. Activation/evidence review belongs to WP-026-activation and domain fixtures |
 | DEC-05 | Only declared finite allocation, deterministic Decimal linear and bounded iterative solvers may activate. Policy precedence must be explicit. WP-014-solvers/WP-015-allocation record limits and independently derived fixtures; unsupported components stay unresolved. | Detailed procedure selection due at solver/account contract start; no implicit political ordering |
 | DEC-06 | Freeze `benchmarks.json` v1: exact size counts, workload structure, budgets, cold/warm sample method, p95 definition and identity capture. Adopt roadmap §6.1 targets without lowering them. Exact reference hardware/OS/power mode still needs selection. | [PERF-REF-001](#perf-ref-001) explicitly blocks performance claims, not WP-002; fixture implementation/first measurements due WP-019 |
-| DEC-07 | Four native targets remain mandatory: Windows x64, macOS arm64/x64, Linux x64. Probe early; no cross-build or Linux-only certification. Signing material stays outside source. | [NATIVE-001](#native-001) blocks affected distribution claim; due WP-004/WP-054 |
+| DEC-07 | Two current native targets are required: Windows x64 and Linux x64. Probe early; no cross-build or Linux-only certification. Signing material stays outside source. | [NATIVE-001](#native-001) blocks affected distribution claim; due WP-004/WP-054 |
 | DEC-08 | First-class OpenRouter plus declared generic compatible subset; metadata flags cannot certify live behavior. WP-043-adapter verifies current official fields; WP-050-live records separately authorized bounded actual cases. | [PROVIDER-001](#provider-001) blocks complete compatibility claim only; offline work independent |
 | DEC-09 | Classified private payload/derivative ownership is separate from immutable simulation references. Exports project all history, keys never export, passive render fetch denied, every dispatch needs sharing authorization and atomic spend grant. WP-031-classification, WP-039-contract, WP-046-envelope and WP-048-reservation concretize retention/size/exposure defaults before consumers accept. | Required invariants resolved by T; implementation limits due at those child boundaries, never waived by a mock |
 | DEC-10 | Companion links in D/T and roadmap resolve to existing local documents. Local link/anchor scan is part of WP-001 validation. README now distinguishes planned npm/uv commands from actual bootstrap checks. No product requirement text changed. | Resolved for this candidate |
 | DEC-11 | One actual agent, Codex `/root`, user controller via chat; sequential implementation and fixed SV route. Start contracts and completion records live in Git. All six capacity changes, same-count replacement, independent completion and interruption are exercised using explicitly synthetic records. Active plans and evidence stay fixed. | Resolved for current allocation. Independent agent review deferred; actual multi-agent handoff remains unrun until applicable |
 | DEC-12 | Gates v1 preserve all 30 exact subcases and first gates; `case-owners.json` assigns delivering/verification scopes. `delivery-plan.json` provides concrete consumer-independent early edges and nullable actual merge SHAs. WP-003 connects selection to collected/executed real tests; WP-005 defines schema windows/rejection/migrations before consumers. Mutation replay checks binding before current head, trusted history reader is numerically independent, and scheduled changes use typed deltas/preconditions. | Planning baseline resolved; consumer readiness still requires actual versioned validated merged contracts, never a fictional SHA |
+
+## Platform scope amendment — 2026-10-20
+
+The owner deferred Mac support to a later product version because no team member owns a Mac for testing. DEC-07, T §15, WP-004/WP-054 and E2E-017 require Windows x64 and Linux x64 only. Mac work is excluded from current packages, gates and release blockers. See [platform scope](../../platform_scope.md). Stable requirement IDs and unrun evidence statuses are preserved.
 
 ## Architecture contradiction and ambiguity disposition
 
@@ -63,8 +67,8 @@ performance acceptance; no budget is waived or silently relaxed.
 ### NATIVE-001
 
 Owner duty: WP-004-native-matrix then WP-054-install/signing. Exit: available
-native runners for all four OS/architecture targets, supported OS floor,
-installer/signing/notarization requirements and actual no-system-Python evidence.
+native runners for both current OS/architecture targets (Windows x64 and Linux x64), supported OS floor,
+installer/signing requirements and actual no-system-Python evidence.
 Current status: runners and signing readiness unverified. Blocks only affected
 native packaging/support claims until the required evidence is present.
 

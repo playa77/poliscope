@@ -63,7 +63,7 @@ The native PyInstaller engine builds and completes a protocol handshake. Vite
 main/preload/renderer bundles build. Full Electron packaging was attempted twice;
 the network-enabled retry failed downloading Electron's SHASUMS256.txt from GitHub
 with HTTP 503. Packaged Electron launch is unrun; this environment also lacks
-Xvfb. Native Windows/macOS behavior and hosted CI are unverified. This limitation
+Xvfb. Native Windows behavior and hosted CI are unverified. This limitation
 does not certify the final lifecycle or any application milestone.
 
 Outcome: **solo-validated; agent review deferred**. Full allocated early transport

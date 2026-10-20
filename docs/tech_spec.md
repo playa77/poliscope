@@ -462,7 +462,7 @@ Performance scales through scope/world queries, sparse dependency storage, conte
 
 Independent components may compute concurrently if their results are merged in deterministic order and they do not share mutable state or random streams. State reduction and SQLite commits remain serialized. Solver budgets and memory limits return explicit outcomes, not truncated unlabelled calculations.
 
-The application targets native Windows x64, macOS arm64/x64, and Linux x64 bundles. Build the Python engine natively for each target and package it as executable resources outside ASAR. Users need no system Python. Signing/notarization, Linux secure-key-backend behavior, engine path resolution, portable data, and numerical reproducibility are platform validation requirements.
+The application targets native Windows x64 and Linux x64 bundles only. Build the Python engine natively for each target and package it as executable resources outside ASAR. Users need no system Python. Signing, Linux secure-key-backend behavior, engine path resolution, portable data, and numerical reproducibility are platform validation requirements.
 
 The application code belongs in its own repository. A suitable structure separates `desktop/main`, `desktop/preload`, `desktop/renderer`, `engine/world`, `engine/domains`, `engine/simulation`, `engine/storage`, `engine/explanation`, `content`, `contracts`, and tests. The source society repository remains a referenced corpus, not the application's dependency root.
 

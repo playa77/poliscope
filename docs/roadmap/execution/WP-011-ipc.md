@@ -68,7 +68,7 @@ directory and ephemeral session; production preferences remain isolated/sandboxe
 without Node integration. Xvfb was extracted under /tmp, with temporary writable
 caches and network-enabled test execution. As in prior smoke coverage Electron
 launches with --no-sandbox; this proves configured preferences and application
-boundaries, not OS sandbox enforcement. Windows/macOS and native release security
+boundaries, not OS sandbox enforcement. Windows and native release security
 remain untested. Candidate-bound engine/unit/desktop evidence is run and verified
 with scripts/evidence.py; local ignored artifacts are not committed.
 

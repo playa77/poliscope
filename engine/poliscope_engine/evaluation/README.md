@@ -51,7 +51,7 @@ ordered event IDs and supplied values identify realization. Their digests form t
 cache key; the complete result payload forms output identity. Strict contracts
 have no request-ID or bookkeeping-time fields; effective time stays included.
 This conservative identity may miss reuse opportunities but cannot reuse on equal
-visible indicators. Native cross-platform reproducibility remains unverified.
+visible indicators. Native reproducibility across Windows x64 and Linux x64 remains unverified.
 
 `EvaluationCache` is a bounded host-owned wrapper, separate from pure evaluation.
 It validates/resolves fresh inputs before lookup, stores detached JSON and checks

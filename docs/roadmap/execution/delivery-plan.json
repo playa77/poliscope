@@ -137,7 +137,7 @@
     },
     "WP-004-native-matrix": {
       "parent": "WP-004",
-      "scope": "native matrix",
+      "scope": "native matrix for Windows x64 and Linux x64 only",
       "capabilities": "QA + DESK",
       "status": "planned",
       "requires": null,

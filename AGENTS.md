@@ -4,6 +4,10 @@ This file applies throughout the repository. Follow the user's current task and
 any more specific instructions in the area you change. Keep work scoped to the
 request; do not start unrelated implementation packages or rewrite requirements.
 
+## Current platform scope
+
+Target Windows x64 and Linux x64 only. The owner deferred Mac support to a later product version because nobody on the team owns a Mac for testing. Do not plan, implement or require Mac work for this version. See [platform scope](docs/platform_scope.md).
+
 ## Start with the actual repository
 
 - Inspect `git status`, the current branch, relevant files, and applicable
@@ -176,7 +180,7 @@ npm run package
   do not regenerate locks merely to get past an unexplained failure. Document
   intentional dependency changes and additional runtime dependencies.
 - Native packages must be built and validated on their target OS/architecture;
-  a Linux run cannot certify Windows or macOS support.
+  a Linux run cannot certify Windows support.
 - Keep patches focused and avoid unrelated formatting or speculative abstractions.
   Do not commit credentials, personal saves, transcripts, caches, or build output.
   Check the final diff and working-tree status; preserve unrelated user work.

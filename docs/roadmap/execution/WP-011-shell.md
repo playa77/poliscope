@@ -61,5 +61,5 @@ complete. The current primitive requires the player to know retained storage
 context/revision/result IDs; browse/discovery and full creation/navigation belong
 to later service/UI packages. No production simulation, automatic compatibility
 recovery, operation replay, historical schema migration or application milestone
-is claimed. Windows/macOS and paid providers were not exercised. Next scope is
+is claimed. Windows and paid providers were not exercised. Next scope is
 WP-011-ipc, retaining full parent security/service acceptance.

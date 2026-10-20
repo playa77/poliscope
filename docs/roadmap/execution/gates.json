@@ -148,7 +148,7 @@
       "prerequisite": "G7; WP-052/055"
     },
     "E2E-017": {
-      "scope": "Complete native install/offline/replay/round-trip/key-removal workflow on all four targets",
+      "scope": "Complete native install/offline/replay/round-trip/key-removal workflow on both current targets (Windows x64 and Linux x64)",
       "first_gate": "G7",
       "prerequisite": "G7; WP-054/055"
     }

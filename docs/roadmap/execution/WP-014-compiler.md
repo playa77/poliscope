@@ -51,7 +51,7 @@ root/generated contract typechecks, generated-artifact check, content inventory,
 roadmap/baseline, validation-route and whitespace checks pass. Locks unchanged.
 Final candidate-bound engine/unit evidence is recorded and verified under
 `/tmp/poliscope-compiler-engine` and `/tmp/poliscope-compiler-unit`.
-Desktop launch/packaging and Windows/macOS native checks are unrun for this pure
+Desktop launch/packaging and Windows native checks are unrun for this pure
 compiler change; no desktop behavior or public protocol was changed.
 
 Outcome: **solo-validated; agent review deferred**. This static compiler child is

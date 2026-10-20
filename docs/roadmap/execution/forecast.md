@@ -65,7 +65,7 @@ Repository account/branch protections are not modified by staffing changes.
 | CI/branch access | No CI workflow or remote approval rules changed | WP-003-ci checks actual repository capabilities and required candidate rules | Shared account cannot produce independent GitHub identities |
 | Source/license | No corpus excerpt retrieved/copied | CONTENT-001 / WP-025-inventory | License/source lead time can block content distribution |
 | Benchmarks | Workload/budgets fixed, no exact native machine selected | PERF-REF-001 / WP-019 and WP-051 | Missing machine blocks performance claim, not framework implementation |
-| Native execution/signing | Four targets required, access unverified | NATIVE-001 / WP-004 and WP-054 | External runner/signing lead time may dominate release |
+| Native execution/signing | Windows x64 and Linux x64 required, access unverified | NATIVE-001 / WP-004 and WP-054 | External runner/signing lead time may dominate release |
 | Provider APIs/credentials | No paid test authorization; no credentials read | PROVIDER-001 / WP-043 and WP-050 | Current schema/access/credit are separate from mock implementation |
 | Model/usability expertise | Not independently staffed | WP-026-activation / WP-052-usability / WP-055-trace-audit | External evidence and participant availability can block empirical claims |
 

@@ -53,7 +53,7 @@ candidate-bound engine/unit evidence is captured and verified with
 
 Linux packaging/Electron smoke is not rerun: this package adds pure engine
 primitives with no bootstrap, desktop service, dependency or wire-schema change.
-Windows/macOS/native reproducibility remain untested. Store transaction integration,
+Native Windows x64 reproducibility remains untested. Store transaction integration,
 world scope aggregation, calendars, production yields/solvers and application gate
 acceptance remain later packages. Numeric runtime v1 deliberately rejects inexact
 arithmetic/conversions; rounded postings require an explicit residual policy.
