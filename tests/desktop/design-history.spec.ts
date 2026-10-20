@@ -9,7 +9,7 @@ function environment(data: string) {
   const env: Record<string,string|undefined> = {...process.env,POLISCOPE_USER_DATA:data}; delete env.ELECTRON_RUN_AS_NODE;
   return env as Record<string,string>;
 }
-test('packaged history preserves old futures, historical inspection, exact context and cold reopen', async () => {
+test('E2E-005 packaged undo redo retained futures historical fork and cold reopen', async () => {
   test.setTimeout(240000);
   const directory = await mkdtemp(join(tmpdir(),'poliscope-history-ui-'));
   const worlds = join(directory,'worlds'); await mkdir(worlds);
@@ -93,7 +93,7 @@ test('packaged history preserves old futures, historical inspection, exact conte
   } finally {await app.close();await rm(directory,{recursive:true,force:true});}
 });
 
-test('packaged comparison reads exact durable quantities without the fixture executable model', async () => {
+test('E2E-010.a compatible incompatible and unavailable retained comparisons', async () => {
   test.setTimeout(180000);
   const directory = await mkdtemp(join(tmpdir(),'poliscope-numeric-comparison-'));
   const worlds = join(directory,'worlds'); await mkdir(worlds);

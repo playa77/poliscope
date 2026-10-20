@@ -43,6 +43,7 @@ jobs:
           uv run --frozen python scripts/evidence.py verify --output artifacts/engine
           uv run --frozen python scripts/evidence.py verify --output artifacts/unit
           uv run --frozen python scripts/evidence.py verify --output artifacts/desktop
+          uv run --frozen python scripts/check_gate_evidence.py docs/roadmap/execution/WP-024-selection.json artifacts/engine artifacts/unit artifacts/desktop
           git fetch origin main
           git merge-base --is-ancestor origin/main HEAD
       - uses: actions/upload-artifact@v4

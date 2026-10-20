@@ -11,7 +11,7 @@ function environment(data: string) {
   return env as Record<string, string>;
 }
 
-test('packaged production creation preserves unanswered choices, explicit editable references and cold reopen', async () => {
+test('E2E-002.a unanswered choices editable conditions domain navigation and cold reopen', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-creation-'));
   const worlds = join(directory, 'worlds'); await mkdir(worlds);
   let app = await electron.launch({ executablePath, args, env: environment(join(directory, 'app')) });
@@ -75,7 +75,7 @@ with Store(Path(sys.argv[1])) as store:
   } finally { await app.close(); await rm(directory, { recursive: true, force: true }); }
 });
 
-test('packaged navigation binds branch, retained revision and scope to the production world', async () => {
+test('E2E-006.a packaged navigation binds branch retained revision and scope', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-context-'));
   const worlds = join(directory, 'worlds'); await mkdir(worlds);
   const seed = spawnSync(resolve('.venv/bin/python'), ['-I', '-c', `

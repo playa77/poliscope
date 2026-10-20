@@ -368,3 +368,12 @@ incompatible quantities retain reasons, independently of trace availability.
 One agent and SV inspection remain in effect. Reassess WP-024's complete offline
 milestone manifest after merge; native/scientific and other cumulative gates are
 not implied by this package's synthetic Linux checks.
+
+
+## Current boundary after PR #37
+
+PR #37 merged WP-023 at `59e35302bf12fb009ac35e256aea0a71681fcc3c`.
+[WP-024](WP-024.md) allocates the complete integrated offline validation package
+to the same sequential owner under SV. Exact G2 subcases, actual bundled engine/
+SQLite, offline and fault/keyboard workflows are required. Native feasibility,
+independent review and COL-04 identity replacement remain explicitly unclaimed.

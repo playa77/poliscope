@@ -11,7 +11,7 @@ function environment(data: string) {
   return env as Record<string, string>;
 }
 
-test('packaged keyboard interview preview/cancel/apply, qualitative proposal and durable reopen', async () => {
+test('E2E-005 packaged interview cancel apply stale rejection qualitative proposal and reopen', async () => {
   test.setTimeout(240_000);
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-interview-ui-'));
   const worlds = join(directory, 'worlds'); await mkdir(worlds);

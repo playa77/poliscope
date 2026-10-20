@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import fixtures from '../../contracts/fixtures.json';
 
-test('packaged renderer rejects forged IPC and passive hostile resources and remains usable', async () => {
+test('E2E-012.a packaged sender schema and passive hostile resources', async () => {
   const data = await mkdtemp(join(tmpdir(), 'poliscope-security-'));
   let hits = 0;
   const sink = createServer((_request, response) => { hits++; response.end('controlled sink'); });
