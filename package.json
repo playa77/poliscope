@@ -14,7 +14,8 @@
   "packageManager": "npm@11.9.0",
   "scripts": {
     "dev": "node scripts/desktop.mjs start",
-    "content:validate": "node scripts/check-inventory.mjs content",
+    "content:validate": "uv run --frozen python scripts/build_content.py --check",
+    "content:build": "uv run --frozen python scripts/build_content.py",
     "contracts:check": "uv run --frozen python scripts/generate_contracts.py --check",
     "typecheck": "tsc --noEmit",
     "test": "vitest run && uv run --frozen python -m unittest discover -s tests/roadmap -v",

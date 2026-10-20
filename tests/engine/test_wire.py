@@ -30,6 +30,7 @@ def test_generated_artifacts_fail_closed(tmp_path, monkeypatch, mutation):
     module = importlib.util.module_from_spec(spec)
     spec.loader.exec_module(module)
     shutil.copytree('contracts', tmp_path / 'contracts')
+    shutil.copytree('content', tmp_path / 'content')
     module.ROOT = tmp_path
     monkeypatch.setattr(sys, 'argv', ['generate_contracts.py', '--check'])
     module.main()

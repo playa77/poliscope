@@ -390,3 +390,15 @@ an MIT notice; every map leaf and ledger alternative is accounted for in the
 Model/evidence review, production catalog build/activation and domain numerical
 coverage remain WP-026 and subsequent packages. Native Windows evidence and
 COL-04 identity replacement remain open; this continuation does not satisfy them.
+
+## Current boundary after PR #40
+
+PR #40 merged WP-025 at `4cbd13d4815a3d2914cddbfa9ee8381e0d6ddd6b`.
+[WP-026](WP-026.md) allocates the complete sequential content build/validation,
+host-reviewed activation and setup package to Codex `/root` under SV. Immutable
+source/catalog/evidence artifacts retain original alternatives and licenses;
+branch gaps and blocked source models remain explicit. Neutral conditions and
+optional qualitative reference setups impose no player policies or goals.
+Reassess WP-027 domain conformance/interface ownership after merge. Empirical
+model approval, domain numerical coverage, historical setup UI, Windows evidence
+and COL-04 identity replacement retain their separate acceptance.

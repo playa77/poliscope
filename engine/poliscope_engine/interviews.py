@@ -109,17 +109,16 @@ def question(service, data):
     if query.scope_id not in {s.id for s in record.inputs.scopes}:
         raise ValueError('unknown_scope')
     index = int(query.domain_id.split(':')[1]) - 1
-    title, prose, labels = TOPICS[index]
-    qid = 'interview:domain-' + str(index + 1)
-    options = []
-    for n, label in enumerate(labels, 1):
-        options.append(dict(definition=definition(qid + '/option-' + str(n), 'option', qid,
-            label + '. ' + PROCEDURES[index][n - 1]),
-            label=label, benefit=BENEFITS[n - 1], cost=COSTS[n - 1], mechanism=PROCEDURES[index][n - 1] + ' ' + LIMIT))
+    from poliscope_engine.content import bundled_release
+    template = next(t for t in bundled_release().metadata.templates
+                    if t.domain_ref == f'society:domain/{index + 1:02}')
+    options = [dict(definition=option, label=template.labels[n], benefit=template.benefits[n],
+                    cost=template.costs[n], mechanism=template.mechanisms[n] + ' ' + template.coverage)
+               for n, option in enumerate(template.options)]
     conditions = [v for v in record.inputs.values if v.scope_id == query.scope_id and v.id in ('population:value', 'land:value')] if index == 0 else []
     prior = next((v.value.value for v in record.inputs.values if v.id == commitment_id(query) and v.value.kind == 'label'), None)
     return InterviewQuestion(interview_contract=1, query=query,
-        definition=definition(qid, 'question', None, title + '. ' + prose), options=options,
+        definition=template.question, options=options,
         clarification='These are original synthetic exploration templates. None is a default, recommendation or historical source choice. A card selects a draft; only Apply records it. Defer leaves the decision unanswered.',
         dependencies=[DOMAIN_NAMES[(index + 1) % 12] + ': capacities and procedures unresolved',
                       'Shared people, time, access and authority remain unspecified.'],
