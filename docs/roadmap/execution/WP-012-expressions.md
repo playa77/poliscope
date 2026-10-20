@@ -73,5 +73,5 @@ Follow-up validation: Linux x64 packaging succeeded; both packaged desktop tests
 passed five consecutive runs (10/10) on a local Xorg dummy display. Typecheck,
 content inventory, contract drift, validation-route and whitespace checks passed.
 This supersedes the earlier statement that native packaging was unrun for this
-candidate; Windows/macOS and full application gates remain unverified. Hosted CI
+candidate; Windows and full application gates remain unverified. Hosted CI
 must pass on the updated PR before merge readiness is claimed.

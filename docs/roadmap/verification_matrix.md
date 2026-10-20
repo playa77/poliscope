@@ -142,7 +142,7 @@ The scenario table above describes aggregate workflows. The following manifest i
 | E2E-015.c | Structurally safe absent-mechanism archives open read-only, unreadable schemas preserve originals with a diagnostic, reduced/legacy evidence is labeled, explicit model migration and interrupted backup/restore preserve old evidence/deduplication | G5; WP-039/041 |
 | E2E-016.a | Keyboard-only core offline creation/interview/preview/account/trace/fork/comparison tasks, status text and focus recovery | G2; WP-020–WP-024 |
 | E2E-016.b | Complete learner inquiry/report task and accessibility audit across every delivered workspace | G7; WP-052/055 |
-| E2E-017 | Complete native install/offline/replay/round-trip/key-removal workflow on all four targets | G7; WP-054/055 |
+| E2E-017 | Complete native install/offline/replay/round-trip/key-removal workflow on both current targets (Windows x64 and Linux x64) | G7; WP-054/055 |
 
 | Gate | New mandatory application selections (plus retained affected earlier cases) |
 |---|---|
@@ -199,11 +199,11 @@ For every activated model record population/scope, operational definition, formu
 
 ### 6.2 Native platform matrix
 
+The required native matrix consists of Windows x64 and Linux x64 only.
+
 | Target | Required native evidence | Baseline status |
 |---|---|---|
 | Windows x64 | Native Python bundle/Forge install, signing policy, no-system-Python smoke, resource paths, key store, recovery and numeric/replay fixtures | Unrun |
-| macOS arm64 | Native bundle, signing/notarization, install/lifecycle, key store, resource paths and numeric/replay fixtures | Unrun |
-| macOS x64 | Separate native architecture build/install and same functional/numeric checks; arm64 result does not certify it | Unrun |
 | Linux x64 | Native bundle/install, executable permissions, secure backend and session-only fallback, headless desktop CI plus actual desktop operation, numeric/replay fixtures | Unrun |
 
 OS minimum versions and installer formats are settled in WP-004 and tested in WP-054. Cross-build success is not native functional evidence. Reproducibility claims name their exact numerical/model runtime and supported platforms; approximate resemblance of displayed bars is insufficient.

@@ -30,18 +30,19 @@ See `.env.example`; no dotenv loader or application key support is implemented.
 Never put personal data in content/contracts/tests or Git. Packaged execution
 uses only its native bundled engine, never a system Python fallback.
 
+Development and packaging target Windows x64 and Linux x64 only.
+
 On Linux install GTK3, NSS, ALSA, GBM and the normal Chromium desktop libraries
 (e.g. Debian `libgtk-3-0t64 libnss3 libasound2t64 libgbm1`) and use an active X11
 or Wayland session. Headless checks need `xvfb` and `xauth`:
 `xvfb-run -a npm run test:desktop`. On Windows use x64 Node/Python and allow the
-Python executable to run; on macOS use matching arm64/x64 Node and Python.
-PyInstaller needs the host's native binary tools (Linux binutils, macOS Xcode
-command-line tools, Windows native runtime). Never cross-package an engine.
+Python executable to run.
+PyInstaller needs the host's native binary tools (Linux binutils, Windows native runtime). Never cross-package an engine.
 
 `npm run package` builds a one-directory PyInstaller engine then invokes Forge.
 The native engine directory is copied outside ASAR as `resources/poliscope-engine`.
 Outputs are unsigned **scaffold** applications, not playable release artifacts.
-No makers, signing keys or notarization are configured; native feasibility and
+No makers or signing keys are configured; native feasibility and
 release distribution remain WP-004/WP-054. Each OS/architecture must be verified
 on its own runner. `npm run test:desktop` packages first and launches the actual
 application with Playwright in a temporary user-data directory, without providers.
@@ -97,7 +98,7 @@ contain fetched current main, rechecked at completion. Maintainers must make
 `Validation / checks` a required check and use an up-to-date branch or merge queue;
 this workflow does not change repository protection or create independent review
 identities. New code requires fresh evidence and the package review route.
-Native Windows/macOS jobs await WP-004/WP-054 runner verification. The empty
+Native Windows jobs await WP-004/WP-054 runner verification. The empty
 content inventory fails closed. WP-005-wire/world now provide generated schemas,
 TypeScript/tool inputs and shared positive/negative compatibility fixtures;
 `npm run contracts:check` checks regeneration and registered artifacts.

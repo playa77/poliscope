@@ -57,7 +57,7 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** QA + DESK. **Size:** M. **Depends:** WP-002, WP-003. **Sources:** T §§2, 13.3, 15.
 
 - Package a minimal Python handshake executable with PyInstaller, place it outside ASAR through Forge resources, and launch by resolved absolute path. Probe paths containing spaces/non-ASCII characters and development versus packaged resolution.
-- Execute native probes on Windows x64, macOS arm64/x64, and Linux x64; determine minimum supported OS versions, runner availability, executable permissions, signing/notarization needs, and secure-key backend behavior.
+- Execute native probes on Windows x64 and Linux x64; determine minimum supported OS versions, runner availability, executable permissions, signing needs, and secure-key backend behavior.
 - Record unsupported/missing runners or signing prerequisites with owners and lead time. A Linux cloud run cannot certify the other targets. Retain the probe as a packaging smoke fixture for WP-054.
 
 **Acceptance/evidence:** per-target result distinguishes launch success, failure, and unrun; packaged engine does not require user Python. Remaining platform prerequisites have concrete resolutions and block the relevant release claim. This probe certifies process/bundle feasibility, not application functionality.
@@ -406,7 +406,7 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 
 - Specify/version deterministic RNG contract and streams keyed by the complete stable instance/event/purpose/draw identity contract in T §7.5; pass streams explicitly to stochastic mechanisms.
 - Store distributions, sampling definitions, runtime identity and realized draws/events. Keep source ranges as ranges until a declared probability distribution is selected; exclude AI generation and diagram layout randomness.
-- Provide deterministic/no-hazard, authored-event and stochastic test paths with known realization fixtures and native cross-platform verification hooks.
+- Provide deterministic/no-hazard, authored-event and stochastic test paths with known realization fixtures and native Windows x64/Linux x64 verification hooks.
 
 - Resolve DEC-02 with a versioned key including stable mechanism definition/version, instance/entity, scope, purpose, event identity and named draw/index. Global list position is not event identity. Shared uncertain-variable references reuse the declared joint realization; stream separation does not imply statistical independence. Record fork seed/identity preservation versus deliberate new realization.
 
@@ -624,11 +624,11 @@ Domain packages use the same registry, world, accounts, content, UI, and transit
 
 **Allocation:** record agent owner/controller, division of work and validation route at executable-package start; retain through completion. **Specialties:** QA + DESK + ENG. **Size:** L. **Depends:** WP-004, WP-041, WP-049, WP-053. **Sources:** T §§2, 7.5, 13.3, 15–16.
 
-- Produce native PyInstaller/Forge packages for Windows x64, macOS arm64/x64 and Linux x64; bundle engine outside ASAR and verify native dependencies, app/engine identity, resource paths, permissions and upgrade/user-data behavior.
-- Configure signing/notarization through external local/CI secrets; verify platform-specific secure-key behavior, session-only fallback, proxy networking, cancellation and recovery. Do not put signing material or secrets into artifacts/source.
+- Produce native PyInstaller/Forge packages for Windows x64 and Linux x64; bundle engine outside ASAR and verify native dependencies, app/engine identity, resource paths, permissions and upgrade/user-data behavior.
+- Configure signing through external local/CI secrets; verify platform-specific secure-key behavior, session-only fallback, proxy networking, cancellation and recovery. Do not put signing material or secrets into artifacts/source.
 - Install/run on target machines without Python/Node, execute the common numerical/replay fixtures and representative offline desktop/import/export tasks. Record signing/install outcomes and reproducibility boundary per target.
 
-**Acceptance/evidence:** all four native target combinations run the bundled engine and pass declared invariants/replay and desktop smoke checks. Missing runner/signing/notarization is explicit and blocks the affected distribution claim. Artifact checksums and version/digest mapping are retained; packaged behavior is not inferred from development mode.
+**Acceptance/evidence:** both current native targets (Windows x64 and Linux x64) run the bundled engine and pass declared invariants/replay and desktop smoke checks. Missing runner/signing is explicit and blocks the affected distribution claim. Artifact checksums and version/digest mapping are retained; packaged behavior is not inferred from development mode.
 
 ### WP-055 — Whole-product end-to-end validation and model evidence audit
 

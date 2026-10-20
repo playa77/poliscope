@@ -483,7 +483,7 @@
       "capabilities": "QA + DESK + ENG",
       "size": "L",
       "acceptance_dependencies": "WP-004, WP-041, WP-049, WP-053",
-      "acceptance": "all four native target combinations run the bundled engine and pass declared invariants/replay and desktop smoke checks. Missing runner/signing/notarization is explicit and blocks the affected distribution claim. Artifact checksums and version/digest mapping are retained; packaged behavior is not inferred from development mode.",
+      "acceptance": "both current native targets (Windows x64 and Linux x64) run the bundled engine and pass declared invariants/replay and desktop smoke checks. Missing runner/signing is explicit and blocks the affected distribution claim. Artifact checksums and version/digest mapping are retained; packaged behavior is not inferred from development mode.",
       "source": "docs/roadmap/work_packages.md",
       "status": "not started"
     },

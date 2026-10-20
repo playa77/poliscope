@@ -55,6 +55,6 @@ full application/native platform gates remain outside this bounded service.
 
 Linux x64 engine and Electron packaging pass. Local packaged desktop launch is
 unrun because this image has no virtual display runner; hosted CI owns the
-existing launch/security scenarios. Windows/macOS and independent review remain
+existing launch/security scenarios. Windows and independent review remain
 unverified. Final candidate-bound engine/unit evidence is recorded and verified
 under `/tmp/poliscope-accounts-engine` and `/tmp/poliscope-accounts-unit`.

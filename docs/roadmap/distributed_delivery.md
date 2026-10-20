@@ -8,7 +8,7 @@ Revision 0.5 · 2026-10-16 · One to three development agents under human contro
 
 ## 1. Allocation unit and responsibilities
 
-The executable work package is the unit of assignment. Before it starts, allocate an available development agent and record its controlling person, any collaborators, division of work, write scope, dependencies, deliverables, interfaces, validation route and acceptance criteria. Keep this execution plan stable until the package completes.
+The executable work package is the unit of assignment. Platform work in this plan targets Windows x64 and Linux x64 only. Before it starts, allocate an available development agent and record its controlling person, any collaborators, division of work, write scope, dependencies, deliverables, interfaces, validation route and acceptance criteria. Keep this execution plan stable until the package completes.
 
 Human controllers maintain priorities, agent availability and the authoritative package ledger. They select ready work at package boundaries and retain required human authorization decisions. Development agents implement, test, document and review their assigned packages. Required capabilities belong to package definitions; agent identities are recorded only when packages are allocated. An agent may implement an engine package and later a desktop, content or review package if qualified.
 
