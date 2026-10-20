@@ -6,6 +6,8 @@
     "allocation.ts",
     "comparison.schema.json",
     "comparison.ts",
+    "content.schema.json",
+    "content.ts",
     "dependency.schema.json",
     "dependency.ts",
     "evaluation.schema.json",

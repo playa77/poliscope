@@ -32,6 +32,8 @@ def registry():
 
 def starting_inputs(options, civilization_id):
     options = CreateOptions.model_validate(options)
+    from poliscope_engine.content import bundled_release
+    bundled_release().setup(options.setup, explicitly_selected=True)
     for value in (options.population, options.land_area):
         if value is not None and parse(value) < 0:
             raise ValueError('negative_starting_condition')
@@ -64,11 +66,12 @@ def starting_inputs(options, civilization_id):
 
 
 def catalogue(service):
+    from poliscope_engine.content import bundled_release
     return WorkspaceCatalogue(workspace_contract=1, data_store_id=service.data_store_id, branches=service.catalogue(),
         domains=[DomainEntry(id='domain:' + str(i), name=name, status='unanswered') for i, name in enumerate(DOMAIN_NAMES, 1)],
-        setups=[SetupEntry(id='blank', name='Unanswered starting conditions', reference=False, population=None, land_area=None),
-                SetupEntry(id='reference:small-settlement', name='Synthetic small settlement (editable conditions only)',
-                           reference=True, population='100', land_area='10')])
+        setups=[SetupEntry(id=s.id, name=s.name, reference=s.kind != 'neutral', population=s.population, land_area=s.land_area)
+                for s in bundled_release().metadata.setups
+                if s.id in ('blank', 'reference:small-settlement')])
 
 
 def select(service, options):

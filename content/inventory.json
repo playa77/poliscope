@@ -1,5 +1,11 @@
 {
-  "version": 1,
-  "status": "bootstrap-empty",
-  "files": []
+  "files": {
+    "release-v1/interview.pack.json": "sha256:56b75d3517da476df32d2dca3ec33356a20a073e5dec65bb4a0f552c52ed8fc3",
+    "release-v1/release.json": "sha256:649c5fa88d40f4c7ced00558621b635cfe3bebc1c0050a12a1dfb71185557e7a",
+    "release-v1/society.inventory.json": "sha256:e8fc14dca6660ab50356cd2b2e4b9e7f6cc33d9085e06896dd78ce8c69840e25",
+    "release-v1/society.pack.json": "sha256:94e5d602b6d06511747483b59bc744683b05ac9043ccb0561e21b18263b07faf",
+    "release-v1/source-review.md": "sha256:c6167209f85541cd93f861afba7c5cc6e00f080ea6ac64afede8b9eee7b7b13a"
+  },
+  "status": "immutable-release-v1",
+  "version": 1
 }

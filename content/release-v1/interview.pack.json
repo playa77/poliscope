@@ -1,0 +1,1086 @@
+{
+  "assumptions": [],
+  "definitions": [
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-1",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Materials in a settlement. Households and shared facilities need materials, but their quantities and access are still unanswered. How should people describe the arrangement they want to explore?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-1/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Household provisioning. Households arrange their own material purchases and storage, and record unmet needs locally.",
+      "parameter": null,
+      "parent_ref": "interview:domain-1",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-1/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared provisioning. Participants pool specified material requirements through a shared store with an agreed access procedure.",
+      "parameter": null,
+      "parent_ref": "interview:domain-1",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-1/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Mixed provisioning. Household stores coexist with a shared reserve; participants must define when requests cross between them.",
+      "parameter": null,
+      "parent_ref": "interview:domain-1",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-2",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Exchange and access. People need a way to obtain goods when their needs and contributions differ. Which access arrangement would you like to explore?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-2/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Direct exchange. Participants negotiate exchanges directly and specify what happens when someone cannot offer a counterpart.",
+      "parameter": null,
+      "parent_ref": "interview:domain-2",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-2/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Common provision. A common provision process receives requests and assigns access under an explicitly agreed procedure.",
+      "parameter": null,
+      "parent_ref": "interview:domain-2",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-2/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Mixed access. Direct exchanges coexist with a common provision channel; their boundaries and eligibility must be stated.",
+      "parameter": null,
+      "parent_ref": "interview:domain-2",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-3",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Collective decisions. A settlement faces a decision that affects people beyond one household. Who should take part in deciding it?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-3/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Assembly. Affected participants meet in an assembly and agree how proposals, objections and decisions are recorded.",
+      "parameter": null,
+      "parent_ref": "interview:domain-3",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-3/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Delegated council. Participants delegate decisions to named representatives, with explicit authority, reporting and recall rules.",
+      "parameter": null,
+      "parent_ref": "interview:domain-3",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-3/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Nested deliberation. Local groups deliberate first and send unresolved shared questions to a wider forum with defined authority.",
+      "parameter": null,
+      "parent_ref": "interview:domain-3",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-4",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Dispute procedures. Two groups disagree about an obligation. What process should hear their accounts and revisit the outcome?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-4/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Mediation. A mediator helps the parties seek an agreement; participation and routes after failed mediation must be defined.",
+      "parameter": null,
+      "parent_ref": "interview:domain-4",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-4/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Formal hearing. A designated hearing body receives evidence and issues a decision under stated rules and appeal procedures.",
+      "parameter": null,
+      "parent_ref": "interview:domain-4",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-4/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Staged resolution. Parties attempt mediation first and may move to a formal hearing; the handoff and authority need agreement.",
+      "parameter": null,
+      "parent_ref": "interview:domain-4",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-5",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Care and relationships. Care responsibilities overlap with work and participation. How should people describe coordination across households?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-5/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Household networks. Households coordinate care through their own relationships, recording who can ask for help and who is excluded.",
+      "parameter": null,
+      "parent_ref": "interview:domain-5",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-5/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared care circles. A shared care circle coordinates requests and volunteers under agreed responsibility and safeguarding rules.",
+      "parameter": null,
+      "parent_ref": "interview:domain-5",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-5/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Mixed coordination. Household support and shared care coexist, with an explicit route for needs that either cannot meet.",
+      "parameter": null,
+      "parent_ref": "interview:domain-5",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-6",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Learning arrangements. Learners need time, support and places to learn. Which arrangement should be explored while those capacities remain unspecified?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-6/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Community learning. Community members organize learning activities and define how learners find mentors and support.",
+      "parameter": null,
+      "parent_ref": "interview:domain-6",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-6/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Dedicated institutions. Dedicated learning institutions coordinate staff, participation and facilities under an explicit access procedure.",
+      "parameter": null,
+      "parent_ref": "interview:domain-6",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-6/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Mixed learning. Community learning and dedicated institutions share referrals while keeping their responsibilities explicit.",
+      "parameter": null,
+      "parent_ref": "interview:domain-6",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-7",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Health and wellbeing. People need care at different times and with different capabilities. What arrangement should be explored for coordinating access?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-7/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Local care teams. Local care teams receive requests and define what they can handle and when they must seek additional support.",
+      "parameter": null,
+      "parent_ref": "interview:domain-7",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-7/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared care centers. Shared care centers coordinate staff and facilities, with explicit access and referral procedures.",
+      "parameter": null,
+      "parent_ref": "interview:domain-7",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-7/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Linked care network. Local teams and shared centers agree referrals and continuity responsibilities across the network.",
+      "parameter": null,
+      "parent_ref": "interview:domain-7",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-8",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Infrastructure stewardship. Facilities need upkeep as well as construction. Who should coordinate maintenance and report unmet needs?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-8/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Local stewardship. Local stewards maintain named facilities and record inspections, repairs and needs they cannot meet.",
+      "parameter": null,
+      "parent_ref": "interview:domain-8",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-8/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared maintenance body. A shared maintenance body coordinates repair requests and workers under an agreed scheduling procedure.",
+      "parameter": null,
+      "parent_ref": "interview:domain-8",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-8/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Layered stewardship. Local stewards handle specified tasks while a wider body handles shared assets and unresolved repairs.",
+      "parameter": null,
+      "parent_ref": "interview:domain-8",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-9",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Communication and information. People need reliable information while personal details may require protection. How should communication be organized?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-9/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Community channels. Community-run channels publish information under local editorial and personal-data rules.",
+      "parameter": null,
+      "parent_ref": "interview:domain-9",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-9/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared information service. A shared information service publishes common records, with explicit correction and privacy procedures.",
+      "parameter": null,
+      "parent_ref": "interview:domain-9",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-9/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Federated channels. Independent channels exchange designated records under agreed interoperability, correction and privacy rules.",
+      "parameter": null,
+      "parent_ref": "interview:domain-9",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-10",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Environmental commitments. A proposed activity may change land and resource use. How should people describe review of those effects?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-10/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Local review. Local participants review a proposed activity and record affected places, uncertainties and objections.",
+      "parameter": null,
+      "parent_ref": "interview:domain-10",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-10/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared ecological review. A shared ecological review body examines proposals across places under defined authority and evidence rules.",
+      "parameter": null,
+      "parent_ref": "interview:domain-10",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-10/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Layered review. Local and wider review bodies divide responsibilities and specify when a proposal must move between them.",
+      "parameter": null,
+      "parent_ref": "interview:domain-10",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-11",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Meaning and identity. People hold different beliefs and practices. How should shared activities make room for those differences?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-11/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Voluntary associations. Voluntary associations organize practices and state how participation, exit and access to shared spaces work.",
+      "parameter": null,
+      "parent_ref": "interview:domain-11",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-11/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared accommodation forum. A shared forum hears accommodation requests and records procedures for disagreement and revision.",
+      "parameter": null,
+      "parent_ref": "interview:domain-11",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-11/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Multiple overlapping forums. Several forums handle different practices, with an agreed route for overlapping claims and unresolved requests.",
+      "parameter": null,
+      "parent_ref": "interview:domain-11",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-12",
+      "kind": "question",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Continuity and risk. A disruption can interrupt services that depend on one another. How should people coordinate preparation?",
+      "parameter": null,
+      "parent_ref": null,
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-12/option-1",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Local preparedness. Local groups document critical needs and available responses, including dependencies they cannot cover.",
+      "parameter": null,
+      "parent_ref": "interview:domain-12",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-12/option-2",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Shared continuity team. A shared continuity team coordinates preparation and requests under explicit authority and resource limits.",
+      "parameter": null,
+      "parent_ref": "interview:domain-12",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    },
+    {
+      "assumption_refs": [],
+      "evidence": "hypothetical",
+      "historical_status": "unspecified",
+      "id": "interview:domain-12/option-3",
+      "kind": "option",
+      "measurement": null,
+      "mechanism_refs": [],
+      "modeling": "qualitative",
+      "origin": "authored",
+      "original_text": "Linked preparedness. Local groups and shared teams maintain linked plans, with named handoffs when disruption crosses boundaries.",
+      "parameter": null,
+      "parent_ref": "interview:domain-12",
+      "source_decision_id": null,
+      "source_refs": [
+        "interview:source/conventions"
+      ],
+      "supersedes_refs": [],
+      "variable_refs": [],
+      "version": "v1"
+    }
+  ],
+  "dependence": [],
+  "distributions": [],
+  "files": [
+    {
+      "path": "LICENSE",
+      "text": "MIT License\n\nCopyright (c) 2026 playa77\n\nPermission is hereby granted, free of charge, to any person obtaining a copy\nof this software and associated documentation files (the \"Software\"), to deal\nin the Software without restriction, including without limitation the rights\nto use, copy, modify, merge, publish, distribute, sublicense, and/or sell\ncopies of the Software, and to permit persons to whom the Software is\nfurnished to do so, subject to the following conditions:\n\nThe above copyright notice and this permission notice shall be included in all\ncopies or substantial portions of the Software.\n\nTHE SOFTWARE IS PROVIDED \"AS IS\", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR\nIMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,\nFITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE\nAUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER\nLIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,\nOUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE\nSOFTWARE.\n"
+    },
+    {
+      "path": "conventions.md",
+      "text": "Original synthetic qualitative templates authored for Poliscope.\nOne substantive question, visible scope, three cards with mechanisms, benefits and costs.\nShow origin, sources and model gaps; allow clarification, deferral and player alternatives.\nSelect drafts, preview first, Apply explicitly. Preserve all original alternatives and rationale.\nNo civic default, hidden grading, numerical social benefit or fabricated model.\n"
+    }
+  ],
+  "licenses": [
+    {
+      "digest": "sha256:c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7",
+      "file": "LICENSE",
+      "id": "poliscope-mit"
+    }
+  ],
+  "manifest": {
+    "dependencies": [],
+    "engine_versions": [
+      "v1"
+    ],
+    "files": {
+      "LICENSE": "sha256:c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7",
+      "conventions.md": "sha256:436ff29723f0b925b85ad81ac11a78a1506f294650c7079064067cec5384b6b5"
+    },
+    "format_version": 1,
+    "id": "interview:catalog",
+    "identities": {
+      "application": {
+        "id": "interview-application",
+        "version": "v1"
+      },
+      "catalog": {
+        "id": "interview-catalog",
+        "version": "v1"
+      },
+      "model": {
+        "id": "interview-model",
+        "version": "v1"
+      },
+      "numeric": {
+        "id": "interview-numeric",
+        "version": "v1"
+      },
+      "schema_identity": {
+        "id": "interview-schema_identity",
+        "version": "v1"
+      }
+    },
+    "version": "v1"
+  },
+  "sources": [
+    {
+      "commit": "436ff29723f0b925b85ad81ac11a78a1506f2946",
+      "excerpt_file": "conventions.md",
+      "license_digest": "sha256:c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7",
+      "reference": {
+        "document_id": "conventions.md",
+        "excerpt_digest": "sha256:436ff29723f0b925b85ad81ac11a78a1506f294650c7079064067cec5384b6b5",
+        "historical_status": "unknown",
+        "id": "interview:source/conventions",
+        "license_id": "poliscope-mit",
+        "location": "complete authored conventions v1; revision is a content digest prefix, not a Git commit",
+        "repository_id": "playa77/poliscope",
+        "revision_id": "436ff29723f0b925b85ad81ac11a78a1506f2946",
+        "supersedes_refs": []
+      }
+    }
+  ],
+  "variables": []
+}

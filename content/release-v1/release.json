@@ -1,0 +1,2932 @@
+{
+  "activated_review_refs": [],
+  "artifacts": [
+    {
+      "digest": "sha256:56b75d3517da476df32d2dca3ec33356a20a073e5dec65bb4a0f552c52ed8fc3",
+      "path": "interview.pack.json"
+    },
+    {
+      "digest": "sha256:e8fc14dca6660ab50356cd2b2e4b9e7f6cc33d9085e06896dd78ce8c69840e25",
+      "path": "society.inventory.json"
+    },
+    {
+      "digest": "sha256:94e5d602b6d06511747483b59bc744683b05ac9043ccb0561e21b18263b07faf",
+      "path": "society.pack.json"
+    },
+    {
+      "digest": "sha256:c6167209f85541cd93f861afba7c5cc6e00f080ea6ac64afede8b9eee7b7b13a",
+      "path": "source-review.md"
+    }
+  ],
+  "catalogs": [
+    {
+      "artifact": "society.pack.json",
+      "pack_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+      "role": "reference"
+    },
+    {
+      "artifact": "interview.pack.json",
+      "pack_digest": "sha256:fdb61ccba0d05dcd3febed44e18fc419dd94b09a9fa283d57c13113a93014d23",
+      "role": "authored"
+    }
+  ],
+  "coverage": [
+    {
+      "branch_ref": "society:domain/01/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/1/1",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/1/2",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/1/3",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/1/4",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/2/1",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/2/2",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/2/3",
+      "model_status": "unsupported",
+      "reason": "Source design needs independent model/evidence review.",
+      "source_status": "source_design_only"
+    },
+    {
+      "branch_ref": "society:domain/01/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/01/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/01/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/01/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/4",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/4/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/4/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/02/4/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/03/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/4",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/4/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/4/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/04/4/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/05/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/06/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/07/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/08/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/09/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/10/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/11/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/1",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/1/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/1/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/1/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/2",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/2/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/2/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/2/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/3",
+      "model_status": "unsupported",
+      "reason": "Classification with original source wording; no reviewed executable branch model.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/3/1",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/3/2",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    },
+    {
+      "branch_ref": "society:domain/12/3/3",
+      "model_status": "unsupported",
+      "reason": "Map title only: detailed source content and numerical model are missing.",
+      "source_status": "map_only"
+    }
+  ],
+  "format_version": 1,
+  "id": "interview:release",
+  "inquiries": [
+    {
+      "domain_refs": [
+        "society:domain/01"
+      ],
+      "id": "interview:inquiry/1",
+      "prompt": "Materials in a settlement: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/02"
+      ],
+      "id": "interview:inquiry/2",
+      "prompt": "Exchange and access: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/03"
+      ],
+      "id": "interview:inquiry/3",
+      "prompt": "Collective decisions: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/04"
+      ],
+      "id": "interview:inquiry/4",
+      "prompt": "Dispute procedures: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/05"
+      ],
+      "id": "interview:inquiry/5",
+      "prompt": "Care and relationships: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/06"
+      ],
+      "id": "interview:inquiry/6",
+      "prompt": "Learning arrangements: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/07"
+      ],
+      "id": "interview:inquiry/7",
+      "prompt": "Health and wellbeing: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/08"
+      ],
+      "id": "interview:inquiry/8",
+      "prompt": "Infrastructure stewardship: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/09"
+      ],
+      "id": "interview:inquiry/9",
+      "prompt": "Communication and information: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/10"
+      ],
+      "id": "interview:inquiry/10",
+      "prompt": "Environmental commitments: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/11"
+      ],
+      "id": "interview:inquiry/11",
+      "prompt": "Meaning and identity: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    },
+    {
+      "domain_refs": [
+        "society:domain/12"
+      ],
+      "id": "interview:inquiry/12",
+      "prompt": "Continuity and risk: What do you expect from an alternative? Identify its assumptions, missing capacities, affected groups and evidence. Compare the retained observation with your expectation; an unknown result is not zero."
+    }
+  ],
+  "reviews": [
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-1_food-agriculture-full.md": "sha256:b33e4ba73d033fc674d350a8cf659fb229ee65306883ab76b4cdc766f29b98db"
+      },
+      "evidence_refs": [
+        "society:source/01-1-1_food-agriculture-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-1",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-1_food-agriculture-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-1_food-agriculture-log.md": "sha256:0386dcecdff940225e5623ddc741dc47e8ec9e5e8ef95c9fdc5d692bafb530da"
+      },
+      "evidence_refs": [
+        "society:source/01-1-1_food-agriculture-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-2",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-1_food-agriculture-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-2_energy-full.md": "sha256:f2565f777905d45ed3730cff5aa21bcbaef53313dd80850677b1db5dcf0b22ac"
+      },
+      "evidence_refs": [
+        "society:source/01-1-2_energy-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-3",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-2_energy-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-2_energy-log.md": "sha256:8e75a56670e43054d986e10d8afc1215b76def628c4f8c10cd119fb23aed4c6d"
+      },
+      "evidence_refs": [
+        "society:source/01-1-2_energy-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-4",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-2_energy-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-3_materials-manufacturing-full.md": "sha256:d54ef1d75b90fd003d0fef97d2754dbc29151e14068a2d8eeb336ac0ccaa3f85"
+      },
+      "evidence_refs": [
+        "society:source/01-1-3_materials-manufacturing-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-5",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-3_materials-manufacturing-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-3_materials-manufacturing-log.md": "sha256:2d6c5cb10d9f02f0bb1ecbe84bb45ceb22681f99026ccd4962f34308d2ea2d73"
+      },
+      "evidence_refs": [
+        "society:source/01-1-3_materials-manufacturing-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-6",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-3_materials-manufacturing-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-4_water-sanitation-full.md": "sha256:08ff7ddf11b1e413499c5d923968009d49df777f265897158c2bfa0d72bb7bc4"
+      },
+      "evidence_refs": [
+        "society:source/01-1-4_water-sanitation-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-7",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-4_water-sanitation-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-4_water-sanitation-log.md": "sha256:9bc442a828aa02eaef5d34d9de65612a38744ba496794e57223fe28b0a8d1811"
+      },
+      "evidence_refs": [
+        "society:source/01-1-4_water-sanitation-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-8",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-4_water-sanitation-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-authority-arbitration-spec.md": "sha256:ddb2010d1751ebb2f9b1e9b1747c961280daade8b064de6f019dc3409f2863b9"
+      },
+      "evidence_refs": [
+        "society:source/01-1-authority-arbitration-spec.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-9",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-authority-arbitration-spec.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-integration.md": "sha256:6613fed15311c6a86c88c5c149bb3ae6e0a6d1185ab7e5c83accd249bd571370"
+      },
+      "evidence_refs": [
+        "society:source/01-1-integration.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-10",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-integration.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-1-resource-balance-sheet.md": "sha256:1ebfaae7ac305545a7a46478f15d2282182920e9744b58885fad17e4d8d48099"
+      },
+      "evidence_refs": [
+        "society:source/01-1-resource-balance-sheet.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-11",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-1-resource-balance-sheet.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-1_transport-of-goods-full.md": "sha256:607ec9865648563a6b8fe6c48ca0bd54fa84a896ccf5944fcd63d15404b9a8cf"
+      },
+      "evidence_refs": [
+        "society:source/01-2-1_transport-of-goods-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-12",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-1_transport-of-goods-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-1_transport-of-goods-log.md": "sha256:77814e9dfba07fcb8a2072e55946dc2a831d2f58837dcff998b548aa3b0720ae"
+      },
+      "evidence_refs": [
+        "society:source/01-2-1_transport-of-goods-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-13",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-1_transport-of-goods-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-2_storage-supply-chains-full.md": "sha256:dc1a25f7eafc3f57b4bd5012b96f7a74197c23713b0e553f729c123a05d0dd56"
+      },
+      "evidence_refs": [
+        "society:source/01-2-2_storage-supply-chains-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-14",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-2_storage-supply-chains-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-2_storage-supply-chains-log.md": "sha256:4c20b50a79a83571628ddc4ca54aaaf9249b7052beb1003f6bdfc652cc4745f5"
+      },
+      "evidence_refs": [
+        "society:source/01-2-2_storage-supply-chains-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-15",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-2_storage-supply-chains-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-3_allocation-mechanisms-full.md": "sha256:eb3891bdd960b118821a84612f0b9998bfa46451ff751609d5bf29adbfe8cd7f"
+      },
+      "evidence_refs": [
+        "society:source/01-2-3_allocation-mechanisms-full.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-16",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-3_allocation-mechanisms-full.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-3_allocation-mechanisms-log.md": "sha256:f0dabf034353e7985eefdd4ab95897da8f0a709ee21d56ac12103aa79a2cac11"
+      },
+      "evidence_refs": [
+        "society:source/01-2-3_allocation-mechanisms-log.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-17",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-3_allocation-mechanisms-log.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    },
+    {
+      "basis": "unresolved",
+      "candidate_refs": [
+        "society:domain/01"
+      ],
+      "declaration_digest": null,
+      "denominator_time_scope": "Unresolved: require explicit units, population denominator, spatial scope and time basis before activation.",
+      "disposition": "blocked",
+      "evidence_digests": {
+        "society:source/01-2-integration.md": "sha256:5187b432808da19d3af35096792b03f6afbfff6e99bc38da9bad1c1170b9affd"
+      },
+      "evidence_refs": [
+        "society:source/01-2-integration.md"
+      ],
+      "fixtures": [],
+      "formula_or_procedure": "Preserve original source text. No trusted numerical procedure approved.",
+      "graph_digest": null,
+      "id": "interview:review/source-18",
+      "invariants": "Require independently derived dimensional, conservation and boundedness cases.",
+      "mechanism_artifact": null,
+      "mechanism_ref": null,
+      "mechanism_version": null,
+      "model": null,
+      "operational_definition": "Source design/model candidate in 01-2-integration.md",
+      "review_notes": "Blocked pending operational model, evidence and independent fixture review. Import/schema success is not approval.",
+      "uncertainty": "Source ranges are not calibrated probability laws; joint dependence unresolved.",
+      "unsupported_extrapolation": "No social outcomes, feasibility, behavior or default civic policy may be inferred.",
+      "validity_limits": "Historical design only; source-review.md records AR-001–006 and unresolved empirical inputs."
+    }
+  ],
+  "setups": [
+    {
+      "description": "Editable conditions; no selected policies, goals or reference choices.",
+      "goals": [],
+      "id": "blank",
+      "kind": "neutral",
+      "land_area": null,
+      "limitations": "Unknown conditions remain unknown; no numerical social model.",
+      "name": "Unanswered starting conditions",
+      "population": null,
+      "selected_option_refs": [],
+      "source_refs": []
+    },
+    {
+      "description": "Original illustrative population and land; no civic arrangement is selected.",
+      "goals": [],
+      "id": "reference:small-settlement",
+      "kind": "synthetic",
+      "land_area": "10",
+      "limitations": "Not a calibrated or historical society.",
+      "name": "Synthetic small settlement (editable conditions only)",
+      "population": "100",
+      "selected_option_refs": [],
+      "source_refs": [
+        "interview:source/conventions"
+      ]
+    },
+    {
+      "description": "Explicitly selected source design excerpt at 9ff539997dbd1bd3fa99deabcf6bc5907602df60; retains the original DEC-003 choice.",
+      "goals": [],
+      "id": "reference:society-dec-003",
+      "kind": "historical",
+      "land_area": null,
+      "limitations": "Partial reference setup, not a reconciled civilization or executable model. Earlier partly amended choices are not auto-selected. No numerical parameters or worldview is imposed.",
+      "name": "Historical DEC-003 design excerpt (qualitative)",
+      "population": null,
+      "selected_option_refs": [
+        "society:DEC-003/option/A"
+      ],
+      "source_refs": [
+        "society:source/06_global_decision_ledger.md"
+      ]
+    }
+  ],
+  "templates": [
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/01",
+      "labels": [
+        "Household provisioning",
+        "Shared provisioning",
+        "Mixed provisioning"
+      ],
+      "mechanisms": [
+        "Households arrange their own material purchases and storage, and record unmet needs locally.",
+        "Participants pool specified material requirements through a shared store with an agreed access procedure.",
+        "Household stores coexist with a shared reserve; participants must define when requests cross between them."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-1/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Household provisioning. Households arrange their own material purchases and storage, and record unmet needs locally.",
+          "parameter": null,
+          "parent_ref": "interview:domain-1",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-1/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared provisioning. Participants pool specified material requirements through a shared store with an agreed access procedure.",
+          "parameter": null,
+          "parent_ref": "interview:domain-1",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-1/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Mixed provisioning. Household stores coexist with a shared reserve; participants must define when requests cross between them.",
+          "parameter": null,
+          "parent_ref": "interview:domain-1",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-1",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Materials in a settlement. Households and shared facilities need materials, but their quantities and access are still unanswered. How should people describe the arrangement they want to explore?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/02",
+      "labels": [
+        "Direct exchange",
+        "Common provision",
+        "Mixed access"
+      ],
+      "mechanisms": [
+        "Participants negotiate exchanges directly and specify what happens when someone cannot offer a counterpart.",
+        "A common provision process receives requests and assigns access under an explicitly agreed procedure.",
+        "Direct exchanges coexist with a common provision channel; their boundaries and eligibility must be stated."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-2/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Direct exchange. Participants negotiate exchanges directly and specify what happens when someone cannot offer a counterpart.",
+          "parameter": null,
+          "parent_ref": "interview:domain-2",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-2/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Common provision. A common provision process receives requests and assigns access under an explicitly agreed procedure.",
+          "parameter": null,
+          "parent_ref": "interview:domain-2",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-2/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Mixed access. Direct exchanges coexist with a common provision channel; their boundaries and eligibility must be stated.",
+          "parameter": null,
+          "parent_ref": "interview:domain-2",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-2",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Exchange and access. People need a way to obtain goods when their needs and contributions differ. Which access arrangement would you like to explore?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/03",
+      "labels": [
+        "Assembly",
+        "Delegated council",
+        "Nested deliberation"
+      ],
+      "mechanisms": [
+        "Affected participants meet in an assembly and agree how proposals, objections and decisions are recorded.",
+        "Participants delegate decisions to named representatives, with explicit authority, reporting and recall rules.",
+        "Local groups deliberate first and send unresolved shared questions to a wider forum with defined authority."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-3/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Assembly. Affected participants meet in an assembly and agree how proposals, objections and decisions are recorded.",
+          "parameter": null,
+          "parent_ref": "interview:domain-3",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-3/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Delegated council. Participants delegate decisions to named representatives, with explicit authority, reporting and recall rules.",
+          "parameter": null,
+          "parent_ref": "interview:domain-3",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-3/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Nested deliberation. Local groups deliberate first and send unresolved shared questions to a wider forum with defined authority.",
+          "parameter": null,
+          "parent_ref": "interview:domain-3",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-3",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Collective decisions. A settlement faces a decision that affects people beyond one household. Who should take part in deciding it?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/04",
+      "labels": [
+        "Mediation",
+        "Formal hearing",
+        "Staged resolution"
+      ],
+      "mechanisms": [
+        "A mediator helps the parties seek an agreement; participation and routes after failed mediation must be defined.",
+        "A designated hearing body receives evidence and issues a decision under stated rules and appeal procedures.",
+        "Parties attempt mediation first and may move to a formal hearing; the handoff and authority need agreement."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-4/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Mediation. A mediator helps the parties seek an agreement; participation and routes after failed mediation must be defined.",
+          "parameter": null,
+          "parent_ref": "interview:domain-4",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-4/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Formal hearing. A designated hearing body receives evidence and issues a decision under stated rules and appeal procedures.",
+          "parameter": null,
+          "parent_ref": "interview:domain-4",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-4/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Staged resolution. Parties attempt mediation first and may move to a formal hearing; the handoff and authority need agreement.",
+          "parameter": null,
+          "parent_ref": "interview:domain-4",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-4",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Dispute procedures. Two groups disagree about an obligation. What process should hear their accounts and revisit the outcome?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/05",
+      "labels": [
+        "Household networks",
+        "Shared care circles",
+        "Mixed coordination"
+      ],
+      "mechanisms": [
+        "Households coordinate care through their own relationships, recording who can ask for help and who is excluded.",
+        "A shared care circle coordinates requests and volunteers under agreed responsibility and safeguarding rules.",
+        "Household support and shared care coexist, with an explicit route for needs that either cannot meet."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-5/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Household networks. Households coordinate care through their own relationships, recording who can ask for help and who is excluded.",
+          "parameter": null,
+          "parent_ref": "interview:domain-5",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-5/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared care circles. A shared care circle coordinates requests and volunteers under agreed responsibility and safeguarding rules.",
+          "parameter": null,
+          "parent_ref": "interview:domain-5",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-5/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Mixed coordination. Household support and shared care coexist, with an explicit route for needs that either cannot meet.",
+          "parameter": null,
+          "parent_ref": "interview:domain-5",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-5",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Care and relationships. Care responsibilities overlap with work and participation. How should people describe coordination across households?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/06",
+      "labels": [
+        "Community learning",
+        "Dedicated institutions",
+        "Mixed learning"
+      ],
+      "mechanisms": [
+        "Community members organize learning activities and define how learners find mentors and support.",
+        "Dedicated learning institutions coordinate staff, participation and facilities under an explicit access procedure.",
+        "Community learning and dedicated institutions share referrals while keeping their responsibilities explicit."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-6/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Community learning. Community members organize learning activities and define how learners find mentors and support.",
+          "parameter": null,
+          "parent_ref": "interview:domain-6",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-6/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Dedicated institutions. Dedicated learning institutions coordinate staff, participation and facilities under an explicit access procedure.",
+          "parameter": null,
+          "parent_ref": "interview:domain-6",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-6/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Mixed learning. Community learning and dedicated institutions share referrals while keeping their responsibilities explicit.",
+          "parameter": null,
+          "parent_ref": "interview:domain-6",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-6",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Learning arrangements. Learners need time, support and places to learn. Which arrangement should be explored while those capacities remain unspecified?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/07",
+      "labels": [
+        "Local care teams",
+        "Shared care centers",
+        "Linked care network"
+      ],
+      "mechanisms": [
+        "Local care teams receive requests and define what they can handle and when they must seek additional support.",
+        "Shared care centers coordinate staff and facilities, with explicit access and referral procedures.",
+        "Local teams and shared centers agree referrals and continuity responsibilities across the network."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-7/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Local care teams. Local care teams receive requests and define what they can handle and when they must seek additional support.",
+          "parameter": null,
+          "parent_ref": "interview:domain-7",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-7/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared care centers. Shared care centers coordinate staff and facilities, with explicit access and referral procedures.",
+          "parameter": null,
+          "parent_ref": "interview:domain-7",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-7/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Linked care network. Local teams and shared centers agree referrals and continuity responsibilities across the network.",
+          "parameter": null,
+          "parent_ref": "interview:domain-7",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-7",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Health and wellbeing. People need care at different times and with different capabilities. What arrangement should be explored for coordinating access?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/08",
+      "labels": [
+        "Local stewardship",
+        "Shared maintenance body",
+        "Layered stewardship"
+      ],
+      "mechanisms": [
+        "Local stewards maintain named facilities and record inspections, repairs and needs they cannot meet.",
+        "A shared maintenance body coordinates repair requests and workers under an agreed scheduling procedure.",
+        "Local stewards handle specified tasks while a wider body handles shared assets and unresolved repairs."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-8/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Local stewardship. Local stewards maintain named facilities and record inspections, repairs and needs they cannot meet.",
+          "parameter": null,
+          "parent_ref": "interview:domain-8",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-8/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared maintenance body. A shared maintenance body coordinates repair requests and workers under an agreed scheduling procedure.",
+          "parameter": null,
+          "parent_ref": "interview:domain-8",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-8/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Layered stewardship. Local stewards handle specified tasks while a wider body handles shared assets and unresolved repairs.",
+          "parameter": null,
+          "parent_ref": "interview:domain-8",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-8",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Infrastructure stewardship. Facilities need upkeep as well as construction. Who should coordinate maintenance and report unmet needs?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/09",
+      "labels": [
+        "Community channels",
+        "Shared information service",
+        "Federated channels"
+      ],
+      "mechanisms": [
+        "Community-run channels publish information under local editorial and personal-data rules.",
+        "A shared information service publishes common records, with explicit correction and privacy procedures.",
+        "Independent channels exchange designated records under agreed interoperability, correction and privacy rules."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-9/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Community channels. Community-run channels publish information under local editorial and personal-data rules.",
+          "parameter": null,
+          "parent_ref": "interview:domain-9",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-9/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared information service. A shared information service publishes common records, with explicit correction and privacy procedures.",
+          "parameter": null,
+          "parent_ref": "interview:domain-9",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-9/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Federated channels. Independent channels exchange designated records under agreed interoperability, correction and privacy rules.",
+          "parameter": null,
+          "parent_ref": "interview:domain-9",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-9",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Communication and information. People need reliable information while personal details may require protection. How should communication be organized?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/10",
+      "labels": [
+        "Local review",
+        "Shared ecological review",
+        "Layered review"
+      ],
+      "mechanisms": [
+        "Local participants review a proposed activity and record affected places, uncertainties and objections.",
+        "A shared ecological review body examines proposals across places under defined authority and evidence rules.",
+        "Local and wider review bodies divide responsibilities and specify when a proposal must move between them."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-10/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Local review. Local participants review a proposed activity and record affected places, uncertainties and objections.",
+          "parameter": null,
+          "parent_ref": "interview:domain-10",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-10/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared ecological review. A shared ecological review body examines proposals across places under defined authority and evidence rules.",
+          "parameter": null,
+          "parent_ref": "interview:domain-10",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-10/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Layered review. Local and wider review bodies divide responsibilities and specify when a proposal must move between them.",
+          "parameter": null,
+          "parent_ref": "interview:domain-10",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-10",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Environmental commitments. A proposed activity may change land and resource use. How should people describe review of those effects?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/11",
+      "labels": [
+        "Voluntary associations",
+        "Shared accommodation forum",
+        "Multiple overlapping forums"
+      ],
+      "mechanisms": [
+        "Voluntary associations organize practices and state how participation, exit and access to shared spaces work.",
+        "A shared forum hears accommodation requests and records procedures for disagreement and revision.",
+        "Several forums handle different practices, with an agreed route for overlapping claims and unresolved requests."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-11/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Voluntary associations. Voluntary associations organize practices and state how participation, exit and access to shared spaces work.",
+          "parameter": null,
+          "parent_ref": "interview:domain-11",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-11/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared accommodation forum. A shared forum hears accommodation requests and records procedures for disagreement and revision.",
+          "parameter": null,
+          "parent_ref": "interview:domain-11",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-11/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Multiple overlapping forums. Several forums handle different practices, with an agreed route for overlapping claims and unresolved requests.",
+          "parameter": null,
+          "parent_ref": "interview:domain-11",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-11",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Meaning and identity. People hold different beliefs and practices. How should shared activities make room for those differences?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    },
+    {
+      "benefits": [
+        "May preserve direct participation and local knowledge; this is a hypothesis rather than an evaluated benefit.",
+        "May make shared coordination and specialist responsibility easier; no improvement is numerically inferred.",
+        "May connect local knowledge with shared coordination; compatibility and access remain hypotheses to examine."
+      ],
+      "costs": [
+        "Needs participant time and a route for unmet needs; local capability and exclusion remain unresolved.",
+        "Needs staff, oversight and an access procedure; concentrated authority and limited capacity need examination.",
+        "Needs coordination across boundaries and clear handoffs; overlapping responsibilities can remain unresolved."
+      ],
+      "coverage": "Qualitative model gap: no registered social or transition mechanism; no numerical benefits, costs or sufficiency are inferred.",
+      "domain_ref": "society:domain/12",
+      "labels": [
+        "Local preparedness",
+        "Shared continuity team",
+        "Linked preparedness"
+      ],
+      "mechanisms": [
+        "Local groups document critical needs and available responses, including dependencies they cannot cover.",
+        "A shared continuity team coordinates preparation and requests under explicit authority and resource limits.",
+        "Local groups and shared teams maintain linked plans, with named handoffs when disruption crosses boundaries."
+      ],
+      "options": [
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-12/option-1",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Local preparedness. Local groups document critical needs and available responses, including dependencies they cannot cover.",
+          "parameter": null,
+          "parent_ref": "interview:domain-12",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-12/option-2",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Shared continuity team. A shared continuity team coordinates preparation and requests under explicit authority and resource limits.",
+          "parameter": null,
+          "parent_ref": "interview:domain-12",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        },
+        {
+          "assumption_refs": [],
+          "evidence": "hypothetical",
+          "historical_status": "unspecified",
+          "id": "interview:domain-12/option-3",
+          "kind": "option",
+          "measurement": null,
+          "mechanism_refs": [],
+          "modeling": "qualitative",
+          "origin": "authored",
+          "original_text": "Linked preparedness. Local groups and shared teams maintain linked plans, with named handoffs when disruption crosses boundaries.",
+          "parameter": null,
+          "parent_ref": "interview:domain-12",
+          "source_decision_id": null,
+          "source_refs": [
+            "interview:source/conventions"
+          ],
+          "supersedes_refs": [],
+          "variable_refs": [],
+          "version": "v1"
+        }
+      ],
+      "question": {
+        "assumption_refs": [],
+        "evidence": "hypothetical",
+        "historical_status": "unspecified",
+        "id": "interview:domain-12",
+        "kind": "question",
+        "measurement": null,
+        "mechanism_refs": [],
+        "modeling": "qualitative",
+        "origin": "authored",
+        "original_text": "Continuity and risk. A disruption can interrupt services that depend on one another. How should people coordinate preparation?",
+        "parameter": null,
+        "parent_ref": null,
+        "source_decision_id": null,
+        "source_refs": [
+          "interview:source/conventions"
+        ],
+        "supersedes_refs": [],
+        "variable_refs": [],
+        "version": "v1"
+      }
+    }
+  ],
+  "version": "v1"
+}

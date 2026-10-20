@@ -92,7 +92,7 @@ def test_every_domain_works_without_dependencies_and_hostile_prose_stays_data(tm
     for domain in range(1, 13):
         data = edit(state, domain='domain:' + str(domain), rationale='')
         q = interviews.question(service, data['query'])
-        assert len(q.options) == 3 and q.definition.source_refs == []
+        assert len(q.options) == 3 and q.definition.source_refs == ['interview:source/conventions']
         assert q.definition.evidence == 'hypothetical'
         assert interviews.stage(service, data, 'one')[3].accounts == []
     text = '<script>throw new Error("executed")</script> $(touch /tmp/should-not-exist)'

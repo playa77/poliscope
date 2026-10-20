@@ -1,0 +1,5 @@
+# Preserve byte-addressed release artifacts and their local build inputs on
+# Windows and Linux, including checkouts with core.autocrlf=true.
+content/** text eol=lf
+LICENSE text eol=lf
+docs/roadmap/execution/society/review.md text eol=lf

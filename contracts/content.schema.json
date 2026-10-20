@@ -1,0 +1,1118 @@
+{
+  "$defs": {
+    "Artifact": {
+      "additionalProperties": false,
+      "properties": {
+        "digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Digest",
+          "type": "string"
+        },
+        "path": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_./-]+$",
+          "title": "Path",
+          "type": "string"
+        }
+      },
+      "required": [
+        "path",
+        "digest"
+      ],
+      "title": "Artifact",
+      "type": "object"
+    },
+    "Catalog": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_./-]+$",
+          "title": "Artifact",
+          "type": "string"
+        },
+        "pack_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Pack Digest",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "reference",
+            "authored"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "artifact",
+        "pack_digest",
+        "role"
+      ],
+      "title": "Catalog",
+      "type": "object"
+    },
+    "Coverage": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Branch Ref",
+          "type": "string"
+        },
+        "model_status": {
+          "const": "unsupported",
+          "title": "Model Status",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "source_status": {
+          "enum": [
+            "map_only",
+            "source_design_only"
+          ],
+          "title": "Source Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "branch_ref",
+        "source_status",
+        "model_status",
+        "reason"
+      ],
+      "title": "Coverage",
+      "type": "object"
+    },
+    "Definition": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "evidence": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "historical_status": {
+          "enum": [
+            "adopted",
+            "alternative",
+            "amended",
+            "superseded",
+            "provenance",
+            "unspecified"
+          ],
+          "title": "Historical Status",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "domain",
+            "branch",
+            "question",
+            "option",
+            "mechanism",
+            "parameter",
+            "measurement",
+            "fixture"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mechanism_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "modeling": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_proposed",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "original_text": {
+          "maxLength": 131072,
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParameterDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "parent_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Ref"
+        },
+        "source_decision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Decision Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "supersedes_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Supersedes Refs",
+          "type": "array"
+        },
+        "variable_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Variable Refs",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "kind",
+        "parent_ref",
+        "original_text",
+        "source_decision_id",
+        "source_refs",
+        "assumption_refs",
+        "supersedes_refs",
+        "mechanism_refs",
+        "variable_refs",
+        "origin",
+        "modeling",
+        "evidence",
+        "historical_status"
+      ],
+      "title": "Definition",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "Inquiry": {
+      "additionalProperties": false,
+      "properties": {
+        "domain_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 12,
+          "minItems": 1,
+          "title": "Domain Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "prompt": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Prompt",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "domain_refs",
+        "prompt"
+      ],
+      "title": "Inquiry",
+      "type": "object"
+    },
+    "InterviewTemplate": {
+      "additionalProperties": false,
+      "properties": {
+        "benefits": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Benefits",
+          "type": "array"
+        },
+        "costs": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Costs",
+          "type": "array"
+        },
+        "coverage": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "domain_ref": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Domain Ref",
+          "type": "string"
+        },
+        "labels": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Labels",
+          "type": "array"
+        },
+        "mechanisms": {
+          "items": {
+            "maxLength": 4096,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Mechanisms",
+          "type": "array"
+        },
+        "options": {
+          "items": {
+            "$ref": "#/$defs/Definition"
+          },
+          "maxItems": 4,
+          "minItems": 3,
+          "title": "Options",
+          "type": "array"
+        },
+        "question": {
+          "$ref": "#/$defs/Definition"
+        }
+      },
+      "required": [
+        "domain_ref",
+        "question",
+        "options",
+        "labels",
+        "mechanisms",
+        "benefits",
+        "costs",
+        "coverage"
+      ],
+      "title": "InterviewTemplate",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 4096,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage Limits",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Time Basis Id",
+          "type": "string"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope_id",
+        "unit_id",
+        "time_basis_id",
+        "interpretation",
+        "coverage_limits"
+      ],
+      "title": "MeasurementDeclaration",
+      "type": "object"
+    },
+    "ModelReview": {
+      "additionalProperties": false,
+      "properties": {
+        "basis": {
+          "enum": [
+            "empirical",
+            "hypothetical",
+            "unresolved"
+          ],
+          "title": "Basis",
+          "type": "string"
+        },
+        "candidate_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 2000,
+          "title": "Candidate Refs",
+          "type": "array"
+        },
+        "declaration_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Declaration Digest"
+        },
+        "denominator_time_scope": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Denominator Time Scope",
+          "type": "string"
+        },
+        "disposition": {
+          "enum": [
+            "blocked",
+            "hypothetical",
+            "approved"
+          ],
+          "title": "Disposition",
+          "type": "string"
+        },
+        "evidence_digests": {
+          "maxProperties": 2000,
+          "patternProperties": {
+            "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$": {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            }
+          },
+          "propertyNames": {
+            "maxLength": 256
+          },
+          "title": "Evidence Digests",
+          "type": "object"
+        },
+        "evidence_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 2000,
+          "title": "Evidence Refs",
+          "type": "array"
+        },
+        "fixtures": {
+          "items": {
+            "$ref": "#/$defs/ReviewFixture"
+          },
+          "maxItems": 100,
+          "title": "Fixtures",
+          "type": "array"
+        },
+        "formula_or_procedure": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Formula Or Procedure",
+          "type": "string"
+        },
+        "graph_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Graph Digest"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "invariants": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Invariants",
+          "type": "string"
+        },
+        "mechanism_artifact": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mechanism Artifact"
+        },
+        "mechanism_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mechanism Ref"
+        },
+        "mechanism_version": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Mechanism Version"
+        },
+        "model": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/Identity"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operational_definition": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Operational Definition",
+          "type": "string"
+        },
+        "review_notes": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Review Notes",
+          "type": "string"
+        },
+        "uncertainty": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Uncertainty",
+          "type": "string"
+        },
+        "unsupported_extrapolation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Unsupported Extrapolation",
+          "type": "string"
+        },
+        "validity_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Validity Limits",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "candidate_refs",
+        "mechanism_ref",
+        "mechanism_version",
+        "mechanism_artifact",
+        "declaration_digest",
+        "graph_digest",
+        "model",
+        "disposition",
+        "operational_definition",
+        "formula_or_procedure",
+        "denominator_time_scope",
+        "basis",
+        "uncertainty",
+        "evidence_refs",
+        "evidence_digests",
+        "fixtures",
+        "invariants",
+        "validity_limits",
+        "unsupported_extrapolation",
+        "review_notes"
+      ],
+      "title": "ModelReview",
+      "type": "object"
+    },
+    "ParameterDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "validity_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Validity Limits",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "scope_id",
+        "value",
+        "validity_limits"
+      ],
+      "title": "ParameterDeclaration",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "ReviewFixture": {
+      "additionalProperties": false,
+      "properties": {
+        "artifact": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^[a-zA-Z0-9_./-]+$",
+          "title": "Artifact",
+          "type": "string"
+        },
+        "digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Digest",
+          "type": "string"
+        },
+        "identity": {
+          "$ref": "#/$defs/Identity"
+        },
+        "purpose": {
+          "enum": [
+            "positive",
+            "invalid_input",
+            "missing_input",
+            "conservation",
+            "boundedness"
+          ],
+          "title": "Purpose",
+          "type": "string"
+        }
+      },
+      "required": [
+        "identity",
+        "artifact",
+        "digest",
+        "purpose"
+      ],
+      "title": "ReviewFixture",
+      "type": "object"
+    },
+    "Setup": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Description",
+          "type": "string"
+        },
+        "goals": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 0,
+          "title": "Goals",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "neutral",
+            "synthetic",
+            "historical"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "land_area": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Land Area"
+        },
+        "limitations": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Limitations",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "population": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Population"
+        },
+        "selected_option_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 2000,
+          "title": "Selected Option Refs",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 2000,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "description",
+        "population",
+        "land_area",
+        "selected_option_refs",
+        "goals",
+        "source_refs",
+        "limitations"
+      ],
+      "title": "Setup",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "activated_review_refs": {
+      "items": {
+        "maxLength": 256,
+        "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+        "type": "string"
+      },
+      "maxItems": 500,
+      "title": "Activated Review Refs",
+      "type": "array"
+    },
+    "artifacts": {
+      "items": {
+        "$ref": "#/$defs/Artifact"
+      },
+      "maxItems": 500,
+      "title": "Artifacts",
+      "type": "array"
+    },
+    "catalogs": {
+      "items": {
+        "$ref": "#/$defs/Catalog"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "title": "Catalogs",
+      "type": "array"
+    },
+    "coverage": {
+      "items": {
+        "$ref": "#/$defs/Coverage"
+      },
+      "maxItems": 2000,
+      "title": "Coverage",
+      "type": "array"
+    },
+    "format_version": {
+      "const": 1,
+      "title": "Format Version",
+      "type": "integer"
+    },
+    "id": {
+      "maxLength": 256,
+      "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+      "title": "Id",
+      "type": "string"
+    },
+    "inquiries": {
+      "items": {
+        "$ref": "#/$defs/Inquiry"
+      },
+      "maxItems": 100,
+      "title": "Inquiries",
+      "type": "array"
+    },
+    "reviews": {
+      "items": {
+        "$ref": "#/$defs/ModelReview"
+      },
+      "maxItems": 500,
+      "title": "Reviews",
+      "type": "array"
+    },
+    "setups": {
+      "items": {
+        "$ref": "#/$defs/Setup"
+      },
+      "maxItems": 100,
+      "minItems": 1,
+      "title": "Setups",
+      "type": "array"
+    },
+    "templates": {
+      "items": {
+        "$ref": "#/$defs/InterviewTemplate"
+      },
+      "maxItems": 100,
+      "title": "Templates",
+      "type": "array"
+    },
+    "version": {
+      "maxLength": 256,
+      "minLength": 1,
+      "title": "Version",
+      "type": "string"
+    }
+  },
+  "required": [
+    "format_version",
+    "id",
+    "version",
+    "artifacts",
+    "catalogs",
+    "reviews",
+    "activated_review_refs",
+    "templates",
+    "setups",
+    "inquiries",
+    "coverage"
+  ],
+  "title": "ContentRelease",
+  "type": "object"
+}

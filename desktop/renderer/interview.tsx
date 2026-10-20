@@ -67,7 +67,7 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed }:
   return <section className="interview" aria-label="Domain interview"><h5>{q.definition.original_text}</h5>
     <p>Origin: {q.definition.origin} synthetic template · Evidence: {q.definition.evidence} · Modeling: {q.definition.modeling} · Version: {q.definition.version}</p>
     <p>Scope: {query.scope_id} · Revision: {query.context.revision_id}</p>
-    <details><summary>Original wording and source</summary><p>{q.definition.original_text}</p><p>Original Poliscope synthetic template, {q.definition.id}. No external source or historical adopted option is claimed. MIT repository license. Source and assumption references: none.</p></details>
+    <details><summary>Original wording and source</summary><p>{q.definition.original_text}</p><p>Original Poliscope synthetic template, {q.definition.id}. No external source or historical adopted option is claimed. MIT repository license. Source references: {q.definition.source_refs.join(', ') || 'none'}. Assumption references: {q.definition.assumption_refs.join(', ') || 'none'}.</p></details>
     <details><summary>Clarification and dependencies</summary><p>{q.clarification}</p><ul>{q.dependencies.map(d => <li key={d}>{d}</li>)}</ul></details>
     {q.current_commitment && <details className="current-commitment"><summary>Current qualitative commitment</summary><Commitment text={q.current_commitment} /></details>}
     {historical && <p>This is a retained revision. Open the current branch head to edit.</p>}
