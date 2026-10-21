@@ -1,3 +1,4 @@
+import { World } from './world';
 import { Matrix, initialMatrixFilters, type MatrixFilters } from './matrix';
 import { Atlas, initialAtlasFilters, type AtlasFilters } from './atlas';
 import { DesignHistory } from './design-history';
@@ -45,6 +46,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
   const [view, setView] = useState(VIEWS[0]);
   const [domain, setDomain] = useState('');
   const [atlasFilters, setAtlasFilters] = useState<AtlasFilters>(initialAtlasFilters);
+  const [worldIdentity, setWorldIdentity] = useState<string | null>(null);
   const [matrixFilters, setMatrixFilters] = useState<MatrixFilters>(initialMatrixFilters);
   const [questionId, setQuestionId] = useState<string | null>(null);
   const [inspector, setInspector] = useState(false);
@@ -126,7 +128,8 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
             {view === 'History and comparison' && <DesignHistory key={JSON.stringify(state.context)} state={state} disabled={loading} onSelected={async next => { selectState(next); setCatalogue(await window.poliscope.workspaceCatalogue()); await client.invalidateQueries({ queryKey: ['world'] }); }} />}
             {selectedScope && <div hidden={view !== 'Decision atlas'}><Atlas state={state} scope={selectedScope} active={view === 'Decision atlas'} disabled={dirty} filters={atlasFilters} setFilters={setAtlasFilters}
               onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} onHistory={() => setView('History and comparison')} /></div>}
-            {view === 'Dependency matrix' && selectedScope && <Matrix state={state} scope={selectedScope} disabled={dirty} filters={matrixFilters} setFilters={setMatrixFilters}
+            {view === 'World and institutions' && selectedScope && <World key={JSON.stringify([state.context, selectedScope, worldIdentity])} state={state} scope={selectedScope} initialIdentity={worldIdentity} onDirty={draftChanged} onSelected={next => { setState(next); setWorldIdentity(null); void client.invalidateQueries({ queryKey: ['world'] }); }} onMatrix={() => { setMatrixFilters({ ...initialMatrixFilters, axis: 'scope' }); setView('Dependency matrix'); }} onDecisions={() => setView('Decision atlas')} />}
+            {view === 'Dependency matrix' && selectedScope && <Matrix onWorld={identity => { setWorldIdentity(identity); setView('World and institutions'); }} state={state} scope={selectedScope} disabled={dirty} filters={matrixFilters} setFilters={setMatrixFilters}
               onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} />}
             <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { setDomain(d.id); setQuestionId(null); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
             {domain && <section aria-label="Selected domain" id="selected-interview" tabIndex={-1}><h4>{catalogue.domains.find(d => d.id === domain)?.name ?? 'Source question · domain mapping unresolved'}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>

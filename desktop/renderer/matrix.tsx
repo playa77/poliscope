@@ -19,9 +19,9 @@ function Model({ state, kind, identity }: { state: WorkspaceState; kind: MatrixM
       <pre>{JSON.stringify(result.data.mechanism ?? result.data.policy_rule ?? result.data.allocation_rule ?? result.data.condition_rule, null, 2)}</pre></>}
   </section>;
 }
-export function Matrix({ state, scope, disabled, filters, setFilters, onInterview }: {
+export function Matrix({ state, scope, disabled, filters, setFilters, onInterview, onWorld }: {
   state: WorkspaceState; scope: string; disabled: boolean; filters: MatrixFilters;
-  setFilters: (filters: MatrixFilters) => void; onInterview: (query: InterviewQuery) => void;
+  onWorld: (identity: string) => void; setFilters: (filters: MatrixFilters) => void; onInterview: (query: InterviewQuery) => void;
 }) {
   const identity = JSON.stringify([state.context, state.versions, state.effective_time, scope, filters]);
   const [pagination, setPagination] = useState<{ identity: string; cells: (string | null)[]; details: (string | null)[] }>({ identity: '', cells: [null], details: [null] });
@@ -70,6 +70,7 @@ export function Matrix({ state, scope, disabled, filters, setFilters, onIntervie
       {relation.mechanism_refs.map(id => <button key={'m' + id} disabled={disabled} onClick={() => setModel({ kind: 'mechanism', identity: id })}>Inspect mechanism {id}</button>)}
       {relation.rule_refs.map(id => <button key={'r' + id} disabled={disabled} onClick={() => setModel({ kind: 'rule', identity: id })}>Inspect rule {id}</button>)}
       {model && <Model key={JSON.stringify(model)} state={state} {...model} />}
+      {(relation.world_refs ?? []).map(id => <button key={'w' + id} disabled={disabled} onClick={() => onWorld(id)}>Inspect canonical world {id}</button>)}
       {relation.interviews.map(q => <button key={JSON.stringify(q)} disabled={disabled} onClick={() => onInterview(q)}>Open participating choice {q.question_id}</button>)}
       {!relation.interviews.length && <p>No explicit choice binding recorded.</p>}
       {relation.sources.map(q => <button key={q.source_ref} disabled={disabled} onClick={() => setSource(q.source_ref)}>Inspect relationship source {q.source_ref}</button>)}

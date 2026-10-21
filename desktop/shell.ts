@@ -1,3 +1,4 @@
+import type { ExplorationQuery, ExplorationPage, ExplorationEdit, ExplorationPreview } from '../contracts/exploration';
 import type { MatrixQuery, MatrixPage, MatrixModelQuery, MatrixModelReply } from '../contracts/matrix';
 import type { AtlasQuery, AtlasPage, AtlasSourceQuery, AtlasSourcePage } from '../contracts/atlas';
 import type { RationaleQuery, RationaleReply, LineageQuery, LineagePage, HistoryAction, CompareQuery, ComparePage } from '../contracts/comparison';
@@ -9,6 +10,10 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  exploration(query: ExplorationQuery): Promise<ExplorationPage>;
+  previewWorld(edit: ExplorationEdit): Promise<ExplorationPreview>;
+  applyWorld(candidate: InterviewApply): Promise<InterviewCommit>;
+  cancelWorld(): Promise<void>;
   matrixModel(query: MatrixModelQuery): Promise<MatrixModelReply>;
   matrix(query: MatrixQuery): Promise<MatrixPage>;
   atlas(query: AtlasQuery): Promise<AtlasPage>;

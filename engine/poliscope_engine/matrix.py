@@ -163,6 +163,31 @@ def relationships(service, record, scope, saved, release):
             mechanisms=[instances[binding.consumer.instance_id].mechanism_id], sources=value.provenance.source_refs,
             inspectors=[inspect('conditions', value.id)])
 
+    # Canonical world edges are declarations, not inferred causal effects.
+    labels = {e.id: e.label for e in record.inputs.entities} | {s.id: s.label for s in record.inputs.scopes}
+    entity_scopes = defaultdict(set)
+    for value in record.inputs.values:
+        entity_scopes[value.entity_id].add(value.scope_id)
+    for relation in record.inputs.relationships:
+        if relation.aggregation.kind != 'non_aggregating':
+            entity_scopes[relation.from_id].add(relation.to_id)
+    scope_ids = {s.id for s in record.inputs.scopes}
+    def world_endpoint(identity):
+        return endpoint(compound(['world', identity]), labels.get(identity, identity),
+            scopes=[identity] if identity in scope_ids else sorted(entity_scopes[identity]))
+    for relation in record.inputs.relationships:
+        kind = {'supplies': 'supplies', 'consumes': 'requires', 'access': 'requires'}.get(relation.relationship_kind, 'influences')
+        details = [inspect('conditions', v.id) for v in record.inputs.values
+                   if v.entity_id in (relation.from_id, relation.to_id) and (v.partition == 'conditions' or
+                       v.property_id == 'world:relationship:' + digest(relation.id).split(':')[-1][:40])][:100]
+        account_ids = {a.id for a in execution.batch.accounts} if execution.batch else set()
+        details += [inspect('accounts', i) for i in (relation.from_id, relation.to_id) if i in account_ids]
+        item = edge(kind, world_endpoint(relation.from_id), world_endpoint(relation.to_id),
+            provenance='documentary', activation='declared',
+            explanation=f'Canonical {relation.relationship_kind} {relation.id} version {relation.relationship_version}: {relation.from_id} → {relation.to_id}. Empty scope tags mean scope is unspecified. This is a declared world relationship, not proof of fulfillment, causal effect or deliverable capacity.',
+            inspectors=details[:100], sources=relation.provenance.source_refs, salt=relation.id)
+        yield item.model_copy(update={'world_refs': list(dict.fromkeys([relation.from_id, relation.to_id]))})
+
 
 def groups(e, axis):
     return getattr(e, {'domain': 'domains', 'branch': 'branches', 'decision': 'decisions', 'scope': 'scopes', 'selected_alternative': 'alternatives'}[axis]) or ['unmapped']
@@ -188,7 +213,8 @@ def page(service, data, *, release=None):
     counts, details, count, unmapped = Counter(), [], 0, 0
     for relation in relationships(service, record, query.scope_id, saved, release):
         # Cross-scope edges remain visible when either endpoint is in this scope.
-        if query.scope_id not in set(relation.row.scopes + relation.column.scopes):
+        if query.scope_id not in set(relation.row.scopes + relation.column.scopes) and not (
+                relation.world_refs and not (relation.row.scopes or relation.column.scopes)):
             continue
         if query.relationship_type and query.relationship_type != relation.relationship_type:
             continue
