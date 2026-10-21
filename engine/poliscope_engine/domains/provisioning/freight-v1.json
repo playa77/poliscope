@@ -1,0 +1,17 @@
+{
+  "id": "authored:freight-v1",
+  "version": "v1",
+  "kind": "model_card",
+  "origin": "authored",
+  "evidence_status": "hypothetical",
+  "modeling_status": "partial",
+  "scope": "Static lossless freight between declared local stock accounts in one selected capacity period.",
+  "inputs": ["canonical stock/resource bindings", "finite dated transport and crew budgets", "host-selected routes, access limits and allocation order"],
+  "procedure": "Allocate source-stock claims through the shared finite allocator. Mirror only new actual fulfillment into same-resource, same-unit destination imports. Keep exact paired posting references.",
+  "invariants": ["total source debit equals total destination credit", "shared transport and crew capacity deducted once", "reservation fulfillment deducted once", "no destination output from requested or prior fulfilled quantities"],
+  "fixture": "tests/engine/test_logistics.py",
+  "review_route": "SV arithmetic and interface inspection; independent agent review deferred",
+  "limits": ["Not empirical transport performance or a reviewed source-corpus formula", "Same stock unit and quantum at each endpoint; no loss, conversion or automatic recycling", "No same-pass transshipment or coupled route solver", "All routes compete through an explicit host-selected procedure", "Destination overflow rejects the entire candidate", "Missing routes reject the request; zero throughput and denied access retain unmet claims", "No automatic model activation, public IPC, renderer integration or persistence", "No transition, calendar advancement or stochastic behavior"],
+  "source_branch": "I / distribution-logistics",
+  "next_task": "Integrate reviewed production/use definitions and guarded options, then run actual paired-domain acceptance. DOM-01 static and WP-032 remain open."
+}
