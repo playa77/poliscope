@@ -1,0 +1,784 @@
+{
+  "contract_version": 1,
+  "source_revision": "9ff539997dbd1bd3fa99deabcf6bc5907602df60",
+  "source_archive_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+  "activation": "not_activated",
+  "entries": [
+    {
+      "source_id": "society:domain/01/1",
+      "classification": "catalog",
+      "title": "Production systems",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Generic finite actual-input production, yields, byproducts and losses; no source-sector physics.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/1/1",
+      "classification": "catalog",
+      "title": "food/agriculture",
+      "documents": [
+        "01-1-1_food-agriculture-full.md",
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Generic mass-stock transformation can illustrate hypothetical food production; no crop, water or nutrition model.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/1/2",
+      "classification": "catalog",
+      "title": "energy generation & distribution",
+      "documents": [
+        "01-1-2_energy-full.md",
+        "01-1-2_energy-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Energy is a shared capacity input only; no generation, carrier conversion or grid physics.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/1/3",
+      "classification": "catalog",
+      "title": "raw materials & manufacturing",
+      "documents": [
+        "01-1-3_materials-manufacturing-full.md",
+        "01-1-3_materials-manufacturing-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Generic finite mass transformation with yields/losses; no sectoral manufacturing recipe.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/1/4",
+      "classification": "catalog",
+      "title": "water & sanitation",
+      "documents": [
+        "01-1-4_water-sanitation-full.md",
+        "01-1-4_water-sanitation-log.md"
+      ],
+      "option_refs": [],
+      "effect": "No water, watershed, sanitation or food-water coupling model.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/2",
+      "classification": "catalog",
+      "title": "Distribution & logistics",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Finite lossless paired freight, local handling and explicit claim allocation; no route optimization or source institutions.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/2/1",
+      "classification": "catalog",
+      "title": "transport of goods",
+      "documents": [
+        "01-2-1_transport-of-goods-full.md",
+        "01-2-1_transport-of-goods-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Lossless same-unit finite freight with shared transport and labor, explicit access and paired actuals.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/2/2",
+      "classification": "catalog",
+      "title": "storage & supply chains",
+      "documents": [
+        "01-2-2_storage-supply-chains-full.md",
+        "01-2-2_storage-supply-chains-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Static lossless handling into finite stores; no timed loss, buffer targets or supply-chain optimization.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/2/3",
+      "classification": "catalog",
+      "title": "allocation mechanisms (market/commons/rationing)",
+      "documents": [
+        "01-2-3_allocation-mechanisms-full.md",
+        "01-2-3_allocation-mechanisms-log.md"
+      ],
+      "option_refs": [],
+      "effect": "Explicit priority/all-or-nothing procedures and shared entitlement budgets; no market/commons/ration institution is inferred.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/3",
+      "classification": "catalog",
+      "title": "Consumption & waste",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Access-conditioned finite use; no consumption norms, ecology or circular-return mechanism.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/3/1",
+      "classification": "catalog",
+      "title": "consumption norms",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Finite local use with explicit access and claims; no normative demand or universal consumption target.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:provisioning-chain-v1",
+        "authored:provisioning/procedure"
+      ],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/3/2",
+      "classification": "catalog",
+      "title": "waste management/recycling",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Residual mass is explicit but waste treatment and recycling recovery are unavailable.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:domain/01/3/3",
+      "classification": "catalog",
+      "title": "circular resource loops",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Circular returns are rejected by the static dependency guard; no free recovered stock.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-001",
+      "classification": "catalog",
+      "title": "Arid-region water allocation vs. food self-sufficiency",
+      "documents": [
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-001/option/A",
+        "society:DEC-001/option/B",
+        "society:DEC-001/option/C",
+        "society:DEC-001/option/D"
+      ],
+      "effect": "Source proposal: Arid-region water allocation vs. food self-sufficiency. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-002",
+      "classification": "catalog",
+      "title": "Joint resource balance sheet: framing precedent",
+      "documents": [
+        "01-1-2_energy-log.md",
+        "01-1-3_materials-manufacturing-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-002/option/A",
+        "society:DEC-002/option/B",
+        "society:DEC-002/option/C"
+      ],
+      "effect": "Source proposal: Joint resource balance sheet: framing precedent. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-003",
+      "classification": "catalog",
+      "title": "Biomass polymer feedstock sourcing vs. food land",
+      "documents": [
+        "01-1-3_materials-manufacturing-log.md",
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-003/option/A",
+        "society:DEC-003/option/B",
+        "society:DEC-003/option/C",
+        "society:DEC-003/option/D"
+      ],
+      "effect": "Source proposal: Biomass polymer feedstock sourcing vs. food land. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-004",
+      "classification": "provenance",
+      "title": "Sectoral authority arbitration: problem specified, mechanism deferred",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-004/option/A",
+        "society:DEC-004/option/B",
+        "society:DEC-004/option/C",
+        "society:DEC-004/option/D"
+      ],
+      "effect": "Records a cross-sector arbitration problem while deferring its mechanism; retained as problem provenance, not an executable decision rule.",
+      "status": "qualitative",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Retain source amendment/provenance links; do not infer a player policy or numerical effect."
+    },
+    {
+      "source_id": "society:DEC-005",
+      "classification": "catalog",
+      "title": "Nuclear share under dry cooling in water-stressed regions",
+      "documents": [
+        "01-1-2_energy-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-005/option/A",
+        "society:DEC-005/option/B",
+        "society:DEC-005/option/C"
+      ],
+      "effect": "Source proposal: Nuclear share under dry cooling in water-stressed regions. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-006",
+      "classification": "catalog",
+      "title": "Freight allocation mechanism: modal hierarchy vs. road pricing",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-006/option/A",
+        "society:DEC-006/option/B",
+        "society:DEC-006/option/C"
+      ],
+      "effect": "Source proposal: Freight allocation mechanism: modal hierarchy vs. road pricing. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-007",
+      "classification": "catalog",
+      "title": "One freight spine class (\u22651.5 Mt/yr corridors) shared by grain band, ammonia, and components",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-007/option/A",
+        "society:DEC-007/option/B",
+        "society:DEC-007/option/C"
+      ],
+      "effect": "Source proposal: One freight spine class (\u22651.5 Mt/yr corridors) shared by grain band, ammonia, and components. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-008",
+      "classification": "catalog",
+      "title": "RTA joins the sectoral-authority set; three new collision rows",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-008/option/A",
+        "society:DEC-008/option/B"
+      ],
+      "effect": "Source proposal: RTA joins the sectoral-authority set; three new collision rows. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-009",
+      "classification": "catalog",
+      "title": "e-Fuel allocation order and buffer-stock extension of the no-market lineage",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-009/option/A",
+        "society:DEC-009/option/B",
+        "society:DEC-009/option/C"
+      ],
+      "effect": "Source proposal: e-Fuel allocation order and buffer-stock extension of the no-market lineage. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-010",
+      "classification": "catalog",
+      "title": "Storage classification: closed four-class system vs. qualitative \"critical goods\"",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-010/option/A",
+        "society:DEC-010/option/B",
+        "society:DEC-010/option/C"
+      ],
+      "effect": "Source proposal: Storage classification: closed four-class system vs. qualitative \"critical goods\". Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-011",
+      "classification": "catalog",
+      "title": "Storage capacity booked like track; one stock ledger per region",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-011/option/A",
+        "society:DEC-011/option/B",
+        "society:DEC-011/option/C"
+      ],
+      "effect": "Source proposal: Storage capacity booked like track; one stock ledger per region. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-012",
+      "classification": "catalog",
+      "title": "Dual-origin rule for the grain band and other monoflows",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-012/option/A",
+        "society:DEC-012/option/B",
+        "society:DEC-012/option/C"
+      ],
+      "effect": "Source proposal: Dual-origin rule for the grain band and other monoflows. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-013",
+      "classification": "catalog",
+      "title": "Stock publicity and pre-written interruption protocols (tentative)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-013/option/A",
+        "society:DEC-013/option/B"
+      ],
+      "effect": "Source proposal: Stock publicity and pre-written interruption protocols (tentative). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-014",
+      "classification": "catalog",
+      "title": "Priority classes for curtailable scarce inputs",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-014/option/A",
+        "society:DEC-014/option/B",
+        "society:DEC-014/option/C"
+      ],
+      "effect": "Source proposal: Priority classes for curtailable scarce inputs. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-015",
+      "classification": "catalog",
+      "title": "Food/goods ration ladder with pre-numeric triggers",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-015/option/A",
+        "society:DEC-015/option/B",
+        "society:DEC-015/option/C"
+      ],
+      "effect": "Source proposal: Food/goods ration ladder with pre-numeric triggers. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-016",
+      "classification": "catalog",
+      "title": "Class C ordinary goods: fixed prices, non-transferable points, no price rationing",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-016/option/A",
+        "society:DEC-016/option/B",
+        "society:DEC-016/option/C"
+      ],
+      "effect": "Source proposal: Class C ordinary goods: fixed prices, non-transferable points, no price rationing. Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-017",
+      "classification": "catalog",
+      "title": "Ration administration rides the RTA's machinery; civil-claims enforcement (tentative)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-017/option/A",
+        "society:DEC-017/option/B"
+      ],
+      "effect": "Source proposal: Ration administration rides the RTA's machinery; civil-claims enforcement (tentative). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-018",
+      "classification": "provenance",
+      "title": "Integration-fix session scoping: which resolution item first",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-018/option/A",
+        "society:DEC-018/option/B",
+        "society:DEC-018/option/C",
+        "society:DEC-018/option/D"
+      ],
+      "effect": "Selects a source integration-fix session topic; source workflow provenance has no simulation effect.",
+      "status": "qualitative",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Retain source amendment/provenance links; do not infer a player policy or numerical effect."
+    },
+    {
+      "source_id": "society:DEC-019",
+      "classification": "catalog",
+      "title": "Arid tier for the spine eligibility threshold (I.2.1 revision)",
+      "documents": [
+        "DEC-007"
+      ],
+      "option_refs": [
+        "society:DEC-019/option/A",
+        "society:DEC-019/option/B",
+        "society:DEC-019/option/C",
+        "society:DEC-019/option/D"
+      ],
+      "effect": "Source proposal: Arid tier for the spine eligibility threshold (I.2.1 revision). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-020",
+      "classification": "catalog",
+      "title": "Ration-ladder triggers re-anchored to buffer state (I.2.3 + I.2.2 revision)",
+      "documents": [
+        "DEC-015",
+        "01-2-2_storage-supply-chains-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-020/option/A",
+        "society:DEC-020/option/B",
+        "society:DEC-020/option/C",
+        "society:DEC-020/option/D"
+      ],
+      "effect": "Source proposal: Ration-ladder triggers re-anchored to buffer state (I.2.3 + I.2.2 revision). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-021",
+      "classification": "catalog",
+      "title": "Scarcity-ladder crosswalk: ownership, governing rule, e-fuel class (I.2.3 fix, resolves Contradiction C)",
+      "documents": [
+        "01-2-3_allocation-mechanisms-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-021/round/1/option/A",
+        "society:DEC-021/round/1/option/B",
+        "society:DEC-021/round/1/option/C",
+        "society:DEC-021/round/2/option/A",
+        "society:DEC-021/round/2/option/B",
+        "society:DEC-021/round/2/option/C",
+        "society:DEC-021/round/3/option/A",
+        "society:DEC-021/round/3/option/B",
+        "society:DEC-021/round/3/option/C"
+      ],
+      "effect": "Source proposal: Scarcity-ladder crosswalk: ownership, governing rule, e-fuel class (I.2.3 fix, resolves Contradiction C). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-022",
+      "classification": "catalog",
+      "title": "RTA span review: two internal divisions + dual-key decay review (resolves I.2 integration \u00a74 finding 1, resolution item 6)",
+      "documents": [
+        "01-1-authority-arbitration-spec.md",
+        "DEC-008"
+      ],
+      "option_refs": [
+        "society:DEC-022/round/0/option/1",
+        "society:DEC-022/round/0/option/2",
+        "society:DEC-022/round/0/option/3",
+        "society:DEC-022/round/1/option/2.1",
+        "society:DEC-022/round/1/option/1.1",
+        "society:DEC-022/round/1/option/3.1",
+        "society:DEC-022/round/2/option/A",
+        "society:DEC-022/round/2/option/B",
+        "society:DEC-022/round/2/option/C"
+      ],
+      "effect": "Source proposal: RTA span review: two internal divisions + dual-key decay review (resolves I.2 integration \u00a74 finding 1, resolution item 6). Original alternatives are retained data; no numerical source model or institutional procedure is activated.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source-specific model, scope and empirical evidence; add independent coupled/counterpart fixtures before source activation."
+    },
+    {
+      "source_id": "society:DEC-023",
+      "classification": "provenance",
+      "title": "Reconciliation pass: repair all four log\u2194full asymmetries (DEC-019/020 era)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-023/option/A",
+        "society:DEC-023/option/B",
+        "society:DEC-023/option/C"
+      ],
+      "effect": "Reconciles source log/full-document asymmetries; editorial provenance is not a player policy or mechanism.",
+      "status": "qualitative",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Retain source amendment/provenance links; do not infer a player policy or numerical effect."
+    },
+    {
+      "source_id": "society:DEC-024",
+      "classification": "provenance",
+      "title": "Preserved-alternatives index labels: checker tolerance for the pre-DEC-021 styles",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-024/option/A",
+        "society:DEC-024/option/B",
+        "society:DEC-024/option/C"
+      ],
+      "effect": "Changes source checker label tolerance; maintenance provenance is not a game quantity or behavior.",
+      "status": "qualitative",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Retain source amendment/provenance links; do not infer a player policy or numerical effect."
+    },
+    {
+      "source_id": "society:DEC-SYS-001",
+      "classification": "provenance",
+      "title": "Source maintenance decision",
+      "documents": [],
+      "option_refs": [],
+      "effect": "Source maintenance policy is provenance only; archived instructions have no runtime authority.",
+      "status": "qualitative",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Retain source amendment/provenance links; do not infer a player policy or numerical effect."
+    }
+  ]
+}

@@ -111,3 +111,67 @@ by-products/loss, shared labor/land/energy/handling/entitlement limits, inaccess
 surplus, holds, closed actuals, fractional remainders and whole-candidate failure.
 Scoped options/coverage, production source review/activation, real counterpart
 acceptance, full DOM-01 and WP-032 remain pending.
+
+## Scoped procedures, indicators and coverage
+
+`exploration.interview(request, units, phase_id, scope_id)` returns two original
+hypothetical shared `Definition` alternatives: explicit-order partial priority and
+explicit-order all-or-nothing. No alternative is selected by default, even if the
+input plan already declares a procedure. The full input plan retains that existing
+procedure for inspection. Any local phase kind can be explored; every claim in
+that phase must use the selected source scope. Freight destinations can cross the
+boundary, while a phase with sources in multiple scopes requires a separately
+agreed joint procedure. No local question grants control over that joint order.
+
+`exploration.preview(request, units, ProcedureEdit)` accepts only the option ID,
+phase, scope, complete unique claim order and baseline digest. It reruns the real
+chain after replacing the named phase's procedure/order. It cannot edit access,
+quantities, resource identities, coefficients or evidence. The digest covers the
+complete base plan, provenance, unit registry, numeric runtime and adapter version;
+changes require a fresh preview. Unknown/foreign options, incomplete/conflicting
+orders, stale baselines and incompatible scopes fail. This is a **host-only pure
+calculation preview**, not a revision token, model approval or renderer API.
+Publication still requires the existing review and revision/operation services.
+The production interview service continues to record qualitative commitments;
+selecting a historical source answer never silently registers an executable model.
+
+`exploration.report(request, units)` returns exact per-claim requested, actual and
+unmet quantities, scoped stock/resource/unit/period identities, declared access
+and limits, source availability before the phase, and each funding, entitlement
+or transport port's coefficient, scope, unit, period and before/after availability.
+The report declares the adapter version, partial model coverage and hypothetical
+evidence independently from whether calculation resolved. These are shared
+balances, not a budget promised independently to each row.
+Availability means unreserved free stock; claim-specific holds remain separately
+visible in the complete phase account batch. Rows do not rank causes or sum
+incompatible resources/units. Zero physical supply, zero delivery capacity,
+positive stock behind denied access and limited entitlement remain distinct
+fields; finite competition/quantum/indivisibility require the retained procedure
+and actual evidence rather than an invented single causal score.
+
+Every row links its exact fulfillment postings and source refs. The complete
+nested `ProvisioningEvaluation` preserves output/loss actuals, paired freight
+export/import IDs, all holds/accounts and phase order. Account/flow evidence is
+returned data, not a new competing reducer or durable trace service. Resolved
+earlier stages in an unresolved chain are explicitly staging only: final candidate
+accounts stay null, the blocked phase's actual/unmet quantities are null, and
+subsequent phases are `not_evaluated`. Known declared ports remain visible with
+null measured balances. Repeated reports/previews are deterministic and detached.
+
+The standalone [coverage inventory](../../../../content/provisioning/coverage-v1.json)
+accounts for all three source branches, ten leaves, 24 decisions and the source
+maintenance decision at the pinned archive. It preserves every source alternative
+reference and amendment link, and records partial/unsupported/provenance effects,
+hypothetical/unreviewed evidence, scope availability and next research. Generic
+mass transformation, freight/handling and access-conditioned use are partial
+static capabilities. Source-specific energy/water physics, waste recovery,
+circular loops, empirical institutions and all transitions remain unavailable.
+The inventory is not part of the immutable production release and activates no
+source model. Its exact reconciliation and pure API acceptance fixtures run with:
+
+```sh
+uv run --frozen pytest tests/engine/test_provisioning_exploration.py
+```
+
+Real DOM-02/05/08/10/12 paired acceptance remains blocked by those counterpart
+modules; reassess the next ready static domain allocation after this child merges.
