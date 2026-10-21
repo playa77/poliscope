@@ -41,6 +41,8 @@
     "pack.ts",
     "policy.schema.json",
     "policy.ts",
+    "provisioning.schema.json",
+    "provisioning.ts",
     "revision.schema.json",
     "revision.ts",
     "saved-evidence.schema.json",
