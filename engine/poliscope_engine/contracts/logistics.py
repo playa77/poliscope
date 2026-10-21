@@ -33,6 +33,8 @@ class LogisticsRequest(Contract):
     period_id: Identifier
     resources: Annotated[list[StockResource], Field(max_length=1000)]
     routes: Annotated[list[TransportRoute], Field(max_length=1000)]
+    # Historical claims retain postings/holds but cannot allocate in this phase.
+    closed_claim_ids: Annotated[list[Identifier], Field(max_length=1000)] = Field(default_factory=list)
     procedure: Literal['priority', 'all_or_nothing'] | None
     claim_order: Annotated[list[Identifier], Field(max_length=1000)]
     mechanism_ref: Identifier

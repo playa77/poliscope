@@ -288,3 +288,27 @@ def test_delivery_then_local_access_does_not_conflate_entitlement_and_supply():
         mechanism_ref='authored:local-access', source_refs=[]), units())
     assert balances(allowed)['food:west'] == '2'
     assert next(c for c in allowed.accounts.claims if c.claim_id == 'eat').actual == '6'
+
+
+@pytest.mark.parametrize('closed', [['absent'], ['north-delivery', 'north-delivery']])
+def test_closed_claims_must_be_unique_existing_ids(closed):
+    data = request()
+    data['closed_claim_ids'] = closed
+    with pytest.raises(AccountError, match='invalid_closed_claims'): run(data)
+
+
+def test_closed_claim_cannot_have_an_active_route():
+    data = request()
+    data['closed_claim_ids'] = ['north-delivery']
+    with pytest.raises(AccountError, match='invalid_routes'): run(data)
+
+
+def test_explicitly_closed_claim_retains_unmet_and_hold_without_shipping():
+    data = request()
+    data['closed_claim_ids'] = ['north-delivery']
+    data['routes'].pop()
+    data['batch']['reservations'] = [dict(id='closed-hold', account_id='food:east', claim_id='north-delivery', amount='8')]
+    result = run(data)
+    assert delivered(result) == {'west-delivery': '8'}
+    assert next(c for c in result.accounts.claims if c.claim_id == 'north-delivery').unmet == '8'
+    assert next(a for a in result.accounts.accounts if a.account_id == 'food:east').outstanding_reserved == '8'

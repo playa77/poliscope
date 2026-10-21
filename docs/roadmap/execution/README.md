@@ -480,3 +480,18 @@ lossless freight uses shared canonical stock/transport/crew budgets and paired
 actual postings. Reassess DOM-01-production-use after merge. Real counterpart
 acceptance, remaining domain modules, source-model review, Windows native evidence
 and cumulative M3 remain open; no WP-032 completion is inferred.
+
+## Current boundary after PR #47
+
+PR #47 merged DOM-01-logistics at
+`7bb643af77d74413fd99180dee5a1ce23844cba8`.
+[DOM-01-production-use](WP-DOM-01-production-use.md) allocates the next complete
+bounded child to Codex `/root`, one sequential owner under SV. Explicit finite
+production/freight/storage-handling/use phases share canonical stocks, dated
+capacity budgets and access rules. Outputs use actual inputs; prior claims and
+holds remain inspectable and closed to reallocation. Unresolved or invalid chains
+cannot expose a complete candidate. The authored hypothetical arithmetic card
+is not empirical/source model approval or production catalog activation.
+Reassess DOM-01-options-coverage after merge; real counterpart modules, multi-input
+recipes, circular-return/timed-loss transitions, parent static acceptance, WP-032,
+Windows native evidence and cumulative application gates remain open.

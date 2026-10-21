@@ -1,0 +1,23 @@
+{
+  "id": "authored:provisioning-chain-v1",
+  "version": "v1",
+  "kind": "model_card",
+  "origin": "authored",
+  "evidence_status": "hypothetical",
+  "modeling_status": "partial",
+  "scope": "Host-selected finite static production, freight, storage handling and access-conditioned use in one capacity period, across declared local scopes.",
+  "inputs": ["canonical physical stock/resource bindings", "explicit ordered phases and fresh claims", "reviewed yields, residuals and losses", "shared dated labor, land, energy, transport, handling and entitlement budgets", "explicit access and finite allocation procedures"],
+  "procedure": "Execute the bounded declared dependency order through shared allocation and freight services. Preserve prior claims, actuals and reservations while closing them to new allocation. Use only actual input for transformation output and new actual freight for paired imports. Expose a final candidate only after all phases resolve and validate.",
+  "fixture": "tests/engine/test_provisioning_chain.py",
+  "independent_oracle": "20 kg raw -> 14 kg product + 4 kg byproduct + 2 kg process loss. Production uses 10 of 12 labor hours, 4 land-days and 20 energy units. Remaining 2 labor hours at 0.5 hour/kg deliver 4 kg; handling admits 3 kg; entitlement admits 2 kg use. Final physical stocks total 16 kg; use 2 kg plus loss 2 kg reconcile the opening 20 kg.",
+  "review_route": "SV separate arithmetic/interface inspection against D section 5.2, T sections 5 and 7.4; independent agent review deferred",
+  "ports": {
+    "physical_stock": "Canonical account_id, resource_id, scope_id, unit_id, quantum and magnitude; no private stock copies.",
+    "capacity": "Canonical dated budget IDs and positive per-actual-input coefficients; reused IDs contend across phases.",
+    "access": "Host-selected allowed/denied/unknown access, explicit limit, funding-known flag and entitlement requirements; no inferred civic policy.",
+    "evidence": "Complete request, each phase's shared allocation evidence and paired freight movement/posting IDs, final claims/accounts only for resolved chains."
+  },
+  "limits": ["Synthetic arithmetic, not empirical production or transport performance", "No source model activation, public IPC, renderer or durable publication", "One physical input stock per transformation claim; no multi-input recipe solver", "Land/energy ports are finite capacity claims, not material stoichiometric inputs", "Storage is same-resource same-unit local handling with no decay or elapsed-time schedule", "Bounded explicit phase order; no inferred optimization, same-phase coupling, recycling or output into any earlier claimed source", "Unfulfilled old holds remain reserved; phase closure is not cancellation or release", "Unresolved phase evidence is staging only; no complete candidate is returned", "No calendar, replenishment, automatic imports, transitions or checkpoint replay", "Production catalog activation and actual paired-domain acceptance remain separate"],
+  "source_branches": ["I / production", "I / distribution-logistics", "I / consumption-waste-circular-loops"],
+  "next_task": "DOM-01-options-coverage; retain explicit gaps for multi-input recipes, recycling, timed storage loss, counterpart acceptance and parent static/transition gates."
+}

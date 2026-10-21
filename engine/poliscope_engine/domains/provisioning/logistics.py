@@ -17,16 +17,22 @@ def transport(request, units):
     accounts, claims = index(batch.accounts), index(batch.claims)
     routes = {r.claim_id: r for r in request.routes}
     resources = {r.account_id: r.resource_id for r in request.resources}
-    if len(routes) != len(request.routes) or set(routes) != set(claims):
+    closed = set(request.closed_claim_ids)
+    if len(closed) != len(request.closed_claim_ids) or not closed <= set(claims):
+        fail('invalid_closed_claims')
+    if len(routes) != len(request.routes) or set(routes) != set(claims) - closed:
         fail('invalid_routes')
     if len(resources) != len(request.resources) or not set(resources) <= set(accounts):
         fail('invalid_resource_bindings')
-    sources = {c.account_id for c in claims.values()}
+    sources = {claims[cid].account_id for cid in routes}
     destinations = {r.destination_id for r in routes.values()}
     if sources & destinations:
         # No hidden same-pass transshipment, circular production or route solver.
         fail('coupled_transport_requires_solver')
-    choices = []
+    choices = [AllocationChoice(claim_id=cid, access='denied', access_limit='0',
+        funding_known=True, requirements=[], outputs=[], loss_per_unit='0',
+        mechanism_ref=request.mechanism_ref, source_refs=request.source_refs)
+        for cid in request.closed_claim_ids]
     for cid, route in routes.items():
         source = accounts[claims[cid].account_id]
         destination = accounts.get(route.destination_id)
@@ -75,6 +81,8 @@ def transport(request, units):
     serial = 0
     for actual in allocation.actuals:
         cid = actual.claim_id
+        if cid in closed:
+            continue
         route, claim = routes[cid], claims[cid]
         exports = []
         exported = Fraction()

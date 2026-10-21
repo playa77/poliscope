@@ -877,6 +877,16 @@
           "title": "Claim Order",
           "type": "array"
         },
+        "closed_claim_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Closed Claim Ids",
+          "type": "array"
+        },
         "contract_version": {
           "const": 1,
           "title": "Contract Version",
