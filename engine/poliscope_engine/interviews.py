@@ -183,6 +183,10 @@ def stage(service, data, identity):
         if owner is None or owner['writer_id'] != 'player':
             raise ValueError('condition_not_player_editable')
     cid = commitment_id(edit.query)
+    from poliscope_engine.atlas import catalogs
+    from poliscope_engine.content import bundled_release
+    _, source_packs = catalogs(bundled_release())
+    archived_sources = {s.reference.id: s.reference.model_dump(mode='json') for p in source_packs for s in p.sources}
 
     def changes(option):
         archived_options = {o.definition.id: o.definition.model_dump(mode='json') for o in q.options}
@@ -192,7 +196,8 @@ def stage(service, data, identity):
         if not any(e['id'] == cid + ':entity' for e in inputs['entities']):
             inputs['entities'].append(dict(id=cid + ':entity', entity_kind='decision', label=TOPICS[int(edit.query.domain_id.split(':')[1])-1][0] if q.definition.id.startswith('interview:domain-') else q.definition.id, provenance=PROVENANCE))
             inputs['owners'].append(dict(entity_id=cid + ':entity', property_id='interview:commitment', partition='design', writer_id='player'))
-        metadata = dict(question=q.definition.model_dump(mode='json'), option=option.model_dump(mode='json'),
+        source_refs = set(q.definition.source_refs + [r for d in archived_options.values() for r in d['source_refs']])
+        metadata = dict(archived_sources=[archived_sources[r] for r in sorted(source_refs) if r in archived_sources], question=q.definition.model_dump(mode='json'), option=option.model_dump(mode='json'),
                         scope_id=edit.query.scope_id, coverage=LIMIT, dependencies=q.dependencies,
                         options=list(archived_options.values()),
                         domain_refs=domain_refs, branch_refs=branch_refs,

@@ -47,6 +47,8 @@
     "tool-inputs.json",
     "wire.schema.json",
     "wire.ts",
+    "workbench.schema.json",
+    "workbench.ts",
     "workspace.schema.json",
     "workspace.ts"
   ],

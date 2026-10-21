@@ -24,6 +24,11 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('evidence:read', 1, input => { if (!workspaceValid(input, 'WorkbenchQuery')) throw new Error(); return shell.workbench(input); }, workspaceReply('WorkbenchPage'));
+  handle('evidence:preview', 1, input => { if (!workspaceValid(input, 'WorkbenchEdit')) throw new Error(); return shell.previewWorkbench(input); }, workspaceReply('WorkbenchPreview'));
+  handle('evidence:apply', 1, input => { if (!workspaceValid(input, 'InterviewApply')) throw new Error(); return shell.applyWorkbench(input); }, workspaceReply('InterviewCommit'));
+  handle('evidence:delete-note', 1, input => { if (!workspaceValid(input, 'DeleteNote')) throw new Error(); return shell.deleteNote(input); }, workspaceReply('DeleteNoteReply'));
+  handle('evidence:cancel', 0, () => shell.cancelWorkbench(), reply => reply === undefined);
   handle('world:explore', 1, input => { if (!workspaceValid(input, 'ExplorationQuery')) throw new Error(); return shell.exploration(input); }, workspaceReply('ExplorationPage'));
   handle('world:preview', 1, input => { if (!workspaceValid(input, 'ExplorationEdit')) throw new Error(); return shell.previewWorld(input); }, workspaceReply('ExplorationPreview'));
   handle('world:apply', 1, input => { if (!workspaceValid(input, 'InterviewApply')) throw new Error(); return shell.applyWorld(input); }, workspaceReply('InterviewCommit'));

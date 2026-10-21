@@ -52,7 +52,7 @@ function harness() {
 }
 it('rejects unauthorized and malformed requests before any service or dialog call', async () => {
   const h = harness();
-  expect([...h.handlers.keys()].sort()).toEqual(['atlas:read', 'atlas:source', 'bootstrap:status', 'design-history:action', 'design-history:compare', 'design-history:lineage', 'design-history:rationale', 'history:open', 'history:page', 'interview:apply', 'interview:cancel', 'interview:preview', 'interview:read', 'matrix:model', 'matrix:read', 'overview:chart', 'overview:read', 'overview:target', 'runtime:reconnect', 'workspace:catalogue', 'workspace:choose', 'workspace:create', 'workspace:page', 'workspace:select', 'world:apply', 'world:cancel', 'world:explore', 'world:preview']);
+  expect([...h.handlers.keys()].sort()).toEqual(['atlas:read', 'atlas:source', 'bootstrap:status', 'design-history:action', 'design-history:compare', 'design-history:lineage', 'design-history:rationale', 'evidence:apply', 'evidence:cancel', 'evidence:delete-note', 'evidence:preview', 'evidence:read', 'history:open', 'history:page', 'interview:apply', 'interview:cancel', 'interview:preview', 'interview:read', 'matrix:model', 'matrix:read', 'overview:chart', 'overview:read', 'overview:target', 'runtime:reconnect', 'workspace:catalogue', 'workspace:choose', 'workspace:create', 'workspace:page', 'workspace:select', 'world:apply', 'world:cancel', 'world:explore', 'world:preview']);
   h.authorize.mockImplementationOnce(() => { throw new Error('/private/store/path'); });
   await expect(h.call('history:open', selection)).rejects.toThrow(IPC_ERROR);
   for (const [channel, args] of [

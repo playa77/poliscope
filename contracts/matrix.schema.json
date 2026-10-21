@@ -252,6 +252,58 @@
       "title": "ConditionRule",
       "type": "object"
     },
+    "ConstantNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "constant",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "value_type": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelType",
+              "quantity": "#/$defs/QuantityType",
+              "reference": "#/$defs/ReferenceType"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityType"
+            },
+            {
+              "$ref": "#/$defs/LabelType"
+            },
+            {
+              "$ref": "#/$defs/ReferenceType"
+            }
+          ],
+          "title": "Value Type"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "value",
+        "value_type"
+      ],
+      "title": "ConstantNode",
+      "type": "object"
+    },
     "Diagnostic": {
       "additionalProperties": false,
       "properties": {
@@ -329,6 +381,93 @@
         "calendar_id"
       ],
       "title": "EffectiveTime",
+      "type": "object"
+    },
+    "ExpressionGraph": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "nodes": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "constant": "#/$defs/ConstantNode",
+                "input": "#/$defs/InputNode",
+                "operator": "#/$defs/OperatorNode"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/InputNode"
+              },
+              {
+                "$ref": "#/$defs/ConstantNode"
+              },
+              {
+                "$ref": "#/$defs/OperatorNode"
+              }
+            ]
+          },
+          "maxItems": 256,
+          "minItems": 1,
+          "title": "Nodes",
+          "type": "array"
+        },
+        "outputs": {
+          "additionalProperties": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 100,
+          "propertyNames": {
+            "maxLength": 256,
+            "minLength": 1
+          },
+          "title": "Outputs",
+          "type": "object"
+        },
+        "state": {
+          "additionalProperties": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxProperties": 100,
+          "propertyNames": {
+            "maxLength": 256,
+            "minLength": 1
+          },
+          "title": "State",
+          "type": "object"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "version",
+        "nodes",
+        "outputs",
+        "state"
+      ],
+      "title": "ExpressionGraph",
       "type": "object"
     },
     "FinitePlan": {
@@ -444,6 +583,35 @@
         "version"
       ],
       "title": "Identity",
+      "type": "object"
+    },
+    "InputNode": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "input_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Input Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "input",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "input_id"
+      ],
+      "title": "InputNode",
       "type": "object"
     },
     "InputPort": {
@@ -750,6 +918,20 @@
           ],
           "title": "Kind",
           "type": "string"
+        },
+        "version": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Version"
         }
       },
       "required": [
@@ -782,6 +964,14 @@
               "type": "null"
             }
           ]
+        },
+        "expression_graphs": {
+          "items": {
+            "$ref": "#/$defs/ExpressionGraph"
+          },
+          "maxItems": 100,
+          "title": "Expression Graphs",
+          "type": "array"
         },
         "matrix_contract": {
           "const": 1,
@@ -1515,6 +1705,44 @@
         "properties"
       ],
       "title": "MechanismDefinition",
+      "type": "object"
+    },
+    "OperatorNode": {
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Arguments",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "operator",
+          "title": "Kind",
+          "type": "string"
+        },
+        "operator": {
+          "$ref": "#/$defs/Identity"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "operator",
+        "arguments"
+      ],
+      "title": "OperatorNode",
       "type": "object"
     },
     "OutputPort": {

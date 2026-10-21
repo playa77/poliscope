@@ -62,6 +62,9 @@ def rationale(service, data):
     ref, text = record.decision.rationale_ref, None
     if ref is not None and ref.status == 'available':
         path = service.store.path.parent / 'private-interviews' / (digest(ref.id).split(':', 1)[1] + '.json')
+        if path.with_suffix('.deleted').exists():
+            return RationaleReply(comparison_contract=1, query=query, classification='private',
+                reference=ref.model_copy(update={'status': 'deleted'}), text=None)
         try:
             with path.open('rb') as stream:
                 raw = stream.read(30001)

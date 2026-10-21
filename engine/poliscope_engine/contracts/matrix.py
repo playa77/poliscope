@@ -83,8 +83,11 @@ class MatrixPage(Contract):
 
 class MatrixModelQuery(Contract):
     context: RevisionContext
+    version: Identifier | None = None
     kind: Literal['mechanism', 'rule']
     identity: Identifier
+
+from .expressions import ExpressionGraph
 
 class MatrixModelReply(Contract):
     matrix_contract: Literal[1]
@@ -94,5 +97,6 @@ class MatrixModelReply(Contract):
     policy_rule: ResolutionRule | None
     allocation_rule: FinitePlan | None
     condition_rule: ConditionRule | None
+    expression_graphs: Annotated[list[ExpressionGraph], Field(max_length=100)] = Field(default_factory=list)
 
 matrix_adapter = TypeAdapter(MatrixQuery | MatrixPage | MatrixModelQuery | MatrixModelReply)

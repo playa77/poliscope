@@ -260,10 +260,18 @@ def model(service, data):
     record, saved = service.read(query.context), service.evidence(query.context)
     mechanism, policy, allocation, condition = None, None, None, None
     if query.kind == 'mechanism' and saved.evaluation:
-        mechanism = next((MechanismDefinition.model_validate(d) for d in json.loads(saved.evaluation.model_json)['definitions'] if d['id'] == query.identity), None)
-    elif query.kind == 'rule':
+        candidates = [MechanismDefinition.model_validate(d) for d in json.loads(saved.evaluation.model_json)['definitions']
+            if d['id'] == query.identity and (query.version is None or d['version'] == query.version)]
+        mechanism = candidates[0] if len(candidates) == 1 else None
+    elif query.kind == 'rule' and query.version is None:
         policy = next((r for r in record.inputs.design.policy_rules if r.identity.id == query.identity), None)
         allocation = next((r for r in record.inputs.design.execution.allocations if r.id == query.identity), None)
         condition = next((r for r in record.inputs.design.conditions if r.identity.id == query.identity), None)
-    return MatrixModelReply(matrix_contract=1, query=query, status='retained' if any((mechanism, policy, allocation, condition)) else 'unavailable',
+    graphs = []
+    if mechanism and saved.evaluation:
+        from poliscope_engine.contracts.expressions import ExpressionGraph
+        references = [s.implementation for s in (mechanism.support.static, mechanism.support.transition) if s and s.kind == 'declarative_graph']
+        graphs = [ExpressionGraph.model_validate(g) for g in json.loads(saved.evaluation.model_json).get('graphs', [])
+            if any((g['id'], g['version']) == (r.id, r.version) for r in references)]
+    return MatrixModelReply(expression_graphs=graphs, matrix_contract=1, query=query, status='retained' if any((mechanism, policy, allocation, condition)) else 'unavailable',
         mechanism=mechanism, policy_rule=policy, allocation_rule=allocation, condition_rule=condition)

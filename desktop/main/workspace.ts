@@ -1,3 +1,5 @@
+import workbenchSchema from '../../contracts/workbench.schema.json';
+import type { WorkbenchQuery, WorkbenchPage, WorkbenchEdit, WorkbenchPreview, DeleteNote, DeleteNoteReply } from '../../contracts/workbench';
 import explorationSchema from '../../contracts/exploration.schema.json';
 import type { ExplorationQuery, ExplorationPage, ExplorationEdit, ExplorationPreview } from '../../contracts/exploration';
 import matrixSchema from '../../contracts/matrix.schema.json';
@@ -19,7 +21,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -32,6 +34,7 @@ export function decodeWorkspace(frame: Buffer, type: string): unknown {
   return value;
 }
 export class WorkspaceController {
+  private workbenchCandidate?: { edit: WorkbenchEdit; identity: string; preview: WorkbenchPreview; applying: boolean };
   private worldCandidate?: { edit: ExplorationEdit; identity: string; preview: ExplorationPreview; applying: boolean };
   private candidate?: { edit: InterviewEdit; identity: string; preview: InterviewPreview; applying: boolean };
   private pendingHistory?: { query: HistoryAction; identity: string };
@@ -42,7 +45,7 @@ export class WorkspaceController {
   private selected?: WorkspaceState;
   private branches?: WorkspaceCatalogue['branches'];
   constructor(private packaged: boolean, private root: string, private resources: string) {}
-  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; this.worldCandidate = undefined; }
+  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; this.worldCandidate = undefined; this.workbenchCandidate = undefined; }
   private async request(operation: string, input: unknown, type: string, identity = 'unused'): Promise<unknown> {
     if (!this.directory) throw new Error('Select a store first');
     const command = engineCommand(this.packaged, this.root, this.resources);
@@ -95,12 +98,66 @@ export class WorkspaceController {
         state.context.data_store_id !== this.storeId || state.branch.context.civilization_id !== selection.civilization_id ||
         state.branch.context.branch_id !== selection.branch_id || state.branch.context.data_store_id !== this.storeId) throw new Error('Workspace response binding mismatch');
     this.selected = state;
-    this.worldCandidate = undefined;
+    this.worldCandidate = undefined; this.workbenchCandidate = undefined;
     this.candidate = undefined;
     return state;
   }
   private authorizeInterview(query: InterviewQuery) {
     if (!this.selected || JSON.stringify(query.context) !== JSON.stringify(this.selected.context)) throw new Error('Interview outside selected context');
+  }
+  async workbench(input: unknown): Promise<WorkbenchPage> {
+    if (!workspaceValid(input, 'WorkbenchQuery')) throw new Error('Invalid evidence query');
+    const query = structuredClone(input as WorkbenchQuery);
+    this.authorizeHistory(query.context);
+    const reply = await this.request('workbench', query, 'WorkbenchPage') as WorkbenchPage;
+    if (!isDeepStrictEqual(reply.query, { cursor: null, ...query }) ||
+        !isDeepStrictEqual(reply.versions, this.selected!.versions) || !isDeepStrictEqual(reply.effective_time, this.selected!.effective_time) ||
+        reply.items.some(r => (r.note && (query.collection !== 'notes' || r.note.scope_id !== query.scope_id || r.note.id !== r.id)) ||
+          (r.assumption && (query.collection !== 'assumptions' || r.assumption.id !== r.id)) ||
+          (r.goal && (query.collection !== 'goals' || r.goal.id !== r.id)) ||
+          (r.reference && query.collection !== 'references') || (r.model_id && query.collection !== 'models') ||
+          (r.rationale && (query.collection !== 'rationale' || r.rationale.id !== r.id)) ||
+          (r.text != null && !['notes', 'rationale'].includes(query.collection)))) throw new Error('Evidence response binding mismatch');
+    return reply;
+  }
+  async previewWorkbench(input: unknown): Promise<WorkbenchPreview> {
+    if (!workspaceValid(input, 'WorkbenchEdit') || this.workbenchCandidate?.applying || this.candidate?.applying || this.worldCandidate?.applying) throw new Error('Resolve pending Apply');
+    const edit = structuredClone(input as WorkbenchEdit);
+    this.authorizeHistory(edit.context);
+    if (!isDeepStrictEqual(this.selected!.context, this.selected!.branch.context)) throw new Error('Historical state is read only');
+    this.workbenchCandidate = undefined; this.candidate = undefined; this.worldCandidate = undefined;
+    const identity = randomUUID();
+    const reply = await this.request('preview-workbench', edit, 'WorkbenchPreview', identity) as WorkbenchPreview;
+    const expected = { ...edit, change: edit.change.kind === 'goal' ? { remove: false, ...edit.change } : edit.change.kind === 'note' ? { id: null, ...edit.change } : edit.change };
+    if (!isDeepStrictEqual(reply.edit, expected) || (edit.change.kind !== 'assumption' && reply.physical_before !== reply.physical_after)) throw new Error('Evidence preview binding mismatch');
+    this.workbenchCandidate = { edit, identity, preview: reply, applying: false };
+    return reply;
+  }
+  async applyWorkbench(input: unknown): Promise<InterviewCommit> {
+    if (!workspaceValid(input, 'InterviewApply')) throw new Error('Invalid evidence Apply');
+    const candidate = this.workbenchCandidate;
+    if (!candidate || candidate.preview.candidate_digest !== (input as InterviewApply).candidate_digest) throw new Error('No granted evidence candidate');
+    this.authorizeHistory(candidate.edit.context);
+    candidate.applying = true;
+    const reply = await this.request('apply-workbench', { edit: candidate.edit, candidate_digest: candidate.preview.candidate_digest }, 'InterviewCommit', candidate.identity) as InterviewCommit;
+    const old = candidate.edit.context, current = reply.state.context;
+    if (current.data_store_id !== old.data_store_id || current.civilization_id !== old.civilization_id || current.branch_id !== old.branch_id ||
+        !isDeepStrictEqual(reply.state.versions, this.selected!.versions) || !isDeepStrictEqual(reply.state.effective_time, this.selected!.effective_time) ||
+        (reply.status === 'applied' && current.revision_id === old.revision_id)) throw new Error('Evidence Apply binding mismatch');
+    this.selected = reply.state; this.workbenchCandidate = undefined;
+    return reply;
+  }
+  async cancelWorkbench(): Promise<void> {
+    if (this.workbenchCandidate?.applying) throw new Error('Retry uncertain Apply');
+    this.workbenchCandidate = undefined;
+  }
+  async deleteNote(input: unknown): Promise<DeleteNoteReply> {
+    if (!workspaceValid(input, 'DeleteNote') || this.workbenchCandidate || this.candidate || this.worldCandidate) throw new Error('Resolve draft first');
+    const query = structuredClone(input as DeleteNote);
+    this.authorizeHistory(query.context);
+    const reply = await this.request('delete-note', query, 'DeleteNoteReply') as DeleteNoteReply;
+    if (!isDeepStrictEqual(reply.query, query)) throw new Error('Deletion binding mismatch');
+    return reply;
   }
   async exploration(input: unknown): Promise<ExplorationPage> {
     if (!workspaceValid(input, 'ExplorationQuery')) throw new Error('Invalid world query');
@@ -113,11 +170,11 @@ export class WorkspaceController {
     return result;
   }
   async previewWorld(input: unknown): Promise<ExplorationPreview> {
-    if (!workspaceValid(input, 'ExplorationEdit') || this.worldCandidate?.applying || this.candidate?.applying) throw new Error('Resolve pending apply first');
+    if (!workspaceValid(input, 'ExplorationEdit') || this.worldCandidate?.applying || this.candidate?.applying || this.workbenchCandidate?.applying) throw new Error('Resolve pending apply first');
     const edit = structuredClone(input as ExplorationEdit);
     this.authorizeHistory(edit.context);
     if (!isDeepStrictEqual(this.selected!.context, this.selected!.branch.context)) throw new Error('Historical state is read only');
-    this.worldCandidate = undefined; this.candidate = undefined;
+    this.worldCandidate = undefined; this.workbenchCandidate = undefined; this.candidate = undefined;
     const identity = randomUUID();
     const preview = await this.request('preview-world', edit, 'ExplorationPreview', identity) as ExplorationPreview;
     if (!isDeepStrictEqual(preview.edit, { ...edit, change: edit.change.kind === 'relationship' ? { terms: null, ...edit.change } : edit.change.kind === 'entity' ? { population_role: null, ...edit.change } : edit.change })) throw new Error('World preview binding mismatch');
@@ -139,7 +196,7 @@ export class WorkspaceController {
     return result;
   }
   async cancelWorld(): Promise<void> {
-    if (this.worldCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
+    if (this.worldCandidate?.applying || this.workbenchCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
     this.worldCandidate = undefined;
   }
   async matrixModel(input: unknown): Promise<MatrixModelReply> {
@@ -147,7 +204,7 @@ export class WorkspaceController {
     const query = structuredClone(input as MatrixModelQuery);
     this.authorizeHistory(query.context);
     const result = await this.request('matrix-model', query, 'MatrixModelReply') as MatrixModelReply;
-    if (!isDeepStrictEqual(result.query, query) || (result.mechanism && (query.kind !== 'mechanism' || result.mechanism.id !== query.identity)) ||
+    if (!isDeepStrictEqual(result.query, { version: null, ...query }) || (result.mechanism && (query.kind !== 'mechanism' || result.mechanism.id !== query.identity || (query.version != null && result.mechanism.version !== query.version))) ||
         (result.policy_rule && result.policy_rule.identity.id !== query.identity) || (result.allocation_rule && result.allocation_rule.id !== query.identity) ||
         (result.condition_rule && result.condition_rule.identity.id !== query.identity)) throw new Error('Matrix model binding mismatch');
     return result;
@@ -192,11 +249,11 @@ export class WorkspaceController {
     return result;
   }
   async previewInterview(input: unknown): Promise<InterviewPreview> {
-    if (!workspaceValid(input, 'InterviewEdit') || this.candidate?.applying || this.worldCandidate?.applying) throw new Error('Resolve pending apply first');
+    if (!workspaceValid(input, 'InterviewEdit') || this.candidate?.applying || this.worldCandidate?.applying || this.workbenchCandidate?.applying) throw new Error('Resolve pending apply first');
     const edit = structuredClone(input as InterviewEdit);
     this.authorizeInterview(edit.query);
     if (this.selected!.context.revision_id !== this.selected!.branch.context.revision_id) throw new Error('Historical state is read only');
-    this.candidate = undefined; this.worldCandidate = undefined;
+    this.candidate = undefined; this.worldCandidate = undefined; this.workbenchCandidate = undefined;
     const identity = randomUUID();
     const preview = await this.request('preview-interview', edit, 'InterviewPreview', identity) as InterviewPreview;
     if (!isDeepStrictEqual(preview.query, { ...edit.query, question_id: edit.query.question_id ?? null }) || preview.selected_id !== edit.choice_id || !preview.alternatives.includes(edit.choice_id)) throw new Error('Preview binding mismatch');
@@ -220,7 +277,7 @@ export class WorkspaceController {
     return result;
   }
   async cancelInterview(): Promise<void> {
-    if (this.candidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
+    if (this.candidate?.applying || this.workbenchCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
     this.candidate = undefined;
   }
   private async observationRequest(input: unknown, type: string, operation: string, replyType: string) {
@@ -265,7 +322,7 @@ export class WorkspaceController {
     return result;
   }
   async historyAction(input: unknown): Promise<WorkspaceState> {
-    if (!workspaceValid(input, 'HistoryAction') || this.candidate || this.worldCandidate) throw new Error('Resolve interview draft first');
+    if (!workspaceValid(input, 'HistoryAction') || this.candidate || this.worldCandidate || this.workbenchCandidate) throw new Error('Resolve interview draft first');
     const query = structuredClone(input as HistoryAction);
     // Replay the identical operation after an uncertain reply, preserving identity.
     if (this.pendingHistory && !isDeepStrictEqual(this.pendingHistory.query, query)) throw new Error('Resolve pending history action');
