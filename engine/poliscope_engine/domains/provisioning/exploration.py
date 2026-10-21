@@ -9,7 +9,7 @@ from poliscope_engine.interviews import definition
 from poliscope_engine.numeric import RUNTIME_ID
 from .chain import evaluate_chain
 
-VERSION = 'provisioning-exploration-v1'
+VERSION = 'provisioning-exploration-v2'
 LIMITS = ('Authored hypothetical finite procedures, not historical source policies or empirical '
           'models. Supply is shared, not a per-claim promise. Choose a complete order explicitly. '
           'No option is selected by default. Preview is pure; publication requires model review '

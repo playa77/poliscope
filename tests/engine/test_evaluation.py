@@ -60,6 +60,18 @@ def test_complete_deterministic_typed_result_and_retained_identity():
     assert outputs(a)['output', 'a', 'synthetic:out'].source_refs == ['synthetic:source']
 
 
+def test_closed_time_claim_semantics_have_a_distinct_cache_identity(monkeypatch):
+    import poliscope_engine.evaluation as module
+    current = run()
+    assert json.loads(current.model_json)['evaluator'] == 'pure-static-v3'
+    monkeypatch.setattr(module, 'EVALUATOR_ID', 'pure-static-v2')
+    prior = run()
+    assert outputs(prior) == outputs(current)
+    assert prior.identities.input_digest == current.identities.input_digest
+    assert prior.identities.model_digest != current.identities.model_digest
+    assert prior.identities.cache_key != current.identities.cache_key
+
+
 @pytest.mark.parametrize('number', ['2.0', '2.000', '2e0'])
 def test_decimal_spelling_is_semantically_identical(number):
     data = design().model_dump()

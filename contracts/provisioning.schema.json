@@ -2221,7 +2221,10 @@
       "additionalProperties": false,
       "properties": {
         "adapter_version": {
-          "const": "provisioning-exploration-v1",
+          "enum": [
+            "provisioning-exploration-v1",
+            "provisioning-exploration-v2"
+          ],
           "title": "Adapter Version",
           "type": "string"
         },
