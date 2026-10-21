@@ -119,3 +119,40 @@ The complete allocated DOM-01-options-coverage child is
 **solo-validated; agent review deferred**, with the default desktop timeout
 limitation above. Reassess bounded DOM-02 work after merge; do not infer parent
 static, counterpart, numerical application activation or transition acceptance.
+
+## Rejected handoff and packaged keyboard correction
+
+PR #49 was closed without merge after the packaged WP-030 exploration scenario
+failed to open the land-condition evidence inspector. The prior handoff omitted
+packaged checks and is not sufficient delivery evidence. The replacement branch
+is `codex/dom-01-options-coverage-fixed`, retaining the original package and base.
+The same sole owner/controller and SV route continue; no new milestone is started.
+
+A deterministic packaged regression holds animation-frame callbacks while the
+user moves to the condition-inspector button, then flushes those callbacks before
+Enter. Against the original packaged renderer it fails: the inspector button
+loses focus to the relationship-details section. This explains why the subsequent
+Enter can leave the evidence inspector absent rather than showing `9 km2`.
+
+The narrowly added renderer scope moves relationship-details focus into a React
+layout effect tied to the selected relationship and a component-owned element
+reference. Focus completes when details mount, without a later frame stealing
+focus from a subsequent control. The existing keyboard-focus destination and
+inspector assertions are retained; no timeouts, assertions or data reads are
+relaxed. The regression controls the frame ordering rather than adding sleeps.
+Separate author inspection confirms that query refreshes retain the same selected
+relationship object and do not refocus the details after an inspector opens.
+
+Build the actual Linux x64 package and run the complete existing desktop suite:
+
+```sh
+npm run package
+xvfb-run -a uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop
+uv run --frozen python scripts/evidence.py verify --output artifacts/desktop
+```
+
+The exact replacement candidate's results belong in `artifacts/desktop/evidence.json`
+and its replacement PR. That record must have zero failed/skipped tests and verify
+against the delivered tracked candidate. The earlier statement that packaged tests
+were unrun describes rejected PR #49, not acceptance of this replacement. Windows,
+scientific, counterpart, numerical activation and parent gates remain unclaimed.

@@ -49,8 +49,23 @@ test('WP-030 packaged keyboard overlap projections layout isolation shared edits
     await expect(world.getByRole('table')).toContainText('9 km2');
     await world.getByRole('button',{name:'Open world relationships in matrix'}).press('Enter');
     const matrix=page.getByRole('region',{name:'Sparse relationship matrix'});
+    // Model a user reaching the next control before a pending animation frame.
+    // Relationship focus must not later steal the inspector's Enter key.
+    await page.evaluate(() => {
+      const original = window.requestAnimationFrame.bind(window);
+      const pending: FrameRequestCallback[] = [];
+      window.requestAnimationFrame = callback => { pending.push(callback); return pending.length; };
+      window.addEventListener('flush-matrix-focus-frame', () => {
+        window.requestAnimationFrame = original;
+        pending.forEach(callback => callback(performance.now()));
+      }, { once: true });
+    });
     await matrix.getByRole('button',{name:'Shared clinic → Starting land · requires',exact:true}).press('Enter');
-    await matrix.getByRole('button',{name:'Inspect conditions land:value',exact:true}).press('Enter');
+    const inspectCondition = matrix.getByRole('button',{name:'Inspect conditions land:value',exact:true});
+    await inspectCondition.focus();
+    await page.evaluate(() => window.dispatchEvent(new Event('flush-matrix-focus-frame')));
+    await expect(inspectCondition).toBeFocused();
+    await page.keyboard.press('Enter');
     await expect(matrix.getByRole('complementary',{name:'Evidence inspector'})).toContainText('9 km2');
     await matrix.getByRole('button',{name:'Inspect canonical world clinic',exact:true}).press('Enter');
     await expect(world.getByLabel('Inspect canonical identity')).toHaveValue('clinic');

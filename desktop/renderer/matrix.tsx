@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { MatrixQuery, MatrixRelationship, MatrixModelQuery } from '../../contracts/matrix';
 import type { InterviewQuery } from '../../contracts/interview';
@@ -33,6 +33,10 @@ export function Matrix({ state, scope, disabled, filters, setFilters, onIntervie
   const [model, setModel] = useState<{ kind: MatrixModelQuery['kind']; identity: string }>();
   const [inspector, setInspector] = useState<{ collection: MatrixRelationship['inspectors'][number]['collection']; id: string }>();
   const relation = opened?.identity === identity ? opened.relation : undefined;
+  const detailRef = useRef<HTMLElement>(null);
+  // Focus the committed details before another keyboard action can reach a child.
+  // A delayed frame could otherwise steal focus from that child's Enter key.
+  useLayoutEffect(() => { if (relation) detailRef.current?.focus(); }, [relation]);
   const data = result.data;
   function update(change: Partial<MatrixFilters>) { setFilters({ ...filters, ...change }); setOpened(undefined); setInspector(undefined); setSource(''); setModel(undefined); }
   function paging(kind: 'cells' | 'details', next: boolean, token: string | null) {
@@ -59,11 +63,11 @@ export function Matrix({ state, scope, disabled, filters, setFilters, onIntervie
       <button disabled={disabled || result.isFetching || cursors.cells.length === 1} onClick={() => paging('cells', false, null)}>Previous matrix page</button>
       <button disabled={disabled || result.isFetching || !data.next_cursor} onClick={() => paging('cells', true, data.next_cursor)}>Next matrix page</button>
       <h4>Accessible relationship list</h4><p>Use the page controls to explore more relationships. Unmapped means no recorded grouping; it is not a domain or a model claim.</p>
-      <ol>{data.relationships.map(r => <li key={r.id}><button disabled={disabled} onClick={() => { setOpened({ identity, relation: r }); setSource(''); setInspector(undefined); setModel(undefined); requestAnimationFrame(() => document.getElementById('matrix-detail')?.focus()); }}>{r.row.label} → {r.column.label} · {r.relationship_type}</button><span> · {r.provenance} · {r.coverage}</span></li>)}</ol>
+      <ol>{data.relationships.map(r => <li key={r.id}><button disabled={disabled} onClick={() => { setOpened({ identity, relation: r }); setSource(''); setInspector(undefined); setModel(undefined); }}>{r.row.label} → {r.column.label} · {r.relationship_type}</button><span> · {r.provenance} · {r.coverage}</span></li>)}</ol>
       <button disabled={disabled || result.isFetching || cursors.details.length === 1} onClick={() => paging('details', false, null)}>Previous relationship page</button>
       <button disabled={disabled || result.isFetching || !data.detail_next_cursor} onClick={() => paging('details', true, data.detail_next_cursor)}>Next relationship page</button>
     </>}
-    {relation && <section aria-label="Relationship details" id="matrix-detail" tabIndex={-1}><h4>{relation.relationship_type}: {relation.row.id} → {relation.column.id}</h4>
+    {relation && <section ref={detailRef} aria-label="Relationship details" id="matrix-detail" tabIndex={-1}><h4>{relation.relationship_type}: {relation.row.id} → {relation.column.id}</h4>
       <p>{relation.explanation}</p><p>Provenance {relation.provenance} · Activation {relation.activation} · Coverage {relation.coverage}</p>
       <p>Numerical relationship magnitude: {relation.magnitude ? valueText(relation.magnitude) : 'Not recorded; inspect exact node values separately.'}</p>
       <p>Mechanisms: {relation.mechanism_refs.join(', ') || 'None recorded'} · Rules: {relation.rule_refs.join(', ') || 'None recorded'}</p>
