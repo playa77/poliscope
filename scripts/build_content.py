@@ -33,9 +33,11 @@ def main():
     inventory = dict(version=1, status='immutable-release-v1', files={f'release-v1/{p}': digest(b) for p, b in sorted(outputs.items())})
     if args.output == ROOT / 'content/release-v1' and args.check:
         actual = {p.relative_to(ROOT / 'content').as_posix() for p in (ROOT / 'content').rglob('*') if p.is_file()}
-        research_files = {'provisioning/README.md', 'provisioning/coverage-v1.json'}
+        research_files = {'provisioning/README.md', 'provisioning/coverage-v1.json', 'economy/README.md', 'economy/coverage-v1.json'}
         from poliscope_engine.domains.provisioning.coverage import validate_coverage
         validate_coverage(decode((ROOT / 'content/provisioning/coverage-v1.json').read_bytes()), report)
+        from poliscope_engine.domains.economy.coverage import validate_coverage as validate_economy
+        validate_economy(decode((ROOT / 'content/economy/coverage-v1.json').read_bytes()), report)
         if actual != {*inventory['files'], 'README.md', 'inventory.json', *research_files} or decode((ROOT / 'content/inventory.json').read_bytes()) != inventory:
             raise SystemExit('Content inventory drift or unregistered artifacts')
     if args.check:

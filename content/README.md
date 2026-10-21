@@ -49,3 +49,6 @@ hypothetical after trusted activation.
 The [standalone provisioning research inventory](provisioning/README.md) records
 DOM-01's bounded hypothetical static coverage separately from the immutable
 release. Its source reconciliation tests do not activate source models.
+
+[Economy research coverage](economy/README.md) is standalone, hypothetical and
+not activated; the immutable release retains its original source alternatives.

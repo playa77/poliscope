@@ -48,3 +48,39 @@ activated. No new renderer/IPC, accepted trace closure, database writes, propert
 law, prices, wealth dynamics, settlement, recurring schedules or transitions are
 implemented. Numerical product activation, full source/branch inventory, scoped
 interviews and counterpart/parent acceptance retain their own packages.
+
+## Scoped host exploration
+
+`exploration.interview(request, units, scope_id)` returns authored procedure
+alternatives using the shared Definition contract, with no selected default.
+They govern declared goods access or the five distinct work/time categories;
+they do not define property regimes or wages. Every claim source must belong to
+the requested scope. A report can inspect several scopes, but a local edit cannot
+reorder a multi-scope allocator invocation. Split or explicitly coordinate such
+procedures through a separately designed joint host interface.
+
+`exploration.preview(request, units, EconomyEdit(...))` requires the complete
+claim order and exact baseline digest. The digest binds the full request,
+provenance, unit registry, numeric runtime, evaluator and exploration version.
+Only the procedure and order change; eligibility, holders and terms remain host
+inputs. The returned candidate is hypothetical staging evidence, not a revision
+candidate accepted by the product. There is no database or publication path.
+
+`exploration.report` preserves claimant/activity/scope/unit/period, physical free
+supply, eligibility, explicit limits, typed budget holders/rates, actuals and
+posting references. `actual_before` is previous fulfilled demand; `actual` is
+this invocation's incremental allocation; `unmet` is remaining demand after it.
+Posting IDs include previous and new claim-linked postings and resolve against
+the retained complete allocator batch. Unknown precedence/access/terms sets
+`actual`, `unmet` and budget `available_after` to null. Known opening quantities
+and previous actuals stay visible. The full evaluation carries missing-rule
+reasons, all account totals/balances, holds, terms and original provenance.
+Shared free supply/budget fields repeat for context and must never be summed
+across claims. Different units/scopes/periods are not aggregate wealth or welfare.
+These calculations imply no prices, employment rate, learning or service output.
+
+[Research coverage](../../../../content/economy/README.md) accounts for every
+pinned economy branch/leaf and source/system decision. Only generic goods/time
+procedures have partial hypothetical support. Ownership law, currency mechanisms,
+market/planning/gift behavior, prices, automation, wealth, redistribution,
+inheritance and transitions remain unsupported. Production content is unchanged.
