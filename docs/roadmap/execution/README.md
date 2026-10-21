@@ -550,3 +550,16 @@ shares canonical finite DOM-02 time with care and other work. Private previews
 cannot adopt policy or publish account changes. Reassess DOM-03-options-coverage
 after merge. Remaining real counterparts, all source/parent acceptance, transition,
 numerical product activation, WP-032 and native/scientific/cumulative gates remain.
+
+## Current boundary after PR #53
+
+PR #53 merged DOM-03-decision-procedure at
+`8256f0dc547f213885b4d6292de3cf6ca6643308`.
+[DOM-03-options-coverage](WP-DOM-03-options-coverage.md) allocates scoped authored
+approval interviews, complete-context stale-bound pure previews and exact source
+coverage to the same sequential owner under SV. Strict majority and unanimity use
+the actual authority resolver and finite administrative time procedure. Reports
+retain canonical electorate IDs, ballots, policy findings and DOM-02 account,
+claim, holder and posting evidence. No host input is inferred from a source option.
+Representation/mandates, remaining real counterparts, queues/adoption/publication,
+parent static gates, WP-032, Windows and scientific/cumulative acceptance remain.
