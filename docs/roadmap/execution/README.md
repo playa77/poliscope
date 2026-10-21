@@ -495,3 +495,18 @@ is not empirical/source model approval or production catalog activation.
 Reassess DOM-01-options-coverage after merge; real counterpart modules, multi-input
 recipes, circular-return/timed-loss transitions, parent static acceptance, WP-032,
 Windows native evidence and cumulative application gates remain open.
+
+## Current boundary after PR #48
+
+PR #48 merged DOM-01-production-use at
+`7f0b651f87895d7ea3bd29706341154f9a52219c`.
+[DOM-01-options-coverage](WP-DOM-01-options-coverage.md) allocates scoped authored
+procedures, guarded pure chain previews, local account/claim indicators and a
+complete branch/leaf/source-decision effect inventory to the same sequential
+owner under SV. No civic answer or empirical source model becomes a default.
+Actual counterpart acceptance and static parent acceptance remain pending;
+transitions, numerical IPC/revision activation, WP-032 and native/scientific gates
+retain their own dependencies.
+
+After this child, reassess a bounded DOM-02 static/interface allocation;
+DOM-01-static-pairs awaits actual DOM-02/05/08/10/12 counterpart modules.
