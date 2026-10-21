@@ -45,6 +45,17 @@ def competing():
     return dto(data)
 
 
+def test_prior_allocator_semantics_cannot_reuse_a_preview_baseline(monkeypatch):
+    import poliscope_engine.domains.provisioning.exploration as module
+    plan = dto()
+    with monkeypatch.context() as prior:
+        prior.setattr(module, 'VERSION', 'provisioning-exploration-v1')
+        old_edit = edit(plan)
+    assert module.VERSION == 'provisioning-exploration-v2'
+    with pytest.raises(AccountError, match='stale_provisioning_preview'):
+        preview(plan, units(), old_edit)
+
+
 def test_two_competing_groups_change_distribution_only_under_explicit_order():
     plan = competing()
     before = plan.model_dump_json()

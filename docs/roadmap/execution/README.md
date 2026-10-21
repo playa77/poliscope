@@ -510,3 +510,16 @@ retain their own dependencies.
 
 After this child, reassess a bounded DOM-02 static/interface allocation;
 DOM-01-static-pairs awaits actual DOM-02/05/08/10/12 counterpart modules.
+
+## Current boundary after PR #50
+
+PR #50 merged DOM-01-options-coverage and the packaged matrix focus correction at
+`1e0fc785f1c0e96f5dbb6c706f972e196ec3cf62` (closed #49 was not merged).
+[DOM-02-access-work](WP-DOM-02-access-work.md) allocates the next complete bounded
+static/interface child to Codex `/root`, one sequential owner under SV. Explicit
+claimant-bound eligibility/entitlement/funding terms and five distinct work/time
+categories share canonical finite accounts. Concrete DOM-01 use and production
+fixtures exercise the common interface. This does not complete either domain's
+static parent or imply other counterpart acceptance. Reassess DOM-02-options-coverage
+and the remaining actual interfaces after merge; settlement, numerical product
+activation, transitions, WP-032 and native/scientific gates remain separate.

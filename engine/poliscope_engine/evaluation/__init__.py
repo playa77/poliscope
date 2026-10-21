@@ -19,8 +19,8 @@ from poliscope_engine.policies import resolve
 from .identity import serialized, digest
 from .conditions import validate_conditions
 
-# v2 admits explicit dated capacity requirements for undated physical stock.
-EVALUATOR_ID = 'pure-static-v2'
+# v3 permits retained denied time claims to fund a subsequent allocation phase.
+EVALUATOR_ID = 'pure-static-v3'
 PYTHON_RUNTIME = tuple(sys.version_info[:3])
 VALUE = TypeAdapter(WorldValue)
 

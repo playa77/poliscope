@@ -40,7 +40,7 @@ def union(data):
 
 def assert_oracle(evidence):
     assert physical(evidence) == EXPECTED
-    assert json.loads(evidence.evaluation.model_json)['evaluator'] == 'pure-static-v2'
+    assert json.loads(evidence.evaluation.model_json)['evaluator'] == 'pure-static-v3'
     # Independent exact conservation in integer hundredths, including both losses.
     p = physical(evidence)
     assert int(Decimal(p['accounts']['product'][0]) * 100) + int(Decimal(p['accounts']['residual'][0]) * 100) + 1000 == 10000

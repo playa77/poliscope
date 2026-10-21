@@ -1,0 +1,24 @@
+{
+  "id": "authored:economy-access-work-v1",
+  "version": "v1",
+  "kind": "model_card",
+  "origin": "authored",
+  "evidence_status": "hypothetical",
+  "modeling_status": "partial",
+  "scope": "Host-selected static allocation of physical goods and dated time in declared local scopes and canonical disjoint cohorts.",
+  "inputs": ["canonical stock and cohort time budgets", "explicit claimant eligibility and access limits", "finite entitlement and funding budgets with typed holders", "known transaction requirements", "complete selected procedure and claim order"],
+  "procedure": "Compile claimant-bound eligibility and budget terms to the existing shared allocator. Select priority or all-or-nothing with an explicit complete order. Preserve time activity categories and reject duplicate cohort budgets. Return complete candidates only when precedence, access and terms are known.",
+  "fixture": "tests/engine/test_economy.py",
+  "independent_oracle": "10 kg local stock; requests 12 and 8 kg, each with 10 rights. Priority assigns 10/0 kg; all-or-nothing assigns 0/8 kg and leaves 2 kg. A remote 100 kg does not satisfy either local claim. One 10-hour cohort budget serving five 3-hour claims assigns 3/3/3/1/0 hours; a separate western 4-hour cohort budget independently assigns 4 of 6 requested care hours.",
+  "review_route": "SV separate arithmetic/interface inspection against D sections 5.1-5.2, T sections 5 and 7.4; independent agent review deferred",
+  "ports": {
+    "goods": "Canonical physical stock account, scoped claim and explicit access; no owned copy of provisioning stock.",
+    "time": "Canonical dated capacity account and cohort holder, shared across paid/unpaid work, care, training and participation.",
+    "terms": "Positive per-actual-unit entitlement/funding debits with claimant holder and typed role; no implicit conversion or credit creation.",
+    "provisioning": "Compiled AllocationChoice records for actual DOM-01 use; resolved shared work batch constrains subsequent production and freight.",
+    "evidence": "Full request, shared allocator actuals, claims, holds, balances and provenance-tagged postings; unresolved reports withhold a complete batch."
+  },
+  "limits": ["Hypothetical arithmetic, not empirical economic or welfare validity", "Host must resolve canonical and disjoint cohort identities and authoritative available time", "Single holder per budget; collective and overlapping rights require a separate explicit model", "Funding is budget expenditure, not balanced seller payment, wages or settlement", "No inferred property law, market equilibrium, service output or employment rate", "No production catalog activation, numerical renderer/IPC, accepted trace publication or database writes", "No calendar, recurring entitlements, effective-time policies, transitions or retry settlement", "Only bounded DOM-01 interface fixtures; full parent and other counterpart acceptance remain pending"],
+  "source_branches": ["II / value-exchange", "II / labor-work", "II / ownership-property", "II / wealth-distribution"],
+  "next_task": "DOM-02-options-coverage, reviewed activation and concrete counterpart integration; retain settlement, wealth dynamics and transitions as unsupported."
+}

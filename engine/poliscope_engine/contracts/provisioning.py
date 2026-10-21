@@ -121,7 +121,7 @@ class ClaimIndicator(Contract):
 
 class ProvisioningReport(Contract):
     contract_version: Literal[1]
-    adapter_version: Literal['provisioning-exploration-v1']
+    adapter_version: Literal['provisioning-exploration-v1', 'provisioning-exploration-v2']
     coverage_status: Literal['partial']
     evidence_status: Literal['hypothetical']
     baseline_digest: Digest

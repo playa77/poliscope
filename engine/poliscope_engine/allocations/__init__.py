@@ -32,9 +32,14 @@ def allocate(request: AllocationRequest, units: Registry) -> AllocationEvaluatio
     if request.procedure is not None and set(order) != set(claims):
         fail('invalid_claim_order')
     resources = {claim.account_id for claim in claims.values()}
+    # A closed/denied claim cannot consume again. Its retained account may still
+    # fund a later phase (e.g. care's remaining labor funds production). Active
+    # or unknown competing claims still require an explicit coupled solver.
+    active_resources = {claim.account_id for cid, claim in claims.items()
+                        if choices[cid].access != 'denied'}
     funding = {r.account_id for c in choices.values() for r in c.requirements}
     targets = {o.account_id for c in choices.values() for o in c.outputs}
-    if resources & funding or targets & (resources | funding):
+    if active_resources & funding or targets & (resources | funding):
         fail('coupled_allocation_requires_solver')
     if not (funding | targets) <= set(definitions):
         fail('unknown_account')
