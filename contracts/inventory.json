@@ -23,6 +23,8 @@
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",
+    "governance.schema.json",
+    "governance.ts",
     "history.schema.json",
     "history.ts",
     "interview.schema.json",
