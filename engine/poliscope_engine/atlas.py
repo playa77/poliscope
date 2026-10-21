@@ -191,11 +191,17 @@ def page(service, data, *, release=None):
 
 def source(service, data):
     query = AtlasSourceQuery.model_validate(data)
-    service.read(query.context)
+    record = service.read(query.context)
+    retained = next((r.source for r in service.evidence(query.context).references
+        if r.kind == 'source' and r.id == query.source_ref), None)
+    if retained is None:
+        from poliscope_engine.contracts.evidence import SourceRef
+        retained = next((SourceRef.model_validate(s) for v in record.inputs.values
+            for s in (metadata(v) or {}).get('archived_sources', []) if s['id'] == query.source_ref), None)
     _, packs = catalogs(bundled_release())
     for pack in packs:
         archived = next((s for s in pack.sources if s.reference.id == query.source_ref), None)
-        if archived:
+        if archived and (retained is None or archived.reference == retained):
             text = next(f.text for f in pack.files if f.path == archived.excerpt_file)
             license = next(l for l in pack.licenses if l.id == archived.reference.license_id)
             license_text = next(f.text for f in pack.files if f.path == license.file)

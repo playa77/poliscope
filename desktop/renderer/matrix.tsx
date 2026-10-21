@@ -8,15 +8,15 @@ import { Inspector, valueText } from './overview';
 
 export type MatrixFilters = Pick<MatrixQuery, 'axis' | 'relationship_type' | 'provenance' | 'row_id' | 'column_id'>;
 export const initialMatrixFilters: MatrixFilters = { axis: 'domain', relationship_type: null, provenance: 'any', row_id: null, column_id: null };
-function Model({ state, kind, identity }: { state: WorkspaceState; kind: MatrixModelQuery['kind']; identity: string }) {
-  const query = { context: state.context, kind, identity };
+export function Model({ state, kind, identity, version }: { state: WorkspaceState; kind: MatrixModelQuery['kind']; identity: string; version?: string | null }) {
+  const query = { context: state.context, kind, identity, version: version ?? null };
   const result = useQuery({ queryKey: [...atlasKey(state, '', query), 'matrix-model'], retry: false, queryFn: () => window.poliscope.matrixModel(query) });
   return <section aria-label="Retained mechanism or rule"><h5>{identity}</h5>
     {result.isFetching && <p role="status">Reading retained model declaration…</p>}
     {result.isError && <p role="alert">Model declaration unavailable. <button onClick={() => void result.refetch()}>Retry model declaration</button></p>}
     {result.data?.status === 'unavailable' && <p>No retained declaration is available for this reference. Source prose and imported references do not authorize execution.</p>}
     {result.data?.status === 'retained' && <><p>Data-only declaration from revision {state.context.revision_id}. Registration does not establish scientific validity.</p>
-      <pre>{JSON.stringify(result.data.mechanism ?? result.data.policy_rule ?? result.data.allocation_rule ?? result.data.condition_rule, null, 2)}</pre></>}
+      <p>Uncertainty and unsupported extrapolation require the recorded evidence and review; executable status alone does not justify them.</p><pre>{JSON.stringify(result.data.expression_graphs, null, 2)}</pre><pre>{JSON.stringify(result.data.mechanism ?? result.data.policy_rule ?? result.data.allocation_rule ?? result.data.condition_rule, null, 2)}</pre></>}
   </section>;
 }
 export function Matrix({ state, scope, disabled, filters, setFilters, onInterview, onWorld }: {

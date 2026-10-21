@@ -76,6 +76,7 @@ pnpm-debug.log*
 
 # Private runtime state and personal exports
 private-interviews/
+private-notes/
 /user-data/
 /.local/
 /runtime/

@@ -56,7 +56,8 @@ def page(service, data):
                 result=a, trace_refs=[refs[a.account_id]] if a.account_id in refs else []) for a in evaluation.accounts.accounts]
         elif collection == 'goals':
             goals = {g.id: g for g in report.goal_definitions}
-            rows = [GoalRow(kind='goal', id=g.goal_id, definition=goals[g.goal_id], observation=g) for g in report.goals]
+            goal_scopes = {g.id: g.scope_id for g in record.inputs.goal_scopes}
+            rows = [GoalRow(kind='goal', id=g.goal_id, definition=goals[g.goal_id], observation=g) for g in report.goals if query.all_scopes or goal_scopes.get(g.goal_id) in (None, query.scope_id)]
         elif collection == 'references':
             rows = [ReferenceRow(kind='reference', id=r.id, reference=r) for r in saved.references]
         elif collection == 'traces':

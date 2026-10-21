@@ -456,3 +456,15 @@ presentation state; local capacity/access and unreachable surpluses require exac
 retained accounts and declared transport/allocation models. Reassess WP-031
 evidence/models workspace after merge. Real domain mechanisms, scientific review,
 Windows native evidence and cumulative G3/M3 remain separate acceptance.
+
+## Current boundary after PR #45
+
+PR #45 merged WP-030 at `4eb94a01b8bc7f24275e92c4b3fd02fdd15055a0`.
+[WP-031](WP-031.md) is the next full sequential allocation: retained evidence,
+source/model/assumption inspection, constrained assumption edits, scoped goals,
+classified private note versions, deletion and standalone history projection.
+One owner and SV inspection remain in effect. Goals and qualitative proposals
+cannot activate arithmetic; historical evidence remains data-only. Reassess
+WP-032 and its static domain prerequisites after merge. Production portable
+archives/privacy envelopes, scientific review, Windows native evidence and
+cumulative G3/M3 retain their own acceptance.

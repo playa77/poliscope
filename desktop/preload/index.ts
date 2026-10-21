@@ -1,6 +1,11 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  workbench: query => ipcRenderer.invoke('evidence:read', query),
+  previewWorkbench: edit => ipcRenderer.invoke('evidence:preview', edit),
+  applyWorkbench: candidate => ipcRenderer.invoke('evidence:apply', candidate),
+  cancelWorkbench: () => ipcRenderer.invoke('evidence:cancel'),
+  deleteNote: query => ipcRenderer.invoke('evidence:delete-note', query),
   exploration: query => ipcRenderer.invoke('world:explore', query),
   previewWorld: edit => ipcRenderer.invoke('world:preview', edit),
   applyWorld: candidate => ipcRenderer.invoke('world:apply', candidate),

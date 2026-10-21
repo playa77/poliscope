@@ -1,3 +1,4 @@
+import type { WorkbenchQuery, WorkbenchPage, WorkbenchEdit, WorkbenchPreview, DeleteNote, DeleteNoteReply } from '../contracts/workbench';
 import type { ExplorationQuery, ExplorationPage, ExplorationEdit, ExplorationPreview } from '../contracts/exploration';
 import type { MatrixQuery, MatrixPage, MatrixModelQuery, MatrixModelReply } from '../contracts/matrix';
 import type { AtlasQuery, AtlasPage, AtlasSourceQuery, AtlasSourcePage } from '../contracts/atlas';
@@ -10,6 +11,11 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  workbench(query: WorkbenchQuery): Promise<WorkbenchPage>;
+  previewWorkbench(edit: WorkbenchEdit): Promise<WorkbenchPreview>;
+  applyWorkbench(candidate: InterviewApply): Promise<InterviewCommit>;
+  cancelWorkbench(): Promise<void>;
+  deleteNote(query: DeleteNote): Promise<DeleteNoteReply>;
   exploration(query: ExplorationQuery): Promise<ExplorationPage>;
   previewWorld(edit: ExplorationEdit): Promise<ExplorationPreview>;
   applyWorld(candidate: InterviewApply): Promise<InterviewCommit>;

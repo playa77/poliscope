@@ -2,6 +2,7 @@
 from typing import Annotated, Literal
 from pydantic import Field
 from .base import Contract, Identifier
+from .annotations import NoteReference, GoalScope
 from .world import (WorldVersions, RevisionContext, EntityDTO, ScopeDTO,
                     PartitionValueDTO, RelationshipDTO, Partition)
 from .evaluation import EvaluationDesign, AssumptionValue, Digest, NodeObservation
@@ -35,6 +36,8 @@ class RevisionInputs(Contract):
     measurements: Annotated[list[IndicatorDefinition], Rows]
     goals: Annotated[list[PlayerGoal], Rows]
     references: Annotated[list[EvidenceReference], Rows]
+    goal_scopes: Annotated[list[GoalScope], Rows] = Field(default_factory=list)
+    notes: Annotated[list[NoteReference], Rows] = Field(default_factory=list)
 
 
 class SetValues(Contract):

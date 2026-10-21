@@ -99,6 +99,11 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation in ('workbench', 'preview-workbench', 'apply-workbench', 'delete-note'):
+        from poliscope_engine import workbench
+        if operation in ('preview-workbench', 'apply-workbench'):
+            return (workbench.preview if operation == 'preview-workbench' else workbench.apply)(service, data, identity)
+        return (workbench.page if operation == 'workbench' else workbench.delete)(service, data)
     if operation in ('exploration', 'preview-world', 'apply-world'):
         from poliscope_engine import exploration
         if operation == 'apply-world':
@@ -145,7 +150,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:

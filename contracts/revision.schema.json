@@ -1956,6 +1956,29 @@
       "title": "GoalObservation",
       "type": "object"
     },
+    "GoalScope": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "scope_id"
+      ],
+      "title": "GoalScope",
+      "type": "object"
+    },
     "HistoryPage": {
       "additionalProperties": false,
       "properties": {
@@ -2780,6 +2803,42 @@
         "kind"
       ],
       "title": "NonAggregating",
+      "type": "object"
+    },
+    "NoteReference": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "const": "private",
+          "title": "Classification",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "scope_id",
+        "classification"
+      ],
+      "title": "NoteReference",
       "type": "object"
     },
     "NumericalBinding": {
@@ -3871,6 +3930,14 @@
           "title": "Entities",
           "type": "array"
         },
+        "goal_scopes": {
+          "items": {
+            "$ref": "#/$defs/GoalScope"
+          },
+          "maxItems": 1000,
+          "title": "Goal Scopes",
+          "type": "array"
+        },
         "goals": {
           "items": {
             "$ref": "#/$defs/PlayerGoal"
@@ -3885,6 +3952,14 @@
           },
           "maxItems": 1000,
           "title": "Measurements",
+          "type": "array"
+        },
+        "notes": {
+          "items": {
+            "$ref": "#/$defs/NoteReference"
+          },
+          "maxItems": 1000,
+          "title": "Notes",
           "type": "array"
         },
         "owners": {

@@ -2,7 +2,7 @@
 import schema from '../../contracts/wire.schema.json';
 import type { WireMessage } from '../../contracts/wire';
 
-export type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean; items?: Schema; prefixItems?: Schema[]; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
+export type Schema = { $ref?: string; const?: unknown; enum?: unknown[]; anyOf?: Schema[]; oneOf?: Schema[]; type?: string; properties?: Record<string, Schema>; required?: string[]; additionalProperties?: boolean | Schema; propertyNames?: Schema; minProperties?: number; maxProperties?: number; items?: Schema; prefixItems?: Schema[]; minItems?: number; maxItems?: number; minLength?: number; maxLength?: number; pattern?: string; minimum?: number; maximum?: number };
 export function valid(value: unknown, rule: Schema, definitions: Record<string, Schema> = schema.$defs as Record<string, Schema>): boolean {
   if (rule.$ref) return valid(value, definitions[rule.$ref.split('/').at(-1)!], definitions);
   if ('const' in rule) return value === rule.const;
@@ -18,7 +18,10 @@ export function valid(value: unknown, rule: Schema, definitions: Record<string, 
     case 'object': {
       if (value === null || typeof value !== 'object' || Array.isArray(value)) return false;
       const object = value as Record<string, unknown>;
-      return (rule.required ?? []).every(k => Object.hasOwn(object, k)) && Object.entries(object).every(([k, v]) => Object.hasOwn(rule.properties ?? {}, k) ? valid(v, rule.properties![k], definitions) : rule.additionalProperties !== false);
+      const keys = Object.keys(object);
+      return keys.length >= (rule.minProperties ?? 0) && keys.length <= (rule.maxProperties ?? Infinity) &&
+        (!rule.propertyNames || keys.every(k => valid(k, { type: 'string', ...rule.propertyNames }, definitions))) &&
+        (rule.required ?? []).every(k => Object.hasOwn(object, k)) && Object.entries(object).every(([k, v]) => Object.hasOwn(rule.properties ?? {}, k) ? valid(v, rule.properties![k], definitions) : (typeof rule.additionalProperties === 'object' ? valid(v, rule.additionalProperties, definitions) : rule.additionalProperties !== false));
     }
     default: throw new Error('Unsupported wire schema vocabulary');
   }

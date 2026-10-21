@@ -55,6 +55,11 @@ export class DesktopShell {
   workspaceCatalogue() { return this.workspaceRun(() => this.workspace.catalogue()); }
   createWorld(input: unknown) { this.interviewGeneration++; return this.workspaceRun(() => this.workspace.create(input)); }
   selectWorld(input: unknown) { this.interviewGeneration++; return this.workspaceRun(() => this.workspace.select(input)); }
+  workbench(input: unknown) { return this.workspaceRun(() => this.workspace.workbench(input)); }
+  previewWorkbench(input: unknown) { return this.workspaceRun(() => this.workspace.previewWorkbench(input)); }
+  applyWorkbench(input: unknown) { return this.workspaceRun(() => this.workspace.applyWorkbench(input)); }
+  cancelWorkbench() { return this.workspaceRun(() => this.workspace.cancelWorkbench()); }
+  deleteNote(input: unknown) { return this.workspaceRun(() => this.workspace.deleteNote(input)); }
   exploration(input: unknown) { return this.workspaceRun(() => this.workspace.exploration(input)); }
   previewWorld(input: unknown) { return this.workspaceRun(() => this.workspace.previewWorld(input)); }
   applyWorld(input: unknown) { return this.workspaceRun(() => this.workspace.applyWorld(input)); }
