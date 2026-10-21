@@ -51,9 +51,11 @@ test('E2E-002.c persisted goals and private notes preserve physics, historical c
     await view.getByLabel('Inspect evidence').selectOption('goals');
     await expect(view.getByRole('table')).toContainText('What would change my interpretation?');
     await page.getByRole('button', { name: 'Civilization overview', exact: true }).press('Enter');
+    await page.getByText('Distributions, accounts and commitments', { exact: true }).press('Enter');
     await page.getByLabel('Retained collection').selectOption('goals');
     await expect(page.getByRole('article')).toContainText('What would change my interpretation?');
     await page.getByRole('button', { name: 'Evidence and models', exact: true }).press('Enter');
+    await expect(page.getByRole('combobox', { name: 'Scope', exact: true })).toBeEnabled();
     await page.getByLabel('Read a retained revision').fill(first.revision_id);
     await page.getByLabel('Read a retained revision').press('Enter');
     await view.getByLabel('Inspect evidence').selectOption('notes');
@@ -62,6 +64,7 @@ test('E2E-002.c persisted goals and private notes preserve physics, historical c
     await view.getByRole('button', { name: /^Delete all active versions of private note / }).press('Enter');
     await expect(view.getByRole('table')).toContainText('deleted');
     await expect(view).not.toContainText('PRIVATE_OLD_CANARY');
+    await expect(page.getByRole('combobox', { name: 'Scope', exact: true })).toBeEnabled();
     await page.getByLabel('Read a retained revision').fill('');
     await page.getByLabel('Read a retained revision').press('Enter');
     await view.getByLabel('Inspect evidence').selectOption('notes');
