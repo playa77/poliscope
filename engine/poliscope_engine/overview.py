@@ -29,7 +29,7 @@ def page(service, data):
         owners = {(o.entity_id, o.property_id, o.partition): o.writer_id for o in record.inputs.owners}
         rows = [ConditionRow(kind='condition', id=v.id, condition=v,
             writer_id=owners.get((v.entity_id, v.property_id, v.partition)))
-            for v in record.inputs.values if v.partition == 'conditions']
+            for v in record.inputs.values if v.partition == 'conditions' or (v.partition == 'design' and v.property_id.startswith('world:relationship:'))]
     elif collection == 'policies':
         rows = [PolicyRow(kind='policy', id=p.id, policy=p) for p in record.inputs.design.policies]
         labels = {e.id: e.label for e in record.inputs.entities}

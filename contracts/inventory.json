@@ -16,6 +16,8 @@
     "domain.ts",
     "evaluation.schema.json",
     "evaluation.ts",
+    "exploration.schema.json",
+    "exploration.ts",
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",

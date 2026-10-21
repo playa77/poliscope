@@ -57,3 +57,8 @@ summary { cursor: pointer; padding-block: .4rem; }
 .atlas pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; }
 .atlas fieldset { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
 .atlas li { margin-block: 1rem; }
+.world-exploration svg { width: 100%; max-height: 24rem; }
+.world-exploration svg text { fill: currentColor; font-size: 11px; }
+.world-exploration table { table-layout: fixed; }
+.world-exploration th, .world-exploration td, .world-exploration td button { overflow-wrap: anywhere; }
+.world-exploration td button { max-width: 100%; white-space: normal; }

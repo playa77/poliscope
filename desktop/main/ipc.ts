@@ -24,6 +24,10 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('world:explore', 1, input => { if (!workspaceValid(input, 'ExplorationQuery')) throw new Error(); return shell.exploration(input); }, workspaceReply('ExplorationPage'));
+  handle('world:preview', 1, input => { if (!workspaceValid(input, 'ExplorationEdit')) throw new Error(); return shell.previewWorld(input); }, workspaceReply('ExplorationPreview'));
+  handle('world:apply', 1, input => { if (!workspaceValid(input, 'InterviewApply')) throw new Error(); return shell.applyWorld(input); }, workspaceReply('InterviewCommit'));
+  handle('world:cancel', 0, () => shell.cancelWorld(), reply => reply === undefined);
   handle('matrix:model', 1, input => { if (!workspaceValid(input, 'MatrixModelQuery')) throw new Error(); return shell.matrixModel(input); }, workspaceReply('MatrixModelReply'));
   handle('matrix:read', 1, input => { if (!workspaceValid(input, 'MatrixQuery')) throw new Error(); return shell.matrix(input); }, workspaceReply('MatrixPage'));
   handle('atlas:read', 1, input => { if (!workspaceValid(input, 'AtlasQuery')) throw new Error(); return shell.atlas(input); }, workspaceReply('AtlasPage'));

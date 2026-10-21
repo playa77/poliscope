@@ -1,0 +1,1212 @@
+{
+  "$defs": {
+    "BranchState": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "forked_from": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RevisionContext"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "redo": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Redo",
+          "type": "array"
+        },
+        "revision_contract": {
+          "const": 1,
+          "title": "Revision Contract",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "revision_contract",
+        "context",
+        "name",
+        "sequence",
+        "redo",
+        "forked_from"
+      ],
+      "title": "BranchState",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "EntityDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_kind": {
+          "enum": [
+            "civilization",
+            "location",
+            "population_cohort",
+            "household_arrangement",
+            "community_arrangement",
+            "institution",
+            "asset",
+            "network",
+            "resource",
+            "service",
+            "account",
+            "external_interface",
+            "decision",
+            "event"
+          ],
+          "title": "Entity Kind",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        }
+      },
+      "required": [
+        "id",
+        "entity_kind",
+        "label",
+        "provenance"
+      ],
+      "title": "EntityDTO",
+      "type": "object"
+    },
+    "EntityEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "entity": {
+          "$ref": "#/$defs/EntityDTO"
+        },
+        "kind": {
+          "const": "entity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "population_role": {
+          "anyOf": [
+            {
+              "enum": [
+                "fixed_input",
+                "dynamic_state",
+                "solved_capacity_bound"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Population Role"
+        }
+      },
+      "required": [
+        "kind",
+        "entity"
+      ],
+      "title": "EntityEdit",
+      "type": "object"
+    },
+    "ExplorationEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "change": {
+          "discriminator": {
+            "mapping": {
+              "entity": "#/$defs/EntityEdit",
+              "relationship": "#/$defs/RelationshipEdit",
+              "value": "#/$defs/ValueEdit"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/EntityEdit"
+            },
+            {
+              "$ref": "#/$defs/RelationshipEdit"
+            },
+            {
+              "$ref": "#/$defs/ValueEdit"
+            }
+          ],
+          "title": "Change"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "change"
+      ],
+      "title": "ExplorationEdit",
+      "type": "object"
+    },
+    "ExplorationPage": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "exploration_contract": {
+          "const": 1,
+          "title": "Exploration Contract",
+          "type": "integer"
+        },
+        "items": {
+          "items": {
+            "$ref": "#/$defs/ExplorationRow"
+          },
+          "maxItems": 25,
+          "title": "Items",
+          "type": "array"
+        },
+        "next_cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next Cursor"
+        },
+        "query": {
+          "$ref": "#/$defs/ExplorationQuery"
+        },
+        "total": {
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        }
+      },
+      "required": [
+        "exploration_contract",
+        "query",
+        "versions",
+        "effective_time",
+        "items",
+        "total",
+        "next_cursor"
+      ],
+      "title": "ExplorationPage",
+      "type": "object"
+    },
+    "ExplorationPreview": {
+      "additionalProperties": false,
+      "properties": {
+        "after": {
+          "maxLength": 16384,
+          "title": "After",
+          "type": "string"
+        },
+        "before": {
+          "maxLength": 16384,
+          "title": "Before",
+          "type": "string"
+        },
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        },
+        "coverage": {
+          "maxLength": 4096,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "edit": {
+          "$ref": "#/$defs/ExplorationEdit"
+        },
+        "exploration_contract": {
+          "const": 1,
+          "title": "Exploration Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "exploration_contract",
+        "edit",
+        "candidate_digest",
+        "before",
+        "after",
+        "coverage"
+      ],
+      "title": "ExplorationPreview",
+      "type": "object"
+    },
+    "ExplorationQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cursor"
+        },
+        "identity": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Identity"
+        },
+        "projection": {
+          "default": "all",
+          "enum": [
+            "geography",
+            "membership",
+            "authority",
+            "networks",
+            "all"
+          ],
+          "title": "Projection",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id"
+      ],
+      "title": "ExplorationQuery",
+      "type": "object"
+    },
+    "ExplorationRow": {
+      "additionalProperties": false,
+      "properties": {
+        "entity": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EntityDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "inspector": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/OverviewQuery"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "relationship": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RelationshipDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ScopeDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "value": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PartitionValueDTO"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "entity",
+        "scope",
+        "relationship",
+        "value",
+        "inspector"
+      ],
+      "title": "ExplorationRow",
+      "type": "object"
+    },
+    "InterviewApply": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "candidate_digest"
+      ],
+      "title": "InterviewApply",
+      "type": "object"
+    },
+    "InterviewCommit": {
+      "additionalProperties": false,
+      "properties": {
+        "interview_contract": {
+          "const": 1,
+          "title": "Interview Contract",
+          "type": "integer"
+        },
+        "state": {
+          "$ref": "#/$defs/WorkspaceState"
+        },
+        "status": {
+          "enum": [
+            "applied",
+            "stale"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "interview_contract",
+        "status",
+        "state"
+      ],
+      "title": "InterviewCommit",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MembershipPartition": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "partition",
+          "title": "Kind",
+          "type": "string"
+        },
+        "partition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Partition Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "partition_id"
+      ],
+      "title": "MembershipPartition",
+      "type": "object"
+    },
+    "MembershipWeight": {
+      "additionalProperties": false,
+      "description": "Explicit weight or partition; never implicit equal or duplicate membership.",
+      "properties": {
+        "kind": {
+          "const": "weight",
+          "title": "Kind",
+          "type": "string"
+        },
+        "weight": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Weight",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "weight"
+      ],
+      "title": "MembershipWeight",
+      "type": "object"
+    },
+    "NonAggregating": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "non_aggregating",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind"
+      ],
+      "title": "NonAggregating",
+      "type": "object"
+    },
+    "OverviewQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "all_scopes": {
+          "title": "All Scopes",
+          "type": "boolean"
+        },
+        "collection": {
+          "enum": [
+            "indicators",
+            "conditions",
+            "accounts",
+            "findings",
+            "policies",
+            "goals",
+            "references",
+            "traces"
+          ],
+          "title": "Collection",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "cursor": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Cursor"
+        },
+        "item_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Item Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "collection",
+        "item_id",
+        "cursor",
+        "all_scopes"
+      ],
+      "title": "OverviewQuery",
+      "type": "object"
+    },
+    "PartitionValueDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "partition": {
+          "enum": [
+            "conditions",
+            "design",
+            "assumptions",
+            "dynamic_state",
+            "observations",
+            "goals"
+          ],
+          "title": "Partition",
+          "type": "string"
+        },
+        "property_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Property Id",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "id",
+        "entity_id",
+        "scope_id",
+        "partition",
+        "property_id",
+        "value",
+        "effective_time",
+        "provenance"
+      ],
+      "title": "PartitionValueDTO",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RelationshipDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "discriminator": {
+            "mapping": {
+              "non_aggregating": "#/$defs/NonAggregating",
+              "partition": "#/$defs/MembershipPartition",
+              "weight": "#/$defs/MembershipWeight"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/MembershipWeight"
+            },
+            {
+              "$ref": "#/$defs/MembershipPartition"
+            },
+            {
+              "$ref": "#/$defs/NonAggregating"
+            }
+          ],
+          "title": "Aggregation"
+        },
+        "from_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "From Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "relationship_kind": {
+          "enum": [
+            "containment",
+            "geographic_overlap",
+            "cohort_membership",
+            "jurisdiction",
+            "ownership",
+            "obligation",
+            "supplies",
+            "consumes",
+            "access",
+            "connectivity",
+            "information_channel",
+            "source_supersession"
+          ],
+          "title": "Relationship Kind",
+          "type": "string"
+        },
+        "relationship_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Relationship Version",
+          "type": "string"
+        },
+        "to_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "To Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "relationship_version",
+        "relationship_kind",
+        "from_id",
+        "to_id",
+        "aggregation",
+        "provenance"
+      ],
+      "title": "RelationshipDTO",
+      "type": "object"
+    },
+    "RelationshipEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "relationship",
+          "title": "Kind",
+          "type": "string"
+        },
+        "relationship": {
+          "$ref": "#/$defs/RelationshipDTO"
+        },
+        "terms": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Terms"
+        }
+      },
+      "required": [
+        "kind",
+        "relationship"
+      ],
+      "title": "RelationshipEdit",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "ScopeDTO": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "label": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Label",
+          "type": "string"
+        },
+        "provenance": {
+          "$ref": "#/$defs/WorldProvenance"
+        },
+        "scope_kind": {
+          "enum": [
+            "household",
+            "community",
+            "settlement",
+            "region",
+            "civilization",
+            "global_external"
+          ],
+          "title": "Scope Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "scope_kind",
+        "label",
+        "provenance"
+      ],
+      "title": "ScopeDTO",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "ValueEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "value",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        },
+        "value_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value_id",
+        "value"
+      ],
+      "title": "ValueEdit",
+      "type": "object"
+    },
+    "WorkspaceState": {
+      "additionalProperties": false,
+      "properties": {
+        "branch": {
+          "$ref": "#/$defs/BranchState"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "goal_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Goal Count",
+          "type": "integer"
+        },
+        "mechanism_count": {
+          "maximum": 100,
+          "minimum": 0,
+          "title": "Mechanism Count",
+          "type": "integer"
+        },
+        "policy_count": {
+          "maximum": 1000,
+          "minimum": 0,
+          "title": "Policy Count",
+          "type": "integer"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        },
+        "workspace_contract": {
+          "const": 1,
+          "title": "Workspace Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workspace_contract",
+        "branch",
+        "context",
+        "versions",
+        "effective_time",
+        "goal_count",
+        "policy_count",
+        "mechanism_count"
+      ],
+      "title": "WorkspaceState",
+      "type": "object"
+    },
+    "WorldProvenance": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_input",
+            "ai_proposed",
+            "derived"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "origin",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "WorldProvenance",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/ExplorationQuery"
+    },
+    {
+      "$ref": "#/$defs/ExplorationPage"
+    },
+    {
+      "$ref": "#/$defs/ExplorationEdit"
+    },
+    {
+      "$ref": "#/$defs/ExplorationPreview"
+    },
+    {
+      "$ref": "#/$defs/InterviewApply"
+    },
+    {
+      "$ref": "#/$defs/InterviewCommit"
+    }
+  ]
+}

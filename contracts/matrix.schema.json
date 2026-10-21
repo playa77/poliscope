@@ -1204,6 +1204,17 @@
           "maxItems": 100,
           "title": "Sources",
           "type": "array"
+        },
+        "world_refs": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 2,
+          "title": "World Refs",
+          "type": "array"
         }
       },
       "required": [

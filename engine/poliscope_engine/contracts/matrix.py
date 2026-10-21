@@ -47,6 +47,7 @@ class MatrixRelationship(Contract):
     coverage: CoverageStatus
     magnitude: WorldValue | None
     explanation: Annotated[str, Field(min_length=1, max_length=4096)]
+    world_refs: Annotated[list[Identifier], Field(max_length=2)] = []
     mechanism_refs: Annotated[list[Identifier], Field(max_length=100)]
     rule_refs: Annotated[list[Identifier], Field(max_length=100)]
     interviews: Annotated[list[InterviewQuery], Field(max_length=100)]

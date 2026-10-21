@@ -442,3 +442,17 @@ activation and coverage separate. Bounded cell/list pages use the same retained
 account/trace/source/choice readers and expose unresolved mappings. Reassess
 WP-030 world/institutions/topology after merge. Real domain mechanisms, scientific
 review, Windows native evidence and cumulative G3/M3 remain separate acceptance.
+
+## Current boundary after PR #44
+
+PR #44 merged WP-029 sparse matrices at
+`0ea3ae9c09ff28973cc410ec172508a821d622c9`.
+[WP-030](WP-030.md) allocates the complete world/institutions/topology/distribution
+exploration package to Codex `/root`, one sequential owner under SV. Canonical
+entities and independently versioned relationships support separate geography,
+membership, authority and network projections. Guarded shared edits and public
+obligation terms retain normal immutable revision acceptance. Layout is temporary
+presentation state; local capacity/access and unreachable surpluses require exact
+retained accounts and declared transport/allocation models. Reassess WP-031
+evidence/models workspace after merge. Real domain mechanisms, scientific review,
+Windows native evidence and cumulative G3/M3 remain separate acceptance.

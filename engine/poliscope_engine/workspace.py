@@ -99,6 +99,11 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation in ('exploration', 'preview-world', 'apply-world'):
+        from poliscope_engine import exploration
+        if operation == 'apply-world':
+            return exploration.apply(service, data, identity)
+        return (exploration.page if operation == 'exploration' else exploration.preview)(service, data)
     if operation in ('matrix', 'matrix-model'):
         from poliscope_engine import matrix
         return (matrix.page if operation == 'matrix' else matrix.model)(service, data)
@@ -140,7 +145,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:
