@@ -537,3 +537,16 @@ procedure outcomes. Actual remaining counterpart modules, reviewed numerical
 product activation, settlement/transitions, parent static gates, WP-032 and
 native/scientific/cumulative milestones retain separate acceptance. Reassess a
 bounded DOM-03 interface after merge.
+
+## Current boundary after PR #52
+
+PR #52 merged DOM-02-options-coverage at
+`e4e7b715532e9dc5e7f820c5b924cb5162f7ad94`.
+[DOM-03-decision-procedure](WP-DOM-03-decision-procedure.md) allocates the next
+bounded host-only institutional procedure/interface to the same sequential owner
+under SV. Explicit ballots/quorum and selected approval rules use shared direct
+jurisdiction/policy conflict resolution; required administrative participation
+shares canonical finite DOM-02 time with care and other work. Private previews
+cannot adopt policy or publish account changes. Reassess DOM-03-options-coverage
+after merge. Remaining real counterparts, all source/parent acceptance, transition,
+numerical product activation, WP-032 and native/scientific/cumulative gates remain.

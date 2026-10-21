@@ -1,0 +1,14 @@
+{
+  "id": "authored:governance-decision-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "scope": "Static host-only equal-member ballots in explicitly authorized local or regional scopes",
+  "inputs": ["canonical electorate and unique eligible ballots", "explicit quorum and approval rule", "exact proposed policy binding and target", "reviewed policy registry and direct jurisdiction", "canonical dated administrative participation claims and shared work precedence"],
+  "procedure": "Resolve authority using WP-013; require the exact proposal to be selected. Allocate shared administrative time through DOM-02. Require complete administrative claims. Count submitted known ballots, including abstentions, toward quorum and approval denominator; strict majority requires more than half yes, unanimity requires every submitted ballot yes.",
+  "independent_oracle": "Two yes and one no approve by strict majority and reject under unanimity. Five hours with three administrative hours first leave two of four care hours fulfilled; care first leaves only one administrative hour and blocks completion.",
+  "ports": {"authority": "Shared world jurisdiction and policy binding/resolution services", "administration": "Actual DOM-02 participation consuming canonical cohort time alongside care/work/training", "evidence": "Detached full input, policy findings and shared allocation accounts/claims/postings"},
+  "fixture": "tests/engine/test_governance.py",
+  "limits": ["No inferred representation, mandates, transitive delegation or population weighting", "Host supplies canonical disjoint cohorts and valid eligibility", "No behavioral legitimacy or social effects", "No source model activation, policy adoption, durable spending or accepted revision publication", "No queues, stages, disclosure delay, effective times or transitions", "Other counterparts and full static governance acceptance remain pending"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
