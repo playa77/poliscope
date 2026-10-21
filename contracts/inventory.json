@@ -25,6 +25,8 @@
     "history.ts",
     "interview.schema.json",
     "interview.ts",
+    "logistics.schema.json",
+    "logistics.ts",
     "matrix.schema.json",
     "matrix.ts",
     "measurement.schema.json",

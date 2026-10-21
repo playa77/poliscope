@@ -468,3 +468,15 @@ cannot activate arithmetic; historical evidence remains data-only. Reassess
 WP-032 and its static domain prerequisites after merge. Production portable
 archives/privacy envelopes, scientific review, Windows native evidence and
 cumulative G3/M3 retain their own acceptance.
+
+## Current boundary after PR #46
+
+PR #46 merged WP-031 at `34b3988471cad2d9db9ec45f06af0ca925390b60`.
+WP-032's static DOM-01–12 prerequisites are not yet implemented; WP-027 templates
+do not satisfy them. [DOM-01-logistics](WP-DOM-01-logistics.md) records the first
+bounded provisioning child and preserves the full parent's static/transition
+acceptance. One sequential owner and SV inspection remain in effect. Finite
+lossless freight uses shared canonical stock/transport/crew budgets and paired
+actual postings. Reassess DOM-01-production-use after merge. Real counterpart
+acceptance, remaining domain modules, source-model review, Windows native evidence
+and cumulative M3 remain open; no WP-032 completion is inferred.

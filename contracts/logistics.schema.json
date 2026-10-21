@@ -1,0 +1,1194 @@
+{
+  "$defs": {
+    "AccountBatch": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/$defs/AccountDefinition"
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Accounts",
+          "type": "array"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/AccountClaim"
+          },
+          "maxItems": 1000,
+          "title": "Claims",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "postings": {
+          "items": {
+            "$ref": "#/$defs/AccountPosting"
+          },
+          "maxItems": 10000,
+          "title": "Postings",
+          "type": "array"
+        },
+        "reservations": {
+          "items": {
+            "$ref": "#/$defs/AccountReservation"
+          },
+          "maxItems": 1000,
+          "title": "Reservations",
+          "type": "array"
+        },
+        "subtotals": {
+          "items": {
+            "$ref": "#/$defs/AccountSubtotal"
+          },
+          "maxItems": 1000,
+          "title": "Subtotals",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "accounts",
+        "postings",
+        "claims",
+        "reservations",
+        "subtotals"
+      ],
+      "title": "AccountBatch",
+      "type": "object"
+    },
+    "AccountClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "claimant_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claimant Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "requested": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Requested",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "account_id",
+        "claimant_id",
+        "requested",
+        "source_refs"
+      ],
+      "title": "AccountClaim",
+      "type": "object"
+    },
+    "AccountDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "invariant": {
+          "enum": [
+            "physical",
+            "budget",
+            "ledger"
+          ],
+          "title": "Invariant",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "stock",
+            "flow",
+            "capacity"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "maximum": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Maximum",
+          "type": "string"
+        },
+        "opening": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Opening",
+          "type": "string"
+        },
+        "period_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Period Id"
+        },
+        "quantum": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Quantum",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "kind",
+        "unit_id",
+        "scope_id",
+        "period_id",
+        "invariant",
+        "quantum",
+        "maximum",
+        "opening",
+        "source_refs"
+      ],
+      "title": "AccountDefinition",
+      "type": "object"
+    },
+    "AccountEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/$defs/AccountResult"
+          },
+          "maxItems": 1000,
+          "title": "Accounts",
+          "type": "array"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/ClaimResult"
+          },
+          "maxItems": 1000,
+          "title": "Claims",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "contract_version",
+        "accounts",
+        "claims"
+      ],
+      "title": "AccountEvaluation",
+      "type": "object"
+    },
+    "AccountPosting": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Amount",
+          "type": "string"
+        },
+        "claim_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Claim Id"
+        },
+        "destination_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Destination Id"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "supply",
+            "import",
+            "production",
+            "use",
+            "export",
+            "loss",
+            "transfer",
+            "residual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reservation Id"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "source_id",
+        "destination_id",
+        "amount",
+        "reservation_id",
+        "claim_id",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AccountPosting",
+      "type": "object"
+    },
+    "AccountReservation": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "amount": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Amount",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "account_id",
+        "claim_id",
+        "amount"
+      ],
+      "title": "AccountReservation",
+      "type": "object"
+    },
+    "AccountResult": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "available": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Available",
+          "type": "string"
+        },
+        "closing": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Closing",
+          "type": "string"
+        },
+        "outstanding_reserved": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Outstanding Reserved",
+          "type": "string"
+        },
+        "posting_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10000,
+          "title": "Posting Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "account_id",
+        "closing",
+        "outstanding_reserved",
+        "available",
+        "posting_ids"
+      ],
+      "title": "AccountResult",
+      "type": "object"
+    },
+    "AccountSubtotal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "member_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Member Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "member_ids"
+      ],
+      "title": "AccountSubtotal",
+      "type": "object"
+    },
+    "AllocationActual": {
+      "additionalProperties": false,
+      "properties": {
+        "allocated": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Allocated",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "loss": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Loss",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "reason": {
+          "enum": [
+            "satisfied",
+            "denied",
+            "limited",
+            "unresolved"
+          ],
+          "title": "Reason",
+          "type": "string"
+        },
+        "unmet": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Unmet",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "allocated",
+        "unmet",
+        "reason",
+        "outputs",
+        "loss"
+      ],
+      "title": "AllocationActual",
+      "type": "object"
+    },
+    "AllocationChoice": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "enum": [
+            "allowed",
+            "denied",
+            "unknown"
+          ],
+          "title": "Access",
+          "type": "string"
+        },
+        "access_limit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Access Limit",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "funding_known": {
+          "title": "Funding Known",
+          "type": "boolean"
+        },
+        "loss_per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Loss Per Unit",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "$ref": "#/$defs/TransformationOutput"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/FundingRequirement"
+          },
+          "maxItems": 100,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "access",
+        "access_limit",
+        "funding_known",
+        "requirements",
+        "outputs",
+        "loss_per_unit",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationChoice",
+      "type": "object"
+    },
+    "AllocationEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "$ref": "#/$defs/AccountEvaluation"
+        },
+        "actuals": {
+          "items": {
+            "$ref": "#/$defs/AllocationActual"
+          },
+          "maxItems": 1000,
+          "title": "Actuals",
+          "type": "array"
+        },
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "missing": {
+          "items": {
+            "enum": [
+              "procedure",
+              "access",
+              "funding"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Missing",
+          "type": "array"
+        },
+        "request": {
+          "$ref": "#/$defs/AllocationRequest"
+        },
+        "status": {
+          "enum": [
+            "resolved",
+            "unresolved"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "status",
+        "missing",
+        "request",
+        "actuals",
+        "batch",
+        "accounts"
+      ],
+      "title": "AllocationEvaluation",
+      "type": "object"
+    },
+    "AllocationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/AllocationChoice"
+          },
+          "maxItems": 1000,
+          "title": "Choices",
+          "type": "array"
+        },
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "enum": [
+                "priority",
+                "all_or_nothing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Procedure"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "batch",
+        "procedure",
+        "claim_order",
+        "choices",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationRequest",
+      "type": "object"
+    },
+    "ClaimResult": {
+      "additionalProperties": false,
+      "properties": {
+        "actual": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Actual",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "unmet": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Unmet",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "actual",
+        "unmet"
+      ],
+      "title": "ClaimResult",
+      "type": "object"
+    },
+    "FundingRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "funding",
+            "entitlement"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "kind"
+      ],
+      "title": "FundingRequirement",
+      "type": "object"
+    },
+    "LogisticsEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "$ref": "#/$defs/AccountEvaluation"
+        },
+        "allocation": {
+          "$ref": "#/$defs/AllocationEvaluation"
+        },
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "movements": {
+          "items": {
+            "$ref": "#/$defs/TransportActual"
+          },
+          "maxItems": 1000,
+          "title": "Movements",
+          "type": "array"
+        },
+        "request": {
+          "$ref": "#/$defs/LogisticsRequest"
+        }
+      },
+      "required": [
+        "contract_version",
+        "request",
+        "allocation",
+        "movements",
+        "batch",
+        "accounts"
+      ],
+      "title": "LogisticsEvaluation",
+      "type": "object"
+    },
+    "LogisticsRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "period_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Period Id",
+          "type": "string"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "enum": [
+                "priority",
+                "all_or_nothing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Procedure"
+        },
+        "resources": {
+          "items": {
+            "$ref": "#/$defs/StockResource"
+          },
+          "maxItems": 1000,
+          "title": "Resources",
+          "type": "array"
+        },
+        "routes": {
+          "items": {
+            "$ref": "#/$defs/TransportRoute"
+          },
+          "maxItems": 1000,
+          "title": "Routes",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "batch",
+        "period_id",
+        "resources",
+        "routes",
+        "procedure",
+        "claim_order",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "LogisticsRequest",
+      "type": "object"
+    },
+    "StockResource": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "resource_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "resource_id"
+      ],
+      "title": "StockResource",
+      "type": "object"
+    },
+    "TransformationOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "product",
+            "residual"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "role"
+      ],
+      "title": "TransformationOutput",
+      "type": "object"
+    },
+    "TransportActual": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "delivered": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Delivered",
+          "type": "string"
+        },
+        "destination_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Destination Id",
+          "type": "string"
+        },
+        "export_posting_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10000,
+          "title": "Export Posting Ids",
+          "type": "array"
+        },
+        "import_posting_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Import Posting Id"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "resource_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Id",
+          "type": "string"
+        },
+        "source_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "source_id",
+        "destination_id",
+        "resource_id",
+        "delivered",
+        "export_posting_ids",
+        "import_posting_id",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "TransportActual",
+      "type": "object"
+    },
+    "TransportRoute": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "enum": [
+            "allowed",
+            "denied",
+            "unknown"
+          ],
+          "title": "Access",
+          "type": "string"
+        },
+        "access_limit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Access Limit",
+          "type": "string"
+        },
+        "capacity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Capacity Id",
+          "type": "string"
+        },
+        "capacity_per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Capacity Per Unit",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "destination_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Destination Id",
+          "type": "string"
+        },
+        "funding_known": {
+          "title": "Funding Known",
+          "type": "boolean"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/FundingRequirement"
+          },
+          "maxItems": 99,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "destination_id",
+        "capacity_id",
+        "capacity_per_unit",
+        "access",
+        "access_limit",
+        "funding_known",
+        "requirements",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "TransportRoute",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/LogisticsRequest"
+    },
+    {
+      "$ref": "#/$defs/LogisticsEvaluation"
+    }
+  ]
+}
