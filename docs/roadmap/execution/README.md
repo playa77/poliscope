@@ -523,3 +523,17 @@ fixtures exercise the common interface. This does not complete either domain's
 static parent or imply other counterpart acceptance. Reassess DOM-02-options-coverage
 and the remaining actual interfaces after merge; settlement, numerical product
 activation, transitions, WP-032 and native/scientific gates remain separate.
+
+## Current boundary after PR #51
+
+PR #51 merged DOM-02-access-work at
+`53bc85076b49dd4456116129100d817b5671964b`.
+[DOM-02-options-coverage](WP-DOM-02-options-coverage.md) allocates scoped authored
+procedure interviews, stale-bound pure previews, claimant goods/time/budget
+inspection and complete source-gap coverage to the same sequential owner under
+SV. Shared accounts and actual DOM-01 interfaces remain authoritative. No source
+policy, property law, wage or behavioral response is inferred from hypothetical
+procedure outcomes. Actual remaining counterpart modules, reviewed numerical
+product activation, settlement/transitions, parent static gates, WP-032 and
+native/scientific/cumulative milestones retain separate acceptance. Reassess a
+bounded DOM-03 interface after merge.
