@@ -1,0 +1,14 @@
+{
+  "id": "authored:health-capacity-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical beneficiary and staff cohorts", "explicit need, exposure and health-state references", "declared staff qualification evidence", "positive dated care, staff and supply claims in shared DOM-02 work", "canonical asset facility-slot accounts with competing claims", "explicit eligibility, authority and selected policy bindings"],
+  "procedure": "Validate canonical links, requirement roles and distinct claims, direct authority, one facility account per asset/period and disjoint pools. Resolve policies through WP-013. Use shared DOM-02 work and the allocator for independent facility commitments. Capacity readiness requires fulfilled inputs and known eligibility, qualification and policy. Preserve unmet and unresolved findings. No delivered treatment is inferred.",
+  "independent_oracle": "A 108-case grid varies beneficiary, staff and supplies from zero to two, slots from zero to one and care-first precedence. Beneficiary-first needs two hours, staff and supplies need two each and slots need one. Care-first exhausts the grid's beneficiary time. A school and clinic also compete for the same three staff hours and one slot: school takes two hours and the slot, clinic receives one hour and no slot.",
+  "interfaces": ["WP-013 authority and policy resolution", "DOM-02 shared time/goods", "DOM-05 actual same-batch care", "DOM-06 actual same-batch school/clinic contention", "DOM-01 actual remaining supplies", "host facility assets pending actual DOM-08 operations"],
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_health.py"],
+  "limits": ["Independent input commitments, not synchronized attendance or treatment", "No refund or atomic service delivery", "No population need denominator or treatment coverage ratio", "No validated exposure, health, demographic or mental wellbeing coefficient", "No actual infrastructure operation or remaining counterpart acceptance", "No numerical IPC, publication, source activation or parent/cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}

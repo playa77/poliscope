@@ -11,6 +11,8 @@ import { contextKey } from '../../desktop/renderer/workspace';
 import type { WorkspaceState } from '../../contracts/workspace';
 const options = { name: 'Unanswered civilization', setup: 'blank', scope_name: 'Home', population: null, land_area: null };
 
+// This integration test starts multiple real Python processes and opens SQLite
+// stores; its total budget must allow for shared CI runner startup contention.
 it('runs production create/reopen/pages with main-selected path and exact context grants', async () => {
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-workspace-'));
   try {
@@ -38,7 +40,7 @@ it('runs production create/reopen/pages with main-selected path and exact contex
     reopened.clear();
     await expect(reopened.page(query)).rejects.toThrow();
   } finally { await rm(directory, { recursive: true, force: true }); }
-});
+}, 30_000);
 
 it('authorizes every new named IPC endpoint and rejects malformed input before invoking services', async () => {
   const handlers = new Map<string, (event: IpcMainInvokeEvent, ...args: unknown[]) => Promise<unknown>>();
