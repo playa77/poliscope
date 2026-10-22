@@ -632,3 +632,15 @@ other prerequisites fail. Reassess DOM-06 options/coverage after merge. Actual
 remaining counterparts, all-domain education integration, reviewed source models,
 transitions, numerical publication, WP-032, Windows and parent/cumulative gates
 remain separate.
+
+## Current boundary after PR #59
+
+PR #59 merged DOM-06-service-interface at
+`6192dd1`. [DOM-06-options-coverage](WP-DOM-06-options-coverage.md) allocates
+scoped authored education queue choices, stale-bound private previews and exact
+source gaps to the same sequential owner under SV. Staff/student/supply claims
+share real finite DOM-02 accounts; facility commitments retain their independent
+host queue. No attendance, completion, learning or source activation is inferred.
+Reassess a bounded DOM-07 interface after merge. Remaining actual counterparts,
+reviewed source models, all-domain education fixtures, transitions, numerical
+publication, WP-032, Windows and parent/cumulative gates remain separate.
