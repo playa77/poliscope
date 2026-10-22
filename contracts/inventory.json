@@ -25,6 +25,8 @@
     "fixtures.json",
     "governance.schema.json",
     "governance.ts",
+    "health.schema.json",
+    "health.ts",
     "history.schema.json",
     "history.ts",
     "interview.schema.json",

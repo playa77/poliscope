@@ -644,3 +644,17 @@ host queue. No attendance, completion, learning or source activation is inferred
 Reassess a bounded DOM-07 interface after merge. Remaining actual counterparts,
 reviewed source models, all-domain education fixtures, transitions, numerical
 publication, WP-032, Windows and parent/cumulative gates remain separate.
+
+## Current boundary after PR #60
+
+PR #60 merged DOM-06-options-coverage at
+`c2a5daeae7523a7e404b59d8d90ed5ad4959cadd`.
+[DOM-07-service-interface](WP-DOM-07-service-interface.md) allocates a bounded
+host-only health prerequisite interface to the same sequential owner under SV.
+Beneficiary care and trained staff time compete in shared finite DOM-02 work;
+supplies and declared facilities retain their canonical accounts. Explicit needs,
+exposure and health-state references do not activate health effects. Reassess
+health options/source coverage after merge. Population demand denominators,
+quantitative treatment coverage, remaining real counterparts, reviewed models,
+transitions, numerical publication, WP-032, Windows and parent/cumulative gates
+remain separate.
