@@ -618,3 +618,17 @@ obligations, work categories, access, supply and institutional inputs remain.
 Reassess bounded DOM-06 education/training service work after merge. Remaining
 actual counterparts, reviewed models, transitions, numerical product activation,
 WP-032, parent static/dynamic acceptance and native/cumulative gates remain separate.
+
+## Current boundary after PR #58
+
+PR #58 merged DOM-05-options-coverage at `56fe6320960cb631bf32bedb312426d53bfac761`.
+[DOM-06-service-interface](WP-DOM-06-service-interface.md) allocates a bounded
+host-only education prerequisite interface to the same sequential owner under
+SV. Staff/student/care time and goods share canonical DOM-02 accounts; disjoint
+facility commitments use the shared allocator and explicit canonical assets.
+WP-013 owns actual policy resolution. Capacity readiness does not certify learning,
+attendance or completion; independent input commitments remain inspectable when
+other prerequisites fail. Reassess DOM-06 options/coverage after merge. Actual
+remaining counterparts, all-domain education integration, reviewed source models,
+transitions, numerical publication, WP-032, Windows and parent/cumulative gates
+remain separate.
