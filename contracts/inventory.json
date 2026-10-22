@@ -52,6 +52,8 @@
     "revision.schema.json",
     "revision.ts",
     "saved-evidence.schema.json",
+    "social-organization.schema.json",
+    "social-organization.ts",
     "solver.schema.json",
     "solver.ts",
     "tool-inputs.json",
