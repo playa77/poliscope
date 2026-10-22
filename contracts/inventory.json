@@ -29,6 +29,8 @@
     "health.ts",
     "history.schema.json",
     "history.ts",
+    "infrastructure.schema.json",
+    "infrastructure.ts",
     "interview.schema.json",
     "interview.ts",
     "knowledge-culture.schema.json",

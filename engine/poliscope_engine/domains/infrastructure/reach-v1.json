@@ -1,0 +1,14 @@
+{
+  "id": "authored:infrastructure-reach-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical facility and link assets", "canonical locations and directed connectivity relationships", "explicit simple paths", "one facility-slot capacity account per asset/scope/period", "canonical cohort claims", "host procedure and claim precedence", "declared access and lifecycle availability"],
+  "procedure": "Validate asset/account uniqueness, location/connectivity relationships, scope, period and identical slot units. Require explicit directed simple paths to remote connected facilities. Block disconnected or nonoperating inputs. Withhold all competitors on unknown access/availability/procedure. Allocate each facility claim with one shared capacity requirement per path link through the existing allocator. Retain prior postings, holds, topology and additional/unmet quantities without committing state.",
+  "independent_oracle": "Exhaust 81 combinations of zero through two school, clinic, bridge and road slots. Independently enumerate integer pairs bounded by each facility and by both shared links; explicit school-first priority chooses lexicographic maximum.",
+  "interfaces": ["canonical world graph", "shared account/quantum/allocator", "actual DOM-06/07 readers of staged facility commitments"],
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_infrastructure.py"],
+  "limits": ["No service delivery or population coverage", "No housing, freight or bandwidth model", "No operating labor/energy/land or authority mechanism", "No construction, commissioning, maintenance, repair or lifecycle transition", "Prior commitments do not prove prior reach or refund on changed declarations", "Consumers retain canonical postings and explicitly close the completed phase", "No model activation, numerical IPC or parent/cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
