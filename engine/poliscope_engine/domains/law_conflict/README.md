@@ -43,7 +43,30 @@ renderer/IPC numerical activation or queue transition is introduced.
 
 [Model card](adjudication-v1.json) describes the hypothetical procedure;
 [package record](../../../../docs/roadmap/execution/WP-DOM-04-adjudication.md)
-records acceptance. Scoped interview alternatives, full source/branch coverage,
-reviewed legal models, enforcement and agreement mechanisms, other actual
+records acceptance. Reviewed legal models, enforcement and agreement mechanisms, other actual
 counterparts and parent static/dynamic gates remain pending. No universal
 fairness, justice, compliance, legitimacy or conflict severity score is inferred.
+
+
+## Host exploration and source coverage
+
+`exploration.interview`, `report` and `preview` expose authored explicit case-work
+queue alternatives with no default. Retention or reversal affects only existing
+case-work slots; unrelated care/governance claims keep their positions. Each
+alternative lists its complete candidate claim order. Whole-case capacity uses
+the existing evaluator and canonical DOM-02 accounts. Full rights, claimant,
+authority, rationale, proposed duties and actual/unmet posting evidence survive.
+No legal disposition or authority is chosen by these alternatives.
+
+Edits bind the complete request, canonical world, mechanism/review/implementation
+and unit/runtime identities. Changed context rejects old edits. Local interviews
+reject competing work in another scope; reports can still inspect such batches.
+Requests/results are revalidated and detached. No storage or IPC activation.
+
+`coverage.validate_coverage` reconciles the unactivated
+`content/law-conflict/coverage-v1.json` with the pinned society source inventory.
+All branches/leaves and source decision alternatives remain visible. Only rights
+inspection and finite judicial work have partial hypothetical coverage; legislation,
+enforcement, mediation, restoration and external conflict mechanisms retain gaps.
+Source maintenance is provenance. See the
+[exploration package](../../../../docs/roadmap/execution/WP-DOM-04-options-coverage.md).

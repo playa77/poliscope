@@ -14,6 +14,6 @@
   },
   "owned_state": "None; no persisted queue, rights database or separate time ledger",
   "fixture": "tests/engine/test_law_conflict.py",
-  "limits": ["No inferred legal merits, validated rights, fairness or compliance score", "No implicit eligibility, cohort disjointness or work precedence", "No automatic goods entitlement, enforcement or external rescue", "No production content/model activation or accepted revision", "No arrival, processing, settlement or enforcement transitions", "Interviews, complete source coverage, other counterparts and parent acceptance remain pending"],
+  "limits": ["No inferred legal merits, validated rights, fairness or compliance score", "No implicit eligibility, cohort disjointness or work precedence", "No automatic goods entitlement, enforcement or external rescue", "No production content/model activation or accepted revision", "No arrival, processing, settlement or enforcement transitions", "Scoped authored queue interviews and source-gap coverage are host-only; reviewed source models, other counterparts and parent acceptance remain pending"],
   "review_route": "SV separate author inspection; independent agent review deferred"
 }
