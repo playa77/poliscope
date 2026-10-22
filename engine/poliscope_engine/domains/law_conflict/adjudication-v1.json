@@ -1,0 +1,19 @@
+{
+  "id": "authored:law-adjudication-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "scope": "Static host-only legal cases under direct settlement or regional jurisdiction",
+  "inputs": ["canonical claimant and worker cohort IDs", "explicit host right, eligibility, disposition, rationale and duties", "incompatible rights requiring host resolution", "exact scoped authority binding/target and WP-013 resolution", "unique positive dated participation claims and complete shared work precedence"],
+  "procedure": "Validate direct jurisdiction and exact policy binding. Retain unresolved authority, rights and missing inputs. Evaluate all dated work through DOM-02. Complete an eligible case only when every named work claim is fully fulfilled; otherwise retain the right and capacity-blocked case. Return host disposition and proposed duties as private hypothetical evidence only.",
+  "independent_oracle": "Five hours cannot finish two three-hour cases. Case A first completes A and leaves B one hour short; B first reverses the whole-case outcome. Four care hours first leave only one procedural hour, so neither case completes. No capacity erases neither right nor claim.",
+  "ports": {
+    "authority": "Shared world jurisdiction and WP-013 policy resolver also used by actual DOM-03",
+    "work": "Actual DOM-02 canonical holder/period/account/claim/reservation/posting interfaces",
+    "evidence": "Detached legal inputs, per-case findings, policy evaluation and complete economy report"
+  },
+  "owned_state": "None; no persisted queue, rights database or separate time ledger",
+  "fixture": "tests/engine/test_law_conflict.py",
+  "limits": ["No inferred legal merits, validated rights, fairness or compliance score", "No implicit eligibility, cohort disjointness or work precedence", "No automatic goods entitlement, enforcement or external rescue", "No production content/model activation or accepted revision", "No arrival, processing, settlement or enforcement transitions", "Interviews, complete source coverage, other counterparts and parent acceptance remain pending"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
