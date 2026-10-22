@@ -723,3 +723,16 @@ nor verified truth. Access, disclosure, obligations and delay remain host inputs
 no application data is shared. Reassess bounded DOM-10 prerequisites after merge.
 Actual counterpart integration, policy resolution, transitions, source models,
 numerical publication, WP-032, Windows and parent/cumulative gates remain separate.
+
+## Current boundary after PR #66
+
+PR #66 merged DOM-09-options-coverage at
+`2d37bd26a8698f6c73ba0826bff42a03470c8b85`.
+[DOM-10-boundary-interface](WP-DOM-10-boundary-interface.md) allocates bounded
+host-only extraction stocks and dated sink allowance prerequisites to the same
+sequential owner under SV. Local and overlapping views share canonical finite
+accounts; explicit access, physical uncertainty and selected limit diagnostics
+remain distinct. No regeneration, absorption, exposure or coupled production
+effect is inferred. Reassess environment options/source coverage after merge.
+Actual counterpart integration, reviewed ecological models, transitions, numerical
+publication, WP-032, Windows and parent/cumulative gates remain separate.
