@@ -736,3 +736,17 @@ remain distinct. No regeneration, absorption, exposure or coupled production
 effect is inferred. Reassess environment options/source coverage after merge.
 Actual counterpart integration, reviewed ecological models, transitions, numerical
 publication, WP-032, Windows and parent/cumulative gates remain separate.
+
+
+## Current boundary after PR #67
+
+PR #67 merged DOM-10-boundary-interface at
+`b493203b6029a0948e447bc30e9bdef098412488`.
+[DOM-10-options-coverage](WP-DOM-10-options-coverage.md) allocates explicit scoped
+ecological queue previews and pinned source-gap reconciliation to the same
+sequential owner under SV. Shared extraction stocks and dated sink allowances
+remain finite; access, physical estimates and selected-limit diagnostics remain
+unchanged host inputs. No regeneration, absorption, exposure, delivery or coupled
+production effect is inferred. Reassess bounded DOM-11 prerequisites after merge.
+Actual counterparts, reviewed models, transitions, source activation, numerical
+publication, WP-032, Windows and parent/cumulative acceptance remain separate.

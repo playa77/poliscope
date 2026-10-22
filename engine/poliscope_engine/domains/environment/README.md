@@ -23,4 +23,11 @@ and the complete canonical book. This adapter cannot discover omitted competitor
 or validate separate calls against original openings as one integrated result.
 
 The authored card records the hypothetical procedure and independent oracle.
-Options/source-gap coverage and remaining DOM-10 parent requirements remain open.
+`exploration.interview` offers explicit retain/reverse queue alternatives with no
+selected default. `preview` binds the complete request, world graph, unit registry
+and implementation identities, changes only claim order and returns detached
+private evidence. It never applies or publishes the candidate book.
+
+`coverage.validate_coverage` reconciles every DOM-10 branch/leaf and pinned
+source/system choice against the immutable inventory. Partial coverage is finite
+prerequisite accounting only; remaining DOM-10 parent requirements stay open.
