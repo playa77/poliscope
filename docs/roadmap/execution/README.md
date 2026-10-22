@@ -809,3 +809,16 @@ After merge reassess dependency-ready static integration/verification against
 WP-032 and DOM parent requirements. Actual counterparts, reviewed models,
 registered hazards, coupled transitions, source activation, numerical publication,
 Windows and parent/cumulative acceptance remain separate.
+
+## Current boundary after PR #72
+
+PR #72 merged DOM-12-options-coverage at
+`b11b81278b4479de351105fdcbcf6da99b237a97`. The
+[readiness audit](WP-032-readiness-audit.md) reconciles all twelve standalone
+source inventories against the retained catalog and 44 pending counterpart
+contracts. Reproduce with `uv run --frozen python scripts/audit_static_readiness.py --check`; JSON evidence is in
+[static-readiness.json](static-readiness.json). This is declaration reconciliation;
+WP-032 execution acceptance remains unassessed. The next bounded allocation is
+real DOM-01/02 counterpart conformance under the audit's start/acceptance outline.
+Remaining pairs, all-domain education, originating choices, reviewed models,
+database/cross-view evidence and original parent/cumulative gates remain open.
