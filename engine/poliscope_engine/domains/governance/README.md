@@ -32,7 +32,36 @@ publish or execute institutional action. There is no store, clock, callback,
 renderer/IPC, default civic answer, global legitimacy score or transition here.
 
 [Model card](decision-procedure-v1.json) records the bounded authored procedure.
-[Package record](../../../../docs/roadmap/execution/WP-DOM-03-decision-procedure.md)
-retains acceptance and next work. Full governance branch/source inventory,
-interviews, oversight/publication/delegation models and other real counterpart
-fixtures remain pending. Neither DOM-02 nor DOM-03 static parent is accepted.
+[Decision package record](../../../../docs/roadmap/execution/WP-DOM-03-decision-procedure.md)
+retains the original procedure acceptance.
+
+## Approval exploration and source coverage
+
+`exploration.interview(request, graph=..., mechanisms=..., units=..., scope_id=...)`
+returns authored strict-majority and unanimity Definitions without a selected
+option. `preview(..., edit=GovernanceEdit(...))` changes only the approval rule.
+The digest binds the complete request, world and jurisdiction, mechanism/model
+identities and reviews, unit registries and semantic runtime versions. Stale
+inputs, foreign options/scopes and local edits over multi-scope competing work
+are rejected. Canonical representation, eligibility, quorum, ballots, mandates
+and work precedence remain explicit host prerequisites. Neither option is a
+population-weighted vote or a model of consensus-building.
+
+`report(...)` retains the detached full GovernanceEvaluation and the existing
+DOM-02 report, exposing requested/prior/incremental/unmet work, holder, cohort,
+scope, dated period, unit and posting links. Repeated shared time availability is
+context, not additive capacity. Governance and administration statuses remain
+separate: an unknown ballot or authority conflict withholds the decision outcome
+while known administrative demand can still be inspected. Unknown administrative
+inputs yield null incremental measurements and no complete allocation batch.
+All demand batches are private previews even after an approved decision.
+
+[Research inventory](../../../../content/governance/coverage-v1.json) reconciles
+all three branches, nine leaves and 25 historical source/system decisions against
+the immutable source map. Five catalog rows have partial hypothetical support;
+all decisions remain unreviewed provenance. Unsupported representation,
+deliberation, expertise, oversight, disclosure and corruption effects stay gaps.
+No source policy, production content, revision, database or renderer is activated.
+[Exploration package record](../../../../docs/roadmap/execution/WP-DOM-03-options-coverage.md)
+retains validation and limitations. Other actual counterpart fixtures and all
+parent/static, transition, Windows and scientific/cumulative gates remain open.
