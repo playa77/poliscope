@@ -6,6 +6,8 @@
     "allocation.ts",
     "atlas.schema.json",
     "atlas.ts",
+    "communication.schema.json",
+    "communication.ts",
     "comparison.schema.json",
     "comparison.ts",
     "content.schema.json",

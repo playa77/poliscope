@@ -1,0 +1,13 @@
+{
+  "id": "authored:communication-prerequisites-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical channel asset and institutional owner", "directed sender/recipient information-channel relationship selected through that asset", "recorded and available declarations", "publish/receive access and disclosure declarations", "one finite message-slot capacity account per channel/scope/period", "optional separate finite verification slots and named procedure", "declared delay ticks", "host procedure and complete precedence"],
+  "procedure": "Validate canonical entities, ownership and directed channel references. Require identical units and dated scope, distinct channel/verification roles, and complete demand mappings. Deny absent reach, unavailable information or explicit access/disclosure denial. Withhold all competing claims on unknown inputs. Stage channel slots and optional one-to-one verification slots atomically through the shared allocator. Retain prior postings, holds and additional/unmet quantities without delivery, verification or time advancement.",
+  "independent_oracle": "Enumerate 81 combinations of zero through two channel and verification slots and one through three messages for each of two demands. Independently enumerate feasible integer pairs and select the lexicographic maximum under explicit school-first precedence.",
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_communication.py"],
+  "limits": ["Hypothetical prerequisite commitments only", "No actual counterpart consumer acceptance", "No truth, trust or behavior effect", "No delivered or verified state", "No arrival or response transition", "No application payload or network access", "No source activation, numerical IPC or parent/cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
