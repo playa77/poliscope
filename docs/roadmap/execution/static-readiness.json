@@ -1,0 +1,783 @@
+{
+  "version": 1,
+  "assessment": "declarations_only",
+  "gate_acceptance": "not_assessed",
+  "source_revision": "9ff539997dbd1bd3fa99deabcf6bc5907602df60",
+  "source_archive_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+  "domains": [
+    {
+      "domain": "provisioning",
+      "source_rows": 38,
+      "source_statuses": {
+        "partial": 9,
+        "qualitative": 5,
+        "unsupported": 24
+      },
+      "static_source_rows": 9,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "economy",
+      "source_rows": 41,
+      "source_statuses": {
+        "partial": 6,
+        "unsupported": 35
+      },
+      "static_source_rows": 6,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 4
+      }
+    },
+    {
+      "domain": "governance",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 5,
+        "unsupported": 32
+      },
+      "static_source_rows": 5,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "law_conflict",
+      "source_rows": 41,
+      "source_statuses": {
+        "partial": 4,
+        "unsupported": 37
+      },
+      "static_source_rows": 4,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 4
+      }
+    },
+    {
+      "domain": "social_organization",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 4,
+        "unsupported": 33
+      },
+      "static_source_rows": 4,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "knowledge_culture",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 3,
+        "unsupported": 34
+      },
+      "static_source_rows": 3,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "health",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 2,
+        "unsupported": 35
+      },
+      "static_source_rows": 2,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "infrastructure",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 2,
+        "unsupported": 35
+      },
+      "static_source_rows": 2,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "communication",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 3,
+        "unsupported": 34
+      },
+      "static_source_rows": 3,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "environment",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 4,
+        "unsupported": 33
+      },
+      "static_source_rows": 4,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "meaning_identity",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 4,
+        "unsupported": 33
+      },
+      "static_source_rows": 4,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    },
+    {
+      "domain": "security_risk",
+      "source_rows": 37,
+      "source_statuses": {
+        "partial": 5,
+        "unsupported": 32
+      },
+      "static_source_rows": 5,
+      "transition_source_rows": 0,
+      "source_activation": "not_activated",
+      "declared_mechanisms": 0,
+      "declared_interfaces": 0,
+      "catalog_statuses": {
+        "unresolved": 3
+      }
+    }
+  ],
+  "counterparts": [
+    {
+      "id": "pair:DOM-01:DOM-02",
+      "domains": [
+        "provisioning",
+        "economy"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-05",
+      "domains": [
+        "provisioning",
+        "social_organization"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-06",
+      "domains": [
+        "provisioning",
+        "knowledge_culture"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-07",
+      "domains": [
+        "provisioning",
+        "health"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-08",
+      "domains": [
+        "provisioning",
+        "infrastructure"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-10",
+      "domains": [
+        "provisioning",
+        "environment"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-01:DOM-12",
+      "domains": [
+        "provisioning",
+        "security_risk"
+      ],
+      "owner": "provisioning",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-03",
+      "domains": [
+        "economy",
+        "governance"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-04",
+      "domains": [
+        "economy",
+        "law_conflict"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-05",
+      "domains": [
+        "economy",
+        "social_organization"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-06",
+      "domains": [
+        "economy",
+        "knowledge_culture"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-07",
+      "domains": [
+        "economy",
+        "health"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-02:DOM-08",
+      "domains": [
+        "economy",
+        "infrastructure"
+      ],
+      "owner": "economy",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-04",
+      "domains": [
+        "governance",
+        "law_conflict"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-06",
+      "domains": [
+        "governance",
+        "knowledge_culture"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-08",
+      "domains": [
+        "governance",
+        "infrastructure"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-09",
+      "domains": [
+        "governance",
+        "communication"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-11",
+      "domains": [
+        "governance",
+        "meaning_identity"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-03:DOM-12",
+      "domains": [
+        "governance",
+        "security_risk"
+      ],
+      "owner": "governance",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-05",
+      "domains": [
+        "law_conflict",
+        "social_organization"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-06",
+      "domains": [
+        "law_conflict",
+        "knowledge_culture"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-07",
+      "domains": [
+        "law_conflict",
+        "health"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-09",
+      "domains": [
+        "law_conflict",
+        "communication"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-11",
+      "domains": [
+        "law_conflict",
+        "meaning_identity"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-04:DOM-12",
+      "domains": [
+        "law_conflict",
+        "security_risk"
+      ],
+      "owner": "law_conflict",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-05:DOM-06",
+      "domains": [
+        "social_organization",
+        "knowledge_culture"
+      ],
+      "owner": "social_organization",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-05:DOM-07",
+      "domains": [
+        "social_organization",
+        "health"
+      ],
+      "owner": "social_organization",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-05:DOM-11",
+      "domains": [
+        "social_organization",
+        "meaning_identity"
+      ],
+      "owner": "social_organization",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-07",
+      "domains": [
+        "knowledge_culture",
+        "health"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-08",
+      "domains": [
+        "knowledge_culture",
+        "infrastructure"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-09",
+      "domains": [
+        "knowledge_culture",
+        "communication"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-10",
+      "domains": [
+        "knowledge_culture",
+        "environment"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-11",
+      "domains": [
+        "knowledge_culture",
+        "meaning_identity"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-06:DOM-12",
+      "domains": [
+        "knowledge_culture",
+        "security_risk"
+      ],
+      "owner": "knowledge_culture",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-07:DOM-08",
+      "domains": [
+        "health",
+        "infrastructure"
+      ],
+      "owner": "health",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-07:DOM-09",
+      "domains": [
+        "health",
+        "communication"
+      ],
+      "owner": "health",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-07:DOM-10",
+      "domains": [
+        "health",
+        "environment"
+      ],
+      "owner": "health",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-07:DOM-12",
+      "domains": [
+        "health",
+        "security_risk"
+      ],
+      "owner": "health",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-08:DOM-09",
+      "domains": [
+        "infrastructure",
+        "communication"
+      ],
+      "owner": "infrastructure",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-08:DOM-10",
+      "domains": [
+        "infrastructure",
+        "environment"
+      ],
+      "owner": "infrastructure",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-08:DOM-12",
+      "domains": [
+        "infrastructure",
+        "security_risk"
+      ],
+      "owner": "infrastructure",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-09:DOM-11",
+      "domains": [
+        "communication",
+        "meaning_identity"
+      ],
+      "owner": "communication",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-09:DOM-12",
+      "domains": [
+        "communication",
+        "security_risk"
+      ],
+      "owner": "communication",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    },
+    {
+      "id": "pair:DOM-10:DOM-12",
+      "domains": [
+        "environment",
+        "security_risk"
+      ],
+      "owner": "environment",
+      "status": "pending_counterpart",
+      "interfaces": [],
+      "fixtures": [
+        "synthetic:domain-conformance@v1"
+      ]
+    }
+  ],
+  "remaining_acceptance": [
+    "Reviewed static mechanisms and typed ports registered for all twelve modules",
+    "Actual counterpart fixtures with canonical identities, units, accounts and provenance",
+    "All-domain education path and an entry choice originating in each domain",
+    "Cross-view context and retained evidence through the actual engine/database",
+    "Independent model/product review and complete WP-032 gate execution"
+  ]
+}
