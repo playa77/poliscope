@@ -766,3 +766,17 @@ actual attendance, policy resolution or transition is inferred. Reassess scoped
 DOM-11 options/source coverage after merge. Actual counterparts, reviewed models,
 source activation, numerical publication, WP-032, Windows and parent/cumulative
 acceptance remain separate.
+
+
+## Current boundary after PR #69
+
+PR #69 merged DOM-11-participation-interface at
+`49a712cfb800f2223087048c228433e4cff6f7db`.
+[DOM-11-options-coverage](WP-DOM-11-options-coverage.md) allocates scoped explicit
+accommodation queue interviews, complete-context stale-bound pure previews and
+exact pinned source gaps to the same sequential owner under SV. Declared group
+commitments, participation, eligibility, access and obligations remain host inputs.
+Precedence cannot resolve duties or infer attendance, belief or identity effects.
+Reassess bounded DOM-12 prerequisites after merge. Actual counterpart integration,
+reviewed models, source activation, transitions, numerical publication, WP-032,
+Windows and parent/cumulative acceptance remain separate.

@@ -27,5 +27,12 @@ sets a world commitment. No belief, identity, cohesion, legitimacy or purpose
 scalar, behavioral effect, attendance, time advance, policy resolution, transition,
 source activation, numerical IPC or DOM-11 parent acceptance is inferred.
 
-Scoped alternatives/source coverage, actual governance/law/care/cultural/
-communication counterparts and reviewed models retain separate acceptance.
+`exploration.interview` offers explicit retain/reverse queue alternatives with no
+default. `preview` binds the complete host request, graph, units and implementation
+identities, rejects stale edits and returns a private detached report. Choices
+change precedence only; conflicting obligations remain unresolved.
+
+`coverage.validate_coverage` reconciles the standalone pinned DOM-11 catalog and
+source/system decisions. Partial pluralism/ritual paths mean service-slot
+prerequisites only. Actual governance/law/care/cultural/communication counterparts
+and reviewed models retain separate acceptance.
