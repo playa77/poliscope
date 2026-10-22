@@ -19,3 +19,10 @@ freight network, quantify housing coverage or commission/build/repair assets.
 Operating labor/energy/land, authority, lifecycle/resource coupling, digital
 bandwidth, source coverage and authored previews require separate work. No model,
 publication, numerical IPC or parent acceptance is activated.
+
+Host-only `exploration.interview` offers explicit declared and reversed queues,
+without a selected default. `preview` binds the entire request, world, unit registry
+and implementation identity; only claim order changes. Reports are detached pure
+candidates, with no database or numerical IPC publication. Standalone source gaps
+are reconciled by `coverage.validate_coverage`; partial transportation coverage is
+facility-slot reach, not freight movement or transportation service delivery.
