@@ -750,3 +750,19 @@ unchanged host inputs. No regeneration, absorption, exposure, delivery or couple
 production effect is inferred. Reassess bounded DOM-11 prerequisites after merge.
 Actual counterparts, reviewed models, transitions, source activation, numerical
 publication, WP-032, Windows and parent/cumulative acceptance remain separate.
+
+
+## Current boundary after PR #68
+
+PR #68 merged DOM-10-options-coverage at
+`083102630057b218d80aaa219ed4311ad8937855`.
+[DOM-11-participation-interface](WP-DOM-11-participation-interface.md) allocates
+bounded host-only accommodation eligibility/obligation and finite service-slot
+prerequisites to the same sequential owner under SV. Two canonical groups share
+one dated institutional capacity book. Declined participation, eligibility, access,
+unknown inputs and conflicting obligations remain distinguishable. Queue choice
+cannot resolve conflicting duties. No inner experience or belief/identity score,
+actual attendance, policy resolution or transition is inferred. Reassess scoped
+DOM-11 options/source coverage after merge. Actual counterparts, reviewed models,
+source activation, numerical publication, WP-032, Windows and parent/cumulative
+acceptance remain separate.

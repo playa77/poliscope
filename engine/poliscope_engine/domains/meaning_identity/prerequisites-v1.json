@@ -1,0 +1,13 @@
+{
+  "id": "authored:participation-prerequisites-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical groups and institutional asset ownership", "direct group access relationships", "declared commitment and accommodation references", "participation, eligibility, access and obligation declarations with provenance", "finite dated participation slots in one canonical account book", "host procedure and complete precedence"],
+  "procedure": "Validate canonical references, unique account/asset mappings, dimensions, scope and period. Deny declined participation, ineligibility, missing or denied access and offline capacity. Unknown prerequisites and conflicting obligations withhold all new allocations. Stage finite capacity through the shared allocator. Retain prior postings and reservations without inferring attendance or resolving rights.",
+  "independent_oracle": "For both priority and all-or-nothing, enumerate 45 combinations of supply zero through four and two demands one through three; enumerate feasible integer pairs independently and select the lexicographic maximum under explicit first-group precedence.",
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_meaning_identity.py"],
+  "limits": ["Hypothetical capacity prerequisite only", "No inner-experience or identity score", "No resolved rights or conflicting obligations", "No attendance, behavior, transition or source activation", "No actual counterpart acceptance", "No numerical IPC, parent or cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
