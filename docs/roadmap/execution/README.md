@@ -578,3 +578,16 @@ rights/eligibility/rulings and conflicting authority retain named findings.
 Reassess DOM-04-options-coverage after merge. Other actual counterparts, legal
 model review, parent static/dynamic gates, WP-032, transitions, Windows and
 scientific/cumulative acceptance remain separate.
+
+
+## Current boundary after PR #55
+
+PR #55 merged DOM-04-adjudication at `67e439b9c671bc8a4bf07e85e876690b0fb8b5ef`.
+[DOM-04-options-coverage](WP-DOM-04-options-coverage.md) allocates scoped explicit
+case-work queue interviews, complete-context stale-bound pure previews and exact
+source-gap coverage to the same sequential owner under SV. Care and other work
+retain their slots; all rights, rulings, authority and costs remain host inputs.
+No legal merits, enforcement or external agreement compliance is inferred.
+Reassess a bounded DOM-05 household/care interface after merge. Remaining actual
+counterparts, reviewed source models, parent gates, numerical product activation,
+transitions, WP-032, Windows and scientific/cumulative acceptance remain separate.
