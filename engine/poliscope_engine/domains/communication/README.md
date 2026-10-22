@@ -13,3 +13,9 @@ score, wall-clock timing or policy enforcement. Delay is a retained declaration,
 not an executed transition. Message bodies and application private payloads are
 outside this contract. No network access, IPC activation or mutable domain state.
 See the execution record for remaining parent acceptance and actual consumers.
+
+`exploration` offers explicit settlement/region queue interviews and detached
+previews bound to the complete host context. No option is selected by default.
+`coverage` reconciles every pinned DOM-09 source row and provenance choice;
+partial slot prerequisites do not activate source models, deliver messages,
+verify truth or resolve privacy policy. Other branches remain unsupported.
