@@ -39,7 +39,31 @@ the identical care/work batch and expose case-capacity loss when care is first.
 
 Contracts are generated in `contracts/social-organization.*`; arithmetic card
 `care-v1.json` is hypothetical and unactivated. This is a trusted host API, not
-public IPC, a reviewed source model, a timeline or parent acceptance. Authored
-arrangement alternatives, source-gap coverage, service/goods chains, actual
+public IPC, a reviewed source model, a timeline or parent acceptance. Service/goods chains, actual
 DOM-06/07/11 counterparts, health/kinship/belonging outcomes and demographic
 transitions retain separate dependencies. No universal social quality is scored.
+
+## Explicit care-time exploration
+
+`exploration.interview/report/preview` retain the complete host arrangement and
+offer two authored procedural choices: preserve the declared work queue, or move
+care claims ahead of other work while preserving relative order within both
+groups. No option is selected by default, and no source-maintenance decision
+selects a care policy. This is a bounded time arrangement, not a membership edit.
+Obligations, population, providers, institutions, paid/unpaid categories, requested
+hours, access terms, holds, prior work and the allocation procedure stay fixed.
+Care does not imply unpaid or employed status; paid work implies no wages.
+
+Reports retain the actual care evaluator's beneficiary/provider and population
+union alongside DOM-02 claim/account/holder budgets, units, period, prior and
+additional actual, unmet work and postings. Employment, learning and case work
+compete for the same time. Unknown procedures/access/population remain explicit.
+Missing queues are not filled automatically. Malformed or foreign scopes fail.
+Baseline identities bind the complete request, canonical world, units and runtime
+versions; stale edits fail and all returned DTOs detach from the caller. The care
+evaluator has no mechanism-registry input or source activation path.
+
+`coverage.validate_coverage` reconciles standalone unactivated research content
+against all 12 DOM-05 branch/leaf entries and 25 source-maintenance entries,
+retaining pinned titles/documents/alternatives, availability and research gaps.
+No kinship, child-rearing, health, demographic or belonging effects are inferred.

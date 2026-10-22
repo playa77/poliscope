@@ -605,3 +605,16 @@ household-size, health or belonging behavior is inferred. Reassess scoped author
 DOM-05 arrangement interviews/source coverage after merge. Real remaining
 counterparts, reviewed source models, transitions, numerical product activation,
 WP-032, parent static acceptance and native/cumulative gates remain separate.
+
+## Current boundary after PR #57
+
+PR #57 merged DOM-05-care-arrangements at
+`6539b98cdb4f25ccabd5bfc61f0f7f9c36d432a7`.
+[DOM-05-options-coverage](WP-DOM-05-options-coverage.md) allocates scoped explicit
+care-time interviews, stale-bound pure previews and exact source-gap coverage to
+the same sequential owner under SV. The shared population union and dated DOM-02
+accounts remain authoritative. Queue choices change precedence only; membership,
+obligations, work categories, access, supply and institutional inputs remain.
+Reassess bounded DOM-06 education/training service work after merge. Remaining
+actual counterparts, reviewed models, transitions, numerical product activation,
+WP-032, parent static/dynamic acceptance and native/cumulative gates remain separate.
