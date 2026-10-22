@@ -54,8 +54,7 @@ status/placeholder convention; readiness is withheld and docs state that limit.
 Prior fulfillment counts once, reservations protect capacity, and detached DTOs
 are revalidated. Actual DOM-05 reports match exactly; DOM-01 consumes only the
 remaining materials after education commitments. Qualification evidence is
-explicitly declared, not empirically certified. Route: **solo-validated; agent
-review deferred**.
+explicitly declared, not empirically certified. Route: **solo-validated; agent review deferred**.
 
 ## Validation results
 
