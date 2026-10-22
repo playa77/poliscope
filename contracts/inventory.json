@@ -64,6 +64,8 @@
     "revision.schema.json",
     "revision.ts",
     "saved-evidence.schema.json",
+    "security-risk.schema.json",
+    "security-risk.ts",
     "social-organization.schema.json",
     "social-organization.ts",
     "solver.schema.json",
