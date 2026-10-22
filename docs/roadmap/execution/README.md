@@ -563,3 +563,18 @@ retain canonical electorate IDs, ballots, policy findings and DOM-02 account,
 claim, holder and posting evidence. No host input is inferred from a source option.
 Representation/mandates, remaining real counterparts, queues/adoption/publication,
 parent static gates, WP-032, Windows and scientific/cumulative acceptance remain.
+
+
+## Current boundary after PR #54
+
+PR #54 merged DOM-03-options-coverage at
+`7f957b3a6b21e36b558c9044d35d1c32976291bd`.
+[DOM-04-adjudication](WP-DOM-04-adjudication.md) allocates a bounded host-only
+rights/case procedure to the same sequential owner under SV. Explicit legal
+claims and proposed duties remain distinct from actual procedural capacity.
+The shared WP-013 resolver owns authority and DOM-02 owns finite dated work;
+actual governance and legal demands compete in one canonical batch. Unknown
+rights/eligibility/rulings and conflicting authority retain named findings.
+Reassess DOM-04-options-coverage after merge. Other actual counterparts, legal
+model review, parent static/dynamic gates, WP-032, transitions, Windows and
+scientific/cumulative acceptance remain separate.

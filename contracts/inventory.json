@@ -29,6 +29,8 @@
     "history.ts",
     "interview.schema.json",
     "interview.ts",
+    "law-conflict.schema.json",
+    "law-conflict.ts",
     "logistics.schema.json",
     "logistics.ts",
     "matrix.schema.json",
