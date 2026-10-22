@@ -686,3 +686,15 @@ bounded infrastructure options/source coverage after merge. Operating resource a
 lifecycle mechanisms, housing coverage, remaining actual counterparts, source
 models, transitions, numerical publication, WP-032, Windows and parent/cumulative
 gates remain separate.
+
+## Current boundary after PR #63
+
+PR #63 merged DOM-08-infrastructure at
+`ca4fa9e2c2317da07793efe1cc1e2a321e6cff54`.
+[DOM-08-options-coverage](WP-DOM-08-options-coverage.md) allocates pure explicit
+facility queue previews and pinned source-gap reconciliation to the same sequential
+owner under SV. Neither queue choice changes topology, access, lifecycle status or
+capacity. Partial physical/transportation coverage means finite facility-slot reach
+only. Construction, maintenance, operating resources, housing coverage, digital
+networks, transitions, source activation, numerical IPC and parent/cumulative gates
+remain separate. Reassess bounded DOM-09 interfaces and prerequisites after merge.
