@@ -45,6 +45,8 @@
     "logistics.ts",
     "matrix.schema.json",
     "matrix.ts",
+    "meaning-identity.schema.json",
+    "meaning-identity.ts",
     "measurement.schema.json",
     "measurement.ts",
     "mechanism-fixtures.json",
