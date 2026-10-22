@@ -711,3 +711,15 @@ Capacity readiness implies neither delivery nor verified truth. Delay is retaine
 without time advancement. Reassess DOM-09 options/source coverage after merge;
 actual counterpart integrations, transitions, reviewed models, numerical IPC,
 WP-032, Windows and parent/cumulative acceptance remain separate.
+
+## Current boundary after PR #65
+
+PR #65 merged DOM-09-channel-interface at `5a6fa1f`.
+[DOM-09-options-coverage](WP-DOM-09-options-coverage.md) allocates explicit scoped
+message queue interviews, complete-context stale-bound private previews and exact
+source gaps to the same sequential owner under SV. Shared channel and optional
+verification accounts remain authoritative. Readiness implies neither delivery
+nor verified truth. Access, disclosure, obligations and delay remain host inputs;
+no application data is shared. Reassess bounded DOM-10 prerequisites after merge.
+Actual counterpart integration, policy resolution, transitions, source models,
+numerical publication, WP-032, Windows and parent/cumulative gates remain separate.
