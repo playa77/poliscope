@@ -658,3 +658,16 @@ health options/source coverage after merge. Population demand denominators,
 quantitative treatment coverage, remaining real counterparts, reviewed models,
 transitions, numerical publication, WP-032, Windows and parent/cumulative gates
 remain separate.
+
+## Current boundary after PR #61
+
+PR #61 merged DOM-07-service-interface at
+`ac028921974e59d76ee3c396225e4fff6f807506`.
+[DOM-07-options-coverage](WP-DOM-07-options-coverage.md) allocates scoped explicit
+health queue choices, stale-bound private previews and exact source gaps to the
+same sequential owner under SV. Shared beneficiary/staff/supply accounts retain
+finite care and education contention; facility precedence remains host-declared.
+Readiness does not imply delivered treatment, quantitative coverage or health
+change. Reassess bounded DOM-08 infrastructure work after merge. Actual remaining
+counterparts, reviewed models, transitions, numerical publication, WP-032, Windows
+and parent/cumulative gates remain separate.
