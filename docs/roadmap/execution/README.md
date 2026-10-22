@@ -698,3 +698,16 @@ capacity. Partial physical/transportation coverage means finite facility-slot re
 only. Construction, maintenance, operating resources, housing coverage, digital
 networks, transitions, source activation, numerical IPC and parent/cumulative gates
 remain separate. Reassess bounded DOM-09 interfaces and prerequisites after merge.
+
+## Current boundary after PR #64
+
+PR #64 merged DOM-08-options-coverage at
+`270c724e8966b26a9f1e47cc443d94c8e300d18d`.
+[DOM-09-channel-interface](WP-DOM-09-channel-interface.md) allocates the next
+bounded host-only communication prerequisite child to the same sequential owner
+under SV. Recorded/available declarations, directed reach, explicit access and
+disclosure remain distinct from finite channel and optional verification slots.
+Capacity readiness implies neither delivery nor verified truth. Delay is retained
+without time advancement. Reassess DOM-09 options/source coverage after merge;
+actual counterpart integrations, transitions, reviewed models, numerical IPC,
+WP-032, Windows and parent/cumulative acceptance remain separate.
