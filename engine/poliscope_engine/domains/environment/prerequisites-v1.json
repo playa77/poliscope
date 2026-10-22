@@ -1,0 +1,13 @@
+{
+  "id": "authored:ecological-prerequisites-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical resource/role/account mapping", "physical stock or dated sink allowance", "explicit local resource/scope references", "canonical claimant and finite demand", "separate access and capacity knowledge", "explicit precedence", "optional referenced limit in account units over the retained book horizon"],
+  "procedure": "Validate canonical resources, claimant kinds, scope references, unique boundary mappings and account roles. Retain weighted scope views without scaling capacity. Withhold new commitments on unknown competitors; otherwise stage finite extraction and independent sink allowance claims through the shared allocator. Retain prior postings and reservations. Diagnose gross outward postings against selected limits separately from finite physical allocation, without enforcing an inferred policy or publishing state.",
+  "independent_oracle": "Enumerate 81 stock/sink/farm/clinic combinations. Independently enumerate all nonnegative integer commitment pairs within each finite boundary and select the lexicographic maximum under explicit farm-first precedence. Verify overlapping local views cannot multiply the account.",
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_environment.py"],
+  "limits": ["Hypothetical prerequisite commitments only", "No coupled production/emission procedure", "No regeneration, absorption, exposure or ecological effect", "No actual counterpart integration", "No inferred annual, area or population conversion", "No ecological policy resolver", "No source activation, transitions, numerical IPC or parent/cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}

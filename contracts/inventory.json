@@ -18,6 +18,8 @@
     "domain.ts",
     "economy.schema.json",
     "economy.ts",
+    "environment.schema.json",
+    "environment.ts",
     "evaluation.schema.json",
     "evaluation.ts",
     "exploration.schema.json",
