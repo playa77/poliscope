@@ -671,3 +671,18 @@ Readiness does not imply delivered treatment, quantitative coverage or health
 change. Reassess bounded DOM-08 infrastructure work after merge. Actual remaining
 counterparts, reviewed models, transitions, numerical publication, WP-032, Windows
 and parent/cumulative gates remain separate.
+
+## Current boundary after PR #62
+
+PR #62 merged DOM-07-options-coverage at
+`7c8bf158c473a2841d0a0785513839c270a40b56`.
+[DOM-08-infrastructure](WP-DOM-08-infrastructure.md) allocates bounded host-only
+facility reach and shared network capacity to the same sequential owner under SV.
+Explicit canonical locations, directed paths and availability declarations gate
+facility-slot claims in a single dated shared account book. Real education/health
+readers retain staged commitments with this phase explicitly closed; disconnected
+or planned capacity cannot silently become available in a consumer. Reassess
+bounded infrastructure options/source coverage after merge. Operating resource and
+lifecycle mechanisms, housing coverage, remaining actual counterparts, source
+models, transitions, numerical publication, WP-032, Windows and parent/cumulative
+gates remain separate.

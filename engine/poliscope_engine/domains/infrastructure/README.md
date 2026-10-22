@@ -1,0 +1,21 @@
+# Infrastructure: finite facility reach
+
+`evaluate_infrastructure` is a host-only pure static interface. Canonical assets,
+locations, directed connectivity and explicit paths share one dated facility-slot
+account book. A demand consumes the selected facility plus every path link once,
+using the shared allocator and an explicit host procedure/order. Local demand has
+an empty path; a disconnected empty path retains the unmet claim. An omitted path
+to a connected remote destination rejects rather than selecting a route.
+
+Planned, offline and retired assets block new commitments. Unknown availability
+or access withholds all competing allocation. Access denial is independent of
+physical connectivity. Prior postings and reservations survive; results distinguish
+prior commitments, additional allocation and unmet demand. Lifecycle declarations
+are inputs, never transitions. Retained earlier commitments are not refunded when
+an asset's availability changes. Prior commitments do not prove prior reach.
+
+This interface does not create supplies or deliver treatment/education, operate a
+freight network, quantify housing coverage or commission/build/repair assets.
+Operating labor/energy/land, authority, lifecycle/resource coupling, digital
+bandwidth, source coverage and authored previews require separate work. No model,
+publication, numerical IPC or parent acceptance is activated.
