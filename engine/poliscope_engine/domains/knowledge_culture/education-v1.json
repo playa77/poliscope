@@ -1,0 +1,14 @@
+{
+  "id": "authored:education-capacity-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical staff/student cohorts", "explicit staff qualification and knowledge/skill references", "positive dated training/staff/material claims in shared DOM-02 work", "one canonical facility-slot account per asset/period with all competing claims", "explicit eligibility, authority, target policy bindings and selected resolution rules"],
+  "procedure": "Validate links, distinct requirements, direct authority and disjoint account/claim pools. Resolve policies through WP-013. Evaluate shared work/goods with DOM-02 and independently allocate facility commitments with the shared allocator. Mark capacity-ready only when all prerequisites are fulfilled and qualification/access/policy are known. Preserve unknowns and unmet requirements. No delivered learning or atomic service is inferred.",
+  "independent_oracle": "Five student hours face three employment, two learning and four care hours. Employment then learning leaves care unmet; care then learning leaves one learning hour unmet. Two teacher hours, two kg materials and one facility slot are separate prerequisites. A 108-input finite integer grid checks quantities and readiness; actual care and provisioning consumers retain identical budgets and postings.",
+  "interfaces": ["WP-013 authority and policy resolution", "DOM-02 canonical work/goods/access/time", "DOM-05 actual same-batch care", "DOM-01 actual remaining materials", "host facility-slot asset reference pending DOM-08"],
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_knowledge_culture.py"],
+  "limits": ["Independent input commitments, not synchronized attendance or delivered lessons", "No refund or atomic service transaction", "No inferred qualification, learning or behavioral coefficient", "No training completion, skills, duration or transition", "No real DOM-08 operating/connectivity model or remaining domain counterparts", "No numerical IPC, publication, source activation or parent/cumulative acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
