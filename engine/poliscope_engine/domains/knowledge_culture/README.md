@@ -41,3 +41,10 @@ DOM-05 evaluator and preserve materials into the actual DOM-01 chain. A finite
 integer oracle checks input quantities and readiness independently. Other domain
 counterparts, all-domain education integration, research/culture mechanisms,
 interviews/source coverage, durations, skills and transitions remain pending.
+
+`exploration` provides host-only scoped interviews and pure stale-bound queue
+previews: retain the declared queue or put explicit education input claims first.
+Care and other work still compete in canonical accounts; facility order stays
+fixed. Full host/mechanism/world context binds edits. No default, application,
+learning or publication is provided. `coverage` checks the standalone exact source
+inventory in `content/knowledge-culture`; source options remain provenance only.

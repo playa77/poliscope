@@ -33,7 +33,7 @@ def main():
     inventory = dict(version=1, status='immutable-release-v1', files={f'release-v1/{p}': digest(b) for p, b in sorted(outputs.items())})
     if args.output == ROOT / 'content/release-v1' and args.check:
         actual = {p.relative_to(ROOT / 'content').as_posix() for p in (ROOT / 'content').rglob('*') if p.is_file()}
-        research_files = {'social-organization/README.md', 'social-organization/coverage-v1.json', 'law-conflict/README.md', 'law-conflict/coverage-v1.json', 'provisioning/README.md', 'provisioning/coverage-v1.json', 'economy/README.md', 'economy/coverage-v1.json', 'governance/README.md', 'governance/coverage-v1.json'}
+        research_files = {'knowledge-culture/README.md', 'knowledge-culture/coverage-v1.json', 'social-organization/README.md', 'social-organization/coverage-v1.json', 'law-conflict/README.md', 'law-conflict/coverage-v1.json', 'provisioning/README.md', 'provisioning/coverage-v1.json', 'economy/README.md', 'economy/coverage-v1.json', 'governance/README.md', 'governance/coverage-v1.json'}
         from poliscope_engine.domains.provisioning.coverage import validate_coverage
         validate_coverage(decode((ROOT / 'content/provisioning/coverage-v1.json').read_bytes()), report)
         from poliscope_engine.domains.economy.coverage import validate_coverage as validate_economy
@@ -44,6 +44,8 @@ def main():
         validate_governance(decode((ROOT / 'content/governance/coverage-v1.json').read_bytes()), report)
         from poliscope_engine.domains.social_organization.coverage import validate_coverage as validate_care
         validate_care(decode((ROOT / 'content/social-organization/coverage-v1.json').read_bytes()), report)
+        from poliscope_engine.domains.knowledge_culture.coverage import validate_coverage as validate_education
+        validate_education(decode((ROOT / 'content/knowledge-culture/coverage-v1.json').read_bytes()), report)
         if actual != {*inventory['files'], 'README.md', 'inventory.json', *research_files} or decode((ROOT / 'content/inventory.json').read_bytes()) != inventory:
             raise SystemExit('Content inventory drift or unregistered artifacts')
     if args.check:
