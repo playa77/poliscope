@@ -28,3 +28,8 @@ service throughput and treatment coverage, actual infrastructure connectivity,
 health/exposure transitions, demographic change and mental/emotional effects are
 unavailable. References are host declarations, not empirically certified evidence.
 This interface does not complete parent DOM-07, WP-032 or cumulative acceptance.
+
+Private exploration offers explicit retain-queue or health-first work precedence
+with no default. It binds edits to the complete host context and leaves facilities,
+needs, exposure, qualifications and institutional inputs intact. Source coverage
+reconciles DOM-07 and source decisions without activating source models.

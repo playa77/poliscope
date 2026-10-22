@@ -821,6 +821,203 @@
       "title": "ClaimResult",
       "type": "object"
     },
+    "Definition": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "evidence": {
+          "enum": [
+            "unreviewed",
+            "hypothetical",
+            "supported",
+            "disputed"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "historical_status": {
+          "enum": [
+            "adopted",
+            "alternative",
+            "amended",
+            "superseded",
+            "provenance",
+            "unspecified"
+          ],
+          "title": "Historical Status",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "domain",
+            "branch",
+            "question",
+            "option",
+            "mechanism",
+            "parameter",
+            "measurement",
+            "fixture"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "measurement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "mechanism_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Mechanism Refs",
+          "type": "array"
+        },
+        "modeling": {
+          "enum": [
+            "numerical",
+            "procedural",
+            "qualitative",
+            "partial",
+            "unsupported"
+          ],
+          "title": "Modeling",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "imported",
+            "player_proposed",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "original_text": {
+          "maxLength": 131072,
+          "minLength": 1,
+          "title": "Original Text",
+          "type": "string"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ParameterDeclaration"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "parent_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Parent Ref"
+        },
+        "source_decision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Decision Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "supersedes_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Supersedes Refs",
+          "type": "array"
+        },
+        "variable_refs": {
+          "items": {
+            "maxLength": 256,
+            "pattern": "^[a-z][a-z0-9_.-]*:[a-zA-Z0-9_./-]+$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Variable Refs",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "kind",
+        "parent_ref",
+        "original_text",
+        "source_decision_id",
+        "source_refs",
+        "assumption_refs",
+        "supersedes_refs",
+        "mechanism_refs",
+        "variable_refs",
+        "origin",
+        "modeling",
+        "evidence",
+        "historical_status"
+      ],
+      "title": "Definition",
+      "type": "object"
+    },
     "EconomyActivity": {
       "additionalProperties": false,
       "properties": {
@@ -1397,6 +1594,229 @@
       "title": "FundingRequirement",
       "type": "object"
     },
+    "HealthAlternative": {
+      "additionalProperties": false,
+      "properties": {
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "definition": {
+          "$ref": "#/$defs/Definition"
+        }
+      },
+      "required": [
+        "definition",
+        "claim_order"
+      ],
+      "title": "HealthAlternative",
+      "type": "object"
+    },
+    "HealthCoverage": {
+      "additionalProperties": false,
+      "properties": {
+        "activation": {
+          "const": "not_activated",
+          "title": "Activation",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/HealthCoverageEntry"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Entries",
+          "type": "array"
+        },
+        "source_archive_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Source Archive Digest",
+          "type": "string"
+        },
+        "source_revision": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Revision",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "source_revision",
+        "source_archive_digest",
+        "activation",
+        "entries"
+      ],
+      "title": "HealthCoverage",
+      "type": "object"
+    },
+    "HealthCoverageEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "enum": [
+            "catalog",
+            "provenance"
+          ],
+          "title": "Classification",
+          "type": "string"
+        },
+        "documents": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Documents",
+          "type": "array"
+        },
+        "effect": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Effect",
+          "type": "string"
+        },
+        "evidence_status": {
+          "enum": [
+            "hypothetical",
+            "unreviewed"
+          ],
+          "title": "Evidence Status",
+          "type": "string"
+        },
+        "implementation_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 10,
+          "title": "Implementation Refs",
+          "type": "array"
+        },
+        "next_research_task": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Next Research Task",
+          "type": "string"
+        },
+        "option_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Option Refs",
+          "type": "array"
+        },
+        "source_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Id",
+          "type": "string"
+        },
+        "static_available": {
+          "title": "Static Available",
+          "type": "boolean"
+        },
+        "status": {
+          "enum": [
+            "partial",
+            "qualitative",
+            "unsupported"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "supported_scope_kinds": {
+          "items": {
+            "enum": [
+              "household",
+              "community",
+              "settlement",
+              "region",
+              "civilization",
+              "global_external"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Supported Scope Kinds",
+          "type": "array"
+        },
+        "title": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Title",
+          "type": "string"
+        },
+        "transition_available": {
+          "const": false,
+          "title": "Transition Available",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "source_id",
+        "classification",
+        "title",
+        "documents",
+        "option_refs",
+        "effect",
+        "status",
+        "evidence_status",
+        "supported_scope_kinds",
+        "static_available",
+        "transition_available",
+        "implementation_refs",
+        "next_research_task"
+      ],
+      "title": "HealthCoverageEntry",
+      "type": "object"
+    },
+    "HealthEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "baseline_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Baseline Digest",
+          "type": "string"
+        },
+        "option_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Option Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "baseline_digest",
+        "scope_id",
+        "option_id"
+      ],
+      "title": "HealthEdit",
+      "type": "object"
+    },
     "HealthEvaluation": {
       "additionalProperties": false,
       "properties": {
@@ -1487,6 +1907,63 @@
       "title": "HealthFacility",
       "type": "object"
     },
+    "HealthInterview": {
+      "additionalProperties": false,
+      "properties": {
+        "alternatives": {
+          "items": {
+            "$ref": "#/$defs/HealthAlternative"
+          },
+          "maxItems": 2,
+          "minItems": 2,
+          "title": "Alternatives",
+          "type": "array"
+        },
+        "baseline_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Baseline Digest",
+          "type": "string"
+        },
+        "limits": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Limits",
+          "type": "string"
+        },
+        "question": {
+          "$ref": "#/$defs/Definition"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "selected_option_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Selected Option Id"
+        }
+      },
+      "required": [
+        "baseline_digest",
+        "scope_id",
+        "question",
+        "alternatives",
+        "selected_option_id",
+        "limits"
+      ],
+      "title": "HealthInterview",
+      "type": "object"
+    },
     "HealthParticipant": {
       "additionalProperties": false,
       "properties": {
@@ -1508,6 +1985,78 @@
         "claim_id"
       ],
       "title": "HealthParticipant",
+      "type": "object"
+    },
+    "HealthPreview": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "edit": {
+          "$ref": "#/$defs/HealthEdit"
+        },
+        "report": {
+          "$ref": "#/$defs/HealthReport"
+        }
+      },
+      "required": [
+        "contract_version",
+        "edit",
+        "candidate_digest",
+        "report"
+      ],
+      "title": "HealthPreview",
+      "type": "object"
+    },
+    "HealthReport": {
+      "additionalProperties": false,
+      "properties": {
+        "adapter_version": {
+          "const": "health-exploration-v1",
+          "title": "Adapter Version",
+          "type": "string"
+        },
+        "baseline_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Baseline Digest",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "coverage_status": {
+          "const": "partial",
+          "title": "Coverage Status",
+          "type": "string"
+        },
+        "evaluation": {
+          "$ref": "#/$defs/HealthEvaluation"
+        },
+        "evidence_status": {
+          "const": "hypothetical",
+          "title": "Evidence Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "adapter_version",
+        "coverage_status",
+        "evidence_status",
+        "baseline_digest",
+        "evaluation"
+      ],
+      "title": "HealthReport",
       "type": "object"
     },
     "HealthRequest": {
@@ -1908,6 +2457,100 @@
         "value"
       ],
       "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Coverage Limits",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Time Basis Id",
+          "type": "string"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "scope_id",
+        "unit_id",
+        "time_basis_id",
+        "interpretation",
+        "coverage_limits"
+      ],
+      "title": "MeasurementDeclaration",
+      "type": "object"
+    },
+    "ParameterDeclaration": {
+      "additionalProperties": false,
+      "properties": {
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "validity_limits": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Validity Limits",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "scope_id",
+        "value",
+        "validity_limits"
+      ],
+      "title": "ParameterDeclaration",
       "type": "object"
     },
     "PolicyBinding": {
@@ -2696,6 +3339,21 @@
     },
     {
       "$ref": "#/$defs/HealthEvaluation"
+    },
+    {
+      "$ref": "#/$defs/HealthInterview"
+    },
+    {
+      "$ref": "#/$defs/HealthEdit"
+    },
+    {
+      "$ref": "#/$defs/HealthReport"
+    },
+    {
+      "$ref": "#/$defs/HealthPreview"
+    },
+    {
+      "$ref": "#/$defs/HealthCoverage"
     }
   ]
 }

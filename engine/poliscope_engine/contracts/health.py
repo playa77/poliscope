@@ -2,7 +2,8 @@
 from typing import Annotated, Literal
 from pydantic import Field
 from .base import Contract, Identifier
-from .world import References
+from .packs import Definition, Digest
+from .world import References, ScopeKind
 from .economy import EconomyRequest, EconomyReport
 from .allocations import AllocationRequest, AllocationEvaluation
 from .policies import PolicyBinding, ResolutionRule, PolicyEvaluation
@@ -77,3 +78,63 @@ class HealthEvaluation(Contract):
     work: EconomyReport
     # Independent facility commitments, not a transactional service delivery.
     facility_allocation: AllocationEvaluation
+
+
+class HealthAlternative(Contract):
+    definition: Definition
+    claim_order: Annotated[list[Identifier], Field(max_length=1000)]
+
+
+class HealthInterview(Contract):
+    baseline_digest: Digest
+    scope_id: Identifier
+    question: Definition
+    alternatives: Annotated[list[HealthAlternative], Field(min_length=2, max_length=2)]
+    selected_option_id: Identifier | None
+    limits: Annotated[str, Field(min_length=1, max_length=2048)]
+
+
+class HealthEdit(Contract):
+    baseline_digest: Digest
+    scope_id: Identifier
+    option_id: Identifier
+
+
+class HealthReport(Contract):
+    contract_version: Literal[1]
+    adapter_version: Literal['health-exploration-v1']
+    coverage_status: Literal['partial']
+    evidence_status: Literal['hypothetical']
+    baseline_digest: Digest
+    evaluation: HealthEvaluation
+
+
+class HealthPreview(Contract):
+    contract_version: Literal[1]
+    edit: HealthEdit
+    candidate_digest: Digest
+    report: HealthReport
+
+
+class HealthCoverageEntry(Contract):
+    source_id: Identifier
+    classification: Literal['catalog', 'provenance']
+    title: Annotated[str, Field(min_length=1, max_length=2048)]
+    documents: Annotated[list[Identifier], Field(max_length=100)]
+    option_refs: Annotated[list[Identifier], Field(max_length=100)]
+    effect: Annotated[str, Field(min_length=1, max_length=2048)]
+    status: Literal['partial', 'qualitative', 'unsupported']
+    evidence_status: Literal['hypothetical', 'unreviewed']
+    supported_scope_kinds: Annotated[list[ScopeKind], Field(max_length=6)]
+    static_available: bool
+    transition_available: Literal[False]
+    implementation_refs: Annotated[list[Identifier], Field(max_length=10)]
+    next_research_task: Annotated[str, Field(min_length=1, max_length=2048)]
+
+
+class HealthCoverage(Contract):
+    contract_version: Literal[1]
+    source_revision: Identifier
+    source_archive_digest: Digest
+    activation: Literal['not_activated']
+    entries: Annotated[list[HealthCoverageEntry], Field(min_length=1, max_length=100)]

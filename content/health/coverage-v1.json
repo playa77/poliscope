@@ -1,0 +1,706 @@
+{
+  "contract_version": 1,
+  "source_revision": "9ff539997dbd1bd3fa99deabcf6bc5907602df60",
+  "source_archive_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+  "activation": "not_activated",
+  "entries": [
+    {
+      "source_id": "society:domain/07/1",
+      "title": "Physical health",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "Only explicit beneficiary care, staff, supply and facility prerequisites with queue previews; no treatment delivery, coverage denominator or health outcome.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:health-capacity-v1",
+        "authored:health/precedence"
+      ],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/1/1",
+      "title": "healthcare delivery",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "Only explicit beneficiary care, staff, supply and facility prerequisites with queue previews; no treatment delivery, coverage denominator or health outcome.",
+      "status": "partial",
+      "evidence_status": "hypothetical",
+      "supported_scope_kinds": [
+        "settlement",
+        "region"
+      ],
+      "static_available": true,
+      "transition_available": false,
+      "implementation_refs": [
+        "authored:health-capacity-v1",
+        "authored:health/precedence"
+      ],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/1/2",
+      "title": "disease prevention/public health",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for disease prevention/public health.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/1/3",
+      "title": "nutrition",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for nutrition.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/2",
+      "title": "Mental & emotional wellbeing",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for Mental & emotional wellbeing.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/2/1",
+      "title": "mental health support",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for mental health support.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/2/2",
+      "title": "stress/work-life balance",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for stress/work-life balance.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/2/3",
+      "title": "social connection & loneliness",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for social connection & loneliness.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/3",
+      "title": "Life & death",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for Life & death.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/3/1",
+      "title": "reproduction/birth",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for reproduction/birth.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/3/2",
+      "title": "end-of-life care",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for end-of-life care.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:domain/07/3/3",
+      "title": "death/mourning rituals",
+      "documents": [],
+      "option_refs": [],
+      "classification": "catalog",
+      "effect": "No executable source model for death/mourning rituals.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-001",
+      "title": "Arid-region water allocation vs. food self-sufficiency",
+      "documents": [
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-001/option/A",
+        "society:DEC-001/option/B",
+        "society:DEC-001/option/C",
+        "society:DEC-001/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Arid-region water allocation vs. food self-sufficiency.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-002",
+      "title": "Joint resource balance sheet: framing precedent",
+      "documents": [
+        "01-1-2_energy-log.md",
+        "01-1-3_materials-manufacturing-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-002/option/A",
+        "society:DEC-002/option/B",
+        "society:DEC-002/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Joint resource balance sheet: framing precedent.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-003",
+      "title": "Biomass polymer feedstock sourcing vs. food land",
+      "documents": [
+        "01-1-3_materials-manufacturing-log.md",
+        "01-1-1_food-agriculture-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-003/option/A",
+        "society:DEC-003/option/B",
+        "society:DEC-003/option/C",
+        "society:DEC-003/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Biomass polymer feedstock sourcing vs. food land.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-004",
+      "title": "Sectoral authority arbitration: problem specified, mechanism deferred",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-004/option/A",
+        "society:DEC-004/option/B",
+        "society:DEC-004/option/C",
+        "society:DEC-004/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Sectoral authority arbitration: problem specified, mechanism deferred.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-005",
+      "title": "Nuclear share under dry cooling in water-stressed regions",
+      "documents": [
+        "01-1-2_energy-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-005/option/A",
+        "society:DEC-005/option/B",
+        "society:DEC-005/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Nuclear share under dry cooling in water-stressed regions.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-006",
+      "title": "Freight allocation mechanism: modal hierarchy vs. road pricing",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-006/option/A",
+        "society:DEC-006/option/B",
+        "society:DEC-006/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Freight allocation mechanism: modal hierarchy vs. road pricing.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-007",
+      "title": "One freight spine class (\u22651.5 Mt/yr corridors) shared by grain band, ammonia, and components",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-007/option/A",
+        "society:DEC-007/option/B",
+        "society:DEC-007/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for One freight spine class (\u22651.5 Mt/yr corridors) shared by grain band, ammonia, and components.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-008",
+      "title": "RTA joins the sectoral-authority set; three new collision rows",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-008/option/A",
+        "society:DEC-008/option/B"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for RTA joins the sectoral-authority set; three new collision rows.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-009",
+      "title": "e-Fuel allocation order and buffer-stock extension of the no-market lineage",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-009/option/A",
+        "society:DEC-009/option/B",
+        "society:DEC-009/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for e-Fuel allocation order and buffer-stock extension of the no-market lineage.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-010",
+      "title": "Storage classification: closed four-class system vs. qualitative \"critical goods\"",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-010/option/A",
+        "society:DEC-010/option/B",
+        "society:DEC-010/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Storage classification: closed four-class system vs. qualitative \"critical goods\".",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-011",
+      "title": "Storage capacity booked like track; one stock ledger per region",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-011/option/A",
+        "society:DEC-011/option/B",
+        "society:DEC-011/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Storage capacity booked like track; one stock ledger per region.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-012",
+      "title": "Dual-origin rule for the grain band and other monoflows",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-012/option/A",
+        "society:DEC-012/option/B",
+        "society:DEC-012/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Dual-origin rule for the grain band and other monoflows.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-013",
+      "title": "Stock publicity and pre-written interruption protocols (tentative)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-013/option/A",
+        "society:DEC-013/option/B"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Stock publicity and pre-written interruption protocols (tentative).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-014",
+      "title": "Priority classes for curtailable scarce inputs",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-014/option/A",
+        "society:DEC-014/option/B",
+        "society:DEC-014/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Priority classes for curtailable scarce inputs.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-015",
+      "title": "Food/goods ration ladder with pre-numeric triggers",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-015/option/A",
+        "society:DEC-015/option/B",
+        "society:DEC-015/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Food/goods ration ladder with pre-numeric triggers.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-016",
+      "title": "Class C ordinary goods: fixed prices, non-transferable points, no price rationing",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-016/option/A",
+        "society:DEC-016/option/B",
+        "society:DEC-016/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Class C ordinary goods: fixed prices, non-transferable points, no price rationing.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-017",
+      "title": "Ration administration rides the RTA's machinery; civil-claims enforcement (tentative)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-017/option/A",
+        "society:DEC-017/option/B"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Ration administration rides the RTA's machinery; civil-claims enforcement (tentative).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-018",
+      "title": "Integration-fix session scoping: which resolution item first",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-018/option/A",
+        "society:DEC-018/option/B",
+        "society:DEC-018/option/C",
+        "society:DEC-018/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Integration-fix session scoping: which resolution item first.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-019",
+      "title": "Arid tier for the spine eligibility threshold (I.2.1 revision)",
+      "documents": [
+        "DEC-007"
+      ],
+      "option_refs": [
+        "society:DEC-019/option/A",
+        "society:DEC-019/option/B",
+        "society:DEC-019/option/C",
+        "society:DEC-019/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Arid tier for the spine eligibility threshold (I.2.1 revision).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-020",
+      "title": "Ration-ladder triggers re-anchored to buffer state (I.2.3 + I.2.2 revision)",
+      "documents": [
+        "DEC-015",
+        "01-2-2_storage-supply-chains-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-020/option/A",
+        "society:DEC-020/option/B",
+        "society:DEC-020/option/C",
+        "society:DEC-020/option/D"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Ration-ladder triggers re-anchored to buffer state (I.2.3 + I.2.2 revision).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-021",
+      "title": "Scarcity-ladder crosswalk: ownership, governing rule, e-fuel class (I.2.3 fix, resolves Contradiction C)",
+      "documents": [
+        "01-2-3_allocation-mechanisms-log.md"
+      ],
+      "option_refs": [
+        "society:DEC-021/round/1/option/A",
+        "society:DEC-021/round/1/option/B",
+        "society:DEC-021/round/1/option/C",
+        "society:DEC-021/round/2/option/A",
+        "society:DEC-021/round/2/option/B",
+        "society:DEC-021/round/2/option/C",
+        "society:DEC-021/round/3/option/A",
+        "society:DEC-021/round/3/option/B",
+        "society:DEC-021/round/3/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Scarcity-ladder crosswalk: ownership, governing rule, e-fuel class (I.2.3 fix, resolves Contradiction C).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-022",
+      "title": "RTA span review: two internal divisions + dual-key decay review (resolves I.2 integration \u00a74 finding 1, resolution item 6)",
+      "documents": [
+        "01-1-authority-arbitration-spec.md",
+        "DEC-008"
+      ],
+      "option_refs": [
+        "society:DEC-022/round/0/option/1",
+        "society:DEC-022/round/0/option/2",
+        "society:DEC-022/round/0/option/3",
+        "society:DEC-022/round/1/option/2.1",
+        "society:DEC-022/round/1/option/1.1",
+        "society:DEC-022/round/1/option/3.1",
+        "society:DEC-022/round/2/option/A",
+        "society:DEC-022/round/2/option/B",
+        "society:DEC-022/round/2/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for RTA span review: two internal divisions + dual-key decay review (resolves I.2 integration \u00a74 finding 1, resolution item 6).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-023",
+      "title": "Reconciliation pass: repair all four log\u2194full asymmetries (DEC-019/020 era)",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-023/option/A",
+        "society:DEC-023/option/B",
+        "society:DEC-023/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Reconciliation pass: repair all four log\u2194full asymmetries (DEC-019/020 era).",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-024",
+      "title": "Preserved-alternatives index labels: checker tolerance for the pre-DEC-021 styles",
+      "documents": [],
+      "option_refs": [
+        "society:DEC-024/option/A",
+        "society:DEC-024/option/B",
+        "society:DEC-024/option/C"
+      ],
+      "classification": "provenance",
+      "effect": "No executable source model for Preserved-alternatives index labels: checker tolerance for the pre-DEC-021 styles.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    },
+    {
+      "source_id": "society:DEC-SYS-001",
+      "title": "DEC-SYS-001",
+      "documents": [],
+      "option_refs": [],
+      "classification": "provenance",
+      "effect": "No executable source model for DEC-SYS-001.",
+      "status": "unsupported",
+      "evidence_status": "unreviewed",
+      "supported_scope_kinds": [],
+      "static_available": false,
+      "transition_available": false,
+      "implementation_refs": [],
+      "next_research_task": "Review source assumptions and remaining domain counterparts before activating numerical or transition models."
+    }
+  ]
+}
