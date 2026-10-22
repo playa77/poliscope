@@ -795,3 +795,17 @@ inferred. Reassess scoped DOM-12 options/source coverage after merge. Actual
 staff/material/counterpart integration, reviewed models, transitions, source
 activation, numerical publication, WP-032, Windows and parent/cumulative
 acceptance remain separate.
+
+## Current boundary after PR #71
+
+PR #71 merged DOM-12-continuity-interface at
+`e6259c3adf7f990ffde633ce09ab8ac1a73a9e9f`.
+[DOM-12-options-coverage](WP-DOM-12-options-coverage.md) allocates explicit scoped
+continuity queue interviews, complete-context stale-bound private previews and
+exact pinned source gaps to the same sequential owner under SV. Preparedness
+holds, finite conditional aid, authority/disclosure, vulnerability and obligations
+remain host inputs. Queue precedence supplies neither aid nor delivered rescue.
+After merge reassess dependency-ready static integration/verification against
+WP-032 and DOM parent requirements. Actual counterparts, reviewed models,
+registered hazards, coupled transitions, source activation, numerical publication,
+Windows and parent/cumulative acceptance remain separate.
