@@ -1,0 +1,13 @@
+{
+  "id": "authored:continuity-prerequisites-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical cohorts, institutions, assets and directed ownership/access", "scope and dated finite response-slot accounts", "ordinary, preparedness, response and external-aid claims", "reservations and retained postings", "hazard/exposure provenance, vulnerability knowledge, authority, disclosure and aid conditions", "explicit procedure and complete precedence"],
+  "procedure": "Validate canonical identities, unique asset/account mappings, scope, period and units. Separate physical, institutional, access and disclosure findings. Unknown prerequisites and obligation conflicts withhold new allocations. Stage finite commitments through the shared allocator, preserving holds and prior postings. External aid requires finite declared capacity and satisfied conditions.",
+  "independent_oracle": "Enumerate feasible integer allocations for supply zero through four and two demands one through three under priority and all-or-nothing. A two-slot preparedness hold against three slots leaves one ordinary slot and is consumed once.",
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_security_risk.py"],
+  "limits": ["Host-only hypothetical response slots", "No integrated staff, materials or actual rescue", "No hazard probability, damage or security score", "No transitions, activation, numerical IPC or parent acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}

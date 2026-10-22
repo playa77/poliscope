@@ -780,3 +780,18 @@ Precedence cannot resolve duties or infer attendance, belief or identity effects
 Reassess bounded DOM-12 prerequisites after merge. Actual counterpart integration,
 reviewed models, source activation, transitions, numerical publication, WP-032,
 Windows and parent/cumulative acceptance remain separate.
+
+
+## Current boundary after PR #70
+
+PR #70 merged DOM-11-options-coverage at
+`07e6609b34abac4fac3b9ab405ddba09a20d21c1`.
+[DOM-12-continuity-interface](WP-DOM-12-continuity-interface.md) allocates bounded
+host-only response-slot prerequisites to the same sequential owner under SV.
+Preparedness reservations compete with ordinary service; external aid is finite
+and conditional. Physical outage, institutional delay, withheld disclosure and
+unknown inputs remain distinct. No automatic rescue or hazard probability is
+inferred. Reassess scoped DOM-12 options/source coverage after merge. Actual
+staff/material/counterpart integration, reviewed models, transitions, source
+activation, numerical publication, WP-032, Windows and parent/cumulative
+acceptance remain separate.
