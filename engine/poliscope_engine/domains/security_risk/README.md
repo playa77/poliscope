@@ -29,3 +29,12 @@ world publication, numerical IPC, parent or cumulative acceptance. Separate call
 on original openings cannot certify cross-domain conservation. Reviewed models,
 actual counterpart integration, options/source coverage and deterministic or
 stochastic transitions remain later packages.
+
+`exploration.interview` offers explicit retain/reverse queue alternatives with no
+default. Private previews bind the complete request, graph, units and adapter/
+model/runtime/evaluator identities. Preparedness holds and finite aid conditions
+remain unchanged; precedence does not resolve authority or obligations.
+
+`coverage.validate_coverage` reconciles pinned catalog and provenance rows. Partial
+emergency response/preparedness/resilience coverage means response slots only.
+Technological risks and actual hazard/damage/recovery models remain unsupported.
