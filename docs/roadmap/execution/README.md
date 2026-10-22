@@ -591,3 +591,17 @@ No legal merits, enforcement or external agreement compliance is inferred.
 Reassess a bounded DOM-05 household/care interface after merge. Remaining actual
 counterparts, reviewed source models, parent gates, numerical product activation,
 transitions, WP-032, Windows and scientific/cumulative acceptance remain separate.
+
+## Current boundary after PR #56
+
+PR #56 merged DOM-04-options-coverage at
+`55aebcff403031e05f30047424b8fd17ea9000fa`.
+[DOM-05-care-arrangements](WP-DOM-05-care-arrangements.md) allocates the next
+bounded host-only static household/community care interface to the same
+sequential owner under SV. Canonical direct membership aggregates population
+without copying network members; beneficiary/provider obligations consume dated
+DOM-02 time alongside employment, training and actual DOM-04 case work. No
+household-size, health or belonging behavior is inferred. Reassess scoped authored
+DOM-05 arrangement interviews/source coverage after merge. Real remaining
+counterparts, reviewed source models, transitions, numerical product activation,
+WP-032, parent static acceptance and native/cumulative gates remain separate.

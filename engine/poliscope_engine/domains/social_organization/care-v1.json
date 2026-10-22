@@ -1,0 +1,14 @@
+{
+  "id": "authored:social-care-v1",
+  "version": "v1",
+  "evidence_status": "hypothetical",
+  "activation": "not_activated",
+  "inputs": ["canonical arrangement entities and scope views", "explicit partitioned/weighted direct cohort memberships", "host-selected population property and partition", "beneficiary/provider/optional institution and obligation references", "positive dated care claims and all competing work in canonical DOM-02 accounts"],
+  "procedure": "Validate membership and direct institutional jurisdiction; aggregate population using WP-007 direct union rules; map each care claim to one beneficiary obligation; evaluate all work through DOM-02; return prior and additional actual, remaining unmet care and posting evidence without publishing state.",
+  "independent_oracle": "Ten people in two canonical partition views remain ten, with five shared provider hours. Four hours of care, three employment and two training hours compete. Employment then training leaves four care hours unmet; care first leaves two employment and two training hours unmet. A four-hour care hold protects care capacity. Replaying the staged batch creates no additional fulfillment.",
+  "interfaces": ["WP-007 canonical population membership", "DOM-02 dated claims, holders, access, reservations and postings", "DOM-04 same-batch case work integration"],
+  "owned_state": "None",
+  "fixtures": ["tests/engine/test_social_organization.py"],
+  "limits": ["No inferred household sizes, demographics or health outcomes", "No empirical service or care-time coefficient", "No legal merits, enforcement or universal family/belonging score", "No numerical IPC activation, publication or transition", "No parent or cumulative gate acceptance"],
+  "review_route": "SV separate author inspection; independent agent review deferred"
+}
