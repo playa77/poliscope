@@ -913,3 +913,19 @@ transitions, Windows and original parent/cumulative gates remain open. After
 merge assess the required DOM-01/10 ecological resource mapping, including actual
 extraction/residual conservation; independent duplicated resource pools cannot
 satisfy that integration.
+
+## Current boundary after PR #79
+
+PR #79 merged provisioning/continuity at
+`50aa80df59ed693c979300c6294b5d88042ff12f`.
+[WP-032-counterparts-provisioning-environment](WP-032-counterparts-provisioning-environment.md)
+allocates bounded actual DOM-01/10 conformance to the same sequential owner under
+SV. Extraction, actual production outputs, operating inputs and exact residual/loss
+sink allowances use one canonical finite book. Selected limits remain diagnostics;
+no ecological effect, regeneration, absorption or disposal is inferred. Seven pairs
+become ready for bounded conformance; 37 remain pending. Multiple production stages,
+reviewed models, source activation, transitions, all-domain education, originating
+choices, database/cross-view publication, numerical IPC, Windows and original parent
+and cumulative gates remain open. All seven maintained DOM-01 pairs now have
+bounded actual paths; reassess the maintained DOM-02/03 economy/governance pair
+next, with DOM-02 as integration owner. No DOM-01/03 pair is declared.

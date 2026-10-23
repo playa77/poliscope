@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:environment-pair-work-mechanism",
+    "version": "v1",
+    "domain": "environment",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "environment-pair:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "environment-pair:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "environment-pair:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:environment-pair-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-environment-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Real host-only extraction and exact residual/loss sink allowances share one finite canonical production book. Hypothetical coefficients; no regeneration, physical absorption, ecological effects, transitions, source activation, publication or parent gates.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-environment",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "environment-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "environment-pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:environment-pair-provisioning-mechanism",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "environment-pair:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "environment-pair:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "environment-pair:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:environment-pair-provisioning",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-environment-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Real host-only extraction and exact residual/loss sink allowances share one finite canonical production book. Hypothetical coefficients; no regeneration, physical absorption, ecological effects, transitions, source activation, publication or parent gates.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-environment",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "environment-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "environment-pair:finite-book"
+    ]
+  }
+]

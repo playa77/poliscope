@@ -9,6 +9,24 @@ from poliscope_engine.contracts.environment import (
 
 
 def evaluate_environment(request, *, graph, units):
+    return _evaluate(request, graph=graph, units=units)
+
+
+def evaluate_production(request, *, choices, closed_claim_ids, graph, units):
+    """Trusted composition: transform extraction once in the complete shared book.
+
+    Boundaries may be a subset of this book; demands name exactly new extraction
+    claims. Previously evaluated claims are closed, never retried. The caller
+    validates residual/sink coefficients and supplies actual production choices.
+    Environmental access can only restrict those choices.
+    """
+    from poliscope_engine.contracts.allocations import AllocationChoice
+    choices = [AllocationChoice.model_validate_json(c.model_dump_json()) for c in choices]
+    return _evaluate(request, graph=graph, units=units,
+                     production_choices=choices, closed_claim_ids=tuple(closed_claim_ids))
+
+
+def _evaluate(request, *, graph, units, production_choices=None, closed_claim_ids=()):
     request = EnvironmentRequest.model_validate_json(request.model_dump_json())
     entities = {e.id: e for e in graph.registry.entities}
     scopes = {s.id: s for s in graph.registry.scopes}
@@ -22,10 +40,15 @@ def evaluate_environment(request, *, graph, units):
     accounts, claims = index(request.batch.accounts), index(request.batch.claims)
     boundaries = {b.account_id: b for b in request.boundaries}
     demands = {d.claim_id: d for d in request.demands}
-    if (len(boundaries) != len(request.boundaries) or set(boundaries) != set(accounts)
+    if (len(boundaries) != len(request.boundaries)
+            or (set(boundaries) != set(accounts) if production_choices is None
+                else not set(boundaries) <= set(accounts))
             or len({(b.resource_id, b.role) for b in request.boundaries}) != len(boundaries)):
         fail('duplicate_or_unmapped_ecological_boundary')
-    if len(demands) != len(request.demands) or set(demands) != set(claims):
+    if (len(demands) != len(request.demands)
+            or len(set(closed_claim_ids)) != len(closed_claim_ids)
+            or set(demands) & set(closed_claim_ids)
+            or set(demands) | set(closed_claim_ids) != set(claims)):
         fail('invalid_environment_demands')
     for boundary in request.boundaries:
         resource = entities.get(boundary.resource_id)
@@ -70,6 +93,24 @@ def evaluate_environment(request, *, graph, units):
             access_limit=demand.access_limit, funding_known=True, requirements=[], outputs=[],
             loss_per_unit='0', mechanism_ref=request.mechanism_ref, source_refs=demand.source_refs))
 
+    if production_choices is not None:
+        authored = {c.claim_id: c for c in production_choices}
+        if len(authored) != len(production_choices) or set(authored) != set(demands):
+            fail('invalid_environment_production_choices')
+        merged = []
+        for environmental in choices:
+            choice = authored[environmental.claim_id]
+            access = ('unknown' if 'unknown' in (environmental.access, choice.access)
+                      else 'denied' if 'denied' in (environmental.access, choice.access)
+                      else 'allowed')
+            merged.append(choice.model_copy(update=dict(access=access,
+                access_limit=encoded(min(quantity(choice.access_limit),
+                                         quantity(environmental.access_limit))))))
+        choices = [AllocationChoice(claim_id=cid, access='denied', access_limit='0',
+            funding_known=True, requirements=[], outputs=[], loss_per_unit='0',
+            mechanism_ref=request.mechanism_ref, source_refs=request.source_refs)
+            for cid in closed_claim_ids] + merged
+
     initial = AccountBook(request.batch, units).evaluate()
     prior = {r.claim_id: r.actual for r in initial.claims}
     remaining = {r.claim_id: quantity(r.unmet) for r in initial.claims}
@@ -84,6 +125,11 @@ def evaluate_environment(request, *, graph, units):
         findings = list(findings_by_claim[demand.claim_id])
         if unresolved:
             findings.append('unknown_capacity_allocation')
+        elif quantity(actual.unmet) > 0 and not findings and production_choices is not None:
+            # Joint material, operating inputs and sink budgets may bind. Do not
+            # attribute their shortfall to physical extraction stock alone.
+            findings.append('production_access_denied' if actual.reason == 'denied'
+                            else 'coupled_input_shortfall')
         elif quantity(actual.unmet) > 0 and not findings:
             if quantity(demand.access_limit) < remaining[demand.claim_id]:
                 findings.append('access_limit_shortfall')

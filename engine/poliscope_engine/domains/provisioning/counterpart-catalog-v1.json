@@ -33,6 +33,10 @@
             {
               "id": "authored:continuity-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:environment-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -44,7 +48,8 @@
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
             "authored:provisioning-infrastructure-v1",
-            "authored:provisioning-continuity-v1"
+            "authored:provisioning-continuity-v1",
+            "authored:provisioning-environment-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -78,6 +83,10 @@
             {
               "id": "authored:continuity-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:environment-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -89,7 +98,8 @@
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
             "authored:provisioning-infrastructure-v1",
-            "authored:provisioning-continuity-v1"
+            "authored:provisioning-continuity-v1",
+            "authored:provisioning-environment-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -123,6 +133,10 @@
             {
               "id": "authored:continuity-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:environment-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -134,7 +148,8 @@
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
             "authored:provisioning-infrastructure-v1",
-            "authored:provisioning-continuity-v1"
+            "authored:provisioning-continuity-v1",
+            "authored:provisioning-environment-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -602,6 +617,82 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "direction": "input",
+          "id": "provisioning:environment-pair:work-book-in",
+          "mechanism": {
+            "id": "authored:environment-pair-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "environment-pair:work-book-in",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "provisioning:environment-pair:candidate",
+          "mechanism": {
+            "id": "authored:environment-pair-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "environment-pair:candidate",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
@@ -627,6 +718,10 @@
         },
         {
           "id": "authored:continuity-pair-provisioning-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:environment-pair-provisioning-mechanism",
           "version": "v1"
         }
       ],
@@ -1611,6 +1706,156 @@
       "persistence": "shared_store",
       "runtime": "shared_engine",
       "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/10/1",
+          "evidence_status": "hypothetical",
+          "limits": "Hypothetical shared-book extraction/transformation and finite residual/loss sink allowance. No ecological effects, regeneration, absorption, transitions, source activation or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:environment-pair-work-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Remaining ecological mechanisms, reviewed models and parent requirements remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:provisioning-environment-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/10/2",
+          "evidence_status": "unreviewed",
+          "limits": "Hypothetical shared-book extraction/transformation and finite residual/loss sink allowance. No ecological effects, regeneration, absorption, transitions, source activation or parent acceptance.",
+          "mechanism_refs": [],
+          "next_task": "Remaining ecological mechanisms, reviewed models and parent requirements remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/10/3",
+          "evidence_status": "unreviewed",
+          "limits": "Hypothetical shared-book extraction/transformation and finite residual/loss sink allowance. No ecological effects, regeneration, absorption, transitions, source activation or parent acceptance.",
+          "mechanism_refs": [],
+          "next_task": "Remaining ecological mechanisms, reviewed models and parent requirements remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "environment",
+      "identity": {
+        "id": "domain:environment",
+        "version": "v1"
+      },
+      "interfaces": [
+        {
+          "direction": "input",
+          "id": "environment:environment-pair:context",
+          "mechanism": {
+            "id": "authored:environment-pair-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "environment-pair:context",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "environment:environment-pair:work-book",
+          "mechanism": {
+            "id": "authored:environment-pair-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "environment-pair:work-book",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        }
+      ],
+      "mechanisms": [
+        {
+          "id": "authored:environment-pair-work-mechanism",
+          "version": "v1"
+        }
+      ],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
     }
   ],
   "pairs": [
@@ -1825,6 +2070,54 @@
         "provisioning:infrastructure-pair:work-book-in"
       ],
       "limits": "Real host-only finite facility/path reach gates explicit provisioning prerequisites. Separate slot book; no slot/kg conversion, infrastructure operation, construction, source activation, transitions or public numerical IPC.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "food",
+          "entity_kind": "resource"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:provisioning-environment",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-10",
+      "integration_owner": "provisioning",
+      "interface_refs": [
+        "environment:environment-pair:work-book",
+        "provisioning:environment-pair:work-book-in"
+      ],
+      "limits": "Hypothetical shared-book extraction/transformation and finite residual/loss sink allowance. No ecological effects, regeneration, absorption, transitions, source activation or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

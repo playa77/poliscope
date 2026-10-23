@@ -49,3 +49,9 @@ DOM-01/12 fixture: four response commitments gate production, freight, storage
 and use with one disjoint finite response book. Literal material/time balances
 and integer slot oracles are independent of implementation output. Hazard and
 exposure references certify no empirical risk, damage, recovery or aid delivery.
+
+`provisioning-environment-v1.json` uses the actual finite DOM-10 extraction/sink
+composition and DOM-01/02 work/production/freight/storage/use chain over one book.
+Independent literal balances and Fraction oracles include exact residual plus loss
+sink debits. Synthetic coefficients establish neither absorption nor scientific
+validity. Host context, explicit reviews and unknown/denied inputs remain tested.
