@@ -29,6 +29,10 @@
             {
               "id": "authored:infrastructure-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:continuity-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -39,7 +43,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
-            "authored:provisioning-infrastructure-v1"
+            "authored:provisioning-infrastructure-v1",
+            "authored:provisioning-continuity-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -69,6 +74,10 @@
             {
               "id": "authored:infrastructure-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:continuity-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -79,7 +88,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
-            "authored:provisioning-infrastructure-v1"
+            "authored:provisioning-infrastructure-v1",
+            "authored:provisioning-continuity-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -109,6 +119,10 @@
             {
               "id": "authored:infrastructure-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:continuity-pair-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -119,7 +133,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:provisioning-care-v1",
-            "authored:provisioning-infrastructure-v1"
+            "authored:provisioning-infrastructure-v1",
+            "authored:provisioning-continuity-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -511,6 +526,82 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "direction": "input",
+          "id": "provisioning:continuity-pair:work-book-in",
+          "mechanism": {
+            "id": "authored:continuity-pair-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "continuity-pair:work-book-in",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "provisioning:continuity-pair:candidate",
+          "mechanism": {
+            "id": "authored:continuity-pair-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "continuity-pair:candidate",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
@@ -532,6 +623,10 @@
         },
         {
           "id": "authored:infrastructure-pair-provisioning-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:continuity-pair-provisioning-mechanism",
           "version": "v1"
         }
       ],
@@ -1366,6 +1461,156 @@
       "persistence": "shared_store",
       "runtime": "shared_engine",
       "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/12/1",
+          "evidence_status": "hypothetical",
+          "limits": "Finite declared continuity prerequisite slots only; no hazard probabilities, damage, recovered stock or aid delivery.",
+          "mechanism_refs": [
+            {
+              "id": "authored:continuity-pair-work-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Hazard/response transitions, resource prerequisites, remaining counterparts and parent acceptance remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:provisioning-continuity-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/12/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-12: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/12/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-12: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "security_risk",
+      "identity": {
+        "id": "domain:security_risk",
+        "version": "v1"
+      },
+      "interfaces": [
+        {
+          "direction": "input",
+          "id": "continuity:continuity-pair:context",
+          "mechanism": {
+            "id": "authored:continuity-pair-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "continuity-pair:context",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "continuity:continuity-pair:work-book",
+          "mechanism": {
+            "id": "authored:continuity-pair-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "continuity-pair:work-book",
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        }
+      ],
+      "mechanisms": [
+        {
+          "id": "authored:continuity-pair-work-mechanism",
+          "version": "v1"
+        }
+      ],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
     }
   ],
   "pairs": [
@@ -1580,6 +1825,54 @@
         "provisioning:infrastructure-pair:work-book-in"
       ],
       "limits": "Real host-only finite facility/path reach gates explicit provisioning prerequisites. Separate slot book; no slot/kg conversion, infrastructure operation, construction, source activation, transitions or public numerical IPC.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "food",
+          "entity_kind": "resource"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:provisioning-continuity",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-12",
+      "integration_owner": "provisioning",
+      "interface_refs": [
+        "continuity:continuity-pair:work-book",
+        "provisioning:continuity-pair:work-book-in"
+      ],
+      "limits": "Actual finite declared continuity response-slot prerequisites gate provisioning phase claims. Disjoint books and opaque host context; no aid delivery, recovery, hazard prediction, source activation, transitions or public numerical IPC.",
       "owner_status": "designated",
       "shared_references": [
         {

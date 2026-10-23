@@ -61,6 +61,8 @@
     "policy.ts",
     "provisioning-care.schema.json",
     "provisioning-care.ts",
+    "provisioning-continuity.schema.json",
+    "provisioning-continuity.ts",
     "provisioning-economy.schema.json",
     "provisioning-economy.ts",
     "provisioning-education.schema.json",

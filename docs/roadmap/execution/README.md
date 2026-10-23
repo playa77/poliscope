@@ -895,3 +895,21 @@ ready pair, leaving 39 pending. Remaining counterparts, originating choices,
 all-domain education, reviewed sources, numerical IPC, database/cross-view
 evidence, transitions, Windows and original parent/cumulative gates remain open.
 After merge reassess a bounded DOM-01/09 communication counterpart.
+
+## Current boundary after PR #78
+
+PR #78 merged actual provisioning/infrastructure at
+`1ad5f79500b9a1d3d3a7dc05fdd0882ba631c3a8`.
+[WP-032-counterparts-provisioning-continuity](WP-032-counterparts-provisioning-continuity.md)
+allocates bounded actual DOM-01/12 conformance to the same sequential owner under
+SV. The prior suggested DOM-01/09 pair is outside the maintained counterpart
+register and is not added. Actual finite continuity prerequisites now gate
+explicit provisioning claims, retaining authority/disclosure/participation/aid
+restrictions and independent work. Response slots do not create material, predict
+hazards or demonstrate aid delivery. Six pairs are ready for bounded conformance;
+38 remain pending. Remaining counterparts, originating choices, all-domain
+education, reviewed sources, numerical IPC, database/cross-view evidence,
+transitions, Windows and original parent/cumulative gates remain open. After
+merge assess the required DOM-01/10 ecological resource mapping, including actual
+extraction/residual conservation; independent duplicated resource pools cannot
+satisfy that integration.

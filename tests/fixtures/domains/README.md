@@ -43,3 +43,9 @@ convert to kg or merge with material/time accounts. Tests vary bottlenecks and
 queues using independent integer/Fraction oracles and preserve holds/prior
 commitments, distinct reach failures and stale-context rejection. It supplies
 bounded conformance only, with no empirical validation or parent acceptance.
+
+`provisioning-continuity-v1.json` is an explicitly hypothetical real-adapter
+DOM-01/12 fixture: four response commitments gate production, freight, storage
+and use with one disjoint finite response book. Literal material/time balances
+and integer slot oracles are independent of implementation output. Hazard and
+exposure references certify no empirical risk, damage, recovery or aid delivery.
