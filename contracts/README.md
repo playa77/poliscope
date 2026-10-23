@@ -344,3 +344,9 @@ identical finite economy request. Both pure services recompute from one original
 book; prior work is retained once. Unknown population or economic terms withholds
 the complete candidate. These contracts confer no public IPC or write authority.
 See the [package record](../docs/roadmap/execution/WP-032-counterparts-economy-care.md).
+
+`economy-education.schema.json` and `economy-education.ts` describe private
+host-only DOM-02/06 prerequisite/economy evidence. They retain the exact shared
+work request, actual education policy and independent facility reports, pure
+economy recomputation and a complete candidate only when inputs resolve. These
+contracts do not activate numerical IPC, source models or teaching/learning.

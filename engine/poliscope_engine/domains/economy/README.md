@@ -120,3 +120,13 @@ original book, preserving prior postings and holds once. Unknown population or
 terms withholds the complete candidate; known unmet care remains explicit.
 `care_counterpart` supplies reviewed context-bound opaque conformance tokens.
 No care-quality, health, wage or demographic effect is inferred.
+
+The host-only actual DOM-02/06 counterpart lives in `education.py` and
+`education_counterpart.py`. Actual education staff/student/material commitments
+and care/employment/goods share the identical finite dated economy book. Pure
+recomputation retains prior use and holds once. Facility commitments remain in a
+separate disjoint pool; neither pool implies synchronized teaching or learning.
+Unknown prerequisites withhold the complete candidate, while known unmet inputs
+stay visible. Opaque context tokens bind actual policy declarations/reviews,
+request/world/units and runtime. See the literal economy/education fixture and
+[package evidence](../../../../docs/roadmap/execution/WP-032-counterparts-economy-education.md).
