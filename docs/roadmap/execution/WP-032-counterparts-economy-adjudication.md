@@ -74,3 +74,35 @@ release content, locks and prior generated contract artifacts remain unchanged.
 
 Validation results and candidate identity are recorded in the final handoff below.
 No original parent or cumulative gate is accepted by this inspection.
+
+## Validation and handoff
+
+Inspected executable candidate: `95be943d4e2a3199487f187d6b8ee13d682f578e`;
+the following commit adds only this final evidence. Owner/inspector is Codex
+`/root`. **solo-validated; agent review deferred**. Follow-up review item: a
+separately allocated nonauthor review of the complete DOM-02/04 candidate,
+especially legal mapping, staged shared-book conservation and unknown propagation.
+This author inspection does not substitute for scientific or independent review.
+
+- Frozen Python/Node installation passed with writable `/tmp` caches; Node used
+  `--ignore-scripts`. Dependency locks are unchanged.
+- Final full Python run: **2,923 passed, 54 subtests passed**, with four existing
+  intentional forged-DTO serializer warnings. Focused DOM-02/04: **76 passed**;
+  prior provisioning/economy regression: **41 passed**. The first full run found
+  three invalid new fixture declarations (account quantum and resolution source)
+  and a prior exact eight-pair assertion. Corrected fixtures retain the canonical
+  constraints; the assertion now names all nine exact pairs. The final full run
+  passes without relaxed assertions, timeouts or configuration.
+- Standalone `npm test`: **232 desktop tests across 19 files** and **51 roadmap
+  tests passed**. TypeScript, generated contracts, immutable content and both
+  compatibility inventory entry points passed.
+- Readiness reconciliation, baseline, exact gate manifest structure, changed
+  documentation's local links and whitespace passed. These manifest checks do
+  not execute application gates. Nine pairs are ready for bounded conformance;
+  35 remain pending. Source coverage/inventories and earlier generated artifacts
+  remain unchanged.
+- Native packaging, full Electron flows and Windows were not run. No paid
+  providers, source activation, independent empirical review, legal enforcement,
+  transitions, public numerical IPC, database publication or original
+  DOM/WP-032/cumulative gate acceptance is claimed. Next assess maintained
+  DOM-02/05 economy/care after merge, with no change to the sequential owner.
