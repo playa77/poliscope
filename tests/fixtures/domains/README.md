@@ -112,3 +112,13 @@ legal merits, policy adoption, enforcement or scientific validity is implied.
 
 
 `governance-education-v1.json` is a literal synthetic DOM-03/06 fixture. Twelve cohort hours fund decision 3, care 3, student 3, staff 2 and employment 1. Prior decision/care hours each remain counted once. Stock 20 kg retains 16 after supplies 2 and goods 2; four entitlement units and three independent school slots remain finite. Expectations are authored independently of the evaluator.
+
+`governance-communication-v1.json` is a literal synthetic DOM-03/09 fixture.
+Twelve cohort hours fund decision 3 and competing care 3, retaining one prior
+hour each, leaving 6. The disjoint channel book starts with 5 message slots and
+4 verification slots; one prior slot in each stays spent. A requests 3 (one
+previously fulfilled) and receives 2 more; independent B requests 3 and receives
+1, leaving channel 1 (reserved for B) and verification 0. A's approval dependency
+names the exact target; B explicitly has no decision target. Fraction/integer
+feasible sets verify conservation; neither slot allocation nor the three-tick
+host-declared delay means a message was delivered or published.

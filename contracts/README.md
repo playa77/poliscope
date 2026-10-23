@@ -375,3 +375,11 @@ added. Unknown prerequisites withhold the complete candidate.
 
 
 Private `governance-education.schema.json` and `.ts` are generated from the canonical DOM-03/06 request/evaluation. Explicit service approval dependence connects actual scoped decisions to finite student/staff/supply work and disjoint facility slots. These are host-only contracts; no public numerical IPC, adoption or learning effect is declared.
+
+Private `governance-communication.schema.json` and `.ts` describe the canonical
+DOM-03/09 request, original preflight, restricted evaluation and complete two-book
+candidate. Every message declares approval dependence or independence. Original
+access/disclosure/reach/delay remain authoritative, with finite message and
+verification slots disjoint from administrative time. No public IPC, publication,
+delivery, truth assessment or adoption is added. See the
+[package record](../docs/roadmap/execution/WP-032-counterparts-governance-communication.md).

@@ -83,3 +83,13 @@ conformance; no policy adoption, merits inference, enforcement or public IPC.
 
 
 `education.py` composes actual scoped governance with DOM-06 service prerequisites on one staged dated book. Every service explicitly requires approval or declares independence. Approval preserves original eligibility/qualification/access; nonapproval restricts only dependent new claims and slots. Prior commitments survive. Unknowns withhold the complete candidate. Private reviewed opaque ports and synthetic fixtures demonstrate mechanical conformance only.
+
+`communication.py` composes actual scoped decisions with explicitly dependent or
+independent message prerequisites. Approval preserves original publishing,
+receiving and disclosure restrictions, reach, recording/availability and delay.
+Known nonapproval narrows only dependent new publication claims. Administration
+retains its canonical dated work book; channel and verification slots share a
+separate finite message book. Original-term preflight is retained distinctly
+when governance is unresolved; it is never a candidate. Prior commitments survive
+replay and later rejection. Private reviewed context/token ports support bounded
+DOM-03/09 conformance; no delivery, publication, truth or persuasion is inferred.

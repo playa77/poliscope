@@ -19,3 +19,13 @@ previews bound to the complete host context. No option is selected by default.
 `coverage` reconciles every pinned DOM-09 source row and provenance choice;
 partial slot prerequisites do not activate source models, deliver messages,
 verify truth or resolve privacy policy. Other branches remain unsupported.
+
+The governance-owned [DOM-03/09 counterpart](../governance/communication.py)
+uses actual scoped approval as an explicit message publication prerequisite.
+Each claim declares dependence or independence and dependent claims name the
+exact decision target and affected slot accounts. Approval grants no access or
+disclosure exception. Channel and optional verification commitments remain one
+finite dated book, disjoint from canonical administrative time. Both original
+preflight and restricted evaluation remain inspectable; only a complete resolved
+pair has a private two-book candidate. Neither delay nor capacity readiness means
+delivery, publication, verification of truth or institutional response.
