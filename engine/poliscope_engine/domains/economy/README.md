@@ -140,3 +140,11 @@ outcomes. Unknown prerequisites withhold the complete candidate; known shortages
 retain independent commitments. Reviewed opaque tokens bind complete request,
 world, units, runtime and policy evidence. See the literal economy/health fixture
 and [package evidence](../../../../docs/roadmap/execution/WP-032-counterparts-economy-health.md).
+
+`infrastructure.py` validates explicit facility/path prerequisites through actual
+DOM-08 evaluation before allocating economic claims on one dated finite book.
+Each claim declares dependencies or explicit independence. Known reach shortfall
+restricts mapped eligibility, preserving original unknowns and prior commitments;
+unknown facility inputs withhold the complete candidate. Slots do not become
+goods, rights or work. The reviewed private host uses request/world/runtime-bound
+opaque digests and recomputes its producer token; it grants no IPC/write authority.

@@ -357,3 +357,11 @@ share one finite economy request; facility commitments remain disjoint. Unknown
 inputs withhold the complete candidate. These contracts confer no public IPC,
 write authority, treatment or health-outcome inference. See the
 [package record](../docs/roadmap/execution/WP-032-counterparts-economy-health.md).
+
+`economy-infrastructure.schema.json` and `economy-infrastructure.ts` describe
+private DOM-02/08 facility prerequisites. Every economic claim declares demand
+IDs, including an empty list for explicit independence. Actual finite slots and
+directed reach restrict existing access terms; unknowns withhold the complete
+candidate. Slot and economy books remain disjoint and inspectable. No throughput,
+operating resources, rights, lifecycle model or public IPC is inferred. See the
+[package record](../docs/roadmap/execution/WP-032-counterparts-economy-infrastructure.md).

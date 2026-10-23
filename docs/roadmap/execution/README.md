@@ -1003,3 +1003,19 @@ nonauthor/scientific review, treatment/outcomes, transitions, all-domain educati
 originating choices, numerical IPC, database/cross-view publication, native Windows
 and original parent/cumulative acceptance remain open. After merge reassess
 maintained DOM-02/08 economy/infrastructure.
+
+## Current boundary after PR #85
+
+PR #85 merged actual economy/health at
+`d4346c83bc0a75bbcdbf7a3def6f51e655bccf88`. Clean workspace fetched and
+fast-forwarded; no stash or discarded work. The same sequential Codex `/root`,
+controlled by the requesting user, continues under SV with
+[WP-032-counterparts-economy-infrastructure](WP-032-counterparts-economy-infrastructure.md).
+Actual finite DOM-08 reach gates complete explicit DOM-02 claim prerequisites;
+slots remain independent from canonical economy time/stock/rights. Only maintained
+DOM-02/08 becomes newly ready: thirteen ready, 31 pending. All seven maintained
+DOM-02 pairs now have bounded actual paths. Source activation, nonauthor/scientific
+review, operating-resource/lifecycle models, transitions, all-domain education,
+originating choices, numerical IPC, database publication, native Windows and
+original parent/cumulative acceptance remain open. After merge reassess maintained
+DOM-03/04 governance/adjudication against actual decision and case-work interfaces.

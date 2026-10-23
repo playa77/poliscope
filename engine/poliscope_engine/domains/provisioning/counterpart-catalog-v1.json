@@ -753,6 +753,10 @@
             {
               "id": "authored:eh-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ei-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -764,7 +768,8 @@
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
             "authored:economy-education-v1",
-            "authored:economy-health-v1"
+            "authored:economy-health-v1",
+            "authored:economy-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -798,6 +803,10 @@
             {
               "id": "authored:eh-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ei-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -811,7 +820,8 @@
             "authored:economy-adjudication-v1",
             "authored:economy-care-v1",
             "authored:economy-education-v1",
-            "authored:economy-health-v1"
+            "authored:economy-health-v1",
+            "authored:economy-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -837,6 +847,10 @@
             {
               "id": "authored:eh-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ei-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -848,7 +862,8 @@
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
             "authored:economy-education-v1",
-            "authored:economy-health-v1"
+            "authored:economy-health-v1",
+            "authored:economy-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -874,6 +889,10 @@
             {
               "id": "authored:eh-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ei-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -885,7 +904,8 @@
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
             "authored:economy-education-v1",
-            "authored:economy-health-v1"
+            "authored:economy-health-v1",
+            "authored:economy-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1313,6 +1333,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "economy:ei:work-book-in",
+          "mechanism": {
+            "id": "authored:ei-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ei:work-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "economy:ei:candidate",
+          "mechanism": {
+            "id": "authored:ei-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ei:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1338,6 +1426,10 @@
         },
         {
           "id": "authored:eh-economy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ei-economy-mechanism",
           "version": "v1"
         }
       ],
@@ -2110,6 +2202,10 @@
             {
               "id": "authored:infrastructure-pair-work-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ei-work-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Operating resources, construction/maintenance, spatial/digital models, remaining counterparts, parent acceptance and transitions remain open.",
@@ -2118,7 +2214,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-infrastructure-v1"
+            "authored:provisioning-infrastructure-v1",
+            "authored:economy-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2128,13 +2225,20 @@
           "branch_id": "society:domain/08/2",
           "evidence_status": "unreviewed",
           "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "mechanism_refs": [
+            {
+              "id": "authored:ei-work-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-08: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:economy-infrastructure-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -2143,13 +2247,20 @@
           "branch_id": "society:domain/08/3",
           "evidence_status": "unreviewed",
           "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "mechanism_refs": [
+            {
+              "id": "authored:ei-work-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-08: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:economy-infrastructure-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -2236,11 +2347,83 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "id": "infrastructure:ei:context",
+          "mechanism": {
+            "id": "authored:ei-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ei:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "infrastructure:ei:work-book",
+          "mechanism": {
+            "id": "authored:ei-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ei:work-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
         {
           "id": "authored:infrastructure-pair-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ei-work-mechanism",
           "version": "v1"
         }
       ],
@@ -3488,6 +3671,50 @@
         }
       ],
       "limits": "Bounded real health prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, treatment, health outcomes, source activation, scientific review, transitions or public numerical IPC."
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:economy-infrastructure",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-08",
+      "integration_owner": "economy",
+      "interface_refs": [
+        "infrastructure:ei:work-book",
+        "economy:ei:work-book-in"
+      ],
+      "limits": "Bounded actual finite facility/path prerequisites and economy time/stock/rights. Independent slot book, opaque context-bound digests. No throughput conversion, rights grant, operating resource or lifecycle model, source activation, scientific review, transitions or public numerical IPC.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
     }
   ]
 }

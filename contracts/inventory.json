@@ -26,6 +26,8 @@
     "economy-governance.ts",
     "economy-health.schema.json",
     "economy-health.ts",
+    "economy-infrastructure.schema.json",
+    "economy-infrastructure.ts",
     "economy.schema.json",
     "economy.ts",
     "environment.schema.json",
