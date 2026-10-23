@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ge-administration-mechanism",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ge:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ge:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ge:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ge-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ge:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ge:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ge-education-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ge:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ge:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ge:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ge-education",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ge:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ge:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ge-policy-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "ge:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ge-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ge:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ge:finite-book"
+    ]
+  }
+]

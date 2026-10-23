@@ -80,3 +80,6 @@ capacity and legal disposition remain authoritative. Prior work and holds surviv
 replay. Unknown prerequisites withhold the complete private candidate. Reviewed
 opaque context/book ports in `adjudication_counterpart.py` enable bounded DOM-03/04
 conformance; no policy adoption, merits inference, enforcement or public IPC.
+
+
+`education.py` composes actual scoped governance with DOM-06 service prerequisites on one staged dated book. Every service explicitly requires approval or declares independence. Approval preserves original eligibility/qualification/access; nonapproval restricts only dependent new claims and slots. Prior commitments survive. Unknowns withhold the complete candidate. Private reviewed opaque ports and synthetic fixtures demonstrate mechanical conformance only.

@@ -48,8 +48,8 @@
       "static_source_rows": 5,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 5,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 7,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -98,8 +98,8 @@
       "static_source_rows": 3,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 2,
-      "declared_interfaces": 4,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 7,
       "catalog_statuses": {
         "partial": 3
       }
@@ -436,10 +436,13 @@
         "knowledge_culture"
       ],
       "owner": "governance",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "governance:ge:administration-book",
+        "knowledge_culture:ge:administration-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:governance-education@v1"
       ]
     },
     {

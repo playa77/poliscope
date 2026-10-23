@@ -1722,7 +1722,7 @@
         {
           "branch_id": "society:domain/06/2",
           "evidence_status": "hypothetical",
-          "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC. Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:education-work-mechanism",
@@ -1730,6 +1730,14 @@
             },
             {
               "id": "authored:ee-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ge-education-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ge-policy-mechanism",
               "version": "v1"
             }
           ],
@@ -1740,7 +1748,8 @@
           ],
           "source_refs": [
             "authored:provisioning-education-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:governance-education-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1923,6 +1932,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "knowledge_culture:ge:administration-book-in",
+          "mechanism": {
+            "id": "authored:ge-education-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ge:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "knowledge_culture:ge:candidate",
+          "mechanism": {
+            "id": "authored:ge-education-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ge:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "knowledge_culture:ge:permission",
+          "mechanism": {
+            "id": "authored:ge-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ge:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1932,6 +2043,14 @@
         },
         {
           "id": "authored:ee-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ge-education-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ge-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -2753,7 +2872,7 @@
         {
           "branch_id": "society:domain/03/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:eg-administration-mechanism",
@@ -2766,6 +2885,10 @@
             {
               "id": "authored:ga-administration-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ge-administration-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
@@ -2775,7 +2898,8 @@
           ],
           "source_refs": [
             "authored:economy-governance-v1",
-            "authored:governance-adjudication-v1"
+            "authored:governance-adjudication-v1",
+            "authored:governance-education-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2972,6 +3096,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "governance:ge:context",
+          "mechanism": {
+            "id": "authored:ge-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ge:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "governance:ge:administration-book",
+          "mechanism": {
+            "id": "authored:ge-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ge:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -2985,6 +3177,10 @@
         },
         {
           "id": "authored:ga-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ge-administration-mechanism",
           "version": "v1"
         }
       ],
@@ -3939,6 +4135,50 @@
         },
         {
           "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:governance-education",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-06",
+      "integration_owner": "governance",
+      "interface_refs": [
+        "governance:ge:administration-book",
+        "knowledge_culture:ge:administration-book-in"
+      ],
+      "limits": "Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
           "entity_kind": "account"
         },
         {

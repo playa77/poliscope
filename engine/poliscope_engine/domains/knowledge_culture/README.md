@@ -64,3 +64,6 @@ including staff/student/care/employment time and competing material/goods rights
 Its private reviewed host binds policy evidence and keeps independent facility
 commitments inspectable. See `tests/fixtures/domains/economy-education-v1.json`;
 this bounded pair does not satisfy the all-domain education path or learning.
+
+
+The private governance/education counterpart stages actual decision work before student, staff and supply commitments on the same canonical book. Facility slots remain independently finite. Explicit approval dependence does not infer attendance, learning, qualification or adoption; unknown service prerequisites withhold the candidate.

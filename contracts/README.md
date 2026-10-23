@@ -372,3 +372,6 @@ approval prerequisite. Actual decisions and case work share canonical finite tim
 opaque reviewed host ports carry context-bound evidence digests. No wire handler,
 policy adoption, rights creation, legal enforcement or scientific acceptance is
 added. Unknown prerequisites withhold the complete candidate.
+
+
+Private `governance-education.schema.json` and `.ts` are generated from the canonical DOM-03/06 request/evaluation. Explicit service approval dependence connects actual scoped decisions to finite student/staff/supply work and disjoint facility slots. These are host-only contracts; no public numerical IPC, adoption or learning effect is declared.
