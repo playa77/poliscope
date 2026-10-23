@@ -1,12 +1,11 @@
 """Actual education input commitments feed the finite provisioning chain once."""
-from dataclasses import asdict
 from poliscope_engine.accounts import fail
 from poliscope_engine.contracts.provisioning_education import (
     ProvisioningEducationRequest, ProvisioningEducationEvaluation,
 )
 from poliscope_engine.domains.knowledge_culture import evaluate_education
 from .economy import evaluate_staged_chain, validate_context as validate_economy_context
-from .context import binding as context_binding, digest
+from .context import binding as context_binding, digest, policy_evidence
 
 MODEL = ('authored:provisioning-education', 'v1')
 
@@ -17,14 +16,7 @@ def binding(request, graph, units, mechanisms):
     # cannot reuse the authored context token.
     return digest(dict(context=context_binding(request, graph, units,
         adapter='provisioning-education-v1', model=MODEL),
-        policy=dict(model=mechanisms.model,
-            definitions=[d.model_dump(mode='json') for d in mechanisms.definitions],
-            graphs=[g.model_dump(mode='json') for g in mechanisms.graphs],
-            reviews=[asdict(r) for r in mechanisms.reviews],
-            sources=sorted(mechanisms.source_ids), assumptions=sorted(mechanisms.assumption_ids),
-            fixtures=sorted(mechanisms.fixture_ids), times=[asdict(t) | {'seconds': str(t.seconds)}
-                for t in mechanisms.times],
-            implementations=[i.key for i in mechanisms.implementations])))
+        policy=policy_evidence(mechanisms)))
 
 
 def validate_context(request, graph, units):

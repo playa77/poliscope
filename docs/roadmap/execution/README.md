@@ -929,3 +929,19 @@ choices, database/cross-view publication, numerical IPC, Windows and original pa
 and cumulative gates remain open. All seven maintained DOM-01 pairs now have
 bounded actual paths; reassess the maintained DOM-02/03 economy/governance pair
 next, with DOM-02 as integration owner. No DOM-01/03 pair is declared.
+
+## Current boundary after PR #80
+
+PR #80 merged provisioning/environment at
+`8da147561187e552f3b7be5898765d266637167a`.
+[WP-032-counterparts-economy-governance](WP-032-counterparts-economy-governance.md)
+allocates bounded actual DOM-02/03 conformance to the same sequential owner under
+SV, with DOM-02 as integration owner. Actual scoped ballots, authority resolution
+and administration feed explicit affected-account economy prerequisites on one
+finite dated staged book. Approval neither grants rights nor adopts policy;
+unknowns withhold the complete candidate. Eight pairs are ready for bounded
+conformance; 36 remain pending. Remaining counterparts, originating choices,
+all-domain education, reviewed sources, transitions, numerical IPC,
+database/cross-view publication, Windows and original parent/cumulative gates
+remain open. After merge assess maintained DOM-02/04 economy/adjudication
+conformance against the actual rights and finite case-work interfaces.

@@ -24,3 +24,15 @@ def binding(request, graph, units, *, adapter="provisioning-economy-v1", model=M
             relationships=[r.model_dump(mode='json') for r in graph.relationships]),
         units=[dict(id=u.id, dimension=u.dimension, kind=u.kind, scale=str(u.scale))
                for u in units.units]))
+
+
+def policy_evidence(mechanisms):
+    """Complete immutable declaration/review identity, never executable content."""
+    return dict(model=mechanisms.model,
+            definitions=[d.model_dump(mode='json') for d in mechanisms.definitions],
+            graphs=[g.model_dump(mode='json') for g in mechanisms.graphs],
+            reviews=[asdict(r) for r in mechanisms.reviews],
+            sources=sorted(mechanisms.source_ids), assumptions=sorted(mechanisms.assumption_ids),
+            fixtures=sorted(mechanisms.fixture_ids), times=[asdict(t) | {'seconds': str(t.seconds)}
+                for t in mechanisms.times],
+            implementations=[i.key for i in mechanisms.implementations])

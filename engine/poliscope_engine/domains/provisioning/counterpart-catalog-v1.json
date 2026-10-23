@@ -758,10 +758,14 @@
         {
           "branch_id": "society:domain/02/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:eg-economy-mechanism",
               "version": "v1"
             }
           ],
@@ -771,7 +775,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-economy-v1"
+            "authored:provisioning-economy-v1",
+            "authored:economy-governance-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -903,11 +908,83 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "id": "economy:eg:administration-book-in",
+          "mechanism": {
+            "id": "authored:eg-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eg:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "economy:eg:candidate",
+          "mechanism": {
+            "id": "authored:eg-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eg:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
         {
           "id": "authored:pair-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:eg-economy-mechanism",
           "version": "v1"
         }
       ],
@@ -1856,6 +1933,190 @@
       "persistence": "shared_store",
       "runtime": "shared_engine",
       "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/03/1",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/03/2",
+          "evidence_status": "hypothetical",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:eg-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:eg-policy-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:economy-governance-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/03/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "governance",
+      "identity": {
+        "id": "domain:governance",
+        "version": "v1"
+      },
+      "interfaces": [
+        {
+          "id": "governance:eg:context",
+          "mechanism": {
+            "id": "authored:eg-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eg:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "governance:eg:administration-book",
+          "mechanism": {
+            "id": "authored:eg-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eg:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "governance:eg:permission",
+          "mechanism": {
+            "id": "authored:eg-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eg:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        }
+      ],
+      "mechanisms": [
+        {
+          "id": "authored:eg-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:eg-policy-mechanism",
+          "version": "v1"
+        }
+      ],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
     }
   ],
   "pairs": [
@@ -2191,6 +2452,50 @@
         {
           "entity_id": "food",
           "entity_kind": "resource"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "governance"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:economy-governance",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-03",
+      "integration_owner": "economy",
+      "interface_refs": [
+        "governance:eg:administration-book",
+        "economy:eg:administration-book-in"
+      ],
+      "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
         }
       ],
       "status": "ready_for_conformance"
