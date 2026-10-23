@@ -32,8 +32,8 @@
       "static_source_rows": 6,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 6,
-      "declared_interfaces": 12,
+      "declared_mechanisms": 7,
+      "declared_interfaces": 14,
       "catalog_statuses": {
         "partial": 4
       }
@@ -130,8 +130,8 @@
       "static_source_rows": 2,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 1,
-      "declared_interfaces": 2,
+      "declared_mechanisms": 2,
+      "declared_interfaces": 4,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -404,10 +404,13 @@
         "infrastructure"
       ],
       "owner": "economy",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "infrastructure:ei:work-book",
+        "economy:ei:work-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:economy-infrastructure@v1"
       ]
     },
     {

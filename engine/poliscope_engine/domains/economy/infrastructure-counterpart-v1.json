@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ei-work-mechanism",
+    "version": "v1",
+    "domain": "infrastructure",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ei:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ei:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ei:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ei-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual finite facility/path prerequisites and economy time/stock/rights. Independent slot book, opaque context-bound digests. No throughput conversion, rights grant, operating resource or lifecycle model, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ei:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ei:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ei-economy-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ei:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ei:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ei:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ei-economy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual finite facility/path prerequisites and economy time/stock/rights. Independent slot book, opaque context-bound digests. No throughput conversion, rights grant, operating resource or lifecycle model, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ei:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ei:finite-book"
+    ]
+  }
+]

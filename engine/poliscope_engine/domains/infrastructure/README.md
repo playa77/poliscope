@@ -35,3 +35,10 @@ facility/path book remains disjoint; unknown reach withholds the chain candidate
 and blocked reach preserves its cause and earlier independent commitments.
 This bounded static integration does not implement operating resources,
 construction, repairs, lifecycle transitions or parent acceptance.
+
+The private economy/infrastructure counterpart evaluates this actual facility and
+path interface, requiring full declared reach for mapped economic claims. Slot
+commitments remain inspectable and disjoint from finite economy time/stock/rights.
+It restricts access without inventing throughput conversions, operating-resource
+or lifecycle effects; unknown reach withholds the complete candidate. See the
+[package record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-infrastructure.md).

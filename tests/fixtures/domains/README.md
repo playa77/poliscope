@@ -92,3 +92,12 @@ employment 4, with employment unmet 4. Supplies 2 and goods 2 consume 4 kg and
 patient slots 2 (including 1 prior) and other use 1. Integer/Fraction oracles,
 queue/procedure changes and replay check independent constraints. Quantities do
 not establish demand coverage, treatment, attendance or health outcomes.
+
+`economy-infrastructure-v1.json` is a literal synthetic DOM-02/08 fixture. One
+cohort has 12 h: care 3 (including 1 prior), training 3 and employment 6 (2 unmet).
+Goods receive 5 kg from 20 kg under 5 existing entitlements, leaving 15 kg and
+3 unmet. Separate facility, bridge and road books each hold 5 slots; four explicit
+one-slot demands leave 1 each. Care explicitly declares independence, other claims
+name full reach prerequisites. Finite feasible-set/Fraction oracles, replay, holds,
+queue/procedure alternatives and two-scope tests check conservation. This models
+prerequisites, not empirical demand, synchronized delivery or operating resources.
