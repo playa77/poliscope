@@ -238,7 +238,7 @@ def test_pair_report_is_detached_and_only_validated_pairs_are_ready():
     result.batch.postings.clear()
     assert evaluate_pair(request, graph=graph, units=units).batch.postings
     catalog = conformance_catalog()
-    assert [p.id for p in catalog.pairs if p.status == 'ready_for_conformance'] == ['pair:DOM-01:DOM-02', 'pair:DOM-01:DOM-05', 'pair:DOM-01:DOM-06', 'pair:DOM-01:DOM-07', 'pair:DOM-01:DOM-08']
+    assert [p.id for p in catalog.pairs if p.status == 'ready_for_conformance'] == ['pair:DOM-01:DOM-02', 'pair:DOM-01:DOM-05', 'pair:DOM-01:DOM-06', 'pair:DOM-01:DOM-07', 'pair:DOM-01:DOM-08', 'pair:DOM-01:DOM-12']
 
 
 @pytest.mark.parametrize('field', ['model_id', 'numeric_runtime_id', 'catalog_id'])

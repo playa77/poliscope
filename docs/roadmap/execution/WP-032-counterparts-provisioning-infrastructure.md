@@ -52,8 +52,9 @@ housing or digital service coverage, freight throughput from path slots,
 scientific validity, source activation, numerical IPC, durable publication or
 parent/cumulative gate acceptance. Earlier counterpart callbacks remain available
 only in their own explicit hosts. Five pairs are ready for bounded conformance;
-39 remain pending. After merge reassess a bounded DOM-01/09 communication
-counterpart against the actual channel interface and available prerequisites.
+39 remain pending. The post-merge reassessment found DOM-01/09 outside the
+maintained counterpart topology. See [the next allocation](WP-032-counterparts-provisioning-continuity.md)
+for the required DOM-01/12 path; no extra pair is added.
 
 ## Validation and separate inspection
 

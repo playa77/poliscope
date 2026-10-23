@@ -29,8 +29,13 @@ CANDIDATE = 'infrastructure-pair:candidate'
 from .counterpart import definitions as economy_definitions, health_definitions, care_definitions, education_definitions
 
 
+def continuity_definitions():
+    data = json.loads(Path(__file__).with_name('continuity-counterpart-v1.json').read_text())
+    return tuple(MechanismDefinition.model_validate(d) for d in data)
+
+
 def other_definitions():
-    return (*economy_definitions(), *health_definitions(), *care_definitions(), *education_definitions())
+    return (*economy_definitions(), *health_definitions(), *care_definitions(), *education_definitions(), *continuity_definitions())
 
 
 def definitions():
@@ -76,8 +81,8 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-continuity-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
         definitions=(*definitions(), *other_definitions()), reviews=reviews,
         implementations=[Implementation('authored:infrastructure-pair-work', 'v1', 'static', work),
                          Implementation('authored:infrastructure-pair-provisioning', 'v1', 'static', provisioning)])

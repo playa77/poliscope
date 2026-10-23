@@ -16,8 +16,8 @@
       "static_source_rows": 9,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 5,
-      "declared_interfaces": 10,
+      "declared_mechanisms": 6,
+      "declared_interfaces": 12,
       "catalog_statuses": {
         "partial": 3
       }
@@ -193,10 +193,11 @@
       "static_source_rows": 5,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 0,
-      "declared_interfaces": 0,
+      "declared_mechanisms": 1,
+      "declared_interfaces": 2,
       "catalog_statuses": {
-        "unresolved": 3
+        "partial": 1,
+        "unresolved": 2
       }
     }
   ],
@@ -301,10 +302,13 @@
         "security_risk"
       ],
       "owner": "provisioning",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "continuity:continuity-pair:work-book",
+        "provisioning:continuity-pair:work-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:provisioning-continuity@v1"
       ]
     },
     {

@@ -313,3 +313,9 @@ slot-to-mass conversion. The finite facility/path book stays disjoint from
 provisioning material/time accounts. Reports retain original requests, actual
 reach evidence, the restricted chain request and a complete candidate only when
 all inputs resolve. These host-only DTOs add no numerical IPC or publication.
+
+`provisioning-continuity.schema.json` / `.ts` declare the host-only v1 DOM-01/12
+pair: finite continuity evidence, explicit full prerequisite mappings and the
+provisioning/economy candidate. Separate response slots never become material
+stock, throughput or proof of aid delivery. Opaque private host bindings require
+explicit reviews; no wire operation or numerical IPC is added.

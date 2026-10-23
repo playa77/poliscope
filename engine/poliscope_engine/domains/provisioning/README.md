@@ -286,3 +286,14 @@ freight slot-to-throughput conversion and housing/digital effects remain absent.
 Five pairs now have bounded conformance, with 39 pending; parent gates,
 all-domain education, scientific/source activation, public numerical IPC and
 publication remain open.
+
+`continuity.evaluate_pair` composes actual DOM-12 finite response commitments
+with the production/freight/storage/use chain. Each phase claim requires every
+explicitly mapped continuity demand in full; partial slots cannot scale goods.
+Unknown terms or obligation conflict withhold a complete candidate. Denied or
+delayed authority, withheld disclosure, declined participation and unavailable
+external aid retain distinct evidence and block mapped claims while preserving
+independent work and prior commitments. Response slots remain disjoint from
+material/time accounts. No recovery, hazard prevention, aid delivery or import is
+inferred. `continuity_counterpart` runs the same real adapters under explicit
+host reviews and request/world/runtime-bound opaque evidence tokens.

@@ -38,3 +38,10 @@ remain unchanged; precedence does not resolve authority or obligations.
 `coverage.validate_coverage` reconciles pinned catalog and provenance rows. Partial
 emergency response/preparedness/resilience coverage means response slots only.
 Technological risks and actual hazard/damage/recovery models remain unsupported.
+
+The bounded DOM-01/12 consumer is
+`provisioning.continuity.evaluate_pair`: actual finite response-slot commitments
+gate host-declared provisioning phase prerequisites. Known restrictions preserve
+their cause; unknown terms withhold the complete candidate. Prior commitments do
+not prove current permissions. This adds no hazard, recovery, material creation,
+aid delivery, operating-resource model or source activation.
