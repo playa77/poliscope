@@ -866,3 +866,18 @@ book. Facility commitments stay disjoint. This adds the third ready pair, leavin
 originating choices, database/cross-view evidence, transitions, Windows and original
 WP-032/DOM/cumulative acceptance remain open. After merge reassess bounded
 DOM-01/07 health conformance against the existing actual service interface.
+
+## Current boundary after PR #76
+
+PR #76 merged real provisioning/education at `01ff71b`.
+[WP-032-counterparts-provisioning-health](WP-032-counterparts-provisioning-health.md)
+allocates bounded actual DOM-01/07 conformance to the same sequential owner under
+SV. Beneficiary care, staff work and supply inputs share the finite dated book
+used by production/freight/storage/use; clinic slots remain disjoint. Need,
+exposure and health-state references imply neither treatment nor health change.
+This adds the fourth ready pair, leaving 40 pending. Unknown prerequisites retain
+independent evidence and withhold a complete candidate. Remaining counterparts,
+all-domain education, originating choices, reviewed sources, numerical IPC,
+database/cross-view evidence, transitions, Windows and original parent/cumulative
+gates remain open. After merge reassess bounded DOM-01/08 infrastructure
+conformance against its actual facility interface.

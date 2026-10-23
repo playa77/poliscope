@@ -26,3 +26,12 @@ its one 14 h book also funds care, production and freight. Education consumes
 prior posting/hold and a competing claim. Expected accounts/claims and conservation
 are literal independently authored data; helper code constructs trusted bindings
 only. No learning, scientific validity or all-domain education gate is claimed.
+
+`provisioning-health-v1.json` is a synthetic real DOM-01/07 fixture: 14 shared
+hours split across ordinary care, beneficiary care, clinical staff and finite
+production/freight; 20 opening kg, supply use, physical losses and remote final
+use reconcile independently. Prior postings/holds and overlapping views remain;
+clinic slots use a disjoint pool. Health needs/exposure/state are descriptive
+references. No delivered treatment, health change or quantitative need coverage
+is implied. Independent shortage/access/policy/context cases use the actual
+health and provisioning evaluators through the common conformance harness.

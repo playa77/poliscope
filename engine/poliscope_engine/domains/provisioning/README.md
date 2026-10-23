@@ -252,3 +252,15 @@ The authored overlay now has DOM-01/02, DOM-01/05 and DOM-01/06 ready for bounde
 conformance; 41 pairs remain pending. These records supersede the earlier pair
 count above. All-domain education, source review/activation, public numerical IPC,
 publication, transitions and parent/cumulative acceptance remain separate.
+
+`ProvisioningHealthRequest` and `health.evaluate_pair` add a private host-only
+DOM-01/07 counterpart. Actual beneficiary care, qualified staff and supplies are
+staged by the real health evaluator before finite production, freight, storage
+and use. The local work projection must match the complete pair book; remote
+stocks/entitlement holders survive untouched until their provisioning phases.
+Facility capacity stays disjoint. Prior claims/postings/holds are preserved once.
+Unknown prerequisites withhold a complete candidate; blocked readiness does not
+refund independent inputs. Need/exposure/state references never infer treatment,
+health change or demand coverage. `health_counterpart.host_registry` requires
+explicit policy and port reviews; opaque digests bind the complete context.
+This adds bounded conformance only, not parent/gate acceptance or public IPC.

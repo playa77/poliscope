@@ -33,3 +33,10 @@ Private exploration offers explicit retain-queue or health-first work precedence
 with no default. It binds edits to the complete host context and leaves facilities,
 needs, exposure, qualifications and institutional inputs intact. Source coverage
 reconciles DOM-07 and source decisions without activating source models.
+
+The provisioning/health host-only counterpart now exercises this actual evaluator
+before production/freight/storage/use over one finite canonical work/material
+book. Beneficiary care and staff work compete with ordinary care and provisioning;
+facility slots retain their independent account pool. Complete-context digests and
+explicit policy/port reviews gate private conformance. This does not certify
+health outcomes, treatment delivery, need denominators or parent acceptance.

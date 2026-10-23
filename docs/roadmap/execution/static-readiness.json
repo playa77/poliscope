@@ -16,8 +16,8 @@
       "static_source_rows": 9,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 6,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 8,
       "catalog_statuses": {
         "partial": 3
       }
@@ -112,10 +112,10 @@
       "static_source_rows": 2,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 0,
-      "declared_interfaces": 0,
+      "declared_mechanisms": 1,
+      "declared_interfaces": 2,
       "catalog_statuses": {
-        "unresolved": 3
+        "partial": 3
       }
     },
     {
@@ -255,10 +255,13 @@
         "health"
       ],
       "owner": "provisioning",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "health:health-pair:work-book",
+        "provisioning:health-pair:work-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:provisioning-health@v1"
       ]
     },
     {
