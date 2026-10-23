@@ -43,6 +43,7 @@ def definitions():
 
 
 def host_registry(request, *, graph, units, reviews):
+    from poliscope_engine.domains.economy.health_counterpart import definitions as economy_health_definitions
     """Create a private immutable request binding. Reviews are explicit host input.
 
     Registering declarations never activates them. Normal MechanismRegistry review,
@@ -80,9 +81,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-adjudication-v1', 'authored:economy-governance-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-adjudication', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
-        definitions=(*definitions(), *economy_education_definitions(), *economy_care_definitions(), *adjudication_definitions(), *governance_definitions(), *other_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-health-v1', 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-adjudication-v1', 'authored:economy-governance-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:economy-health', 'v1'), ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-adjudication', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
+        definitions=(*definitions(), *economy_health_definitions(), *economy_education_definitions(), *economy_care_definitions(), *adjudication_definitions(), *governance_definitions(), *other_definitions()), reviews=reviews,
         implementations=[Implementation('authored:environment-pair-work', 'v1', 'static', work),
                          Implementation('authored:environment-pair-provisioning', 'v1', 'static', provisioning)])
 

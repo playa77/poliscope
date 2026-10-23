@@ -40,3 +40,10 @@ book. Beneficiary care and staff work compete with ordinary care and provisionin
 facility slots retain their independent account pool. Complete-context digests and
 explicit policy/port reviews gate private conformance. This does not certify
 health outcomes, treatment delivery, need denominators or parent acceptance.
+
+The private DOM-02/07 economy/health adapter validates the identical shared work
+request and recomputes economy from its original book. Patient care, staff,
+supplies and competing commitments retain one canonical budget; facilities are
+separate. Known shortages do not refund unrelated commitments. Unresolved inputs
+withhold the complete candidate. No treatment or health effect is inferred. See
+[package evidence](../../../../docs/roadmap/execution/WP-032-counterparts-economy-health.md).

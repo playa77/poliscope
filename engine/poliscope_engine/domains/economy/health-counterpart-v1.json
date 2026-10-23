@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:eh-work-mechanism",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "eh:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "eh:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "eh:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:eh-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No treatment delivery, health outcomes, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "eh:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "eh:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:eh-economy-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "eh:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "eh:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "eh:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:eh-economy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No treatment delivery, health outcomes, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "eh:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "eh:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:eh-policy-mechanism",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource"
+    ],
+    "inputs": [
+      {
+        "id": "health:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:eh-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No treatment delivery, health outcomes, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "eh:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "eh:finite-book"
+    ]
+  }
+]

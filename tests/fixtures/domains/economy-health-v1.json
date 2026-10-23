@@ -1,0 +1,1483 @@
+{
+  "identity": {
+    "id": "synthetic:economy-health",
+    "version": "v1"
+  },
+  "synthetic": true,
+  "units": [
+    {
+      "id": "kg",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "stock",
+      "scale": "1"
+    },
+    {
+      "id": "hours",
+      "dimension": [
+        [
+          "time",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "land-days",
+      "dimension": [
+        [
+          "area-time",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "energy",
+      "dimension": [
+        [
+          "energy",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "throughput",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "rights",
+      "dimension": [
+        [
+          "entitlement",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "people",
+      "dimension": [
+        [
+          "population",
+          1
+        ]
+      ],
+      "kind": "count",
+      "scale": "1"
+    },
+    {
+      "id": "slots",
+      "dimension": [
+        [
+          "facility_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    }
+  ],
+  "request": {
+    "contract_version": 1,
+    "health": {
+      "contract_version": 1,
+      "scope_id": "east",
+      "services": [
+        {
+          "id": "clinic-service",
+          "authority_id": "east-authority",
+          "binding_id": "health:policy",
+          "target_id": "food",
+          "parameter_id": "health:permission",
+          "eligibility": "allowed",
+          "participants": [
+            {
+              "cohort_id": "shared:cohort",
+              "claim_id": "beneficiary-care"
+            }
+          ],
+          "staff": [
+            {
+              "cohort_id": "shared:cohort",
+              "claim_id": "clinical-work",
+              "qualification": "declared",
+              "qualification_refs": [
+                "synthetic:certificate"
+              ]
+            }
+          ],
+          "supply_claim_ids": [
+            "materials"
+          ],
+          "facility_claim_ids": [
+            "seat"
+          ],
+          "obligation_refs": [
+            "synthetic:care-duty"
+          ],
+          "source_refs": [
+            "synthetic:health"
+          ],
+          "need_refs": [
+            "synthetic:declared-need"
+          ],
+          "exposure_refs": [
+            "synthetic:declared-exposure"
+          ],
+          "health_state_refs": [
+            "synthetic:declared-health-state"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "health:policy",
+          "mechanism": {
+            "id": "authored:eh-policy-mechanism",
+            "version": "v1"
+          },
+          "scope_id": "east",
+          "authority_id": "east-authority",
+          "entity_ids": [
+            "food"
+          ],
+          "parameter_id": "health:permission",
+          "value": {
+            "kind": "label",
+            "value": "declared_permission"
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "raw"
+          ],
+          "choice_refs": []
+        }
+      ],
+      "rules": [],
+      "work": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "raw",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "east",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "20",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "labor",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "east",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "0.1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "rights",
+              "kind": "capacity",
+              "unit_id": "rights",
+              "scope_id": "east",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "4",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "beneficiary-care",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "employment",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "8",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "goods",
+              "account_id": "raw",
+              "claimant_id": "shared:cohort",
+              "requested": "8",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "clinical-work",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:health"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "raw",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:health"
+              ]
+            }
+          ],
+          "postings": [
+            {
+              "id": "prior:care",
+              "kind": "use",
+              "source_id": "labor",
+              "destination_id": null,
+              "amount": "1",
+              "claim_id": "care",
+              "reservation_id": "care:hold",
+              "mechanism_ref": "authored:prior-care",
+              "source_refs": [
+                "synthetic:prior"
+              ]
+            }
+          ],
+          "reservations": [
+            {
+              "id": "care:hold",
+              "account_id": "labor",
+              "claim_id": "care",
+              "amount": "2"
+            }
+          ],
+          "subtotals": [
+            {
+              "id": "east:stock-view",
+              "member_ids": [
+                "raw"
+              ]
+            },
+            {
+              "id": "region:stock-view",
+              "member_ids": [
+                "east:stock-view"
+              ]
+            },
+            {
+              "id": "watershed:stock-view",
+              "member_ids": [
+                "region:stock-view"
+              ]
+            }
+          ]
+        },
+        "holders": [
+          {
+            "account_id": "labor",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "rights",
+            "holder_id": "shared:cohort",
+            "role": "entitlement"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "3",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "beneficiary-care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "3",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "employment",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "8",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "goods",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "8",
+            "terms_known": true,
+            "requirements": [
+              {
+                "account_id": "rights",
+                "kind": "entitlement",
+                "per_unit": "1"
+              }
+            ],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "clinical-work",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "2",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "2",
+            "terms_known": true,
+            "requirements": [
+              {
+                "account_id": "rights",
+                "kind": "entitlement",
+                "per_unit": "1"
+              }
+            ],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "care",
+          "beneficiary-care",
+          "clinical-work",
+          "employment",
+          "materials",
+          "goods"
+        ],
+        "mechanism_ref": "authored:economy-access-work-v1",
+        "source_refs": [
+          "synthetic:work"
+        ]
+      },
+      "facilities": [
+        {
+          "asset_id": "clinic",
+          "account_id": "clinic:slots",
+          "source_refs": [
+            "synthetic:health"
+          ]
+        }
+      ],
+      "facility_allocation": {
+        "contract_version": 1,
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "clinic:slots",
+              "kind": "capacity",
+              "unit_id": "slots",
+              "scope_id": "east",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "seat",
+              "account_id": "clinic:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:health"
+              ]
+            },
+            {
+              "id": "other-seat",
+              "account_id": "clinic:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:health"
+              ]
+            }
+          ],
+          "postings": [
+            {
+              "id": "prior:seat",
+              "kind": "use",
+              "source_id": "clinic:slots",
+              "destination_id": null,
+              "amount": "1",
+              "claim_id": "seat",
+              "reservation_id": "seat:hold",
+              "mechanism_ref": "authored:health-slots",
+              "source_refs": [
+                "synthetic:prior"
+              ]
+            }
+          ],
+          "reservations": [
+            {
+              "id": "seat:hold",
+              "account_id": "clinic:slots",
+              "claim_id": "seat",
+              "amount": "2"
+            }
+          ],
+          "subtotals": []
+        },
+        "procedure": "priority",
+        "claim_order": [
+          "seat",
+          "other-seat"
+        ],
+        "choices": [
+          {
+            "claim_id": "seat",
+            "access": "allowed",
+            "access_limit": "2",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "authored:health-slots",
+            "source_refs": [
+              "synthetic:health"
+            ]
+          },
+          {
+            "claim_id": "other-seat",
+            "access": "allowed",
+            "access_limit": "2",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "authored:health-slots",
+            "source_refs": [
+              "synthetic:health"
+            ]
+          }
+        ],
+        "mechanism_ref": "authored:health-slots",
+        "source_refs": [
+          "synthetic:health"
+        ]
+      },
+      "source_refs": [
+        "synthetic:health"
+      ]
+    },
+    "economy": {
+      "contract_version": 1,
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "raw",
+            "kind": "stock",
+            "unit_id": "kg",
+            "scope_id": "east",
+            "period_id": null,
+            "invariant": "physical",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "20",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "labor",
+            "kind": "capacity",
+            "unit_id": "hours",
+            "scope_id": "east",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "0.1",
+            "maximum": "1000",
+            "opening": "12",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "rights",
+            "kind": "capacity",
+            "unit_id": "rights",
+            "scope_id": "east",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "4",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "care",
+            "account_id": "labor",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "id": "beneficiary-care",
+            "account_id": "labor",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "id": "employment",
+            "account_id": "labor",
+            "claimant_id": "shared:cohort",
+            "requested": "8",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "id": "goods",
+            "account_id": "raw",
+            "claimant_id": "shared:cohort",
+            "requested": "8",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "id": "clinical-work",
+            "account_id": "labor",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "synthetic:health"
+            ]
+          },
+          {
+            "id": "materials",
+            "account_id": "raw",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "synthetic:health"
+            ]
+          }
+        ],
+        "postings": [
+          {
+            "id": "prior:care",
+            "kind": "use",
+            "source_id": "labor",
+            "destination_id": null,
+            "amount": "1",
+            "claim_id": "care",
+            "reservation_id": "care:hold",
+            "mechanism_ref": "authored:prior-care",
+            "source_refs": [
+              "synthetic:prior"
+            ]
+          }
+        ],
+        "reservations": [
+          {
+            "id": "care:hold",
+            "account_id": "labor",
+            "claim_id": "care",
+            "amount": "2"
+          }
+        ],
+        "subtotals": [
+          {
+            "id": "east:stock-view",
+            "member_ids": [
+              "raw"
+            ]
+          },
+          {
+            "id": "region:stock-view",
+            "member_ids": [
+              "east:stock-view"
+            ]
+          },
+          {
+            "id": "watershed:stock-view",
+            "member_ids": [
+              "region:stock-view"
+            ]
+          }
+        ]
+      },
+      "holders": [
+        {
+          "account_id": "labor",
+          "holder_id": "shared:cohort",
+          "role": "time"
+        },
+        {
+          "account_id": "rights",
+          "holder_id": "shared:cohort",
+          "role": "entitlement"
+        }
+      ],
+      "activities": [
+        {
+          "claim_id": "care",
+          "kind": "care",
+          "eligibility": "allowed",
+          "access_limit": "3",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        },
+        {
+          "claim_id": "beneficiary-care",
+          "kind": "care",
+          "eligibility": "allowed",
+          "access_limit": "3",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        },
+        {
+          "claim_id": "employment",
+          "kind": "paid_work",
+          "eligibility": "allowed",
+          "access_limit": "8",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        },
+        {
+          "claim_id": "goods",
+          "kind": "goods",
+          "eligibility": "allowed",
+          "access_limit": "8",
+          "terms_known": true,
+          "requirements": [
+            {
+              "account_id": "rights",
+              "kind": "entitlement",
+              "per_unit": "1"
+            }
+          ],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        },
+        {
+          "claim_id": "clinical-work",
+          "kind": "paid_work",
+          "eligibility": "allowed",
+          "access_limit": "2",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        },
+        {
+          "claim_id": "materials",
+          "kind": "goods",
+          "eligibility": "allowed",
+          "access_limit": "2",
+          "terms_known": true,
+          "requirements": [
+            {
+              "account_id": "rights",
+              "kind": "entitlement",
+              "per_unit": "1"
+            }
+          ],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "synthetic:work"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "care",
+        "beneficiary-care",
+        "clinical-work",
+        "employment",
+        "materials",
+        "goods"
+      ],
+      "mechanism_ref": "authored:economy-access-work-v1",
+      "source_refs": [
+        "synthetic:work"
+      ]
+    }
+  },
+  "inputs": {
+    "assumptions": [],
+    "design": {
+      "assumption_inputs": [],
+      "conditions": [],
+      "contract_version": 1,
+      "effective_time": {
+        "calendar_id": "calendar",
+        "tick": 0
+      },
+      "execution": {
+        "contract_version": 1,
+        "dependencies": {
+          "contract_version": 1,
+          "instances": [
+            {
+              "id": "work",
+              "mechanism_id": "authored:eh-work-mechanism",
+              "mechanism_version": "v1",
+              "scope_id": "east",
+              "entity_id": "east-authority"
+            },
+            {
+              "id": "economy",
+              "mechanism_id": "authored:eh-economy-mechanism",
+              "mechanism_version": "v1",
+              "scope_id": "east",
+              "entity_id": "east-authority"
+            }
+          ],
+          "bindings": [
+            {
+              "producer": {
+                "instance_id": "work",
+                "port_id": "eh:work-book"
+              },
+              "consumer": {
+                "instance_id": "economy",
+                "port_id": "eh:work-book-in"
+              }
+            }
+          ],
+          "fixed_inputs": [],
+          "claims": [],
+          "account_producers": [],
+          "relationships": []
+        },
+        "batch": null,
+        "claims": [],
+        "allocations": [],
+        "solvers": [],
+        "operation_limit": 100000
+      },
+      "policies": [],
+      "policy_inputs": [],
+      "policy_rules": [],
+      "realization": {
+        "event_ids": [],
+        "identity": {
+          "id": "synthetic:realization",
+          "version": "v1"
+        },
+        "seed": null,
+        "values": []
+      },
+      "realization_inputs": [],
+      "world_inputs": []
+    },
+    "entities": [
+      {
+        "entity_kind": "civilization",
+        "id": "civ",
+        "label": "Synthetic civ",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "stock",
+        "label": "Synthetic stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "resource",
+        "id": "water",
+        "label": "Synthetic water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "product",
+        "entity_kind": "account",
+        "label": "Synthetic product",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "residual",
+        "entity_kind": "account",
+        "label": "Synthetic residual",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "labor",
+        "entity_kind": "account",
+        "label": "Synthetic labor",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "east-authority",
+        "label": "Synthetic east-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "region-authority",
+        "label": "Synthetic region-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "asset",
+        "id": "shared:asset",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "population_cohort",
+        "id": "shared:cohort",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "raw",
+        "entity_kind": "account",
+        "label": "Synthetic raw",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "receiving",
+        "entity_kind": "account",
+        "label": "Synthetic receiving",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "stored",
+        "entity_kind": "account",
+        "label": "Synthetic stored",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "land",
+        "entity_kind": "account",
+        "label": "Synthetic land",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "energy",
+        "entity_kind": "account",
+        "label": "Synthetic energy",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "truck",
+        "entity_kind": "account",
+        "label": "Synthetic truck",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "handling",
+        "entity_kind": "account",
+        "label": "Synthetic handling",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "rights",
+        "entity_kind": "account",
+        "label": "Synthetic rights",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "unprocessed",
+        "entity_kind": "resource",
+        "label": "Synthetic unprocessed",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "food",
+        "entity_kind": "resource",
+        "label": "Synthetic food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "byproduct",
+        "entity_kind": "resource",
+        "label": "Synthetic byproduct",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:make-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:make-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:ship-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:ship-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:store-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:store-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "home",
+        "entity_kind": "household_arrangement",
+        "label": "home",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "network",
+        "entity_kind": "community_arrangement",
+        "label": "network",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "asset",
+        "id": "clinic",
+        "label": "clinic",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "clinic:slots",
+        "label": "clinic:slots",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "goals": [],
+    "measurements": [],
+    "owners": [
+      {
+        "entity_id": "water",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "writer_id": "fixture"
+      },
+      {
+        "entity_id": "shared:cohort",
+        "partition": "conditions",
+        "property_id": "population",
+        "writer_id": "fixture"
+      }
+    ],
+    "populations": [
+      {
+        "entity_id": "shared:cohort",
+        "role": "fixed_input"
+      }
+    ],
+    "references": [],
+    "relationships": [
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "west"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "watershed"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "region"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "east-authority",
+        "id": "authority-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "region-authority",
+        "id": "authority-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "region"
+      },
+      {
+        "id": "member:home",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "home:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:shared"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "member:network",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "network:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:shared"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "scopes": [
+      {
+        "id": "east",
+        "label": "Synthetic east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "west",
+        "label": "Synthetic west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "watershed",
+        "label": "Synthetic watershed",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      },
+      {
+        "id": "region",
+        "label": "Synthetic region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      },
+      {
+        "id": "home:scope",
+        "scope_kind": "household",
+        "label": "home",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "network:scope",
+        "scope_kind": "community",
+        "label": "network",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "values": [
+      {
+        "effective_time": {
+          "calendar_id": "calendar",
+          "tick": 0
+        },
+        "entity_id": "water",
+        "id": "water-value",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_id": "east",
+        "value": {
+          "denominator_scope_id": null,
+          "kind": "quantity",
+          "time_basis_id": null,
+          "unit_id": "kg",
+          "value": "100"
+        }
+      },
+      {
+        "id": "population:shared",
+        "entity_id": "shared:cohort",
+        "scope_id": "east",
+        "partition": "conditions",
+        "property_id": "population",
+        "value": {
+          "kind": "quantity",
+          "value": "10",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "effective_time": {
+          "tick": 0,
+          "calendar_id": "calendar"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "versions": {
+      "catalog_id": "authored:economy-health-catalog-v1",
+      "model_id": "authored:economy-health",
+      "numeric_runtime_id": "decimal28-half-even-exact-v1",
+      "world_schema": 1
+    }
+  },
+  "expected": {
+    "claims": {
+      "care": [
+        "3",
+        "0"
+      ],
+      "beneficiary-care": [
+        "3",
+        "0"
+      ],
+      "clinical-work": [
+        "2",
+        "0"
+      ],
+      "employment": [
+        "4",
+        "4"
+      ],
+      "materials": [
+        "2",
+        "0"
+      ],
+      "goods": [
+        "2",
+        "6"
+      ]
+    },
+    "closing": {
+      "labor": "0",
+      "raw": "16",
+      "rights": "0"
+    },
+    "facility": {
+      "seat": [
+        "2",
+        "0"
+      ],
+      "other-seat": [
+        "1",
+        "1"
+      ]
+    },
+    "conservation": "Time 12 = other care 3 + patient care 3 + clinical staff 2 + employment 4, including prior care 1 once. Stock 20 = retained 16 + supplies 2 + goods 2; rights 4 = supplies 2 + goods 2. Facility 3 = patient slots 2 + other slots 1, including prior slot 1 once."
+  }
+}

@@ -24,6 +24,8 @@
     "economy-education.ts",
     "economy-governance.schema.json",
     "economy-governance.ts",
+    "economy-health.schema.json",
+    "economy-health.ts",
     "economy.schema.json",
     "economy.ts",
     "environment.schema.json",
