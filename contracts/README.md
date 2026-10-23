@@ -303,3 +303,13 @@ provisioning chain on one dated canonical work/material book; facilities retain
 their separate pool. Unknown prerequisites withhold the final batch. Descriptive
 need/exposure/health-state references do not imply treatment or health change.
 Opaque context-bound conformance ports grant no public numerical IPC or mutation.
+
+## Provisioning/infrastructure prerequisite contract v1
+
+`provisioning_infrastructure.py` generates `provisioning-infrastructure.schema.json`
+and `.ts`. Every phase claim names one or more explicit facility-demand
+prerequisites. Full dated slot commitments gate existing access without a
+slot-to-mass conversion. The finite facility/path book stays disjoint from
+provisioning material/time accounts. Reports retain original requests, actual
+reach evidence, the restricted chain request and a complete candidate only when
+all inputs resolve. These host-only DTOs add no numerical IPC or publication.

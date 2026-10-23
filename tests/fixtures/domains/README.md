@@ -35,3 +35,11 @@ clinic slots use a disjoint pool. Health needs/exposure/state are descriptive
 references. No delivered treatment, health change or quantitative need coverage
 is implied. Independent shortage/access/policy/context cases use the actual
 health and provisioning evaluators through the common conformance harness.
+
+`provisioning-infrastructure-v1.json` is an independently authored synthetic
+DOM-01/08 host fixture: one 5-slot depot, bridge and road book supplies explicit
+prerequisites for the existing finite economy/provisioning chain. Its slots never
+convert to kg or merge with material/time accounts. Tests vary bottlenecks and
+queues using independent integer/Fraction oracles and preserve holds/prior
+commitments, distinct reach failures and stale-context rejection. It supplies
+bounded conformance only, with no empirical validation or parent acceptance.

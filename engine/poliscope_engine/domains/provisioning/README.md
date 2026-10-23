@@ -264,3 +264,25 @@ refund independent inputs. Need/exposure/state references never infer treatment,
 health change or demand coverage. `health_counterpart.host_registry` requires
 explicit policy and port reviews; opaque digests bind the complete context.
 This adds bounded conformance only, not parent/gate acceptance or public IPC.
+
+`ProvisioningInfrastructureRequest` and `infrastructure.evaluate_pair` connect
+actual DOM-08 finite facility/path reach to every explicit phase-claim
+prerequisite in the existing economy/provisioning chain. Full declared slot
+commitments gate access; they never convert to kg or enlarge throughput. Multiple
+prerequisites require all demands; incomplete mappings reject. The host explicitly
+declares prerequisites across stock scopes. Known denied, disconnected,
+nonoperating or short reach blocks the mapped claim while retaining independent
+work and slot commitments. Unknown reach withholds the chain candidate. Existing
+unknown access/funding terms remain unknown even under a known blocked gate.
+
+Facility accounts/claims cannot overlap the material/time book and are never
+merged into it. Prior commitments and holds survive once; prior fulfillment does
+not prove present reach. `infrastructure_counterpart` binds opaque digests to
+complete request/world/units/runtime context and requires explicit host reviews.
+The synthetic 5-slot depot/bridge/road fixture competes across production,
+freight, storage and use prerequisites; integer/Fraction oracles vary the finite
+bottleneck and queue. Operating resources, construction, maintenance, lifecycle,
+freight slot-to-throughput conversion and housing/digital effects remain absent.
+Five pairs now have bounded conformance, with 39 pending; parent gates,
+all-domain education, scientific/source activation, public numerical IPC and
+publication remain open.

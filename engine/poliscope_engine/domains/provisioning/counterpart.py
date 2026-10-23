@@ -26,6 +26,11 @@ BOOK = 'pair:work-book-in'
 CANDIDATE = 'pair:candidate'
 
 
+def infrastructure_definitions():
+    data = json.loads(Path(__file__).with_name('infrastructure-counterpart-v1.json').read_text())
+    return tuple(MechanismDefinition.model_validate(d) for d in data)
+
+
 def health_definitions():
     data = json.loads(Path(__file__).with_name('health-counterpart-v1.json').read_text())
     return tuple(MechanismDefinition.model_validate(d) for d in data)
@@ -84,9 +89,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
-        definitions=(*definitions(), *health_definitions(), *care_definitions(), *education_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
+        definitions=(*definitions(), *infrastructure_definitions(), *health_definitions(), *care_definitions(), *education_definitions()), reviews=reviews,
         implementations=[Implementation('authored:pair-work', 'v1', 'static', work),
                          Implementation('authored:pair-provisioning', 'v1', 'static', provisioning)])
 
