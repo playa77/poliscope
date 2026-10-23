@@ -77,3 +77,10 @@ arrangements sharing one ten-person cohort, 12 h of dated time, a prior 1 h care
 posting and a 2 h care hold. Total care 3 h, training 3 h and paid work 6 h exhaust
 time; a request for 8 kg receives 4 kg from 20 kg stock under 4 entitlements.
 Obligations and capacities are authored inputs, not empirical care requirements.
+
+`economy-education-v1.json` is a literal synthetic DOM-02/06 fixture: one cohort's
+12 h covers care 3, student 3, staff 2 and employment 4; 20 kg stock and 4 existing
+rights cover materials 2 and goods 2. Independent facility capacity 3 covers
+seat 2 and competing use 1. Prior care/seat postings and holds are retained once.
+It supplies no empirical learning or synchronized delivery claim. Tests derive
+finite time, stock/entitlement and facility expectations independently.

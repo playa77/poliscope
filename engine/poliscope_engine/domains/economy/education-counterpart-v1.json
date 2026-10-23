@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ee-work-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ee:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ee:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ee:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ee-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real education input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No teaching delivery, learning, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ee:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ee:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ee-economy-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ee:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ee:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ee:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ee-economy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real education input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No teaching delivery, learning, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ee:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ee:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ee-policy-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource"
+    ],
+    "inputs": [
+      {
+        "id": "education:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ee-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real education input commitments and finite economy work/access. Independent facility pool; opaque context-bound digests only. No teaching delivery, learning, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ee:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ee:finite-book"
+    ]
+  }
+]

@@ -20,6 +20,8 @@
     "economy-adjudication.ts",
     "economy-care.schema.json",
     "economy-care.ts",
+    "economy-education.schema.json",
+    "economy-education.ts",
     "economy-governance.schema.json",
     "economy-governance.ts",
     "economy.schema.json",

@@ -975,3 +975,16 @@ become ready for bounded conformance; 34 remain pending. Remaining counterparts,
 originating choices, all-domain education, reviewed sources, transitions, numerical
 IPC, database/cross-view publication, Windows and original parent/cumulative gates
 remain open. After merge reassess maintained DOM-02/06 economy/education.
+
+## Current boundary after PR #83
+
+PR #83 merged the actual economy/care counterpart at
+`3a99aab9f0c230d73f142aa846b95d915c71090e`.
+[WP-032-counterparts-economy-education](WP-032-counterparts-economy-education.md)
+is allocated sequentially to the same Codex `/root` owner/controller and SV
+route. Actual education prerequisites share canonical economy time/materials and
+access budgets; facility commitments remain independently inspectable. Eleven
+maintained pairs are targeted for bounded conformance, 33 remain pending. The
+all-domain education path, source activation, nonauthor/scientific review,
+transitions, public numerical IPC, native Windows and original parent/cumulative
+acceptance remain open. After merge reassess maintained DOM-02/07 economy/health.

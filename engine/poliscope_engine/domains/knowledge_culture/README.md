@@ -56,3 +56,11 @@ commitments consume local time/materials once before cross-scope production,
 freight, storage and use. Facility evidence stays independent. See the versioned
 `tests/fixtures/domains/provisioning-education-v1.json` and package evidence;
 this bounded pair does not satisfy the all-domain education path or learning.
+
+The host-only real DOM-02/06 counterpart is in
+[`economy/education.py`](../economy/education.py). It checks this actual education
+report against pure economy recomputation from the identical initial request,
+including staff/student/care/employment time and competing material/goods rights.
+Its private reviewed host binds policy evidence and keeps independent facility
+commitments inspectable. See `tests/fixtures/domains/economy-education-v1.json`;
+this bounded pair does not satisfy the all-domain education path or learning.

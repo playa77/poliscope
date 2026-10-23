@@ -32,8 +32,8 @@
       "static_source_rows": 6,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 4,
-      "declared_interfaces": 8,
+      "declared_mechanisms": 5,
+      "declared_interfaces": 10,
       "catalog_statuses": {
         "partial": 4
       }
@@ -98,8 +98,8 @@
       "static_source_rows": 3,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 1,
-      "declared_interfaces": 2,
+      "declared_mechanisms": 2,
+      "declared_interfaces": 4,
       "catalog_statuses": {
         "partial": 3
       }
@@ -372,10 +372,13 @@
         "knowledge_culture"
       ],
       "owner": "economy",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:ee:work-book",
+        "economy:ee:work-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:economy-education@v1"
       ]
     },
     {
