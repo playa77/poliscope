@@ -65,6 +65,8 @@
     "provisioning-economy.ts",
     "provisioning-education.schema.json",
     "provisioning-education.ts",
+    "provisioning-health.schema.json",
+    "provisioning-health.ts",
     "provisioning.schema.json",
     "provisioning.ts",
     "revision.schema.json",

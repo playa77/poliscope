@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:health-work-mechanism",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "health-pair:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "health-pair:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "health-pair:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:health-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite provisioning. Independent facility pool; opaque context-bound digests only. No treatment delivery, health change, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "health-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "health-pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:health-provisioning-mechanism",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "health-pair:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "health-pair:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "health-pair:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:health-provisioning",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite provisioning. Independent facility pool; opaque context-bound digests only. No treatment delivery, health change, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "health-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "health-pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:health-policy-mechanism",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource"
+    ],
+    "inputs": [
+      {
+        "id": "health:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:health-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real health input commitments and finite provisioning. Independent facility pool; opaque context-bound digests only. No treatment delivery, health change, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "health-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "health-pair:finite-book"
+    ]
+  }
+]

@@ -296,3 +296,10 @@ stays in its disjoint pool. Unknown service prerequisites withhold a candidate;
 resolved blocked/ineligible services retain commitments without inferring teaching
 or learning. Policy declarations and explicit reviews bind the context. These
 contracts add no public execution, numerical IPC or publication permission.
+
+`provisioning-health.schema.json` and `provisioning-health.ts` describe the private
+host-only DOM-01/07 request/evaluation. Health input commitments feed the finite
+provisioning chain on one dated canonical work/material book; facilities retain
+their separate pool. Unknown prerequisites withhold the final batch. Descriptive
+need/exposure/health-state references do not imply treatment or health change.
+Opaque context-bound conformance ports grant no public numerical IPC or mutation.
