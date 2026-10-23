@@ -17,6 +17,8 @@ from decimal import Decimal
 from .infrastructure import evaluate_pair, validate_context, binding, MODEL
 from .context import digest
 
+from poliscope_engine.domains.economy.governance_counterpart import definitions as governance_definitions
+
 FIXTURE = ('synthetic:provisioning-infrastructure', 'v1')
 SOURCE = 'authored:provisioning-infrastructure-v1'
 CATALOG_ID = 'authored:provisioning-infrastructure-catalog-v1'
@@ -81,9 +83,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
-        definitions=(*definitions(), *other_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-governance-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
+        definitions=(*definitions(), *governance_definitions(), *other_definitions()), reviews=reviews,
         implementations=[Implementation('authored:infrastructure-pair-work', 'v1', 'static', work),
                          Implementation('authored:infrastructure-pair-provisioning', 'v1', 'static', provisioning)])
 

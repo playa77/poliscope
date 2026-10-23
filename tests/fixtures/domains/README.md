@@ -55,3 +55,9 @@ composition and DOM-01/02 work/production/freight/storage/use chain over one boo
 Independent literal balances and Fraction oracles include exact residual plus loss
 sink debits. Synthetic coefficients establish neither absorption nor scientific
 validity. Host context, explicit reviews and unknown/denied inputs remain tested.
+
+`economy-governance-v1.json` is a synthetic actual DOM-02/03 host fixture. Ten
+canonical hours supply administration 3 (one previously posted), reserved care 2
+and work 5, leaving 2 unmet. Twelve goods and 5 entitlement units permit use 5,
+retaining stock 7 and unmet demand 3. Its equal-member ballot is hypothetical;
+no policy adoption, behavioral effect, public numerical IPC or gate is implied.

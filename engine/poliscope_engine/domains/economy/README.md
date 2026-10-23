@@ -91,3 +91,12 @@ production/delivery and shares canonical dated work. See the
 `conformance_catalog()` marks only this pair ready for conformance. Shared finite
 claims and prior reservations are tested independently; no market, wage, wealth,
 service-delivery or source-activation model follows from this disposition.
+
+`governance.py` composes the actual DOM-03 ballot/authority/administration adapter
+with DOM-02 allocation in a private host-only DOM-02/03 counterpart. Both stages
+share identical canonical initial books and holders. Future claims are closed in
+administration; administration claims are closed in economy. Explicit outcome
+prerequisites restrict only affected-account access, preserving unknowns and
+independent eligibility/funding/entitlements. The original request and actual
+staged evidence remain separate. This hypothetical preview neither adopts a
+policy nor publishes a book. See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-governance.md).

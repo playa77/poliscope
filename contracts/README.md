@@ -323,3 +323,10 @@ explicit reviews; no wire operation or numerical IPC is added.
 `provisioning-environment.schema.json` and `.ts` describe the host-only DOM-01/10
 shared extraction/production and exact residual/loss sink allowance composition.
 They grant no execution, source activation or public numerical IPC authority.
+
+`economy-governance.schema.json` / `.ts` declare the private v1 DOM-02/03
+single-decision prerequisite. Administration and economy share identical initial
+books and holders with explicitly closed phase claims. The decision restricts
+selected affected-account claims; approval creates no rights, stock, time or
+policy adoption. Unknowns withhold the final batch. Original and staged requests,
+ballots, policy conflicts, actual commitments and unmet claims remain inspectable.

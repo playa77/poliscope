@@ -65,3 +65,10 @@ No source policy, production content, revision, database or renderer is activate
 [Exploration package record](../../../../docs/roadmap/execution/WP-DOM-03-options-coverage.md)
 retains validation and limitations. Other actual counterpart fixtures and all
 parent/static, transition, Windows and scientific/cumulative gates remain open.
+
+The economy-owned [DOM-02/03 counterpart](../economy/governance.py) uses actual
+governance outcomes as explicit access prerequisites. Administration and subsequent
+economic work share one dated finite account book. Rejection, missing quorum and
+capacity shortage remain distinguishable; conflicting or unknown decisions
+withhold a complete candidate. Approval remains a counterfactual prerequisite,
+never policy adoption or permission to override existing access restrictions.
