@@ -109,3 +109,6 @@ which remains capacity-blocked with 2 hours unmet. Stock and entitlements remain
 12 kg and 5 respectively. The two local scopes overlap through canonical identities;
 tests also exercise explicitly authored regional/local jurisdiction. No model of
 legal merits, policy adoption, enforcement or scientific validity is implied.
+
+
+`governance-education-v1.json` is a literal synthetic DOM-03/06 fixture. Twelve cohort hours fund decision 3, care 3, student 3, staff 2 and employment 1. Prior decision/care hours each remain counted once. Stock 20 kg retains 16 after supplies 2 and goods 2; four entitlement units and three independent school slots remain finite. Expectations are authored independently of the evaluator.

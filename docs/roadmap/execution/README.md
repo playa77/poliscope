@@ -1035,3 +1035,20 @@ all-domain education, originating choices, numerical IPC, database publication,
 native Windows and original parent/cumulative acceptance remain open. After merge
 reassess maintained DOM-03/06 governance/education against actual student/staff
 and decision-work interfaces.
+
+
+## Current boundary after PR #87
+
+PR #87 merged actual governance/adjudication at `2f5938b`.
+The clean workspace was fetched and fast-forwarded; no stash or discarded work.
+The same sequential Codex `/root`, controlled by the requesting user, continues
+under SV with [WP-032-counterparts-governance-education](WP-032-counterparts-governance-education.md).
+Actual decisions precede finite student/staff/supply work on one dated book;
+facility slots remain disjoint. Every service explicitly declares approval
+dependence. Approval neither grants eligibility/qualification nor implies learning.
+Only maintained DOM-03/06 becomes newly ready: fifteen ready, 29 pending.
+Source activation, nonauthor/scientific review, adoption, transitions, all-domain
+education, originating choices, numerical IPC, database publication, native Windows
+and original parent/cumulative acceptance remain open. After merge reassess
+maintained DOM-03/09 governance/communication against actual disclosure/access
+and finite channel-work interfaces.
