@@ -69,3 +69,47 @@ These are mechanical synthetic checks, not scientific or nonauthor review.
 Only maintained DOM-02/05 is newly ready: ten pairs ready, 34 pending. The original
 44-edge topology, immutable source/release inventories, prior generated artifacts
 and dependency locks are retained. Source activation remains `not_activated`.
+
+## Validation and handoff
+
+Executable candidate: `5f2e062a251992727b41db7908b2275c276d20e9`;
+subsequent evidence commits change documentation only. Owner/inspector is Codex
+`/root`. **solo-validated; agent review deferred**. Follow-up review item: a
+separately allocated nonauthor review of canonical population/obligation mapping,
+shared-book conservation, unknown propagation and trusted conformance boundaries.
+
+- Frozen Python and Node installs passed with `/tmp` caches; Node used
+  `--ignore-scripts`. Dependency locks are unchanged.
+- All **51 focused economy/care tests passed**. The first focused run corrected
+  an expected employment total to retain the unused care hold; another corrected
+  the expected gate error to `unknown_implementation` for an unregistered foreign
+  callback. Assertions now state both absent callbacks and only two local reviews.
+- Generated contracts, immutable content, TypeScript, both compatibility inventory
+  checks, readiness reconciliation, baseline, exact gate-manifest structure,
+  changed documentation local links and whitespace passed. These manifest checks
+  do not execute application gates. Roadmap unittests: **51 passed**.
+- Standalone desktop suite: **231 passed, one failed** out of 232 across 19 files.
+  Existing `overview.test.ts:13` exceeds its unchanged 5,000 ms limit. A clean
+  detached PR #82 baseline with its own frozen Python install reproduces that
+  same timeout (**9 passed, one failed** across overview and shell). The baseline
+  worktree was removed after comparison; logs remain in `/tmp/poliscope-baseline-desktop.log`
+  and `/tmp/poliscope-npm-test-final.log` for this session. No timeout, test config
+  or desktop implementation was changed. The earlier concurrent desktop run also
+  hit shell startup polling; shell passed on the standalone candidate and baseline.
+- The first full Python run was intentionally interrupted after **551 passed**
+  because it had collected a now-corrected test expectation before the focused
+  correction. A second run was interrupted to retain the exact ten-pair engine
+  conformance assertion (the roadmap exact list was already updated). The final
+  clean candidate run is recorded below.
+- Native packaging, full Electron flows and Windows were not run. No source
+  activation, paid providers, independent empirical/scientific review, transitions,
+  public numerical IPC, database publication or original DOM/WP-032/cumulative
+  acceptance is claimed. Next assess maintained DOM-02/06 after merge, retaining
+  the same sequential owner and the original acceptance backlog.
+
+Final full Python on the executable candidate above: **2,974 passed and 54
+subtests passed** in 288.77 s, with four existing intentional forged-DTO serializer
+warnings. All earlier counterpart regressions and the exact ten-pair readiness
+assertions pass. No production code changed after this candidate; the final
+commit records this evidence only. The desktop timeout reproduced on PR #82
+remains the explicit validation limitation described above.
