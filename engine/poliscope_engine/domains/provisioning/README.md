@@ -173,5 +173,53 @@ source model. Its exact reconciliation and pure API acceptance fixtures run with
 uv run --frozen pytest tests/engine/test_provisioning_exploration.py
 ```
 
-Real DOM-02/05/08/10/12 paired acceptance remains blocked by those counterpart
-modules; reassess the next ready static domain allocation after this child merges.
+The following paired adapter records bounded DOM-02 conformance. Actual
+DOM-05/08/10/12 counterparts and full domain parent acceptance remain open.
+
+## Real economy counterpart v1
+
+`economy.evaluate_pair(request, graph=..., units=...)` composes the actual DOM-02
+work and access evaluator with the actual DOM-01 production/freight/storage/use
+chain. Its host-only `ProvisioningEconomyRequest` binds a work request, chain and
+explicit per-use-phase economy activities. The two initial books must match
+exactly; the work result is the sole staged book passed to the chain. Every time
+account has an explicit canonical cohort holder. Account, claimant, holder,
+resource and scope identities resolve in the shared graph. All dated accounts
+and both requests agree on the period.
+
+Work activities run first under the declared procedure; this phase order is a
+host-selected hypothetical arrangement, not an automatic policy recommendation.
+Use phases begin with empty choices. The adapter compiles those choices from the
+supplied DOM-02 goods/access/entitlement terms against the actual preceding phase
+book. Earlier claims are closed; they are never retried to obtain extra capacity.
+No new stock, entitlement or workforce is copied from a subtotal or overlapping
+view. Full source refs, prior postings, claim-linked holds and phase reports remain
+in the returned `ProvisioningEconomyEvaluation`. Unknown work exposes no downstream
+report; unknown downstream requirements expose earlier staging evidence but no
+complete candidate. Denied access can leave positive goods stock and unmet demand.
+
+`counterpart.host_registry` binds a detached request and immutable graph/units.
+A context digest includes request, model/adapter/evaluator/numeric runtime identities,
+canonical entities/scopes/values/owners/populations/relationships and unit definitions.
+The economy output is a digest of that context and its actual staged book. The
+provisioning input must match it; the consumer recomputes/validates that book before
+running the real chain. There is no mutable staging cache, deserialization from a
+label, external model load or write. Changes require a fresh binding. Review
+records are explicit trusted-host inputs and normal registry activation checks
+remain enforced. For common conformance use `run_bound_case`, which binds to the
+actual case world and rejects stale context or foreign catalog/model/runtime.
+
+The fixed reference arrangement has 20 kg raw stock and 12 h canonical time.
+A prior 1 h care posting is included in care's total 3 h; training uses 3 h.
+Remaining 6 h support 10 kg raw input (5 h), producing 7 kg food, 2 kg residual
+and 1 kg loss. The last hour delivers 2 kg; storage retains 2 kg. One explicit
+entitlement allows 1 kg use, leaving 1 kg stored and 5 kg unmet demand. Twenty
+opening kg equals 18 retained + 1 loss + 1 consumed. Independent work/rights
+oracles, holds, access denial, unknowns, forged declarations and stale bindings
+are exercised in `tests/engine/test_provisioning_economy.py`.
+
+Only the bounded DOM-01/02 counterpart is ready for conformance. Model claims
+remain partial/hypothetical; labels grant no public numerical IPC or publication.
+Actual household care arrangements (DOM-05), assets/topology (DOM-08), ecology
+(DOM-10), continuity (DOM-12), real institutional source models, all-domain education,
+transitions and parent/cumulative acceptance remain separate.

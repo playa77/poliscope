@@ -822,3 +822,18 @@ WP-032 execution acceptance remains unassessed. The next bounded allocation is
 real DOM-01/02 counterpart conformance under the audit's start/acceptance outline.
 Remaining pairs, all-domain education, originating choices, reviewed models,
 database/cross-view evidence and original parent/cumulative gates remain open.
+
+## Current boundary after PR #73
+
+PR #73 merged the readiness audit at
+`156389459e70a039ca5ddb8b5b54ed6c0a629f25`.
+[WP-032-counterparts-provisioning-economy](WP-032-counterparts-provisioning-economy.md)
+allocates the bounded real DOM-01/02 host-only counterpart to the same sequential
+owner under SV. Explicit economy work/access terms drive the actual provisioning
+chain over one canonical staged book; private context-bound conformance retains
+partial observations and complete account/claim/posting evidence. The authored
+catalog overlay marks only this pair ready for conformance; the 43 other contracts
+stay pending. No source activation, numerical IPC, database publication, parent,
+scientific or cumulative gate is accepted. After merge reassess the next bounded
+DOM-01/05 care counterpart against existing actual shared-work interfaces; retain
+all-domain education and the complete WP-032 acceptance backlog.

@@ -84,3 +84,10 @@ pinned economy branch/leaf and source/system decision. Only generic goods/time
 procedures have partial hypothetical support. Ownership law, currency mechanisms,
 market/planning/gift behavior, prices, automation, wealth, redistribution,
 inheritance and transitions remain unsupported. Production content is unchanged.
+
+The real bounded DOM-01/02 counterpart now compiles use terms against actual staged
+production/delivery and shares canonical dated work. See the
+[paired host adapter](../provisioning/README.md#real-economy-counterpart-v1).
+`conformance_catalog()` marks only this pair ready for conformance. Shared finite
+claims and prior reservations are tested independently; no market, wage, wealth,
+service-delivery or source-activation model follows from this disposition.

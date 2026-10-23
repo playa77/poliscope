@@ -133,3 +133,41 @@ def templates():
     data = json.loads(Path(__file__).with_name('catalog-v1.json').read_text())
     return DomainRegistry([DomainModule.model_validate(m) for m in data['modules']],
                           [PairedDomainContract.model_validate(p) for p in data['pairs']])
+
+
+def conformance_catalog(directory=None):
+    """Retained authored declarations layered over unactivated templates.
+
+    Only this fixed application-owned file is read; content cannot select code.
+    Readiness is a conformance disposition, not mechanism activation or a gate.
+    """
+    import json
+    from pathlib import Path
+    directory = Path(__file__).parent if directory is None else directory
+    base = json.loads((directory / 'catalog-v1.json').read_text())
+    authored = json.loads((directory / 'provisioning/counterpart-catalog-v1.json').read_text())
+    if base['contract_version'] != 1 or authored['contract_version'] != 1:
+        raise ConformanceError('unsupported_catalog_version')
+    modules = {m.domain: m for m in map(DomainModule.model_validate, base['modules'])}
+    pairs = {p.id: p for p in map(PairedDomainContract.model_validate, base['pairs'])}
+    if len(modules) != len(base['modules']) or len(pairs) != len(base['pairs']):
+        raise ConformanceError('duplicate_catalog_identity')
+    seen = set()
+    for value in authored['modules']:
+        module = DomainModule.model_validate(value)
+        if module.domain in seen or module.domain not in modules:
+            raise ConformanceError('unknown_or_duplicate_authored_module')
+        seen.add(module.domain)
+        if {c.branch_id for c in module.coverage} != {c.branch_id for c in modules[module.domain].coverage}:
+            raise ConformanceError('authored_branch_inventory_mismatch')
+        modules[module.domain] = module
+    seen = set()
+    for value in authored['pairs']:
+        pair = PairedDomainContract.model_validate(value)
+        if (pair.id in seen or pair.id not in pairs
+                or pair.domains != pairs[pair.id].domains
+                or pair.integration_owner != pairs[pair.id].integration_owner):
+            raise ConformanceError('unknown_or_changed_authored_pair')
+        seen.add(pair.id)
+        pairs[pair.id] = pair
+    return DomainRegistry(modules.values(), pairs.values())
