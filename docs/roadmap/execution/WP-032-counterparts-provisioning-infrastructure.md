@@ -84,4 +84,3 @@ counterpart against the actual channel interface and available prerequisites.
   declarations without infrastructure callbacks or activation.
 - **solo-validated; agent review deferred**. Native packaging, full Electron flows
   and Windows were not run. No paid providers or independent scientific review.
-
