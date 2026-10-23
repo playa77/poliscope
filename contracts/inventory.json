@@ -16,6 +16,8 @@
     "dependency.ts",
     "domain.schema.json",
     "domain.ts",
+    "economy-adjudication.schema.json",
+    "economy-adjudication.ts",
     "economy-governance.schema.json",
     "economy-governance.ts",
     "economy.schema.json",

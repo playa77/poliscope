@@ -70,3 +70,13 @@ inspection and finite judicial work have partial hypothetical coverage; legislat
 enforcement, mediation, restoration and external conflict mechanisms retain gaps.
 Source maintenance is provenance. See the
 [exploration package](../../../../docs/roadmap/execution/WP-DOM-04-options-coverage.md).
+
+The bounded actual DOM-02/04 counterpart consumes this evaluator's case results
+and staged finite administration book in
+[`economy/adjudication.py`](../economy/adjudication.py). Explicit claimant and
+source/entitlement mappings constrain subsequent goods claims without creating
+legal entitlement or changing the host's disposition. Case work competes with
+independent work over the same dated accounts; unknown cases retain their findings
+and withhold the complete candidate. This is private hypothetical conformance,
+not settlement or enforcement. See the
+[execution record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).

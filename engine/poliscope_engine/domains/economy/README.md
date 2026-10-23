@@ -100,3 +100,14 @@ prerequisites restrict only affected-account access, preserving unknowns and
 independent eligibility/funding/entitlements. The original request and actual
 staged evidence remain separate. This hypothetical preview neither adopts a
 policy nor publishes a book. See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-governance.md).
+
+`adjudication.py` composes actual DOM-04 legal-case results and administrative
+work with subsequent entitlement-constrained goods allocation (DOM-02/04).
+Explicit prerequisites bind each goods claim to a case for its claimant, the
+finite entitlement account and the binding's affected source/entitlement accounts.
+Only an upheld result preserves existing terms. Other known outcomes restrict the
+mapped claim; unknown cases withhold the complete candidate. Actual administration
+and economic work share one staged book, with earlier/future claims closed in the
+opposite phase. No ruling creates rights, rewrites history or enforces obligations.
+Private host callbacks retain complete context/review bindings and opaque evidence.
+See the [package record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).

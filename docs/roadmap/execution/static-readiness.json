@@ -32,8 +32,8 @@
       "static_source_rows": 6,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 2,
-      "declared_interfaces": 4,
+      "declared_mechanisms": 3,
+      "declared_interfaces": 6,
       "catalog_statuses": {
         "partial": 4
       }
@@ -65,10 +65,11 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 0,
-      "declared_interfaces": 0,
+      "declared_mechanisms": 2,
+      "declared_interfaces": 3,
       "catalog_statuses": {
-        "unresolved": 4
+        "partial": 1,
+        "unresolved": 3
       }
     },
     {
@@ -339,10 +340,13 @@
         "law_conflict"
       ],
       "owner": "economy",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "law_conflict:ea:administration-book",
+        "economy:ea:administration-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:economy-adjudication@v1"
       ]
     },
     {
