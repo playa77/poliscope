@@ -1052,3 +1052,22 @@ education, originating choices, numerical IPC, database publication, native Wind
 and original parent/cumulative acceptance remain open. After merge reassess
 maintained DOM-03/09 governance/communication against actual disclosure/access
 and finite channel-work interfaces.
+
+## Current boundary after PR #88
+
+PR #88 merged actual governance/education at
+`e593cfa9bdfd742e1c3cc3c6b6c020c462023d50`. The clean workspace was fetched;
+the checkout already contained the merge, so no stash or discarded work was
+needed. The same sequential Codex `/root`, controlled by the requesting user,
+continues under SV with
+[WP-032-counterparts-governance-communication](WP-032-counterparts-governance-communication.md).
+Actual scoped decisions narrow only explicitly dependent message publication
+prerequisites. Original disclosure, access, reach and delay remain authoritative.
+Canonical administrative time and disjoint finite channel/verification slots
+retain prior commitments; no message delivery/publication is inferred. Only
+maintained DOM-03/09 becomes newly ready: sixteen ready, 28 pending. Source
+activation, scientific/nonauthor review, operating-resource models, transitions,
+all-domain education, originating choices, public numerical IPC, database
+publication, native Windows and original parent/cumulative acceptance remain
+open. After merge reassess maintained DOM-03/11 governance/participation against
+actual voluntary participation and finite time prerequisites.
