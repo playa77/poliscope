@@ -1019,3 +1019,19 @@ review, operating-resource/lifecycle models, transitions, all-domain education,
 originating choices, numerical IPC, database publication, native Windows and
 original parent/cumulative acceptance remain open. After merge reassess maintained
 DOM-03/04 governance/adjudication against actual decision and case-work interfaces.
+
+## Current boundary after PR #86
+
+PR #86 merged actual economy/infrastructure at
+`8c2840c`. Clean workspace fetched and fast-forwarded; no stash or discarded work.
+The same sequential Codex `/root`, controlled by the requesting user, continues
+under SV with [WP-032-counterparts-governance-adjudication](WP-032-counterparts-governance-adjudication.md).
+Actual scoped decisions and case-work prerequisites share one finite dated book.
+Every case declares whether approval is required. Approval preserves original work
+terms; rejection restricts mapped work, never merits, rights or enforcement.
+Only maintained DOM-03/04 becomes newly ready: fourteen ready, 30 pending.
+Source activation, nonauthor/scientific review, adoption/enforcement, transitions,
+all-domain education, originating choices, numerical IPC, database publication,
+native Windows and original parent/cumulative acceptance remain open. After merge
+reassess maintained DOM-03/06 governance/education against actual student/staff
+and decision-work interfaces.

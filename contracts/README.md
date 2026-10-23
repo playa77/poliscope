@@ -365,3 +365,10 @@ directed reach restrict existing access terms; unknowns withhold the complete
 candidate. Slot and economy books remain disjoint and inspectable. No throughput,
 operating resources, rights, lifecycle model or public IPC is inferred. See the
 [package record](../docs/roadmap/execution/WP-032-counterparts-economy-infrastructure.md).
+
+`governance-adjudication.schema.json` and `governance-adjudication.ts` describe the
+private v1 DOM-03/04 request/evidence contract. Every case explicitly declares its
+approval prerequisite. Actual decisions and case work share canonical finite time;
+opaque reviewed host ports carry context-bound evidence digests. No wire handler,
+policy adoption, rights creation, legal enforcement or scientific acceptance is
+added. Unknown prerequisites withhold the complete candidate.

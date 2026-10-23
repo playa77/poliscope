@@ -101,3 +101,11 @@ one-slot demands leave 1 each. Care explicitly declares independence, other clai
 name full reach prerequisites. Finite feasible-set/Fraction oracles, replay, holds,
 queue/procedure alternatives and two-scope tests check conservation. This models
 prerequisites, not empirical demand, synchronized delivery or operating resources.
+
+`governance-adjudication-v1.json` is a literal synthetic DOM-03/04 fixture: one
+canonical cohort has 10 hours, decision work needs 3 (1 previously posted), care
+holds 2, and legal work requests 7. Decision approval leaves 5 hours for the case,
+which remains capacity-blocked with 2 hours unmet. Stock and entitlements remain
+12 kg and 5 respectively. The two local scopes overlap through canonical identities;
+tests also exercise explicitly authored regional/local jurisdiction. No model of
+legal merits, policy adoption, enforcement or scientific validity is implied.

@@ -72,3 +72,11 @@ economic work share one dated finite account book. Rejection, missing quorum and
 capacity shortage remain distinguishable; conflicting or unknown decisions
 withhold a complete candidate. Approval remains a counterfactual prerequisite,
 never policy adoption or permission to override existing access restrictions.
+
+`adjudication.py` composes the actual decision procedure with DOM-04 case work on
+one finite dated book. Every case explicitly declares approval dependence or
+independence; known nonapproval restricts only mapped work. Existing eligibility,
+capacity and legal disposition remain authoritative. Prior work and holds survive
+replay. Unknown prerequisites withhold the complete private candidate. Reviewed
+opaque context/book ports in `adjudication_counterpart.py` enable bounded DOM-03/04
+conformance; no policy adoption, merits inference, enforcement or public IPC.

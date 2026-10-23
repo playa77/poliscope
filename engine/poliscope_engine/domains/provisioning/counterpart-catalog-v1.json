@@ -2753,7 +2753,7 @@
         {
           "branch_id": "society:domain/03/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:eg-administration-mechanism",
@@ -2761,6 +2761,10 @@
             },
             {
               "id": "authored:eg-policy-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ga-administration-mechanism",
               "version": "v1"
             }
           ],
@@ -2770,7 +2774,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:economy-governance-v1"
+            "authored:economy-governance-v1",
+            "authored:governance-adjudication-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2899,6 +2904,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "governance:ga:context",
+          "mechanism": {
+            "id": "authored:ga-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ga:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "governance:ga:administration-book",
+          "mechanism": {
+            "id": "authored:ga-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ga:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -2908,6 +2981,10 @@
         },
         {
           "id": "authored:eg-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ga-administration-mechanism",
           "version": "v1"
         }
       ],
@@ -2922,7 +2999,7 @@
         {
           "branch_id": "society:domain/04/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:ea-administration-mechanism",
@@ -2930,6 +3007,14 @@
             },
             {
               "id": "authored:ea-policy-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ga-adjudication-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ga-policy-mechanism",
               "version": "v1"
             }
           ],
@@ -2939,7 +3024,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:economy-adjudication-v1"
+            "authored:economy-adjudication-v1",
+            "authored:governance-adjudication-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -3098,6 +3184,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "law_conflict:ga:administration-book-in",
+          "mechanism": {
+            "id": "authored:ga-adjudication-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ga:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ga:candidate",
+          "mechanism": {
+            "id": "authored:ga-adjudication-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ga:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ga:permission",
+          "mechanism": {
+            "id": "authored:ga-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ga:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -3107,6 +3295,14 @@
         },
         {
           "id": "authored:ea-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ga-adjudication-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ga-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -3699,6 +3895,50 @@
         },
         {
           "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "law_conflict"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:governance-adjudication",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-04",
+      "integration_owner": "governance",
+      "interface_refs": [
+        "governance:ga:administration-book",
+        "law_conflict:ga:administration-book-in"
+      ],
+      "limits": "Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
           "entity_kind": "account"
         },
         {
