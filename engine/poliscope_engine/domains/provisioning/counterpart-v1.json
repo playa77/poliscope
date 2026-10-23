@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:pair-work-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "pair:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "pair:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "pair:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:pair-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-economy-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-economy",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:pair-provisioning-mechanism",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "pair:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "pair:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "pair:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:pair-provisioning",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-economy-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-economy",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "pair:finite-book"
+    ]
+  }
+]

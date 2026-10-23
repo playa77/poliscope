@@ -81,3 +81,28 @@ Unavailable hooks fail explicitly. WP-034 must extend this with scheduling,
 checkpoint/replay and durable publication evidence. The harness is trusted-host
 validation, not a sandbox: snapshot/repeat checks cannot prove arbitrary Python
 free of filesystem/network side effects. No imported code is executed here.
+
+## Authored DOM-01/02 counterpart
+
+`templates()` retains the initial unactivated inventory above.
+`conformance_catalog()` layers the fixed authored
+`provisioning/counterpart-catalog-v1.json` declarations over it. Only
+`pair:DOM-01:DOM-02` is `ready_for_conformance`; 43 pairs stay pending. This
+names a host-only finite fixture, not parent or scientific acceptance. The two
+authored modules classify every branch as partial hypothetical support with
+explicit limits; no immutable source model is activated.
+
+The real adapter and host binding are documented in
+[provisioning](provisioning/README.md). Matching label ports carry opaque digests
+of the complete bound context and staged book. They are not quantity ports,
+serialized stock payloads or public execution capabilities. Both callbacks run
+the actual domain evaluators; no generic pass-through arithmetic substitutes for
+them. `run_bound_case` rebuilds a fresh registry against the actual case world,
+checks catalog/model/runtime and context, then uses the common `run_case` harness.
+Trusted reviews remain an explicit host requirement. Passing synthetic SV
+conformance does not supply independent scientific review.
+
+The common evaluator retains `partial` observations and an `incomplete` outcome
+for these bounded declarations. The separate paired report exposes full staged
+balances, actual/unmet claims, loss, holds and posting provenance. No generic
+engine account publication, database write or new IPC is implied.

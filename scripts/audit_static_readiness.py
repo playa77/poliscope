@@ -5,8 +5,7 @@ import importlib
 import json
 from pathlib import Path
 
-from poliscope_engine.domains import DomainRegistry
-from poliscope_engine.contracts.domains import DomainModule, PairedDomainContract
+from poliscope_engine.domains import conformance_catalog
 
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOT = ROOT / 'docs/roadmap/execution/static-readiness.json'
@@ -23,12 +22,8 @@ def read(path):
 
 def audit(root=ROOT):
     source = read(root / 'docs/roadmap/execution/society/inventory.json')
-    catalog = read(root / 'engine/poliscope_engine/domains/catalog-v1.json')
-    if catalog['contract_version'] != 1:
-        raise ValueError('unsupported_catalog_version')
-    modules = [DomainModule.model_validate(m) for m in catalog['modules']]
-    pairs = [PairedDomainContract.model_validate(p) for p in catalog['pairs']]
-    registry = DomainRegistry(modules, pairs)
+    registry = conformance_catalog(root / 'engine/poliscope_engine/domains')
+    modules, pairs = registry.modules, registry.pairs
     if {m.domain for m in registry.modules} != set(DOMAINS):
         raise ValueError('incomplete_domain_inventory')
     # Compare the topology to the maintained domain register, rather than only
