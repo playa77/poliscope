@@ -46,6 +46,7 @@ def host_registry(request, *, graph, units, reviews):
     from ..provisioning.counterpart import education_definitions, continuity_definitions, infrastructure_definitions, definitions as economy_definitions, care_definitions, health_definitions, environment_definitions
     from .governance_counterpart import definitions as governance_definitions
     mechanisms = policy_registry(units=units, reviews=reviews)
+    from poliscope_engine.domains.economy.health_counterpart import definitions as economy_health_definitions
     from poliscope_engine.domains.economy.education_counterpart import definitions as economy_education_definitions
     request = EconomyAdjudicationRequest.model_validate_json(request.model_dump_json())
     validate_context(request, graph, units)
@@ -79,9 +80,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-governance-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
-        definitions=(*definitions(), *economy_education_definitions(), *economy_care_definitions(), *governance_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-health-v1', 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-governance-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:economy-health', 'v1'), ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
+        definitions=(*definitions(), *economy_health_definitions(), *economy_education_definitions(), *economy_care_definitions(), *governance_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
         implementations=[Implementation('authored:ea-administration', 'v1', 'static', work),
                          Implementation('authored:ea-economy', 'v1', 'static', economy),
                          *mechanisms.implementations])

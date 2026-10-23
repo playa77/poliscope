@@ -84,3 +84,11 @@ rights cover materials 2 and goods 2. Independent facility capacity 3 covers
 seat 2 and competing use 1. Prior care/seat postings and holds are retained once.
 It supplies no empirical learning or synchronized delivery claim. Tests derive
 finite time, stock/entitlement and facility expectations independently.
+
+`economy-health-v1.json` is a literal synthetic DOM-02/07 fixture. One cohort's
+12 h covers other care 3 (including 1 prior), patient care 3, staff 2 and
+employment 4, with employment unmet 4. Supplies 2 and goods 2 consume 4 kg and
+4 existing entitlements; 16 kg remains. Separate facility capacity 3 covers
+patient slots 2 (including 1 prior) and other use 1. Integer/Fraction oracles,
+queue/procedure changes and replay check independent constraints. Quantities do
+not establish demand coverage, treatment, attendance or health outcomes.

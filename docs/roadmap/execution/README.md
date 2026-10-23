@@ -988,3 +988,18 @@ maintained pairs are ready for bounded conformance, 33 remain pending. The
 all-domain education path, source activation, nonauthor/scientific review,
 transitions, public numerical IPC, native Windows and original parent/cumulative
 acceptance remain open. After merge reassess maintained DOM-02/07 economy/health.
+
+## Current boundary after PR #84
+
+PR #84 merged actual economy/education at
+`730dc1c72b1eb88403981c4142b8549cb4c59b09`. The clean workspace was fetched and
+fast-forwarded without stash or discarded work. The same sequential Codex `/root`
+owner, controlled by the requesting user, continues with
+[WP-032-counterparts-economy-health](WP-032-counterparts-economy-health.md)
+under the fixed SV route. Actual health patient/staff/supply prerequisites share
+one finite dated economy book, with independent facility commitments. Only
+maintained DOM-02/07 is newly ready: twelve ready, 32 pending. Source activation,
+nonauthor/scientific review, treatment/outcomes, transitions, all-domain education,
+originating choices, numerical IPC, database/cross-view publication, native Windows
+and original parent/cumulative acceptance remain open. After merge reassess
+maintained DOM-02/08 economy/infrastructure.

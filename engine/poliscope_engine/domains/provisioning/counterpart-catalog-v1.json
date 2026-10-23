@@ -736,7 +736,7 @@
         {
           "branch_id": "society:domain/02/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
@@ -749,6 +749,10 @@
             {
               "id": "authored:ee-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:eh-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -759,7 +763,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -768,7 +773,7 @@
         {
           "branch_id": "society:domain/02/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
@@ -789,6 +794,10 @@
             {
               "id": "authored:ee-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:eh-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -801,7 +810,8 @@
             "authored:economy-governance-v1",
             "authored:economy-adjudication-v1",
             "authored:economy-care-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -810,7 +820,7 @@
         {
           "branch_id": "society:domain/02/3",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
@@ -823,6 +833,10 @@
             {
               "id": "authored:ee-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:eh-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -833,7 +847,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -842,7 +857,7 @@
         {
           "branch_id": "society:domain/02/4",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
@@ -855,6 +870,10 @@
             {
               "id": "authored:ee-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:eh-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -865,7 +884,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:economy-care-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1225,6 +1245,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "economy:eh:work-book-in",
+          "mechanism": {
+            "id": "authored:eh-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eh:work-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "economy:eh:candidate",
+          "mechanism": {
+            "id": "authored:eh-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eh:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1246,6 +1334,10 @@
         },
         {
           "id": "authored:ee-economy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:eh-economy-mechanism",
           "version": "v1"
         }
       ],
@@ -1762,10 +1854,14 @@
         {
           "branch_id": "society:domain/07/1",
           "evidence_status": "hypothetical",
-          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC.",
+          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:health-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:eh-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1775,7 +1871,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-health-v1"
+            "authored:provisioning-health-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1784,10 +1881,14 @@
         {
           "branch_id": "society:domain/07/2",
           "evidence_status": "hypothetical",
-          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC.",
+          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:health-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:eh-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1797,7 +1898,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-health-v1"
+            "authored:provisioning-health-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1806,10 +1908,14 @@
         {
           "branch_id": "society:domain/07/3",
           "evidence_status": "hypothetical",
-          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC.",
+          "limits": "Real host-only health beneficiary/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, health change, source activation, transitions or public numerical IPC. Bounded health prerequisites share time, supplies and entitlements with economy. Independent facility commitments; no treatment or health outcomes.",
           "mechanism_refs": [
             {
               "id": "authored:health-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:eh-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1819,7 +1925,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-health-v1"
+            "authored:provisioning-health-v1",
+            "authored:economy-health-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1907,11 +2014,83 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "id": "health:eh:context",
+          "mechanism": {
+            "id": "authored:eh-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eh:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "health:eh:work-book",
+          "mechanism": {
+            "id": "authored:eh-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "eh:work-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
         {
           "id": "authored:health-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:eh-work-mechanism",
           "version": "v1"
         }
       ],
@@ -3265,6 +3444,50 @@
         }
       ],
       "limits": "Bounded real education prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, learning, source activation, scientific review, transitions or public numerical IPC."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-02:DOM-07",
+      "domains": [
+        "economy",
+        "health"
+      ],
+      "integration_owner": "economy",
+      "owner_status": "designated",
+      "status": "ready_for_conformance",
+      "fixture_refs": [
+        {
+          "id": "synthetic:economy-health",
+          "version": "v1"
+        }
+      ],
+      "interface_refs": [
+        "health:eh:work-book",
+        "economy:eh:work-book-in"
+      ],
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "limits": "Bounded real health prerequisites and shared economy time/materials/rights. Separate facility commitments; opaque context-bound evidence. No attendance, treatment, health outcomes, source activation, scientific review, transitions or public numerical IPC."
     }
   ]
 }

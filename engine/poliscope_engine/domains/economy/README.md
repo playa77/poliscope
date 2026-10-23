@@ -130,3 +130,13 @@ Unknown prerequisites withhold the complete candidate, while known unmet inputs
 stay visible. Opaque context tokens bind actual policy declarations/reviews,
 request/world/units and runtime. See the literal economy/education fixture and
 [package evidence](../../../../docs/roadmap/execution/WP-032-counterparts-economy-education.md).
+
+The host-only DOM-02/07 counterpart lives in `health.py` and
+`health_counterpart.py`. Actual patient care, clinical staff and supply claims
+compete with other care, employment and goods in the identical economy request.
+Both pure services start from the original book, retaining prior commitments and
+holds once. Facilities stay disjoint; capacity does not establish treatment or
+outcomes. Unknown prerequisites withhold the complete candidate; known shortages
+retain independent commitments. Reviewed opaque tokens bind complete request,
+world, units, runtime and policy evidence. See the literal economy/health fixture
+and [package evidence](../../../../docs/roadmap/execution/WP-032-counterparts-economy-health.md).

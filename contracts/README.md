@@ -350,3 +350,10 @@ host-only DOM-02/06 prerequisite/economy evidence. They retain the exact shared
 work request, actual education policy and independent facility reports, pure
 economy recomputation and a complete candidate only when inputs resolve. These
 contracts do not activate numerical IPC, source models or teaching/learning.
+
+`economy-health.schema.json` and `economy-health.ts` describe private host-only
+DOM-02/07 prerequisite/economy evidence. Actual patient/staff/supply commitments
+share one finite economy request; facility commitments remain disjoint. Unknown
+inputs withhold the complete candidate. These contracts confer no public IPC,
+write authority, treatment or health-outcome inference. See the
+[package record](../docs/roadmap/execution/WP-032-counterparts-economy-health.md).
