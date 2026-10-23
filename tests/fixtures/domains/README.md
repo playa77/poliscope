@@ -61,3 +61,13 @@ canonical hours supply administration 3 (one previously posted), reserved care 2
 and work 5, leaving 2 unmet. Twelve goods and 5 entitlement units permit use 5,
 retaining stock 7 and unmet demand 3. Its equal-member ballot is hypothetical;
 no policy adoption, behavioral effect, public numerical IPC or gate is implied.
+
+`economy-adjudication-v1.json` is the synthetic actual DOM-02/04 counterpart:
+ten shared hours, three case hours (one already posted), two reserved care hours,
+and five remaining work hours. An explicit upheld host case permits existing
+goods terms to consume five of twelve stock units and five finite entitlements.
+Rights/rationale are hypothetical host assertions, with no inferred legal merits,
+rights creation, enforcement or source activation. Independent finite feasibility
+oracles, partial work, conflicts, unknowns and stale/forged context checks exercise
+the actual adapters; see the
+[package record](../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).

@@ -767,6 +767,10 @@
             {
               "id": "authored:eg-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ea-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -776,7 +780,8 @@
           ],
           "source_refs": [
             "authored:provisioning-economy-v1",
-            "authored:economy-governance-v1"
+            "authored:economy-governance-v1",
+            "authored:economy-adjudication-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -976,6 +981,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "economy:ea:administration-book-in",
+          "mechanism": {
+            "id": "authored:ea-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ea:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "economy:ea:candidate",
+          "mechanism": {
+            "id": "authored:ea-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ea:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -985,6 +1058,10 @@
         },
         {
           "id": "authored:eg-economy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ea-economy-mechanism",
           "version": "v1"
         }
       ],
@@ -2117,6 +2194,205 @@
       "persistence": "shared_store",
       "runtime": "shared_engine",
       "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/04/1",
+          "evidence_status": "hypothetical",
+          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:ea-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ea-policy-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Reviewed legal models, enforcement, other counterparts and original parent gates remain pending.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:economy-adjudication-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/2",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/3",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/04/4",
+          "evidence_status": "unreviewed",
+          "limits": "Catalog template only. Source archive is not an executable domain model.",
+          "mechanism_refs": [],
+          "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [],
+          "static_available": false,
+          "status": "unresolved",
+          "transition_available": false
+        }
+      ],
+      "domain": "law_conflict",
+      "identity": {
+        "id": "domain:law_conflict",
+        "version": "v1"
+      },
+      "interfaces": [
+        {
+          "id": "law_conflict:ea:context",
+          "mechanism": {
+            "id": "authored:ea-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ea:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ea:administration-book",
+          "mechanism": {
+            "id": "authored:ea-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ea:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ea:permission",
+          "mechanism": {
+            "id": "authored:ea-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ea:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        }
+      ],
+      "mechanisms": [
+        {
+          "id": "authored:ea-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ea-policy-mechanism",
+          "version": "v1"
+        }
+      ],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
     }
   ],
   "pairs": [
@@ -2475,6 +2751,50 @@
         "economy:eg:administration-book-in"
       ],
       "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "economy",
+        "law_conflict"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:economy-adjudication",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-02:DOM-04",
+      "integration_owner": "economy",
+      "interface_refs": [
+        "law_conflict:ea:administration-book",
+        "economy:ea:administration-book-in"
+      ],
+      "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

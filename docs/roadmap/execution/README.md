@@ -945,3 +945,18 @@ all-domain education, reviewed sources, transitions, numerical IPC,
 database/cross-view publication, Windows and original parent/cumulative gates
 remain open. After merge assess maintained DOM-02/04 economy/adjudication
 conformance against the actual rights and finite case-work interfaces.
+
+## Current boundary after PR #81
+
+PR #81 merged economy/governance at `1e08691`.
+[WP-032-counterparts-economy-adjudication](WP-032-counterparts-economy-adjudication.md)
+allocates bounded actual DOM-02/04 conformance to the same sequential owner under
+SV, with DOM-02 as integration owner. Actual legal cases and finite case work
+feed explicit claimant/source/entitlement prerequisites on one staged dated book.
+Upheld preserves host access terms; it creates neither rights nor goods. Other
+known outcomes restrict mapped claims; unknowns withhold the complete candidate.
+Nine maintained pairs become ready for bounded conformance; 35 remain pending.
+Remaining counterparts, originating choices, all-domain education, reviewed
+sources, enforcement, transitions, numerical IPC, database/cross-view publication,
+Windows and original parent/cumulative gates remain open. After merge reassess
+maintained DOM-02/05 economy/care against canonical care obligations and dated time.

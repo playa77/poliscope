@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ea-administration-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ea:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ea:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ea:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ea-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ea:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ea:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ea-economy-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ea:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ea:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ea:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ea-economy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ea:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ea:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ea-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "ea:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ea-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ea:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ea:finite-book"
+    ]
+  }
+]

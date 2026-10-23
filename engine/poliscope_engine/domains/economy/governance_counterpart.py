@@ -42,6 +42,7 @@ def host_registry(request, *, graph, units, reviews):
     Registering declarations never activates them. Normal MechanismRegistry review,
     context and fixture checks still apply. This host is not public IPC support.
     """
+    from .adjudication_counterpart import definitions as adjudication_definitions
     from ..provisioning.counterpart import education_definitions, continuity_definitions, infrastructure_definitions, definitions as economy_definitions, care_definitions, health_definitions, environment_definitions
     mechanisms = policy_registry(units=units, reviews=reviews)
     request = EconomyGovernanceRequest.model_validate_json(request.model_dump_json())
@@ -76,9 +77,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
-        definitions=(*definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-adjudication-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:economy-adjudication', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
+        definitions=(*definitions(), *adjudication_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
         implementations=[Implementation('authored:eg-administration', 'v1', 'static', work),
                          Implementation('authored:eg-economy', 'v1', 'static', economy),
                          *mechanisms.implementations])

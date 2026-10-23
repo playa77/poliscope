@@ -330,3 +330,10 @@ books and holders with explicitly closed phase claims. The decision restricts
 selected affected-account claims; approval creates no rights, stock, time or
 policy adoption. Unknowns withhold the final batch. Original and staged requests,
 ballots, policy conflicts, actual commitments and unmet claims remain inspectable.
+
+`economy-adjudication.schema.json` and `economy-adjudication.ts` describe the
+private host-only DOM-02/04 counterpart: actual case outcomes and finite shared
+administration precede explicitly mapped entitlement-constrained goods claims.
+These additive generated artifacts do not activate public numerical IPC, create
+rights or publish account candidates. See the
+[package record](../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).
