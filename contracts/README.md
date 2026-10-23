@@ -280,3 +280,9 @@ changes from the immutable base and validates exact Decimal conditions, scope an
 candidate identity before production revision Apply. Private rationale text stays
 outside immutable history/evidence/operation bindings in `private-interviews/`
 beside the selected store. Revisions hold only classified private references.
+
+`provisioning-care.schema.json` and `provisioning-care.ts` describe the host-only
+DOM-01/05 counterpart. Beneficiary-linked care and canonical population evidence
+precede the real provisioning/economy chain over identical dated work inputs.
+Unknown care/population withholds a complete book. No public IPC or write grant
+is added; source activation and empirical model review remain separate.

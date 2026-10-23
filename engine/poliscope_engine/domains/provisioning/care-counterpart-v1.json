@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:care-work-mechanism",
+    "version": "v1",
+    "domain": "social_organization",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "care-pair:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "care-pair:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "care-pair:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:care-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-care-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-care",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "care-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "care-pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:care-provisioning-mechanism",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "care-pair:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "care-pair:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "care-pair:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:care-provisioning",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-care-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-care",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "care-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "care-pair:finite-book"
+    ]
+  }
+]
