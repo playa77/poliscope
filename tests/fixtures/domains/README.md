@@ -71,3 +71,9 @@ rights creation, enforcement or source activation. Independent finite feasibilit
 oracles, partial work, conflicts, unknowns and stale/forged context checks exercise
 the actual adapters; see the
 [package record](../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).
+
+`economy-care-v1.json` is a synthetic DOM-02/05 fixture with two overlapping
+arrangements sharing one ten-person cohort, 12 h of dated time, a prior 1 h care
+posting and a 2 h care hold. Total care 3 h, training 3 h and paid work 6 h exhaust
+time; a request for 8 kg receives 4 kg from 20 kg stock under 4 entitlements.
+Obligations and capacities are authored inputs, not empirical care requirements.

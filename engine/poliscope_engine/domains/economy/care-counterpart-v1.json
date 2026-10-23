@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ec-work-mechanism",
+    "version": "v1",
+    "domain": "social_organization",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ec:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ec:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ec:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ec-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-care-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-care",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ec:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ec:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ec-economy-mechanism",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ec:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ec:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ec:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ec-economy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:economy-care-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:economy-care",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ec:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ec:finite-book"
+    ]
+  }
+]

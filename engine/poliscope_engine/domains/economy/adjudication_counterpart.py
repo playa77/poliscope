@@ -1,4 +1,5 @@
 """Reviewed opaque host bindings for the actual DOM-02/04 counterpart."""
+from poliscope_engine.domains.economy.care_counterpart import definitions as economy_care_definitions
 from decimal import Decimal
 from poliscope_engine.accounts import fail
 from poliscope_engine.contracts.world import LabelValue
@@ -77,9 +78,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-governance-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
-        definitions=(*definitions(), *governance_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:economy-care-v1', 'authored:economy-governance-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:economy-care', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
+        definitions=(*definitions(), *economy_care_definitions(), *governance_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
         implementations=[Implementation('authored:ea-administration', 'v1', 'static', work),
                          Implementation('authored:ea-economy', 'v1', 'static', economy),
                          *mechanisms.implementations])
