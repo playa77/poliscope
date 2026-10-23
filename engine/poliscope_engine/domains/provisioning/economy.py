@@ -10,7 +10,7 @@ from .chain import evaluate_chain
 from .context import binding
 
 
-def validate_context(request, graph, units):
+def validate_context(request, graph, units, *, work_only=True):
     if request.work.batch != request.chain.batch:
         fail('counterpart_batch_mismatch')
     if request.work.period_id != request.chain.period_id:
@@ -39,7 +39,7 @@ def validate_context(request, graph, units):
     for claim in [*batch.claims, *(c for p in request.chain.phases for c in p.claims)]:
         if entities.get(claim.claimant_id) not in ('population_cohort', 'institution'):
             fail('counterpart_claimant_identity')
-    if any(a.kind == 'goods' for a in request.work.activities):
+    if work_only and any(a.kind == 'goods' for a in request.work.activities):
         fail('counterpart_work_only')
     for claim in batch.claims:
         if claim.account_id not in accounts:
@@ -70,7 +70,16 @@ def evaluate_pair(request, *, graph, units):
             provisioning=provisioning, batch=provisioning.batch if resolved else None)
     if work.batch is None:
         return report(None)
-    batch = work.batch
+    return report(evaluate_staged_chain(request, work.batch, units))
+
+
+def evaluate_staged_chain(request, batch, units):
+    """Continue a validated pair from an already allocated private input book.
+
+    Earlier claims are closed in every phase; input commitments are never retried.
+    The caller owns prerequisite evaluation and validates the original context.
+    """
+    initial = batch
     evidence, compiled = [], []
     terms = {t.phase_id: t for t in request.use_terms}
     for phase in request.chain.phases:
@@ -102,7 +111,7 @@ def evaluate_pair(request, *, graph, units):
             break
         batch = result.batch
     provisioning = ProvisioningEvaluation(contract_version=1, status=result.status,
-        request=request.chain.model_copy(update={'batch': work.batch, 'phases': compiled}),
+        request=request.chain.model_copy(update={'batch': initial, 'phases': compiled}),
         phases=evidence, blocked_phase_id=result.blocked_phase_id,
         batch=result.batch, accounts=result.accounts)
-    return report(provisioning)
+    return provisioning

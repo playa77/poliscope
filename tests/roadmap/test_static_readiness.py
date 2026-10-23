@@ -20,9 +20,9 @@ class StaticReadinessTests(unittest.TestCase):
         self.assertEqual(len(report['domains']), 12)
         self.assertEqual(len(report['counterparts']), 44)
         self.assertEqual([p['id'] for p in report['counterparts']
-                          if p['status'] == 'ready_for_conformance'], ['pair:DOM-01:DOM-02', 'pair:DOM-01:DOM-05'])
+                          if p['status'] == 'ready_for_conformance'], ['pair:DOM-01:DOM-02', 'pair:DOM-01:DOM-05', 'pair:DOM-01:DOM-06'])
         self.assertEqual(sum(p['status'] == 'pending_counterpart'
-                             for p in report['counterparts']), 42)
+                             for p in report['counterparts']), 41)
 
     def mutate(self, path, change):
         with tempfile.TemporaryDirectory() as directory:

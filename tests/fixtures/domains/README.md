@@ -17,3 +17,12 @@ The expected accounts/claims and conservation derivation are literal data, never
 regenerated from evaluator output. `provisioning_economy_fixture.py` supplies only
 trusted construction/review bindings. Source models remain inactive; the common
 DAG observations are partial and the all-domain static gate remains open.
+
+`provisioning-education-v1.json` publishes `synthetic:provisioning-education@v1`.
+Actual DOM-06 policy/student/staff/supply and facility prerequisites feed actual
+production/freight/storage/use. The same cohort supplies student and staff time;
+its one 14 h book also funds care, production and freight. Education consumes
+2 kg from the canonical raw stock. The disjoint 3-slot facility pool retains a
+prior posting/hold and a competing claim. Expected accounts/claims and conservation
+are literal independently authored data; helper code constructs trusted bindings
+only. No learning, scientific validity or all-domain education gate is claimed.

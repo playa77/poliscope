@@ -48,3 +48,11 @@ Care and other work still compete in canonical accounts; facility order stays
 fixed. Full host/mechanism/world context binds edits. No default, application,
 learning or publication is provided. `coverage` checks the standalone exact source
 inventory in `content/knowledge-culture`; source options remain provenance only.
+
+The host-only real DOM-01/06 counterpart is in
+[`provisioning/education.py`](../provisioning/education.py), with fixed reviewed
+conformance bindings in `education_counterpart.py` beside it. Actual education
+commitments consume local time/materials once before cross-scope production,
+freight, storage and use. Facility evidence stays independent. See the versioned
+`tests/fixtures/domains/provisioning-education-v1.json` and package evidence;
+this bounded pair does not satisfy the all-domain education path or learning.

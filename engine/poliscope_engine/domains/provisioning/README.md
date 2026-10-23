@@ -223,3 +223,32 @@ remain partial/hypothetical; labels grant no public numerical IPC or publication
 Actual household care arrangements (DOM-05), assets/topology (DOM-08), ecology
 (DOM-10), continuity (DOM-12), real institutional source models, all-domain education,
 transitions and parent/cumulative acceptance remain separate.
+
+## Real education counterpart
+
+`education.evaluate_pair` connects actual DOM-06 prerequisite evaluation to the
+same staged provisioning phases. Its local work request must equal the exact
+local projection of the whole book and holders; claims, activities, dated terms,
+prior postings, reservations and subtotal views match. Remote stocks and holders
+remain untouched. Education adds local postings once; the chain closes all prior
+claims. The existing economy/care pair APIs and work-only restriction remain.
+
+`education_counterpart` supplies private reviewed host bindings and common
+conformance. Its fixed exclusive policy prerequisite goes through actual WP-013
+resolution and normal explicit review checks. Context binds the complete policy
+registry in addition to world, request, units and runtime. Labels contain opaque
+evidence digests; they never deserialize quantities or grant writes. The local
+facility pool retains independent posting IDs and is not merged into the chain.
+
+The synthetic fixture has one 14 h account: care 3 (including one prior), students
+3, staff 2, production 5 and freight 1. Education consumes 2 kg of the same raw
+stock used by production. Twenty opening kg equals 16 retained, 2 education
+materials, 1 declared loss and 1 final use. Facility capacity 3 is shared by two
+claims: seat 2 (including one prior) and other-seat 1 with 1 unmet. Independent
+integer/mass oracles check variations. Capacity is an input commitment, never
+attendance, delivered teaching, completion, skill or health improvement.
+
+The authored overlay now has DOM-01/02, DOM-01/05 and DOM-01/06 ready for bounded
+conformance; 41 pairs remain pending. These records supersede the earlier pair
+count above. All-domain education, source review/activation, public numerical IPC,
+publication, transitions and parent/cumulative acceptance remain separate.
