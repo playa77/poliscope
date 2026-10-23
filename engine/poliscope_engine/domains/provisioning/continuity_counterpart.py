@@ -26,11 +26,11 @@ BOOK = 'continuity-pair:work-book-in'
 CANDIDATE = 'continuity-pair:candidate'
 
 
-from .counterpart import definitions as economy_definitions, health_definitions, care_definitions, education_definitions, infrastructure_definitions
+from .counterpart import definitions as economy_definitions, health_definitions, care_definitions, education_definitions, infrastructure_definitions, environment_definitions
 
 
 def other_definitions():
-    return (*economy_definitions(), *health_definitions(), *care_definitions(), *education_definitions(), *infrastructure_definitions())
+    return (*environment_definitions(), *economy_definitions(), *health_definitions(), *care_definitions(), *education_definitions(), *infrastructure_definitions())
 
 
 def definitions():
@@ -76,8 +76,8 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-infrastructure-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-environment-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
         definitions=(*definitions(), *other_definitions()), reviews=reviews,
         implementations=[Implementation('authored:continuity-pair-work', 'v1', 'static', work),
                          Implementation('authored:continuity-pair-provisioning', 'v1', 'static', provisioning)])

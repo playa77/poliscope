@@ -297,3 +297,12 @@ independent work and prior commitments. Response slots remain disjoint from
 material/time accounts. No recovery, hazard prevention, aid delivery or import is
 inferred. `continuity_counterpart` runs the same real adapters under explicit
 host reviews and request/world/runtime-bound opaque evidence tokens.
+
+`environment.evaluate_pair` composes one actual production stage with ecological
+extraction and exact residual/loss sink allowances in the same canonical work and
+chain book. The environment adapter's trusted `evaluate_production` route restricts
+actual transformation choices, closes prior work and returns the single staged book
+used downstream. Sink budget debits are not physical absorption. Selected limits
+remain diagnostics. Unknown ecological/operating inputs withhold candidates;
+hypothetical coefficients, multiple production stages, reviewed models and all
+parent/publication/transition gates remain outside this bounded integration.

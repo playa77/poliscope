@@ -31,3 +31,12 @@ private evidence. It never applies or publishes the candidate book.
 `coverage.validate_coverage` reconciles every DOM-10 branch/leaf and pinned
 source/system choice against the immutable inventory. Partial coverage is finite
 prerequisite accounting only; remaining DOM-10 parent requirements stay open.
+
+The additive host-only `evaluate_production` composition route supports the
+bounded actual DOM-01/10 counterpart in `provisioning/environment.py`. It validates
+ecological boundaries within the complete shared book, closes earlier work claims,
+and restricts actual production choices before joint allocation. The integration
+checks exact residual/loss sink coefficients and rejects duplicated stock pools or
+unchecked downstream boundary use. Normal standalone `evaluate_environment` still
+requires every account/claim mapped and retains its independent-prerequisite scope.
+This adds hypothetical accounting conformance, not absorption or ecological effects.

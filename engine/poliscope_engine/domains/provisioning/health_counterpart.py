@@ -7,7 +7,7 @@ from poliscope_engine.mechanisms import MechanismRegistry, Implementation
 from poliscope_engine.numeric import TimeBasis, RUNTIME_ID
 from .health import evaluate_pair, validate_context, binding, MODEL
 from .context import digest
-from .counterpart import continuity_definitions, infrastructure_definitions, health_definitions as definitions, definitions as economy_definitions, care_definitions, education_definitions
+from .counterpart import continuity_definitions, infrastructure_definitions, health_definitions as definitions, definitions as economy_definitions, care_definitions, education_definitions, environment_definitions
 
 FIXTURE = ('synthetic:provisioning-health', 'v1')
 SOURCE = 'authored:provisioning-health-v1'
@@ -67,9 +67,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-education-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
-        fixture_ids=[FIXTURE, ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
-        definitions=(*definitions(), *continuity_definitions(), *infrastructure_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=[SOURCE, 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-education-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
+        fixture_ids=[FIXTURE, ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
+        definitions=(*definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
         implementations=[Implementation('authored:health-work', 'v1', 'static', work),
                          Implementation('authored:health-provisioning', 'v1', 'static', provisioning),
                          *mechanisms.implementations])

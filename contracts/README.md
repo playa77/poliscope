@@ -319,3 +319,7 @@ pair: finite continuity evidence, explicit full prerequisite mappings and the
 provisioning/economy candidate. Separate response slots never become material
 stock, throughput or proof of aid delivery. Opaque private host bindings require
 explicit reviews; no wire operation or numerical IPC is added.
+
+`provisioning-environment.schema.json` and `.ts` describe the host-only DOM-01/10
+shared extraction/production and exact residual/loss sink allowance composition.
+They grant no execution, source activation or public numerical IPC authority.
