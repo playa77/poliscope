@@ -80,3 +80,9 @@ independent work over the same dated accounts; unknown cases retain their findin
 and withhold the complete candidate. This is private hypothetical conformance,
 not settlement or enforcement. See the
 [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).
+
+The DOM-03/04 host in `../governance/adjudication.py` runs actual scoped decisions
+before finite case work on the same dated account book. Explicit independent cases
+remain independent of approval. Approval preserves host legal assertions and work
+terms; it grants no rights, adjudicates no merits and enforces no obligations.
+Unknowns and unmet case work remain inspectable; prior work is never refunded.

@@ -39,6 +39,8 @@
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",
+    "governance-adjudication.schema.json",
+    "governance-adjudication.ts",
     "governance.schema.json",
     "governance.ts",
     "health.schema.json",

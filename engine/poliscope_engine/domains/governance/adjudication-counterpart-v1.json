@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ga-administration-mechanism",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ga:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ga:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ga:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ga-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ga:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ga:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ga-adjudication-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ga:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ga:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ga:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ga-adjudication",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ga:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ga:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ga-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "ga:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ga-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-adjudication-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-adjudication",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ga:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ga:finite-book"
+    ]
+  }
+]

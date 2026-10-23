@@ -48,8 +48,8 @@
       "static_source_rows": 5,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 2,
-      "declared_interfaces": 3,
+      "declared_mechanisms": 3,
+      "declared_interfaces": 5,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -65,8 +65,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 2,
-      "declared_interfaces": 3,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 6,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 3
@@ -420,10 +420,13 @@
         "law_conflict"
       ],
       "owner": "governance",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "governance:ga:administration-book",
+        "law_conflict:ga:administration-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:governance-adjudication@v1"
       ]
     },
     {
