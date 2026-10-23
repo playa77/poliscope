@@ -59,3 +59,33 @@ callbacks or reviews. The original 44-edge topology is retained. Source activati
 remains `not_activated`; locks and immutable content are unchanged. Nonauthor
 review of shared health/work/rights conservation, independent facilities, policy
 review binding and unknown propagation remains a separately allocated follow-up.
+
+## Validation and handoff
+
+Executable candidate: `bf30ea630ca4f5f35901b24ac8f934a60ec7e641`;
+subsequent evidence commits change documentation only. Owner/inspector:
+Codex `/root`. **solo-validated; agent review deferred**.
+
+- Frozen Python and Node installs passed (Node `--ignore-scripts`); locks unchanged.
+- All **61 focused economy/health cases passed**; combined with the existing
+  provisioning/economy suite, **102 passed**. The first combined run caught missing
+  catalog coverage references for the new ports (9 failures); references were
+  corrected before the passing rerun and full suite. No older fixture was changed.
+- Final full Python: **3,096 passed and 54 subtests passed** in 271.73 s, with
+  four existing intentional forged-DTO serializer warnings. All prior counterpart
+  regressions and the exact twelve-pair readiness assertions passed.
+- Generated contracts, immutable content, TypeScript, both compatibility entry
+  points, readiness reconciliation, baseline, exact gate manifest/selection,
+  105 changed-document local Markdown links and whitespace passed. Gate selection
+  checks do not execute application scenarios. Roadmap unittest discovery:
+  **51 passed**.
+- The first desktop run, concurrent with full Python, passed 231/232 tests;
+  `overview.test.ts` timed out at its existing 5 s limit during its production
+  retained-history read. A sequential rerun is recorded below. No timeout or test
+  configuration was changed. The sequential `npm test` rerun passed all **232
+  desktop tests across 19 files**, then all **51 roadmap tests**.
+- Native packaging, full Electron flows and Windows were not run. No paid
+  providers, scientific review, source activation, treatment/outcomes, transitions,
+  numerical IPC, database publication or original parent/cumulative acceptance is
+  claimed. After merge reassess maintained DOM-02/08 economy/infrastructure with
+  the same sequential owner.
