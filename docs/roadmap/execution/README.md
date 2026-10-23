@@ -837,3 +837,18 @@ stay pending. No source activation, numerical IPC, database publication, parent,
 scientific or cumulative gate is accepted. After merge reassess the next bounded
 DOM-01/05 care counterpart against existing actual shared-work interfaces; retain
 all-domain education and the complete WP-032 acceptance backlog.
+
+## Current boundary after PR #74
+
+PR #74 merged the real provisioning/economy counterpart at
+`4324eb3f0d7f44fd26cde7da2beb53fd0c91b177`.
+[WP-032-counterparts-provisioning-care](WP-032-counterparts-provisioning-care.md)
+allocates the bounded DOM-01/05 host-only counterpart to the same sequential
+owner under SV. Actual care obligations and canonical membership validate the
+work book used by production/freight/storage/use. Overlapping arrangements count
+people once; no arrangement creates time. Only DOM-01/02 and DOM-01/05 become
+ready for conformance; 42 contracts remain pending. Unknown care/population
+withholds a complete candidate. Parent gates, all-domain education/originating
+choices, source activation, reviewed models, database publication, transitions,
+Windows and cumulative acceptance remain open. After merge reassess bounded
+DOM-01/06 education conformance against the actual finite training interface.

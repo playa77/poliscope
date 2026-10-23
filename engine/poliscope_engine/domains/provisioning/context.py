@@ -12,8 +12,8 @@ def digest(data):
     return 'sha256:' + sha256(json.dumps(data, sort_keys=True, separators=(',', ':')).encode()).hexdigest()
 
 
-def binding(request, graph, units):
-    return digest(dict(adapter='provisioning-economy-v1', model=MODEL, numeric_runtime=RUNTIME_ID, evaluator=EVALUATOR_ID,
+def binding(request, graph, units, *, adapter="provisioning-economy-v1", model=MODEL):
+    return digest(dict(adapter=adapter, model=model, numeric_runtime=RUNTIME_ID, evaluator=EVALUATOR_ID,
         request=request.model_dump(mode='json'),
         world=dict(civilization_id=graph.registry.civilization_id,
             entities=[e.model_dump(mode='json') for e in graph.registry.entities],

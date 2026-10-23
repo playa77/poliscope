@@ -59,6 +59,8 @@
     "pack.ts",
     "policy.schema.json",
     "policy.ts",
+    "provisioning-care.schema.json",
+    "provisioning-care.ts",
     "provisioning-economy.schema.json",
     "provisioning-economy.ts",
     "provisioning.schema.json",

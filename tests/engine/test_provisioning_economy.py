@@ -232,13 +232,13 @@ def test_private_binding_rejects_forged_or_stale_work_book():
     assert binding(request, graph, units) != context
 
 
-def test_pair_report_is_detached_and_only_selected_pair_is_ready():
+def test_pair_report_is_detached_and_only_validated_pairs_are_ready():
     request, _, graph, units = setup()
     result = evaluate_pair(request, graph=graph, units=units)
     result.batch.postings.clear()
     assert evaluate_pair(request, graph=graph, units=units).batch.postings
     catalog = conformance_catalog()
-    assert [p.id for p in catalog.pairs if p.status == 'ready_for_conformance'] == ['pair:DOM-01:DOM-02']
+    assert [p.id for p in catalog.pairs if p.status == 'ready_for_conformance'] == ['pair:DOM-01:DOM-02', 'pair:DOM-01:DOM-05']
 
 
 @pytest.mark.parametrize('field', ['model_id', 'numeric_runtime_id', 'catalog_id'])
