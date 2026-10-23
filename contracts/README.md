@@ -337,3 +337,10 @@ administration precede explicitly mapped entitlement-constrained goods claims.
 These additive generated artifacts do not activate public numerical IPC, create
 rights or publish account candidates. See the
 [package record](../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).
+
+`economy-care.schema.json` and `economy-care.ts` describe the private host-only
+DOM-02/05 pair. Actual care obligations and canonical membership validate the
+identical finite economy request. Both pure services recompute from one original
+book; prior work is retained once. Unknown population or economic terms withholds
+the complete candidate. These contracts confer no public IPC or write authority.
+See the [package record](../docs/roadmap/execution/WP-032-counterparts-economy-care.md).

@@ -736,10 +736,14 @@
         {
           "branch_id": "society:domain/02/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-economy-mechanism",
               "version": "v1"
             }
           ],
@@ -749,7 +753,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-economy-v1"
+            "authored:provisioning-economy-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -758,7 +763,7 @@
         {
           "branch_id": "society:domain/02/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
@@ -771,6 +776,10 @@
             {
               "id": "authored:ea-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ec-economy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -781,7 +790,8 @@
           "source_refs": [
             "authored:provisioning-economy-v1",
             "authored:economy-governance-v1",
-            "authored:economy-adjudication-v1"
+            "authored:economy-adjudication-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -790,10 +800,14 @@
         {
           "branch_id": "society:domain/02/3",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-economy-mechanism",
               "version": "v1"
             }
           ],
@@ -803,7 +817,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-economy-v1"
+            "authored:provisioning-economy-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -812,10 +827,14 @@
         {
           "branch_id": "society:domain/02/4",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC.",
+          "limits": "Bounded real host-only work/access and production/use adapter. Label ports carry request/context-bound staged-book digests, not quantities or write authority. Finite synthetic fixture; no source activation, scientific validity, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:pair-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-economy-mechanism",
               "version": "v1"
             }
           ],
@@ -825,7 +844,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-economy-v1"
+            "authored:provisioning-economy-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1049,6 +1069,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "economy:ec:work-book-in",
+          "mechanism": {
+            "id": "authored:ec-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ec:work-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "economy:ec:candidate",
+          "mechanism": {
+            "id": "authored:ec-economy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ec:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1063,6 +1151,10 @@
         {
           "id": "authored:ea-economy-mechanism",
           "version": "v1"
+        },
+        {
+          "id": "authored:ec-economy-mechanism",
+          "version": "v1"
         }
       ],
       "persistence": "shared_store",
@@ -1076,10 +1168,14 @@
         {
           "branch_id": "society:domain/05/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1089,7 +1185,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-care-v1"
+            "authored:provisioning-care-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1098,10 +1195,14 @@
         {
           "branch_id": "society:domain/05/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1111,7 +1212,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-care-v1"
+            "authored:provisioning-care-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1120,10 +1222,14 @@
         {
           "branch_id": "society:domain/05/3",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ec-work-mechanism",
               "version": "v1"
             }
           ],
@@ -1133,7 +1239,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-care-v1"
+            "authored:provisioning-care-v1",
+            "authored:economy-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1221,11 +1328,83 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "id": "social_organization:ec:context",
+          "mechanism": {
+            "id": "authored:ec-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ec:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "social_organization:ec:work-book",
+          "mechanism": {
+            "id": "authored:ec-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ec:work-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
         {
           "id": "authored:care-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ec-work-mechanism",
           "version": "v1"
         }
       ],
@@ -2819,6 +2998,50 @@
         }
       ],
       "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-02:DOM-05",
+      "domains": [
+        "economy",
+        "social_organization"
+      ],
+      "integration_owner": "economy",
+      "owner_status": "designated",
+      "status": "ready_for_conformance",
+      "fixture_refs": [
+        {
+          "id": "synthetic:economy-care",
+          "version": "v1"
+        }
+      ],
+      "interface_refs": [
+        "social_organization:ec:work-book",
+        "economy:ec:work-book-in"
+      ],
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "limits": "Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC."
     }
   ]
 }

@@ -111,3 +111,12 @@ and economic work share one staged book, with earlier/future claims closed in th
 opposite phase. No ruling creates rights, rewrites history or enforces obligations.
 Private host callbacks retain complete context/review bindings and opaque evidence.
 See the [package record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-adjudication.md).
+
+The private `care` adapter validates actual DOM-05 beneficiary obligations and
+canonical arrangement membership against the identical DOM-02 request. Care,
+training, paid/unpaid work and participation share dated canonical time; goods
+retain physical and access constraints. Both pure evaluations start from one
+original book, preserving prior postings and holds once. Unknown population or
+terms withholds the complete candidate; known unmet care remains explicit.
+`care_counterpart` supplies reviewed context-bound opaque conformance tokens.
+No care-quality, health, wage or demographic effect is inferred.

@@ -960,3 +960,18 @@ Remaining counterparts, originating choices, all-domain education, reviewed
 sources, enforcement, transitions, numerical IPC, database/cross-view publication,
 Windows and original parent/cumulative gates remain open. After merge reassess
 maintained DOM-02/05 economy/care against canonical care obligations and dated time.
+
+## Current boundary after PR #82
+
+PR #82 merged economy/adjudication at
+`a491d2c7c3d91f10f36fb6f6bd8e4f6eb60cc159`.
+[WP-032-counterparts-economy-care](WP-032-counterparts-economy-care.md)
+allocates bounded actual DOM-02/05 conformance to the same sequential owner under
+SV, with DOM-02 as integration owner. Actual canonical arrangement membership and
+beneficiary obligations validate care, training, employment and goods on one dated
+book. Prior commitments and unmet care remain inspectable; overlapping population
+creates no time. Unknowns withhold the complete candidate. Ten maintained pairs
+become ready for bounded conformance; 34 remain pending. Remaining counterparts,
+originating choices, all-domain education, reviewed sources, transitions, numerical
+IPC, database/cross-view publication, Windows and original parent/cumulative gates
+remain open. After merge reassess maintained DOM-02/06 economy/education.
