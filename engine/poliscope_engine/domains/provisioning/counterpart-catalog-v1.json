@@ -1183,14 +1183,6 @@
               "entity_kind": "account"
             },
             {
-              "entity_id": "school:slots",
-              "entity_kind": "account"
-            },
-            {
-              "entity_id": "school",
-              "entity_kind": "asset"
-            },
-            {
               "entity_id": "shared:cohort",
               "entity_kind": "population_cohort"
             },
@@ -1223,14 +1215,6 @@
             {
               "entity_id": "rights",
               "entity_kind": "account"
-            },
-            {
-              "entity_id": "school:slots",
-              "entity_kind": "account"
-            },
-            {
-              "entity_id": "school",
-              "entity_kind": "asset"
             },
             {
               "entity_id": "shared:cohort",
@@ -1713,14 +1697,6 @@
               "entity_kind": "account"
             },
             {
-              "entity_id": "school:slots",
-              "entity_kind": "account"
-            },
-            {
-              "entity_id": "school",
-              "entity_kind": "asset"
-            },
-            {
               "entity_id": "shared:cohort",
               "entity_kind": "population_cohort"
             },
@@ -1753,14 +1729,6 @@
             {
               "entity_id": "rights",
               "entity_kind": "account"
-            },
-            {
-              "entity_id": "school:slots",
-              "entity_kind": "account"
-            },
-            {
-              "entity_id": "school",
-              "entity_kind": "asset"
             },
             {
               "entity_id": "shared:cohort",
@@ -3286,14 +3254,6 @@
         {
           "entity_id": "rights",
           "entity_kind": "account"
-        },
-        {
-          "entity_id": "school:slots",
-          "entity_kind": "account"
-        },
-        {
-          "entity_id": "school",
-          "entity_kind": "asset"
         },
         {
           "entity_id": "shared:cohort",
