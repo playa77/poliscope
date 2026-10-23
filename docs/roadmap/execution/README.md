@@ -881,3 +881,17 @@ all-domain education, originating choices, reviewed sources, numerical IPC,
 database/cross-view evidence, transitions, Windows and original parent/cumulative
 gates remain open. After merge reassess bounded DOM-01/08 infrastructure
 conformance against its actual facility interface.
+
+## Current boundary after PR #77
+
+PR #77 merged actual provisioning/health at `0bdc150`.
+[WP-032-counterparts-provisioning-infrastructure](WP-032-counterparts-provisioning-infrastructure.md)
+allocates bounded actual DOM-01/08 conformance to the same sequential owner under
+SV. Actual finite facility/path reach gates explicit provisioning phase-claim
+prerequisites in a disjoint slot book. Unknown reach withholds the candidate;
+blocked reach preserves its cause and independent commitments. Slots never infer
+freight throughput or infrastructure operating resources. This adds the fifth
+ready pair, leaving 39 pending. Remaining counterparts, originating choices,
+all-domain education, reviewed sources, numerical IPC, database/cross-view
+evidence, transitions, Windows and original parent/cumulative gates remain open.
+After merge reassess a bounded DOM-01/09 communication counterpart.

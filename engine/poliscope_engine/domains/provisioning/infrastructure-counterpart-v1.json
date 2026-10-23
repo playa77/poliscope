@@ -1,0 +1,154 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:infrastructure-pair-work-mechanism",
+    "version": "v1",
+    "domain": "infrastructure",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "infrastructure-pair:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "infrastructure-pair:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "infrastructure-pair:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:infrastructure-pair-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Real host-only finite facility/path reach gates explicit provisioning prerequisites. Separate slot book; no slot/kg conversion, infrastructure operation, construction, source activation, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "infrastructure-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "infrastructure-pair:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:infrastructure-pair-provisioning-mechanism",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "infrastructure-pair:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "infrastructure-pair:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "infrastructure-pair:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:infrastructure-pair-provisioning",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:provisioning-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Real host-only finite facility/path reach gates explicit provisioning prerequisites. Separate slot book; no slot/kg conversion, infrastructure operation, construction, source activation, transitions or public numerical IPC.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:provisioning-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "infrastructure-pair:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "infrastructure-pair:finite-book"
+    ]
+  }
+]

@@ -26,3 +26,12 @@ and implementation identity; only claim order changes. Reports are detached pure
 candidates, with no database or numerical IPC publication. Standalone source gaps
 are reconciled by `coverage.validate_coverage`; partial transportation coverage is
 facility-slot reach, not freight movement or transportation service delivery.
+
+The host-only `provisioning.infrastructure` counterpart now invokes this actual
+finite evaluator to gate explicit production/freight/storage/use prerequisites.
+A complete phase-claim mapping is required. Full slot commitment and current
+reach are prerequisites, never a numerical freight-throughput conversion. The
+facility/path book remains disjoint; unknown reach withholds the chain candidate,
+and blocked reach preserves its cause and earlier independent commitments.
+This bounded static integration does not implement operating resources,
+construction, repairs, lifecycle transitions or parent acceptance.
