@@ -984,7 +984,7 @@ PR #83 merged the actual economy/care counterpart at
 is allocated sequentially to the same Codex `/root` owner/controller and SV
 route. Actual education prerequisites share canonical economy time/materials and
 access budgets; facility commitments remain independently inspectable. Eleven
-maintained pairs are targeted for bounded conformance, 33 remain pending. The
+maintained pairs are ready for bounded conformance, 33 remain pending. The
 all-domain education path, source activation, nonauthor/scientific review,
 transitions, public numerical IPC, native Windows and original parent/cumulative
 acceptance remain open. After merge reassess maintained DOM-02/07 economy/health.
