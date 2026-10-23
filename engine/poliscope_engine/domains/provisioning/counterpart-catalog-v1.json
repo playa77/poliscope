@@ -17,6 +17,10 @@
             {
               "id": "authored:care-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:education-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -44,6 +48,10 @@
             {
               "id": "authored:care-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:education-provisioning-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -70,6 +78,10 @@
             },
             {
               "id": "authored:care-provisioning-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:education-provisioning-mechanism",
               "version": "v1"
             }
           ],
@@ -244,6 +256,82 @@
               "entity_kind": "resource"
             }
           ]
+        },
+        {
+          "id": "provisioning:education-pair:work-book-in",
+          "mechanism": {
+            "id": "authored:education-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "education-pair:work-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ]
+        },
+        {
+          "id": "provisioning:education-pair:candidate",
+          "mechanism": {
+            "id": "authored:education-provisioning-mechanism",
+            "version": "v1"
+          },
+          "port_id": "education-pair:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -253,6 +341,10 @@
         },
         {
           "id": "authored:care-provisioning-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:education-provisioning-mechanism",
           "version": "v1"
         }
       ],
@@ -609,6 +701,170 @@
       "persistence": "shared_store",
       "runtime": "shared_engine",
       "transitions": []
+    },
+    {
+      "authorities": [],
+      "contract_version": 1,
+      "coverage": [
+        {
+          "branch_id": "society:domain/06/1",
+          "evidence_status": "hypothetical",
+          "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC.",
+          "mechanism_refs": [
+            {
+              "id": "authored:education-work-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Remaining education service/goods counterparts, reviewed models and parent acceptance remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:provisioning-education-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/06/2",
+          "evidence_status": "hypothetical",
+          "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC.",
+          "mechanism_refs": [
+            {
+              "id": "authored:education-work-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Remaining education service/goods counterparts, reviewed models and parent acceptance remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:provisioning-education-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        },
+        {
+          "branch_id": "society:domain/06/3",
+          "evidence_status": "hypothetical",
+          "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC.",
+          "mechanism_refs": [
+            {
+              "id": "authored:education-work-mechanism",
+              "version": "v1"
+            }
+          ],
+          "next_task": "Remaining education service/goods counterparts, reviewed models and parent acceptance remain open.",
+          "scope_kinds": [
+            "settlement",
+            "region"
+          ],
+          "source_refs": [
+            "authored:provisioning-education-v1"
+          ],
+          "static_available": true,
+          "status": "partial",
+          "transition_available": false
+        }
+      ],
+      "domain": "knowledge_culture",
+      "identity": {
+        "id": "domain:knowledge_culture",
+        "version": "v1"
+      },
+      "interfaces": [
+        {
+          "id": "education:education-pair:context",
+          "mechanism": {
+            "id": "authored:education-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "education-pair:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ]
+        },
+        {
+          "id": "education:education-pair:work-book",
+          "mechanism": {
+            "id": "authored:education-work-mechanism",
+            "version": "v1"
+          },
+          "port_id": "education-pair:work-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "stored",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "food",
+              "entity_kind": "resource"
+            }
+          ]
+        }
+      ],
+      "mechanisms": [
+        {
+          "id": "authored:education-work-mechanism",
+          "version": "v1"
+        }
+      ],
+      "persistence": "shared_store",
+      "runtime": "shared_engine",
+      "transitions": []
     }
   ],
   "pairs": [
@@ -679,6 +935,54 @@
         "provisioning:care-pair:work-book-in"
       ],
       "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "stored",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "food",
+          "entity_kind": "resource"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "provisioning",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:provisioning-education",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-01:DOM-06",
+      "integration_owner": "provisioning",
+      "interface_refs": [
+        "education:education-pair:work-book",
+        "provisioning:education-pair:work-book-in"
+      ],
+      "limits": "Real host-only education student/staff/supply prerequisites and finite provisioning; disjoint facility commitments. Opaque context-bound evidence, no attendance, learning, source activation, transitions or public numerical IPC.",
       "owner_status": "designated",
       "shared_references": [
         {

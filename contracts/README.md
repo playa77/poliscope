@@ -286,3 +286,13 @@ DOM-01/05 counterpart. Beneficiary-linked care and canonical population evidence
 precede the real provisioning/economy chain over identical dated work inputs.
 Unknown care/population withholds a complete book. No public IPC or write grant
 is added; source activation and empirical model review remain separate.
+
+`provisioning-education.schema.json` and `provisioning-education.ts` describe the
+host-only DOM-01/06 counterpart. The education request must match the exact local
+account/holder projection of the whole provisioning work book; all claims, prior
+postings, holds, terms and subtotals match. Remote stocks are retained untouched.
+Actual student/staff/supply commitments feed the chain once. Facility evidence
+stays in its disjoint pool. Unknown service prerequisites withhold a candidate;
+resolved blocked/ineligible services retain commitments without inferring teaching
+or learning. Policy declarations and explicit reviews bind the context. These
+contracts add no public execution, numerical IPC or publication permission.

@@ -852,3 +852,17 @@ withholds a complete candidate. Parent gates, all-domain education/originating
 choices, source activation, reviewed models, database publication, transitions,
 Windows and cumulative acceptance remain open. After merge reassess bounded
 DOM-01/06 education conformance against the actual finite training interface.
+
+## Current boundary after PR #75
+
+PR #75 merged the real provisioning/care counterpart at
+`2c356bb121e9bf73e7f37239238794a400185075`.
+[WP-032-counterparts-provisioning-education](WP-032-counterparts-provisioning-education.md)
+allocates bounded real DOM-01/06 conformance to the same sequential owner under
+SV. Actual education policy, student/staff time and supply prerequisites feed
+production/freight/storage/use through the exact local projection of one finite
+book. Facility commitments stay disjoint. This adds the third ready pair, leaving
+41 pending. All-domain education, source activation/review, remaining counterparts,
+originating choices, database/cross-view evidence, transitions, Windows and original
+WP-032/DOM/cumulative acceptance remain open. After merge reassess bounded
+DOM-01/07 health conformance against the existing actual service interface.
