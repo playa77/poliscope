@@ -421,3 +421,11 @@ retains original health preflight and declared needs, exposures and health state
 Actual case work precedes patient/staff/supply commitments on one dated book;
 facilities remain a disjoint finite pool. Legal bindings cover direct and required
 entitlement accounts. These DTOs imply no treatment, rights or publication.
+
+`adjudication-communication.schema.json` and `adjudication-communication.ts` are
+private generated contracts for actual case-work/message prerequisite composition.
+Complete case/independence mappings preserve finite disjoint administration and
+channel/verification books, original disclosure/access and prior commitments.
+Only explicit dependent new publication access is restricted by known non-upheld
+findings; unknowns withhold the complete candidate. No message payload, delivery,
+publication, rights creation, public IPC or parent acceptance is introduced.

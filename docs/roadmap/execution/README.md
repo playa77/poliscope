@@ -1160,3 +1160,23 @@ enforcement, transitions, all-domain education, originating choices, numerical
 IPC, database publication, Windows and parent/cumulative gates remain open.
 After merge reassess maintained DOM-04/09 adjudication/communication against
 actual case-work, disclosure/access and finite channel prerequisites.
+
+## Current boundary after PR #94
+
+PR #94 merged actual adjudication/health at
+`41abf3ca380a76ba61b4d729bd70afc9327e99a6`. The clean workspace fetched and
+fast-forwarded without stash or discarded work. The same sequential Codex `/root`,
+controlled by the requesting user, continues under SV with
+[WP-032-counterparts-adjudication-communication](WP-032-counterparts-adjudication-communication.md).
+Actual finite case work precedes explicitly dependent message prerequisites.
+Mappings bind recipient, channel controller/target, obligations and affected
+channel/verification accounts. Upheld preserves original terms; other known
+findings restrict only dependent new publication access. Prior postings, holds
+and subtotals remain inspectable in disjoint finite books. Only maintained
+DOM-04/09 becomes newly ready: 22 ready, 22 pending. Source activation,
+nonauthor/scientific review, rights creation, enforcement, message delivery or
+publication, truth/persuasion and operating-resource models, transitions,
+all-domain education, originating choices, public numerical IPC, database
+publication, native Windows and original parent/cumulative acceptance remain open.
+After merge reassess maintained DOM-04/11 adjudication/participation against
+actual case-work and voluntary participation prerequisites.

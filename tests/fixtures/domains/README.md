@@ -162,3 +162,11 @@ Two material units consume stock and entitlements; finite clinic slots include a
 prior commitment. Literal expectations and an independent integer/Fraction oracle
 check allocation, not treatment or scientific validity. Declared need, exposure
 and health-state references remain explicit under every legal outcome.
+
+`adjudication-communication-v1.json` is a synthetic actual DOM-04/09 fixture with
+explicit legal dependence and independence, canonical dated case work and finite
+disjoint channel/verification budgets. Literal expectations retain prior work,
+message postings, protected holds and subtotals. Independent integer feasible-set
+and Fraction oracles test competing message and procedural budgets; common
+conformance executes reviewed context-bound actual evaluators. It is not legal,
+scientific, delivery, publication or parent-gate evidence.
