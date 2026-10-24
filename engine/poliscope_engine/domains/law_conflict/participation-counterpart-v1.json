@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ap-administration-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ap:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ap:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ap:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ap-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit voluntary accommodation prerequisites. Disjoint finite administration and participation slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, attendance, inner experience, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ap:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ap:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ap-participation-mechanism",
+    "version": "v1",
+    "domain": "meaning_identity",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ap:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ap:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ap:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ap-participation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit voluntary accommodation prerequisites. Disjoint finite administration and participation slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, attendance, inner experience, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ap:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ap:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ap-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "asset"
+    ],
+    "inputs": [
+      {
+        "id": "ap:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ap-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit voluntary accommodation prerequisites. Disjoint finite administration and participation slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, attendance, inner experience, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ap:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ap:finite-book"
+    ]
+  }
+]

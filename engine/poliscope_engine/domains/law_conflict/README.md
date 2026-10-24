@@ -128,3 +128,12 @@ case administration and message books remain disjoint, retaining prior postings,
 holds and subtotals. Reviewed context-bound opaque host ports execute both actual
 evaluators through common conformance. No delivery/publication, truth, enforcement,
 source activation, scientific review, transitions or public numerical IPC is implied.
+
+`participation.py` and `participation_counterpart.py` compose actual case work
+with DOM-11's finite voluntary accommodation evaluator. Every participation claim
+explicitly maps to a case or independence; dependent cases bind group, facility,
+authority, original obligations and affected accounts. Original preflight runs
+before restrictions. Upheld preserves original declarations; other known findings
+restrict only dependent new access. Unknowns/conflicts withhold the complete
+candidate. Reviewed opaque host ports bind the full context and recompute evidence.
+No rights, obligation, attendance or operating-cost model is inferred.

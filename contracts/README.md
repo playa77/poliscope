@@ -429,3 +429,11 @@ channel/verification books, original disclosure/access and prior commitments.
 Only explicit dependent new publication access is restricted by known non-upheld
 findings; unknowns withhold the complete candidate. No message payload, delivery,
 publication, rights creation, public IPC or parent acceptance is introduced.
+
+`adjudication-participation.schema.json` and `.ts` are private v1 contracts for
+actual DOM-04/11 case-work and voluntary accommodation prerequisites. Complete
+claim mappings declare legal dependence or independence. Case/group/facility/
+authority/obligation/account identities are checked before staging. Original
+participation declarations remain evidence; legal findings only narrow dependent
+new access. Disjoint finite books preserve prior use, holds and subtotals.
+These contracts add no public IPC, attendance, rights creation or enforcement.
