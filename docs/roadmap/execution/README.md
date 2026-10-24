@@ -1234,3 +1234,21 @@ source activation, nonauthor/scientific review, transitions, all-domain educatio
 originating choices, numerical IPC, database publication, Windows and original
 parent/cumulative acceptance. After merge reassess maintained DOM-05/06
 care/education against actual beneficiary obligations and finite teaching capacity.
+
+## Current boundary after PR #99
+
+PR #99 merged governance/infrastructure at `d0547fd`. The clean workspace fetched
+and fast-forwarded without stash or discarded work. Sequential Codex `/root`,
+controlled by the requesting user, continues under SV with
+[WP-032-counterparts-care-education](WP-032-counterparts-care-education.md).
+Actual beneficiary care and education prerequisites recompute from identical
+original dated work inputs. Both reports must agree; overlapping household and
+community membership counts once. Care, study, teaching and employment compete
+under explicit host precedence, retaining prior work, holds and subtotals. Unknowns
+or unresolved education authority withhold the complete candidate. Only maintained
+DOM-05/06 becomes newly ready: 26 ready, 18 pending. No care-first default,
+attendance, learning, demographic effects, source activation, scientific/nonauthor
+review, transitions, all-domain education, originating choices, numerical IPC,
+database publication, Windows or original parent/cumulative acceptance is claimed.
+After merge reassess maintained DOM-05/07 care/health against actual beneficiary
+obligations and finite service prerequisites.

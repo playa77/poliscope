@@ -82,8 +82,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 6,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 8,
       "catalog_statuses": {
         "partial": 3
       }
@@ -98,8 +98,8 @@
       "static_source_rows": 3,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 5,
-      "declared_interfaces": 9,
+      "declared_mechanisms": 6,
+      "declared_interfaces": 11,
       "catalog_statuses": {
         "partial": 3
       }
@@ -614,10 +614,13 @@
         "knowledge_culture"
       ],
       "owner": "social_organization",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "social_organization:ce:work-book",
+        "knowledge_culture:ce:work-book-in"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:care-education@v1"
       ]
     },
     {

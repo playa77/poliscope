@@ -18,6 +18,8 @@
     "allocation.ts",
     "atlas.schema.json",
     "atlas.ts",
+    "care-education.schema.json",
+    "care-education.ts",
     "communication.schema.json",
     "communication.ts",
     "comparison.schema.json",
