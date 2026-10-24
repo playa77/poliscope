@@ -16,8 +16,8 @@
       "static_source_rows": 9,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 7,
-      "declared_interfaces": 14,
+      "declared_mechanisms": 8,
+      "declared_interfaces": 16,
       "catalog_statuses": {
         "partial": 3
       }
@@ -32,8 +32,8 @@
       "static_source_rows": 6,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 7,
-      "declared_interfaces": 14,
+      "declared_mechanisms": 8,
+      "declared_interfaces": 16,
       "catalog_statuses": {
         "partial": 4
       }
@@ -48,8 +48,8 @@
       "static_source_rows": 5,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 8,
-      "declared_interfaces": 15,
+      "declared_mechanisms": 9,
+      "declared_interfaces": 17,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -65,8 +65,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 16,
-      "declared_interfaces": 24,
+      "declared_mechanisms": 17,
+      "declared_interfaces": 26,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 3
@@ -82,8 +82,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 4,
-      "declared_interfaces": 8,
+      "declared_mechanisms": 5,
+      "declared_interfaces": 10,
       "catalog_statuses": {
         "partial": 3
       }
@@ -98,8 +98,8 @@
       "static_source_rows": 3,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 6,
-      "declared_interfaces": 11,
+      "declared_mechanisms": 7,
+      "declared_interfaces": 13,
       "catalog_statuses": {
         "partial": 3
       }
@@ -114,8 +114,8 @@
       "static_source_rows": 2,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 6,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 10,
       "catalog_statuses": {
         "partial": 3
       }
@@ -130,8 +130,8 @@
       "static_source_rows": 2,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 4,
-      "declared_interfaces": 7,
+      "declared_mechanisms": 5,
+      "declared_interfaces": 11,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -147,8 +147,8 @@
       "static_source_rows": 3,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 5,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 10,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -164,8 +164,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 1,
-      "declared_interfaces": 2,
+      "declared_mechanisms": 2,
+      "declared_interfaces": 7,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -181,8 +181,8 @@
       "static_source_rows": 4,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 3,
-      "declared_interfaces": 5,
+      "declared_mechanisms": 4,
+      "declared_interfaces": 10,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -198,8 +198,8 @@
       "static_source_rows": 5,
       "transition_source_rows": 0,
       "source_activation": "not_activated",
-      "declared_mechanisms": 4,
-      "declared_interfaces": 7,
+      "declared_mechanisms": 5,
+      "declared_interfaces": 14,
       "catalog_statuses": {
         "partial": 1,
         "unresolved": 2
@@ -630,10 +630,13 @@
         "health"
       ],
       "owner": "social_organization",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "social_organization:system:evidence",
+        "health:system:from/social_organization"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -643,10 +646,13 @@
         "meaning_identity"
       ],
       "owner": "social_organization",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "social_organization:system:evidence",
+        "meaning_identity:system:from/social_organization"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -656,10 +662,13 @@
         "health"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "health:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -669,10 +678,13 @@
         "infrastructure"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "infrastructure:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -682,10 +694,13 @@
         "communication"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "communication:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -695,10 +710,13 @@
         "environment"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "environment:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -708,10 +726,13 @@
         "meaning_identity"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "meaning_identity:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -721,10 +742,13 @@
         "security_risk"
       ],
       "owner": "knowledge_culture",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "knowledge_culture:system:evidence",
+        "security_risk:system:from/knowledge_culture"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -734,10 +758,13 @@
         "infrastructure"
       ],
       "owner": "health",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "health:system:evidence",
+        "infrastructure:system:from/health"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -747,10 +774,13 @@
         "communication"
       ],
       "owner": "health",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "health:system:evidence",
+        "communication:system:from/health"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -760,10 +790,13 @@
         "environment"
       ],
       "owner": "health",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "health:system:evidence",
+        "environment:system:from/health"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -773,10 +806,13 @@
         "security_risk"
       ],
       "owner": "health",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "health:system:evidence",
+        "security_risk:system:from/health"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -786,10 +822,13 @@
         "communication"
       ],
       "owner": "infrastructure",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "infrastructure:system:evidence",
+        "communication:system:from/infrastructure"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -799,10 +838,13 @@
         "environment"
       ],
       "owner": "infrastructure",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "infrastructure:system:evidence",
+        "environment:system:from/infrastructure"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -812,10 +854,13 @@
         "security_risk"
       ],
       "owner": "infrastructure",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "infrastructure:system:evidence",
+        "security_risk:system:from/infrastructure"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -825,10 +870,13 @@
         "meaning_identity"
       ],
       "owner": "communication",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "communication:system:evidence",
+        "meaning_identity:system:from/communication"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -838,10 +886,13 @@
         "security_risk"
       ],
       "owner": "communication",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "communication:system:evidence",
+        "security_risk:system:from/communication"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     },
     {
@@ -851,14 +902,17 @@
         "security_risk"
       ],
       "owner": "environment",
-      "status": "pending_counterpart",
-      "interfaces": [],
+      "status": "ready_for_conformance",
+      "interfaces": [
+        "environment:system:evidence",
+        "security_risk:system:from/environment"
+      ],
       "fixtures": [
-        "synthetic:domain-conformance@v1"
+        "synthetic:whole-system@v1"
       ]
     }
   ],
-  "remaining_acceptance": [
+  "execution_acceptance_not_assessed": [
     "Reviewed static mechanisms and typed ports registered for all twelve modules",
     "Actual counterpart fixtures with canonical identities, units, accounts and provenance",
     "All-domain education path and an entry choice originating in each domain",

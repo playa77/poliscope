@@ -1,0 +1,5033 @@
+{
+  "version": 1,
+  "request": {
+    "contract_version": 1,
+    "scope_id": "local",
+    "period_id": "day:0",
+    "knowledge_culture": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "services": [
+        {
+          "id": "course",
+          "authority_id": "local-authority",
+          "binding_id": "a",
+          "target_id": "water",
+          "parameter_id": "synthetic:parameter",
+          "eligibility": "allowed",
+          "participants": [
+            {
+              "cohort_id": "shared:cohort",
+              "claim_id": "learning"
+            }
+          ],
+          "staff": [
+            {
+              "cohort_id": "cohort:b",
+              "claim_id": "teach",
+              "qualification": "declared",
+              "qualification_refs": [
+                "synthetic:certificate"
+              ]
+            }
+          ],
+          "supply_claim_ids": [
+            "materials"
+          ],
+          "facility_claim_ids": [
+            "seat"
+          ],
+          "knowledge_refs": [
+            "synthetic:archive"
+          ],
+          "skill_refs": [
+            "synthetic:skill"
+          ],
+          "technology_assumption_refs": [],
+          "obligation_refs": [
+            "synthetic:care-duty"
+          ],
+          "source_refs": []
+        }
+      ],
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "a",
+          "mechanism": {
+            "id": "synthetic:policy",
+            "version": "v1"
+          },
+          "scope_id": "local",
+          "authority_id": "local-authority",
+          "entity_ids": [],
+          "parameter_id": "synthetic:parameter",
+          "value": {
+            "kind": "quantity",
+            "value": "2",
+            "unit_id": "kg",
+            "time_basis_id": null,
+            "denominator_scope_id": null
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "account"
+          ],
+          "choice_refs": [
+            "choice"
+          ]
+        }
+      ],
+      "rules": [],
+      "work": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "facilities": [
+        {
+          "asset_id": "school",
+          "account_id": "school:slots",
+          "source_refs": []
+        }
+      ],
+      "facility_allocation": {
+        "contract_version": 1,
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "school:slots",
+              "kind": "capacity",
+              "unit_id": "slots",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "seat",
+              "account_id": "school:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "bed",
+              "account_id": "school:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "procedure": "priority",
+        "claim_order": [
+          "seat",
+          "bed"
+        ],
+        "choices": [
+          {
+            "claim_id": "seat",
+            "access": "allowed",
+            "access_limit": "1",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "synthetic:slots",
+            "source_refs": []
+          },
+          {
+            "claim_id": "bed",
+            "access": "allowed",
+            "access_limit": "1",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "synthetic:slots",
+            "source_refs": []
+          }
+        ],
+        "mechanism_ref": "synthetic:slots",
+        "source_refs": []
+      },
+      "source_refs": []
+    },
+    "social_organization": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "population_property_id": "population",
+      "population_partition": "conditions",
+      "arrangements": [
+        {
+          "id": "home",
+          "scope_id": "home:scope",
+          "source_refs": []
+        },
+        {
+          "id": "network",
+          "scope_id": "network:scope",
+          "source_refs": []
+        }
+      ],
+      "obligations": [
+        {
+          "id": "duty",
+          "arrangement_id": "home",
+          "beneficiary_id": "shared:cohort",
+          "provider_id": "shared:cohort",
+          "authority_id": "local-authority",
+          "obligation_ref": "synthetic:duty",
+          "claim_id": "care",
+          "source_refs": [
+            "synthetic:source"
+          ]
+        },
+        {
+          "id": "health-duty",
+          "arrangement_id": "home",
+          "beneficiary_id": "shared:cohort",
+          "provider_id": "shared:cohort",
+          "authority_id": "local-authority",
+          "obligation_ref": "synthetic:care-need",
+          "claim_id": "patient",
+          "source_refs": [
+            "synthetic:source"
+          ]
+        }
+      ],
+      "work": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "source_refs": []
+    },
+    "governance": {
+      "contract_version": 1,
+      "authority_id": "local-authority",
+      "scope_id": "local",
+      "proposal_binding_id": "a",
+      "target_id": "water",
+      "parameter_id": "synthetic:parameter",
+      "eligible_member_ids": [
+        "shared:cohort",
+        "cohort:b",
+        "cohort:c"
+      ],
+      "ballots": [
+        {
+          "member_id": "shared:cohort",
+          "vote": "yes"
+        },
+        {
+          "member_id": "cohort:b",
+          "vote": "yes"
+        },
+        {
+          "member_id": "cohort:c",
+          "vote": "no"
+        }
+      ],
+      "quorum": 2,
+      "approval": "strict_majority",
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "a",
+          "mechanism": {
+            "id": "synthetic:policy",
+            "version": "v1"
+          },
+          "scope_id": "local",
+          "authority_id": "local-authority",
+          "entity_ids": [],
+          "parameter_id": "synthetic:parameter",
+          "value": {
+            "kind": "quantity",
+            "value": "2",
+            "unit_id": "kg",
+            "time_basis_id": null,
+            "denominator_scope_id": null
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "account"
+          ],
+          "choice_refs": [
+            "choice"
+          ]
+        }
+      ],
+      "rules": [],
+      "administration": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "administrative_claim_ids": [
+        "admin"
+      ],
+      "source_refs": [
+        "synthetic:source"
+      ]
+    },
+    "law_conflict": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "cases": [
+        {
+          "id": "case:a",
+          "right_ref": "hypothetical:right/access",
+          "claimant_id": "shared:cohort",
+          "authority_id": "local-authority",
+          "binding_id": "a",
+          "target_id": "water",
+          "parameter_id": "synthetic:parameter",
+          "eligibility": "eligible",
+          "incompatible_right_refs": [],
+          "disposition": "upheld",
+          "rationale": "Hypothetical host-selected ruling; no inferred merits.",
+          "work_claim_ids": [
+            "admin"
+          ],
+          "obligation_refs": [
+            "hypothetical:duty/a"
+          ],
+          "source_refs": [
+            "synthetic:source"
+          ]
+        },
+        {
+          "id": "case:b",
+          "right_ref": "hypothetical:right/access",
+          "claimant_id": "cohort:b",
+          "authority_id": "local-authority",
+          "binding_id": "a",
+          "target_id": "water",
+          "parameter_id": "synthetic:parameter",
+          "eligibility": "eligible",
+          "incompatible_right_refs": [],
+          "disposition": "dismissed",
+          "rationale": "Hypothetical host-selected ruling; no inferred merits.",
+          "work_claim_ids": [
+            "case:b"
+          ],
+          "obligation_refs": [
+            "hypothetical:duty/b"
+          ],
+          "source_refs": [
+            "synthetic:source"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "a",
+          "mechanism": {
+            "id": "synthetic:policy",
+            "version": "v1"
+          },
+          "scope_id": "local",
+          "authority_id": "local-authority",
+          "entity_ids": [],
+          "parameter_id": "synthetic:parameter",
+          "value": {
+            "kind": "quantity",
+            "value": "2",
+            "unit_id": "kg",
+            "time_basis_id": null,
+            "denominator_scope_id": null
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "account"
+          ],
+          "choice_refs": [
+            "choice"
+          ]
+        }
+      ],
+      "rules": [],
+      "administration": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "source_refs": [
+        "synthetic:source"
+      ]
+    },
+    "health": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "services": [
+        {
+          "id": "clinic",
+          "authority_id": "local-authority",
+          "binding_id": "a",
+          "target_id": "water",
+          "parameter_id": "synthetic:parameter",
+          "eligibility": "allowed",
+          "participants": [
+            {
+              "cohort_id": "shared:cohort",
+              "claim_id": "patient"
+            }
+          ],
+          "staff": [
+            {
+              "cohort_id": "cohort:b",
+              "claim_id": "nurse",
+              "qualification": "declared",
+              "qualification_refs": [
+                "synthetic:certificate"
+              ]
+            }
+          ],
+          "supply_claim_ids": [
+            "medicine"
+          ],
+          "facility_claim_ids": [
+            "bed"
+          ],
+          "obligation_refs": [
+            "synthetic:care-duty"
+          ],
+          "source_refs": [],
+          "need_refs": [
+            "synthetic:care-need"
+          ],
+          "exposure_refs": [
+            "synthetic:exposure"
+          ],
+          "health_state_refs": [
+            "synthetic:state"
+          ]
+        }
+      ],
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "a",
+          "mechanism": {
+            "id": "synthetic:policy",
+            "version": "v1"
+          },
+          "scope_id": "local",
+          "authority_id": "local-authority",
+          "entity_ids": [],
+          "parameter_id": "synthetic:parameter",
+          "value": {
+            "kind": "quantity",
+            "value": "2",
+            "unit_id": "kg",
+            "time_basis_id": null,
+            "denominator_scope_id": null
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "account"
+          ],
+          "choice_refs": [
+            "choice"
+          ]
+        }
+      ],
+      "rules": [],
+      "work": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "facilities": [
+        {
+          "asset_id": "school",
+          "account_id": "school:slots",
+          "source_refs": []
+        }
+      ],
+      "facility_allocation": {
+        "contract_version": 1,
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "school:slots",
+              "kind": "capacity",
+              "unit_id": "slots",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "seat",
+              "account_id": "school:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "bed",
+              "account_id": "school:slots",
+              "claimant_id": "shared:cohort",
+              "requested": "1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "procedure": "priority",
+        "claim_order": [
+          "seat",
+          "bed"
+        ],
+        "choices": [
+          {
+            "claim_id": "seat",
+            "access": "allowed",
+            "access_limit": "1",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "synthetic:slots",
+            "source_refs": []
+          },
+          {
+            "claim_id": "bed",
+            "access": "allowed",
+            "access_limit": "1",
+            "funding_known": true,
+            "requirements": [],
+            "outputs": [],
+            "loss_per_unit": "0",
+            "mechanism_ref": "synthetic:slots",
+            "source_refs": []
+          }
+        ],
+        "mechanism_ref": "synthetic:slots",
+        "source_refs": []
+      },
+      "source_refs": []
+    },
+    "infrastructure": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "reach:school:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "reach:clinic:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "reach:bridge:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "reach:road:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "school:visit",
+            "account_id": "reach:school:slots",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "clinic:visit",
+            "account_id": "reach:clinic:slots",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "reservations": [],
+        "postings": [],
+        "subtotals": []
+      },
+      "facilities": [
+        {
+          "asset_id": "school:entrance",
+          "location_id": "center",
+          "location_relationship_id": "school:location:entrance",
+          "account_id": "reach:school:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        },
+        {
+          "asset_id": "clinic:entrance",
+          "location_id": "center",
+          "location_relationship_id": "clinic:location:entrance",
+          "account_id": "reach:clinic:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "asset_id": "bridge",
+          "from_id": "village",
+          "to_id": "junction",
+          "relationship_id": "bridge:edge",
+          "account_id": "reach:bridge:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:link"
+          ]
+        },
+        {
+          "asset_id": "road",
+          "from_id": "junction",
+          "to_id": "center",
+          "relationship_id": "road:edge",
+          "account_id": "reach:road:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:link"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "school:visit",
+          "facility_asset_id": "school:entrance",
+          "origin_id": "village",
+          "path": [
+            "bridge",
+            "road"
+          ],
+          "access": "allowed",
+          "access_limit": "2",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        },
+        {
+          "claim_id": "clinic:visit",
+          "facility_asset_id": "clinic:entrance",
+          "origin_id": "village",
+          "path": [
+            "bridge",
+            "road"
+          ],
+          "access": "allowed",
+          "access_limit": "2",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "school:visit",
+        "clinic:visit"
+      ],
+      "mechanism_ref": "authored:infrastructure-reach-v1",
+      "source_refs": [
+        "synthetic:network"
+      ]
+    },
+    "communication": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "channel",
+            "kind": "capacity",
+            "unit_id": "messages",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "verification",
+            "kind": "capacity",
+            "unit_id": "messages",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "school:notice",
+            "account_id": "channel",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "clinic:notice",
+            "account_id": "channel",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "postings": [],
+        "reservations": [],
+        "subtotals": []
+      },
+      "channels": [
+        {
+          "asset_id": "bridge",
+          "controller_id": "local-authority",
+          "ownership_relationship_id": "channel:owner",
+          "account_id": "channel",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:channel"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "school:notice",
+          "message_ref": "synthetic:school:notice",
+          "channel_asset_id": "bridge",
+          "sender_id": "local-authority",
+          "recipient_id": "shared:cohort",
+          "channel_relationship_id": "school:message",
+          "recorded": true,
+          "available": true,
+          "publish_access": "allowed",
+          "receive_access": "allowed",
+          "disclosure": "allowed",
+          "access_limit": "2",
+          "verification_account_id": "verification",
+          "verification_procedure_ref": "synthetic:check",
+          "delay_ticks": 3,
+          "obligation_refs": [
+            "synthetic:disclosure-duty"
+          ],
+          "source_refs": [
+            "synthetic:message"
+          ]
+        },
+        {
+          "claim_id": "clinic:notice",
+          "message_ref": "synthetic:clinic:notice",
+          "channel_asset_id": "bridge",
+          "sender_id": "local-authority",
+          "recipient_id": "cohort:b",
+          "channel_relationship_id": "clinic:message",
+          "recorded": true,
+          "available": true,
+          "publish_access": "allowed",
+          "receive_access": "allowed",
+          "disclosure": "allowed",
+          "access_limit": "2",
+          "verification_account_id": "verification",
+          "verification_procedure_ref": "synthetic:check",
+          "delay_ticks": 3,
+          "obligation_refs": [
+            "synthetic:disclosure-duty"
+          ],
+          "source_refs": [
+            "synthetic:message"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "school:notice",
+        "clinic:notice"
+      ],
+      "mechanism_ref": "authored:communication-prerequisites-v1",
+      "source_refs": [
+        "synthetic:communication"
+      ]
+    },
+    "environment": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "water:stock",
+            "kind": "stock",
+            "unit_id": "kg",
+            "scope_id": "watershed",
+            "period_id": null,
+            "invariant": "physical",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "sink:slots",
+            "kind": "capacity",
+            "unit_id": "sink-kg",
+            "scope_id": "watershed",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "water:farm",
+            "account_id": "water:stock",
+            "claimant_id": "shared:cohort",
+            "requested": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "water:environment-clinic",
+            "account_id": "water:stock",
+            "claimant_id": "environment-clinic",
+            "requested": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "sink:farm",
+            "account_id": "sink:slots",
+            "claimant_id": "shared:cohort",
+            "requested": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "sink:environment-clinic",
+            "account_id": "sink:slots",
+            "claimant_id": "environment-clinic",
+            "requested": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "postings": [],
+        "reservations": [],
+        "subtotals": []
+      },
+      "boundaries": [
+        {
+          "resource_id": "water",
+          "role": "extraction_stock",
+          "account_id": "water:stock",
+          "capacity_status": "known",
+          "selected_limit": "4",
+          "policy_ref": "synthetic:water:limit",
+          "source_refs": [
+            "synthetic:boundary"
+          ]
+        },
+        {
+          "resource_id": "sink",
+          "role": "sink_allowance",
+          "account_id": "sink:slots",
+          "capacity_status": "known",
+          "selected_limit": "4",
+          "policy_ref": "synthetic:sink:limit",
+          "source_refs": [
+            "synthetic:boundary"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "water:farm",
+          "scope_id": "east",
+          "scope_relationship_id": "water:east",
+          "access": "allowed",
+          "access_limit": "4",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        },
+        {
+          "claim_id": "water:environment-clinic",
+          "scope_id": "west",
+          "scope_relationship_id": "water:west",
+          "access": "allowed",
+          "access_limit": "4",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        },
+        {
+          "claim_id": "sink:farm",
+          "scope_id": "east",
+          "scope_relationship_id": "sink:east",
+          "access": "allowed",
+          "access_limit": "4",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        },
+        {
+          "claim_id": "sink:environment-clinic",
+          "scope_id": "west",
+          "scope_relationship_id": "sink:west",
+          "access": "allowed",
+          "access_limit": "4",
+          "source_refs": [
+            "synthetic:demand"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "water:farm",
+        "water:environment-clinic",
+        "sink:farm",
+        "sink:environment-clinic"
+      ],
+      "mechanism_ref": "authored:ecological-prerequisites-v1",
+      "source_refs": [
+        "synthetic:environment"
+      ]
+    },
+    "meaning_identity": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "hall",
+            "kind": "capacity",
+            "unit_id": "participation",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "ritual",
+            "account_id": "hall",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "meeting",
+            "account_id": "hall",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "postings": [],
+        "reservations": [],
+        "subtotals": []
+      },
+      "facilities": [
+        {
+          "asset_id": "bridge",
+          "institution_id": "local-authority",
+          "ownership_relationship_id": "channel:owner",
+          "account_id": "hall",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:hall"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "ritual",
+          "group_id": "shared:cohort",
+          "facility_asset_id": "bridge",
+          "access_relationship_id": "access:a",
+          "commitment_ref": "synthetic:commitment:a",
+          "accommodation_ref": "synthetic:accommodation:a",
+          "participation": "requested",
+          "eligibility": "eligible",
+          "access": "allowed",
+          "access_limit": "3",
+          "obligation_status": "compatible",
+          "obligation_refs": [
+            "synthetic:obligation:a"
+          ],
+          "source_refs": [
+            "synthetic:group:a"
+          ]
+        },
+        {
+          "claim_id": "meeting",
+          "group_id": "cohort:b",
+          "facility_asset_id": "bridge",
+          "access_relationship_id": "access:b",
+          "commitment_ref": "synthetic:commitment:b",
+          "accommodation_ref": "synthetic:accommodation:b",
+          "participation": "requested",
+          "eligibility": "eligible",
+          "access": "allowed",
+          "access_limit": "3",
+          "obligation_status": "compatible",
+          "obligation_refs": [
+            "synthetic:obligation:b"
+          ],
+          "source_refs": [
+            "synthetic:group:b"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "ritual",
+        "meeting"
+      ],
+      "mechanism_ref": "authored:participation-prerequisites-v1",
+      "source_refs": [
+        "synthetic:participation"
+      ]
+    },
+    "security_risk": {
+      "contract_version": 1,
+      "scope_id": "local",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "depot",
+            "kind": "capacity",
+            "unit_id": "response",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "response",
+            "account_id": "depot",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "ordinary",
+            "account_id": "depot",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "postings": [],
+        "reservations": [],
+        "subtotals": []
+      },
+      "facilities": [
+        {
+          "asset_id": "bridge",
+          "institution_id": "local-authority",
+          "ownership_relationship_id": "channel:owner",
+          "account_id": "depot",
+          "origin": "local",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:depot"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "response",
+          "group_id": "shared:cohort",
+          "facility_asset_id": "bridge",
+          "access_relationship_id": "access:a",
+          "purpose": "response",
+          "hazard_ref": "authored:outage",
+          "exposure_refs": [
+            "synthetic:exposed-service:a"
+          ],
+          "vulnerability": "declared",
+          "authority": "authorized",
+          "disclosure": "satisfied",
+          "aid_condition": "satisfied",
+          "participation": "requested",
+          "eligibility": "eligible",
+          "access": "allowed",
+          "access_limit": "3",
+          "obligation_status": "compatible",
+          "obligation_refs": [
+            "synthetic:obligation:a"
+          ],
+          "source_refs": [
+            "synthetic:group:a"
+          ]
+        },
+        {
+          "claim_id": "ordinary",
+          "group_id": "cohort:b",
+          "facility_asset_id": "bridge",
+          "access_relationship_id": "access:b",
+          "purpose": "ordinary",
+          "hazard_ref": "authored:outage",
+          "exposure_refs": [
+            "synthetic:exposed-service:b"
+          ],
+          "vulnerability": "declared",
+          "authority": "authorized",
+          "disclosure": "satisfied",
+          "aid_condition": "satisfied",
+          "participation": "requested",
+          "eligibility": "eligible",
+          "access": "allowed",
+          "access_limit": "3",
+          "obligation_status": "compatible",
+          "obligation_refs": [
+            "synthetic:obligation:b"
+          ],
+          "source_refs": [
+            "synthetic:group:b"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "response",
+        "ordinary"
+      ],
+      "mechanism_ref": "authored:continuity-prerequisites-v1",
+      "source_refs": [
+        "synthetic:continuity"
+      ]
+    },
+    "provisioning": {
+      "contract_version": 1,
+      "work": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "holders": [
+          {
+            "account_id": "time:a",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "time:b",
+            "holder_id": "cohort:b",
+            "role": "time"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "job",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "learning",
+            "kind": "training",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "case:b",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "patient",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "nurse",
+            "kind": "paid_work",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "claim_id": "medicine",
+            "kind": "goods",
+            "eligibility": "allowed",
+            "access_limit": "1000",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "case:b",
+          "care",
+          "learning",
+          "patient",
+          "job",
+          "teach",
+          "nurse",
+          "materials",
+          "medicine"
+        ],
+        "mechanism_ref": "synthetic:care",
+        "source_refs": []
+      },
+      "chain": {
+        "contract_version": 1,
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "time:a",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "time:b",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "local",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "supplies",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "local",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "5",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "care",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "4",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "job",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "learning",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "admin",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "case:b",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "patient",
+              "account_id": "time:a",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "nurse",
+              "account_id": "time:b",
+              "claimant_id": "cohort:b",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            },
+            {
+              "id": "medicine",
+              "account_id": "supplies",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ],
+          "postings": [],
+          "reservations": [],
+          "subtotals": []
+        },
+        "period_id": "day:0",
+        "resources": [
+          {
+            "account_id": "supplies",
+            "resource_id": "food"
+          }
+        ],
+        "phases": [
+          {
+            "id": "use",
+            "kind": "use",
+            "claims": [
+              {
+                "id": "consume",
+                "account_id": "supplies",
+                "claimant_id": "shared:cohort",
+                "requested": "1",
+                "source_refs": [
+                  "authored:economy-access-work-v1"
+                ]
+              }
+            ],
+            "reservations": [],
+            "procedure": "priority",
+            "claim_order": [
+              "consume"
+            ],
+            "mechanism_ref": "synthetic:use",
+            "source_refs": [
+              "synthetic:whole-system"
+            ],
+            "choices": []
+          }
+        ]
+      },
+      "use_terms": [
+        {
+          "phase_id": "use",
+          "activities": [
+            {
+              "claim_id": "consume",
+              "kind": "goods",
+              "eligibility": "allowed",
+              "access_limit": "1000",
+              "terms_known": true,
+              "requirements": [],
+              "mechanism_ref": "authored:economy-access-work-v1",
+              "source_refs": [
+                "authored:economy-access-work-v1"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "economy": {
+      "contract_version": 1,
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "time:a",
+            "kind": "capacity",
+            "unit_id": "hours",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "12",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "time:b",
+            "kind": "capacity",
+            "unit_id": "hours",
+            "scope_id": "local",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "supplies",
+            "kind": "stock",
+            "unit_id": "kg",
+            "scope_id": "local",
+            "period_id": null,
+            "invariant": "physical",
+            "quantum": "1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "care",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "4",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "job",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "learning",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "teach",
+            "account_id": "time:b",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "materials",
+            "account_id": "supplies",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "admin",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "case:b",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "patient",
+            "account_id": "time:a",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "nurse",
+            "account_id": "time:b",
+            "claimant_id": "cohort:b",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          },
+          {
+            "id": "medicine",
+            "account_id": "supplies",
+            "claimant_id": "shared:cohort",
+            "requested": "2",
+            "source_refs": [
+              "authored:economy-access-work-v1"
+            ]
+          }
+        ],
+        "postings": [],
+        "reservations": [],
+        "subtotals": []
+      },
+      "holders": [
+        {
+          "account_id": "time:a",
+          "holder_id": "shared:cohort",
+          "role": "time"
+        },
+        {
+          "account_id": "time:b",
+          "holder_id": "cohort:b",
+          "role": "time"
+        }
+      ],
+      "activities": [
+        {
+          "claim_id": "care",
+          "kind": "care",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "job",
+          "kind": "paid_work",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "learning",
+          "kind": "training",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "teach",
+          "kind": "paid_work",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "materials",
+          "kind": "goods",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "admin",
+          "kind": "participation",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "case:b",
+          "kind": "participation",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "patient",
+          "kind": "care",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "nurse",
+          "kind": "paid_work",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        },
+        {
+          "claim_id": "medicine",
+          "kind": "goods",
+          "eligibility": "allowed",
+          "access_limit": "1000",
+          "terms_known": true,
+          "requirements": [],
+          "mechanism_ref": "authored:economy-access-work-v1",
+          "source_refs": [
+            "authored:economy-access-work-v1"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "admin",
+        "case:b",
+        "care",
+        "learning",
+        "patient",
+        "job",
+        "teach",
+        "nurse",
+        "materials",
+        "medicine"
+      ],
+      "mechanism_ref": "synthetic:care",
+      "source_refs": []
+    },
+    "requirements": [
+      {
+        "id": "pair:DOM-05:DOM-07",
+        "source": "health",
+        "target": "social_organization",
+        "source_result_id": "clinic",
+        "target_result_id": "care",
+        "obligation_ref": "synthetic:condition:pair:DOM-05:DOM-07",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-05:DOM-11",
+        "source": "meaning_identity",
+        "target": "social_organization",
+        "source_result_id": "ritual",
+        "target_result_id": "care",
+        "obligation_ref": "synthetic:condition:pair:DOM-05:DOM-11",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-07",
+        "source": "health",
+        "target": "knowledge_culture",
+        "source_result_id": "clinic",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-07",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-08",
+        "source": "infrastructure",
+        "target": "knowledge_culture",
+        "source_result_id": "school:visit",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-08",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-09",
+        "source": "communication",
+        "target": "knowledge_culture",
+        "source_result_id": "school:notice",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-09",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-10",
+        "source": "environment",
+        "target": "knowledge_culture",
+        "source_result_id": "water:farm",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-10",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-11",
+        "source": "meaning_identity",
+        "target": "knowledge_culture",
+        "source_result_id": "ritual",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-11",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-06:DOM-12",
+        "source": "security_risk",
+        "target": "knowledge_culture",
+        "source_result_id": "response",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:condition:pair:DOM-06:DOM-12",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-07:DOM-08",
+        "source": "infrastructure",
+        "target": "health",
+        "source_result_id": "school:visit",
+        "target_result_id": "clinic",
+        "obligation_ref": "synthetic:condition:pair:DOM-07:DOM-08",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-07:DOM-09",
+        "source": "communication",
+        "target": "health",
+        "source_result_id": "school:notice",
+        "target_result_id": "clinic",
+        "obligation_ref": "synthetic:condition:pair:DOM-07:DOM-09",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-07:DOM-10",
+        "source": "environment",
+        "target": "health",
+        "source_result_id": "water:farm",
+        "target_result_id": "clinic",
+        "obligation_ref": "synthetic:condition:pair:DOM-07:DOM-10",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-07:DOM-12",
+        "source": "security_risk",
+        "target": "health",
+        "source_result_id": "response",
+        "target_result_id": "clinic",
+        "obligation_ref": "synthetic:condition:pair:DOM-07:DOM-12",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-08:DOM-09",
+        "source": "communication",
+        "target": "infrastructure",
+        "source_result_id": "school:notice",
+        "target_result_id": "school:visit",
+        "obligation_ref": "synthetic:condition:pair:DOM-08:DOM-09",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-08:DOM-10",
+        "source": "environment",
+        "target": "infrastructure",
+        "source_result_id": "water:farm",
+        "target_result_id": "school:visit",
+        "obligation_ref": "synthetic:condition:pair:DOM-08:DOM-10",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-08:DOM-12",
+        "source": "security_risk",
+        "target": "infrastructure",
+        "source_result_id": "response",
+        "target_result_id": "school:visit",
+        "obligation_ref": "synthetic:condition:pair:DOM-08:DOM-12",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-09:DOM-11",
+        "source": "meaning_identity",
+        "target": "communication",
+        "source_result_id": "ritual",
+        "target_result_id": "school:notice",
+        "obligation_ref": "synthetic:condition:pair:DOM-09:DOM-11",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-09:DOM-12",
+        "source": "security_risk",
+        "target": "communication",
+        "source_result_id": "response",
+        "target_result_id": "school:notice",
+        "obligation_ref": "synthetic:condition:pair:DOM-09:DOM-12",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "pair:DOM-10:DOM-12",
+        "source": "security_risk",
+        "target": "environment",
+        "source_result_id": "response",
+        "target_result_id": "water:farm",
+        "obligation_ref": "synthetic:condition:pair:DOM-10:DOM-12",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:provisioning",
+        "source": "provisioning",
+        "target": "knowledge_culture",
+        "source_result_id": "chain",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:provisioning",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:economy",
+        "source": "economy",
+        "target": "knowledge_culture",
+        "source_result_id": "materials",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:economy",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:governance",
+        "source": "governance",
+        "target": "knowledge_culture",
+        "source_result_id": "a",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:governance",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:law_conflict",
+        "source": "law_conflict",
+        "target": "knowledge_culture",
+        "source_result_id": "case:a",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:law_conflict",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:social_organization",
+        "source": "social_organization",
+        "target": "knowledge_culture",
+        "source_result_id": "care",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:social_organization",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:health",
+        "source": "health",
+        "target": "knowledge_culture",
+        "source_result_id": "clinic",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:health",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:infrastructure",
+        "source": "infrastructure",
+        "target": "knowledge_culture",
+        "source_result_id": "school:visit",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:infrastructure",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:communication",
+        "source": "communication",
+        "target": "knowledge_culture",
+        "source_result_id": "school:notice",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:communication",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:environment",
+        "source": "environment",
+        "target": "knowledge_culture",
+        "source_result_id": "water:farm",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:environment",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:meaning_identity",
+        "source": "meaning_identity",
+        "target": "knowledge_culture",
+        "source_result_id": "ritual",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:meaning_identity",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      },
+      {
+        "id": "education:security_risk",
+        "source": "security_risk",
+        "target": "knowledge_culture",
+        "source_result_id": "response",
+        "target_result_id": "course",
+        "obligation_ref": "synthetic:education:security_risk",
+        "shared_references": [
+          {
+            "entity_id": "shared:cohort",
+            "entity_kind": "population_cohort"
+          }
+        ],
+        "source_refs": [
+          "synthetic:whole-system"
+        ]
+      }
+    ],
+    "missing_effects": [
+      "No learning, treatment, delivered messages, belief, demographic or hazard effects are inferred.",
+      "Operating costs, transitions and source scientific validity remain unmodeled."
+    ],
+    "source_refs": [
+      "synthetic:whole-system"
+    ]
+  },
+  "world": {
+    "civilization_id": "civ",
+    "entities": [
+      {
+        "id": "civ",
+        "entity_kind": "civilization",
+        "label": "civ",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "water",
+        "entity_kind": "resource",
+        "label": "water",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "food",
+        "entity_kind": "resource",
+        "label": "food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "account",
+        "entity_kind": "account",
+        "label": "account",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "choice",
+        "entity_kind": "decision",
+        "label": "choice",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "local-authority",
+        "entity_kind": "institution",
+        "label": "local-authority",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "regional-authority",
+        "entity_kind": "institution",
+        "label": "regional-authority",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "shared:cohort",
+        "entity_kind": "population_cohort",
+        "label": "shared:cohort",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "cohort:b",
+        "entity_kind": "population_cohort",
+        "label": "cohort:b",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "cohort:c",
+        "entity_kind": "population_cohort",
+        "label": "cohort:c",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "home",
+        "entity_kind": "household_arrangement",
+        "label": "home",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "network",
+        "entity_kind": "community_arrangement",
+        "label": "network",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school",
+        "entity_kind": "asset",
+        "label": "school",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "clinic",
+        "entity_kind": "asset",
+        "label": "clinic",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "bridge",
+        "entity_kind": "asset",
+        "label": "bridge",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "road",
+        "entity_kind": "asset",
+        "label": "road",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "village",
+        "entity_kind": "location",
+        "label": "village",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "junction",
+        "entity_kind": "location",
+        "label": "junction",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "center",
+        "entity_kind": "location",
+        "label": "center",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "island",
+        "entity_kind": "location",
+        "label": "island",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "sink",
+        "entity_kind": "resource",
+        "label": "sink",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "farm",
+        "entity_kind": "institution",
+        "label": "farm",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "environment-clinic",
+        "entity_kind": "institution",
+        "label": "clinic",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school:entrance",
+        "entity_kind": "asset",
+        "label": "school",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "clinic:entrance",
+        "entity_kind": "asset",
+        "label": "clinic",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "time:a",
+        "entity_kind": "account",
+        "label": "time:a",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "time:b",
+        "entity_kind": "account",
+        "label": "time:b",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "supplies",
+        "entity_kind": "account",
+        "label": "supplies",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school:slots",
+        "entity_kind": "account",
+        "label": "school:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "reach:school:slots",
+        "entity_kind": "account",
+        "label": "reach:school:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "reach:clinic:slots",
+        "entity_kind": "account",
+        "label": "reach:clinic:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "reach:bridge:slots",
+        "entity_kind": "account",
+        "label": "reach:bridge:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "reach:road:slots",
+        "entity_kind": "account",
+        "label": "reach:road:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "channel",
+        "entity_kind": "account",
+        "label": "channel",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "verification",
+        "entity_kind": "account",
+        "label": "verification",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "water:stock",
+        "entity_kind": "account",
+        "label": "water:stock",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "sink:slots",
+        "entity_kind": "account",
+        "label": "sink:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "hall",
+        "entity_kind": "account",
+        "label": "hall",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "depot",
+        "entity_kind": "account",
+        "label": "depot",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "raw",
+        "entity_kind": "account",
+        "label": "raw",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "stored",
+        "entity_kind": "account",
+        "label": "stored",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "labor",
+        "entity_kind": "account",
+        "label": "labor",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "rights",
+        "entity_kind": "account",
+        "label": "rights",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "east-authority",
+        "entity_kind": "institution",
+        "label": "east-authority",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      }
+    ],
+    "scopes": [
+      {
+        "id": "local",
+        "scope_kind": "settlement",
+        "label": "local",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "region",
+        "scope_kind": "region",
+        "label": "region",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "home:scope",
+        "scope_kind": "household",
+        "label": "home:scope",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "network:scope",
+        "scope_kind": "community",
+        "label": "network:scope",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "east",
+        "scope_kind": "settlement",
+        "label": "east",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "west",
+        "scope_kind": "settlement",
+        "label": "west",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "watershed",
+        "scope_kind": "region",
+        "label": "watershed",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      }
+    ],
+    "values": [
+      {
+        "id": "population:a",
+        "entity_id": "shared:cohort",
+        "scope_id": "local",
+        "partition": "conditions",
+        "property_id": "population",
+        "value": {
+          "kind": "quantity",
+          "value": "10",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "effective_time": {
+          "tick": 0,
+          "calendar_id": "synthetic:calendar"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      }
+    ],
+    "owners": [
+      {
+        "entity_id": "shared:cohort",
+        "property_id": "population",
+        "partition": "conditions",
+        "writer_id": "synthetic:host"
+      }
+    ],
+    "populations": [
+      {
+        "entity_id": "shared:cohort",
+        "role": "fixed_input"
+      },
+      {
+        "entity_id": "cohort:b",
+        "role": "fixed_input"
+      },
+      {
+        "entity_id": "cohort:c",
+        "role": "fixed_input"
+      }
+    ],
+    "relationships": [
+      {
+        "id": "local-j",
+        "relationship_version": "v1",
+        "relationship_kind": "jurisdiction",
+        "from_id": "local-authority",
+        "to_id": "local",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "regional-j",
+        "relationship_version": "v1",
+        "relationship_kind": "jurisdiction",
+        "from_id": "regional-authority",
+        "to_id": "region",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "member-l",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "water",
+        "to_id": "local",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "member-r",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "water",
+        "to_id": "region",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "member:home:scope",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "home:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:a"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "member:network:scope",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "network:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:a"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school:location",
+        "relationship_version": "v1",
+        "relationship_kind": "containment",
+        "from_id": "school",
+        "to_id": "center",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "clinic:location",
+        "relationship_version": "v1",
+        "relationship_kind": "containment",
+        "from_id": "clinic",
+        "to_id": "center",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "bridge:edge",
+        "relationship_version": "v1",
+        "relationship_kind": "connectivity",
+        "from_id": "village",
+        "to_id": "junction",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "road:edge",
+        "relationship_version": "v1",
+        "relationship_kind": "connectivity",
+        "from_id": "junction",
+        "to_id": "center",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "channel:owner",
+        "relationship_version": "v1",
+        "relationship_kind": "ownership",
+        "from_id": "local-authority",
+        "to_id": "bridge",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school:message",
+        "relationship_version": "v1",
+        "relationship_kind": "information_channel",
+        "from_id": "local-authority",
+        "to_id": "shared:cohort",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "clinic:message",
+        "relationship_version": "v1",
+        "relationship_kind": "information_channel",
+        "from_id": "local-authority",
+        "to_id": "cohort:b",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "access:a",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "shared:cohort",
+        "to_id": "bridge",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "access:b",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "cohort:b",
+        "to_id": "bridge",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "water:east",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "water",
+        "to_id": "east",
+        "aggregation": {
+          "kind": "weight",
+          "weight": "0.5"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "water:west",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "water",
+        "to_id": "west",
+        "aggregation": {
+          "kind": "weight",
+          "weight": "0.5"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "sink:east",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "sink",
+        "to_id": "east",
+        "aggregation": {
+          "kind": "weight",
+          "weight": "0.5"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "sink:west",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "sink",
+        "to_id": "west",
+        "aggregation": {
+          "kind": "weight",
+          "weight": "0.5"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "sink:region",
+        "relationship_version": "v1",
+        "relationship_kind": "access",
+        "from_id": "sink",
+        "to_id": "region",
+        "aggregation": {
+          "kind": "weight",
+          "weight": "0.5"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "school:location:entrance",
+        "relationship_version": "v1",
+        "relationship_kind": "containment",
+        "from_id": "school:entrance",
+        "to_id": "center",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "clinic:location:entrance",
+        "relationship_version": "v1",
+        "relationship_kind": "containment",
+        "from_id": "clinic:entrance",
+        "to_id": "center",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      }
+    ]
+  },
+  "units": [
+    {
+      "id": "kg",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "stock",
+      "scale": "1"
+    },
+    {
+      "id": "rights",
+      "dimension": [
+        [
+          "entitlement",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "coins",
+      "dimension": [
+        [
+          "currency",
+          1
+        ]
+      ],
+      "kind": "stock",
+      "scale": "1"
+    },
+    {
+      "id": "hours",
+      "dimension": [
+        [
+          "time",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "people",
+      "dimension": [
+        [
+          "population",
+          1
+        ]
+      ],
+      "kind": "count",
+      "scale": "1"
+    },
+    {
+      "id": "slots",
+      "dimension": [
+        [
+          "facility_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "messages",
+      "dimension": [
+        [
+          "message_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "participation",
+      "dimension": [
+        [
+          "participation_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "response",
+      "dimension": [
+        [
+          "response_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "sink-kg",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    }
+  ]
+}

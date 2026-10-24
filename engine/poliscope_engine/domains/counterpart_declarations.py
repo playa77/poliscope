@@ -11,6 +11,7 @@ from pathlib import Path
 from poliscope_engine.contracts.mechanisms import MechanismDefinition
 
 FILES = (
+    'static-system-v1.json',
     'provisioning/counterpart-v1.json',
     'provisioning/care-counterpart-v1.json',
     'provisioning/education-counterpart-v1.json',
