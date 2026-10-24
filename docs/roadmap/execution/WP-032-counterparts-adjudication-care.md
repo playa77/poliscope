@@ -57,7 +57,7 @@ fixture and context checks still gate execution. Earlier hosts gain fixed new
 declarations/source/fixture identities only, without callbacks or activation.
 Prior ready pairs, immutable source content and dependency locks are preserved.
 Only DOM-04/05 becomes newly ready: nineteen ready, 25 pending.
-**Solo-validated; agent review deferred**. Nonauthor review remains a follow-up;
+**solo-validated; agent review deferred**. Nonauthor review remains a follow-up;
 no scientific review or original parent/cumulative acceptance is claimed.
 
 ## Validation and handoff
@@ -92,3 +92,12 @@ no scientific review or original parent/cumulative acceptance is claimed.
 - Final standard `npm test`, after full Python completed: **232 desktop tests
   across 19 files and 51 roadmap cases passed**. No timeout or test expectation
   changes were needed. Final staged diff and whitespace inspection passed.
+
+## PR #92 CI correction
+
+The first CI run stopped at `check_review_record.py`: the package's SV declaration
+was capitalized, while the gate requires the exact lowercase text
+`solo-validated; agent review deferred`. Evidence-producing steps were skipped,
+so the always-run artifact upload then reported that `artifacts/` was absent.
+Corrected the declaration and reproduced the validation-route check locally.
+No workflow gate, artifact requirement, implementation or test expectation changed.
