@@ -37,6 +37,10 @@
             {
               "id": "authored:environment-pair-provisioning-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/provisioning",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -49,7 +53,8 @@
             "authored:provisioning-care-v1",
             "authored:provisioning-infrastructure-v1",
             "authored:provisioning-continuity-v1",
-            "authored:provisioning-environment-v1"
+            "authored:provisioning-environment-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -693,6 +698,42 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "id": "provisioning:system:context",
+          "mechanism": {
+            "id": "authored:system/provisioning",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "provisioning:system:evidence",
+          "mechanism": {
+            "id": "authored:system/provisioning",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -722,6 +763,10 @@
         },
         {
           "id": "authored:environment-pair-provisioning-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/provisioning",
           "version": "v1"
         }
       ],
@@ -757,6 +802,10 @@
             {
               "id": "authored:ei-economy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/economy",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining real counterparts, reviewed source models, parent acceptance and transitions remain open.",
@@ -769,7 +818,8 @@
             "authored:economy-care-v1",
             "authored:economy-education-v1",
             "authored:economy-health-v1",
-            "authored:economy-infrastructure-v1"
+            "authored:economy-infrastructure-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -1401,6 +1451,42 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "economy:system:context",
+          "mechanism": {
+            "id": "authored:system/economy",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "economy:system:evidence",
+          "mechanism": {
+            "id": "authored:system/economy",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1430,6 +1516,10 @@
         },
         {
           "id": "authored:ei-economy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/economy",
           "version": "v1"
         }
       ],
@@ -1461,6 +1551,10 @@
             {
               "id": "authored:ce-work-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/social_organization",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining care service/goods counterparts, reviewed models and parent acceptance remain open.",
@@ -1472,7 +1566,8 @@
             "authored:provisioning-care-v1",
             "authored:economy-care-v1",
             "authored:adjudication-care-v1",
-            "authored:care-education-v1"
+            "authored:care-education-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -1838,6 +1933,42 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "social_organization:system:context",
+          "mechanism": {
+            "id": "authored:system/social_organization",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "social_organization:system:evidence",
+          "mechanism": {
+            "id": "authored:system/social_organization",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1855,6 +1986,10 @@
         },
         {
           "id": "authored:ce-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/social_organization",
           "version": "v1"
         }
       ],
@@ -1886,6 +2021,10 @@
             {
               "id": "authored:ce-education-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/knowledge_culture",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining education service/goods counterparts, reviewed models and parent acceptance remain open.",
@@ -1897,7 +2036,8 @@
             "authored:provisioning-education-v1",
             "authored:economy-education-v1",
             "authored:adjudication-education-v1",
-            "authored:care-education-v1"
+            "authored:care-education-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -2364,6 +2504,42 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "knowledge_culture:system:context",
+          "mechanism": {
+            "id": "authored:system/knowledge_culture",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "knowledge_culture:system:evidence",
+          "mechanism": {
+            "id": "authored:system/knowledge_culture",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -2389,6 +2565,10 @@
         },
         {
           "id": "authored:ce-education-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/knowledge_culture",
           "version": "v1"
         }
       ],
@@ -2416,6 +2596,10 @@
             {
               "id": "authored:ah-health-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/health",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining health service/goods counterparts, reviewed models and parent acceptance remain open.",
@@ -2426,7 +2610,8 @@
           "source_refs": [
             "authored:provisioning-health-v1",
             "authored:economy-health-v1",
-            "authored:adjudication-health-v1"
+            "authored:adjudication-health-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -2714,6 +2899,78 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "health:system:context",
+          "mechanism": {
+            "id": "authored:system/health",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "health:system:from/social_organization",
+          "mechanism": {
+            "id": "authored:system/health",
+            "version": "v1"
+          },
+          "port_id": "system:from/social_organization",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "health:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/health",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "health:system:evidence",
+          "mechanism": {
+            "id": "authored:system/health",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -2727,6 +2984,10 @@
         },
         {
           "id": "authored:ah-health-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/health",
           "version": "v1"
         }
       ],
@@ -2758,6 +3019,10 @@
             {
               "id": "authored:gi-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/infrastructure",
+              "version": "v1"
             }
           ],
           "next_task": "Operating resources, construction/maintenance, spatial/digital models, remaining counterparts, parent acceptance and transitions remain open.",
@@ -2768,7 +3033,8 @@
           "source_refs": [
             "authored:provisioning-infrastructure-v1",
             "authored:economy-infrastructure-v1",
-            "authored:governance-infrastructure-v1"
+            "authored:governance-infrastructure-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -3070,6 +3336,78 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "id": "infrastructure:system:context",
+          "mechanism": {
+            "id": "authored:system/infrastructure",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "infrastructure:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/infrastructure",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "infrastructure:system:from/health",
+          "mechanism": {
+            "id": "authored:system/infrastructure",
+            "version": "v1"
+          },
+          "port_id": "system:from/health",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "infrastructure:system:evidence",
+          "mechanism": {
+            "id": "authored:system/infrastructure",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -3087,6 +3425,10 @@
         },
         {
           "id": "authored:gi-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/infrastructure",
           "version": "v1"
         }
       ],
@@ -3118,6 +3460,10 @@
             {
               "id": "authored:ak-continuity-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/security_risk",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining actual counterparts, reviewed sources, response-resource models and parent acceptance remain open.",
@@ -3128,7 +3474,8 @@
           "source_refs": [
             "authored:provisioning-continuity-v1",
             "authored:governance-continuity-v1",
-            "authored:adjudication-continuity-v1"
+            "authored:adjudication-continuity-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -3416,6 +3763,132 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "security_risk:system:context",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:from/health",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:from/health",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:from/infrastructure",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:from/infrastructure",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:from/communication",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:from/communication",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:from/environment",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:from/environment",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "security_risk:system:evidence",
+          "mechanism": {
+            "id": "authored:system/security_risk",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -3433,6 +3906,10 @@
         },
         {
           "id": "authored:ak-continuity-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/security_risk",
           "version": "v1"
         }
       ],
@@ -3452,6 +3929,10 @@
             {
               "id": "authored:environment-pair-work-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/environment",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining ecological mechanisms, reviewed models and parent requirements remain open.",
@@ -3460,7 +3941,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-environment-v1"
+            "authored:provisioning-environment-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -3578,11 +4060,105 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "id": "environment:system:context",
+          "mechanism": {
+            "id": "authored:system/environment",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "environment:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/environment",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "environment:system:from/health",
+          "mechanism": {
+            "id": "authored:system/environment",
+            "version": "v1"
+          },
+          "port_id": "system:from/health",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "environment:system:from/infrastructure",
+          "mechanism": {
+            "id": "authored:system/environment",
+            "version": "v1"
+          },
+          "port_id": "system:from/infrastructure",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "environment:system:evidence",
+          "mechanism": {
+            "id": "authored:system/environment",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
         {
           "id": "authored:environment-pair-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/environment",
           "version": "v1"
         }
       ],
@@ -3648,6 +4224,10 @@
             {
               "id": "authored:gk-administration-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/governance",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining actual counterparts, reviewed sources, response operating-resource models and parent acceptance remain open.",
@@ -3661,7 +4241,8 @@
             "authored:governance-education-v1",
             "authored:governance-communication-v1",
             "authored:governance-participation-v1",
-            "authored:governance-continuity-v1"
+            "authored:governance-continuity-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -4198,6 +4779,42 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "id": "governance:system:context",
+          "mechanism": {
+            "id": "authored:system/governance",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "governance:system:evidence",
+          "mechanism": {
+            "id": "authored:system/governance",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -4231,6 +4848,10 @@
         },
         {
           "id": "authored:gi-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/governance",
           "version": "v1"
         }
       ],
@@ -4310,6 +4931,10 @@
             {
               "id": "authored:ak-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/law_conflict",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining actual counterparts, reviewed sources, response-resource models and parent acceptance remain open.",
@@ -4325,7 +4950,8 @@
             "authored:adjudication-health-v1",
             "authored:adjudication-communication-v1",
             "authored:adjudication-participation-v1",
-            "authored:adjudication-continuity-v1"
+            "authored:adjudication-continuity-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -5258,6 +5884,42 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "law_conflict:system:context",
+          "mechanism": {
+            "id": "authored:system/law_conflict",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:system:evidence",
+          "mechanism": {
+            "id": "authored:system/law_conflict",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -5324,6 +5986,10 @@
         {
           "id": "authored:ak-policy-mechanism",
           "version": "v1"
+        },
+        {
+          "id": "authored:system/law_conflict",
+          "version": "v1"
         }
       ],
       "persistence": "shared_store",
@@ -5350,6 +6016,10 @@
             {
               "id": "authored:am-communication-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/communication",
+              "version": "v1"
             }
           ],
           "next_task": "DOM-09: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
@@ -5359,7 +6029,8 @@
           ],
           "source_refs": [
             "authored:governance-communication-v1",
-            "authored:adjudication-communication-v1"
+            "authored:adjudication-communication-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -5571,6 +6242,96 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "communication:system:context",
+          "mechanism": {
+            "id": "authored:system/communication",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "communication:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/communication",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "communication:system:from/health",
+          "mechanism": {
+            "id": "authored:system/communication",
+            "version": "v1"
+          },
+          "port_id": "system:from/health",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "communication:system:from/infrastructure",
+          "mechanism": {
+            "id": "authored:system/communication",
+            "version": "v1"
+          },
+          "port_id": "system:from/infrastructure",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "communication:system:evidence",
+          "mechanism": {
+            "id": "authored:system/communication",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -5584,6 +6345,10 @@
         },
         {
           "id": "authored:am-communication-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/communication",
           "version": "v1"
         }
       ],
@@ -5641,6 +6406,10 @@
             {
               "id": "authored:ap-participation-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:system/meaning_identity",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining actual counterparts, reviewed sources, attendance/time models and parent acceptance remain open.",
@@ -5650,7 +6419,8 @@
           ],
           "source_refs": [
             "authored:governance-participation-v1",
-            "authored:adjudication-participation-v1"
+            "authored:adjudication-participation-v1",
+            "synthetic:whole-system"
           ],
           "static_available": true,
           "status": "partial",
@@ -5832,6 +6602,96 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "meaning_identity:system:context",
+          "mechanism": {
+            "id": "authored:system/meaning_identity",
+            "version": "v1"
+          },
+          "port_id": "system:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "meaning_identity:system:from/social_organization",
+          "mechanism": {
+            "id": "authored:system/meaning_identity",
+            "version": "v1"
+          },
+          "port_id": "system:from/social_organization",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "meaning_identity:system:from/knowledge_culture",
+          "mechanism": {
+            "id": "authored:system/meaning_identity",
+            "version": "v1"
+          },
+          "port_id": "system:from/knowledge_culture",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "meaning_identity:system:from/communication",
+          "mechanism": {
+            "id": "authored:system/meaning_identity",
+            "version": "v1"
+          },
+          "port_id": "system:from/communication",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
+        },
+        {
+          "id": "meaning_identity:system:evidence",
+          "mechanism": {
+            "id": "authored:system/meaning_identity",
+            "version": "v1"
+          },
+          "port_id": "system:evidence",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -5845,6 +6705,10 @@
         },
         {
           "id": "authored:ap-participation-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:system/meaning_identity",
           "version": "v1"
         }
       ],
@@ -7025,6 +7889,510 @@
         }
       ],
       "limits": "Actual beneficiary obligations and education input prerequisites share identical dated work, holders, precedence and finite resources. Overlapping membership counts once. Independent facility commitments; no care-first default, attendance, learning, demographic effects, source activation, transitions, numerical IPC or parent acceptance."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-05:DOM-07",
+      "domains": [
+        "social_organization",
+        "health"
+      ],
+      "integration_owner": "social_organization",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "social_organization:system:evidence",
+        "health:system:from/social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-05:DOM-11",
+      "domains": [
+        "social_organization",
+        "meaning_identity"
+      ],
+      "integration_owner": "social_organization",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "social_organization:system:evidence",
+        "meaning_identity:system:from/social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-07",
+      "domains": [
+        "knowledge_culture",
+        "health"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "health:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-08",
+      "domains": [
+        "knowledge_culture",
+        "infrastructure"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "infrastructure:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-09",
+      "domains": [
+        "knowledge_culture",
+        "communication"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "communication:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-10",
+      "domains": [
+        "knowledge_culture",
+        "environment"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "environment:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-11",
+      "domains": [
+        "knowledge_culture",
+        "meaning_identity"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "meaning_identity:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-06:DOM-12",
+      "domains": [
+        "knowledge_culture",
+        "security_risk"
+      ],
+      "integration_owner": "knowledge_culture",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "knowledge_culture:system:evidence",
+        "security_risk:system:from/knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-07:DOM-08",
+      "domains": [
+        "health",
+        "infrastructure"
+      ],
+      "integration_owner": "health",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "health:system:evidence",
+        "infrastructure:system:from/health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-07:DOM-09",
+      "domains": [
+        "health",
+        "communication"
+      ],
+      "integration_owner": "health",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "health:system:evidence",
+        "communication:system:from/health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-07:DOM-10",
+      "domains": [
+        "health",
+        "environment"
+      ],
+      "integration_owner": "health",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "health:system:evidence",
+        "environment:system:from/health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-07:DOM-12",
+      "domains": [
+        "health",
+        "security_risk"
+      ],
+      "integration_owner": "health",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "health:system:evidence",
+        "security_risk:system:from/health"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-08:DOM-09",
+      "domains": [
+        "infrastructure",
+        "communication"
+      ],
+      "integration_owner": "infrastructure",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "infrastructure:system:evidence",
+        "communication:system:from/infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-08:DOM-10",
+      "domains": [
+        "infrastructure",
+        "environment"
+      ],
+      "integration_owner": "infrastructure",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "infrastructure:system:evidence",
+        "environment:system:from/infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-08:DOM-12",
+      "domains": [
+        "infrastructure",
+        "security_risk"
+      ],
+      "integration_owner": "infrastructure",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "infrastructure:system:evidence",
+        "security_risk:system:from/infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-09:DOM-11",
+      "domains": [
+        "communication",
+        "meaning_identity"
+      ],
+      "integration_owner": "communication",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "communication:system:evidence",
+        "meaning_identity:system:from/communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-09:DOM-12",
+      "domains": [
+        "communication",
+        "security_risk"
+      ],
+      "integration_owner": "communication",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "communication:system:evidence",
+        "security_risk:system:from/communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-10:DOM-12",
+      "domains": [
+        "environment",
+        "security_risk"
+      ],
+      "integration_owner": "environment",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        }
+      ],
+      "interface_refs": [
+        "environment:system:evidence",
+        "security_risk:system:from/environment"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        }
+      ],
+      "status": "ready_for_conformance",
+      "limits": "Actual endpoint evaluators under an explicit authored prerequisite condition in the all-domain fixture. Identical canonical work; disjoint independent commitments. No transfer of domain-specific slots, implicit authority, attendance, delivery, source activation, scientific review or transitions."
     }
   ]
 }

@@ -1,0 +1,1076 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:system/provisioning",
+    "version": "v1",
+    "domain": "provisioning",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/provisioning/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/economy",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/economy/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/governance",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/governance/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/law_conflict",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/law_conflict/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/social_organization",
+    "version": "v1",
+    "domain": "social_organization",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/social_organization/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/knowledge_culture",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/knowledge_culture/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/health",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/social_organization",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/social_organization",
+          "system:from/knowledge_culture"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/health/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/infrastructure",
+    "version": "v1",
+    "domain": "infrastructure",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/health",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/knowledge_culture",
+          "system:from/health"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/infrastructure/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/communication",
+    "version": "v1",
+    "domain": "communication",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/health",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/infrastructure",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/knowledge_culture",
+          "system:from/health",
+          "system:from/infrastructure"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/communication/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/environment",
+    "version": "v1",
+    "domain": "environment",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/health",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/infrastructure",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/knowledge_culture",
+          "system:from/health",
+          "system:from/infrastructure"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/environment/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/meaning_identity",
+    "version": "v1",
+    "domain": "meaning_identity",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/social_organization",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/communication",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/social_organization",
+          "system:from/knowledge_culture",
+          "system:from/communication"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/meaning_identity/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:system/security_risk",
+    "version": "v1",
+    "domain": "security_risk",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/knowledge_culture",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/health",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/infrastructure",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/communication",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:from/environment",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:evidence",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "system:context",
+          "system:from/knowledge_culture",
+          "system:from/health",
+          "system:from/infrastructure",
+          "system:from/communication",
+          "system:from/environment"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:system/security_risk/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  }
+]

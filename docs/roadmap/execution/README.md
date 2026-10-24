@@ -1261,3 +1261,16 @@ review, transitions, all-domain education, originating choices, numerical IPC,
 database publication, Windows or original parent/cumulative acceptance is claimed.
 After merge reassess maintained DOM-05/07 care/health against actual beneficiary
 obligations and finite service prerequisites.
+
+## Full WP-032 parent delivery
+
+[WP-032](WP-032.md) completes the restored full parent allocation on one branch.
+All 44 maintained counterpart contracts have actual conformance evidence; the
+remaining 18 use explicit hypothetical prerequisites over actual endpoint
+evaluators. The twelve-domain education path, native originating choices, source
+coverage audit and actual retained database/cross-view acceptance are exercised
+together. [The cumulative G3 selection](WP-032-selection.json) binds executable
+application checks. Existing source activation and transition classifications
+remain unchanged; scientific validity, Windows certification and M4 remain open.
+Route: **solo-validated; agent review deferred**. Historical next-child handoffs
+above are superseded by this parent and its active-package receipt.

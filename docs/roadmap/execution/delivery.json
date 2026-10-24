@@ -1,13 +1,40 @@
 {
   "version": 1,
-  "kind": "maintenance",
-  "package": "WP-003",
+  "kind": "work_package",
+  "package": "WP-032",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-003.md",
-  "scope": "User-requested correction of delivery, CI duplication and counterpart registration overhead; WP-032 remains active",
+  "record": "docs/roadmap/execution/WP-032.md",
+  "scope": "Full twelve-domain static integration and coverage parent: all counterpart contracts, education path, originating choices, coverage and actual retained cross-view evidence",
   "acceptance": [
-    {"id": "delivery", "status": "passed", "evidence": "Full-parent receipt guard and negative witnesses; AGENTS and current WP-032 contract"},
-    {"id": "ci", "status": "passed", "evidence": "Event routing and fail-closed aggregation witnesses; full hosted candidate validation required by checks"},
-    {"id": "registration", "status": "passed", "evidence": "All 26 host declaration sets and callbacks compared; unchanged domain suites remain required"}
+    {
+      "id": "counterparts",
+      "status": "passed",
+      "evidence": "All 44 maintained pairs; actual endpoint baseline/denial/unknown witnesses and prior adapter regressions"
+    },
+    {
+      "id": "education",
+      "status": "passed",
+      "evidence": "Twelve-adapter finite education fixture, common conformance and E2E-003.b"
+    },
+    {
+      "id": "originating-choices",
+      "status": "passed",
+      "evidence": "Native interviews/previews in each domain plus packaged twelve-domain discovery; no defaults or mutation"
+    },
+    {
+      "id": "coverage",
+      "status": "passed",
+      "evidence": "38 branches and 453 source inventory rows reconciled; unsupported/source activation/transition classifications preserved"
+    },
+    {
+      "id": "database-cross-view",
+      "status": "passed",
+      "evidence": "Actual Revisions/SQLite reopen and overview/matrix/atlas/world/source reads; packaged E2E-008"
+    },
+    {
+      "id": "parent-validation",
+      "status": "passed",
+      "evidence": "Complete cumulative G3 selection, candidate-bound engine/unit/packaged desktop evidence and separate SV inspection"
+    }
   ]
 }

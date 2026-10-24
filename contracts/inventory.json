@@ -122,6 +122,8 @@
     "social-organization.ts",
     "solver.schema.json",
     "solver.ts",
+    "static-system.schema.json",
+    "static-system.ts",
     "tool-inputs.json",
     "wire.schema.json",
     "wire.ts",

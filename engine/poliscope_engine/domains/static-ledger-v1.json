@@ -1,0 +1,1322 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/kg",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "kg",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/kg/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/rights",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "rights",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "rights",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "rights",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/rights/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/coins",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "coins",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "coins",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "coins",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/coins/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/hours",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "hours",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "hours",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "hours",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/hours/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/people",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/people/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/slots",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "slots",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "slots",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "slots",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/slots/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/messages",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "messages",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "messages",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "messages",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/messages/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/participation",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "participation",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "participation",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "participation",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/participation/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/response",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "response",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "response",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "response",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/response/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:static-ledger/sink-kg",
+    "version": "v1",
+    "domain": "economy",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "system:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:claim",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:account",
+        "value_type": {
+          "kind": "reference",
+          "entity_kind": "account"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:allocated",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "sink-kg",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "system:requested",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "sink-kg",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:context",
+          "system:claim"
+        ],
+        "missing_behavior": "propagate"
+      },
+      {
+        "id": "system:additional",
+        "value_type": {
+          "kind": "quantity",
+          "unit_id": "sink-kg",
+          "time_basis_id": "day:0",
+          "denominator_scope_id": null
+        },
+        "input_refs": [
+          "system:allocated"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:static-ledger/sink-kg/implementation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [
+      {
+        "id": "system:ledger-claim",
+        "kind": "resource",
+        "account_input_ref": "system:account",
+        "allocation_input_ref": "system:allocated",
+        "amount_output_ref": "system:requested",
+        "dependent_output_refs": [
+          "system:additional"
+        ]
+      }
+    ],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "synthetic:whole-system"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual twelve-adapter finite synthetic prerequisite composition. Shared work is identical; independent commitments are retained. Authored conditions report readiness only, grant no authority or services. Missing effects remain explicit. No source activation, scientific review or transitions.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:whole-system",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "system:finite-books"
+        ]
+      }
+    ],
+    "properties": [
+      "system:finite-books"
+    ]
+  }
+]

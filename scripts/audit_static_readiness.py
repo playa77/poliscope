@@ -74,7 +74,7 @@ def audit(root=ROOT):
             interfaces=p.interface_refs,
             fixtures=[f'{f.id}@{f.version}' for f in p.fixture_refs])
             for p in sorted(pairs, key=lambda p: p.id)],
-        remaining_acceptance=[
+        execution_acceptance_not_assessed=[
             'Reviewed static mechanisms and typed ports registered for all twelve modules',
             'Actual counterpart fixtures with canonical identities, units, accounts and provenance',
             'All-domain education path and an entry choice originating in each domain',
