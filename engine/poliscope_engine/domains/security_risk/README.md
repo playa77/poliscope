@@ -45,3 +45,11 @@ gate host-declared provisioning phase prerequisites. Known restrictions preserve
 their cause; unknown terms withhold the complete candidate. Prior commitments do
 not prove current permissions. This adds no hazard, recovery, material creation,
 aid delivery, operating-resource model or source activation.
+
+The bounded DOM-03/12 consumer is `governance.continuity.evaluate_pair`. Every
+response-slot claim explicitly declares whether approval is required. Decisions
+only narrow new access; they preserve original authority/disclosure/aid conditions,
+unknowns, conflicts, prior commitments and preparedness holds. Independent canonical
+administrative work and finite response-slot books yield one private candidate only
+when both resolve. No hazard, rescue, aid creation or operating-resource model is
+inferred.

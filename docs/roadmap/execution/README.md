@@ -1089,3 +1089,21 @@ rights resolution, adoption, transitions, all-domain education, originating choi
 public numerical IPC, database publication, native Windows and original
 parent/cumulative acceptance remain open. After merge reassess maintained DOM-03/12
 governance/continuity against actual decision and finite response prerequisites.
+
+## Current boundary after PR #90
+
+PR #90 merged actual governance/participation at
+`ab0ff8275bbcc7bfe43ee641cded0f8b21ae999b`. The workspace fast-forwarded without
+stash or discarded work; supported network execution confirmed current main. The
+same sequential Codex `/root`, controlled by the requesting user, continues under
+SV with [WP-032-counterparts-governance-continuity](WP-032-counterparts-governance-continuity.md).
+Actual scoped decisions restrict only explicitly dependent new response-slot access.
+Authority, disclosure, vulnerability, aid conditions and unresolved obligations
+remain authoritative; canonical administration and finite response slots remain
+disjoint. Only maintained DOM-03/12 becomes newly ready: eighteen ready, 26 pending.
+All six maintained DOM-03 counterparts now have bounded actual paths. Reviewed
+sources, scientific/nonauthor review, hazard/damage/recovery and operating-resource
+models, adoption, transitions, all-domain education, originating choices, public
+numerical IPC, database publication, native Windows and original parent/cumulative
+acceptance remain open. After merge reassess maintained DOM-04/05
+adjudication/care against actual case-work and canonical care obligations.

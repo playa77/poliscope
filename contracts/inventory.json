@@ -43,6 +43,8 @@
     "governance-adjudication.ts",
     "governance-communication.schema.json",
     "governance-communication.ts",
+    "governance-continuity.schema.json",
+    "governance-continuity.ts",
     "governance-education.schema.json",
     "governance-education.ts",
     "governance-participation.schema.json",

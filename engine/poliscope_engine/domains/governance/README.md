@@ -103,3 +103,9 @@ dated work book; accommodation slots remain disjoint. Prior commitments survive
 replay and later rejection. Reviewed opaque context/token ports support bounded
 DOM-03/11 conformance; no attendance, belief, identity or legitimacy effect is
 inferred. See the [package record](../../../../docs/roadmap/execution/WP-032-counterparts-governance-participation.md).
+
+The bounded DOM-03/12 consumer is `continuity.evaluate_pair`: actual scoped
+decisions gate explicitly dependent new response-slot access. Original authority,
+disclosure, vulnerability, aid conditions, voluntary participation and obligations
+remain inspectable. Canonical administration time and finite response slots stay
+disjoint; approval does not deliver rescue or settle conflicting authority.
