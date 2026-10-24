@@ -1,5 +1,12 @@
 # Resource, access and dependency forecast
 
+Current owner direction (2026-10-24): resume [WP-032 in full](WP-032.md).
+Historical early-child queue entries below are retained observations, not the
+current allocation. One full parent per session/PR; no more pair-by-pair merge
+checkpoints. Use affected regressions internally and one authoritative integrated
+candidate run. The [active contract](active-package.json) retains all outstanding
+acceptance. No completion date is inferred from this workflow correction.
+
 2026-10-17; one agent under user control, no promised completion date. Scope is
 68 planning parents (26 M, 42 L). `delivery-plan.json` names 178 candidate child
 scopes; 82 have concrete early dependency edges. Remaining children are planning

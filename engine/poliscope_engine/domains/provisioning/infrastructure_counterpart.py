@@ -4,7 +4,8 @@ Label ports carry opaque digests, never stock quantities or execution authority.
 The consumer revalidates/recomputes the canonical book bound to this host; no
 mutable staging cache or caller-supplied serialized book is accepted.
 """
-from poliscope_engine.domains.economy.care_counterpart import definitions as economy_care_definitions
+from ..counterpart_declarations import (definitions as counterpart_definitions,
+    sources as counterpart_sources, fixtures as counterpart_fixtures)
 import json
 from pathlib import Path
 
@@ -18,8 +19,6 @@ from decimal import Decimal
 from .infrastructure import evaluate_pair, validate_context, binding, MODEL
 from .context import digest
 
-from poliscope_engine.domains.economy.governance_counterpart import definitions as governance_definitions
-from poliscope_engine.domains.economy.adjudication_counterpart import definitions as adjudication_definitions
 
 FIXTURE = ('synthetic:provisioning-infrastructure', 'v1')
 SOURCE = 'authored:provisioning-infrastructure-v1'
@@ -48,27 +47,11 @@ def definitions():
 
 
 def host_registry(request, *, graph, units, reviews):
-    from poliscope_engine.domains.social_organization.education_counterpart import definitions as ce_definitions
-    from poliscope_engine.domains.governance.infrastructure_counterpart import definitions as gi_definitions
-    from poliscope_engine.domains.law_conflict.continuity_counterpart import definitions as ak_definitions
-    from poliscope_engine.domains.law_conflict.participation_counterpart import definitions as ap_definitions
-    from poliscope_engine.domains.law_conflict.communication_counterpart import definitions as am_definitions
-    from poliscope_engine.domains.law_conflict.health_counterpart import definitions as ah_definitions
-    from poliscope_engine.domains.law_conflict.education_counterpart import definitions as ae_definitions
-    from poliscope_engine.domains.law_conflict.care_counterpart import definitions as ac_definitions
-    from poliscope_engine.domains.governance.continuity_counterpart import definitions as gk_definitions
-    from poliscope_engine.domains.governance.participation_counterpart import definitions as gp_definitions
-    from poliscope_engine.domains.governance.communication_counterpart import definitions as gc_definitions
-    from poliscope_engine.domains.governance.education_counterpart import definitions as ge_definitions
-    from poliscope_engine.domains.governance.adjudication_counterpart import definitions as ga_definitions
-    from poliscope_engine.domains.economy.infrastructure_counterpart import definitions as economy_infrastructure_definitions
-    from poliscope_engine.domains.economy.health_counterpart import definitions as economy_health_definitions
     """Create a private immutable request binding. Reviews are explicit host input.
 
     Registering declarations never activates them. Normal MechanismRegistry review,
     context and fixture checks still apply. This host is not public IPC support.
     """
-    from poliscope_engine.domains.economy.education_counterpart import definitions as economy_education_definitions
     request = ProvisioningInfrastructureRequest.model_validate_json(request.model_dump_json())
     validate_context(request, graph, units)
     encoded = request.model_dump_json()
@@ -101,9 +84,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=['authored:care-education-v1', 'authored:governance-infrastructure-v1', 'authored:adjudication-continuity-v1', 'authored:adjudication-participation-v1', 'authored:adjudication-communication-v1', 'authored:adjudication-health-v1', 'authored:adjudication-education-v1', 'authored:adjudication-care-v1', 'authored:governance-continuity-v1', 'authored:governance-participation-v1', 'authored:governance-communication-v1', 'authored:governance-education-v1', 'authored:governance-adjudication-v1', SOURCE, 'authored:economy-infrastructure-v1', 'authored:economy-health-v1', 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-adjudication-v1', 'authored:economy-governance-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-health-v1', 'authored:provisioning-care-v1', 'authored:provisioning-education-v1'],
-        fixture_ids=[('synthetic:care-education', 'v1'), ('synthetic:governance-infrastructure', 'v1'), ('synthetic:adjudication-continuity', 'v1'), ('synthetic:adjudication-participation', 'v1'), ('synthetic:adjudication-communication', 'v1'), ('synthetic:adjudication-health', 'v1'), ('synthetic:adjudication-education', 'v1'), ('synthetic:adjudication-care', 'v1'), ('synthetic:governance-continuity', 'v1'), ('synthetic:governance-participation', 'v1'), ('synthetic:governance-communication', 'v1'), ('synthetic:governance-education', 'v1'), ('synthetic:governance-adjudication', 'v1'), FIXTURE, ('synthetic:economy-infrastructure', 'v1'), ('synthetic:economy-health', 'v1'), ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-adjudication', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-care', 'v1'), ('synthetic:provisioning-education', 'v1')],
-        definitions=(*ce_definitions(), *gi_definitions(), *ak_definitions(), *ap_definitions(), *am_definitions(), *ah_definitions(), *ae_definitions(), *ac_definitions(), *gk_definitions(), *gp_definitions(), *gc_definitions(), *ge_definitions(), *ga_definitions(), *definitions(), *economy_infrastructure_definitions(), *economy_health_definitions(), *economy_education_definitions(), *economy_care_definitions(), *adjudication_definitions(), *governance_definitions(), *other_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=counterpart_sources(),
+        fixture_ids=counterpart_fixtures(),
+        definitions=counterpart_definitions(), reviews=reviews,
         implementations=[Implementation('authored:infrastructure-pair-work', 'v1', 'static', work),
                          Implementation('authored:infrastructure-pair-provisioning', 'v1', 'static', provisioning)])
 

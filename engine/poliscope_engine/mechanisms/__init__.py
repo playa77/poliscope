@@ -75,6 +75,7 @@ class MechanismRegistry:
     implementations: tuple[Implementation, ...]
     reviews: tuple[Review, ...]
     _definitions: tuple[str, ...]
+    _definition_keys: tuple[tuple[str, str], ...]
     _graphs: tuple[str, ...]
 
     def __init__(self, *, model, units, times=(), source_ids=(), assumption_ids=(),
@@ -96,6 +97,7 @@ class MechanismRegistry:
                 source_ids=frozenset(source_ids), assumption_ids=frozenset(assumption_ids),
                 fixture_ids=frozenset(fixture_ids), implementations=implementations, reviews=reviews,
                 _definitions=tuple(d.model_dump_json() for d in definitions),
+                _definition_keys=tuple((d.id, d.version) for d in definitions),
                 _graphs=tuple(g.model_dump_json() for g in graphs)).items():
             object.__setattr__(self, name, value)
 
@@ -104,9 +106,9 @@ class MechanismRegistry:
         return tuple(map(MechanismDefinition.model_validate_json, self._definitions))
 
     def definition(self, identity, version):
-        for definition in self.definitions:
-            if (definition.id, definition.version) == (identity, version):
-                return definition
+        for key, encoded in zip(self._definition_keys, self._definitions):
+            if key == (identity, version):
+                return MechanismDefinition.model_validate_json(encoded)
         raise MechanismError('unknown_mechanism')
 
     @property

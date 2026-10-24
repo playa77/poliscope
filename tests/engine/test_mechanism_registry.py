@@ -70,6 +70,27 @@ def test_definitions_reviews_and_catalog_inputs_are_detached():
         r.model = ('other', 'v2')
 
 
+def test_lookup_decodes_only_the_selected_version_and_stays_detached(monkeypatch):
+    r = registry()
+    wanted = r.definitions[-1]
+    decode = MechanismDefinition.model_validate_json
+    decoded = []
+
+    def counted(encoded):
+        decoded.append(encoded)
+        return decode(encoded)
+
+    monkeypatch.setattr(MechanismDefinition, 'model_validate_json', counted)
+    found = r.definition(wanted.id, wanted.version)
+    assert found == wanted and len(decoded) == 1
+    found.source_refs.clear()
+    assert r.definition(wanted.id, wanted.version) == wanted
+    assert len(decoded) == 2
+    with pytest.raises(MechanismError, match='unknown_mechanism'):
+        r.definition(wanted.id, 'absent-version')
+    assert len(decoded) == 2
+
+
 @pytest.mark.parametrize('updates,code', [
     (dict(implementations=[]), 'unknown_implementation'),
     (dict(reviews=[]), 'review_required'),

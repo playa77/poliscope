@@ -1,5 +1,14 @@
 # Implementation execution ledger
 
+**Current allocation, 2026-10-24:** [WP-032 in full](WP-032.md), tracked in
+[active-package.json](active-package.json). This supersedes the historical
+per-pair "next allocation" entries below. Finish all remaining counterpart and
+parent acceptance work in one feature session/branch/PR; children are internal
+commits. Workflow repair is corrective maintenance under [WP-003](WP-003.md).
+Read the current parent first; do not resume another isolated pair from an old
+handoff. [Delivery receipts](delivery.json) and the CI parent guard enforce the
+declared delivery unit; they cannot certify behavior or scientific evidence.
+
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
 scope authority; this directory records execution rather than rewriting their
