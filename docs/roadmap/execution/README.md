@@ -1125,3 +1125,21 @@ enforcement, transitions, all-domain education, originating choices, public
 numerical IPC, database publication, native Windows and original parent/cumulative
 acceptance remain open. After merge reassess maintained DOM-04/06
 adjudication/education against actual case-work and student/staff prerequisites.
+
+## Current boundary after PR #92
+
+PR #92 merged actual adjudication/care at
+`b5f74172ce695f7fe06e29a047f2a922bbc07b74`. The clean workspace fetched and
+fast-forwarded without stash or discarded work. The same sequential Codex `/root`,
+controlled by the requesting user, continues under SV with
+[WP-032-counterparts-adjudication-education](WP-032-counterparts-adjudication-education.md).
+Actual finite case work precedes education prerequisites on one dated work book;
+facility slots remain disjoint and finite. Every service explicitly declares legal
+dependence or independence. Upheld preserves original eligibility, qualifications,
+terms and access; other known findings restrict only dependent new commitments.
+Only maintained DOM-04/06 becomes newly ready: twenty ready, 24 pending. Source
+activation, scientific/nonauthor review, rights creation, enforcement, learning,
+transitions, all-domain education, originating choices, public numerical IPC,
+database publication, native Windows and original parent/cumulative acceptance
+remain open. After merge reassess maintained DOM-04/07 adjudication/health
+against actual case-work and patient/staff prerequisites.

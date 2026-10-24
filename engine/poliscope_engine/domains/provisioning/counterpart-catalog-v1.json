@@ -1791,6 +1791,10 @@
             {
               "id": "authored:ee-work-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ae-education-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Remaining education service/goods counterparts, reviewed models and parent acceptance remain open.",
@@ -1800,7 +1804,8 @@
           ],
           "source_refs": [
             "authored:provisioning-education-v1",
-            "authored:economy-education-v1"
+            "authored:economy-education-v1",
+            "authored:adjudication-education-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2121,6 +2126,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "knowledge_culture:ae:administration-book-in",
+          "mechanism": {
+            "id": "authored:ae-education-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ae:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "knowledge_culture:ae:candidate",
+          "mechanism": {
+            "id": "authored:ae-education-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ae:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -2138,6 +2211,10 @@
         },
         {
           "id": "authored:ge-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ae-education-mechanism",
           "version": "v1"
         }
       ],
@@ -3657,6 +3734,14 @@
             {
               "id": "authored:ac-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ae-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ae-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Reviewed legal models, enforcement, other counterparts and original parent gates remain pending.",
@@ -3667,7 +3752,8 @@
           "source_refs": [
             "authored:economy-adjudication-v1",
             "authored:governance-adjudication-v1",
-            "authored:adjudication-care-v1"
+            "authored:adjudication-care-v1",
+            "authored:adjudication-education-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -3685,6 +3771,14 @@
             {
               "id": "authored:ac-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ae-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ae-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
@@ -3693,7 +3787,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:adjudication-care-v1"
+            "authored:adjudication-care-v1",
+            "authored:adjudication-education-v1"
           ],
           "static_available": false,
           "status": "unresolved",
@@ -3711,6 +3806,14 @@
             {
               "id": "authored:ac-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ae-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ae-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
@@ -3719,7 +3822,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:adjudication-care-v1"
+            "authored:adjudication-care-v1",
+            "authored:adjudication-education-v1"
           ],
           "static_available": false,
           "status": "unresolved",
@@ -3737,6 +3841,14 @@
             {
               "id": "authored:ac-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ae-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ae-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
@@ -3745,7 +3857,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:adjudication-care-v1"
+            "authored:adjudication-care-v1",
+            "authored:adjudication-education-v1"
           ],
           "static_available": false,
           "status": "unresolved",
@@ -4063,6 +4176,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "law_conflict:ae:context",
+          "mechanism": {
+            "id": "authored:ae-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ae:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ae:administration-book",
+          "mechanism": {
+            "id": "authored:ae-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ae:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ae:permission",
+          "mechanism": {
+            "id": "authored:ae-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ae:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -4088,6 +4303,14 @@
         },
         {
           "id": "authored:ac-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ae-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ae-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -5304,6 +5527,50 @@
         "social_organization:ac:administration-book-in"
       ],
       "limits": "Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "knowledge_culture"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:adjudication-education",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-06",
+      "integration_owner": "law_conflict",
+      "interface_refs": [
+        "law_conflict:ae:administration-book",
+        "knowledge_culture:ae:administration-book-in"
+      ],
+      "limits": "Bounded actual case work and explicitly dependent education prerequisites on one dated book and disjoint facility slots. No rights, learning, enforcement, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

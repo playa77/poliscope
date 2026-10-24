@@ -409,3 +409,8 @@ The result retains original-term preflight, legal findings, canonical membership
 prior/additional/unmet care and a detached hypothetical candidate. Opaque reviewed
 host ports bind the complete request/world/unit/runtime/policy context. This is
 private conformance, with no public IPC, new duty, rights creation or enforcement.
+
+`adjudication-education.schema.json` and `adjudication-education.ts` describe the
+private hypothetical DOM-04/06 composition. Explicit case/independence mappings
+retain original education preflight, staged adjudication and finite work/facility
+evidence. These DTOs expose no public IPC method or publication authority.

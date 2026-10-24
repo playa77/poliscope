@@ -4,6 +4,8 @@
     "account.ts",
     "adjudication-care.schema.json",
     "adjudication-care.ts",
+    "adjudication-education.schema.json",
+    "adjudication-education.ts",
     "allocation.schema.json",
     "allocation.ts",
     "atlas.schema.json",
