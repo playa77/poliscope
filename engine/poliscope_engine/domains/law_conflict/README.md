@@ -97,3 +97,12 @@ terms when the case is unresolved. Findings, unmet duty, prior work, reservation
 and population overlap remain inspectable. Reviewed opaque host digests support
 common conformance; no duties, rights, enforcement or care outcomes are inferred.
 See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-care.md).
+
+`education.py` composes actual case work and education prerequisites over one
+finite canonical dated work book and a disjoint finite facility pool. Every service
+maps its case claimant/participant, authority, target, obligations and affected
+accounts or explicitly declares independence. Upheld preserves original terms;
+other known findings restrict only dependent new commitments. Original preflight,
+unknowns and prior commitments stay inspectable. No rights, qualifications,
+learning, enforcement, transitions or publication are inferred. Reviewed host
+ports carry only context-bound opaque evidence digests.

@@ -1,0 +1,224 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ae-administration-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ae:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ae:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ae:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ae-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent education prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, learning, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ae:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ae:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ae-education-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ae:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ae:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ae:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ae-education",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent education prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, learning, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ae:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ae:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ae-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "population_cohort",
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "ae:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ae-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent education prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, learning, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ae:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ae:finite-book"
+    ]
+  }
+]

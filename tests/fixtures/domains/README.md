@@ -148,3 +148,9 @@ arrangements contain the same ten people; membership creates no extra time.
 Literal expected values and the independent integer/Fraction oracle verify finite
 capacity, protected care holds, outcomes, unknowns and replay. No scientific or
 nonauthor review, care outcomes, enforcement or source activation is claimed.
+
+`adjudication-education-v1.json` is a synthetic actual DOM-04/06 finite-book
+fixture: twelve time units fund case work, care, students, teachers and employment;
+facility slots and prior commitments remain explicit. Independently authored
+expectations and integer feasible-set/Fraction checks imply no learning or
+scientific validity. Legal findings only restrict explicitly dependent new work.
