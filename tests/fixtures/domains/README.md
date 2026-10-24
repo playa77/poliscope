@@ -170,3 +170,11 @@ message postings, protected holds and subtotals. Independent integer feasible-se
 and Fraction oracles test competing message and procedural budgets; common
 conformance executes reviewed context-bound actual evaluators. It is not legal,
 scientific, delivery, publication or parent-gate evidence.
+
+`adjudication-participation-v1.json` composes actual DOM-04 legal case work and
+DOM-11 voluntary participation prerequisites. Independently authored quantities
+retain prior legal/care work, prior participation use, a protected capacity hold
+and subtotals: twelve time units contain three legal, three care and six retained;
+five participation slots contain one prior, two new ritual and two new meeting.
+The fixture and adversarial derivatives exercise actual reviewed host conformance,
+unknowns/conflicts, case-specific mappings, voluntary declines and detached replay.

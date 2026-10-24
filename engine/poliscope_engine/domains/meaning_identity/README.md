@@ -45,3 +45,10 @@ prior commitments and reservations; administrative time stays in its canonical
 separate book. Unknowns or obligation conflicts withhold the complete private
 candidate. No attendance-time/operating-resource interface, belief/identity score,
 rights resolution, policy adoption or public IPC is added.
+
+The private DOM-04/11 counterpart in `../law_conflict/participation.py` evaluates
+actual finite case work before accommodation prerequisites. Explicit legal mappings
+preserve voluntary participation, eligibility, access limits, commitments and
+obligation declarations. Legal restrictions affect only dependent new access;
+prior participation uses remain inspectable. Administration work and participation
+slots are disjoint. This adds no attendance or inner-experience assessment.

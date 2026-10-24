@@ -1180,3 +1180,22 @@ all-domain education, originating choices, public numerical IPC, database
 publication, native Windows and original parent/cumulative acceptance remain open.
 After merge reassess maintained DOM-04/11 adjudication/participation against
 actual case-work and voluntary participation prerequisites.
+
+## Current boundary after PR #95
+
+PR #95 merged actual adjudication/communication at
+`991a4be0ebc6b72bffa6e5b7b6e83e89888f597d`. The clean workspace fetched and
+fast-forwarded without stash or discarded work. Sequential Codex `/root`,
+controlled by the requesting user, continues under SV with
+[WP-032-counterparts-adjudication-participation](WP-032-counterparts-adjudication-participation.md).
+Actual legal case work precedes explicitly dependent accommodation prerequisites.
+Mappings bind group, facility institution/asset, obligations and affected capacity.
+Upheld preserves voluntary choice and original terms; other known findings narrow
+only dependent new access. Unknowns/conflicts withhold the whole candidate. Prior
+use, holds and subtotals remain inspectable in disjoint finite books. Only maintained
+DOM-04/11 becomes newly ready: 23 ready, 21 pending. Source activation,
+nonauthor/scientific review, rights creation, enforcement, attendance, operating
+costs, transitions, all-domain education, originating choices, numerical IPC,
+database publication, native Windows and parent/cumulative acceptance remain open.
+After merge reassess maintained DOM-04/12 adjudication/continuity against actual
+case work and declared continuity prerequisites.
