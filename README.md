@@ -8,19 +8,13 @@ Poliscope is a desktop simulation of one civilization as an interconnected syste
 
 You decide what matters. There is no campaign, prescribed ideal society, victory condition, or overall civilization score. Set your own targets, investigate a question, or simply explore.
 
-## The three-body problem
+## Institutions, power, and consequences
 
-Most institutional mechanisms solve one failure mode by increasing pressure toward another.
+Institutions shape who can decide, who can challenge a decision, and who has the resources to act. Markets can disperse economic decisions while allowing ownership to concentrate. Public administration can constrain private power while giving officials discretion. Executive authority can coordinate action while weakening checks on its use.
 
-Markets are extraordinarily good at decentralizing economic decision-making and preventing the state from deciding everything. Push them too far, though, and concentrated wealth starts turning economic power back into political and social power.
+Political authority, administrative discretion, and economic power coexist. They can reinforce or constrain one another, depending on rules, ownership, participation, oversight, and material conditions. A reform can relieve a failure, create new pressures, or do both. Its consequences need to be examined in context.
 
-Bureaucracies are extraordinarily good at preventing arbitrary private domination. Push them too far, and administrative power itself becomes the dominant form of arbitrary power.
-
-Strong executive authority can cut through bureaucratic paralysis and entrenched private interests. Push that far enough and you have authoritarian government.
-
-So the problem looks almost like a three-body problem. You are not choosing between good and bad systems; you are trying to maintain an unstable equilibrium among state power, administrative power, and private economic power.
-
-Poliscope is built around this. You will run into it without going looking for it: a mechanism that repairs one failure puts pressure on another, and no indicator, interview, or score will announce that you have found the right balance. The sandbox makes those shifts visible and traceable so you can watch the equilibrium move and try to hold it.
+Poliscope lets you explore what institutional arrangements require, where their declared procedures encounter shortages or conflicts, and how results change under different explicit assumptions. Inspect who holds authority, whose claims are served, which obligations remain unmet, and what capacity a decision or service consumes. Follow the modeled consequences across domains and compare alternatives against your own purposes.
 
 ## What you can do
 
@@ -186,7 +180,9 @@ The [Society Redesign project](https://github.com/playa77/society) supplies a so
 
 Deterministic computation means the same versioned inputs and event realization produce the same numerical results within the recorded runtime contract. It does not mean that every assumption is certain or every social consequence can be predicted.
 
-Institutional, cultural, and behavioral effects use explicit definitions and evidence. Undefined effects remain qualitative or unmodeled. Fairness, legitimacy, meaning, and wellbeing are not compressed into universal civilization scores.
+Institutional procedures model declared rules, authority, capacity, and outcomes within their stated coverage. Completing a procedure does not establish the justice of a ruling, the effectiveness of enforcement, or the long-term accountability of an institution. Behavioral responses and feedback effects are calculated only where the selected model explicitly defines and supports them. Other effects remain qualitative or unmodeled.
+
+Experiments explore consequences under the selected mechanisms and assumptions. They do not establish inevitable political destinations or predict the institutional evolution of an arbitrary society. Fairness, legitimacy, meaning, and wellbeing are not compressed into universal civilization scores.
 
 ## For educators
 
