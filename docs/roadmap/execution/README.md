@@ -1143,3 +1143,20 @@ transitions, all-domain education, originating choices, public numerical IPC,
 database publication, native Windows and original parent/cumulative acceptance
 remain open. After merge reassess maintained DOM-04/07 adjudication/health
 against actual case-work and patient/staff prerequisites.
+
+## Current boundary after PR #93
+
+PR #93 merged actual adjudication/education at `cd2d383`. The clean workspace
+fetched and fast-forwarded without stash or discarded work. The same sequential
+Codex `/root`, controlled by the requesting user, continues under SV with
+[WP-032-counterparts-adjudication-health](WP-032-counterparts-adjudication-health.md).
+Actual case work precedes patient/staff/supply prerequisites on one dated book;
+finite clinic slots remain disjoint. Explicit legal mappings cover claimant,
+authority, target, obligations and direct/required/facility accounts. Upheld
+preserves original declarations; other known findings restrict dependent new
+commitments. Only maintained DOM-04/07 becomes newly ready: 21 ready, 23 pending.
+Source activation, nonauthor/scientific review, treatment, rights creation,
+enforcement, transitions, all-domain education, originating choices, numerical
+IPC, database publication, Windows and parent/cumulative gates remain open.
+After merge reassess maintained DOM-04/09 adjudication/communication against
+actual case-work, disclosure/access and finite channel prerequisites.

@@ -154,3 +154,11 @@ fixture: twelve time units fund case work, care, students, teachers and employme
 facility slots and prior commitments remain explicit. Independently authored
 expectations and integer feasible-set/Fraction checks imply no learning or
 scientific validity. Legal findings only restrict explicitly dependent new work.
+
+`adjudication-health-v1.json` is the synthetic actual DOM-04/07 finite-book
+fixture. Twelve dated time units contain three case work, three other care,
+three patient care, two staff and one employment, retaining prior case/care work.
+Two material units consume stock and entitlements; finite clinic slots include a
+prior commitment. Literal expectations and an independent integer/Fraction oracle
+check allocation, not treatment or scientific validity. Declared need, exposure
+and health-state references remain explicit under every legal outcome.

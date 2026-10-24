@@ -6,6 +6,8 @@
     "adjudication-care.ts",
     "adjudication-education.schema.json",
     "adjudication-education.ts",
+    "adjudication-health.schema.json",
+    "adjudication-health.ts",
     "allocation.schema.json",
     "allocation.ts",
     "atlas.schema.json",
