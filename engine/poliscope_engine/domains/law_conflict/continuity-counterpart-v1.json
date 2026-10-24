@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ak-administration-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ak:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ak:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ak:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ak-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit declared continuity prerequisites. Disjoint finite administration and continuity slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, rescue, hazard probabilities, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ak:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ak:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ak-continuity-mechanism",
+    "version": "v1",
+    "domain": "security_risk",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ak:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ak:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ak:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ak-continuity",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit declared continuity prerequisites. Disjoint finite administration and continuity slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, rescue, hazard probabilities, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ak:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ak:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ak-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "asset"
+    ],
+    "inputs": [
+      {
+        "id": "ak:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ak-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual legal case work and explicit declared continuity prerequisites. Disjoint finite administration and continuity slots. Upheld preserves original access, eligibility, voluntary choice and obligation declarations. No rights creation, enforcement, rescue, hazard probabilities, operating costs, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ak:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ak:finite-book"
+    ]
+  }
+]

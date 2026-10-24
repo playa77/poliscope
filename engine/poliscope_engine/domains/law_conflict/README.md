@@ -137,3 +137,15 @@ before restrictions. Upheld preserves original declarations; other known finding
 restrict only dependent new access. Unknowns/conflicts withhold the complete
 candidate. Reviewed opaque host ports bind the full context and recompute evidence.
 No rights, obligation, attendance or operating-cost model is inferred.
+
+`continuity.py` and `continuity_counterpart.py` compose actual case work with
+DOM-12's finite response-slot evaluator through the private
+[adjudication/continuity contract](../../contracts/adjudication_continuity.py).
+Each claim explicitly maps a case or independence. Original continuity preflight
+runs before restrictions, including unresolved legal cases. Only non-upheld
+findings narrow dependent new access; authority, disclosure, vulnerability,
+conditional aid, voluntary choice and obligation declarations remain intact.
+Unknowns/conflicts withhold the whole candidate. Reviewed context-bound opaque
+ports execute actual evaluators through common conformance. No rescue, hazard,
+damage, enforcement or rights effect is inferred. See the
+[execution record](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-continuity.md).

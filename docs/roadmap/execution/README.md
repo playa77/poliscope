@@ -1199,3 +1199,22 @@ costs, transitions, all-domain education, originating choices, numerical IPC,
 database publication, native Windows and parent/cumulative acceptance remain open.
 After merge reassess maintained DOM-04/12 adjudication/continuity against actual
 case work and declared continuity prerequisites.
+
+## Current boundary after PRs #96 and #97
+
+PR #96 merged adjudication/participation at `2667fc0`; PR #97 merged the README
+institutional framing at `98a4e97`. The clean workspace fetched and fast-forwarded
+without stash or discarded work. Sequential Codex `/root`, controlled by the
+requesting user, continues under SV with
+[WP-032-counterparts-adjudication-continuity](WP-032-counterparts-adjudication-continuity.md).
+Actual case work precedes explicitly dependent finite response access. Complete
+case/independence mappings bind group, controller, asset, obligations and capacity.
+Original vulnerability, authority, disclosure, aid conditions and voluntary choice
+remain evidence. Unknowns/conflicts withhold the entire candidate; prior work,
+response use, holds and subtotals survive. Only maintained DOM-04/12 becomes newly
+ready: 24 ready, 20 pending. Source activation, nonauthor/scientific review, rights
+creation, enforcement, rescue, hazard/damage prediction, operating-resource models,
+transitions, all-domain education, originating choices, numerical IPC, database
+publication, Windows and parent/cumulative acceptance remain open. After merge
+reassess the first remaining maintained pair, DOM-03/08 governance/infrastructure,
+against actual decision and maintenance prerequisites.
