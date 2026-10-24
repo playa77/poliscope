@@ -2,6 +2,8 @@
   "files": [
     "account.schema.json",
     "account.ts",
+    "adjudication-care.schema.json",
+    "adjudication-care.ts",
     "allocation.schema.json",
     "allocation.ts",
     "atlas.schema.json",

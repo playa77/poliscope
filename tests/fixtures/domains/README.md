@@ -138,3 +138,13 @@ Five response slots include one prior commitment and a two-slot preparedness hol
 new response and preparedness allocations use two each, leaving zero and one
 unmet preparedness unit. It asserts finite arithmetic and explicit prerequisites,
 not delivered rescue, hazard likelihood, social effects or scientific validity.
+
+`adjudication-care-v1.json` publishes `synthetic:adjudication-care@v1`.
+Actual DOM-04 case work precedes canonical DOM-05 care on one 12-hour book.
+Three hours of case work (including one prior), three of care (including one
+prior), three training and three employment exhaust time. Four entitlement units
+permit four of eight requested goods from twenty stock units. Two overlapping
+arrangements contain the same ten people; membership creates no extra time.
+Literal expected values and the independent integer/Fraction oracle verify finite
+capacity, protected care holds, outcomes, unknowns and replay. No scientific or
+nonauthor review, care outcomes, enforcement or source activation is claimed.
