@@ -75,3 +75,12 @@ duty remains present, including an unmet dependent duty after dismissal and
 independent care in overlapping community arrangements. One canonical population
 union and time book prevent duplicated capacity. Upheld creates neither a duty
 nor service; original access terms, holds and unknowns remain authoritative.
+
+The private `education.py` counterpart evaluates actual beneficiary care and
+education prerequisites over identical original work inputs. Explicit queue
+choices can leave care unmet by beneficiary while the same cohort studies,
+teaches or works. Household/community overlap contributes population once.
+Reviewed `education_counterpart.py` ports bind the complete context and recompute
+the shared-book token; neither registration nor membership grants review or extra
+capacity. Unknowns withhold the complete candidate. No care-first rule, attendance,
+learning, health or demographic effects, transitions or publication are modeled.

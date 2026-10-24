@@ -452,3 +452,11 @@ dependent new facility/path access. Original topology, availability, limits and
 unknowns remain visible; administration and facility/link commitments occupy
 separate finite books. These contracts expose neither public IPC nor maintenance,
 construction, lifecycle transitions or delivered services.
+
+`care-education.schema.json` and `care-education.ts` are private v1 care/education
+contracts. Identical dated work, holders, activities and explicit precedence feed
+both actual evaluators from the original book; equal work evidence prevents a
+second budget. Beneficiary obligations, canonical membership union and independent
+education facility/qualification/policy prerequisites remain inspectable. Unknowns
+withhold the complete candidate. Opaque reviewed ports expose bound evidence only;
+no attendance, learning, demographic effects, public IPC or publication is implied.

@@ -196,3 +196,10 @@ bridge and road cover one prior use and four new uses; a protected two-slot
 facility hold limits the first claimant. It establishes no maintenance, lifecycle
 or delivered-service outcome. Independent feasible sets and Fraction balances
 check finite work and path allocation in the actual evaluators.
+
+`care-education-v1.json` is a literal synthetic DOM-05/06 fixture with the same
+cohort in overlapping household/community membership, beneficiary care obligations,
+student/staff/employment work, finite supplies/entitlements and independent facility
+slots. Twelve hours include prior care once: care 3 + student 3 + staff 2 +
+employment 4. Ten represented people remain ten across both arrangements. Explicit
+alternate precedence can leave care unmet; no service or learning effect is claimed.

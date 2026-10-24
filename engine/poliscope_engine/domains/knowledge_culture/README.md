@@ -67,3 +67,11 @@ this bounded pair does not satisfy the all-domain education path or learning.
 
 
 The private governance/education counterpart stages actual decision work before student, staff and supply commitments on the same canonical book. Facility slots remain independently finite. Explicit approval dependence does not infer attendance, learning, qualification or adoption; unknown service prerequisites withhold the candidate.
+
+DOM-05's private care/education counterpart uses this actual education evaluator
+with the same original dated work book as beneficiary care. Student, staff, care
+and employment claims compete under explicit host precedence; finite facilities,
+qualification, supplies and authority remain separate prerequisites. The two work
+reports must agree. See
+[execution evidence](../../../../docs/roadmap/execution/WP-032-counterparts-care-education.md).
+No attendance, learning or care outcomes are inferred from input commitments.

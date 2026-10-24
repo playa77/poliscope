@@ -1,0 +1,222 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ce-work-mechanism",
+    "version": "v1",
+    "domain": "social_organization",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ce:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ce:work-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ce:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ce-work",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:care-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual beneficiary obligations and education input prerequisites share identical dated work, holders, precedence and finite resources. Overlapping membership counts once. Independent facility commitments; no care-first default, attendance, learning, demographic effects, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:care-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ce:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ce:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ce-education-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ce:work-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ce:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ce:work-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ce-education",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:care-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual beneficiary obligations and education input prerequisites share identical dated work, holders, precedence and finite resources. Overlapping membership counts once. Independent facility commitments; no care-first default, attendance, learning, demographic effects, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:care-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ce:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ce:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ce-policy-mechanism",
+    "version": "v1",
+    "domain": "knowledge_culture",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource"
+    ],
+    "inputs": [
+      {
+        "id": "education:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ce-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:care-education-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Actual beneficiary obligations and education input prerequisites share identical dated work, holders, precedence and finite resources. Overlapping membership counts once. Independent facility commitments; no care-first default, attendance, learning, demographic effects, source activation, transitions, numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:care-education",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ce:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ce:finite-book"
+    ]
+  }
+]
