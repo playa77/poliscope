@@ -113,7 +113,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
         <div className="state-banner" aria-label="Selected state"><strong>{state.branch.name}</strong>
           <span>Branch: {state.context.branch_id} · {state.context.revision_id === state.branch.context.revision_id ? 'Confirmed design revision' : 'Historical revision — read only'}</span>
           <span>Revision: {state.context.revision_id}</span><span>Model: {state.versions.model_id} · Tick: {state.effective_time.tick} · Calendar: {state.effective_time.calendar_id}</span>
-          <label>Scope<select disabled={loading || !scopes.data?.length} value={selectedScope} onChange={e => {
+          <label>Scope<select aria-label="Scope" disabled={loading || !scopes.data?.length} value={selectedScope} onChange={e => {
             void client.cancelQueries({ queryKey: ['world'] }); setScope(e.target.value); setConditionInspector(undefined);
           }}>{scopes.data?.map(s => <option key={s.id} value={s.id}>{s.label} ({s.scope_kind})</option>)}</select></label>
           <label>Read a retained revision (leave blank for current branch head)<input key={`${state.context.civilization_id}/${state.context.branch_id}`} name="revision-id" maxLength={128} onKeyDown={e => {
