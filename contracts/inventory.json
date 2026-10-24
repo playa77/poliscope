@@ -45,6 +45,8 @@
     "governance-communication.ts",
     "governance-education.schema.json",
     "governance-education.ts",
+    "governance-participation.schema.json",
+    "governance-participation.ts",
     "governance.schema.json",
     "governance.ts",
     "health.schema.json",
