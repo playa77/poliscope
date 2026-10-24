@@ -2557,20 +2557,29 @@
         {
           "branch_id": "society:domain/12/1",
           "evidence_status": "hypothetical",
-          "limits": "Finite declared continuity prerequisite slots only; no hazard probabilities, damage, recovered stock or aid delivery.",
+          "limits": "Finite declared continuity prerequisite slots only; no hazard probabilities, damage, recovered stock or aid delivery. Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:continuity-pair-work-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:gk-continuity-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:gk-policy-mechanism",
+              "version": "v1"
             }
           ],
-          "next_task": "Hazard/response transitions, resource prerequisites, remaining counterparts and parent acceptance remain open.",
+          "next_task": "Remaining actual counterparts, reviewed sources, response operating-resource models and parent acceptance remain open.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
           "source_refs": [
-            "authored:provisioning-continuity-v1"
+            "authored:provisioning-continuity-v1",
+            "authored:governance-continuity-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2688,11 +2697,121 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "direction": "input",
+          "id": "security_risk:gk:administration-book-in",
+          "mechanism": {
+            "id": "authored:gk-continuity-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gk:administration-book-in",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "security_risk:gk:candidate",
+          "mechanism": {
+            "id": "authored:gk-continuity-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gk:candidate",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "input",
+          "id": "security_risk:gk:permission",
+          "mechanism": {
+            "id": "authored:gk-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gk:permission",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
         {
           "id": "authored:continuity-pair-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gk-continuity-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gk-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -2872,7 +2991,7 @@
         {
           "branch_id": "society:domain/03/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance. Bounded actual scoped decisions and explicit message prerequisites. Canonical finite administration time and disjoint finite channel/verification slots. Approval preserves original access/disclosure/reach/delay; no delivery, publication, truth, persuasion, operating-resource model, adoption, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical administration time and disjoint finite participation slots. Approval preserves voluntary participation, eligibility, access and unresolved obligations. No attendance, belief, identity, legitimacy, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual single-decision governance prerequisite for economic access/work on one canonical staged book. Hypothetical equal-member ballots and host-selected terms; no adoption, source activation, behavioral effects, transition, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance. Bounded actual scoped decisions and explicit message prerequisites. Canonical finite administration time and disjoint finite channel/verification slots. Approval preserves original access/disclosure/reach/delay; no delivery, publication, truth, persuasion, operating-resource model, adoption, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical administration time and disjoint finite participation slots. Approval preserves voluntary participation, eligibility, access and unresolved obligations. No attendance, belief, identity, legitimacy, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:eg-administration-mechanism",
@@ -2897,9 +3016,13 @@
             {
               "id": "authored:gp-administration-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:gk-administration-mechanism",
+              "version": "v1"
             }
           ],
-          "next_task": "Remaining actual counterparts, reviewed sources, attendance/time models and parent acceptance remain open.",
+          "next_task": "Remaining actual counterparts, reviewed sources, response operating-resource models and parent acceptance remain open.",
           "scope_kinds": [
             "settlement",
             "region"
@@ -2909,7 +3032,8 @@
             "authored:governance-adjudication-v1",
             "authored:governance-education-v1",
             "authored:governance-communication-v1",
-            "authored:governance-participation-v1"
+            "authored:governance-participation-v1",
+            "authored:governance-continuity-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -3310,6 +3434,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "direction": "input",
+          "id": "governance:gk:context",
+          "mechanism": {
+            "id": "authored:gk-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gk:context",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "governance:gk:administration-book",
+          "mechanism": {
+            "id": "authored:gk-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gk:administration-book",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
@@ -3335,6 +3527,10 @@
         },
         {
           "id": "authored:gp-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gk-administration-mechanism",
           "version": "v1"
         }
       ],
@@ -4781,6 +4977,50 @@
         "meaning_identity:gp:administration-book-in"
       ],
       "limits": "Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical administration time and disjoint finite participation slots. Approval preserves voluntary participation, eligibility, access and unresolved obligations. No attendance, belief, identity, legitimacy, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "security_risk"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:governance-continuity",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-12",
+      "integration_owner": "governance",
+      "interface_refs": [
+        "governance:gk:administration-book",
+        "security_risk:gk:administration-book-in"
+      ],
+      "limits": "Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

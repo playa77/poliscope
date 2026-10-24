@@ -131,3 +131,10 @@ reserved slots and receives 2, leaving zero hall capacity and B's unmet 1.
 A explicitly requires approval for the exact decision target; B explicitly has
 no target. Integer feasible sets and Fraction balances verify finite budgets.
 Accommodation capacity does not imply attendance or modeled belief effects.
+
+`governance-continuity-v1.json` is a literal synthetic DOM-03/12 fixture. Twelve
+canonical time units fund three administrative and three care units, leaving six.
+Five response slots include one prior commitment and a two-slot preparedness hold;
+new response and preparedness allocations use two each, leaving zero and one
+unmet preparedness unit. It asserts finite arithmetic and explicit prerequisites,
+not delivered rescue, hazard likelihood, social effects or scientific validity.

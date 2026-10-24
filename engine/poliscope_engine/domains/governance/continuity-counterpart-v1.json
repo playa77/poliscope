@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:gk-administration-mechanism",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gk:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gk:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gk:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gk-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gk:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gk:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gk-continuity-mechanism",
+    "version": "v1",
+    "domain": "security_risk",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gk:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gk:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gk:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gk-continuity",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gk:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gk:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gk-policy-mechanism",
+    "version": "v1",
+    "domain": "security_risk",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "gk:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gk-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-continuity-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-continuity",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gk:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gk:finite-book"
+    ]
+  }
+]

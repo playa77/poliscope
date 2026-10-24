@@ -392,3 +392,8 @@ and unresolved obligation conflicts remain authoritative. Accommodation slots
 remain disjoint from administrative time; no public IPC, attendance, belief or
 rights resolution is added. See the
 [package record](../docs/roadmap/execution/WP-032-counterparts-governance-participation.md).
+
+`governance-continuity.schema.json` and `governance-continuity.ts` are generated
+private v1 decision/response-slot contracts. They preserve original-term preflight,
+actual governance and continuity evidence, and detached administration/response
+books. They do not add public numerical IPC, adoption or source activation.
