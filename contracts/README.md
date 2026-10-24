@@ -383,3 +383,12 @@ access/disclosure/reach/delay remain authoritative, with finite message and
 verification slots disjoint from administrative time. No public IPC, publication,
 delivery, truth assessment or adoption is added. See the
 [package record](../docs/roadmap/execution/WP-032-counterparts-governance-communication.md).
+
+Private `governance-participation.schema.json` and `.ts` describe the canonical
+DOM-03/11 request, original-term preflight, restricted evaluation and complete
+two-book candidate. Every accommodation claim explicitly declares approval
+dependence or independence. Voluntary participation, eligibility, access ceilings
+and unresolved obligation conflicts remain authoritative. Accommodation slots
+remain disjoint from administrative time; no public IPC, attendance, belief or
+rights resolution is added. See the
+[package record](../docs/roadmap/execution/WP-032-counterparts-governance-participation.md).

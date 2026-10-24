@@ -122,3 +122,12 @@ previously fulfilled) and receives 2 more; independent B requests 3 and receives
 names the exact target; B explicitly has no decision target. Fraction/integer
 feasible sets verify conservation; neither slot allocation nor the three-tick
 host-declared delay means a message was delivered or published.
+
+`governance-participation-v1.json` is a literal synthetic DOM-03/11 fixture.
+Twelve cohort hours fund decision 3 and competing care 3, each retaining one prior
+hour, leaving 6. A separate hall has 5 participation slots. Two groups request 3
+each; A retains one prior slot and receives 2 more, while independent B holds 2
+reserved slots and receives 2, leaving zero hall capacity and B's unmet 1.
+A explicitly requires approval for the exact decision target; B explicitly has
+no target. Integer feasible sets and Fraction balances verify finite budgets.
+Accommodation capacity does not imply attendance or modeled belief effects.

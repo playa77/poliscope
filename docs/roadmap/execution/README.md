@@ -1071,3 +1071,21 @@ all-domain education, originating choices, public numerical IPC, database
 publication, native Windows and original parent/cumulative acceptance remain
 open. After merge reassess maintained DOM-03/11 governance/participation against
 actual voluntary participation and finite time prerequisites.
+
+## Current boundary after PR #89
+
+PR #89 merged actual governance/communication at
+`6477ee7c112c0cac6f485a3430e7146162af6071`. The clean workspace was fetched and
+reconciled with current main without stash or discarded work. The same sequential
+Codex `/root`, controlled by the requesting user, continues under SV with
+[WP-032-counterparts-governance-participation](WP-032-counterparts-governance-participation.md).
+Actual scoped decisions restrict only explicitly dependent new accommodation
+access. Voluntary participation, eligibility, reach, access ceilings and unresolved
+obligation conflicts remain authoritative. Administrative time and disjoint finite
+participation slots retain prior commitments. Only maintained DOM-03/11 becomes
+newly ready: seventeen ready, 27 pending. Source activation, scientific/nonauthor
+review, attendance/time or operating-resource models, belief/identity effects,
+rights resolution, adoption, transitions, all-domain education, originating choices,
+public numerical IPC, database publication, native Windows and original
+parent/cumulative acceptance remain open. After merge reassess maintained DOM-03/12
+governance/continuity against actual decision and finite response prerequisites.

@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:gp-administration-mechanism",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gp:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gp:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gp:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gp-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical finite administration time and disjoint participation slots. Approval preserves voluntary participation, eligibility, access, ownership and unresolved obligations; no attendance, belief/identity/legitimacy effects, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gp:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gp:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gp-participation-mechanism",
+    "version": "v1",
+    "domain": "meaning_identity",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gp:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gp:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gp:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gp-participation",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical finite administration time and disjoint participation slots. Approval preserves voluntary participation, eligibility, access, ownership and unresolved obligations; no attendance, belief/identity/legitimacy effects, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gp:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gp:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gp-policy-mechanism",
+    "version": "v1",
+    "domain": "meaning_identity",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "gp:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gp-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-participation-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit accommodation prerequisites. Canonical finite administration time and disjoint participation slots. Approval preserves voluntary participation, eligibility, access, ownership and unresolved obligations; no attendance, belief/identity/legitimacy effects, rights resolution, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-participation",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gp:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gp:finite-book"
+    ]
+  }
+]

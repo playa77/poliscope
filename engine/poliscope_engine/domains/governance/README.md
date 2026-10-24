@@ -93,3 +93,13 @@ separate finite message book. Original-term preflight is retained distinctly
 when governance is unresolved; it is never a candidate. Prior commitments survive
 replay and later rejection. Private reviewed context/token ports support bounded
 DOM-03/09 conformance; no delivery, publication, truth or persuasion is inferred.
+
+`participation.py` composes actual scoped decisions with explicit DOM-11
+accommodation prerequisites. Every claim declares approval dependence or
+independence. Approval preserves voluntary participation, eligibility, institutional
+ownership, group access and unresolved conflicting obligations. Known nonapproval
+restricts only dependent new access. Administration retains its canonical finite
+dated work book; accommodation slots remain disjoint. Prior commitments survive
+replay and later rejection. Reviewed opaque context/token ports support bounded
+DOM-03/11 conformance; no attendance, belief, identity or legitimacy effect is
+inferred. See the [package record](../../../../docs/roadmap/execution/WP-032-counterparts-governance-participation.md).

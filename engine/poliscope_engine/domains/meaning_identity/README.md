@@ -36,3 +36,12 @@ change precedence only; conflicting obligations remain unresolved.
 source/system decisions. Partial pluralism/ritual paths mean service-slot
 prerequisites only. Actual governance/law/care/cultural/communication counterparts
 and reviewed models retain separate acceptance.
+
+The governance-owned [DOM-03/11 counterpart](../governance/participation.py)
+uses actual scoped decisions to restrict only explicitly dependent new access.
+Original voluntary participation, eligibility, access ceilings, ownership/reach and
+conflicting obligations remain authoritative. Finite accommodation slots retain
+prior commitments and reservations; administrative time stays in its canonical
+separate book. Unknowns or obligation conflicts withhold the complete private
+candidate. No attendance-time/operating-resource interface, belief/identity score,
+rights resolution, policy adoption or public IPC is added.
