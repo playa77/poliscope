@@ -56,7 +56,8 @@ def test_requirement_order_does_not_choose_a_winner_or_turn_unknown_into_zero():
 @pytest.mark.parametrize('mutation,code', [
     ('book','static_system_competing_book'), ('period','static_system_period_mismatch'),
     ('scope','static_system_scope_mismatch'), ('identity','static_system_shared_identity'),
-    ('unused','static_system_unused_reference'), ('result','static_system_unknown_result'),
+    ('unused','static_system_unused_reference'), ('provenance','static_system_unused_reference'),
+    ('result','static_system_unknown_result'),
 ])
 def test_forged_or_incompatible_counterpart_contexts_fail(mutation, code):
     data = fixture(); req = data['request']
@@ -65,6 +66,10 @@ def test_forged_or_incompatible_counterpart_contexts_fail(mutation, code):
     elif mutation == 'scope': req['health']['scope_id'] = 'region'
     elif mutation == 'identity': req['requirements'][0]['shared_references'][0]['entity_kind'] = 'institution'
     elif mutation == 'unused': req['requirements'][0]['shared_references'][0] = dict(entity_id='food',entity_kind='resource')
+    elif mutation == 'provenance':
+        link = req['requirements'][0]
+        link['shared_references'][0] = dict(entity_id='food',entity_kind='resource')
+        for domain in (link['source'],link['target']): req[domain]['source_refs'].append('food')
     else: req['requirements'][0]['source_result_id'] = 'forged'
     with pytest.raises(AccountError, match=code): run(data)
 

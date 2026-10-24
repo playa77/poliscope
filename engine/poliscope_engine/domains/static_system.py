@@ -106,17 +106,37 @@ def validate_context(request, graph, units):
             # A reference must actually occur in both endpoint requests. Catalog
             # anchors alone are not evidence that a real evaluator uses it.
             for domain in (requirement.source, requirement.target):
-                if ref.entity_id not in strings(getattr(request, domain).model_dump(mode='json')):
+                if ref.entity_id not in entity_references(getattr(request, domain).model_dump(mode='json')):
                     fail('static_system_unused_reference')
 
 
-def strings(value):
-    if isinstance(value, str):
-        return {value}
+ENTITY_FIELDS = frozenset(('entity_id', 'account_id', 'claimant_id', 'holder_id',
+    'cohort_id', 'provider_id', 'beneficiary_id', 'authority_id', 'target_id',
+    'resource_id', 'asset_id', 'facility_asset_id', 'institution_id', 'controller_id',
+    'sender_id', 'recipient_id', 'member_id', 'group_id', 'arrangement_id',
+    'source_id', 'destination_id', 'from_id', 'to_id', 'location_id', 'origin_id'))
+ENTITY_LIST_FIELDS = frozenset(('entity_ids', 'account_refs', 'eligible_member_ids'))
+
+
+def entity_references(value):
+    """Canonical model inputs, excluding provenance/obligation strings and prose."""
     if isinstance(value, dict):
-        return set().union(*(strings(v) for v in value.values()))
+        refs = set()
+        for key, item in value.items():
+            if key in ENTITY_FIELDS and isinstance(item, str):
+                refs.add(item)
+            elif key in ENTITY_LIST_FIELDS and isinstance(item, list):
+                refs.update(v for v in item if isinstance(v, str))
+            else:
+                refs.update(entity_references(item))
+        # Canonical account definitions and care arrangements identify entities
+        # in their own id field. Other ids name claims, cases or policies.
+        if ({'id', 'opening', 'unit_id', 'invariant'} <= value.keys()
+                or set(value) == {'id', 'scope_id', 'source_refs'}):
+            refs.add(value['id'])
+        return refs
     if isinstance(value, list):
-        return set().union(*(strings(v) for v in value))
+        return set().union(*(entity_references(v) for v in value))
     return set()
 
 
