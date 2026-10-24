@@ -59,6 +59,8 @@
     "governance-continuity.ts",
     "governance-education.schema.json",
     "governance-education.ts",
+    "governance-infrastructure.schema.json",
+    "governance-infrastructure.ts",
     "governance-participation.schema.json",
     "governance-participation.ts",
     "governance.schema.json",

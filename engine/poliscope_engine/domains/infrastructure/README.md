@@ -42,3 +42,10 @@ commitments remain inspectable and disjoint from finite economy time/stock/right
 It restricts access without inventing throughput conversions, operating-resource
 or lifecycle effects; unknown reach withholds the complete candidate. See the
 [package record](../../../../docs/roadmap/execution/WP-032-counterparts-economy-infrastructure.md).
+
+The private governance/infrastructure counterpart executes actual scoped decisions
+and this evaluator over disjoint administration and facility/link books. It gates
+only explicitly dependent new access and preserves original topology, availability,
+access limits, prior use and holds. Approval creates no capacity or maintenance
+outcome. See the
+[package record](../../../../docs/roadmap/execution/WP-032-counterparts-governance-infrastructure.md).

@@ -1,0 +1,1555 @@
+{
+  "identity": {
+    "id": "synthetic:governance-infrastructure",
+    "version": "v1"
+  },
+  "synthetic": true,
+  "units": [
+    {
+      "id": "kg",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "stock",
+      "scale": "1"
+    },
+    {
+      "id": "hours",
+      "dimension": [
+        [
+          "time",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "land-days",
+      "dimension": [
+        [
+          "area-time",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "energy",
+      "dimension": [
+        [
+          "energy",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "throughput",
+      "dimension": [
+        [
+          "mass",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "rights",
+      "dimension": [
+        [
+          "entitlement",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    },
+    {
+      "id": "people",
+      "dimension": [
+        [
+          "population",
+          1
+        ]
+      ],
+      "kind": "count",
+      "scale": "1"
+    },
+    {
+      "id": "slots",
+      "dimension": [
+        [
+          "facility_slot",
+          1
+        ]
+      ],
+      "kind": "capacity",
+      "scale": "1"
+    }
+  ],
+  "request": {
+    "contract_version": 1,
+    "governance": {
+      "contract_version": 1,
+      "authority_id": "east-authority",
+      "scope_id": "east",
+      "proposal_binding_id": "proposal",
+      "target_id": "food",
+      "parameter_id": "gi:permission",
+      "eligible_member_ids": [
+        "shared:cohort",
+        "east-authority",
+        "region-authority"
+      ],
+      "ballots": [
+        {
+          "member_id": "shared:cohort",
+          "vote": "yes"
+        },
+        {
+          "member_id": "east-authority",
+          "vote": "yes"
+        },
+        {
+          "member_id": "region-authority",
+          "vote": "no"
+        }
+      ],
+      "quorum": 2,
+      "approval": "strict_majority",
+      "bindings": [
+        {
+          "contract_version": 1,
+          "id": "proposal",
+          "mechanism": {
+            "id": "authored:gi-policy-mechanism",
+            "version": "v1"
+          },
+          "scope_id": "east",
+          "authority_id": "east-authority",
+          "entity_ids": [
+            "food"
+          ],
+          "parameter_id": "gi:permission",
+          "value": {
+            "kind": "label",
+            "value": "proposed-access"
+          },
+          "conflict_kind": "parameter",
+          "account_refs": [
+            "labor",
+            "depot:slots",
+            "bridge:slots",
+            "road:slots"
+          ],
+          "choice_refs": []
+        }
+      ],
+      "rules": [],
+      "administration": {
+        "contract_version": 1,
+        "period_id": "day:0",
+        "batch": {
+          "contract_version": 1,
+          "accounts": [
+            {
+              "contract_version": 1,
+              "id": "raw",
+              "kind": "stock",
+              "unit_id": "kg",
+              "scope_id": "east",
+              "period_id": null,
+              "invariant": "physical",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "20",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "labor",
+              "kind": "capacity",
+              "unit_id": "hours",
+              "scope_id": "east",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "0.1",
+              "maximum": "1000",
+              "opening": "12",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            },
+            {
+              "contract_version": 1,
+              "id": "rights",
+              "kind": "capacity",
+              "unit_id": "rights",
+              "scope_id": "east",
+              "period_id": "day:0",
+              "invariant": "budget",
+              "quantum": "1",
+              "maximum": "1000",
+              "opening": "4",
+              "source_refs": [
+                "authored:provisioning-chain-v1"
+              ]
+            }
+          ],
+          "claims": [
+            {
+              "id": "admin",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "synthetic:governance-infrastructure"
+              ]
+            },
+            {
+              "id": "care",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "training",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "3",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "employment",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "8",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "goods",
+              "account_id": "raw",
+              "claimant_id": "shared:cohort",
+              "requested": "8",
+              "source_refs": [
+                "synthetic:work"
+              ]
+            },
+            {
+              "id": "teach",
+              "account_id": "labor",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:education"
+              ]
+            },
+            {
+              "id": "materials",
+              "account_id": "raw",
+              "claimant_id": "shared:cohort",
+              "requested": "2",
+              "source_refs": [
+                "synthetic:education"
+              ]
+            }
+          ],
+          "postings": [
+            {
+              "id": "prior:care",
+              "kind": "use",
+              "source_id": "labor",
+              "destination_id": null,
+              "amount": "1",
+              "claim_id": "care",
+              "reservation_id": "care:hold",
+              "mechanism_ref": "authored:prior-care",
+              "source_refs": [
+                "synthetic:prior"
+              ]
+            },
+            {
+              "id": "prior:admin",
+              "kind": "use",
+              "source_id": "labor",
+              "destination_id": null,
+              "amount": "1",
+              "claim_id": "admin",
+              "reservation_id": null,
+              "mechanism_ref": "synthetic:prior",
+              "source_refs": [
+                "synthetic:prior"
+              ]
+            }
+          ],
+          "reservations": [
+            {
+              "id": "care:hold",
+              "account_id": "labor",
+              "claim_id": "care",
+              "amount": "2"
+            }
+          ],
+          "subtotals": [
+            {
+              "id": "east:stock-view",
+              "member_ids": [
+                "raw"
+              ]
+            },
+            {
+              "id": "region:stock-view",
+              "member_ids": [
+                "east:stock-view"
+              ]
+            },
+            {
+              "id": "watershed:stock-view",
+              "member_ids": [
+                "region:stock-view"
+              ]
+            }
+          ]
+        },
+        "holders": [
+          {
+            "account_id": "labor",
+            "holder_id": "shared:cohort",
+            "role": "time"
+          },
+          {
+            "account_id": "rights",
+            "holder_id": "shared:cohort",
+            "role": "entitlement"
+          }
+        ],
+        "activities": [
+          {
+            "claim_id": "admin",
+            "kind": "participation",
+            "eligibility": "allowed",
+            "access_limit": "3",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:governance-infrastructure"
+            ]
+          },
+          {
+            "claim_id": "care",
+            "kind": "care",
+            "eligibility": "allowed",
+            "access_limit": "3",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "training",
+            "kind": "training",
+            "eligibility": "denied",
+            "access_limit": "0",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "employment",
+            "kind": "paid_work",
+            "eligibility": "denied",
+            "access_limit": "0",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "goods",
+            "kind": "goods",
+            "eligibility": "denied",
+            "access_limit": "0",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "teach",
+            "kind": "paid_work",
+            "eligibility": "denied",
+            "access_limit": "0",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          },
+          {
+            "claim_id": "materials",
+            "kind": "goods",
+            "eligibility": "denied",
+            "access_limit": "0",
+            "terms_known": true,
+            "requirements": [],
+            "mechanism_ref": "authored:economy-access-work-v1",
+            "source_refs": [
+              "synthetic:work"
+            ]
+          }
+        ],
+        "procedure": "priority",
+        "claim_order": [
+          "admin",
+          "care",
+          "training",
+          "teach",
+          "employment",
+          "materials",
+          "goods"
+        ],
+        "mechanism_ref": "authored:economy-access-work-v1",
+        "source_refs": [
+          "synthetic:work"
+        ]
+      },
+      "administrative_claim_ids": [
+        "admin"
+      ],
+      "source_refs": [
+        "synthetic:governance-infrastructure"
+      ]
+    },
+    "prerequisites": [
+      {
+        "claim_id": "reach:make",
+        "requires_approval": true,
+        "decision_target_id": "food"
+      },
+      {
+        "claim_id": "reach:deliver",
+        "requires_approval": false,
+        "decision_target_id": null
+      }
+    ],
+    "infrastructure": {
+      "contract_version": 1,
+      "scope_id": "east",
+      "period_id": "day:0",
+      "batch": {
+        "contract_version": 1,
+        "accounts": [
+          {
+            "contract_version": 1,
+            "id": "depot:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "east",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "0.1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "bridge:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "east",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "0.1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          },
+          {
+            "contract_version": 1,
+            "id": "road:slots",
+            "kind": "capacity",
+            "unit_id": "slots",
+            "scope_id": "east",
+            "period_id": "day:0",
+            "invariant": "budget",
+            "quantum": "0.1",
+            "maximum": "1000",
+            "opening": "5",
+            "source_refs": [
+              "authored:provisioning-chain-v1"
+            ]
+          }
+        ],
+        "claims": [
+          {
+            "id": "reach:make",
+            "account_id": "depot:slots",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "synthetic:facility"
+            ]
+          },
+          {
+            "id": "reach:deliver",
+            "account_id": "depot:slots",
+            "claimant_id": "shared:cohort",
+            "requested": "3",
+            "source_refs": [
+              "synthetic:facility"
+            ]
+          }
+        ],
+        "reservations": [
+          {
+            "id": "facility:hold",
+            "account_id": "depot:slots",
+            "claim_id": "reach:deliver",
+            "amount": "2"
+          }
+        ],
+        "postings": [
+          {
+            "id": "facility:prior",
+            "kind": "use",
+            "source_id": "depot:slots",
+            "destination_id": null,
+            "amount": "1",
+            "claim_id": "reach:make",
+            "reservation_id": null,
+            "mechanism_ref": "synthetic:prior",
+            "source_refs": [
+              "synthetic:prior"
+            ]
+          },
+          {
+            "id": "bridge:slots:prior",
+            "kind": "use",
+            "source_id": "bridge:slots",
+            "destination_id": null,
+            "amount": "1",
+            "claim_id": null,
+            "reservation_id": null,
+            "mechanism_ref": "synthetic:prior",
+            "source_refs": [
+              "synthetic:prior"
+            ]
+          },
+          {
+            "id": "road:slots:prior",
+            "kind": "use",
+            "source_id": "road:slots",
+            "destination_id": null,
+            "amount": "1",
+            "claim_id": null,
+            "reservation_id": null,
+            "mechanism_ref": "synthetic:prior",
+            "source_refs": [
+              "synthetic:prior"
+            ]
+          }
+        ],
+        "subtotals": [
+          {
+            "id": "infrastructure:slots",
+            "member_ids": [
+              "depot:slots",
+              "bridge:slots",
+              "road:slots"
+            ]
+          }
+        ]
+      },
+      "facilities": [
+        {
+          "asset_id": "depot",
+          "location_id": "destination",
+          "location_relationship_id": "depot:location",
+          "account_id": "depot:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        }
+      ],
+      "links": [
+        {
+          "asset_id": "bridge",
+          "from_id": "origin",
+          "to_id": "junction",
+          "relationship_id": "bridge:edge",
+          "account_id": "bridge:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        },
+        {
+          "asset_id": "road",
+          "from_id": "junction",
+          "to_id": "destination",
+          "relationship_id": "road:edge",
+          "account_id": "road:slots",
+          "availability": "operating",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        }
+      ],
+      "demands": [
+        {
+          "claim_id": "reach:make",
+          "facility_asset_id": "depot",
+          "origin_id": "origin",
+          "path": [
+            "bridge",
+            "road"
+          ],
+          "access": "allowed",
+          "access_limit": "3",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        },
+        {
+          "claim_id": "reach:deliver",
+          "facility_asset_id": "depot",
+          "origin_id": "origin",
+          "path": [
+            "bridge",
+            "road"
+          ],
+          "access": "allowed",
+          "access_limit": "3",
+          "source_refs": [
+            "synthetic:facility"
+          ]
+        }
+      ],
+      "procedure": "priority",
+      "claim_order": [
+        "reach:make",
+        "reach:deliver"
+      ],
+      "mechanism_ref": "authored:infrastructure-reach-v1",
+      "source_refs": [
+        "synthetic:facility"
+      ]
+    }
+  },
+  "inputs": {
+    "assumptions": [],
+    "design": {
+      "assumption_inputs": [],
+      "conditions": [],
+      "contract_version": 1,
+      "effective_time": {
+        "calendar_id": "calendar",
+        "tick": 0
+      },
+      "execution": {
+        "contract_version": 1,
+        "dependencies": {
+          "contract_version": 1,
+          "instances": [
+            {
+              "id": "work",
+              "mechanism_id": "authored:gi-administration-mechanism",
+              "mechanism_version": "v1",
+              "scope_id": "east",
+              "entity_id": "east-authority"
+            },
+            {
+              "id": "provision",
+              "mechanism_id": "authored:gi-infrastructure-mechanism",
+              "mechanism_version": "v1",
+              "scope_id": "east",
+              "entity_id": "east-authority"
+            }
+          ],
+          "bindings": [
+            {
+              "producer": {
+                "instance_id": "work",
+                "port_id": "gi:administration-book"
+              },
+              "consumer": {
+                "instance_id": "provision",
+                "port_id": "gi:administration-book-in"
+              }
+            }
+          ],
+          "fixed_inputs": [],
+          "claims": [],
+          "account_producers": [],
+          "relationships": []
+        },
+        "batch": null,
+        "claims": [],
+        "allocations": [],
+        "solvers": [],
+        "operation_limit": 100000
+      },
+      "policies": [],
+      "policy_inputs": [],
+      "policy_rules": [],
+      "realization": {
+        "event_ids": [],
+        "identity": {
+          "id": "synthetic:realization",
+          "version": "v1"
+        },
+        "seed": null,
+        "values": []
+      },
+      "realization_inputs": [],
+      "world_inputs": []
+    },
+    "entities": [
+      {
+        "entity_kind": "civilization",
+        "id": "civ",
+        "label": "Synthetic civ",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "stock",
+        "label": "Synthetic stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "resource",
+        "id": "water",
+        "label": "Synthetic water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "product",
+        "entity_kind": "account",
+        "label": "Synthetic product",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "residual",
+        "entity_kind": "account",
+        "label": "Synthetic residual",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "labor",
+        "entity_kind": "account",
+        "label": "Synthetic labor",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "east-authority",
+        "label": "Synthetic east-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "institution",
+        "id": "region-authority",
+        "label": "Synthetic region-authority",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "asset",
+        "id": "shared:asset",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "population_cohort",
+        "id": "shared:cohort",
+        "label": "Synthetic reference only",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "raw",
+        "entity_kind": "account",
+        "label": "Synthetic raw",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "receiving",
+        "entity_kind": "account",
+        "label": "Synthetic receiving",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "stored",
+        "entity_kind": "account",
+        "label": "Synthetic stored",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "land",
+        "entity_kind": "account",
+        "label": "Synthetic land",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "energy",
+        "entity_kind": "account",
+        "label": "Synthetic energy",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "truck",
+        "entity_kind": "account",
+        "label": "Synthetic truck",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "handling",
+        "entity_kind": "account",
+        "label": "Synthetic handling",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "rights",
+        "entity_kind": "account",
+        "label": "Synthetic rights",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "unprocessed",
+        "entity_kind": "resource",
+        "label": "Synthetic unprocessed",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "food",
+        "entity_kind": "resource",
+        "label": "Synthetic food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "byproduct",
+        "entity_kind": "resource",
+        "label": "Synthetic byproduct",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:make-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:make-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:ship-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:ship-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "group:store-food",
+        "entity_kind": "institution",
+        "label": "Synthetic group:store-food",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "home",
+        "entity_kind": "household_arrangement",
+        "label": "home",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "asset",
+        "id": "school",
+        "label": "school",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "entity_kind": "account",
+        "id": "school:slots",
+        "label": "school:slots",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "hall",
+        "entity_kind": "account",
+        "label": "Synthetic response slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "hall:asset",
+        "entity_kind": "asset",
+        "label": "Synthetic hall",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "cohort:b",
+        "entity_kind": "population_cohort",
+        "label": "Synthetic second group",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "depot",
+        "entity_kind": "asset",
+        "label": "depot",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "bridge",
+        "entity_kind": "asset",
+        "label": "bridge",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "road",
+        "entity_kind": "asset",
+        "label": "road",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "origin",
+        "entity_kind": "location",
+        "label": "origin",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "junction",
+        "entity_kind": "location",
+        "label": "junction",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "destination",
+        "entity_kind": "location",
+        "label": "destination",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "island",
+        "entity_kind": "location",
+        "label": "island",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "depot:slots",
+        "entity_kind": "account",
+        "label": "depot:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "bridge:slots",
+        "entity_kind": "account",
+        "label": "bridge:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "road:slots",
+        "entity_kind": "account",
+        "label": "road:slots",
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      }
+    ],
+    "goals": [],
+    "measurements": [],
+    "owners": [
+      {
+        "entity_id": "water",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "writer_id": "fixture"
+      },
+      {
+        "entity_id": "shared:cohort",
+        "partition": "conditions",
+        "property_id": "population",
+        "writer_id": "fixture"
+      }
+    ],
+    "populations": [
+      {
+        "entity_id": "shared:cohort",
+        "role": "fixed_input"
+      },
+      {
+        "entity_id": "cohort:b",
+        "role": "fixed_input"
+      }
+    ],
+    "references": [],
+    "relationships": [
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "west"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-water",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "watershed"
+      },
+      {
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "whole"
+        },
+        "from_id": "water",
+        "id": "view-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "access",
+        "relationship_version": "v1",
+        "to_id": "region"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "east-authority",
+        "id": "authority-east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "east"
+      },
+      {
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "from_id": "region-authority",
+        "id": "authority-region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "relationship_kind": "jurisdiction",
+        "relationship_version": "v1",
+        "to_id": "region"
+      },
+      {
+        "id": "member:home",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "home:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:shared"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "member:network",
+        "relationship_version": "v1",
+        "relationship_kind": "cohort_membership",
+        "from_id": "shared:cohort",
+        "to_id": "network:scope",
+        "aggregation": {
+          "kind": "partition",
+          "partition_id": "canonical:shared"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "relationship_version": "v1",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        },
+        "id": "infrastructure:owner",
+        "relationship_kind": "ownership",
+        "from_id": "east-authority",
+        "to_id": "hall:asset"
+      },
+      {
+        "relationship_version": "v1",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        },
+        "id": "infrastructure:access:response",
+        "relationship_kind": "access",
+        "from_id": "shared:cohort",
+        "to_id": "hall:asset"
+      },
+      {
+        "relationship_version": "v1",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [],
+          "assumption_refs": []
+        },
+        "id": "infrastructure:access:preparedness",
+        "relationship_kind": "access",
+        "from_id": "cohort:b",
+        "to_id": "hall:asset"
+      },
+      {
+        "id": "depot:location",
+        "relationship_version": "v1",
+        "relationship_kind": "containment",
+        "from_id": "depot",
+        "to_id": "destination",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "bridge:edge",
+        "relationship_version": "v1",
+        "relationship_kind": "connectivity",
+        "from_id": "origin",
+        "to_id": "junction",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      },
+      {
+        "id": "road:edge",
+        "relationship_version": "v1",
+        "relationship_kind": "connectivity",
+        "from_id": "junction",
+        "to_id": "destination",
+        "aggregation": {
+          "kind": "non_aggregating"
+        },
+        "provenance": {
+          "origin": "authored",
+          "source_refs": [
+            "synthetic:facility"
+          ],
+          "assumption_refs": []
+        }
+      }
+    ],
+    "scopes": [
+      {
+        "id": "east",
+        "label": "Synthetic east",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "west",
+        "label": "Synthetic west",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "settlement"
+      },
+      {
+        "id": "watershed",
+        "label": "Synthetic watershed",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      },
+      {
+        "id": "region",
+        "label": "Synthetic region",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_kind": "region"
+      },
+      {
+        "id": "home:scope",
+        "scope_kind": "household",
+        "label": "home",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      },
+      {
+        "id": "network:scope",
+        "scope_kind": "community",
+        "label": "network",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "values": [
+      {
+        "effective_time": {
+          "calendar_id": "calendar",
+          "tick": 0
+        },
+        "entity_id": "water",
+        "id": "water-value",
+        "partition": "conditions",
+        "property_id": "water-stock",
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        },
+        "scope_id": "east",
+        "value": {
+          "denominator_scope_id": null,
+          "kind": "quantity",
+          "time_basis_id": null,
+          "unit_id": "kg",
+          "value": "100"
+        }
+      },
+      {
+        "id": "population:shared",
+        "entity_id": "shared:cohort",
+        "scope_id": "east",
+        "partition": "conditions",
+        "property_id": "population",
+        "value": {
+          "kind": "quantity",
+          "value": "10",
+          "unit_id": "people",
+          "time_basis_id": null,
+          "denominator_scope_id": null
+        },
+        "effective_time": {
+          "tick": 0,
+          "calendar_id": "calendar"
+        },
+        "provenance": {
+          "assumption_refs": [],
+          "origin": "authored",
+          "source_refs": []
+        }
+      }
+    ],
+    "versions": {
+      "catalog_id": "authored:governance-infrastructure-catalog-v1",
+      "model_id": "authored:governance-infrastructure",
+      "numeric_runtime_id": "decimal28-half-even-exact-v1",
+      "world_schema": 1
+    }
+  },
+  "expected": {
+    "administration_closing": {
+      "raw": "20",
+      "labor": "6",
+      "rights": "4"
+    },
+    "infrastructure": {
+      "reach:make": [
+        "1",
+        "2",
+        "0"
+      ],
+      "reach:deliver": [
+        "0",
+        "2",
+        "1"
+      ]
+    },
+    "infrastructure_closing": {
+      "depot:slots": "0",
+      "bridge:slots": "0",
+      "road:slots": "0"
+    }
+  },
+  "limits": "Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance."
+}

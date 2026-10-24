@@ -2567,7 +2567,7 @@
         {
           "branch_id": "society:domain/08/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded explicit facility/path prerequisite gates only; no freight throughput, operating inputs, construction or parent acceptance.",
+          "limits": "Bounded explicit facility/path prerequisite gates only; no freight throughput, operating inputs, construction or parent acceptance. Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:infrastructure-pair-work-mechanism",
@@ -2575,6 +2575,14 @@
             },
             {
               "id": "authored:ei-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:gi-infrastructure-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:gi-policy-mechanism",
               "version": "v1"
             }
           ],
@@ -2585,7 +2593,8 @@
           ],
           "source_refs": [
             "authored:provisioning-infrastructure-v1",
-            "authored:economy-infrastructure-v1"
+            "authored:economy-infrastructure-v1",
+            "authored:governance-infrastructure-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -2785,6 +2794,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "direction": "input",
+          "id": "infrastructure:gi:administration-book-in",
+          "mechanism": {
+            "id": "authored:gi-infrastructure-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gi:administration-book-in",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "infrastructure:gi:candidate",
+          "mechanism": {
+            "id": "authored:gi-infrastructure-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gi:candidate",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "input",
+          "id": "infrastructure:gi:permission",
+          "mechanism": {
+            "id": "authored:gi-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gi:permission",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
@@ -2794,6 +2905,14 @@
         },
         {
           "id": "authored:ei-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gi-infrastructure-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gi-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -3304,14 +3423,21 @@
         {
           "branch_id": "society:domain/03/1",
           "evidence_status": "unreviewed",
-          "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:gi-administration-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-03: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:governance-infrastructure-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -3830,6 +3956,74 @@
           "value_type": {
             "kind": "label"
           }
+        },
+        {
+          "direction": "input",
+          "id": "governance:gi:context",
+          "mechanism": {
+            "id": "authored:gi-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gi:context",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
+        },
+        {
+          "direction": "output",
+          "id": "governance:gi:administration-book",
+          "mechanism": {
+            "id": "authored:gi-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "gi:administration-book",
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ],
+          "value_type": {
+            "kind": "label"
+          }
         }
       ],
       "mechanisms": [
@@ -3859,6 +4053,10 @@
         },
         {
           "id": "authored:gk-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:gi-administration-mechanism",
           "version": "v1"
         }
       ],
@@ -6145,6 +6343,50 @@
         "knowledge_culture:ge:administration-book-in"
       ],
       "limits": "Bounded actual scoped decisions and education prerequisites on one staged dated work book; finite independent facility slots. Explicit approval dependence. No eligibility, qualification or learning inferred; no adoption, source activation, transitions, numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "governance",
+        "infrastructure"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:governance-infrastructure",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-03:DOM-08",
+      "integration_owner": "governance",
+      "interface_refs": [
+        "governance:gi:administration-book",
+        "infrastructure:gi:administration-book-in"
+      ],
+      "limits": "Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {
