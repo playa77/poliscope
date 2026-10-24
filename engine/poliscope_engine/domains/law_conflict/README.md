@@ -116,3 +116,15 @@ commitments; unknowns withhold the candidate. Prior postings and protected holds
 remain inspectable, and no treatment, rights or enforcement is inferred. Reviewed
 opaque host digests bind the full request/world/units/runtime/review context.
 See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-health.md).
+
+`communication.py` composes actual adjudication and DOM-09 message prerequisites
+through the private [adjudication/communication contract](../../contracts/adjudication_communication.py).
+Each message explicitly maps a case or declares independence. A dependent case
+matches the cohort recipient, channel controller and asset, obligations and finite
+channel/verification accounts. Original message preflight remains inspectable.
+Upheld preserves original terms; other known findings narrow only new publication
+access. Unknowns and incompatible rights withhold the complete candidate. Dated
+case administration and message books remain disjoint, retaining prior postings,
+holds and subtotals. Reviewed context-bound opaque host ports execute both actual
+evaluators through common conformance. No delivery/publication, truth, enforcement,
+source activation, scientific review, transitions or public numerical IPC is implied.

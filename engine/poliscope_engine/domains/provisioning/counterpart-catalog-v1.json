@@ -3796,7 +3796,7 @@
         {
           "branch_id": "society:domain/04/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance. Bounded actual legal case work and explicit message prerequisites. Canonical finite administration and disjoint finite channel/verification slots. Upheld preserves original access, disclosure, reach and delay. No rights creation, enforcement, delivery, publication, truth, persuasion, operating-resource model, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:ea-administration-mechanism",
@@ -3837,6 +3837,14 @@
             {
               "id": "authored:ah-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:am-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:am-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Reviewed legal models, enforcement, other counterparts and original parent gates remain pending.",
@@ -3849,7 +3857,8 @@
             "authored:governance-adjudication-v1",
             "authored:adjudication-care-v1",
             "authored:adjudication-education-v1",
-            "authored:adjudication-health-v1"
+            "authored:adjudication-health-v1",
+            "authored:adjudication-communication-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -4476,6 +4485,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "law_conflict:am:context",
+          "mechanism": {
+            "id": "authored:am-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "am:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:am:administration-book",
+          "mechanism": {
+            "id": "authored:am-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "am:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:am:permission",
+          "mechanism": {
+            "id": "authored:am-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "am:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -4518,6 +4629,14 @@
         {
           "id": "authored:ah-policy-mechanism",
           "version": "v1"
+        },
+        {
+          "id": "authored:am-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:am-policy-mechanism",
+          "version": "v1"
         }
       ],
       "persistence": "shared_store",
@@ -4531,7 +4650,7 @@
         {
           "branch_id": "society:domain/09/1",
           "evidence_status": "hypothetical",
-          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual scoped decisions and explicit message prerequisites. Canonical finite administration time and disjoint finite channel/verification slots. Approval preserves original access/disclosure/reach/delay; no delivery, publication, truth, persuasion, operating-resource model, adoption, source activation, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual scoped decisions and explicit message prerequisites. Canonical finite administration time and disjoint finite channel/verification slots. Approval preserves original access/disclosure/reach/delay; no delivery, publication, truth, persuasion, operating-resource model, adoption, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual legal case work and explicit message prerequisites. Canonical finite administration and disjoint finite channel/verification slots. Upheld preserves original access, disclosure, reach and delay. No rights creation, enforcement, delivery, publication, truth, persuasion, operating-resource model, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:gc-communication-mechanism",
@@ -4539,6 +4658,10 @@
             },
             {
               "id": "authored:gc-policy-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:am-communication-mechanism",
               "version": "v1"
             }
           ],
@@ -4548,7 +4671,8 @@
             "region"
           ],
           "source_refs": [
-            "authored:governance-communication-v1"
+            "authored:governance-communication-v1",
+            "authored:adjudication-communication-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -4692,6 +4816,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "communication:am:administration-book-in",
+          "mechanism": {
+            "id": "authored:am-communication-mechanism",
+            "version": "v1"
+          },
+          "port_id": "am:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "communication:am:candidate",
+          "mechanism": {
+            "id": "authored:am-communication-mechanism",
+            "version": "v1"
+          },
+          "port_id": "am:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -4701,6 +4893,10 @@
         },
         {
           "id": "authored:gc-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:am-communication-mechanism",
           "version": "v1"
         }
       ],
@@ -5821,6 +6017,50 @@
         "health:ah:administration-book-in"
       ],
       "limits": "Bounded actual case work and explicitly dependent health prerequisites on one dated book and disjoint facility slots. No rights, treatment, enforcement, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "id": "pair:DOM-04:DOM-09",
+      "domains": [
+        "law_conflict",
+        "communication"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:adjudication-communication",
+          "version": "v1"
+        }
+      ],
+      "integration_owner": "law_conflict",
+      "interface_refs": [
+        "law_conflict:am:administration-book",
+        "communication:am:administration-book-in"
+      ],
+      "limits": "Bounded actual legal case work and explicit message prerequisites. Canonical finite administration and disjoint finite channel/verification slots. Upheld preserves original access, disclosure, reach and delay. No rights creation, enforcement, delivery, publication, truth, persuasion, operating-resource model, source activation, scientific review, transitions, numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

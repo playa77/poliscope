@@ -29,3 +29,11 @@ finite dated book, disjoint from canonical administrative time. Both original
 preflight and restricted evaluation remain inspectable; only a complete resolved
 pair has a private two-book candidate. Neither delay nor capacity readiness means
 delivery, publication, verification of truth or institutional response.
+
+The maintained DOM-04/09 counterpart is hosted by
+[`law_conflict.communication`](../law_conflict/communication.py). It evaluates
+finite case work before explicit message prerequisites, preserving original
+reach, disclosure, access, delay and channel/verification limits. Legal dependence
+binds a cohort recipient, channel controller/asset, obligations and affected
+accounts; null case IDs declare independence. It neither delivers nor publishes
+messages. See [execution evidence](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-communication.md).
