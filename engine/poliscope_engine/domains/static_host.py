@@ -41,6 +41,7 @@ def projection(result, domain):
         evaluation=result['evaluations'][domain],missing_effects=result['missing_effects'],
         requirements=[r for r in result['requirements'] if domain in (r['source'],r['target'])],
         source_refs=result['source_refs'],
+        posting_origins=result['posting_origins'] if domain == 'economy' else [],
         evidence_status='hypothetical',coverage_status='partial'), sort_keys=True, separators=(',', ':'))
 
 

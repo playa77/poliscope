@@ -198,6 +198,13 @@ def test_actual_database_reopen_views_share_context_quantities_and_provenance(tm
     with Store(tmp_path) as store:
         reader = Revisions(store,registry=None)
         assert reader.evidence(context).model_dump_json() == retained
+        import json
+        saved = reader.evidence(context).evaluation
+        economy = next(o for o in saved.observations if o.node == ['output','economy','system:evidence'])
+        origins = json.loads(economy.value.value)['posting_origins']
+        final = json.loads(saved.final_batch_json)
+        assert {p['id'] for p in origins} == {p['id'] for p in final['postings']}
+        assert all(p['original_id'].startswith('allocation:') and p['account_ids'] for p in origins)
         selected = dict(context=context,scope_id='local')
         account_rows=[]; cursor=None
         while True:
