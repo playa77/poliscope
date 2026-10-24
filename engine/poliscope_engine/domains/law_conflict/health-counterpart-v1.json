@@ -1,0 +1,224 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:ah-administration-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ah:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ah:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ah:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ah-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent health prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, treatment, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ah:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ah:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ah-health-mechanism",
+    "version": "v1",
+    "domain": "health",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "ah:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "ah:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "ah:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ah-health",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent health prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, treatment, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ah:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ah:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:ah-policy-mechanism",
+    "version": "v1",
+    "domain": "law_conflict",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "population_cohort",
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "ah:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:ah-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:adjudication-health-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual case work and explicitly dependent health prerequisites on one dated staged work book with disjoint finite facility slots. Upheld preserves original terms; no rights, qualifications, treatment, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:adjudication-health",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "ah:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "ah:finite-book"
+    ]
+  }
+]

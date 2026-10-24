@@ -414,3 +414,10 @@ private conformance, with no public IPC, new duty, rights creation or enforcemen
 private hypothetical DOM-04/06 composition. Explicit case/independence mappings
 retain original education preflight, staged adjudication and finite work/facility
 evidence. These DTOs expose no public IPC method or publication authority.
+
+`adjudication-health.schema.json` and `adjudication-health.ts` describe the
+private hypothetical DOM-04/07 composition. Explicit legal dependence/independence
+retains original health preflight and declared needs, exposures and health states.
+Actual case work precedes patient/staff/supply commitments on one dated book;
+facilities remain a disjoint finite pool. Legal bindings cover direct and required
+entitlement accounts. These DTOs imply no treatment, rights or publication.

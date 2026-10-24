@@ -106,3 +106,13 @@ other known findings restrict only dependent new commitments. Original preflight
 unknowns and prior commitments stay inspectable. No rights, qualifications,
 learning, enforcement, transitions or publication are inferred. Reviewed host
 ports carry only context-bound opaque evidence digests.
+
+[`health.py`](health.py) composes actual adjudication and health prerequisites.
+Each service declares a case or independence. A dependent case binds its patient,
+authority, target, obligations, direct work accounts, required entitlement accounts
+and facility accounts. Original preflight validates health terms even when legal
+inputs are unresolved. Known non-upheld outcomes restrict only dependent new
+commitments; unknowns withhold the candidate. Prior postings and protected holds
+remain inspectable, and no treatment, rights or enforcement is inferred. Reviewed
+opaque host digests bind the full request/world/units/runtime/review context.
+See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-health.md).
