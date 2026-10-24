@@ -437,3 +437,11 @@ authority/obligation/account identities are checked before staging. Original
 participation declarations remain evidence; legal findings only narrow dependent
 new access. Disjoint finite books preserve prior use, holds and subtotals.
 These contracts add no public IPC, attendance, rights creation or enforcement.
+
+`adjudication-continuity.schema.json` and `.ts` are private v1 contracts for
+actual DOM-04/12 case-work and declared continuity prerequisites. Complete
+case/independence mappings bind group, institution, asset, obligations and affected
+capacity. Original preflight preserves vulnerability, authority, disclosure and
+conditional aid. Legal findings only narrow dependent new access. Finite disjoint
+books retain prior work, response use, holds and subtotals. No public IPC, rescue,
+hazard prediction, rights creation or enforcement is introduced.

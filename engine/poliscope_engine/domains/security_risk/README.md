@@ -53,3 +53,12 @@ unknowns, conflicts, prior commitments and preparedness holds. Independent canon
 administrative work and finite response-slot books yield one private candidate only
 when both resolve. No hazard, rescue, aid creation or operating-resource model is
 inferred.
+
+The bounded DOM-04/12 consumer is `law_conflict.continuity.evaluate_pair`.
+Actual case work gates only explicitly dependent new response access. The case
+must match group, controlling institution, facility, obligations and affected
+capacity. Original risk preflight and distinct authority/disclosure/aid conditions
+remain inspectable; legal outcomes cannot resolve unknowns or conflicting duties.
+Finite disjoint work/response books retain prior commitments, reservations and
+subtotals. This is private hypothetical prerequisite evidence, with no rescue,
+hazard probability, damage or operating-resource model.

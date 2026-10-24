@@ -178,3 +178,13 @@ and subtotals: twelve time units contain three legal, three care and six retaine
 five participation slots contain one prior, two new ritual and two new meeting.
 The fixture and adversarial derivatives exercise actual reviewed host conformance,
 unknowns/conflicts, case-specific mappings, voluntary declines and detached replay.
+
+`adjudication-continuity-v1.json` composes actual DOM-04 case work with DOM-12
+response-slot prerequisites. Independent literal quantities retain twelve hours
+as three legal, three competing care and six remaining; five response slots
+contain one prior use, two new preparedness and two new ordinary slots. A protected
+ordinary hold prevents duplicate spending. Integer feasible-set/Fraction oracles,
+local/regional scopes, case-specific findings and actual reviewed conformance
+check finite commitments. Derivatives retain unknown vulnerability, authority,
+disclosure and conditional external aid, plus withdrawal/replay. This synthetic
+fixture establishes no rescue, hazard probability, enforcement or parent gate.
