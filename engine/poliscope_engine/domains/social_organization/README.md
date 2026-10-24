@@ -67,3 +67,11 @@ evaluator has no mechanism-registry input or source activation path.
 against all 12 DOM-05 branch/leaf entries and 25 source-maintenance entries,
 retaining pinned titles/documents/alternatives, availability and research gaps.
 No kinship, child-rearing, health, demographic or belonging effects are inferred.
+
+The bounded actual DOM-04/05 integration in
+[`law_conflict/care.py`](../law_conflict/care.py) consumes legal case results and
+the staged finite case-work book before calling this evaluator. Every original
+duty remains present, including an unmet dependent duty after dismissal and
+independent care in overlapping community arrangements. One canonical population
+union and time book prevent duplicated capacity. Upheld creates neither a duty
+nor service; original access terms, holds and unknowns remain authoritative.

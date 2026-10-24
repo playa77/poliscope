@@ -397,3 +397,15 @@ rights resolution is added. See the
 private v1 decision/response-slot contracts. They preserve original-term preflight,
 actual governance and continuity evidence, and detached administration/response
 books. They do not add public numerical IPC, adoption or source activation.
+
+## Private adjudication/care conformance
+
+`adjudication-care.schema.json` and `adjudication-care.ts` derive from
+`engine/poliscope_engine/contracts/adjudication_care.py`. Every existing care
+obligation explicitly declares a case prerequisite or independence. The adapter
+runs actual case work before care on one canonical dated account book. Upheld
+preserves original terms; other known outcomes narrow only dependent new care.
+The result retains original-term preflight, legal findings, canonical membership,
+prior/additional/unmet care and a detached hypothetical candidate. Opaque reviewed
+host ports bind the complete request/world/unit/runtime/policy context. This is
+private conformance, with no public IPC, new duty, rights creation or enforcement.

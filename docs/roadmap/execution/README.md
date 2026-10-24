@@ -1107,3 +1107,21 @@ models, adoption, transitions, all-domain education, originating choices, public
 numerical IPC, database publication, native Windows and original parent/cumulative
 acceptance remain open. After merge reassess maintained DOM-04/05
 adjudication/care against actual case-work and canonical care obligations.
+
+## Current boundary after PR #91
+
+PR #91 merged actual governance/continuity at
+`81c305e`. The clean workspace fetched and fast-forwarded without stash or
+discarded work. The same sequential Codex `/root`, controlled by the requesting
+user, continues under SV with
+[WP-032-counterparts-adjudication-care](WP-032-counterparts-adjudication-care.md).
+Actual finite case work precedes canonical care on one dated book. Every duty
+explicitly maps a beneficiary/authority/obligation/affected-account case or declares
+independence. Upheld preserves original terms; other known outcomes restrict only
+dependent new care. Prior work, holds, unmet obligations and overlapping population
+remain inspectable. Only maintained DOM-04/05 becomes newly ready: nineteen ready,
+25 pending. Reviewed sources, scientific/nonauthor review, care outcomes,
+enforcement, transitions, all-domain education, originating choices, public
+numerical IPC, database publication, native Windows and original parent/cumulative
+acceptance remain open. After merge reassess maintained DOM-04/06
+adjudication/education against actual case-work and student/staff prerequisites.

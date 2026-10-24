@@ -1444,7 +1444,7 @@
         {
           "branch_id": "society:domain/05/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
@@ -1452,6 +1452,10 @@
             },
             {
               "id": "authored:ec-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-care-mechanism",
               "version": "v1"
             }
           ],
@@ -1462,7 +1466,8 @@
           ],
           "source_refs": [
             "authored:provisioning-care-v1",
-            "authored:economy-care-v1"
+            "authored:economy-care-v1",
+            "authored:adjudication-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1471,7 +1476,7 @@
         {
           "branch_id": "society:domain/05/2",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
@@ -1479,6 +1484,10 @@
             },
             {
               "id": "authored:ec-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-care-mechanism",
               "version": "v1"
             }
           ],
@@ -1489,7 +1498,8 @@
           ],
           "source_refs": [
             "authored:provisioning-care-v1",
-            "authored:economy-care-v1"
+            "authored:economy-care-v1",
+            "authored:adjudication-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1498,7 +1508,7 @@
         {
           "branch_id": "society:domain/05/3",
           "evidence_status": "hypothetical",
-          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC.",
+          "limits": "Bounded real care obligations/canonical membership and finite provisioning chain. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual care obligations/canonical membership and finite economy work/access. Context-bound book digests only; no health effect, source activation, scientific review, transitions or public numerical IPC. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:care-work-mechanism",
@@ -1506,6 +1516,10 @@
             },
             {
               "id": "authored:ec-work-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-care-mechanism",
               "version": "v1"
             }
           ],
@@ -1516,7 +1530,8 @@
           ],
           "source_refs": [
             "authored:provisioning-care-v1",
-            "authored:economy-care-v1"
+            "authored:economy-care-v1",
+            "authored:adjudication-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -1672,6 +1687,74 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "social_organization:ac:administration-book-in",
+          "mechanism": {
+            "id": "authored:ac-care-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ac:administration-book-in",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "social_organization:ac:candidate",
+          "mechanism": {
+            "id": "authored:ac-care-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ac:candidate",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -1681,6 +1764,10 @@
         },
         {
           "id": "authored:ec-work-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ac-care-mechanism",
           "version": "v1"
         }
       ],
@@ -3545,7 +3632,7 @@
         {
           "branch_id": "society:domain/04/1",
           "evidence_status": "hypothetical",
-          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance.",
+          "limits": "Bounded actual legal-case prerequisites for explicit entitlement-constrained goods claims on one canonical staged work book. Host legal assertions are hypothetical; no rights creation/revocation, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual scoped decision prerequisites and finite legal case work on one canonical staged dated book. Explicit independence; no rights creation, merits inference, adoption, enforcement, source activation, transitions, public numerical IPC or parent acceptance. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
           "mechanism_refs": [
             {
               "id": "authored:ea-administration-mechanism",
@@ -3562,6 +3649,14 @@
             {
               "id": "authored:ga-policy-mechanism",
               "version": "v1"
+            },
+            {
+              "id": "authored:ac-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-policy-mechanism",
+              "version": "v1"
             }
           ],
           "next_task": "Reviewed legal models, enforcement, other counterparts and original parent gates remain pending.",
@@ -3571,7 +3666,8 @@
           ],
           "source_refs": [
             "authored:economy-adjudication-v1",
-            "authored:governance-adjudication-v1"
+            "authored:governance-adjudication-v1",
+            "authored:adjudication-care-v1"
           ],
           "static_available": true,
           "status": "partial",
@@ -3580,14 +3676,25 @@
         {
           "branch_id": "society:domain/04/2",
           "evidence_status": "unreviewed",
-          "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:ac-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-policy-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:adjudication-care-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -3595,14 +3702,25 @@
         {
           "branch_id": "society:domain/04/3",
           "evidence_status": "unreviewed",
-          "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:ac-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-policy-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:adjudication-care-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -3610,14 +3728,25 @@
         {
           "branch_id": "society:domain/04/4",
           "evidence_status": "unreviewed",
-          "limits": "Catalog template only. Source archive is not an executable domain model.",
-          "mechanism_refs": [],
+          "limits": "Catalog template only. Source archive is not an executable domain model. Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
+          "mechanism_refs": [
+            {
+              "id": "authored:ac-administration-mechanism",
+              "version": "v1"
+            },
+            {
+              "id": "authored:ac-policy-mechanism",
+              "version": "v1"
+            }
+          ],
           "next_task": "DOM-04: declare reviewed scoped mechanisms, ownership, ports and independent fixtures.",
           "scope_kinds": [
             "settlement",
             "region"
           ],
-          "source_refs": [],
+          "source_refs": [
+            "authored:adjudication-care-v1"
+          ],
           "static_available": false,
           "status": "unresolved",
           "transition_available": false
@@ -3832,6 +3961,108 @@
               "entity_kind": "institution"
             }
           ]
+        },
+        {
+          "id": "law_conflict:ac:context",
+          "mechanism": {
+            "id": "authored:ac-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ac:context",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ac:administration-book",
+          "mechanism": {
+            "id": "authored:ac-administration-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ac:administration-book",
+          "direction": "output",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
+        },
+        {
+          "id": "law_conflict:ac:permission",
+          "mechanism": {
+            "id": "authored:ac-policy-mechanism",
+            "version": "v1"
+          },
+          "port_id": "ac:permission",
+          "direction": "input",
+          "value_type": {
+            "kind": "label"
+          },
+          "references": [
+            {
+              "entity_id": "labor",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "raw",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "rights",
+              "entity_kind": "account"
+            },
+            {
+              "entity_id": "shared:cohort",
+              "entity_kind": "population_cohort"
+            },
+            {
+              "entity_id": "east-authority",
+              "entity_kind": "institution"
+            }
+          ]
         }
       ],
       "mechanisms": [
@@ -3849,6 +4080,14 @@
         },
         {
           "id": "authored:ga-policy-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ac-administration-mechanism",
+          "version": "v1"
+        },
+        {
+          "id": "authored:ac-policy-mechanism",
           "version": "v1"
         }
       ],
@@ -5021,6 +5260,50 @@
         "security_risk:gk:administration-book-in"
       ],
       "limits": "Bounded actual scoped decisions and explicit response-slot prerequisites. Canonical finite administration time and disjoint response slots. Approval preserves authority, disclosure, vulnerability, voluntary participation, eligibility, access, aid conditions and unresolved obligations. No delivered rescue, hazard/damage effects, operating-resource model, adoption, activation, transitions, public numerical IPC or parent acceptance.",
+      "owner_status": "designated",
+      "shared_references": [
+        {
+          "entity_id": "labor",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "raw",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "rights",
+          "entity_kind": "account"
+        },
+        {
+          "entity_id": "shared:cohort",
+          "entity_kind": "population_cohort"
+        },
+        {
+          "entity_id": "east-authority",
+          "entity_kind": "institution"
+        }
+      ],
+      "status": "ready_for_conformance"
+    },
+    {
+      "contract_version": 1,
+      "domains": [
+        "law_conflict",
+        "social_organization"
+      ],
+      "fixture_refs": [
+        {
+          "id": "synthetic:adjudication-care",
+          "version": "v1"
+        }
+      ],
+      "id": "pair:DOM-04:DOM-05",
+      "integration_owner": "law_conflict",
+      "interface_refs": [
+        "law_conflict:ac:administration-book",
+        "social_organization:ac:administration-book-in"
+      ],
+      "limits": "Bounded actual legal case work and existing canonical care obligations on one finite dated staged book. Explicit dependent/independent mapping; upheld preserves original eligibility, terms and access. No obligation/rights creation, enforcement, care outcomes, source activation, scientific review, transitions, public numerical IPC or parent acceptance.",
       "owner_status": "designated",
       "shared_references": [
         {

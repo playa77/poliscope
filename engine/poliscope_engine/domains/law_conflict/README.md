@@ -86,3 +86,14 @@ before finite case work on the same dated account book. Explicit independent cas
 remain independent of approval. Approval preserves host legal assertions and work
 terms; it grants no rights, adjudicates no merits and enforces no obligations.
 Unknowns and unmet case work remain inspectable; prior work is never refunded.
+
+The actual DOM-04/05 adapter in [`care.py`](care.py) runs case work before
+canonical arrangement/beneficiary care on the same dated DOM-02 book. Every duty
+explicitly declares a case or independence. A dependent case must match its
+beneficiary/target, authority, obligation reference and affected time account.
+Upheld preserves original eligibility/access/terms; other known outcomes restrict
+only dependent new care. Original-term preflight still validates membership and
+terms when the case is unresolved. Findings, unmet duty, prior work, reservations
+and population overlap remain inspectable. Reviewed opaque host digests support
+common conformance; no duties, rights, enforcement or care outcomes are inferred.
+See the [execution record](../../../../docs/roadmap/execution/WP-032-counterparts-adjudication-care.md).
