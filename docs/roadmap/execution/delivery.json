@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "kind": "maintenance",
+  "package": "WP-003",
+  "status": "complete",
+  "record": "docs/roadmap/execution/WP-003.md",
+  "scope": "User-requested correction of delivery, CI duplication and counterpart registration overhead; WP-032 remains active",
+  "acceptance": [
+    {"id": "delivery", "status": "passed", "evidence": "Full-parent receipt guard and negative witnesses; AGENTS and current WP-032 contract"},
+    {"id": "ci", "status": "passed", "evidence": "Event routing and fail-closed aggregation witnesses; full hosted candidate validation required by checks"},
+    {"id": "registration", "status": "passed", "evidence": "All 26 host declaration sets and callbacks compared; unchanged domain suites remain required"}
+  ]
+}

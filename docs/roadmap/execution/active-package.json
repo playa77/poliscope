@@ -1,0 +1,16 @@
+{
+  "version": 1,
+  "package": "WP-032",
+  "status": "in_progress",
+  "record": "docs/roadmap/execution/WP-032.md",
+  "owner": "Codex /root, controlled by the requesting repository user",
+  "base": "def68db533636eac3ed2e1f5668f68e2237bc2dc",
+  "acceptance": [
+    {"id": "counterparts", "status": "pending", "remaining": "18 of 44 counterpart contracts; preserve the 26 merged pairs"},
+    {"id": "education", "status": "pending", "remaining": "Synthetic all-domain education path with canonical shared people, time and assets"},
+    {"id": "originating-choices", "status": "pending", "remaining": "An entry choice originating in each of the twelve domains"},
+    {"id": "coverage", "status": "pending", "remaining": "Final source-branch and module-interface audit with unresolved effects visible"},
+    {"id": "database-cross-view", "status": "pending", "remaining": "Actual engine/database integration, canonical IDs, provenance and synchronized views"},
+    {"id": "parent-validation", "status": "pending", "remaining": "Integrated acceptance and separate inspection against the original WP-032 scope"}
+  ]
+}

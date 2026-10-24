@@ -8,6 +8,16 @@ Revision 0.5 · 2026-10-16 · One to three development agents under human contro
 
 ## 1. Allocation unit and responsibilities
 
+Current delivery rule (2026-10-24, explicit owner correction): one **top-level
+WP/DOM package per session and PR**. Read the active parent in
+[active-package.json](execution/active-package.json) before historical child
+handoffs. Decomposition below describes internal implementation steps and
+commits; it does not authorize partial-child PRs or repeated merge checkpoints.
+An exception requires the user's explicit instruction. Complete parent acceptance
+before handoff; after an interruption resume the same parent. The current active
+feature parent is [WP-032](execution/WP-032.md). Corrective maintenance can be
+delivered directly without reallocating or falsely completing that parent.
+
 The executable work package is the unit of assignment. Platform work in this plan targets Windows x64 and Linux x64 only. Before it starts, allocate an available development agent and record its controlling person, any collaborators, division of work, write scope, dependencies, deliverables, interfaces, validation route and acceptance criteria. Keep this execution plan stable until the package completes.
 
 Human controllers maintain priorities, agent availability and the authoritative package ledger. They select ready work at package boundaries and retain required human authorization decisions. Development agents implement, test, document and review their assigned packages. Required capabilities belong to package definitions; agent identities are recorded only when packages are allocated. An agent may implement an engine package and later a desktop, content or review package if qualified.
@@ -144,6 +154,22 @@ An unexpected interruption marks that package blocked, preserves its assignment 
 ## 8. CI, integration and forecast updates
 
 All packages use short-lived PR branches, required checks on a candidate containing current main and the package's recorded validation evidence. Use the repository's merge queue where available, otherwise update/recheck before merge. Changed behavior invalidates stale evidence. Agent review artifacts supplement the repository's actual account-level approval requirements.
+
+Full PR/queue validation runs engine and desktop lanes on separate runners, then
+the stable `checks` job verifies both fresh candidate reports and the exact gate
+selection. Superseded PR runs are cancelled. Markdown-only PRs run relevant
+roadmap checks without packaging; main pushes run bounded engine startup/wire
+smoke instead of the complete battery again. Weekly/manual runs retain full
+validation. A queue merge may create a distinct combined candidate and still
+needs its full validation. Repository protection settings are not changed.
+
+During implementation run affected regressions, not the accumulated battery for
+each internal child. Use the final full CI run as authoritative candidate
+evidence; do not require a duplicate local full run. Reuse valid frozen setups
+when locks have not changed. Keep shared invariants in shared tests and retain
+distinct pair semantics, failure cases and independent numerical expectations.
+Report new tests separately from cumulative passes and generated lines separately
+from handwritten source. Deliver acceptance, not test-count growth.
 
 Required checks cover frozen setup, generated-contract compatibility, content integrity, engine invariants, independently derived fixtures, desktop/provider mocks and actual Electron/child/SQLite behavior. Domain/contract changes run affected counterpart and integrated-slice checks. Native and live-provider evidence remain explicit; ordinary checks use synthetic data and no paid calls. The exact checks follow each package's scope, source requirements and the explicit subcase/gate manifests in verification §5.1–5.2. WP-018 delivers production create/open/query before the headless slice; WP-020 is its UI consumer. Minimal trusted historical reads arrive with WP-010, while WP-041 extends archive/older-schema recovery. This prevents later UI/provider/recovery packages from being hidden prerequisites of early gates. A documentation disposition of an RT finding does not certify implementation or supply empirical evidence.
 

@@ -1,4 +1,6 @@
 """Reviewed opaque host bindings for the actual DOM-03/06 counterpart."""
+from ..counterpart_declarations import (definitions as counterpart_definitions,
+    sources as counterpart_sources, fixtures as counterpart_fixtures)
 from decimal import Decimal
 from poliscope_engine.accounts import fail
 from poliscope_engine.contracts.world import LabelValue
@@ -37,31 +39,12 @@ def policy_registry(*, units, reviews):
 
 
 def host_registry(request, *, graph, units, reviews):
-    from poliscope_engine.domains.social_organization.education_counterpart import definitions as ce_definitions
-    from poliscope_engine.domains.governance.infrastructure_counterpart import definitions as gi_definitions
-    from poliscope_engine.domains.law_conflict.continuity_counterpart import definitions as ak_definitions
-    from poliscope_engine.domains.law_conflict.participation_counterpart import definitions as ap_definitions
-    from poliscope_engine.domains.law_conflict.communication_counterpart import definitions as am_definitions
-    from poliscope_engine.domains.law_conflict.health_counterpart import definitions as ah_definitions
-    from poliscope_engine.domains.law_conflict.education_counterpart import definitions as ae_definitions
-    from poliscope_engine.domains.law_conflict.care_counterpart import definitions as ac_definitions
-    from poliscope_engine.domains.governance.continuity_counterpart import definitions as gk_definitions
-    from poliscope_engine.domains.governance.participation_counterpart import definitions as gp_definitions
-    from poliscope_engine.domains.governance.communication_counterpart import definitions as gc_definitions
-    from poliscope_engine.domains.economy.infrastructure_counterpart import definitions as economy_infrastructure_definitions
     """Create a private immutable request binding. Reviews are explicit host input.
 
     Registering declarations never activates them. Normal MechanismRegistry review,
     context and fixture checks still apply. This host is not public IPC support.
     """
-    from ..provisioning.counterpart import education_definitions, continuity_definitions, infrastructure_definitions, definitions as economy_definitions, care_definitions, health_definitions, environment_definitions
-    from ..economy.governance_counterpart import definitions as governance_definitions
-    from ..economy.adjudication_counterpart import definitions as adjudication_definitions
-    from ..economy.care_counterpart import definitions as economy_care_definitions
-    from .adjudication_counterpart import definitions as governance_adjudication_definitions
     mechanisms = policy_registry(units=units, reviews=reviews)
-    from poliscope_engine.domains.economy.health_counterpart import definitions as economy_health_definitions
-    from poliscope_engine.domains.economy.education_counterpart import definitions as economy_education_definitions
     request = GovernanceEducationRequest.model_validate_json(request.model_dump_json())
     validate_context(request, graph, units)
     encoded = request.model_dump_json()
@@ -94,9 +77,9 @@ def host_registry(request, *, graph, units, reviews):
         return dict(kind='label', value=digest(result.model_dump(mode='json')))
 
     return MechanismRegistry(model=MODEL, units=units,
-        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=['authored:care-education-v1', 'authored:governance-infrastructure-v1', 'authored:adjudication-continuity-v1', 'authored:adjudication-participation-v1', 'authored:adjudication-communication-v1', 'authored:adjudication-health-v1', 'authored:adjudication-education-v1', 'authored:adjudication-care-v1', 'authored:governance-continuity-v1', 'authored:governance-participation-v1', 'authored:governance-communication-v1', SOURCE, 'authored:governance-adjudication-v1', 'authored:economy-adjudication-v1', 'authored:economy-infrastructure-v1', 'authored:economy-health-v1', 'authored:economy-education-v1', 'authored:economy-care-v1', 'authored:economy-governance-v1', 'authored:provisioning-education-v1', 'authored:provisioning-environment-v1', 'authored:provisioning-continuity-v1', 'authored:provisioning-infrastructure-v1', 'authored:provisioning-health-v1', 'authored:provisioning-economy-v1', 'authored:provisioning-care-v1'],
-        fixture_ids=[('synthetic:care-education', 'v1'), ('synthetic:governance-infrastructure', 'v1'), ('synthetic:adjudication-continuity', 'v1'), ('synthetic:adjudication-participation', 'v1'), ('synthetic:adjudication-communication', 'v1'), ('synthetic:adjudication-health', 'v1'), ('synthetic:adjudication-education', 'v1'), ('synthetic:adjudication-care', 'v1'), ('synthetic:governance-continuity', 'v1'), ('synthetic:governance-participation', 'v1'), ('synthetic:governance-communication', 'v1'), FIXTURE, ('synthetic:governance-adjudication', 'v1'), ('synthetic:economy-adjudication', 'v1'), ('synthetic:economy-infrastructure', 'v1'), ('synthetic:economy-health', 'v1'), ('synthetic:economy-education', 'v1'), ('synthetic:economy-care', 'v1'), ('synthetic:economy-governance', 'v1'), ('synthetic:provisioning-education', 'v1'), ('synthetic:provisioning-environment', 'v1'), ('synthetic:provisioning-continuity', 'v1'), ('synthetic:provisioning-infrastructure', 'v1'), ('synthetic:provisioning-health', 'v1'), ('synthetic:provisioning-economy', 'v1'), ('synthetic:provisioning-care', 'v1')],
-        definitions=(*ce_definitions(), *gi_definitions(), *ak_definitions(), *ap_definitions(), *am_definitions(), *ah_definitions(), *ae_definitions(), *ac_definitions(), *gk_definitions(), *gp_definitions(), *gc_definitions(), *definitions(), *governance_adjudication_definitions(), *adjudication_definitions(), *economy_infrastructure_definitions(), *economy_health_definitions(), *economy_education_definitions(), *economy_care_definitions(), *governance_definitions(), *environment_definitions(), *continuity_definitions(), *infrastructure_definitions(), *health_definitions(), *education_definitions(), *economy_definitions(), *care_definitions()), reviews=reviews,
+        times=(TimeBasis('day:0', Decimal(86400)),), source_ids=counterpart_sources(),
+        fixture_ids=counterpart_fixtures(),
+        definitions=counterpart_definitions(), reviews=reviews,
         implementations=[Implementation('authored:ge-administration', 'v1', 'static', work),
                          Implementation('authored:ge-education', 'v1', 'static', education),
                          *mechanisms.implementations])

@@ -16,10 +16,9 @@ Target Windows x64 and Linux x64 only. The owner deferred Mac support to a later
   reconcile it with the package branch. Prefer a fast-forward pull when possible.
   Never discard work, overwrite drafts, or reset/clean the checkout to refresh it.
   If a stash or backup is needed, identify it in the handoff and retain it.
-- As of this file's introduction, the repository contains specifications and
-  planning documents only. Application sources, dependency manifests, lockfiles,
-  build scripts, and tests are pending. Inspect the checkout again rather than
-  treating this description as permanent.
+- Read `docs/roadmap/execution/active-package.json` and its parent record before
+  historical child handoffs. They identify the current full package. Application
+  sources, pinned manifests, tests and CI exist; inspect their actual state.
 - README development commands describe the intended interface until the scaffold
   exists. Do not claim an install, build, test, or application launch succeeded
   when its prerequisites are absent.
@@ -54,6 +53,16 @@ or treating planned behavior as implemented behavior.
   covers a planning parent, complete its necessary children and parent acceptance;
   decomposition is not a reason to stop after one child. If completion is blocked,
   preserve the assignment and evidence and identify the concrete blocker.
+- One top-level WP/DOM package per session and delivery PR is the default.
+  Children are internal implementation steps/commits, not new user merge
+  checkpoints. Only an explicit user instruction may authorize a partial child
+  delivery. Never choose a child because it fits a turn, session or context window;
+  continue through compaction, or resume the same parent after interruption.
+  Do not relabel feature work as maintenance to evade the parent contract.
+- Update `docs/roadmap/execution/delivery.json` and the full parent record for
+  code deliveries. Feature delivery must complete the active parent's acceptance
+  checklist. Corrective maintenance records its actual scope and leaves the
+  active feature package intact. This declaration is not proof of behavior.
 - For implementation work, identify the executable package and its prerequisites.
   Record scope, owner/controller, base commit, contract versions, deliverables,
   validation route, and acceptance criteria in the project's package records.
@@ -170,6 +179,19 @@ npm run package
 - These are setup, development, validation, and packaging commands, not a single
   mandatory sequence for every edit. Documentation-only changes need relevant
   link/content review and `git diff --check`, not nonexistent application tests.
+- Reuse a valid environment when locks are unchanged. During development run
+  affected tests and shared-invariant regressions; consolidate universal checks
+  instead of copying them into every pair suite. Run the full suite once at the
+  integrated package boundary when warranted, or let the authoritative full CI
+  candidate run provide it. Do not repeat passing full runs after unrelated
+  documentation edits or wait for post-merge smoke before starting authorized work.
+- CI runs engine and desktop validation on separate runners, with a stable
+  fail-closed `checks` result. Main pushes run a bounded engine smoke; manual and
+  weekly runs retain full validation. Docs-only PRs use roadmap/content review.
+  Keep exact candidate/gate evidence for full runs; never call a smoke a full gate.
+- Report completed parent acceptance first. Separate handwritten engine/desktop
+  changes, tests/helpers, fixtures, generated artifacts and documentation in line
+  counts. Distinguish new tests from cumulative passes; neither measures features.
 - Use pytest for engine invariants, Vitest for desktop/provider contracts, and
   Playwright for Electron flows. Derive numerical/procedural expectations
   independently; test meaningful failures as well as successful behavior.

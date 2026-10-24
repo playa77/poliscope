@@ -4,19 +4,68 @@ on:
   push:
     branches: [main]
   merge_group:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 4 * * 1'
 permissions:
   contents: read
+concurrency:
+  group: validation-${{ github.event_name }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
 jobs:
-  checks:
+  plan:
     runs-on: ubuntu-24.04
+    outputs:
+      mode: ${{ steps.plan.outputs.mode }}
     steps:
       - uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Require candidate containing current main
+      - id: plan
+        run: python3 scripts/ci_plan.py
+      - name: Check candidate and delivery declaration
+        if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
+        env:
+          BASE: ${{ steps.plan.outputs.base }}
         run: |
           git fetch origin main
           git merge-base --is-ancestor origin/main HEAD
+          git diff --check "$BASE" HEAD
+          python3 scripts/check_review_record.py --base "$BASE"
+
+  engine:
+    needs: plan
+    if: needs.plan.outputs.mode == 'full'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --python 3.12
+      - run: uv run --frozen python scripts/build_content.py --check
+      - run: uv run --frozen python scripts/generate_contracts.py --check
+      - run: uv run --frozen python scripts/check_roadmap.py && uv run --frozen python scripts/check_baseline.py
+      - run: uv run --frozen python scripts/evidence.py engine --output artifacts/engine
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: evidence-engine-${{ github.run_id }}
+          overwrite: true
+          path: artifacts/
+          if-no-files-found: error
+
+  desktop:
+    needs: plan
+    if: needs.plan.outputs.mode == 'full'
+    runs-on: ubuntu-24.04
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -24,31 +73,78 @@ jobs:
       - uses: astral-sh/setup-uv@v6
         with:
           version: '0.12.23'
-      - run: uv python install 3.12
-      - run: npm ci
       - run: uv sync --frozen --python 3.12
+      - run: npm ci
       - run: git diff --exit-code -- package-lock.json uv.lock
-      - run: npm run content:validate && npm run contracts:check && npm run typecheck
-      - run: uv run --frozen python scripts/check_roadmap.py && uv run --frozen python scripts/check_baseline.py
-      - name: Require declared validation route
-        run: uv run --frozen python scripts/check_review_record.py
-      - run: uv run --frozen python scripts/evidence.py engine --output artifacts/engine
+      - run: npm run typecheck
       - run: uv run --frozen python scripts/evidence.py unit --output artifacts/unit
       - name: Build native Linux smoke candidate
         run: npm run package
       - name: Launch actual Electron with bundled Python
         run: xvfb-run -a uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop
-      - name: Recheck evidence and current baseline
-        run: |
-          uv run --frozen python scripts/evidence.py verify --output artifacts/engine
-          uv run --frozen python scripts/evidence.py verify --output artifacts/unit
-          uv run --frozen python scripts/evidence.py verify --output artifacts/desktop
-          uv run --frozen python scripts/check_gate_evidence.py docs/roadmap/execution/WP-024-selection.json artifacts/engine artifacts/unit artifacts/desktop
-          git fetch origin main
-          git merge-base --is-ancestor origin/main HEAD
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: evidence-${{ github.run_id }}-${{ github.run_attempt }}
+          name: evidence-desktop-${{ github.run_id }}
+          overwrite: true
           path: artifacts/
           if-no-files-found: error
+
+  docs:
+    needs: plan
+    if: needs.plan.outputs.mode == 'docs'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --python 3.12
+      - run: uv run --frozen python scripts/check_roadmap.py && uv run --frozen python scripts/check_baseline.py
+      - run: uv run --frozen python -m unittest discover -s tests/roadmap
+
+  smoke:
+    needs: plan
+    if: needs.plan.outputs.mode == 'smoke'
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --python 3.12
+      - name: Check real engine startup, lifecycle and malformed input
+        run: uv run --frozen pytest -q tests/engine/test_bootstrap.py tests/engine/test_wire.py
+
+  # Keep the existing required check name on every path, including docs.
+  checks:
+    needs: [plan, engine, desktop, docs, smoke]
+    if: always()
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Require every selected job to pass
+        env:
+          CI_MODE: ${{ needs.plan.outputs.mode }}
+          CI_RESULTS: ${{ toJSON(needs) }}
+        run: python3 scripts/ci_plan.py
+      - uses: actions/download-artifact@v4
+        if: needs.plan.outputs.mode == 'full'
+        with:
+          pattern: evidence-*-${{ github.run_id }}
+          merge-multiple: true
+          path: artifacts/
+      - name: Verify exact candidate and mandatory gate evidence
+        if: needs.plan.outputs.mode == 'full'
+        run: |
+          python3 scripts/evidence.py verify --output artifacts/engine
+          python3 scripts/evidence.py verify --output artifacts/unit
+          python3 scripts/evidence.py verify --output artifacts/desktop
+          python3 scripts/check_gate_evidence.py docs/roadmap/execution/WP-024-selection.json artifacts/engine artifacts/unit artifacts/desktop
+      - name: Recheck current baseline before merge
+        if: github.event_name == 'pull_request' || github.event_name == 'merge_group'
+        run: |
+          git fetch origin main
+          git merge-base --is-ancestor origin/main HEAD
