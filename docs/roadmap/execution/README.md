@@ -1218,3 +1218,19 @@ transitions, all-domain education, originating choices, numerical IPC, database
 publication, Windows and parent/cumulative acceptance remain open. After merge
 reassess the first remaining maintained pair, DOM-03/08 governance/infrastructure,
 against actual decision and maintenance prerequisites.
+
+## Current boundary after PR #98
+
+PR #98 merged adjudication/continuity at `a09709d`. The clean workspace fetched
+and matched current main without stash or discarded work. Sequential Codex
+`/root`, controlled by the requesting user, continues under SV with
+[WP-032-counterparts-governance-infrastructure](WP-032-counterparts-governance-infrastructure.md).
+Actual scoped decisions restrict only explicitly dependent new facility/path
+access. Original topology, availability, access limits and unknowns remain visible;
+prior work, facility/link commitments, holds and subtotals survive replay. Only
+maintained DOM-03/08 becomes newly ready: 25 ready, 19 pending. Maintenance,
+construction, lifecycle and operating-resource models remain open, along with
+source activation, nonauthor/scientific review, transitions, all-domain education,
+originating choices, numerical IPC, database publication, Windows and original
+parent/cumulative acceptance. After merge reassess maintained DOM-05/06
+care/education against actual beneficiary obligations and finite teaching capacity.

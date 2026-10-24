@@ -188,3 +188,11 @@ local/regional scopes, case-specific findings and actual reviewed conformance
 check finite commitments. Derivatives retain unknown vulnerability, authority,
 disclosure and conditional external aid, plus withdrawal/replay. This synthetic
 fixture establishes no rescue, hazard probability, enforcement or parent gate.
+
+`governance-infrastructure-v1.json` is a literal synthetic DOM-03/08 fixture.
+Twelve administration hours cover three decision hours, three competing care hours
+and six retained hours, including prior use once. Five slots each in a facility,
+bridge and road cover one prior use and four new uses; a protected two-slot
+facility hold limits the first claimant. It establishes no maintenance, lifecycle
+or delivered-service outcome. Independent feasible sets and Fraction balances
+check finite work and path allocation in the actual evaluators.

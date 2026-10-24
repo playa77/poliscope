@@ -1,0 +1,223 @@
+[
+  {
+    "contract_version": 1,
+    "id": "authored:gi-administration-mechanism",
+    "version": "v1",
+    "domain": "governance",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gi:context",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gi:administration-book",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gi:context"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gi-administration",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gi:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gi:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gi-infrastructure-mechanism",
+    "version": "v1",
+    "domain": "infrastructure",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "institution"
+    ],
+    "inputs": [
+      {
+        "id": "gi:administration-book-in",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [
+      {
+        "id": "gi:candidate",
+        "value_type": {
+          "kind": "label"
+        },
+        "input_refs": [
+          "gi:administration-book-in"
+        ],
+        "missing_behavior": "propagate"
+      }
+    ],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gi-infrastructure",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": null,
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gi:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gi:finite-book"
+    ]
+  },
+  {
+    "contract_version": 1,
+    "id": "authored:gi-policy-mechanism",
+    "version": "v1",
+    "domain": "infrastructure",
+    "scope_kinds": [
+      "settlement",
+      "region"
+    ],
+    "entity_kinds": [
+      "resource",
+      "account"
+    ],
+    "inputs": [
+      {
+        "id": "gi:permission",
+        "value_type": {
+          "kind": "label"
+        },
+        "required": true,
+        "missing_behavior": "propagate"
+      }
+    ],
+    "outputs": [],
+    "owned_state": [],
+    "write_state_refs": [],
+    "read_partitions": [],
+    "preconditions": [],
+    "support": {
+      "static": {
+        "kind": "trusted_python",
+        "implementation": {
+          "id": "authored:gi-policy",
+          "version": "v1"
+        }
+      },
+      "transition": null
+    },
+    "claims": [],
+    "policy": {
+      "semantics": "exclusive",
+      "composition_rule": null
+    },
+    "origin": "authored",
+    "modeling": "partial",
+    "evidence": "hypothetical",
+    "source_refs": [
+      "authored:governance-infrastructure-v1"
+    ],
+    "assumption_refs": [],
+    "coverage_limits": "Bounded actual scoped decisions and explicit facility/path access prerequisites. Disjoint finite administration time and facility/link slots. Approval preserves original topology, availability and access limits; known nonapproval restricts only dependent new access. No construction, maintenance costs, lifecycle effects, delivered services, source activation, scientific review, adoption, transitions, public numerical IPC or parent acceptance.",
+    "diagnostics": [],
+    "traces": [],
+    "fixtures": [
+      {
+        "fixture": {
+          "id": "synthetic:governance-infrastructure",
+          "version": "v1"
+        },
+        "purpose": "conservation",
+        "property_refs": [
+          "gi:finite-book"
+        ]
+      }
+    ],
+    "properties": [
+      "gi:finite-book"
+    ]
+  }
+]

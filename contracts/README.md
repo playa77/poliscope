@@ -445,3 +445,10 @@ capacity. Original preflight preserves vulnerability, authority, disclosure and
 conditional aid. Legal findings only narrow dependent new access. Finite disjoint
 books retain prior work, response use, holds and subtotals. No public IPC, rescue,
 hazard prediction, rights creation or enforcement is introduced.
+
+`governance-infrastructure.schema.json` and `governance-infrastructure.ts` are
+private generated DOM-03/08 contracts. Actual scoped decisions precede explicitly
+dependent new facility/path access. Original topology, availability, limits and
+unknowns remain visible; administration and facility/link commitments occupy
+separate finite books. These contracts expose neither public IPC nor maintenance,
+construction, lifecycle transitions or delivered services.

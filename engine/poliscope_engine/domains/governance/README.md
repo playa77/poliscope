@@ -109,3 +109,12 @@ decisions gate explicitly dependent new response-slot access. Original authority
 disclosure, vulnerability, aid conditions, voluntary participation and obligations
 remain inspectable. Canonical administration time and finite response slots stay
 disjoint; approval does not deliver rescue or settle conflicting authority.
+
+The private `infrastructure` counterpart stages actual scoped decisions before
+explicitly dependent DOM-08 facility access. Every demand declares dependence or
+independence; dependencies bind the decision target and affected facility/path
+accounts. Original preflight runs even with unknown decisions. Approval preserves
+original terms; nonapproval restricts new access only. Unknowns withhold the whole
+candidate, retaining prior commitments and reserved capacity. This does not model
+construction, maintenance or lifecycle changes. See the
+[package record](../../../../docs/roadmap/execution/WP-032-counterparts-governance-infrastructure.md).
