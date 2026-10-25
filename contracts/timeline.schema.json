@@ -1,0 +1,872 @@
+{
+  "$defs": {
+    "AdoptionCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Expected Digest",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "condition_id",
+        "scope_id",
+        "expected_digest"
+      ],
+      "title": "AdoptionCondition",
+      "type": "object"
+    },
+    "AdoptionOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "affected_scope_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Affected Scope Ids",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "applied",
+            "conflict",
+            "precondition_failed",
+            "coverage_gap"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "day",
+        "status",
+        "affected_scope_ids",
+        "reason"
+      ],
+      "title": "AdoptionOutcome",
+      "type": "object"
+    },
+    "BindingDelta": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Binding Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Digest"
+        },
+        "replacement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PolicyBinding"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "binding_id",
+        "scope_id",
+        "expected_digest",
+        "replacement"
+      ],
+      "title": "BindingDelta",
+      "type": "object"
+    },
+    "BoundaryChanges": {
+      "additionalProperties": false,
+      "properties": {
+        "adoptions": {
+          "items": {
+            "$ref": "#/$defs/AdoptionOutcome"
+          },
+          "maxItems": 1000,
+          "title": "Adoptions",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/EventOutcome"
+          },
+          "maxItems": 1000,
+          "title": "Events",
+          "type": "array"
+        },
+        "policies": {
+          "items": {
+            "$ref": "#/$defs/PolicyBinding"
+          },
+          "maxItems": 100,
+          "title": "Policies",
+          "type": "array"
+        }
+      },
+      "required": [
+        "day",
+        "policies",
+        "events",
+        "adoptions"
+      ],
+      "title": "BoundaryChanges",
+      "type": "object"
+    },
+    "Calendar": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "fixed-364-v1",
+          "default": "fixed-364-v1",
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "title": "Calendar",
+      "type": "object"
+    },
+    "ConditionChange": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Digest"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "condition_id",
+        "scope_id",
+        "expected_digest",
+        "value"
+      ],
+      "title": "ConditionChange",
+      "type": "object"
+    },
+    "DatedEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "changes": {
+          "items": {
+            "$ref": "#/$defs/ConditionChange"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Changes",
+          "type": "array"
+        },
+        "effective_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Effective Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "origin": {
+          "enum": [
+            "player_authored",
+            "external"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "effective_day",
+        "order",
+        "origin",
+        "changes",
+        "source_refs"
+      ],
+      "title": "DatedEvent",
+      "type": "object"
+    },
+    "EventOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "applied",
+            "conflict"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "day",
+        "status"
+      ],
+      "title": "EventOutcome",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MechanismSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "first_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "First Day",
+          "type": "integer"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "interval_days": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Interval Days",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "instance_id",
+        "interval_days",
+        "first_day"
+      ],
+      "title": "MechanismSchedule",
+      "type": "object"
+    },
+    "PolicyAdoption": {
+      "additionalProperties": false,
+      "properties": {
+        "base_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "deltas": {
+          "items": {
+            "$ref": "#/$defs/BindingDelta"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Deltas",
+          "type": "array"
+        },
+        "effective_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Effective Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "origin": {
+          "const": "player_approved",
+          "title": "Origin",
+          "type": "string"
+        },
+        "preconditions": {
+          "items": {
+            "$ref": "#/$defs/AdoptionCondition"
+          },
+          "maxItems": 100,
+          "title": "Preconditions",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "source_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "transition": {
+          "enum": [
+            "binding_only",
+            "unsupported"
+          ],
+          "title": "Transition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "effective_day",
+        "order",
+        "origin",
+        "source_revision",
+        "base_revision",
+        "deltas",
+        "preconditions",
+        "transition",
+        "source_refs"
+      ],
+      "title": "PolicyAdoption",
+      "type": "object"
+    },
+    "PolicyBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "account_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Account Refs",
+          "type": "array"
+        },
+        "authority_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "choice_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Choice Refs",
+          "type": "array"
+        },
+        "conflict_kind": {
+          "enum": [
+            "parameter",
+            "allocation"
+          ],
+          "title": "Conflict Kind",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "entity_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Entity Ids",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/Identity"
+        },
+        "parameter_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Parameter Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "mechanism",
+        "scope_id",
+        "authority_id",
+        "entity_ids",
+        "parameter_id",
+        "value",
+        "conflict_kind",
+        "account_refs",
+        "choice_refs"
+      ],
+      "title": "PolicyBinding",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "ScheduledBoundary": {
+      "additionalProperties": false,
+      "properties": {
+        "adoption_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Adoption Ids",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "event_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Event Ids",
+          "type": "array"
+        },
+        "mechanism_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Mechanism Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "day",
+        "mechanism_ids",
+        "event_ids",
+        "adoption_ids"
+      ],
+      "title": "ScheduledBoundary",
+      "type": "object"
+    },
+    "TimelinePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "adoptions": {
+          "items": {
+            "$ref": "#/$defs/PolicyAdoption"
+          },
+          "maxItems": 1000,
+          "title": "Adoptions",
+          "type": "array"
+        },
+        "calendar": {
+          "$ref": "#/$defs/Calendar"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/DatedEvent"
+          },
+          "maxItems": 1000,
+          "title": "Events",
+          "type": "array"
+        },
+        "opening_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Opening Day",
+          "type": "integer"
+        },
+        "opening_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "schedules": {
+          "items": {
+            "$ref": "#/$defs/MechanismSchedule"
+          },
+          "maxItems": 1000,
+          "title": "Schedules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "calendar",
+        "opening_revision",
+        "opening_day",
+        "schedules",
+        "events",
+        "adoptions"
+      ],
+      "title": "TimelinePlan",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/TimelinePlan"
+    },
+    {
+      "$ref": "#/$defs/ScheduledBoundary"
+    },
+    {
+      "$ref": "#/$defs/BoundaryChanges"
+    }
+  ]
+}

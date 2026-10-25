@@ -1,40 +1,40 @@
 {
   "version": 1,
   "kind": "work_package",
-  "package": "WP-032",
+  "package": "WP-033",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-032.md",
-  "scope": "Full twelve-domain static integration and coverage parent: all counterpart contracts, education path, originating choices, coverage and actual retained cross-view evidence",
+  "record": "docs/roadmap/execution/WP-033.md",
+  "scope": "Full calendar/multirate scheduling and effective-change framework: complete boundary traversal, deterministic events and accepted-revision policy deltas preserving running state",
   "acceptance": [
     {
-      "id": "counterparts",
+      "id": "calendar",
       "status": "passed",
-      "evidence": "All 44 maintained pairs; actual endpoint baseline/denial/unknown witnesses and prior adapter regressions"
+      "evidence": "Integer fixed-364-v1 components and exact day/week/season/year conversion through WP-006 Registry"
     },
     {
-      "id": "education",
+      "id": "boundaries",
       "status": "passed",
-      "evidence": "Twelve-adapter finite education fixture, common conformance and E2E-003.b"
+      "evidence": "All daily/weekly/seasonal/annual boundaries, intermediate daily shortage, lazy horizon and continuation tests"
     },
     {
-      "id": "originating-choices",
+      "id": "precedence",
       "status": "passed",
-      "evidence": "Native interviews/previews in each domain plus packaged twelve-domain discovery; no defaults or mutation"
+      "evidence": "All same-day event permutations yield identical outcomes and semantic identity; atomic condition conflicts"
     },
     {
-      "id": "coverage",
+      "id": "adoption",
       "status": "passed",
-      "evidence": "38 branches and 453 source inventory rows reconciled; unsupported/source activation/transition classifications preserved"
+      "evidence": "Real accepted SQLite revisions; approved scoped deltas, disjoint composition, atomic conflicts, unknowns and unsupported gaps"
     },
     {
-      "id": "database-cross-view",
+      "id": "preservation",
       "status": "passed",
-      "evidence": "Actual Revisions/SQLite reopen and overview/matrix/atlas/world/source reads; packaged E2E-008"
+      "evidence": "Only selected bindings change; retained stocks/assets/cases and unrelated policies survive; actual retrospective fork"
     },
     {
-      "id": "parent-validation",
+      "id": "validation",
       "status": "passed",
-      "evidence": "Complete cumulative G3 selection, candidate-bound engine/unit/packaged desktop evidence and separate SV inspection"
+      "evidence": "22 new timeline cases; 4547 Python, 232 unit and 51 roadmap cases pass; schemas/types/content/roadmap/baseline and separate author inspection"
     }
   ]
 }

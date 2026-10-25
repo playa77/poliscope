@@ -1,12 +1,12 @@
 # Implementation execution ledger
 
-**Current allocation, 2026-10-24:** [WP-032 in full](WP-032.md), tracked in
-[active-package.json](active-package.json). This supersedes the historical
-per-pair "next allocation" entries below. Finish all remaining counterpart and
-parent acceptance work in one feature session/branch/PR; children are internal
-commits. Workflow repair is corrective maintenance under [WP-003](WP-003.md).
-Read the current parent first; do not resume another isolated pair from an old
-handoff. [Delivery receipts](delivery.json) and the CI parent guard enforce the
+**Current delivery, 2026-10-25:** [WP-033 in full](WP-033.md), tracked in
+[active-package.json](active-package.json), completes calendar conventions,
+multirate boundary planning and privately staged effective policy deltas.
+WP-032 is merged in PR #102 at `b460104`. Historical per-pair "next allocation"
+entries below are superseded. Reassess WP-034 and its boundary-store prerequisite
+after this delivery; durable transitions and G4 remain open.
+[Delivery receipts](delivery.json) and the CI parent guard enforce the
 declared delivery unit; they cannot certify behavior or scientific evidence.
 
 Implementation began on 2026-10-17 at base
@@ -1274,3 +1274,15 @@ application checks. Existing source activation and transition classifications
 remain unchanged; scientific validity, Windows certification and M4 remain open.
 Route: **solo-validated; agent review deferred**. Historical next-child handoffs
 above are superseded by this parent and its active-package receipt.
+
+## Full WP-033 parent delivery
+
+[WP-033](WP-033.md) supplies the fixed-364-day simulation calendar, existing-registry
+rate conversions, lazy complete multirate boundary traversal, deterministic event
+precedence and approved scoped policy deltas. Real accepted revisions/SQLite and
+22 new cases cover same-base composition/conflicts, future/past separation,
+unknown prerequisites, unsupported delays and preserved running state.
+The full 4,547-case Python suite and 232 JavaScript unit cases pass. This is a pure
+engine framework; transition reduction, durable timeline commits and complete G4
+workflows remain allocated to later packages. Route:
+**solo-validated; agent review deferred**.
