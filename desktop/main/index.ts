@@ -40,6 +40,15 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Choose a local sandbox folder',
         properties: ['openDirectory', 'createDirectory'] });
       return result.canceled ? undefined : result.filePaths[0];
+    }, async action => {
+      if (action === 'export') {
+        const result = await dialog.showSaveDialog(window!, { title: 'Export portable history to a new file',
+          filters: [{ name: 'Poliscope portable archive', extensions: ['poliscope'] }] });
+        return result.canceled ? undefined : result.filePath;
+      }
+      const result = await dialog.showOpenDialog(window!, { title: 'Import portable history', properties: ['openFile'],
+        filters: [{ name: 'Poliscope portable archive', extensions: ['poliscope', 'zip'] }] });
+      return result.canceled ? undefined : result.filePaths[0];
     });
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();

@@ -1,3 +1,5 @@
+import archiveSchema from '../../contracts/archive.schema.json';
+import type { ArchiveRequest, ArchiveReply } from '../../contracts/archive';
 import uncertaintySchema from '../../contracts/uncertainty.schema.json';
 import type { UncertaintyQuery, UncertaintyReport, SensitivityQuery, SensitivityReport, CapacityQuery, CapacityReport } from '../../contracts/uncertainty';
 import timelineSchema from '../../contracts/timeline-workspace.schema.json';
@@ -25,7 +27,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs, ...uncertaintySchema.$defs } as Record<string, Schema>;
+const defs = { ...archiveSchema.$defs, ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs, ...uncertaintySchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -63,6 +65,26 @@ export class WorkspaceController {
       child.stdin?.end(JSON.stringify(input) + '\n');
     });
     return decodeWorkspace(frame, type);
+  }
+  async archive(input: unknown, choose: (action: 'import' | 'export') => Promise<string | undefined>): Promise<ArchiveReply> {
+    if (!this.directory || !workspaceValid(input, 'ArchiveRequest')) throw new Error('Invalid archive grant');
+    if (this.candidate || this.worldCandidate || this.workbenchCandidate || this.pendingHistory || this.pendingCreate) throw new Error('Resolve draft or uncertain operation first');
+    const query: ArchiveRequest = { options: { include_private_notes: false, include_private_rationale: false, include_transcripts: false, include_attachments: false, evidence: 'complete' }, archive_id: null, offset: 0, detail_offset: 0, ...structuredClone(input as ArchiveRequest) };
+    if (query.action === 'read' && !query.archive_id) throw new Error('Select an imported archive');
+    const path = query.action === 'export' || query.action === 'import' ? await choose(query.action) : undefined;
+    if ((query.action === 'export' || query.action === 'import') && !path) return { status: 'cancelled', summaries: [], heading: '', rows: [], next_offset: null, next_detail_offset: null };
+    if (path && !isAbsolute(path)) throw new Error('Invalid dialog selection');
+    const command = engineCommand(this.packaged, this.root, this.resources);
+    const args = this.packaged ? ['--archive'] : ['-I', '-m', 'poliscope_engine.archive_host'];
+    const frame = await new Promise<Buffer>((resolve, reject) => {
+      const child = execFile(command.executable, [...args, '--directory', this.directory!, ...(path ? ['--selected-file', path] : [])], {
+        shell: false, windowsHide: true, encoding: 'buffer', maxBuffer: 1_048_576, timeout: 120_000, killSignal: 'SIGKILL',
+        env: Object.fromEntries(['SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'LANG', 'LC_ALL'].flatMap(k => process.env[k] === undefined ? [] : [[k, process.env[k]!]])),
+      }, (error, stdout) => error ? reject(new Error('Archive operation failed; saved history retained')) : resolve(stdout));
+      child.stdin?.on('error', () => {});
+      child.stdin?.end(JSON.stringify(query) + '\n');
+    });
+    return decodeWorkspace(frame, 'ArchiveReply') as ArchiveReply;
   }
   async choose(directory: string): Promise<WorkspaceCatalogue> {
     if (!isAbsolute(directory)) throw new Error('Invalid store selection');

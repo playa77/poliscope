@@ -1,3 +1,4 @@
+import { Archives } from './archives';
 import { Uncertainty } from './uncertainty';
 import { Timeline } from './timeline';
 import { Evidence, type EvidenceCollection } from './evidence';
@@ -111,6 +112,8 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
         const branch = catalogue.branches.find(b => `${b.context.civilization_id}/${b.context.branch_id}` === e.target.value);
         if (branch) void act(async () => selectState(await window.poliscope.selectWorld({ civilization_id: branch.context.civilization_id, branch_id: branch.context.branch_id, revision_id: null })));
       }}><option value="" disabled>Select a saved branch</option>{catalogue.branches.map(b => <option key={`${b.context.civilization_id}/${b.context.branch_id}`} value={`${b.context.civilization_id}/${b.context.branch_id}`}>{b.name} · {b.context.branch_id}</option>)}</select></label>
+      <button disabled={loading} onClick={() => setView('Portable archives')}>Portable archives</button>
+      {view === 'Portable archives' && <Archives key={catalogue.data_store_id} />}
       {state && <>
         <div className="state-banner" aria-label="Selected state"><strong>{state.branch.name}</strong>
           <span>Branch: {state.context.branch_id} · {state.context.revision_id === state.branch.context.revision_id ? 'Confirmed design revision' : 'Historical revision — read only'}</span>
@@ -142,9 +145,9 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}
                 historical={state.context.revision_id !== state.branch.context.revision_id} onDirty={draftChanged}
                 onConfirmed={(next, message) => { draftChanged(false); setNotice(message); setState(next); void client.invalidateQueries({ queryKey: ['world'] }); }} />}</section>}
-            {view === 'Uncertainty and sensitivity' && <Uncertainty key={JSON.stringify([state.context, selectedScope])} state={state} values={(values.data ?? []).filter(v => 'partition' in v)} disabled={loading} />}
+          {view === 'Uncertainty and sensitivity' && <Uncertainty key={JSON.stringify([state.context, selectedScope])} state={state} values={(values.data ?? []).filter(v => 'partition' in v)} disabled={loading} />}
             {view === 'Timeline and experiments' && <Timeline key={JSON.stringify(state.context)} state={state} disabled={loading} />}
-            {view !== 'Uncertainty and sensitivity' && view !== 'Timeline and experiments' && view !== 'Evidence and models' && view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
+            {view !== 'Portable archives' && view !== 'Uncertainty and sensitivity' && view !== 'Timeline and experiments' && view !== 'Evidence and models' && view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
             <h4>Starting conditions · {scopes.data?.find(s => s.id === selectedScope)?.label ?? 'Loading scope'}</h4>
             {(scopes.isError || values.isError) && <p role="alert">This state could not be read. Reopen the branch to retry.</p>}
             {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}

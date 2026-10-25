@@ -1,16 +1,18 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** [WP-038 in full](WP-038.md), tracked in
-[active-package.json](active-package.json). Current-main base is
-`7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9`, the merge of PR #108 / WP-037.
-The clean checkout fetched and fast-forwarded without stash or discarded work.
-WP-036 and WP-037 are already merged; stale local child records do not allocate
-them again. WP-038 covers exact declared uncertainty methods, real sensitivity
-previews and optional resource capacity bounds, with a desktop inspector.
-Source activation, nonauthor/scientific review, native Windows and the full G4/M4
-gate remain open. After merge reassess full WP-039 archive prerequisites.
-[Delivery receipts](delivery.json) and
-[validation receipts](WP-037-validation.json) record actual scope and checks.
+**Current delivery, 2026-10-25:** [WP-039 in full](WP-039.md), tracked in
+[active-package.json](active-package.json). Fetched current-main base is
+`c46ff843a4b822bb4d760974ad7b5212c522e58b`, the merge of PR #109 / WP-038. WP-036/037/038 are
+already merged; earlier child handoffs do not allocate them again. WP-039 adds
+privacy-projected portable archives, complete retained results/transition receipts,
+transactional hostile-input validation, main-owned dialogs and cold historical
+inspection. Imports are immutable historical collections; explicit editable
+migration remains WP-041. Windows, nonauthor/scientific review and G5/M5 remain
+open. After review/merge reassess full WP-040 reports/CSV. [Validation evidence](WP-039-validation.json) and [delivery declarations](delivery.json) retain exact
+scope; declarations alone do not prove application behavior.
+Implementation is committed at `e047bcc`. The requesting user explicitly authorized
+pushing `codex/wp-039-archives` to `playa77/poliscope` and opening a regular PR,
+resolving the earlier publication blocker. Merge remains unauthorized.
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
@@ -1313,3 +1315,15 @@ Unsupported methods return coverage limits. Full Python and unit regression plus
 packaged UI evidence and the precise rerun scope are recorded in the parent.
 Route: **solo-validated; agent review deferred**. No scientific or G4/M4 acceptance
 is inferred from hypothetical examples.
+
+## Full WP-039 parent delivery
+
+[WP-039](WP-039.md) delivers data-only portable historical archives with strict
+version/schema/path/type/hash/budget/reference validation before one SQLite import
+transaction. Default privacy projection spans old snapshots, alternatives and
+accepted evidence, with explicit active note/rationale opt-ins. Complete experiment
+allocation/ownership/draw receipts and saved result/trace closures remain durable;
+evidence-reduced omissions stay explicit. The desktop uses main-owned dialogs
+and bounded text-only historical tables, including empty-folder cold inspection.
+Full engine, unit and packaged Linux checks passed; Windows and G5/M5 are not
+inferred. Route: **solo-validated; agent review deferred**.
