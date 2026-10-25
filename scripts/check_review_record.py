@@ -42,8 +42,21 @@ def validate_delivery(changed, receipt, active, record):
                 or {c['id'] for c in active.get('acceptance', [])} != set(ids)
                 or any(c.get('status') != 'passed' for c in active.get('acceptance', []))):
             raise ValueError('The active parent and every acceptance item must be complete')
+    elif receipt.get('kind') == 'authorized_child':
+        child = receipt.get('child', '')
+        authorization = receipt.get('authorization', {})
+        child_record = f'docs/roadmap/execution/{child}.md'
+        if (not re.fullmatch(re.escape(package) + r'-[a-z0-9]+(?:-[a-z0-9]+)*', child)
+                or child_record not in changed
+                or authorization.get('source') != 'user' or authorization.get('scope') != child
+                or not authorization.get('instruction', '').strip()
+                or ACTIVE not in changed or active.get('package') != package
+                or active.get('status') != 'in_progress' or active.get('execution_unit') != child
+                or active.get('authorization') != authorization
+                or not any(c.get('status') == 'pending' for c in active.get('acceptance', []))):
+            raise ValueError('Child delivery requires explicit scoped user authorization and an open parent')
     elif receipt.get('kind') != 'maintenance':
-        raise ValueError('Declare work_package or explicitly scoped corrective maintenance')
+        raise ValueError('Declare work_package, authorized_child or explicitly scoped corrective maintenance')
 
 
 def check(root=ROOT, base=None):
@@ -66,4 +79,4 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--base')
     check(base=parser.parse_args().base)
-    print('Full-package delivery declared; actual acceptance and repository approvals remain required.')
+    print('Delivery scope declared; actual acceptance and repository approvals remain required.')

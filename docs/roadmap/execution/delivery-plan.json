@@ -961,7 +961,7 @@
       "parent": "WP-036",
       "scope": "boundary store",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-009-store",
         "WP-018-apply",

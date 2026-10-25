@@ -1,40 +1,46 @@
 {
   "version": 1,
-  "kind": "work_package",
-  "package": "WP-033",
+  "kind": "authorized_child",
+  "package": "WP-036",
+  "child": "WP-036-boundary-store",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-033.md",
-  "scope": "Full calendar/multirate scheduling and effective-change framework: complete boundary traversal, deterministic events and accepted-revision policy deltas preserving running state",
+  "record": "docs/roadmap/execution/WP-036.md",
+  "scope": "User-authorized early production child only: atomic validated-boundary/state/evidence/operation persistence and confirmed-state reload for WP-034; full WP-036 remains open",
+  "authorization": {
+    "source": "user",
+    "scope": "WP-036-boundary-store",
+    "instruction": "Yes, deliver the required boundary-store child first"
+  },
   "acceptance": [
     {
-      "id": "calendar",
+      "id": "opening",
       "status": "passed",
-      "evidence": "Integer fixed-364-v1 components and exact day/week/season/year conversion through WP-006 Registry"
+      "evidence": "Actual accepted SQLite revision, immutable schedule/model opening, complete retained evidence and detached reads"
     },
     {
-      "id": "boundaries",
+      "id": "atomic-confirmation",
       "status": "passed",
-      "evidence": "All daily/weekly/seasonal/annual boundaries, intermediate daily shortage, lazy horizon and continuation tests"
+      "evidence": "Every storage-write failure and precommit cancellation rolls back; state/evidence/journal/operation commit together"
     },
     {
-      "id": "precedence",
+      "id": "recovery",
       "status": "passed",
-      "evidence": "All same-day event permutations yield identical outcomes and semantic identity; atomic condition conflicts"
+      "evidence": "Real subprocess os._exit before/after COMMIT, lost acknowledgment, exact replay after head advance and validator/model removal"
     },
     {
-      "id": "adoption",
+      "id": "isolation",
       "status": "passed",
-      "evidence": "Real accepted SQLite revisions; approved scoped deltas, disjoint composition, atomic conflicts, unknowns and unsupported gaps"
+      "evidence": "Second-connection queries see only confirmed state; same-connection reentrant queries fail closed; competing advance fails CAS"
     },
     {
-      "id": "preservation",
+      "id": "schedule-evidence",
       "status": "passed",
-      "evidence": "Only selected bindings change; retained stocks/assets/cases and unrelated policies survive; actual retrospective fork"
+      "evidence": "Real event/adoption/conflict/gap retention, required-boundary rejection, bound closing evidence, cache survival and large actual payload"
     },
     {
       "id": "validation",
       "status": "passed",
-      "evidence": "22 new timeline cases; 4547 Python, 232 unit and 51 roadmap cases pass; schemas/types/content/roadmap/baseline and separate author inspection"
+      "evidence": "24 new boundary cases plus authorized-child guard regression; 4572 Python, 232 Vitest and 51 roadmap checks; schemas/content/types/baseline and separate author inspection"
     }
   ]
 }
