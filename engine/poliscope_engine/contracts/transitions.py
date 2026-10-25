@@ -11,6 +11,8 @@ from .policies import PolicyEvaluation
 from .world import (PartitionValueDTO, DecimalString, SafeCount, References, WorldValue,
                     WorldVersions, EffectiveTime, EntityDTO, ScopeDTO, RelationshipDTO, Partition)
 
+from .stochastic import RandomPlan, RealizedDraw
+
 TransitionClass = Literal['construction', 'maintenance', 'education_skills', 'service_queue',
                          'population_health', 'ecological', 'institutional', 'response_capacity',
                          'resource_processing']
@@ -31,6 +33,8 @@ class TransitionPlan(Contract):
     operation_limit: Annotated[int, Field(ge=1, le=1000000)]
     # Explicit transition-only instances need no fictitious static implementation.
     instances: Annotated[list[MechanismInstance], Field(max_length=1000)] = Field(default_factory=list)
+
+    random_plan: RandomPlan | None = None
 
     @model_validator(mode='after')
     def unique_bindings(self):
@@ -106,6 +110,7 @@ class TransitionReadView(Contract):
 
 
 class TransitionInvocation(Contract):
+    random_draws: Annotated[list[RealizedDraw], Field(max_length=1000)] = Field(default_factory=list)
     inputs: TransitionReadView
     instance: MechanismInstance
     opening_day: SafeCount
@@ -142,6 +147,7 @@ class AccountBalanceWitness(Contract):
 
 
 class TransitionReceipt(Contract):
+    random_draws: Annotated[list[RealizedDraw], Field(max_length=1000)] = Field(default_factory=list)
     transition_contract: Literal[1]
     reducer_id: Literal['atomic-transitions-v1']
     opening_digest: Digest

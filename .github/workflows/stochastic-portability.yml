@@ -1,0 +1,20 @@
+name: Stochastic contract portability
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  named-draws:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --python 3.12
+      - name: Known answers, subprocess replay and actual durable stochastic transitions
+        run: uv run --frozen pytest tests/engine/test_stochastic.py -q

@@ -185,6 +185,10 @@ class BoundaryStore:
                     context.data_store_id, context.civilization_id):
                 raise BoundaryError('foreign_opening_revision')
             revision = self.revisions.read(plan.opening_revision)
+            if request.transition_plan is not None:
+                from poliscope_engine.stochastic import validate_plan
+                validate_plan(request.transition_plan.random_plan,
+                    [*revision.inputs.design.execution.dependencies.instances, *request.transition_plan.instances], plan)
             state = BoundaryState(inputs=revision.inputs, conditions=request.conditions)
             evidence = self._check_state_evidence(context, state, self.revisions.evidence(plan.opening_revision))
             if (state.inputs.design.effective_time.tick != plan.opening_day
@@ -259,6 +263,9 @@ class BoundaryStore:
                 state.transition.opening_digest != record.parent_digest
                 or state.transition.plan_digest != digest(experiment.transition_plan)):
             raise BoundaryError('transition_evidence_context_mismatch')
+        if state.transition is not None:
+            from poliscope_engine.stochastic import check_retained
+            check_retained(experiment.transition_plan.random_plan, record.day, state.transition.random_draws)
         return ConfirmedBoundary(record=record, state=state, evidence=evidence)
 
     def confirm(self, request: ConfirmBoundary, *, cancelled=None):

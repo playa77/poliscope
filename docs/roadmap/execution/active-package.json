@@ -1,41 +1,36 @@
 {
   "version": 1,
-  "package": "WP-034",
+  "package": "WP-035",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-034.md",
+  "record": "docs/roadmap/execution/WP-035.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "6259044aa9f4426af9f5e2f7d789a431d69d8efa",
-  "branch": "codex/wp-034-transitions",
+  "base": "798f4d40191d42bf30e85c1c8873f2b0547bf2f7",
+  "branch": "codex/wp-035-random",
   "acceptance": [
     {
-      "id": "shared-allocation",
+      "id": "stable-streams",
       "status": "passed",
-      "evidence": "One canonical finite book, actual-driven outputs, explicit precedence, no alias/static double-spend, bound pending refinement and exact active rollover"
+      "evidence": "Fixed HMAC answer, independent UTF-8/integer oracle, every mechanism/instance/entity/scope/purpose/event/draw/index key component, unrelated insertion, subprocess and Decimal-context isolation"
     },
     {
-      "id": "invariants-ownership",
+      "id": "explicit-probability",
       "status": "passed",
-      "evidence": "Independent Fraction/quantum balances; production domain/owner/type/time gates; declared preconditions and resolved policy conflicts; physical views exclude goals/notes"
+      "evidence": "Rational Bernoulli, bounded integer and ordered weighted categorical distributions; unknown source ranges/invalid probabilities/dependence rejected; rejection sampling bounded and unbiased; no source activation"
     },
     {
-      "id": "coverage-conformance",
+      "id": "retained-replay",
       "status": "passed",
-      "evidence": "Twelve-domain paired hypothetical harness, eight distinct bounded class fixtures, actual twelve-domain source fixture with honest missing transitions; no source activation"
+      "evidence": "Actual reducer/SQLite retains full specs, realized draws/events and runtime identity with state; reopen/continuous/unrelated-model results agree; pre/post-COMMIT os._exit, failure/cancel and model-free cold retries"
     },
     {
-      "id": "atomic-recovery",
+      "id": "fork-policy",
       "status": "passed",
-      "evidence": "Merged provider recomputes before commit; all private/write/cancel failures, real pre/post-COMMIT process exits, model-free replay and original v1 identity regression"
-    },
-    {
-      "id": "chunks",
-      "status": "passed",
-      "evidence": "Confirmed progress, quotas/resume, worst intermediate coverage, full 364-boundary advance retaining daily unmet work; 1200 fulfilled jobs without an active-history horizon"
+      "evidence": "Shared and persistent values reused; paired preservation/new-seed fork declarations bind actual parent digest and unchanged identities; unknown runtime cannot claim exact reproduction"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "74 new transition cases; full 4646 Python and 232 unit tests pass with zero skips; verified matching candidate fingerprints; schemas/content/types/roadmap/baseline and separate author inspection"
+      "evidence": "44 new stochastic cases; full 4690 Python and 232 unit tests pass with zero skips; matching verified implementation fingerprints, schemas/content/types/roadmap/baseline and separate author inspection; native Windows hook added, execution unverified"
     }
   ]
 }

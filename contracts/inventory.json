@@ -126,6 +126,8 @@
     "solver.ts",
     "static-system.schema.json",
     "static-system.ts",
+    "stochastic.schema.json",
+    "stochastic.ts",
     "timeline.schema.json",
     "timeline.ts",
     "tool-inputs.json",

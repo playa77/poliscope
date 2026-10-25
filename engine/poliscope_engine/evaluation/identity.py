@@ -31,7 +31,10 @@ def normalize(value, field=None):
     if isinstance(value, Decimal):
         return canonical(value)
     if isinstance(value, dict):
-        result = {k: normalize(v, k) for k, v in value.items()}
+        # Additive WP-035 fields preserve existing v1 identities when absent.
+        result = {k: normalize(v, k) for k, v in value.items()
+                  if not (k == 'random_plan' and v is None and 'carry_priority' in value and 'instance_order' in value)
+                  and not (k == 'random_draws' and v == [] and 'transition_contract' in value)}
         if value.get('kind') == 'quantity' and 'value' in value:
             result['value'] = canonical(parse(value['value']))
         # Measurement procedure operands are semantic sequences, unlike port

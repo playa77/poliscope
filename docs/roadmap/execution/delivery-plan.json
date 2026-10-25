@@ -909,7 +909,7 @@
       "parent": "WP-034",
       "scope": "contract",
       "capabilities": "ENG + MODEL",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-015-allocation",
         "WP-016-evaluation",
@@ -917,7 +917,7 @@
         "WP-033-adoption",
         "WP-036-boundary-store"
       ],
-      "merged_sha": null,
+      "merged_sha": "798f4d40191d42bf30e85c1c8873f2b0547bf2f7",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
     },
@@ -925,11 +925,11 @@
       "parent": "WP-034",
       "scope": "reducer",
       "capabilities": "ENG + MODEL",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-034-contract"
       ],
-      "merged_sha": null,
+      "merged_sha": "798f4d40191d42bf30e85c1c8873f2b0547bf2f7",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
     },
@@ -937,11 +937,11 @@
       "parent": "WP-034",
       "scope": "invariants",
       "capabilities": "ENG + MODEL",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-034-reducer"
       ],
-      "merged_sha": null,
+      "merged_sha": "798f4d40191d42bf30e85c1c8873f2b0547bf2f7",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-034 acceptance in packages.json; exact child criteria required at start"
     },
@@ -949,7 +949,7 @@
       "parent": "WP-035",
       "scope": "random",
       "capabilities": "ENG; review expertise MODEL + QA",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-034-invariants"
       ],
