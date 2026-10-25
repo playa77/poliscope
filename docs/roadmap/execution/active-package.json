@@ -1,41 +1,63 @@
 {
   "version": 1,
-  "package": "WP-033",
-  "status": "complete",
-  "record": "docs/roadmap/execution/WP-033.md",
+  "package": "WP-036",
+  "status": "in_progress",
+  "record": "docs/roadmap/execution/WP-036.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "b4601040906089cb37cd7026357e42d976dbbbe2",
-  "branch": "codex/wp-033-calendar",
+  "base": "a92b7cb950108a534451126a591fa898c6ea5783",
+  "branch": "codex/wp-036-boundary-store",
+  "execution_unit": "WP-036-boundary-store",
+  "authorization": {
+    "source": "user",
+    "scope": "WP-036-boundary-store",
+    "instruction": "Yes, deliver the required boundary-store child first"
+  },
   "acceptance": [
     {
-      "id": "calendar",
+      "id": "boundary-store",
       "status": "passed",
-      "evidence": "Integer fixed-364-v1 components and exact day/week/season/year conversion through WP-006 Registry"
+      "evidence": "WP-036-boundary-store complete; merge required before WP-034 acceptance"
     },
     {
-      "id": "boundaries",
-      "status": "passed",
-      "evidence": "All daily/weekly/seasonal/annual boundaries, intermediate daily shortage, lazy horizon and continuation tests"
+      "id": "checkpoints-replay-forks",
+      "status": "pending"
     },
     {
-      "id": "precedence",
+      "id": "parent-validation",
+      "status": "pending"
+    }
+  ],
+  "child_status": "complete",
+  "child_acceptance": [
+    {
+      "id": "opening",
       "status": "passed",
-      "evidence": "All same-day event permutations yield identical outcomes and semantic identity; atomic condition conflicts"
+      "evidence": "Actual accepted SQLite revision, immutable schedule/model opening, complete retained evidence and detached reads"
     },
     {
-      "id": "adoption",
+      "id": "atomic-confirmation",
       "status": "passed",
-      "evidence": "Real accepted SQLite revisions; approved scoped deltas, disjoint composition, atomic conflicts, unknowns and unsupported gaps"
+      "evidence": "Every storage-write failure and precommit cancellation rolls back; state/evidence/journal/operation commit together"
     },
     {
-      "id": "preservation",
+      "id": "recovery",
       "status": "passed",
-      "evidence": "Only selected bindings change; retained stocks/assets/cases and unrelated policies survive; actual retrospective fork"
+      "evidence": "Real subprocess os._exit before/after COMMIT, lost acknowledgment, exact replay after head advance and validator/model removal"
+    },
+    {
+      "id": "isolation",
+      "status": "passed",
+      "evidence": "Second-connection queries see only confirmed state; same-connection reentrant queries fail closed; competing advance fails CAS"
+    },
+    {
+      "id": "schedule-evidence",
+      "status": "passed",
+      "evidence": "Real event/adoption/conflict/gap retention, required-boundary rejection, bound closing evidence, cache survival and large actual payload"
     },
     {
       "id": "validation",
       "status": "passed",
-      "evidence": "22 new timeline cases; 4547 Python, 232 unit and 51 roadmap cases pass; schemas/types/content/roadmap/baseline and separate author inspection"
+      "evidence": "24 new boundary cases plus authorized-child guard regression; 4572 Python, 232 Vitest and 51 roadmap checks; schemas/content/types/baseline and separate author inspection"
     }
   ]
 }

@@ -64,6 +64,27 @@ class DeliveryWorkflowTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 validate_delivery([p for p in self.changed if p != omitted], self.receipt, self.active, self.route)
 
+    def test_only_explicit_scoped_child_authorization_can_leave_parent_open(self):
+        child = 'WP-032-contract'
+        auth = dict(source='user', scope=child, instruction='Deliver the prerequisite child first')
+        receipt = self.receipt | dict(kind='authorized_child', child=child, authorization=auth)
+        active = self.active | dict(status='in_progress', execution_unit=child, authorization=auth,
+            acceptance=[dict(id='integration', status='pending')])
+        changed = self.changed + [f'docs/roadmap/execution/{child}.md']
+        validate_delivery(changed, receipt, active, self.route)
+        for bad in [dict(authorization={}), dict(child='WP-036-boundary-store'),
+                    dict(authorization=auth | {'scope': 'WP-036-boundary-store'}),
+                    dict(authorization=auth | {'source': 'agent'}),
+                    dict(authorization=auth | {'instruction': ''})]:
+            with self.assertRaises(ValueError):
+                validate_delivery(changed, receipt | bad, active, self.route)
+        for bad in [dict(status='complete'), dict(execution_unit='WP-032-other'),
+                    dict(authorization={}), dict(acceptance=[])]:
+            with self.assertRaises(ValueError):
+                validate_delivery(changed, receipt, active | bad, self.route)
+        with self.assertRaises(ValueError):
+            validate_delivery(self.changed, receipt, active, self.route)
+
     def test_incomplete_parent_and_omitted_acceptance_are_rejected(self):
         for active in [self.active | {'status': 'in_progress'},
                        self.active | {'acceptance': [dict(id='integration', status='pending')]},

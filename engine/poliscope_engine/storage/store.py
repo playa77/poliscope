@@ -94,6 +94,11 @@ class Store:
     transaction so callers can atomically retain records, evidence and outcomes.
     """
 
+    @property
+    def in_write_transaction(self) -> bool:
+        """Whether this connection can currently see its own uncommitted writes."""
+        return self._writing
+
     def revision_catalogue_rows(self):
         """Bounded immutable branch journal discovery; no caches/private payloads."""
         cursor = self._connection.execute(
