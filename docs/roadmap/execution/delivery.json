@@ -31,5 +31,14 @@
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-039: versioned portable historical archives, complete retained evidence and experiment receipts, classified privacy projections/opt-ins, transactional safe import/export, main-owned dialogs and bounded historical inspection"
+  "scope": "Full WP-039: versioned portable historical archives, complete retained evidence and experiment receipts, classified privacy projections/opt-ins, transactional safe import/export, main-owned dialogs and bounded historical inspection",
+  "publication": {
+    "status": "blocked by automatic approval review",
+    "implementation_commit": "e047bcc",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-039-archives",
+    "action": "Push branch and open a regular PR against main; no merge",
+    "reason": "Automatic approval review rejected publication because pushing exports potentially private source code and creates a remote branch; the implementation request did not explicitly authorize publication or this destination.",
+    "next_action": "Request explicit user approval for this branch/destination and PR. No push or PR creation ran; no workaround was attempted."
+  }
 }

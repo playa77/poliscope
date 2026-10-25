@@ -10,6 +10,9 @@ inspection. Imports are immutable historical collections; explicit editable
 migration remains WP-041. Windows, nonauthor/scientific review and G5/M5 remain
 open. After review/merge reassess full WP-040 reports/CSV. [Validation evidence](WP-039-validation.json) and [delivery declarations](delivery.json) retain exact
 scope; declarations alone do not prove application behavior.
+Implementation is committed locally at `e047bcc`; automatic approval review blocked
+publication. Explicit approval to push `codex/wp-039-archives` to
+`playa77/poliscope` and open a regular PR remains required. No PR or merge ran.
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
