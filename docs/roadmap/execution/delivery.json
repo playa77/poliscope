@@ -33,9 +33,11 @@
   "kind": "work_package",
   "scope": "Full WP-038: explicit uncertainty/dependence methods, threshold reports, real sensitivity previews, registered monotone resource capacity bounds and accessible desktop inspector",
   "publication": {
-    "status": "commit/push/regular PR pending",
+    "status": "blocked by automatic approval review; explicit user publication authorization required",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-038-uncertainty",
-    "next_action": "Publish complete branch and open regular PR against main; do not merge"
+    "next_action": "Ask the user to authorize pushing codex/wp-038-uncertainty to https://github.com/playa77/poliscope and opening a regular PR against main; do not retry or use an indirect publication path without approval.",
+    "implementation_commit": "3b4acfd",
+    "reason": "Auto-review rejected git push: publishing potentially sensitive repository contents to GitHub requires explicit authorization for this payload and destination."
   }
 }
