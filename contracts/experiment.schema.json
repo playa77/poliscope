@@ -1,0 +1,2358 @@
+{
+  "$defs": {
+    "AccountBatch": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "items": {
+            "$ref": "#/$defs/AccountDefinition"
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Accounts",
+          "type": "array"
+        },
+        "claims": {
+          "items": {
+            "$ref": "#/$defs/AccountClaim"
+          },
+          "maxItems": 1000,
+          "title": "Claims",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "postings": {
+          "items": {
+            "$ref": "#/$defs/AccountPosting"
+          },
+          "maxItems": 10000,
+          "title": "Postings",
+          "type": "array"
+        },
+        "reservations": {
+          "items": {
+            "$ref": "#/$defs/AccountReservation"
+          },
+          "maxItems": 1000,
+          "title": "Reservations",
+          "type": "array"
+        },
+        "subtotals": {
+          "items": {
+            "$ref": "#/$defs/AccountSubtotal"
+          },
+          "maxItems": 1000,
+          "title": "Subtotals",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "accounts",
+        "postings",
+        "claims",
+        "reservations",
+        "subtotals"
+      ],
+      "title": "AccountBatch",
+      "type": "object"
+    },
+    "AccountClaim": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "claimant_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claimant Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "requested": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Requested",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "account_id",
+        "claimant_id",
+        "requested",
+        "source_refs"
+      ],
+      "title": "AccountClaim",
+      "type": "object"
+    },
+    "AccountDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "invariant": {
+          "enum": [
+            "physical",
+            "budget",
+            "ledger"
+          ],
+          "title": "Invariant",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "stock",
+            "flow",
+            "capacity"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "maximum": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Maximum",
+          "type": "string"
+        },
+        "opening": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Opening",
+          "type": "string"
+        },
+        "period_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Period Id"
+        },
+        "quantum": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Quantum",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "kind",
+        "unit_id",
+        "scope_id",
+        "period_id",
+        "invariant",
+        "quantum",
+        "maximum",
+        "opening",
+        "source_refs"
+      ],
+      "title": "AccountDefinition",
+      "type": "object"
+    },
+    "AccountPosting": {
+      "additionalProperties": false,
+      "properties": {
+        "amount": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Amount",
+          "type": "string"
+        },
+        "claim_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Claim Id"
+        },
+        "destination_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Destination Id"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "supply",
+            "import",
+            "production",
+            "use",
+            "export",
+            "loss",
+            "transfer",
+            "residual"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "reservation_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Reservation Id"
+        },
+        "source_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Source Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "source_id",
+        "destination_id",
+        "amount",
+        "reservation_id",
+        "claim_id",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AccountPosting",
+      "type": "object"
+    },
+    "AccountReservation": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "amount": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Amount",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "account_id",
+        "claim_id",
+        "amount"
+      ],
+      "title": "AccountReservation",
+      "type": "object"
+    },
+    "AccountStateBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "value_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "value_id"
+      ],
+      "title": "AccountStateBinding",
+      "type": "object"
+    },
+    "AccountSubtotal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "member_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "minItems": 1,
+          "title": "Member Ids",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "member_ids"
+      ],
+      "title": "AccountSubtotal",
+      "type": "object"
+    },
+    "AdoptionCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Expected Digest",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "condition_id",
+        "scope_id",
+        "expected_digest"
+      ],
+      "title": "AdoptionCondition",
+      "type": "object"
+    },
+    "AdvanceExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "expected": {
+          "$ref": "#/$defs/BoundaryOutcome"
+        },
+        "max_boundaries": {
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Max Boundaries",
+          "type": "integer"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "target_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Target Day",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "expected",
+        "operation_id",
+        "target_day",
+        "max_boundaries"
+      ],
+      "title": "AdvanceExperiment",
+      "type": "object"
+    },
+    "AllocationChoice": {
+      "additionalProperties": false,
+      "properties": {
+        "access": {
+          "enum": [
+            "allowed",
+            "denied",
+            "unknown"
+          ],
+          "title": "Access",
+          "type": "string"
+        },
+        "access_limit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Access Limit",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "funding_known": {
+          "title": "Funding Known",
+          "type": "boolean"
+        },
+        "loss_per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Loss Per Unit",
+          "type": "string"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "$ref": "#/$defs/TransformationOutput"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "requirements": {
+          "items": {
+            "$ref": "#/$defs/FundingRequirement"
+          },
+          "maxItems": 100,
+          "title": "Requirements",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "claim_id",
+        "access",
+        "access_limit",
+        "funding_known",
+        "requirements",
+        "outputs",
+        "loss_per_unit",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationChoice",
+      "type": "object"
+    },
+    "AllocationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/AllocationChoice"
+          },
+          "maxItems": 1000,
+          "title": "Choices",
+          "type": "array"
+        },
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "enum": [
+                "priority",
+                "all_or_nothing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Procedure"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "batch",
+        "procedure",
+        "claim_order",
+        "choices",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationRequest",
+      "type": "object"
+    },
+    "Bernoulli": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Denominator",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "bernoulli",
+          "title": "Kind",
+          "type": "string"
+        },
+        "numerator": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Numerator",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "numerator",
+        "denominator"
+      ],
+      "title": "Bernoulli",
+      "type": "object"
+    },
+    "BindingDelta": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Binding Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Digest"
+        },
+        "replacement": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/PolicyBinding"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "binding_id",
+        "scope_id",
+        "expected_digest",
+        "replacement"
+      ],
+      "title": "BindingDelta",
+      "type": "object"
+    },
+    "BoundaryCondition": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "scope_id",
+        "condition_id",
+        "value"
+      ],
+      "title": "BoundaryCondition",
+      "type": "object"
+    },
+    "BoundaryOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_contract": {
+          "const": 1,
+          "title": "Boundary Contract",
+          "type": "integer"
+        },
+        "boundary_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Boundary Digest",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "boundary_contract",
+        "context",
+        "sequence",
+        "day",
+        "boundary_digest"
+      ],
+      "title": "BoundaryOutcome",
+      "type": "object"
+    },
+    "Calendar": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "const": "fixed-364-v1",
+          "default": "fixed-364-v1",
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "title": "Calendar",
+      "type": "object"
+    },
+    "Categorical": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "categorical",
+          "title": "Kind",
+          "type": "string"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/WeightedValue"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "outcomes"
+      ],
+      "title": "Categorical",
+      "type": "object"
+    },
+    "Checkpoint": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary": {
+          "$ref": "#/$defs/BoundaryOutcome"
+        },
+        "evidence_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Evidence Digest",
+          "type": "string"
+        },
+        "state_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "State Digest",
+          "type": "string"
+        }
+      },
+      "required": [
+        "boundary",
+        "state_digest",
+        "evidence_digest"
+      ],
+      "title": "Checkpoint",
+      "type": "object"
+    },
+    "ConditionChange": {
+      "additionalProperties": false,
+      "properties": {
+        "condition_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Condition Id",
+          "type": "string"
+        },
+        "expected_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Digest"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "condition_id",
+        "scope_id",
+        "expected_digest",
+        "value"
+      ],
+      "title": "ConditionChange",
+      "type": "object"
+    },
+    "ControlExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "expected": {
+          "$ref": "#/$defs/ExperimentControl"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "paused",
+            "cancelled"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "operation_id",
+        "expected",
+        "state"
+      ],
+      "title": "ControlExperiment",
+      "type": "object"
+    },
+    "CreateExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_contract": {
+          "const": 1,
+          "title": "Boundary Contract",
+          "type": "integer"
+        },
+        "conditions": {
+          "items": {
+            "$ref": "#/$defs/BoundaryCondition"
+          },
+          "maxItems": 1000,
+          "title": "Conditions",
+          "type": "array"
+        },
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "plan": {
+          "$ref": "#/$defs/TimelinePlan"
+        },
+        "transition_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransitionPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "boundary_contract",
+        "context",
+        "operation_id",
+        "plan",
+        "conditions"
+      ],
+      "title": "CreateExperiment",
+      "type": "object"
+    },
+    "DatedEvent": {
+      "additionalProperties": false,
+      "properties": {
+        "changes": {
+          "items": {
+            "$ref": "#/$defs/ConditionChange"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Changes",
+          "type": "array"
+        },
+        "effective_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Effective Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "origin": {
+          "enum": [
+            "player_authored",
+            "external"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "effective_day",
+        "order",
+        "origin",
+        "changes",
+        "source_refs"
+      ],
+      "title": "DatedEvent",
+      "type": "object"
+    },
+    "DrawKey": {
+      "additionalProperties": false,
+      "properties": {
+        "draw_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Draw Name",
+          "type": "string"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "event_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "index": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mechanism_id",
+        "mechanism_version",
+        "instance_id",
+        "entity_id",
+        "scope_id",
+        "purpose",
+        "event_id",
+        "draw_name",
+        "index"
+      ],
+      "title": "DrawKey",
+      "type": "object"
+    },
+    "DrawReference": {
+      "additionalProperties": false,
+      "properties": {
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_id",
+        "variable_id"
+      ],
+      "title": "DrawReference",
+      "type": "object"
+    },
+    "DrawSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "dependence": {
+          "enum": [
+            "declared_independent",
+            "shared_realization"
+          ],
+          "title": "Dependence",
+          "type": "string"
+        },
+        "distribution": {
+          "discriminator": {
+            "mapping": {
+              "bernoulli": "#/$defs/Bernoulli",
+              "categorical": "#/$defs/Categorical",
+              "uniform_integer": "#/$defs/UniformInteger"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Bernoulli"
+            },
+            {
+              "$ref": "#/$defs/UniformInteger"
+            },
+            {
+              "$ref": "#/$defs/Categorical"
+            }
+          ],
+          "title": "Distribution"
+        },
+        "key": {
+          "$ref": "#/$defs/DrawKey"
+        },
+        "lifetime": {
+          "default": "event",
+          "enum": [
+            "event",
+            "persistent"
+          ],
+          "title": "Lifetime",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id",
+        "key",
+        "day",
+        "distribution",
+        "source_refs",
+        "dependence",
+        "assumption_refs"
+      ],
+      "title": "DrawSpec",
+      "type": "object"
+    },
+    "ExperimentContext": {
+      "additionalProperties": false,
+      "properties": {
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "experiment_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Experiment Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "experiment_id"
+      ],
+      "title": "ExperimentContext",
+      "type": "object"
+    },
+    "ExperimentControl": {
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "paused",
+            "cancelled"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sequence",
+        "state"
+      ],
+      "title": "ExperimentControl",
+      "type": "object"
+    },
+    "ExperimentManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "checkpoint_interval": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Checkpoint Interval",
+          "type": "integer"
+        },
+        "contract_version": {
+          "const": 1,
+          "default": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "realization_policy": {
+          "enum": [
+            "opening",
+            "preserve",
+            "new_realization"
+          ],
+          "title": "Realization Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "checkpoint_interval",
+        "realization_policy"
+      ],
+      "title": "ExperimentManifest",
+      "type": "object"
+    },
+    "ExperimentProgress": {
+      "additionalProperties": false,
+      "properties": {
+        "completed": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Completed",
+          "type": "integer"
+        },
+        "head": {
+          "$ref": "#/$defs/BoundaryOutcome"
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "quota",
+            "paused",
+            "cancelled",
+            "running"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "head",
+        "completed",
+        "status"
+      ],
+      "title": "ExperimentProgress",
+      "type": "object"
+    },
+    "ForkExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "checkpoint_interval": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Checkpoint Interval",
+          "type": "integer"
+        },
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "plan": {
+          "$ref": "#/$defs/TimelinePlan"
+        },
+        "realization_policy": {
+          "enum": [
+            "preserve",
+            "new_realization"
+          ],
+          "title": "Realization Policy",
+          "type": "string"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "source": {
+          "$ref": "#/$defs/BoundaryOutcome"
+        }
+      },
+      "required": [
+        "operation_id",
+        "source",
+        "context",
+        "plan",
+        "checkpoint_interval",
+        "realization_policy"
+      ],
+      "title": "ForkExperiment",
+      "type": "object"
+    },
+    "ForkRealization": {
+      "additionalProperties": false,
+      "properties": {
+        "parent_plan_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Parent Plan Digest",
+          "type": "string"
+        },
+        "parent_seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Parent Seed",
+          "type": "string"
+        },
+        "policy": {
+          "enum": [
+            "preserve",
+            "new_realization"
+          ],
+          "title": "Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "parent_plan_digest",
+        "parent_seed",
+        "policy"
+      ],
+      "title": "ForkRealization",
+      "type": "object"
+    },
+    "FundingRequirement": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "funding",
+            "entitlement"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "kind"
+      ],
+      "title": "FundingRequirement",
+      "type": "object"
+    },
+    "Identity": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version"
+      ],
+      "title": "Identity",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MechanismInstance": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "mechanism_id",
+        "mechanism_version",
+        "scope_id",
+        "entity_id"
+      ],
+      "title": "MechanismInstance",
+      "type": "object"
+    },
+    "MechanismSchedule": {
+      "additionalProperties": false,
+      "properties": {
+        "first_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "First Day",
+          "type": "integer"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "interval_days": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Interval Days",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "instance_id",
+        "interval_days",
+        "first_day"
+      ],
+      "title": "MechanismSchedule",
+      "type": "object"
+    },
+    "PolicyAdoption": {
+      "additionalProperties": false,
+      "properties": {
+        "base_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "deltas": {
+          "items": {
+            "$ref": "#/$defs/BindingDelta"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Deltas",
+          "type": "array"
+        },
+        "effective_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Effective Day",
+          "type": "integer"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "order": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Order",
+          "type": "integer"
+        },
+        "origin": {
+          "const": "player_approved",
+          "title": "Origin",
+          "type": "string"
+        },
+        "preconditions": {
+          "items": {
+            "$ref": "#/$defs/AdoptionCondition"
+          },
+          "maxItems": 100,
+          "title": "Preconditions",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "source_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "transition": {
+          "enum": [
+            "binding_only",
+            "unsupported"
+          ],
+          "title": "Transition",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "effective_day",
+        "order",
+        "origin",
+        "source_revision",
+        "base_revision",
+        "deltas",
+        "preconditions",
+        "transition",
+        "source_refs"
+      ],
+      "title": "PolicyAdoption",
+      "type": "object"
+    },
+    "PolicyBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "account_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Account Refs",
+          "type": "array"
+        },
+        "authority_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Authority Id",
+          "type": "string"
+        },
+        "choice_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Choice Refs",
+          "type": "array"
+        },
+        "conflict_kind": {
+          "enum": [
+            "parameter",
+            "allocation"
+          ],
+          "title": "Conflict Kind",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "entity_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Entity Ids",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "mechanism": {
+          "$ref": "#/$defs/Identity"
+        },
+        "parameter_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Parameter Id",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "contract_version",
+        "id",
+        "mechanism",
+        "scope_id",
+        "authority_id",
+        "entity_ids",
+        "parameter_id",
+        "value",
+        "conflict_kind",
+        "account_refs",
+        "choice_refs"
+      ],
+      "title": "PolicyBinding",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "RandomPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "draws": {
+          "items": {
+            "$ref": "#/$defs/DrawSpec"
+          },
+          "maxItems": 1000,
+          "title": "Draws",
+          "type": "array"
+        },
+        "fork": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ForkRealization"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/DrawReference"
+          },
+          "maxItems": 1000,
+          "title": "References",
+          "type": "array"
+        },
+        "runtime": {
+          "$ref": "#/$defs/RandomRuntime"
+        },
+        "seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Seed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "seed",
+        "runtime",
+        "draws",
+        "references"
+      ],
+      "title": "RandomPlan",
+      "type": "object"
+    },
+    "RandomRuntime": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "default": "named-draw-json-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "rng": {
+          "default": "hmac-sha256-counter-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Rng",
+          "type": "string"
+        },
+        "sampling": {
+          "default": "exact-discrete-rejection-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Sampling",
+          "type": "string"
+        }
+      },
+      "title": "RandomRuntime",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "ReplayExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "max_boundaries": {
+          "default": 1000,
+          "maximum": 1000,
+          "minimum": 1,
+          "title": "Max Boundaries",
+          "type": "integer"
+        },
+        "mode": {
+          "enum": [
+            "recorded",
+            "verify"
+          ],
+          "title": "Mode",
+          "type": "string"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "context",
+        "sequence",
+        "mode"
+      ],
+      "title": "ReplayExperiment",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "StartExperiment": {
+      "additionalProperties": false,
+      "properties": {
+        "checkpoint_interval": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Checkpoint Interval",
+          "type": "integer"
+        },
+        "request": {
+          "$ref": "#/$defs/CreateExperiment"
+        }
+      },
+      "required": [
+        "request",
+        "checkpoint_interval"
+      ],
+      "title": "StartExperiment",
+      "type": "object"
+    },
+    "TimelinePlan": {
+      "additionalProperties": false,
+      "properties": {
+        "adoptions": {
+          "items": {
+            "$ref": "#/$defs/PolicyAdoption"
+          },
+          "maxItems": 1000,
+          "title": "Adoptions",
+          "type": "array"
+        },
+        "calendar": {
+          "$ref": "#/$defs/Calendar"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "events": {
+          "items": {
+            "$ref": "#/$defs/DatedEvent"
+          },
+          "maxItems": 1000,
+          "title": "Events",
+          "type": "array"
+        },
+        "opening_day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Opening Day",
+          "type": "integer"
+        },
+        "opening_revision": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "schedules": {
+          "items": {
+            "$ref": "#/$defs/MechanismSchedule"
+          },
+          "maxItems": 1000,
+          "title": "Schedules",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "calendar",
+        "opening_revision",
+        "opening_day",
+        "schedules",
+        "events",
+        "adoptions"
+      ],
+      "title": "TimelinePlan",
+      "type": "object"
+    },
+    "TransformationOutput": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Per Unit",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "product",
+            "residual"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "per_unit",
+        "role"
+      ],
+      "title": "TransformationOutput",
+      "type": "object"
+    },
+    "TransitionPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "account_bindings": {
+          "items": {
+            "$ref": "#/$defs/AccountStateBinding"
+          },
+          "maxItems": 1000,
+          "title": "Account Bindings",
+          "type": "array"
+        },
+        "carry_priority": {
+          "enum": [
+            "existing_first",
+            "new_first"
+          ],
+          "title": "Carry Priority",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "instance_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Instance Order",
+          "type": "array"
+        },
+        "instances": {
+          "items": {
+            "$ref": "#/$defs/MechanismInstance"
+          },
+          "maxItems": 1000,
+          "title": "Instances",
+          "type": "array"
+        },
+        "opening": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AllocationRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation_limit": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "title": "Operation Limit",
+          "type": "integer"
+        },
+        "random_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RandomPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "contract_version",
+        "opening",
+        "account_bindings",
+        "instance_order",
+        "carry_priority",
+        "operation_limit"
+      ],
+      "title": "TransitionPlan",
+      "type": "object"
+    },
+    "UniformInteger": {
+      "additionalProperties": false,
+      "properties": {
+        "high": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "High",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "uniform_integer",
+          "title": "Kind",
+          "type": "string"
+        },
+        "low": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Low",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "low",
+        "high"
+      ],
+      "title": "UniformInteger",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "WeightedValue": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "weight": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Weight",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "weight"
+      ],
+      "title": "WeightedValue",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/StartExperiment"
+    },
+    {
+      "$ref": "#/$defs/ForkExperiment"
+    },
+    {
+      "$ref": "#/$defs/ExperimentManifest"
+    },
+    {
+      "$ref": "#/$defs/ExperimentControl"
+    },
+    {
+      "$ref": "#/$defs/ControlExperiment"
+    },
+    {
+      "$ref": "#/$defs/AdvanceExperiment"
+    },
+    {
+      "$ref": "#/$defs/ExperimentProgress"
+    },
+    {
+      "$ref": "#/$defs/Checkpoint"
+    },
+    {
+      "$ref": "#/$defs/ReplayExperiment"
+    }
+  ]
+}

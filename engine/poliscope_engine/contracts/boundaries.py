@@ -94,6 +94,7 @@ class ExperimentRecord(Contract):
     plan_digest: Digest
     opening_digest: Digest
     transition_plan: TransitionPlan | None = None
+    origin: BoundaryOutcome | None = None
 
 
 class BoundaryValidation(Contract):

@@ -460,3 +460,8 @@ second budget. Beneficiary obligations, canonical membership union and independe
 education facility/qualification/policy prerequisites remain inspectable. Unknowns
 withhold the complete candidate. Opaque reviewed ports expose bound evidence only;
 no attendance, learning, demographic effects, public IPC or publication is implied.
+
+`experiment.schema.json` and `experiment.ts` describe trusted-host v1 experiment
+create/fork/advance/control, checkpoint, progress and replay DTOs. They grant no
+IPC authority. Additive optional `ExperimentRecord.origin` binds retrospective
+openings to a confirmed boundary while preserving existing v1 history identities.

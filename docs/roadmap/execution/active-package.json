@@ -1,36 +1,36 @@
 {
   "version": 1,
-  "package": "WP-035",
+  "package": "WP-036",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-035.md",
+  "record": "docs/roadmap/execution/WP-036.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "798f4d40191d42bf30e85c1c8873f2b0547bf2f7",
-  "branch": "codex/wp-035-random",
+  "base": "74302a9d954352b1459d9e60a3f6308746825dd8",
+  "branch": "codex/wp-036-experiments",
   "acceptance": [
     {
-      "id": "stable-streams",
+      "id": "durable-controller",
       "status": "passed",
-      "evidence": "Fixed HMAC answer, independent UTF-8/integer oracle, every mechanism/instance/entity/scope/purpose/event/draw/index key component, unrelated insertion, subprocess and Decimal-context isolation"
+      "evidence": "Actual create/fork/advance/pause/cancel/query and payload-bound recovery tests"
     },
     {
-      "id": "explicit-probability",
+      "id": "checkpoint-replay",
       "status": "passed",
-      "evidence": "Rational Bernoulli, bounded integer and ordered weighted categorical distributions; unknown source ranges/invalid probabilities/dependence rejected; rejection sampling bounded and unbiased; no source activation"
+      "evidence": "Continuous/checkpoint-resume/recorded-event verification with runtime identity and retained evidence"
     },
     {
-      "id": "retained-replay",
+      "id": "retrospective-forks",
       "status": "passed",
-      "evidence": "Actual reducer/SQLite retains full specs, realized draws/events and runtime identity with state; reopen/continuous/unrelated-model results agree; pre/post-COMMIT os._exit, failure/cancel and model-free cold retries"
+      "evidence": "Snapshot, pending work and explicit preserved/new stochastic realization policy; original histories immutable"
     },
     {
-      "id": "fork-policy",
+      "id": "atomic-recovery",
       "status": "passed",
-      "evidence": "Shared and persistent values reused; paired preservation/new-seed fork declarations bind actual parent digest and unchanged identities; unknown runtime cannot claim exact reproduction"
+      "evidence": "Actual checkpoint transaction failure and before/after COMMIT process exits"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "44 new stochastic cases; full 4690 Python and 232 unit tests pass with zero skips; matching verified implementation fingerprints, schemas/content/types/roadmap/baseline and separate author inspection; native Windows hook added, execution unverified"
+      "evidence": "21 new experiment cases; full 4711 Python and 232 desktop unit tests pass with zero skips; exact matching verified candidate fingerprints; generated contracts/content/types/roadmap/baseline and separate author inspection; native Windows and packaged Electron untested"
     }
   ]
 }

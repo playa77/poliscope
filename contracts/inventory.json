@@ -50,6 +50,8 @@
     "environment.ts",
     "evaluation.schema.json",
     "evaluation.ts",
+    "experiment.schema.json",
+    "experiment.ts",
     "exploration.schema.json",
     "exploration.ts",
     "expression.schema.json",
