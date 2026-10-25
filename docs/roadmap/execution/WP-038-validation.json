@@ -1,0 +1,87 @@
+{
+  "version": 1,
+  "package": "WP-038",
+  "implementation_fingerprint": "bbc52b74b4bc4d3e5f5ed71aeb21e597d9f34912a050a671c32756fe1385bb76",
+  "full_suites_verified_before_test_selector_and_delivery_metadata_updates": true,
+  "application_code_unchanged_after_full_suites": true,
+  "suites": [
+    {
+      "suite": "engine",
+      "run_id": "66e7f3c2-1d51-4385-89ec-a0bb966dacff",
+      "candidate": "acd1020690439ead8eb3e833c2b8c09660b8ea114b5f669d10b9e3450435aaa1",
+      "head": "7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "pytest",
+        "--junitxml=/tmp/poliscope-wp038-engine/junit.xml"
+      ],
+      "status": "passed",
+      "report_sha256": "21c8a9836eed453c86ef47d57b8ae1e55e38b30a6fa77602270ce22325dc71ba",
+      "results": {
+        "tests": 4776,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "unit",
+      "run_id": "855c81d9-31f3-4f6b-b909-284b166a4e7e",
+      "candidate": "acd1020690439ead8eb3e833c2b8c09660b8ea114b5f669d10b9e3450435aaa1",
+      "head": "7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=/tmp/poliscope-wp038-unit/junit.xml"
+      ],
+      "status": "passed",
+      "report_sha256": "b54f6462b4676583abea10b56cca8b8b5b6be759ade249120d755c3ea0980448",
+      "results": {
+        "tests": 236,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "desktop",
+      "run_id": "4a630832-6bd5-42f9-aa90-5b5f709334c9",
+      "candidate": "acd1020690439ead8eb3e833c2b8c09660b8ea114b5f669d10b9e3450435aaa1",
+      "head": "7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "playwright",
+        "test",
+        "--reporter=junit"
+      ],
+      "status": "failed",
+      "report_sha256": "ba9d7564486dee608a8786216454b88d72398090d8aeea7a31ae7c970ef82f20",
+      "results": {
+        "tests": 18,
+        "failed": 1,
+        "skipped": 0
+      }
+    }
+  ],
+  "packaged_correction": {
+    "scope": "New uncertainty scenario only; exact upper-bound label and form-control accessible-name selectors corrected. No application code or test assertions changed.",
+    "tests": 1,
+    "failed": 0,
+    "skipped": 0,
+    "report_sha256": "251fcaa3838466d7474dc012e1cdd44e47d4ba3c0d0b5941d02e1431dc442235",
+    "full_regression_rerun": false
+  },
+  "limitations": [
+    "Windows x64 native validation unrun",
+    "SV separate author inspection, independent/scientific review deferred",
+    "No automatic source activation; unsupported nonlinear/mixed/dependence methods remain qualified",
+    "Full G4/M4 not certified"
+  ]
+}

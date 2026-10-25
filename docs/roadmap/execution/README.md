@@ -1,16 +1,15 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** [WP-037 in full](WP-037.md), tracked in
-[active-package.json](active-package.json). Fetched main base `b42302a` is the
-merge of PR #107 / full WP-036. Full WP-035 and WP-034 are already merged.
-
-The complete timeline workspace, schedule preview/apply, historical forks and
-retained experiment comparison are implemented on `codex/wp-037-timeline`.
-Final full engine/unit suites pass at one verified candidate; Linux packaging
-and the corrected bootstrap plus timeline keyboard workflows pass. The user explicitly authorized branch publication to `playa77/poliscope` and
-a regular PR against `main`, resolving the earlier approval blocker. Review
-and merge remain pending. Native source activation, scientific validation, native
-Windows and cumulative G4 remain open. [Delivery receipts](delivery.json) and
+**Current delivery, 2026-10-25:** [WP-038 in full](WP-038.md), tracked in
+[active-package.json](active-package.json). Current-main base is
+`7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9`, the merge of PR #108 / WP-037.
+The clean checkout fetched and fast-forwarded without stash or discarded work.
+WP-036 and WP-037 are already merged; stale local child records do not allocate
+them again. WP-038 covers exact declared uncertainty methods, real sensitivity
+previews and optional resource capacity bounds, with a desktop inspector.
+Source activation, nonauthor/scientific review, native Windows and the full G4/M4
+gate remain open. After merge reassess full WP-039 archive prerequisites.
+[Delivery receipts](delivery.json) and
 [validation receipts](WP-037-validation.json) record actual scope and checks.
 
 Implementation began on 2026-10-17 at base
@@ -1302,3 +1301,15 @@ or scientific model is inferred. Native Windows verification is available as a
 manual workflow and remains unrun. After merge continue the remaining full
 WP-036 checkpoints/controller/replay/fork workflows. Route:
 **solo-validated; agent review deferred**.
+
+## Full WP-038 parent delivery
+
+[WP-038](WP-038.md) supplies exact shared-variable affine boxes, explicit finite
+joint/conditional/common-cause laws, threshold coverage, enumerated real revision
+previews and an optional registered monotone resource bound with witnesses.
+The desktop inspector exposes method assumptions, bounds/probabilities and
+accessible comparisons without changing saved inputs or selecting a winner.
+Unsupported methods return coverage limits. Full Python and unit regression plus
+packaged UI evidence and the precise rerun scope are recorded in the parent.
+Route: **solo-validated; agent review deferred**. No scientific or G4/M4 acceptance
+is inferred from hypothetical examples.

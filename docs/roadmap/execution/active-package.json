@@ -1,36 +1,36 @@
 {
   "version": 1,
-  "package": "WP-037",
+  "package": "WP-038",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-037.md",
+  "record": "docs/roadmap/execution/WP-038.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "b42302abc7bb298049149f0d90a9a797d820cb52",
-  "branch": "codex/wp-037-timeline",
+  "base": "7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9",
+  "branch": "codex/wp-038-uncertainty",
   "acceptance": [
     {
-      "id": "timeline-workspace",
+      "id": "parameter-semantics",
       "status": "passed",
-      "evidence": "Real Python/SQLite main grant, generated contracts and packaged keyboard create/advance/pause/resume/cancel/fork/reopen workflow"
+      "evidence": "Exact symbolic coefficient combination, signed extrema, threshold endpoints/support holes, scoped/unit-bound real reports; no inferred probability or midpoint"
     },
     {
-      "id": "future-and-past",
+      "id": "dependence",
       "status": "passed",
-      "evidence": "Actual accepted policy delta preview is noncommitting; future day-3 adoption and retrospective day-3 fork retain original histories and distinct opening/origin records"
+      "evidence": "Independent literal joint/common-cause 1/4 versus independent 7/16, equivalent conditional encoding, repeated variables, malformed/missing/cyclic/limited models and qualified unsupported methods"
     },
     {
-      "id": "retained-comparison",
+      "id": "sensitivity",
       "status": "passed",
-      "evidence": "Exact retained measurements (200 kg oracle), explicit incompatible clock/time/model/scope and missing outcome cases; changed opening conditions, choices, policies, assumptions, schedules and realizations"
+      "evidence": "Real Revisions.preview/evaluation/measurement over SQLite, explicit A/B selections, source/assumption closure, impossible joint combinations rejected, branch and all table counts unchanged"
     },
     {
-      "id": "confirmed-only",
+      "id": "capacity",
       "status": "passed",
-      "evidence": "Bounded confirmed history and trace pages, immutable payload-bound retries before stale/control checks, preserved cancelled head and fork source"
+      "evidence": "Registered linear-resource method over pinned actual quantities; 6/7 and 3/4 independent witnesses, half-quantum, missing supply, iteration/precision/role/unit/resource checks and target isolation"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4722 Python and 234 unit cases at one verified candidate; Linux package passes; packaged regression 16/17 then corrected bootstrap plus timeline 2/2 after rebuild; Windows unrun; separate author inspection"
+      "evidence": "54 new engine, 2 new unit and 1 packaged scenario; full 4776 Python and 236 unit pass, packaged 17/18 then corrected scenario 1/1; generated/content/type/roadmap/baseline checks and separate author inspection; Windows unrun"
     }
   ]
 }

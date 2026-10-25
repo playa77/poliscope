@@ -1,3 +1,5 @@
+import uncertaintySchema from '../../contracts/uncertainty.schema.json';
+import type { UncertaintyQuery, UncertaintyReport, SensitivityQuery, SensitivityReport, CapacityQuery, CapacityReport } from '../../contracts/uncertainty';
 import timelineSchema from '../../contracts/timeline-workspace.schema.json';
 import type { TimelineRequest, TimelineReply } from '../../contracts/timeline-workspace';
 import workbenchSchema from '../../contracts/workbench.schema.json';
@@ -23,7 +25,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs, ...uncertaintySchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -292,6 +294,19 @@ export class WorkspaceController {
         JSON.stringify(result.effective_time) !== JSON.stringify(this.selected.effective_time))) throw new Error('Observation model/time mismatch');
     return result;
   }
+  private async uncertaintyRequest(input: unknown, operation: string, queryType: string, replyType: string): Promise<unknown> {
+    if (!workspaceValid(input, queryType)) throw new Error('Invalid analysis request');
+    const query = structuredClone(input as UncertaintyQuery | SensitivityQuery | CapacityQuery);
+    this.authorizeHistory(query.context);
+    if (this.candidate || this.worldCandidate || this.workbenchCandidate) throw new Error('Resolve draft first');
+    const reply = await this.request(operation, query, replyType) as UncertaintyReport | SensitivityReport | CapacityReport;
+    if (!isDeepStrictEqual(reply.query, query)) throw new Error('Analysis binding mismatch');
+    if ('effective_time' in reply && !isDeepStrictEqual(reply.effective_time, this.selected!.effective_time)) throw new Error('Analysis time mismatch');
+    return reply;
+  }
+  uncertainty(input: unknown) { return this.uncertaintyRequest(input, 'uncertainty', 'UncertaintyQuery', 'UncertaintyReport') as Promise<UncertaintyReport>; }
+  sensitivity(input: unknown) { return this.uncertaintyRequest(input, 'sensitivity', 'SensitivityQuery', 'SensitivityReport') as Promise<SensitivityReport>; }
+  capacity(input: unknown) { return this.uncertaintyRequest(input, 'capacity', 'CapacityQuery', 'CapacityReport') as Promise<CapacityReport>; }
   async timeline(input: unknown): Promise<TimelineReply> {
     if (!workspaceValid(input, 'TimelineRequest')) throw new Error('Invalid timeline request');
     const query: TimelineRequest = { sequence: 0, target_day: 0, other_id: null, source_revision_id: null,
