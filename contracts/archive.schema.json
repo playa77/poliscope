@@ -1701,6 +1701,25 @@
           "title": "Kind",
           "type": "string"
         },
+        "note_kind": {
+          "anyOf": [
+            {
+              "enum": [
+                "inquiry",
+                "expectation",
+                "observation",
+                "model_gap",
+                "proposal"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Note Kind"
+        },
         "revision_id": {
           "maxLength": 256,
           "minLength": 1,

@@ -8,6 +8,14 @@ export function Archives() {
   const [selected, setSelected] = useState<string | null>(null);
   const [offset, setOffset] = useState(0), [detail, setDetail] = useState(0);
   const [page, setPage] = useState<ArchiveReply>();
+  async function report(format: 'markdown' | 'csv', archive_id: string | null = null) {
+    setBusy(true); setError(''); setNotice('');
+    try {
+      const result = await window.poliscope.report({ format, options, archive_id, scope_id: null });
+      setNotice(result.status === 'cancelled' ? 'File selection cancelled.' : `${format === 'markdown' ? 'Inquiry report' : 'Typed CSV'} exported. ${result.bytes_written} bytes. Private material follows your selected choices.`);
+    } catch { setError('Report export failed. Saved history is retained. Choose a new file; an uncertain export may already exist.'); }
+    finally { setBusy(false); }
+  }
   async function act(action: 'export' | 'import' | 'list' | 'read', id = selected, item = offset, part = detail) {
     setBusy(true); setError(''); setNotice('');
     try {
@@ -32,11 +40,15 @@ export function Archives() {
       <p>Transcripts and attachments are excluded. This version has no transcript or attachment store to export. Public simulation inputs, goal questions, sources and assumptions remain included. Private source metadata and private identifiers are redacted throughout history.</p>
       <label>Retained evidence <select value={options.evidence} onChange={e => setOptions({ ...options, evidence: e.target.value as ArchiveOptions['evidence'] })}><option value="complete">Include saved results and traces</option><option value="reduced">Evidence-reduced: omit measurement reports and traces</option></select></label>
       {options.evidence === 'reduced' && <p>Every omitted measurement report is listed in the archive. Transition records remain included; omitted measurement results and calculation traces are unavailable.</p>}
+      <p>Inquiry reports and CSV cover all retained revisions and experiments in this folder. CSV includes exact measurements, declared distributions and saved time series. Markdown includes private notes and rationale only when selected above. CSV contains measurements and state without private note payloads. Missing results remain unavailable; no AI explanation is generated.</p>
+      <p>CSV text cells have one leading apostrophe for spreadsheet safety. Remove exactly one to decode text; numeric values retain their exact decimal strings. Compare only compatible units, scopes, times and models.</p>
+      <button onClick={() => void report('markdown')}>Export Markdown inquiry report</button>
+      <button onClick={() => void report('csv')}>Export typed CSV</button>
       <button onClick={() => void act('export', null)}>Export portable history</button>
       <button onClick={() => void act('import')}>Import portable history</button>
       <button onClick={() => void act('list')}>Show imported histories</button>
     </fieldset>
-    {busy && <p role="status">Processing portable history…</p>}
+    {busy && <p role="status">Preparing local export or historical data…</p>}
     {notice && <p role="status">{notice}</p>}
     {error && <p role="alert">{error}</p>}
     <ul>{summaries.map(x => <li key={x.id}>
@@ -46,6 +58,8 @@ export function Archives() {
     {page && <section aria-label="Imported historical data"><h4>{page.heading}</h4>
       <p>Retained historical data, not freshly reproduced. Text is displayed as data.</p>
       <button disabled={busy} onClick={() => void act('export', selected)}>Export this imported history</button>
+      <button disabled={busy} onClick={() => void report('markdown', selected)}>Export imported inquiry report</button>
+      <button disabled={busy} onClick={() => void report('csv', selected)}>Export imported typed CSV</button>
       <table><caption>Stored facts and evidence</caption><thead><tr><th>Fact</th><th>Retained value</th></tr></thead><tbody>{(page.rows ?? []).map((row,i) => <tr key={i}><th scope="row">{row.label}</th><td style={{ overflowWrap: 'anywhere', whiteSpace: 'pre-wrap' }}>{row.detail}</td></tr>)}</tbody></table>
       <button disabled={busy || detail === 0} onClick={() => void act('read', selected, offset, Math.max(0, detail-25))}>Previous facts</button>
       <button disabled={busy || page.next_detail_offset == null} onClick={() => void act('read', selected, offset, page.next_detail_offset!)}>More facts</button>

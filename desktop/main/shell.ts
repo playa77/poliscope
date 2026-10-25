@@ -52,6 +52,7 @@ export class DesktopShell {
       return this.workspace.choose(directory);
     });
   }
+  report(input: unknown, choose: (format: 'markdown' | 'csv') => Promise<string | undefined>) { return this.workspaceRun(() => this.workspace.report(input, choose)); }
   archive(input: unknown, choose: (action: 'import' | 'export') => Promise<string | undefined>) { return this.workspaceRun(() => this.workspace.archive(input, choose)); }
   workspaceCatalogue() { return this.workspaceRun(() => this.workspace.catalogue()); }
   createWorld(input: unknown) { this.interviewGeneration++; return this.workspaceRun(() => this.workspace.create(input)); }

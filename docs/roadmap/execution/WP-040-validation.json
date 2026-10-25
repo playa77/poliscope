@@ -1,0 +1,69 @@
+{
+  "version": 1,
+  "package": "WP-040",
+  "route": "solo-validated; agent review deferred",
+  "base": "36f9f40a8e7fc63f955d3da180bfd710921f6f47",
+  "application_fingerprint": "ee8dcba4cdb9ad8a7878787f952202cb4cc20f72b5fd1726be409a99a6e5a2b3",
+  "tests": {
+    "engine": {
+      "count": 4839,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 391.96,
+      "candidate": "74fa91410fb10f3c33341eb8c38e0f7f5249d733b7ddd45b405d7894922c6f6d",
+      "report_sha256": "3646fa3c48eed80edade4e7ac46e1f3fe6966b4e98a4bdde9d1609d4e411c492",
+      "run_id": "8342fd8a-d5ec-469f-925a-80fe965857b8"
+    },
+    "unit": {
+      "count": 240,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 56.88,
+      "candidate": "74fa91410fb10f3c33341eb8c38e0f7f5249d733b7ddd45b405d7894922c6f6d",
+      "report_sha256": "da2b53848d98422a73f503aaf5b5ab85efbe583037089efda4a6198d5f1f4362",
+      "run_id": "d1b2c6b7-5ba0-43d7-b04c-58063aa2ae7d"
+    },
+    "desktop": {
+      "count": 20,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 349.86,
+      "candidate": "1d6d7f802bce39534490339038924d84225833e383885b9aac5771310f0cb298",
+      "report_sha256": "1d3751b246f7631ece39062a56319f535ba48d998d54b4a02808234b7f4b2d0a",
+      "run_id": "8b2f7eaf-921a-46fb-b9e1-918cfe0ede58"
+    }
+  },
+  "new_cases": {
+    "engine": 26,
+    "unit": 2,
+    "desktop": 1
+  },
+  "verification": "Engine/unit full evidence verified before test-selector/decoder corrections; final desktop verified before delivery metadata. Application fingerprint unchanged. Focused final 26 report cases passed.",
+  "post_full_changes": [
+    "Packaged test locator and expected saved Decimal format corrected; complete final packaged run follows",
+    "Test CSV decoder recognizes numeric world_schema; identity assertion added; all 26 report cases rerun"
+  ],
+  "checks": [
+    "frozen Python/Node installs",
+    "generated contracts",
+    "immutable content release",
+    "TypeScript",
+    "51 roadmap unittest cases",
+    "roadmap manifest",
+    "baseline traceability",
+    "git diff --check",
+    "separate author inspection"
+  ],
+  "native_platforms": {
+    "linux_x64": "packaged full suite passed",
+    "windows_x64": "unrun"
+  },
+  "limits": [
+    "No AI explanation generation, provider dispatch or live checks",
+    "Only retained measurements/state and declared experiment laws; transient sensitivity previews are not historical outcomes",
+    "Desktop exports all scopes in the selected folder or imported collection; service supports result-scope filtering with full context closure",
+    "Private note/rationale payloads are Markdown-only, opt-in; no transcript/attachment store exists",
+    "512 MiB report and 256 MiB projection bounds, 120s worker deadline; killed workers can leave hidden staging files",
+    "WP-041, native Windows and scientific/nonauthor review remain open; no G5/M5 gate inferred"
+  ]
+}
