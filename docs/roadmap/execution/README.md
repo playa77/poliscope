@@ -7,9 +7,9 @@ merge of PR #107 / full WP-036. Full WP-035 and WP-034 are already merged.
 The complete timeline workspace, schedule preview/apply, historical forks and
 retained experiment comparison are implemented on `codex/wp-037-timeline`.
 Final full engine/unit suites pass at one verified candidate; Linux packaging
-and the corrected bootstrap plus timeline keyboard workflows pass. Publication is blocked by automatic approval review pending explicit user
-authorization to push the branch to `playa77/poliscope` and open the regular PR.
-No remote branch or PR was created; review and merge remain pending. Native source activation, scientific validation, native
+and the corrected bootstrap plus timeline keyboard workflows pass. The user explicitly authorized branch publication to `playa77/poliscope` and
+a regular PR against `main`, resolving the earlier approval blocker. Review
+and merge remain pending. Native source activation, scientific validation, native
 Windows and cumulative G4 remain open. [Delivery receipts](delivery.json) and
 [validation receipts](WP-037-validation.json) record actual scope and checks.
 
