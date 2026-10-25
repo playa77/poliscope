@@ -949,11 +949,11 @@
       "parent": "WP-035",
       "scope": "random",
       "capabilities": "ENG; review expertise MODEL + QA",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-034-invariants"
       ],
-      "merged_sha": null,
+      "merged_sha": "74302a9d954352b1459d9e60a3f6308746825dd8",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-035 acceptance in packages.json; exact child criteria required at start"
     },
@@ -976,7 +976,7 @@
       "parent": "WP-036",
       "scope": "checkpoints",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-036-boundary-store",
         "WP-035-random"
@@ -989,7 +989,7 @@
       "parent": "WP-036",
       "scope": "replay",
       "capabilities": "ENG",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-036-checkpoints"
       ],

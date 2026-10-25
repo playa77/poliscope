@@ -30,3 +30,8 @@ past schedule edits require a fork. Whole-configuration replacement is unsupport
 WP-034 owns active mechanism resolution and transition reduction; WP-036 owns
 atomic durable confirmation, cancellation/recovery and checkpoint/replay. These
 APIs do not write storage, publish state, grant renderer access or certify G4.
+
+The full trusted-host WP-036 controller is now implemented in `experiments.py`.
+See [experiment operations and recovery](EXPERIMENTS.md) for checkpoint selection,
+recorded/verified replay, durable pause/cancel and retrospective forks. Renderer
+presentation and full G4 acceptance remain subsequent work.

@@ -248,7 +248,7 @@ class TransitionReducer:
         self.revisions, self.mechanisms, self.catalog = revisions, revisions.registry, catalog
         self.store = BoundaryStore(revisions, validator=self.validate, validator_id=REDUCER_ID)
 
-    def _reduce(self, opening, experiment, due, *, cancelled=None):
+    def _reduce(self, opening, experiment, due, *, cancelled=None, recorded_draws=None):
         if self.mechanisms is None or experiment.transition_plan is None:
             raise TransitionError('transition_runtime_or_plan_unavailable')
         plan = experiment.transition_plan
@@ -280,7 +280,7 @@ class TransitionReducer:
         previous = opening.state.transition
         if previous is not None:
             verify_receipt(previous)
-            if previous.plan_digest != digest(plan):
+            if previous.plan_digest != digest(plan) and not (opening.record.sequence == 0 and experiment.origin is not None):
                 raise TransitionError('transition_plan_changed')
         base = plan.opening
         claim_owners = {} if previous is None else {c.claim_id: c for c in previous.claim_owners}
@@ -292,7 +292,16 @@ class TransitionReducer:
             base, claim_owners = _carry_book(base, base.batch, {}, self.mechanisms.units)
         if base is not None:
             _bindings(plan, opening.state.inputs, base.batch, self.mechanisms.units)
-        random_draws = [] if plan.random_plan is None else realize(plan.random_plan, due.day, checkpoint=checkpoint)
+        random_draws = ([] if plan.random_plan is None or recorded_draws is not None
+                        else realize(plan.random_plan, due.day, checkpoint=checkpoint))
+        if recorded_draws is not None:
+            from poliscope_engine.stochastic import check_retained, require_runtime, verify_draw
+            if plan.random_plan is not None:
+                require_runtime(plan.random_plan.runtime)
+            check_retained(plan.random_plan, due.day, recorded_draws)
+            for draw in recorded_draws:
+                verify_draw(draw)
+            random_draws = recorded_draws
         proposals, adapters, invocations, steps = {}, {}, {}, {}
         prior_unmet = {} if base is None else {c.claim_id: Fraction(c.unmet)
             for c in AccountBook(base.batch, self.mechanisms.units).evaluate().claims}

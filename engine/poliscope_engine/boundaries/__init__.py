@@ -78,6 +78,8 @@ class BoundaryStore:
         self.revisions, self.store = revisions, revisions.store
         self.validator, self.validator_id = validator, validator_id
         self.blobs = RetainedBlobs(self.store)
+        # Trusted controller hook runs inside the same transaction as confirmation.
+        self.on_persist = None
 
     def _scope(self, context):
         context = checked(ExperimentContext, context)
@@ -164,10 +166,14 @@ class BoundaryStore:
 
     def _persist(self, scope, context, sequence, state, evidence, plan_digest,
                  parent_digest, validator_id, due=None, changes=None):
+        if self.on_persist is None and self.store.read_record(scope, 'experiment-controller:v1', 'manifest') is not None:
+            raise BoundaryError('experiment_controller_required')
         record = _record(context, sequence, state, evidence, plan_digest, parent_digest, validator_id, due, changes)
         self.blobs.put(scope, 'boundary-state', record.state_digest, state)
         self.blobs.put(scope, 'boundary-evidence', evidence.closure_digest, evidence, evidence=True)
         self.store.add_record(scope, JOURNAL, f'{sequence:016d}', record.model_dump_json())
+        if self.on_persist is not None:
+            self.on_persist(record)
         return outcome(record)
 
     def create(self, request: CreateExperiment, *, cancelled=None):
@@ -259,11 +265,25 @@ class BoundaryStore:
         if record.sequence == 0 and (record.boundary_digest != experiment.opening_digest
                 or record.parent_digest is not None or record.day != experiment.plan.opening_day):
             raise BoundaryError('opening_boundary_identity_mismatch')
-        if state.transition is not None and (
+        fork_opening = record.sequence == 0 and experiment.origin is not None
+        if fork_opening:
+            origin = experiment.origin
+            if (origin.context.data_store_id != context.data_store_id
+                    or origin.context.civilization_id != context.civilization_id):
+                raise BoundaryError('foreign_experiment_origin')
+            parent_scope = self._scope(origin.context)
+            raw_parent = self.store.read_record(parent_scope, JOURNAL, f'{origin.sequence:016d}')
+            if raw_parent is None:
+                raise BoundaryError('missing_experiment_origin')
+            parent = BoundaryRecord.model_validate_json(raw_parent)
+            if (outcome(parent) != origin or parent.boundary_digest != digest(parent.model_dump(exclude={'boundary_digest'}))
+                    or parent.state_digest != record.state_digest or parent.evidence_digest != record.evidence_digest):
+                raise BoundaryError('experiment_origin_mismatch')
+        if state.transition is not None and not fork_opening and (
                 state.transition.opening_digest != record.parent_digest
                 or state.transition.plan_digest != digest(experiment.transition_plan)):
             raise BoundaryError('transition_evidence_context_mismatch')
-        if state.transition is not None:
+        if state.transition is not None and not fork_opening:
             from poliscope_engine.stochastic import check_retained
             check_retained(experiment.transition_plan.random_plan, record.day, state.transition.random_draws)
         return ConfirmedBoundary(record=record, state=state, evidence=evidence)

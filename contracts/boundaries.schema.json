@@ -2998,6 +2998,17 @@
           "title": "Opening Digest",
           "type": "string"
         },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "plan": {
           "$ref": "#/$defs/TimelinePlan"
         },

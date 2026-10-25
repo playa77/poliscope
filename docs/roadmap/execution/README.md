@@ -1,15 +1,19 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** [WP-034 in full](WP-034.md), tracked in
-[active-package.json](active-package.json). Current-main base is `6259044`, the
-merge of PR #104 / the accepted WP-036-boundary-store provider (`2eb2e89`).
-WP-033 is already merged in PR #103 at `a92b7cb`. The earlier explicitly
-authorized child delivery is complete; it does not close the full WP-036 parent.
+**Current delivery, 2026-10-25:** [WP-036 in full](WP-036.md), tracked in
+[active-package.json](active-package.json). Current-main base is `74302a9`, the
+merge of PR #106 / full WP-035. Full WP-034 merged in PR #105 at `798f4d4`;
+the early WP-036-boundary-store provider merged in PR #104 at `6259044`.
 
-The complete WP-034 framework, invariant/conformance and real durable
-confirmation acceptance is delivered on one branch/PR, pending review and merge. Native source transition activation,
-WP-035 randomness, full WP-036 checkpoint/replay/forks and G4 remain open.
-[Delivery receipts](delivery.json) declare scope; they are not scientific proof.
+The complete WP-036 durable controller, checkpoint/replay and retrospective fork
+acceptance is implemented on `codex/wp-036-experiments`. The user explicitly
+authorized branch publication and PR creation after the recorded approval blocker;
+review and merge remain pending. Both full
+engine and unit suites passed at the same verified candidate. Native source
+transition activation, timeline renderer workflows, native platform certification
+and full G4 remain open. [Delivery receipts](delivery.json) declare scope; they
+are not scientific proof. The earlier expressly authorized child exception is
+retained in [its historical handoff](WP-036-boundary-store.md).
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
