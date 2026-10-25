@@ -21,7 +21,7 @@ DOMAIN_NAMES = (
     'Meaning, Values & Identity', 'Security & Risk Management')
 MODEL = ('workspace:unmodeled', 'v1')
 PROVENANCE = dict(origin='player_input', source_refs=[], assumption_refs=[])
-TIME = dict(tick=0, calendar_id='sandbox:calendar')
+TIME = dict(tick=0, calendar_id='fixed-364-v1')
 
 
 def registry():
@@ -99,6 +99,9 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation == 'timeline':
+        from poliscope_engine.timeline_workspace import page as timeline_page
+        return timeline_page(service, data)
     if operation in ('workbench', 'preview-workbench', 'apply-workbench', 'delete-note'):
         from poliscope_engine import workbench
         if operation in ('preview-workbench', 'apply-workbench'):
@@ -150,7 +153,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['timeline', 'workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:

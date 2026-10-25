@@ -1,0 +1,57 @@
+import { test, expect as baseExpect, _electron as electron } from '@playwright/test';
+import { mkdtemp, mkdir, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+const expect = baseExpect.configure({ timeout: 20000 });
+const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
+
+test('WP-037 timeline controls retain cancelled boundaries and fork a past state without rewriting the parent', async () => {
+  test.setTimeout(120000);
+  const directory = await mkdtemp(join(tmpdir(),'poliscope-timeline-ui-'));
+  const worlds = join(directory,'worlds'); await mkdir(worlds);
+  const env: Record<string, string | undefined> = { ...process.env, POLISCOPE_USER_DATA: join(directory,'app') }; delete env.ELECTRON_RUN_AS_NODE;
+  const app = await electron.launch({ executablePath, args:['--no-sandbox'], env:env as Record<string,string> });
+  try {
+    const page = await app.firstWindow();
+    await expect(page.getByRole('status')).toHaveText('Local engine ready');
+    await app.evaluate(({dialog},folder) => { dialog.showOpenDialog = async () => ({canceled:false,filePaths:[folder]}); },worlds);
+    await page.getByRole('button',{name:'Choose sandbox folder'}).press('Enter');
+    await page.getByLabel('Civilization name').fill('Timeline inquiry');
+    await page.getByRole('button',{name:'Create sandbox',exact:true}).press('Enter');
+    await page.getByRole('button',{name:'Timeline and experiments',exact:true}).press('Enter');
+    const view = page.getByRole('region',{name:'Timeline workspace'});
+    await expect(view.getByRole('button',{name:'Create experiment from selected design'})).toBeEnabled();
+    await expect(view.getByRole('button',{name:'Create experiment from selected design'})).toBeEnabled();
+    await view.getByRole('button',{name:'Create experiment from selected design'}).press('Enter');
+    await expect(view).toContainText('Current confirmed day 0');
+    await view.getByLabel('Target simulation day').fill('4');
+    await expect(view.getByRole('button',{name:'Advance up to 10 boundaries'})).toBeEnabled();
+    await view.getByRole('button',{name:'Advance up to 10 boundaries'}).press('Enter');
+    await expect(view).toContainText('Current confirmed day 4');
+    await expect(view.getByRole('table',{name:'Confirmed states, consequences and retained traces'})).toContainText('No selected dynamic mechanisms');
+    await expect(view.getByRole('button',{name:'Pause experiment',exact:true})).toBeEnabled();
+    await view.getByRole('button',{name:'Pause experiment',exact:true}).press('Enter');
+    await expect(view.getByRole('button',{name:'Advance up to 10 boundaries'})).toBeDisabled();
+    await expect(view.getByRole('button',{name:'Resume experiment',exact:true})).toBeEnabled();
+    await view.getByRole('button',{name:'Resume experiment',exact:true}).press('Enter');
+    await expect(view.getByRole('button',{name:'Pause experiment',exact:true})).toBeEnabled();
+    await expect(view.getByRole('button',{name:'Cancel experiment',exact:true})).toBeEnabled();
+    await view.getByRole('button',{name:'Cancel experiment',exact:true}).press('Enter');
+    await expect(view).toContainText('cancelled');
+    await expect(view).toContainText('Current confirmed day 4');
+    await view.getByLabel('New experiment ID').fill('past');
+    await expect(view.getByRole('button',{name:'Fork selected past state'})).toBeEnabled();
+    await view.getByRole('button',{name:'Fork selected past state'}).press('Enter');
+    await expect(view).toContainText('Current confirmed day 0');
+    await expect(view).toContainText('Fork of experiment at day 0');
+    await view.getByLabel('Other experiment ID').fill('experiment');
+    await expect(view.getByRole('button',{name:'Compare selected sequence'})).toBeEnabled();
+    await view.getByRole('button',{name:'Compare selected sequence'}).press('Enter');
+    await expect(view.getByRole('alert')).toHaveCount(0);
+    await view.getByLabel('Experiment ID',{exact:true}).fill('experiment');
+    await expect(view.getByRole('button',{name:'Open saved experiment'})).toBeEnabled();
+    await view.getByRole('button',{name:'Open saved experiment'}).press('Enter');
+    await expect(view).toContainText('Current confirmed day 4');
+    await expect(view).toContainText('cancelled');
+  } finally { await app.close(); await rm(directory,{recursive:true,force:true}); }
+});

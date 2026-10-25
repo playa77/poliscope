@@ -1,3 +1,5 @@
+import timelineSchema from '../../contracts/timeline-workspace.schema.json';
+import type { TimelineRequest, TimelineReply } from '../../contracts/timeline-workspace';
 import workbenchSchema from '../../contracts/workbench.schema.json';
 import type { WorkbenchQuery, WorkbenchPage, WorkbenchEdit, WorkbenchPreview, DeleteNote, DeleteNoteReply } from '../../contracts/workbench';
 import explorationSchema from '../../contracts/exploration.schema.json';
@@ -21,7 +23,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs } as Record<string, Schema>;
+const defs = { ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -289,6 +291,23 @@ export class WorkspaceController {
     if ('versions' in result && (JSON.stringify(result.versions) !== JSON.stringify(this.selected.versions) ||
         JSON.stringify(result.effective_time) !== JSON.stringify(this.selected.effective_time))) throw new Error('Observation model/time mismatch');
     return result;
+  }
+  async timeline(input: unknown): Promise<TimelineReply> {
+    if (!workspaceValid(input, 'TimelineRequest')) throw new Error('Invalid timeline request');
+    const query: TimelineRequest = { sequence: 0, target_day: 0, other_id: null, source_revision_id: null,
+      expected: null, control: null, after: null, indicator_id: null, trace_offset: 0, realization_policy: 'preserve', seed: null,
+      ...structuredClone(input as TimelineRequest) };
+    this.authorizeHistory(query.context);
+    if (this.candidate || this.worldCandidate || this.workbenchCandidate) throw new Error('Resolve draft first');
+    const reply = await this.request('timeline', query, 'TimelineReply') as TimelineReply;
+    if (!isDeepStrictEqual(reply.query, query)) throw new Error('Timeline binding mismatch');
+    for (const boundary of [reply.head, reply.checkpoint, reply.opening, reply.origin]) {
+      if (boundary && (boundary.context.data_store_id !== query.context.data_store_id ||
+          boundary.context.civilization_id !== query.context.civilization_id)) throw new Error('Foreign timeline result');
+    }
+    const expectedId = query.action === 'fork' || query.action === 'schedule' ? query.other_id : query.experiment_id;
+    if (reply.head && reply.head.context.experiment_id !== expectedId) throw new Error('Wrong experiment');
+    return reply;
   }
   private authorizeHistory(context: LineageQuery['context']) {
     if (!this.selected || !isDeepStrictEqual(context, this.selected.context)) throw new Error('History outside selected context');

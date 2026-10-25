@@ -1,3 +1,4 @@
+import { Timeline } from './timeline';
 import { Evidence, type EvidenceCollection } from './evidence';
 import { World } from './world';
 import { Matrix, initialMatrixFilters, type MatrixFilters } from './matrix';
@@ -140,7 +141,8 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}
                 historical={state.context.revision_id !== state.branch.context.revision_id} onDirty={draftChanged}
                 onConfirmed={(next, message) => { draftChanged(false); setNotice(message); setState(next); void client.invalidateQueries({ queryKey: ['world'] }); }} />}</section>}
-            {view !== 'Evidence and models' && view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
+            {view === 'Timeline and experiments' && <Timeline key={JSON.stringify(state.context)} state={state} disabled={loading} />}
+            {view !== 'Timeline and experiments' && view !== 'Evidence and models' && view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
             <h4>Starting conditions · {scopes.data?.find(s => s.id === selectedScope)?.label ?? 'Loading scope'}</h4>
             {(scopes.isError || values.isError) && <p role="alert">This state could not be read. Reopen the branch to retry.</p>}
             {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}

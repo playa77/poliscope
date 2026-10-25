@@ -1,19 +1,16 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** [WP-036 in full](WP-036.md), tracked in
-[active-package.json](active-package.json). Current-main base is `74302a9`, the
-merge of PR #106 / full WP-035. Full WP-034 merged in PR #105 at `798f4d4`;
-the early WP-036-boundary-store provider merged in PR #104 at `6259044`.
+**Current delivery, 2026-10-25:** [WP-037 in full](WP-037.md), tracked in
+[active-package.json](active-package.json). Fetched main base `b42302a` is the
+merge of PR #107 / full WP-036. Full WP-035 and WP-034 are already merged.
 
-The complete WP-036 durable controller, checkpoint/replay and retrospective fork
-acceptance is implemented on `codex/wp-036-experiments`. The user explicitly
-authorized branch publication and PR creation after the recorded approval blocker;
-review and merge remain pending. Both full
-engine and unit suites passed at the same verified candidate. Native source
-transition activation, timeline renderer workflows, native platform certification
-and full G4 remain open. [Delivery receipts](delivery.json) declare scope; they
-are not scientific proof. The earlier expressly authorized child exception is
-retained in [its historical handoff](WP-036-boundary-store.md).
+The complete timeline workspace, schedule preview/apply, historical forks and
+retained experiment comparison are implemented on `codex/wp-037-timeline`.
+Final full engine/unit suites pass at one verified candidate; Linux packaging
+and the corrected bootstrap plus timeline keyboard workflows pass. Review and
+merge remain pending. Native source activation, scientific validation, native
+Windows and cumulative G4 remain open. [Delivery receipts](delivery.json) and
+[validation receipts](WP-037-validation.json) record actual scope and checks.
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the

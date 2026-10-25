@@ -646,11 +646,11 @@
       "parent": "WP-023",
       "scope": "contract",
       "capabilities": "ENG + DESK",
-      "status": "verified; solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-018-apply"
       ],
-      "merged_sha": null,
+      "merged_sha": "59e35302bf12fb009ac35e256aea0a71681fcc3c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
@@ -658,11 +658,11 @@
       "parent": "WP-023",
       "scope": "comparison",
       "capabilities": "ENG + DESK",
-      "status": "verified; solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-023-contract"
       ],
-      "merged_sha": null,
+      "merged_sha": "59e35302bf12fb009ac35e256aea0a71681fcc3c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
@@ -670,12 +670,12 @@
       "parent": "WP-023",
       "scope": "history ui",
       "capabilities": "ENG + DESK",
-      "status": "verified; solo-validated; agent review deferred",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-023-comparison",
         "WP-022-inspectors"
       ],
-      "merged_sha": null,
+      "merged_sha": "59e35302bf12fb009ac35e256aea0a71681fcc3c",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "docs/roadmap/execution/WP-023.md"
     },
@@ -818,9 +818,9 @@
       "parent": "WP-030",
       "scope": "world ui",
       "capabilities": "DESK + ENG + MODEL",
-      "status": "planned",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": null,
-      "merged_sha": null,
+      "merged_sha": "4eb94a01b8bc7f24275e92c4b3fd02fdd15055a0",
       "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
       "acceptance_ref": "WP-030 acceptance in packages.json; exact child criteria required at start"
     },
@@ -976,12 +976,12 @@
       "parent": "WP-036",
       "scope": "checkpoints",
       "capabilities": "ENG",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-036-boundary-store",
         "WP-035-random"
       ],
-      "merged_sha": null,
+      "merged_sha": "b42302abc7bb298049149f0d90a9a797d820cb52",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
     },
@@ -989,11 +989,11 @@
       "parent": "WP-036",
       "scope": "replay",
       "capabilities": "ENG",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-036-checkpoints"
       ],
-      "merged_sha": null,
+      "merged_sha": "b42302abc7bb298049149f0d90a9a797d820cb52",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
     },
@@ -1001,11 +1001,16 @@
       "parent": "WP-037",
       "scope": "timeline ui",
       "capabilities": "DESK + ENG + PRODUCT",
-      "status": "planned",
-      "requires": null,
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "requires": [
+        "WP-023-comparison",
+        "WP-030-world-ui",
+        "WP-036-checkpoints",
+        "WP-036-replay"
+      ],
       "merged_sha": null,
-      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
-      "acceptance_ref": "WP-037 acceptance in packages.json; exact child criteria required at start"
+      "dependency_status": "Merged full-parent prerequisites reconciled with actual ancestry",
+      "acceptance_ref": "docs/roadmap/execution/WP-037.md"
     },
     "WP-038-uncertainty": {
       "parent": "WP-038",
