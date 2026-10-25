@@ -24,6 +24,9 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('uncertainty:read', 1, input => { if (!workspaceValid(input, 'UncertaintyQuery')) throw new Error(); return shell.uncertainty(input); }, workspaceReply('UncertaintyReport'));
+  handle('uncertainty:sensitivity', 1, input => { if (!workspaceValid(input, 'SensitivityQuery')) throw new Error(); return shell.sensitivity(input); }, workspaceReply('SensitivityReport'));
+  handle('uncertainty:capacity', 1, input => { if (!workspaceValid(input, 'CapacityQuery')) throw new Error(); return shell.capacity(input); }, workspaceReply('CapacityReport'));
   handle('timeline:request', 1, input => { if (!workspaceValid(input, 'TimelineRequest')) throw new Error(); return shell.timeline(input); }, workspaceReply('TimelineReply'));
   handle('evidence:read', 1, input => { if (!workspaceValid(input, 'WorkbenchQuery')) throw new Error(); return shell.workbench(input); }, workspaceReply('WorkbenchPage'));
   handle('evidence:preview', 1, input => { if (!workspaceValid(input, 'WorkbenchEdit')) throw new Error(); return shell.previewWorkbench(input); }, workspaceReply('WorkbenchPreview'));

@@ -465,3 +465,10 @@ no attendance, learning, demographic effects, public IPC or publication is impli
 create/fork/advance/control, checkpoint, progress and replay DTOs. They grant no
 IPC authority. Additive optional `ExperimentRecord.origin` binds retrospective
 openings to a confirmed boundary while preserving existing v1 history identities.
+
+`uncertainty.schema.json` / `uncertainty.ts` are generated from
+`contracts.uncertainty`: explicit point/range/distribution declarations, stable
+variable references, finite joint/conditional factor tables, exact probabilities,
+revision-pinned reports, explicit sensitivity selections and the sole registered
+linear-resource capacity method. These data contracts do not activate source
+models, sample intervals or authorize saved-state mutations.

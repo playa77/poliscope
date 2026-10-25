@@ -99,6 +99,9 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation in ('uncertainty', 'sensitivity', 'capacity'):
+        from poliscope_engine import uncertainty_service
+        return {'uncertainty': uncertainty_service.analyze, 'sensitivity': uncertainty_service.sensitivity, 'capacity': uncertainty_service.capacity}[operation](service, data)
     if operation == 'timeline':
         from poliscope_engine.timeline_workspace import page as timeline_page
         return timeline_page(service, data)
@@ -153,7 +156,7 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['timeline', 'workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['uncertainty', 'sensitivity', 'capacity', 'timeline', 'workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:

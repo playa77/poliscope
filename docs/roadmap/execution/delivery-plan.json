@@ -1001,14 +1001,14 @@
       "parent": "WP-037",
       "scope": "timeline ui",
       "capabilities": "DESK + ENG + PRODUCT",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-023-comparison",
         "WP-030-world-ui",
         "WP-036-checkpoints",
         "WP-036-replay"
       ],
-      "merged_sha": null,
+      "merged_sha": "7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9",
       "dependency_status": "Merged full-parent prerequisites reconciled with actual ancestry",
       "acceptance_ref": "docs/roadmap/execution/WP-037.md"
     },
@@ -1016,31 +1016,43 @@
       "parent": "WP-038",
       "scope": "uncertainty",
       "capabilities": "ENG + MODEL; review expertise PRODUCT",
-      "status": "planned",
-      "requires": null,
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "requires": [
+        "WP-017-measurements",
+        "WP-017-traces",
+        "WP-035-random"
+      ],
       "merged_sha": null,
-      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
-      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+      "dependency_status": "Existing providers verified on current-main base 7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9; WP-038 children are internal steps of this full parent delivery",
+      "acceptance_ref": "docs/roadmap/execution/WP-038.md"
     },
     "WP-038-sensitivity": {
       "parent": "WP-038",
       "scope": "sensitivity",
       "capabilities": "ENG + MODEL; review expertise PRODUCT",
-      "status": "planned",
-      "requires": null,
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "requires": [
+        "WP-038-uncertainty",
+        "WP-018-preview",
+        "WP-023-comparison"
+      ],
       "merged_sha": null,
-      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
-      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+      "dependency_status": "Existing providers verified on current-main base 7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9; WP-038 children are internal steps of this full parent delivery",
+      "acceptance_ref": "docs/roadmap/execution/WP-038.md"
     },
     "WP-038-capacity": {
       "parent": "WP-038",
       "scope": "capacity",
       "capabilities": "ENG + MODEL; review expertise PRODUCT",
-      "status": "planned",
-      "requires": null,
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "requires": [
+        "WP-038-uncertainty",
+        "WP-014-solvers",
+        "WP-017-measurements"
+      ],
       "merged_sha": null,
-      "dependency_status": "decompose acceptance dependencies and record concrete child edges before allocation",
-      "acceptance_ref": "WP-038 acceptance in packages.json; exact child criteria required at start"
+      "dependency_status": "Existing providers verified on current-main base 7b3bc9771adb3b99a5e7093a04dd88e92ddf2af9; WP-038 children are internal steps of this full parent delivery",
+      "acceptance_ref": "docs/roadmap/execution/WP-038.md"
     },
     "WP-039-contract": {
       "parent": "WP-039",
@@ -2077,6 +2089,9 @@
     "WP-035-random",
     "WP-036-checkpoints",
     "WP-036-replay",
+    "WP-038-uncertainty",
+    "WP-038-sensitivity",
+    "WP-038-capacity",
     "WP-039-contract",
     "WP-042-profiles",
     "WP-042-keys",

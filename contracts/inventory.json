@@ -137,6 +137,8 @@
     "tool-inputs.json",
     "transitions.schema.json",
     "transitions.ts",
+    "uncertainty.schema.json",
+    "uncertainty.ts",
     "wire.schema.json",
     "wire.ts",
     "workbench.schema.json",

@@ -1,0 +1,2530 @@
+{
+  "$defs": {
+    "AffineExpression": {
+      "additionalProperties": false,
+      "properties": {
+        "constant": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Constant",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "lt",
+            "le",
+            "eq",
+            "ne",
+            "ge",
+            "gt"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "terms": {
+          "items": {
+            "$ref": "#/$defs/AffineTerm"
+          },
+          "maxItems": 100,
+          "title": "Terms",
+          "type": "array"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Threshold"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "constant",
+        "terms",
+        "threshold",
+        "operation",
+        "interpretation"
+      ],
+      "title": "AffineExpression",
+      "type": "object"
+    },
+    "AffineTerm": {
+      "additionalProperties": false,
+      "properties": {
+        "coefficient": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Coefficient",
+          "type": "string"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id",
+        "coefficient"
+      ],
+      "title": "AffineTerm",
+      "type": "object"
+    },
+    "CalculationTrace": {
+      "additionalProperties": false,
+      "properties": {
+        "dependency_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 25000,
+          "title": "Dependency Refs",
+          "type": "array"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "internal_edges": {
+          "items": {
+            "maxItems": 2,
+            "minItems": 2,
+            "prefixItems": [
+              {
+                "items": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "minItems": 2,
+                "type": "array"
+              },
+              {
+                "items": {
+                  "maxLength": 256,
+                  "minLength": 1,
+                  "type": "string"
+                },
+                "maxItems": 3,
+                "minItems": 2,
+                "type": "array"
+              }
+            ],
+            "type": "array"
+          },
+          "maxItems": 50000,
+          "title": "Internal Edges",
+          "type": "array"
+        },
+        "kind": {
+          "enum": [
+            "node",
+            "solved_component"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "mechanisms": {
+          "items": {
+            "$ref": "#/$defs/MechanismRef"
+          },
+          "maxItems": 100,
+          "title": "Mechanisms",
+          "type": "array"
+        },
+        "members": {
+          "items": {
+            "$ref": "#/$defs/NodeObservation"
+          },
+          "maxItems": 25000,
+          "minItems": 1,
+          "title": "Members",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "members",
+        "mechanisms",
+        "effective_time",
+        "dependency_refs",
+        "internal_edges"
+      ],
+      "title": "CalculationTrace",
+      "type": "object"
+    },
+    "CapacityConstraint": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "available_value_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Available Value Id",
+          "type": "string"
+        },
+        "demand_per_unit": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Demand Per Unit",
+          "type": "string"
+        },
+        "fixed_demand": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Fixed Demand",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "resource_unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Resource Unit Id",
+          "type": "string"
+        },
+        "solved_unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Solved Unit Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "available_value_id",
+        "fixed_demand",
+        "demand_per_unit",
+        "resource_unit_id",
+        "solved_unit_id",
+        "interpretation",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "CapacityConstraint",
+      "type": "object"
+    },
+    "CapacityQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "$ref": "#/$defs/MethodAssumption"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "constraints": {
+          "items": {
+            "$ref": "#/$defs/CapacityConstraint"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Constraints",
+          "type": "array"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "iteration_limit": {
+          "maximum": 1024,
+          "minimum": 1,
+          "title": "Iteration Limit",
+          "type": "integer"
+        },
+        "lower": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Lower",
+          "type": "string"
+        },
+        "method": {
+          "const": "linear-resource-capacity-v1",
+          "title": "Method",
+          "type": "string"
+        },
+        "quantum": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Quantum",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "solved_entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Solved Entity Id",
+          "type": "string"
+        },
+        "solved_unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Solved Unit Id",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "upper": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Upper",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "method",
+        "solved_entity_id",
+        "solved_unit_id",
+        "scope_id",
+        "time_basis_id",
+        "lower",
+        "upper",
+        "quantum",
+        "iteration_limit",
+        "assumptions",
+        "constraints"
+      ],
+      "title": "CapacityQuery",
+      "type": "object"
+    },
+    "CapacityReport": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "feasible": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Feasible"
+        },
+        "infeasible": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Infeasible"
+        },
+        "input_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Input Digest",
+          "type": "string"
+        },
+        "iterations": {
+          "maximum": 1024,
+          "minimum": 0,
+          "title": "Iterations",
+          "type": "integer"
+        },
+        "query": {
+          "$ref": "#/$defs/CapacityQuery"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "report_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Report Digest",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Sources",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "bounded",
+            "upper_feasible",
+            "infeasible",
+            "solver_failure",
+            "unmodeled"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "stopping_rule": {
+          "const": "adjacent_quantum_grid_points",
+          "title": "Stopping Rule",
+          "type": "string"
+        },
+        "witnesses": {
+          "items": {
+            "$ref": "#/$defs/CapacityWitness"
+          },
+          "maxItems": 100,
+          "title": "Witnesses",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "effective_time",
+        "input_digest",
+        "status",
+        "reason",
+        "feasible",
+        "infeasible",
+        "iterations",
+        "stopping_rule",
+        "witnesses",
+        "assumptions",
+        "sources",
+        "report_digest"
+      ],
+      "title": "CapacityReport",
+      "type": "object"
+    },
+    "CapacityWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "$ref": "#/$defs/QuantityValue"
+        },
+        "constraint_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Constraint Id",
+          "type": "string"
+        },
+        "demand_at_feasible": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Demand At Feasible"
+        },
+        "demand_at_infeasible": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Demand At Infeasible"
+        }
+      },
+      "required": [
+        "constraint_id",
+        "available",
+        "demand_at_feasible",
+        "demand_at_infeasible"
+      ],
+      "title": "CapacityWitness",
+      "type": "object"
+    },
+    "ConditionalRow": {
+      "additionalProperties": false,
+      "properties": {
+        "given": {
+          "additionalProperties": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+            "type": "string"
+          },
+          "maxProperties": 100,
+          "propertyNames": {
+            "maxLength": 256,
+            "minLength": 1
+          },
+          "title": "Given",
+          "type": "object"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/JointOutcome"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "given",
+        "outcomes"
+      ],
+      "title": "ConditionalRow",
+      "type": "object"
+    },
+    "DiagnosticRule": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "category": {
+          "enum": [
+            "physical_shortage",
+            "selected_policy_breach",
+            "institutional_gap",
+            "uncertainty"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "lt",
+            "le",
+            "eq",
+            "ne",
+            "ge",
+            "gt"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "threshold": {
+          "$ref": "#/$defs/QuantityValue"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "operation",
+        "threshold",
+        "category",
+        "interpretation",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "DiagnosticRule",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "ExactRatio": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator": {
+          "maxLength": 256,
+          "pattern": "^[1-9][0-9]*$",
+          "title": "Denominator",
+          "type": "string"
+        },
+        "numerator": {
+          "maxLength": 256,
+          "pattern": "^-?(0|[1-9][0-9]*)$",
+          "title": "Numerator",
+          "type": "string"
+        }
+      },
+      "required": [
+        "numerator",
+        "denominator"
+      ],
+      "title": "ExactRatio",
+      "type": "object"
+    },
+    "GoalObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "goal_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Goal Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Indicator Id"
+        },
+        "matched": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Matched"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "observed",
+            "unavailable",
+            "narrative"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "goal_id",
+        "status",
+        "matched",
+        "indicator_id",
+        "reason"
+      ],
+      "title": "GoalObservation",
+      "type": "object"
+    },
+    "IndicatorDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "const": "same_scope",
+          "title": "Aggregation",
+          "type": "string"
+        },
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "diagnostics": {
+          "items": {
+            "$ref": "#/$defs/DiagnosticRule"
+          },
+          "maxItems": 100,
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/MeasurementInput"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "procedure": {
+          "enum": [
+            "identity",
+            "sum",
+            "mean",
+            "minimum",
+            "maximum",
+            "difference",
+            "ratio"
+          ],
+          "title": "Procedure",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "procedure",
+        "inputs",
+        "unit_id",
+        "scope_id",
+        "aggregation",
+        "time_basis_id",
+        "denominator_scope_id",
+        "coverage",
+        "interpretation",
+        "source_refs",
+        "assumption_refs",
+        "diagnostics"
+      ],
+      "title": "IndicatorDefinition",
+      "type": "object"
+    },
+    "JointOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "probability": {
+          "$ref": "#/$defs/ExactRatio"
+        },
+        "values": {
+          "additionalProperties": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+            "type": "string"
+          },
+          "maxProperties": 100,
+          "minProperties": 1,
+          "propertyNames": {
+            "maxLength": 256,
+            "minLength": 1
+          },
+          "title": "Values",
+          "type": "object"
+        }
+      },
+      "required": [
+        "values",
+        "probability"
+      ],
+      "title": "JointOutcome",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementInput": {
+      "additionalProperties": false,
+      "properties": {
+        "node": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "title": "Node",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node",
+        "scope_id"
+      ],
+      "title": "MeasurementInput",
+      "type": "object"
+    },
+    "MeasurementObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "definition_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "diagnostic": {
+          "enum": [
+            "neutral",
+            "within_named_thresholds",
+            "flagged",
+            "unavailable"
+          ],
+          "title": "Diagnostic",
+          "type": "string"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "indicator_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Indicator Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "trace_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Trace Refs",
+          "type": "array"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "indicator_id",
+        "definition_version",
+        "scope_id",
+        "effective_time",
+        "status",
+        "reason",
+        "value",
+        "diagnostic",
+        "trace_refs",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "MeasurementObservation",
+      "type": "object"
+    },
+    "MeasurementReport": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "definitions": {
+          "items": {
+            "$ref": "#/$defs/IndicatorDefinition"
+          },
+          "maxItems": 1000,
+          "title": "Definitions",
+          "type": "array"
+        },
+        "findings": {
+          "items": {
+            "$ref": "#/$defs/ObservationFinding"
+          },
+          "maxItems": 10000,
+          "title": "Findings",
+          "type": "array"
+        },
+        "goal_definitions": {
+          "items": {
+            "$ref": "#/$defs/PlayerGoal"
+          },
+          "maxItems": 1000,
+          "title": "Goal Definitions",
+          "type": "array"
+        },
+        "goals": {
+          "items": {
+            "$ref": "#/$defs/GoalObservation"
+          },
+          "maxItems": 1000,
+          "title": "Goals",
+          "type": "array"
+        },
+        "measurement_schema": {
+          "const": 1,
+          "title": "Measurement Schema",
+          "type": "integer"
+        },
+        "measurements": {
+          "items": {
+            "$ref": "#/$defs/MeasurementObservation"
+          },
+          "maxItems": 1000,
+          "title": "Measurements",
+          "type": "array"
+        },
+        "physical_output_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Physical Output Digest",
+          "type": "string"
+        },
+        "report_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Report Digest",
+          "type": "string"
+        },
+        "sufficient": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Sufficient"
+        },
+        "traces": {
+          "items": {
+            "$ref": "#/$defs/CalculationTrace"
+          },
+          "maxItems": 40000,
+          "title": "Traces",
+          "type": "array"
+        }
+      },
+      "required": [
+        "measurement_schema",
+        "physical_output_digest",
+        "report_digest",
+        "definitions",
+        "goal_definitions",
+        "measurements",
+        "goals",
+        "findings",
+        "traces",
+        "coverage",
+        "sufficient"
+      ],
+      "title": "MeasurementReport",
+      "type": "object"
+    },
+    "MechanismRef": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_id",
+        "mechanism_id",
+        "mechanism_version",
+        "scope_id",
+        "entity_id"
+      ],
+      "title": "MechanismRef",
+      "type": "object"
+    },
+    "MethodAssumption": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "rationale": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Rationale",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "rationale"
+      ],
+      "title": "MethodAssumption",
+      "type": "object"
+    },
+    "NodeObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "entity_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Entity Id"
+        },
+        "node": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "title": "Node",
+          "type": "array"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scope Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "value": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "label": "#/$defs/LabelValue",
+                  "quantity": "#/$defs/QuantityValue",
+                  "reference": "#/$defs/ReferenceValue",
+                  "unknown": "#/$defs/UnknownValue"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/QuantityValue"
+                },
+                {
+                  "$ref": "#/$defs/UnknownValue"
+                },
+                {
+                  "$ref": "#/$defs/LabelValue"
+                },
+                {
+                  "$ref": "#/$defs/ReferenceValue"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "node",
+        "scope_id",
+        "entity_id",
+        "status",
+        "reason",
+        "value",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "NodeObservation",
+      "type": "object"
+    },
+    "ObservationFinding": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "category": {
+          "enum": [
+            "physical_shortage",
+            "selected_policy_breach",
+            "institutional_gap",
+            "uncertainty",
+            "player_target_observation"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Indicator Id"
+        },
+        "rule_ref": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Rule Ref"
+        },
+        "scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scope Id"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "template_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Template Id",
+          "type": "string"
+        },
+        "trace_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Trace Refs",
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "discriminator": {
+              "mapping": {
+                "label": "#/$defs/LabelValue",
+                "quantity": "#/$defs/QuantityValue",
+                "reference": "#/$defs/ReferenceValue",
+                "unknown": "#/$defs/UnknownValue"
+              },
+              "propertyName": "kind"
+            },
+            "oneOf": [
+              {
+                "$ref": "#/$defs/QuantityValue"
+              },
+              {
+                "$ref": "#/$defs/UnknownValue"
+              },
+              {
+                "$ref": "#/$defs/LabelValue"
+              },
+              {
+                "$ref": "#/$defs/ReferenceValue"
+              }
+            ]
+          },
+          "maxItems": 100,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "category",
+        "scope_id",
+        "effective_time",
+        "status",
+        "template_id",
+        "rule_ref",
+        "indicator_id",
+        "trace_refs",
+        "source_refs",
+        "assumption_refs",
+        "values"
+      ],
+      "title": "ObservationFinding",
+      "type": "object"
+    },
+    "Parameter": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "form": {
+          "enum": [
+            "point",
+            "bounded_range",
+            "distribution",
+            "qualitative"
+          ],
+          "title": "Form",
+          "type": "string"
+        },
+        "high": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "High"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "low": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Low"
+        },
+        "point": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Point"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "value_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "value_id",
+        "form",
+        "point",
+        "low",
+        "high",
+        "interpretation",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "Parameter",
+      "type": "object"
+    },
+    "PlayerGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Indicator Id"
+        },
+        "kind": {
+          "enum": [
+            "narrative",
+            "comparison"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "enum": [
+                "lt",
+                "le",
+                "eq",
+                "ne",
+                "ge",
+                "gt"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Operation"
+        },
+        "question": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "question",
+        "indicator_id",
+        "operation",
+        "threshold"
+      ],
+      "title": "PlayerGoal",
+      "type": "object"
+    },
+    "ProbabilityFactor": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "parents": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Parents",
+          "type": "array"
+        },
+        "rows": {
+          "items": {
+            "$ref": "#/$defs/ConditionalRow"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Rows",
+          "type": "array"
+        },
+        "variables": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Variables",
+          "type": "array"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "variables",
+        "parents",
+        "rows",
+        "interpretation",
+        "assumption_refs"
+      ],
+      "title": "ProbabilityFactor",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "SensitivityQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "model": {
+          "$ref": "#/$defs/UncertaintyModel"
+        },
+        "variants": {
+          "items": {
+            "$ref": "#/$defs/SensitivityVariant"
+          },
+          "maxItems": 20,
+          "minItems": 1,
+          "title": "Variants",
+          "type": "array"
+        }
+      },
+      "required": [
+        "context",
+        "model",
+        "variants"
+      ],
+      "title": "SensitivityQuery",
+      "type": "object"
+    },
+    "SensitivityReport": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "baseline": {
+          "$ref": "#/$defs/MeasurementReport"
+        },
+        "query": {
+          "$ref": "#/$defs/SensitivityQuery"
+        },
+        "report_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Report Digest",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Sources",
+          "type": "array"
+        },
+        "variants": {
+          "items": {
+            "$ref": "#/$defs/SensitivityResult"
+          },
+          "maxItems": 20,
+          "title": "Variants",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "baseline",
+        "variants",
+        "assumptions",
+        "sources",
+        "report_digest"
+      ],
+      "title": "SensitivityReport",
+      "type": "object"
+    },
+    "SensitivityResult": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "physical_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Physical Digest",
+          "type": "string"
+        },
+        "report": {
+          "$ref": "#/$defs/MeasurementReport"
+        },
+        "selected": {
+          "$ref": "#/$defs/SensitivityVariant"
+        }
+      },
+      "required": [
+        "id",
+        "selected",
+        "physical_digest",
+        "report"
+      ],
+      "title": "SensitivityResult",
+      "type": "object"
+    },
+    "SensitivityVariant": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/$defs/VariantValue"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "id",
+        "values"
+      ],
+      "title": "SensitivityVariant",
+      "type": "object"
+    },
+    "UncertainObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "diagnostic": {
+          "enum": [
+            "always",
+            "never",
+            "overlap",
+            "unavailable",
+            "not_selected"
+          ],
+          "title": "Diagnostic",
+          "type": "string"
+        },
+        "expression_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Expression Id",
+          "type": "string"
+        },
+        "high": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "High"
+        },
+        "low": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Low"
+        },
+        "probability": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExactRatio"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Scope Id"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "unmodeled",
+            "solver_failure"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Unit Id"
+        }
+      },
+      "required": [
+        "expression_id",
+        "status",
+        "reason",
+        "low",
+        "high",
+        "probability",
+        "diagnostic",
+        "unit_id",
+        "scope_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "UncertainObservation",
+      "type": "object"
+    },
+    "UncertaintyModel": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "assumptions": {
+          "items": {
+            "$ref": "#/$defs/MethodAssumption"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "dependence": {
+          "enum": [
+            "declared_box",
+            "declared_factorization",
+            "unresolved"
+          ],
+          "title": "Dependence",
+          "type": "string"
+        },
+        "expressions": {
+          "items": {
+            "$ref": "#/$defs/AffineExpression"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Expressions",
+          "type": "array"
+        },
+        "factors": {
+          "items": {
+            "$ref": "#/$defs/ProbabilityFactor"
+          },
+          "maxItems": 100,
+          "title": "Factors",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "method": {
+          "enum": [
+            "affine-box-v1",
+            "finite-factorization-v1",
+            "unsupported"
+          ],
+          "title": "Method",
+          "type": "string"
+        },
+        "parameters": {
+          "items": {
+            "$ref": "#/$defs/Parameter"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Parameters",
+          "type": "array"
+        },
+        "state_limit": {
+          "maximum": 10000,
+          "minimum": 1,
+          "title": "State Limit",
+          "type": "integer"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "method",
+        "dependence",
+        "parameters",
+        "expressions",
+        "factors",
+        "assumption_refs",
+        "assumptions",
+        "state_limit"
+      ],
+      "title": "UncertaintyModel",
+      "type": "object"
+    },
+    "UncertaintyQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "model": {
+          "$ref": "#/$defs/UncertaintyModel"
+        }
+      },
+      "required": [
+        "context",
+        "model"
+      ],
+      "title": "UncertaintyQuery",
+      "type": "object"
+    },
+    "UncertaintyReport": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "input_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Input Digest",
+          "type": "string"
+        },
+        "method": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Method",
+          "type": "string"
+        },
+        "observations": {
+          "items": {
+            "$ref": "#/$defs/UncertainObservation"
+          },
+          "maxItems": 100,
+          "title": "Observations",
+          "type": "array"
+        },
+        "query": {
+          "$ref": "#/$defs/UncertaintyQuery"
+        },
+        "report_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Report Digest",
+          "type": "string"
+        },
+        "sources": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Sources",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "effective_time",
+        "input_digest",
+        "method",
+        "observations",
+        "assumptions",
+        "sources",
+        "report_digest"
+      ],
+      "title": "UncertaintyReport",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "VariantValue": {
+      "additionalProperties": false,
+      "properties": {
+        "selection_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Selection Ref",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id",
+        "value",
+        "selection_ref"
+      ],
+      "title": "VariantValue",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/UncertaintyQuery"
+    },
+    {
+      "$ref": "#/$defs/UncertaintyReport"
+    },
+    {
+      "$ref": "#/$defs/SensitivityQuery"
+    },
+    {
+      "$ref": "#/$defs/SensitivityReport"
+    },
+    {
+      "$ref": "#/$defs/CapacityQuery"
+    },
+    {
+      "$ref": "#/$defs/CapacityReport"
+    }
+  ]
+}
