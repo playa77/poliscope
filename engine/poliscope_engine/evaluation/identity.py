@@ -16,7 +16,8 @@ source_ids assumption_ids fixture_ids inputs owned_state preconditions diagnosti
 traces fixtures properties scope_kinds entity_kinds read_partitions write_state_refs
 source_refs assumption_refs input_refs output_refs state_refs property_refs
 participant_ids entity_ids account_refs choice_refs member_ids posting_ids
-not_applicable_ids results observations nodes trace_edges'''.split())
+not_applicable_ids results observations nodes trace_edges
+account_bindings claim_owners refined_claim_ids pending_claims'''.split())
 DECIMALS = frozenset('''quantum maximum opening amount requested per_unit
 access_limit loss_per_unit coefficient constant tolerance closing available
 outstanding_reserved actual unmet scale seconds'''.split())

@@ -42,3 +42,9 @@ and after writes before COMMIT. No cancellation check runs after COMMIT. A lost
 acknowledgment is uncertain to the caller until exact status/retry; it must not
 cause a new operation ID. Failures before COMMIT discard staging. Reopen reads
 the confirmed journal, including a boundary committed before a process crash.
+
+WP-034 now supplies the production `TransitionReducer` validator in
+`simulation/`. Transition-enabled configurations freeze a typed transition plan
+and retain a complete receipt with the closing state. These coordinated additive
+v1 contracts preserve old state/request identities when the extensions are absent;
+consumers of transition-enabled records use the regenerated schemas/types.

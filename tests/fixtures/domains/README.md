@@ -203,3 +203,11 @@ student/staff/employment work, finite supplies/entitlements and independent faci
 slots. Twelve hours include prior care once: care 3 + student 3 + staff 2 +
 employment 4. Ten represented people remain ten across both arrangements. Explicit
 alternate precedence can leave care unmet; no service or learning effect is claimed.
+
+`transitions-v1.json` supplies literal WP-034 framework oracles for construction,
+maintenance, education/skills, queues, population/health, ecological state,
+institutional cases and response capacity. Coefficients and bounds are deliberately
+hypothetical test inputs, not empirical social/biological laws or source activation.
+The production transition harness exercises them over one finite material/work
+book and paired hypothetical models. A separate actual twelve-domain fixture run retains
+all absent native transition behavior as explicit gaps.

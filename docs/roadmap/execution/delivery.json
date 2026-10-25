@@ -1,46 +1,40 @@
 {
   "version": 1,
-  "kind": "authorized_child",
-  "package": "WP-036",
-  "child": "WP-036-boundary-store",
+  "kind": "work_package",
+  "package": "WP-034",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-036.md",
-  "scope": "User-authorized early production child only: atomic validated-boundary/state/evidence/operation persistence and confirmed-state reload for WP-034; full WP-036 remains open",
-  "authorization": {
-    "source": "user",
-    "scope": "WP-036-boundary-store",
-    "instruction": "Yes, deliver the required boundary-store child first"
-  },
+  "record": "docs/roadmap/execution/WP-034.md",
+  "scope": "Full atomic transition reduction framework: reviewed proposals and declared preconditions, shared finite actuals, canonical state/invariants, qualified conformance, retained receipts and real durable confirmation with bounded cancellable chunks",
   "acceptance": [
     {
-      "id": "opening",
+      "id": "shared-allocation",
       "status": "passed",
-      "evidence": "Actual accepted SQLite revision, immutable schedule/model opening, complete retained evidence and detached reads"
+      "evidence": "One canonical finite book, actual-driven outputs, explicit precedence, no alias/static double-spend, bound pending refinement and exact active rollover"
     },
     {
-      "id": "atomic-confirmation",
+      "id": "invariants-ownership",
       "status": "passed",
-      "evidence": "Every storage-write failure and precommit cancellation rolls back; state/evidence/journal/operation commit together"
+      "evidence": "Independent Fraction/quantum balances; production domain/owner/type/time gates; declared preconditions and resolved policy conflicts; physical views exclude goals/notes"
     },
     {
-      "id": "recovery",
+      "id": "coverage-conformance",
       "status": "passed",
-      "evidence": "Real subprocess os._exit before/after COMMIT, lost acknowledgment, exact replay after head advance and validator/model removal"
+      "evidence": "Twelve-domain paired hypothetical harness, eight distinct bounded class fixtures, actual twelve-domain source fixture with honest missing transitions; no source activation"
     },
     {
-      "id": "isolation",
+      "id": "atomic-recovery",
       "status": "passed",
-      "evidence": "Second-connection queries see only confirmed state; same-connection reentrant queries fail closed; competing advance fails CAS"
+      "evidence": "Merged provider recomputes before commit; all private/write/cancel failures, real pre/post-COMMIT process exits, model-free replay and original v1 identity regression"
     },
     {
-      "id": "schedule-evidence",
+      "id": "chunks",
       "status": "passed",
-      "evidence": "Real event/adoption/conflict/gap retention, required-boundary rejection, bound closing evidence, cache survival and large actual payload"
+      "evidence": "Confirmed progress, quotas/resume, worst intermediate coverage, full 364-boundary advance retaining daily unmet work; 1200 fulfilled jobs without an active-history horizon"
     },
     {
-      "id": "validation",
+      "id": "parent-validation",
       "status": "passed",
-      "evidence": "24 new boundary cases plus authorized-child guard regression; 4572 Python, 232 Vitest and 51 roadmap checks; schemas/content/types/baseline and separate author inspection"
+      "evidence": "74 new transition cases; full 4646 Python and 232 unit tests pass with zero skips; verified matching candidate fingerprints; schemas/content/types/roadmap/baseline and separate author inspection"
     }
   ]
 }

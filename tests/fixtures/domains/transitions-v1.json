@@ -1,0 +1,14 @@
+{
+  "status": "hypothetical framework fixtures, not activated source models or empirical claims",
+  "coefficient_basis": "explicit synthetic change per kg actually allocated; 20 kg material and 10 hours shared",
+  "cases": [
+    {"class":"construction","domain":"infrastructure","unit":"count","opening":"0","operation":"add","coefficient":"1","lower":"0","upper":"20","expected_a":"8","expected_b":"2"},
+    {"class":"maintenance","domain":"infrastructure","unit":"index","opening":"20","operation":"subtract","coefficient":"0.5","lower":"0","upper":"20","expected_a":"16","expected_b":"19"},
+    {"class":"education_skills","domain":"knowledge_culture","unit":"index","opening":"0","operation":"add","coefficient":"2","lower":"0","upper":"100","expected_a":"16","expected_b":"4"},
+    {"class":"service_queue","domain":"health","unit":"count","opening":"20","operation":"subtract","coefficient":"1","lower":"0","upper":"20","expected_a":"12","expected_b":"18"},
+    {"class":"population_health","domain":"health","unit":"count","opening":"20","operation":"subtract","coefficient":"1","lower":"0","upper":"20","expected_a":"12","expected_b":"18"},
+    {"class":"ecological","domain":"environment","unit":"index","opening":"0","operation":"add","coefficient":"0.5","lower":"0","upper":"10","expected_a":"4","expected_b":"1"},
+    {"class":"institutional","domain":"law_conflict","unit":"count","opening":"20","operation":"subtract","coefficient":"1","lower":"0","upper":"20","expected_a":"12","expected_b":"18"},
+    {"class":"response_capacity","domain":"security_risk","unit":"count","opening":"0","operation":"add","coefficient":"1","lower":"0","upper":"20","expected_a":"8","expected_b":"2"}
+  ]
+}

@@ -1,63 +1,41 @@
 {
   "version": 1,
-  "package": "WP-036",
-  "status": "in_progress",
-  "record": "docs/roadmap/execution/WP-036.md",
+  "package": "WP-034",
+  "status": "complete",
+  "record": "docs/roadmap/execution/WP-034.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "a92b7cb950108a534451126a591fa898c6ea5783",
-  "branch": "codex/wp-036-boundary-store",
-  "execution_unit": "WP-036-boundary-store",
-  "authorization": {
-    "source": "user",
-    "scope": "WP-036-boundary-store",
-    "instruction": "Yes, deliver the required boundary-store child first"
-  },
+  "base": "6259044aa9f4426af9f5e2f7d789a431d69d8efa",
+  "branch": "codex/wp-034-transitions",
   "acceptance": [
     {
-      "id": "boundary-store",
+      "id": "shared-allocation",
       "status": "passed",
-      "evidence": "WP-036-boundary-store complete; merge required before WP-034 acceptance"
+      "evidence": "One canonical finite book, actual-driven outputs, explicit precedence, no alias/static double-spend, bound pending refinement and exact active rollover"
     },
     {
-      "id": "checkpoints-replay-forks",
-      "status": "pending"
+      "id": "invariants-ownership",
+      "status": "passed",
+      "evidence": "Independent Fraction/quantum balances; production domain/owner/type/time gates; declared preconditions and resolved policy conflicts; physical views exclude goals/notes"
+    },
+    {
+      "id": "coverage-conformance",
+      "status": "passed",
+      "evidence": "Twelve-domain paired hypothetical harness, eight distinct bounded class fixtures, actual twelve-domain source fixture with honest missing transitions; no source activation"
+    },
+    {
+      "id": "atomic-recovery",
+      "status": "passed",
+      "evidence": "Merged provider recomputes before commit; all private/write/cancel failures, real pre/post-COMMIT process exits, model-free replay and original v1 identity regression"
+    },
+    {
+      "id": "chunks",
+      "status": "passed",
+      "evidence": "Confirmed progress, quotas/resume, worst intermediate coverage, full 364-boundary advance retaining daily unmet work; 1200 fulfilled jobs without an active-history horizon"
     },
     {
       "id": "parent-validation",
-      "status": "pending"
-    }
-  ],
-  "child_status": "complete",
-  "child_acceptance": [
-    {
-      "id": "opening",
       "status": "passed",
-      "evidence": "Actual accepted SQLite revision, immutable schedule/model opening, complete retained evidence and detached reads"
-    },
-    {
-      "id": "atomic-confirmation",
-      "status": "passed",
-      "evidence": "Every storage-write failure and precommit cancellation rolls back; state/evidence/journal/operation commit together"
-    },
-    {
-      "id": "recovery",
-      "status": "passed",
-      "evidence": "Real subprocess os._exit before/after COMMIT, lost acknowledgment, exact replay after head advance and validator/model removal"
-    },
-    {
-      "id": "isolation",
-      "status": "passed",
-      "evidence": "Second-connection queries see only confirmed state; same-connection reentrant queries fail closed; competing advance fails CAS"
-    },
-    {
-      "id": "schedule-evidence",
-      "status": "passed",
-      "evidence": "Real event/adoption/conflict/gap retention, required-boundary rejection, bound closing evidence, cache survival and large actual payload"
-    },
-    {
-      "id": "validation",
-      "status": "passed",
-      "evidence": "24 new boundary cases plus authorized-child guard regression; 4572 Python, 232 Vitest and 51 roadmap checks; schemas/content/types/baseline and separate author inspection"
+      "evidence": "74 new transition cases; full 4646 Python and 232 unit tests pass with zero skips; verified matching candidate fingerprints; schemas/content/types/roadmap/baseline and separate author inspection"
     }
   ]
 }

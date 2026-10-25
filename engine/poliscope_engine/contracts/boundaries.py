@@ -7,6 +7,7 @@ from .measurements import AcceptedEvidence
 from .revisions import RevisionInputs
 from .timeline import TimelinePlan, BoundaryChanges, ScheduledBoundary
 from .world import SafeCount, WorldValue
+from .transitions import TransitionPlan, TransitionReceipt
 
 
 class ExperimentContext(Contract):
@@ -24,6 +25,7 @@ class BoundaryCondition(Contract):
 class BoundaryState(Contract):
     inputs: RevisionInputs
     conditions: Annotated[list[BoundaryCondition], Field(max_length=1000)]
+    transition: TransitionReceipt | None = None
 
     @model_validator(mode='after')
     def unique_conditions(self):
@@ -39,6 +41,7 @@ class CreateExperiment(Contract):
     operation_id: Identifier
     plan: TimelinePlan
     conditions: Annotated[list[BoundaryCondition], Field(max_length=1000)]
+    transition_plan: TransitionPlan | None = None
 
 
 class BoundaryOutcome(Contract):
@@ -53,6 +56,7 @@ class BoundaryCandidate(Contract):
     # The transition host owns dynamic conservation, capacity and model checks.
     inputs: RevisionInputs
     evidence: AcceptedEvidence
+    transition: TransitionReceipt | None = None
 
 
 class ConfirmBoundary(Contract):
@@ -89,6 +93,7 @@ class ExperimentRecord(Contract):
     plan: TimelinePlan
     plan_digest: Digest
     opening_digest: Digest
+    transition_plan: TransitionPlan | None = None
 
 
 class BoundaryValidation(Contract):
