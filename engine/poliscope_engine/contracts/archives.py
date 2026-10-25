@@ -80,6 +80,7 @@ class ArchiveExperiment(Contract):
 class ArchivePrivate(Contract):
     kind: Literal['private'] = 'private'
     category: Literal['note', 'rationale', 'transcript', 'attachment']
+    note_kind: Literal['inquiry', 'expectation', 'observation', 'model_gap', 'proposal'] | None = None
     revision_id: Identifier
     status: Literal['available', 'deleted', 'unavailable']
     text: Annotated[str, Field(max_length=30000)] | None

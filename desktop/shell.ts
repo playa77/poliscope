@@ -1,3 +1,4 @@
+import type { ReportRequest, ReportReply } from '../contracts/report';
 import type { ArchiveRequest, ArchiveReply } from '../contracts/archive';
 import type { UncertaintyQuery, UncertaintyReport, SensitivityQuery, SensitivityReport, CapacityQuery, CapacityReport } from '../contracts/uncertainty';
 import type { TimelineRequest, TimelineReply } from '../contracts/timeline-workspace';
@@ -14,6 +15,7 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  report(query: ReportRequest): Promise<ReportReply>;
   archive(query: ArchiveRequest): Promise<ArchiveReply>;
   uncertainty(query: UncertaintyQuery): Promise<UncertaintyReport>;
   sensitivity(query: SensitivityQuery): Promise<SensitivityReport>;

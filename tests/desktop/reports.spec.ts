@@ -1,0 +1,53 @@
+import { test, expect as baseExpect, _electron as electron } from '@playwright/test';
+import { mkdtemp, mkdir, readFile, rm } from 'node:fs/promises';
+import { tmpdir } from 'node:os';
+import { join, resolve } from 'node:path';
+const expect = baseExpect.configure({ timeout: 20000 });
+const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
+
+test('WP-040 keyboard inquiry and CSV export, exact saved inputs, privacy and safe failures', async () => {
+  test.setTimeout(120000);
+  const directory = await mkdtemp(join(tmpdir(), 'poliscope-reports-ui-'));
+  const source = join(directory, 'source'); await mkdir(source);
+  const env: Record<string, string | undefined> = { ...process.env, POLISCOPE_USER_DATA: join(directory, 'app') }; delete env.ELECTRON_RUN_AS_NODE;
+  const app = await electron.launch({ executablePath, args: ['--no-sandbox'], env: env as Record<string, string> });
+  try {
+    const page = await app.firstWindow();
+    await expect(page.getByRole('status')).toHaveText('Local engine ready');
+    await app.evaluate(({ dialog }, folder) => { dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [folder] }); }, source);
+    await page.getByRole('button', { name: 'Choose sandbox folder' }).press('Enter');
+    await page.getByLabel('Civilization name').fill('Report society');
+    await page.getByLabel('Settlement name').fill('Home');
+    await page.getByLabel('Starting population (people, optional)').fill('12');
+    await page.getByLabel('Starting land area (km², optional)').fill('12.500');
+    await page.getByRole('button', { name: 'Create sandbox', exact: true }).press('Enter');
+    await expect(page.getByRole('button', { name: 'Portable archives', exact: true })).toBeEnabled();
+    await expect(page.getByText('Confirmed design revision')).toBeVisible();
+    await page.getByRole('button', { name: 'Portable archives', exact: true }).press('Enter');
+    const region = page.getByRole('region', { name: 'Portable archives' });
+    await expect(region.getByLabel('Include active private notes from all revisions')).not.toBeChecked();
+    await expect(region.getByLabel('Include active private rationale')).not.toBeChecked();
+    const md = join(directory, 'inquiry.md');
+    await app.evaluate(({ dialog }, selected) => { dialog.showSaveDialog = async () => ({ canceled: false, filePath: selected }); }, md);
+    await region.getByRole('button', { name: 'Export Markdown inquiry report', exact: true }).press('Enter');
+    await expect(region.getByRole('status')).toContainText('Inquiry report exported');
+    const markdown = await readFile(md, 'utf8');
+    expect(markdown).toContain('player hypothesis');
+    expect(markdown).toContain('"value":"12.5"');
+    expect(markdown).toContain('no AI explanation');
+    const csv = join(directory, 'measurements.csv');
+    await app.evaluate(({ dialog }, selected) => { dialog.showSaveDialog = async () => ({ canceled: false, filePath: selected }); }, csv);
+    await region.getByRole('button', { name: 'Export typed CSV', exact: true }).press('Enter');
+    await expect(region.getByRole('status')).toContainText('Typed CSV exported');
+    const contents = await readFile(csv, 'utf8');
+    expect(contents).toContain('denominator_scope_id'); expect(contents).toContain(',12.5,');
+    expect(contents).toContain("'input_value");
+    await region.getByRole('button', { name: 'Export typed CSV', exact: true }).press('Enter');
+    await expect(region.getByRole('alert')).toContainText('Report export failed');
+    expect(await readFile(csv, 'utf8')).toBe(contents);
+    await app.evaluate(({ dialog }) => { dialog.showSaveDialog = async () => ({ canceled: true, filePath: '' }); });
+    await region.getByRole('button', { name: 'Export typed CSV', exact: true }).press('Enter');
+    await expect(region.getByRole('status')).toHaveText('File selection cancelled.');
+    expect((await page.evaluate(() => window.poliscope.workspaceCatalogue())).branches).toHaveLength(1);
+  } finally { await app.close(); await rm(directory, { recursive: true, force: true }); }
+});

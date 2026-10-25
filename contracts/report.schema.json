@@ -1,0 +1,164 @@
+{
+  "$defs": {
+    "ArchiveOptions": {
+      "additionalProperties": false,
+      "properties": {
+        "evidence": {
+          "default": "complete",
+          "enum": [
+            "complete",
+            "reduced"
+          ],
+          "title": "Evidence",
+          "type": "string"
+        },
+        "include_attachments": {
+          "default": false,
+          "title": "Include Attachments",
+          "type": "boolean"
+        },
+        "include_private_notes": {
+          "default": false,
+          "title": "Include Private Notes",
+          "type": "boolean"
+        },
+        "include_private_rationale": {
+          "default": false,
+          "title": "Include Private Rationale",
+          "type": "boolean"
+        },
+        "include_transcripts": {
+          "default": false,
+          "title": "Include Transcripts",
+          "type": "boolean"
+        }
+      },
+      "title": "ArchiveOptions",
+      "type": "object"
+    },
+    "ReportReply": {
+      "additionalProperties": false,
+      "properties": {
+        "bytes_written": {
+          "default": 0,
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Bytes Written",
+          "type": "integer"
+        },
+        "format": {
+          "enum": [
+            "markdown",
+            "csv"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "projection_digest": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Projection Digest"
+        },
+        "redactions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 6,
+          "title": "Redactions",
+          "type": "array"
+        },
+        "report_schema": {
+          "const": 1,
+          "default": 1,
+          "title": "Report Schema",
+          "type": "integer"
+        },
+        "rows": {
+          "default": 0,
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Rows",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "cancelled"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "format"
+      ],
+      "title": "ReportReply",
+      "type": "object"
+    },
+    "ReportRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "archive_id": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Archive Id"
+        },
+        "format": {
+          "enum": [
+            "markdown",
+            "csv"
+          ],
+          "title": "Format",
+          "type": "string"
+        },
+        "options": {
+          "$ref": "#/$defs/ArchiveOptions"
+        },
+        "scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Scope Id"
+        }
+      },
+      "required": [
+        "format"
+      ],
+      "title": "ReportRequest",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/ReportRequest"
+    },
+    {
+      "$ref": "#/$defs/ReportReply"
+    }
+  ]
+}

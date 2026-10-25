@@ -49,6 +49,10 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Import portable history', properties: ['openFile'],
         filters: [{ name: 'Poliscope portable archive', extensions: ['poliscope', 'zip'] }] });
       return result.canceled ? undefined : result.filePaths[0];
+    }, async format => {
+      const result = await dialog.showSaveDialog(window!, { title: 'Export inquiry report to a new file',
+        filters: [{ name: format === 'markdown' ? 'Markdown inquiry report' : 'Typed measurements CSV', extensions: [format === 'markdown' ? 'md' : 'csv'] }] });
+      return result.canceled ? undefined : result.filePath;
     });
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();

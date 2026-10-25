@@ -1,18 +1,15 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** [WP-039 in full](WP-039.md), tracked in
-[active-package.json](active-package.json). Fetched current-main base is
-`c46ff843a4b822bb4d760974ad7b5212c522e58b`, the merge of PR #109 / WP-038. WP-036/037/038 are
-already merged; earlier child handoffs do not allocate them again. WP-039 adds
-privacy-projected portable archives, complete retained results/transition receipts,
-transactional hostile-input validation, main-owned dialogs and cold historical
-inspection. Imports are immutable historical collections; explicit editable
-migration remains WP-041. Windows, nonauthor/scientific review and G5/M5 remain
-open. After review/merge reassess full WP-040 reports/CSV. [Validation evidence](WP-039-validation.json) and [delivery declarations](delivery.json) retain exact
-scope; declarations alone do not prove application behavior.
-Implementation is committed at `e047bcc`. The requesting user explicitly authorized
-pushing `codex/wp-039-archives` to `playa77/poliscope` and opening a regular PR,
-resolving the earlier publication blocker. Merge remains unauthorized.
+**Current delivery, 2026-10-25:** [WP-040 in full](WP-040.md), tracked in
+[active-package.json](active-package.json). Fetched current-main base `36f9f40`
+merges PR #110 / WP-039. The clean checkout fast-forwarded without stash or
+discarded work. WP-040 supplies retained Markdown inquiry reports, typed scoped
+CSV measurements/distributions/time series and privacy-controlled main-owned file
+exports for native and imported history. Full parent acceptance is complete under SV; see
+[validation receipts](WP-040-validation.json). No full gate or native Windows
+acceptance is inferred. After delivery/merge reassess full
+WP-041 migration, historical mode and recovery prerequisites. Earlier package
+records remain historical evidence, not allocations for this session.
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
@@ -1327,3 +1324,15 @@ evidence-reduced omissions stay explicit. The desktop uses main-owned dialogs
 and bounded text-only historical tables, including empty-folder cold inspection.
 Full engine, unit and packaged Linux checks passed; Windows and G5/M5 are not
 inferred. Route: **solo-validated; agent review deferred**.
+
+
+## Full WP-040 parent acceptance
+
+[WP-040](WP-040.md) supplies privacy-controlled retained Markdown inquiry reports
+and typed CSV measurements, saved experiment state/time series, declared laws and
+compatible parent-child deltas. Exact Python quantities and explicit missing
+values survive; text escaping is reversible. Native and cold imported histories
+use the same validated projection without evaluating a model or calling a provider.
+Main owns file dialogs; failure/cancel leaves saved history intact. Full engine,
+unit and packaged Linux suites pass. **solo-validated; agent review deferred**.
+No scientific, Windows or G5/M5 acceptance is inferred.

@@ -1,36 +1,36 @@
 {
   "version": 1,
-  "package": "WP-039",
+  "package": "WP-040",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-039.md",
+  "record": "docs/roadmap/execution/WP-040.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "c46ff843a4b822bb4d760974ad7b5212c522e58b",
-  "branch": "codex/wp-039-archives",
+  "base": "36f9f40a8e7fc63f955d3da180bfd710921f6f47",
+  "branch": "codex/wp-040-reports",
   "acceptance": [
     {
-      "id": "portable-history",
+      "id": "markdown",
       "status": "passed",
-      "evidence": "Actual revision alternatives/wording, fork/redo/retained-future lineage, full experiment schedules/boundaries/allocation receipts/ownership/draws and accepted result/trace closure; cold unavailable-model and cache-free import/re-export"
+      "evidence": "Retained inquiry/expectation/observation with optional note subtypes, original choices/alternatives, readable measurement interpretations, findings, input/state/policies, assumption/source descriptors, trace closure, versions and explicit gaps; no generated AI prose"
     },
     {
-      "id": "safe-import",
+      "id": "typed-csv",
       "status": "passed",
-      "evidence": "Strict versioned schemas, central-directory preflight, paths/types/duplicates/digests/budgets/internal references, exact receipt/state/evidence checks, every write fault and real process exits before/after COMMIT; no partial collection"
+      "evidence": "Literal priority allocation 60, compatible child-minus-parent -40, definition mismatch withholding, explicit missing values, saved static and dynamic time series, rational declared laws, versioned reversible escaping and exact quantities"
     },
     {
       "id": "privacy",
       "status": "passed",
-      "evidence": "Old/new private canaries across notes, rationale, alternatives and evidence; metadata and private-dependent IDs projected, active/deleted opt-ins respected, no key/key-blob/cache/index/backup enumeration"
+      "evidence": "Shared validated all-history privacy projection; default exclusions, old/current canaries, note opt-ins/subtypes, no key-file enumeration, cold imported and reduced evidence exports without runtime"
     },
     {
       "id": "desktop",
       "status": "passed",
-      "evidence": "Main-owned save/open dialogs, named path-free IPC, empty-folder cold historical table paging, safe text rendering and dialog cancel; 2 new unit cases and 1 new packaged scenario"
+      "evidence": "Main-owned save dialogs, bounded named path-free IPC and receipts, offline progress/cancel/failure, exclusive output preserving history; 2 new unit and 1 packaged scenario"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "37 new archive cases; full 4813 Python, 238 JavaScript and 19 packaged scenarios passed without skips; schemas/content/types/roadmap/baseline and separate author inspection; Windows unrun"
+      "evidence": "Full 4839 Python, 240 unit and 20 packaged Linux cases passed with no skips; final 26 report cases rerun; generated/content/types/roadmap/baseline and separate author inspection; Windows unrun"
     }
   ]
 }

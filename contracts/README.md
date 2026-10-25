@@ -481,3 +481,13 @@ collision rules are documented in `engine/poliscope_engine/ARCHIVES.md`. Importe
 projections are immutable historical collections, never executable registrations
 or automatic editable migrations. Full accepted evidence remains distinct from
 explicit evidence-reduced omissions and optional caches (excluded in v1).
+
+
+WP-040 `report.schema.json` / `report.ts` define `ReportRequest` and the bounded
+`ReportReply` receipt. Named `report:export` IPC carries format, archive identity,
+optional scope and existing privacy options, never a renderer path or file bytes.
+Main selects the destination through its save dialog and launches the bundled
+`--report` data-only worker. CSV-v1 types/escaping and row semantics are specified
+in `engine/poliscope_engine/REPORTS.md` and `tests/fixtures/reports/format-v1.json`.
+Archive-v1 gains an optional `note_kind` for explicitly included private notes;
+older readable histories with no subtype remain supported and labeled.

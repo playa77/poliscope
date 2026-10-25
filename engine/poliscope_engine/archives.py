@@ -200,8 +200,8 @@ def project(service, options, *, cancelled=None):
                 omissions.append(identity)
             if options.include_private_notes:
                 for ref in record.inputs.notes:
-                    status, _, text = private_notes.read(service, record.context, ref)
-                    items.append(ArchivePrivate(category='note', revision_id=identity, status=status, text=text))
+                    status, note_kind, text = private_notes.read(service, record.context, ref)
+                    items.append(ArchivePrivate(category='note', note_kind=note_kind, revision_id=identity, status=status, text=text))
             if options.include_private_rationale and record.decision.rationale_ref is not None:
                 reply = rationale(service, dict(context=record.context))
                 items.append(ArchivePrivate(category='rationale', revision_id=identity,

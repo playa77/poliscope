@@ -119,6 +119,8 @@
     "provisioning-infrastructure.ts",
     "provisioning.schema.json",
     "provisioning.ts",
+    "report.schema.json",
+    "report.ts",
     "revision.schema.json",
     "revision.ts",
     "saved-evidence.schema.json",
