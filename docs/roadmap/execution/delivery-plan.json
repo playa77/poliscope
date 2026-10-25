@@ -909,7 +909,7 @@
       "parent": "WP-034",
       "scope": "contract",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-015-allocation",
         "WP-016-evaluation",
@@ -925,7 +925,7 @@
       "parent": "WP-034",
       "scope": "reducer",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-034-contract"
       ],
@@ -937,7 +937,7 @@
       "parent": "WP-034",
       "scope": "invariants",
       "capabilities": "ENG + MODEL",
-      "status": "planned",
+      "status": "implemented; solo-validated; agent review deferred; merge pending",
       "requires": [
         "WP-034-reducer"
       ],
@@ -961,14 +961,14 @@
       "parent": "WP-036",
       "scope": "boundary store",
       "capabilities": "ENG",
-      "status": "implemented; solo-validated; agent review deferred; merge pending",
+      "status": "verified; solo-validated; agent review deferred; merged",
       "requires": [
         "WP-009-store",
         "WP-018-apply",
         "WP-033-adoption",
         "WP-005-timeline"
       ],
-      "merged_sha": null,
+      "merged_sha": "6259044aa9f4426af9f5e2f7d789a431d69d8efa",
       "dependency_status": "concrete development prerequisites; parent acceptance remains additional",
       "acceptance_ref": "WP-036 acceptance in packages.json; exact child criteria required at start"
     },

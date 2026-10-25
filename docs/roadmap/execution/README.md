@@ -1,15 +1,15 @@
 # Implementation execution ledger
 
-**Current delivery, 2026-10-25:** the explicitly user-authorized early production
-child [WP-036-boundary-store](WP-036-boundary-store.md), under the open
-[WP-036 parent](WP-036.md) and [active-package.json](active-package.json).
-The user authorized: “Yes, deliver the required boundary-store child first”.
-Only that prerequisite is delivered; full WP-036 and G4 remain open. Merge this
-provider before full WP-034 acceptance. WP-033 is already merged in PR #103 at
-`a92b7cb950108a534451126a591fa898c6ea5783`; do not implement it again.
-Historical per-pair next allocations below are superseded.
-[Delivery receipts](delivery.json) and the CI declaration guard support an explicit
-scoped user authorization without certifying parent or scientific acceptance.
+**Current delivery, 2026-10-25:** [WP-034 in full](WP-034.md), tracked in
+[active-package.json](active-package.json). Current-main base is `6259044`, the
+merge of PR #104 / the accepted WP-036-boundary-store provider (`2eb2e89`).
+WP-033 is already merged in PR #103 at `a92b7cb`. The earlier explicitly
+authorized child delivery is complete; it does not close the full WP-036 parent.
+
+The complete WP-034 framework, invariant/conformance and real durable
+confirmation acceptance is delivered on one branch/PR, pending review and merge. Native source transition activation,
+WP-035 randomness, full WP-036 checkpoint/replay/forks and G4 remain open.
+[Delivery receipts](delivery.json) declare scope; they are not scientific proof.
 
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the

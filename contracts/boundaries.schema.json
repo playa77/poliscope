@@ -61,6 +61,82 @@
       "title": "AcceptedEvidence",
       "type": "object"
     },
+    "AccountBalanceWitness": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "closing": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Closing",
+          "type": "string"
+        },
+        "inflow": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Inflow",
+          "type": "string"
+        },
+        "opening": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Opening",
+          "type": "string"
+        },
+        "outflow": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Outflow",
+          "type": "string"
+        },
+        "period_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Period Id"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "unit_id",
+        "scope_id",
+        "period_id",
+        "opening",
+        "inflow",
+        "outflow",
+        "closing"
+      ],
+      "title": "AccountBalanceWitness",
+      "type": "object"
+    },
     "AccountBatch": {
       "additionalProperties": false,
       "properties": {
@@ -531,6 +607,29 @@
       "title": "AccountResult",
       "type": "object"
     },
+    "AccountStateBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "account_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Account Id",
+          "type": "string"
+        },
+        "value_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "account_id",
+        "value_id"
+      ],
+      "title": "AccountStateBinding",
+      "type": "object"
+    },
     "AccountSubtotal": {
       "additionalProperties": false,
       "properties": {
@@ -640,6 +739,69 @@
       "title": "AdoptionOutcome",
       "type": "object"
     },
+    "AllocationActual": {
+      "additionalProperties": false,
+      "properties": {
+        "allocated": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Allocated",
+          "type": "string"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "loss": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Loss",
+          "type": "string"
+        },
+        "outputs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Outputs",
+          "type": "array"
+        },
+        "reason": {
+          "enum": [
+            "satisfied",
+            "denied",
+            "limited",
+            "unresolved"
+          ],
+          "title": "Reason",
+          "type": "string"
+        },
+        "unmet": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Unmet",
+          "type": "string"
+        }
+      },
+      "required": [
+        "claim_id",
+        "allocated",
+        "unmet",
+        "reason",
+        "outputs",
+        "loss"
+      ],
+      "title": "AllocationActual",
+      "type": "object"
+    },
     "AllocationChoice": {
       "additionalProperties": false,
       "properties": {
@@ -721,6 +883,138 @@
         "source_refs"
       ],
       "title": "AllocationChoice",
+      "type": "object"
+    },
+    "AllocationEvaluation": {
+      "additionalProperties": false,
+      "properties": {
+        "accounts": {
+          "$ref": "#/$defs/AccountEvaluation"
+        },
+        "actuals": {
+          "items": {
+            "$ref": "#/$defs/AllocationActual"
+          },
+          "maxItems": 1000,
+          "title": "Actuals",
+          "type": "array"
+        },
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "missing": {
+          "items": {
+            "enum": [
+              "procedure",
+              "access",
+              "funding"
+            ],
+            "type": "string"
+          },
+          "maxItems": 3,
+          "title": "Missing",
+          "type": "array"
+        },
+        "request": {
+          "$ref": "#/$defs/AllocationRequest"
+        },
+        "status": {
+          "enum": [
+            "resolved",
+            "unresolved"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "status",
+        "missing",
+        "request",
+        "actuals",
+        "batch",
+        "accounts"
+      ],
+      "title": "AllocationEvaluation",
+      "type": "object"
+    },
+    "AllocationRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "batch": {
+          "$ref": "#/$defs/AccountBatch"
+        },
+        "choices": {
+          "items": {
+            "$ref": "#/$defs/AllocationChoice"
+          },
+          "maxItems": 1000,
+          "title": "Choices",
+          "type": "array"
+        },
+        "claim_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Order",
+          "type": "array"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "mechanism_ref": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Ref",
+          "type": "string"
+        },
+        "procedure": {
+          "anyOf": [
+            {
+              "enum": [
+                "priority",
+                "all_or_nothing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Procedure"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        }
+      },
+      "required": [
+        "contract_version",
+        "batch",
+        "procedure",
+        "claim_order",
+        "choices",
+        "mechanism_ref",
+        "source_refs"
+      ],
+      "title": "AllocationRequest",
       "type": "object"
     },
     "AssumptionRef": {
@@ -914,6 +1208,17 @@
         },
         "inputs": {
           "$ref": "#/$defs/RevisionInputs"
+        },
+        "transition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransitionReceipt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -1167,6 +1472,17 @@
         },
         "inputs": {
           "$ref": "#/$defs/RevisionInputs"
+        },
+        "transition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransitionReceipt"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -1642,6 +1958,17 @@
         },
         "plan": {
           "$ref": "#/$defs/TimelinePlan"
+        },
+        "transition_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransitionPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -2438,6 +2765,17 @@
           "pattern": "^sha256:[0-9a-f]{64}$",
           "title": "Plan Digest",
           "type": "string"
+        },
+        "transition_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/TransitionPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -5527,6 +5865,352 @@
         "role"
       ],
       "title": "TransformationOutput",
+      "type": "object"
+    },
+    "TransitionClaimOwner": {
+      "additionalProperties": false,
+      "properties": {
+        "choice": {
+          "$ref": "#/$defs/AllocationChoice"
+        },
+        "claim_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Claim Id",
+          "type": "string"
+        },
+        "fulfilled_prior": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Fulfilled Prior",
+          "type": "string"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "original_requested": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Original Requested",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_id",
+        "claim_id",
+        "choice",
+        "original_requested",
+        "fulfilled_prior"
+      ],
+      "title": "TransitionClaimOwner",
+      "type": "object"
+    },
+    "TransitionPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "account_bindings": {
+          "items": {
+            "$ref": "#/$defs/AccountStateBinding"
+          },
+          "maxItems": 1000,
+          "title": "Account Bindings",
+          "type": "array"
+        },
+        "carry_priority": {
+          "enum": [
+            "existing_first",
+            "new_first"
+          ],
+          "title": "Carry Priority",
+          "type": "string"
+        },
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "instance_order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Instance Order",
+          "type": "array"
+        },
+        "instances": {
+          "items": {
+            "$ref": "#/$defs/MechanismInstance"
+          },
+          "maxItems": 1000,
+          "title": "Instances",
+          "type": "array"
+        },
+        "opening": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AllocationRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "operation_limit": {
+          "maximum": 1000000,
+          "minimum": 1,
+          "title": "Operation Limit",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "contract_version",
+        "opening",
+        "account_bindings",
+        "instance_order",
+        "carry_priority",
+        "operation_limit"
+      ],
+      "title": "TransitionPlan",
+      "type": "object"
+    },
+    "TransitionReceipt": {
+      "additionalProperties": false,
+      "properties": {
+        "allocation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AllocationEvaluation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "balances": {
+          "items": {
+            "$ref": "#/$defs/AccountBalanceWitness"
+          },
+          "maxItems": 1000,
+          "title": "Balances",
+          "type": "array"
+        },
+        "claim_owners": {
+          "items": {
+            "$ref": "#/$defs/TransitionClaimOwner"
+          },
+          "maxItems": 1000,
+          "title": "Claim Owners",
+          "type": "array"
+        },
+        "coverage": {
+          "enum": [
+            "complete",
+            "partial",
+            "unresolved"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "opening_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Opening Digest",
+          "type": "string"
+        },
+        "plan_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Plan Digest",
+          "type": "string"
+        },
+        "receipt_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Receipt Digest",
+          "type": "string"
+        },
+        "reducer_id": {
+          "const": "atomic-transitions-v1",
+          "title": "Reducer Id",
+          "type": "string"
+        },
+        "request": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/AllocationRequest"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "steps": {
+          "items": {
+            "$ref": "#/$defs/TransitionStep"
+          },
+          "maxItems": 1000,
+          "title": "Steps",
+          "type": "array"
+        },
+        "transition_contract": {
+          "const": 1,
+          "title": "Transition Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "transition_contract",
+        "reducer_id",
+        "opening_digest",
+        "plan_digest",
+        "day",
+        "coverage",
+        "request",
+        "allocation",
+        "steps",
+        "balances",
+        "claim_owners",
+        "receipt_digest"
+      ],
+      "title": "TransitionReceipt",
+      "type": "object"
+    },
+    "TransitionStep": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "changes": {
+          "items": {
+            "$ref": "#/$defs/PartitionValueDTO"
+          },
+          "maxItems": 100,
+          "title": "Changes",
+          "type": "array"
+        },
+        "claim_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Claim Ids",
+          "type": "array"
+        },
+        "domain": {
+          "enum": [
+            "provisioning",
+            "economy",
+            "governance",
+            "law_conflict",
+            "social_organization",
+            "knowledge_culture",
+            "health",
+            "infrastructure",
+            "communication",
+            "environment",
+            "meaning_identity",
+            "security_risk"
+          ],
+          "title": "Domain",
+          "type": "string"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "refined_claim_ids": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Refined Claim Ids",
+          "type": "array"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "applied",
+            "not_applicable",
+            "unresolved",
+            "coverage_gap"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "transition_class": {
+          "anyOf": [
+            {
+              "enum": [
+                "construction",
+                "maintenance",
+                "education_skills",
+                "service_queue",
+                "population_health",
+                "ecological",
+                "institutional",
+                "response_capacity",
+                "resource_processing"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Transition Class"
+        }
+      },
+      "required": [
+        "instance_id",
+        "domain",
+        "transition_class",
+        "status",
+        "reason",
+        "claim_ids",
+        "changes",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "TransitionStep",
       "type": "object"
     },
     "UnknownValue": {

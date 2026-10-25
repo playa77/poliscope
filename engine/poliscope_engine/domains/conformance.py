@@ -88,3 +88,37 @@ def stage_transition(*, catalog, mechanisms, world, module_domain, mechanism,
         raise ConformanceError('undeclared_transition_write')
     return mechanisms.stage_changes(*mechanism, world=world, entity_id=entity_id,
                                    scope_id=scope_id, changes=changes)
+
+
+@dataclass(frozen=True)
+class TransitionConformanceCase:
+    """Independent transition/counterpart expectations, not generated from a run."""
+    values: dict[str, str]
+    statuses: dict[str, str]
+    accounts: dict[str, str] | None = None
+
+
+def run_transition_case(case, *, reducer, opening, day, operation_id):
+    """Real proposal/allocation/ownership/evidence/persistence path, no mock store."""
+    from poliscope_engine.evaluation.identity import digest
+    case = deepcopy(case)
+    before = reducer.store.read(opening.context)
+    first = reducer.preview(opening, day)
+    second = reducer.preview(opening, day)
+    if digest(first) != digest(second) or reducer.store.read(opening.context) != before:
+        raise ConformanceError('impure_transition')
+    values = {v.id: v.value.value for v in first.inputs.values if v.value.kind == 'quantity'}
+    if any(values.get(key) != expected for key, expected in case.values.items()):
+        raise ConformanceError('unexpected_transition_value')
+    if {s.instance_id: s.status for s in first.transition.steps} != case.statuses:
+        raise ConformanceError('unexpected_transition_status')
+    if case.accounts is not None:
+        actual = None if first.transition.allocation is None else {
+            a.account_id: a.closing for a in first.transition.allocation.accounts.accounts}
+        if actual != case.accounts:
+            raise ConformanceError('unexpected_transition_accounts')
+    result = reducer.advance_boundary(opening, day, operation_id=operation_id)
+    saved = reducer.store.read(opening.context)
+    if digest(saved.state.transition) != digest(first.transition):
+        raise ConformanceError('transition_retention_mismatch')
+    return result

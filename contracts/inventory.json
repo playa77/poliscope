@@ -129,6 +129,8 @@
     "timeline.schema.json",
     "timeline.ts",
     "tool-inputs.json",
+    "transitions.schema.json",
+    "transitions.ts",
     "wire.schema.json",
     "wire.ts",
     "workbench.schema.json",
