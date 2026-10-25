@@ -6,9 +6,9 @@ merge of PR #106 / full WP-035. Full WP-034 merged in PR #105 at `798f4d4`;
 the early WP-036-boundary-store provider merged in PR #104 at `6259044`.
 
 The complete WP-036 durable controller, checkpoint/replay and retrospective fork
-acceptance is implemented on `codex/wp-036-experiments`. Publication is blocked
-pending explicit user authorization after an automatic approval rejection; see
-the [parent handoff](WP-036.md#publication-blocker). Both full
+acceptance is implemented on `codex/wp-036-experiments`. The user explicitly
+authorized branch publication and PR creation after the recorded approval blocker;
+review and merge remain pending. Both full
 engine and unit suites passed at the same verified candidate. Native source
 transition activation, timeline renderer workflows, native platform certification
 and full G4 remain open. [Delivery receipts](delivery.json) declare scope; they
