@@ -16,6 +16,8 @@
     "adjudication-participation.ts",
     "allocation.schema.json",
     "allocation.ts",
+    "archive.schema.json",
+    "archive.ts",
     "atlas.schema.json",
     "atlas.ts",
     "boundaries.schema.json",

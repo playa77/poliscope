@@ -1,43 +1,35 @@
 {
   "version": 1,
-  "package": "WP-038",
+  "package": "WP-039",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-038.md",
+  "record": "docs/roadmap/execution/WP-039.md",
   "acceptance": [
     {
-      "id": "parameter-semantics",
+      "id": "portable-history",
       "status": "passed",
-      "evidence": "Exact symbolic coefficient combination, signed extrema, threshold endpoints/support holes, scoped/unit-bound real reports; no inferred probability or midpoint"
+      "evidence": "Actual revision alternatives/wording, fork/redo/retained-future lineage, full experiment schedules/boundaries/allocation receipts/ownership/draws and accepted result/trace closure; cold unavailable-model and cache-free import/re-export"
     },
     {
-      "id": "dependence",
+      "id": "safe-import",
       "status": "passed",
-      "evidence": "Independent literal joint/common-cause 1/4 versus independent 7/16, equivalent conditional encoding, repeated variables, malformed/missing/cyclic/limited models and qualified unsupported methods"
+      "evidence": "Strict versioned schemas, central-directory preflight, paths/types/duplicates/digests/budgets/internal references, exact receipt/state/evidence checks, every write fault and real process exits before/after COMMIT; no partial collection"
     },
     {
-      "id": "sensitivity",
+      "id": "privacy",
       "status": "passed",
-      "evidence": "Real Revisions.preview/evaluation/measurement over SQLite, explicit A/B selections, source/assumption closure, impossible joint combinations rejected, branch and all table counts unchanged"
+      "evidence": "Old/new private canaries across notes, rationale, alternatives and evidence; metadata and private-dependent IDs projected, active/deleted opt-ins respected, no key/key-blob/cache/index/backup enumeration"
     },
     {
-      "id": "capacity",
+      "id": "desktop",
       "status": "passed",
-      "evidence": "Registered linear-resource method over pinned actual quantities; 6/7 and 3/4 independent witnesses, half-quantum, missing supply, iteration/precision/role/unit/resource checks and target isolation"
+      "evidence": "Main-owned save/open dialogs, named path-free IPC, empty-folder cold historical table paging, safe text rendering and dialog cancel; 2 new unit cases and 1 new packaged scenario"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "54 new engine, 2 new unit and 1 packaged scenario; full 4776 Python and 236 unit pass, packaged 17/18 then corrected scenario 1/1; generated/content/type/roadmap/baseline checks and separate author inspection; Windows unrun"
+      "evidence": "37 new archive cases; full 4813 Python, 238 JavaScript and 19 packaged scenarios passed without skips; schemas/content/types/roadmap/baseline and separate author inspection; Windows unrun"
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-038: explicit uncertainty/dependence methods, threshold reports, real sensitivity previews, registered monotone resource capacity bounds and accessible desktop inspector",
-  "publication": {
-    "status": "explicitly authorized; publication pending",
-    "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-038-uncertainty",
-    "next_action": "Push branch and open regular PR against main; do not merge.",
-    "implementation_commit": "3b4acfd",
-    "reason": "User explicitly authorized pushing codex/wp-038-uncertainty to playa77/poliscope and opening a regular PR."
-  }
+  "scope": "Full WP-039: versioned portable historical archives, complete retained evidence and experiment receipts, classified privacy projections/opt-ins, transactional safe import/export, main-owned dialogs and bounded historical inspection"
 }

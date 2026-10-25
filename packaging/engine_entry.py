@@ -1,6 +1,9 @@
 import sys
 
-if '--workspace' in sys.argv[1:]:
+if '--archive' in sys.argv[1:]:
+    from poliscope_engine.archive_host import main
+    sys.argv.remove('--archive')
+elif '--workspace' in sys.argv[1:]:
     from poliscope_engine.workspace import main
     sys.argv.remove('--workspace')
 elif '--history-read' in sys.argv[1:]:

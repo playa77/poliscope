@@ -472,3 +472,12 @@ variable references, finite joint/conditional factor tables, exact probabilities
 revision-pinned reports, explicit sensitivity selections and the sole registered
 linear-resource capacity method. These data contracts do not activate source
 models, sample intervals or authorize saved-state mutations.
+
+WP-039 adds `archive.schema.json` / `archive.ts`, generated from the canonical
+portable manifest, projected revision/branch/experiment/private-payload records,
+strict model snapshots and path-free desktop request/page contracts. The accepted
+synthetic fixture is in `tests/fixtures/archives/accepted-v1`; format/privacy and
+collision rules are documented in `engine/poliscope_engine/ARCHIVES.md`. Imported
+projections are immutable historical collections, never executable registrations
+or automatic editable migrations. Full accepted evidence remains distinct from
+explicit evidence-reduced omissions and optional caches (excluded in v1).

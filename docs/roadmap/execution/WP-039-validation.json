@@ -1,0 +1,56 @@
+{
+  "version": 1,
+  "package": "WP-039",
+  "route": "solo-validated; agent review deferred",
+  "base": "c46ff843a4b822bb4d760974ad7b5212c522e58b",
+  "candidate": "550628ed62f8db83e6b24f44cf70799fa4379403bddd0372e2debef41b993cdc",
+  "tests": {
+    "engine": {
+      "count": 4813,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 256.01,
+      "report_sha256": "18b431d5f989255975928bfb202ca959dee7fed47d8b2729632acd9a02994c5a",
+      "run_id": "7e056ad2-cc75-49f6-ace9-83c0bd5c4a84"
+    },
+    "unit": {
+      "count": 238,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 40.97,
+      "report_sha256": "ecd309489414743242dabb9ab65af2e0fd8c42a2d9de2d881e268bc9bd255fa1",
+      "run_id": "0993821b-16c8-4163-ab59-33b9422dc4a3"
+    },
+    "desktop": {
+      "count": 19,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 277.81,
+      "report_sha256": "ef2f91ac23fc2539f631c0d9063b4e1589dc8e2dbc855b66daa09125f084a077",
+      "run_id": "748d8c15-4ff7-43ad-a2b8-010fef19d801"
+    }
+  },
+  "new_cases": {
+    "engine": 37,
+    "unit": 2,
+    "desktop": 1
+  },
+  "checks": [
+    "generated contracts",
+    "immutable content release",
+    "TypeScript",
+    "roadmap manifest",
+    "baseline traceability",
+    "git diff --check",
+    "delivery declaration"
+  ],
+  "native_platforms": {
+    "linux_x64": "packaged full suite passed",
+    "windows_x64": "unrun"
+  },
+  "limits": [
+    "historical projection imports require explicit migration before edits",
+    "no original operation-retry journal or backup restore",
+    "G5/M5 requires WP-040/041; scientific/nonauthor review deferred"
+  ]
+}

@@ -129,7 +129,8 @@ class BoundaryStore:
             self._experiment(context)
         return self._operation(scope, request)[2]
 
-    def _check_state_evidence(self, context, state, evidence):
+    @staticmethod
+    def _check_state_evidence(context, state, evidence):
         """Bind the retained result to precisely this canonical closing state."""
         evidence = read_retained(evidence.model_dump_json())
         if evidence.state != 'complete':

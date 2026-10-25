@@ -1,6 +1,7 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  archive: query => ipcRenderer.invoke('archive:request', query),
   uncertainty: query => ipcRenderer.invoke('uncertainty:read', query),
   sensitivity: query => ipcRenderer.invoke('uncertainty:sensitivity', query),
   capacity: query => ipcRenderer.invoke('uncertainty:capacity', query),
