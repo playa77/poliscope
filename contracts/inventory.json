@@ -124,6 +124,8 @@
     "solver.ts",
     "static-system.schema.json",
     "static-system.ts",
+    "timeline.schema.json",
+    "timeline.ts",
     "tool-inputs.json",
     "wire.schema.json",
     "wire.ts",
