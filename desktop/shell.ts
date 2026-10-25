@@ -1,3 +1,4 @@
+import type { TimelineRequest, TimelineReply } from '../contracts/timeline-workspace';
 import type { WorkbenchQuery, WorkbenchPage, WorkbenchEdit, WorkbenchPreview, DeleteNote, DeleteNoteReply } from '../contracts/workbench';
 import type { ExplorationQuery, ExplorationPage, ExplorationEdit, ExplorationPreview } from '../contracts/exploration';
 import type { MatrixQuery, MatrixPage, MatrixModelQuery, MatrixModelReply } from '../contracts/matrix';
@@ -11,6 +12,7 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  timeline(query: TimelineRequest): Promise<TimelineReply>;
   workbench(query: WorkbenchQuery): Promise<WorkbenchPage>;
   previewWorkbench(edit: WorkbenchEdit): Promise<WorkbenchPreview>;
   applyWorkbench(candidate: InterviewApply): Promise<InterviewCommit>;

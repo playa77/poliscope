@@ -1,35 +1,43 @@
 {
   "version": 1,
-  "kind": "work_package",
-  "package": "WP-036",
+  "package": "WP-037",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-036.md",
-  "scope": "Full WP-036: durable experiment controller, checkpoint selection, recorded-history replay and runtime verification, retrospective timeline forks, atomic checkpoint/boundary/evidence outcomes and recovery",
+  "record": "docs/roadmap/execution/WP-037.md",
   "acceptance": [
     {
-      "id": "durable-controller",
+      "id": "timeline-workspace",
       "status": "passed",
-      "evidence": "Actual create/fork/advance/pause/cancel/query and payload-bound recovery tests"
+      "evidence": "Real Python/SQLite main grant, generated contracts and packaged keyboard create/advance/pause/resume/cancel/fork/reopen workflow"
     },
     {
-      "id": "checkpoint-replay",
+      "id": "future-and-past",
       "status": "passed",
-      "evidence": "Continuous/checkpoint-resume/recorded-event verification with runtime identity and retained evidence"
+      "evidence": "Actual accepted policy delta preview is noncommitting; future day-3 adoption and retrospective day-3 fork retain original histories and distinct opening/origin records"
     },
     {
-      "id": "retrospective-forks",
+      "id": "retained-comparison",
       "status": "passed",
-      "evidence": "Snapshot, pending work and explicit preserved/new stochastic realization policy; original histories immutable"
+      "evidence": "Exact retained measurements (200 kg oracle), explicit incompatible clock/time/model/scope and missing outcome cases; changed opening conditions, choices, policies, assumptions, schedules and realizations"
     },
     {
-      "id": "atomic-recovery",
+      "id": "confirmed-only",
       "status": "passed",
-      "evidence": "Actual checkpoint transaction failure and before/after COMMIT process exits"
+      "evidence": "Bounded confirmed history and trace pages, immutable payload-bound retries before stale/control checks, preserved cancelled head and fork source"
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "21 new experiment cases; full 4711 Python and 232 desktop unit tests pass with zero skips; exact matching verified candidate fingerprints; generated contracts/content/types/roadmap/baseline and separate author inspection; native Windows and packaged Electron untested"
+      "evidence": "4722 Python and 234 unit cases at one verified candidate; Linux package passes; packaged regression 16/17 then corrected bootstrap plus timeline 2/2 after rebuild; Windows unrun; separate author inspection"
     }
-  ]
+  ],
+  "kind": "work_package",
+  "scope": "Full WP-037: confirmed timeline workspace, policy schedule preview/apply, retrospective forks, retained experiment comparison, accessible series/distribution/trace projections and validated desktop IPC",
+  "publication": {
+    "status": "explicitly authorized; publication pending",
+    "implementation_commit": "8fe65d2",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-037-timeline",
+    "reason": "User explicitly authorized pushing this branch to playa77/poliscope and opening a regular PR",
+    "next_action": "Push branch and open regular PR against main; do not merge"
+  }
 }

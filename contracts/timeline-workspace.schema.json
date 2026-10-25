@@ -1,0 +1,1548 @@
+{
+  "$defs": {
+    "Bernoulli": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Denominator",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "bernoulli",
+          "title": "Kind",
+          "type": "string"
+        },
+        "numerator": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Numerator",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "numerator",
+        "denominator"
+      ],
+      "title": "Bernoulli",
+      "type": "object"
+    },
+    "BoundaryOutcome": {
+      "additionalProperties": false,
+      "properties": {
+        "boundary_contract": {
+          "const": 1,
+          "title": "Boundary Contract",
+          "type": "integer"
+        },
+        "boundary_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Boundary Digest",
+          "type": "string"
+        },
+        "context": {
+          "$ref": "#/$defs/ExperimentContext"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "boundary_contract",
+        "context",
+        "sequence",
+        "day",
+        "boundary_digest"
+      ],
+      "title": "BoundaryOutcome",
+      "type": "object"
+    },
+    "Categorical": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "categorical",
+          "title": "Kind",
+          "type": "string"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/WeightedValue"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "outcomes"
+      ],
+      "title": "Categorical",
+      "type": "object"
+    },
+    "ComparisonRow": {
+      "additionalProperties": false,
+      "properties": {
+        "delta": {
+          "anyOf": [
+            {
+              "discriminator": {
+                "mapping": {
+                  "label": "#/$defs/LabelValue",
+                  "quantity": "#/$defs/QuantityValue",
+                  "reference": "#/$defs/ReferenceValue",
+                  "unknown": "#/$defs/UnknownValue"
+                },
+                "propertyName": "kind"
+              },
+              "oneOf": [
+                {
+                  "$ref": "#/$defs/QuantityValue"
+                },
+                {
+                  "$ref": "#/$defs/UnknownValue"
+                },
+                {
+                  "$ref": "#/$defs/LabelValue"
+                },
+                {
+                  "$ref": "#/$defs/ReferenceValue"
+                }
+              ]
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Delta"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "left": {
+          "$ref": "#/$defs/ComparisonValue"
+        },
+        "reasons": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 30,
+          "title": "Reasons",
+          "type": "array"
+        },
+        "right": {
+          "$ref": "#/$defs/ComparisonValue"
+        }
+      },
+      "required": [
+        "id",
+        "left",
+        "right",
+        "delta",
+        "reasons"
+      ],
+      "title": "ComparisonRow",
+      "type": "object"
+    },
+    "ComparisonValue": {
+      "additionalProperties": false,
+      "properties": {
+        "definition": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/IndicatorDefinition"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "observation": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/MeasurementObservation"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin": {
+          "enum": [
+            "retained_evidence",
+            "unavailable"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "trace_state": {
+          "enum": [
+            "complete",
+            "incomplete",
+            "unavailable"
+          ],
+          "title": "Trace State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "origin",
+        "definition",
+        "observation",
+        "trace_state"
+      ],
+      "title": "ComparisonValue",
+      "type": "object"
+    },
+    "DiagnosticRule": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "category": {
+          "enum": [
+            "physical_shortage",
+            "selected_policy_breach",
+            "institutional_gap",
+            "uncertainty"
+          ],
+          "title": "Category",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "lt",
+            "le",
+            "eq",
+            "ne",
+            "ge",
+            "gt"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "threshold": {
+          "$ref": "#/$defs/QuantityValue"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "operation",
+        "threshold",
+        "category",
+        "interpretation",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "DiagnosticRule",
+      "type": "object"
+    },
+    "DrawKey": {
+      "additionalProperties": false,
+      "properties": {
+        "draw_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Draw Name",
+          "type": "string"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "event_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "index": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mechanism_id",
+        "mechanism_version",
+        "instance_id",
+        "entity_id",
+        "scope_id",
+        "purpose",
+        "event_id",
+        "draw_name",
+        "index"
+      ],
+      "title": "DrawKey",
+      "type": "object"
+    },
+    "DrawSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "dependence": {
+          "enum": [
+            "declared_independent",
+            "shared_realization"
+          ],
+          "title": "Dependence",
+          "type": "string"
+        },
+        "distribution": {
+          "discriminator": {
+            "mapping": {
+              "bernoulli": "#/$defs/Bernoulli",
+              "categorical": "#/$defs/Categorical",
+              "uniform_integer": "#/$defs/UniformInteger"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Bernoulli"
+            },
+            {
+              "$ref": "#/$defs/UniformInteger"
+            },
+            {
+              "$ref": "#/$defs/Categorical"
+            }
+          ],
+          "title": "Distribution"
+        },
+        "key": {
+          "$ref": "#/$defs/DrawKey"
+        },
+        "lifetime": {
+          "default": "event",
+          "enum": [
+            "event",
+            "persistent"
+          ],
+          "title": "Lifetime",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id",
+        "key",
+        "day",
+        "distribution",
+        "source_refs",
+        "dependence",
+        "assumption_refs"
+      ],
+      "title": "DrawSpec",
+      "type": "object"
+    },
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "ExperimentContext": {
+      "additionalProperties": false,
+      "properties": {
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "experiment_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Experiment Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "experiment_id"
+      ],
+      "title": "ExperimentContext",
+      "type": "object"
+    },
+    "ExperimentControl": {
+      "additionalProperties": false,
+      "properties": {
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "state": {
+          "enum": [
+            "ready",
+            "paused",
+            "cancelled"
+          ],
+          "title": "State",
+          "type": "string"
+        }
+      },
+      "required": [
+        "sequence",
+        "state"
+      ],
+      "title": "ExperimentControl",
+      "type": "object"
+    },
+    "IndicatorDefinition": {
+      "additionalProperties": false,
+      "properties": {
+        "aggregation": {
+          "const": "same_scope",
+          "title": "Aggregation",
+          "type": "string"
+        },
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "coverage": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Coverage",
+          "type": "string"
+        },
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "diagnostics": {
+          "items": {
+            "$ref": "#/$defs/DiagnosticRule"
+          },
+          "maxItems": 100,
+          "title": "Diagnostics",
+          "type": "array"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "inputs": {
+          "items": {
+            "$ref": "#/$defs/MeasurementInput"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Inputs",
+          "type": "array"
+        },
+        "interpretation": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Interpretation",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "procedure": {
+          "enum": [
+            "identity",
+            "sum",
+            "mean",
+            "minimum",
+            "maximum",
+            "difference",
+            "ratio"
+          ],
+          "title": "Procedure",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Version",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "version",
+        "name",
+        "procedure",
+        "inputs",
+        "unit_id",
+        "scope_id",
+        "aggregation",
+        "time_basis_id",
+        "denominator_scope_id",
+        "coverage",
+        "interpretation",
+        "source_refs",
+        "assumption_refs",
+        "diagnostics"
+      ],
+      "title": "IndicatorDefinition",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "MeasurementInput": {
+      "additionalProperties": false,
+      "properties": {
+        "node": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 3,
+          "minItems": 2,
+          "title": "Node",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "node",
+        "scope_id"
+      ],
+      "title": "MeasurementInput",
+      "type": "object"
+    },
+    "MeasurementObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "definition_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Definition Version",
+          "type": "string"
+        },
+        "diagnostic": {
+          "enum": [
+            "neutral",
+            "within_named_thresholds",
+            "flagged",
+            "unavailable"
+          ],
+          "title": "Diagnostic",
+          "type": "string"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "indicator_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Indicator Id",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "status": {
+          "enum": [
+            "known",
+            "partial",
+            "missing_input",
+            "unmodeled",
+            "conflict",
+            "solver_failure",
+            "not_applicable"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "trace_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Trace Refs",
+          "type": "array"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "indicator_id",
+        "definition_version",
+        "scope_id",
+        "effective_time",
+        "status",
+        "reason",
+        "value",
+        "diagnostic",
+        "trace_refs",
+        "source_refs",
+        "assumption_refs"
+      ],
+      "title": "MeasurementObservation",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "RandomRuntime": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "default": "named-draw-json-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "rng": {
+          "default": "hmac-sha256-counter-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Rng",
+          "type": "string"
+        },
+        "sampling": {
+          "default": "exact-discrete-rejection-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Sampling",
+          "type": "string"
+        }
+      },
+      "title": "RandomRuntime",
+      "type": "object"
+    },
+    "RealizedDraw": {
+      "additionalProperties": false,
+      "properties": {
+        "accepted_block": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Accepted Block",
+          "type": "string"
+        },
+        "rejected_blocks": {
+          "exclusiveMaximum": 128,
+          "minimum": 0,
+          "title": "Rejected Blocks",
+          "type": "integer"
+        },
+        "runtime": {
+          "$ref": "#/$defs/RandomRuntime"
+        },
+        "seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Seed",
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/$defs/DrawSpec"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "runtime",
+        "seed",
+        "spec",
+        "value",
+        "rejected_blocks",
+        "accepted_block"
+      ],
+      "title": "RealizedDraw",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "TimelineEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "consequences": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3000,
+          "title": "Consequences",
+          "type": "array"
+        },
+        "coverage": {
+          "title": "Coverage",
+          "type": "string"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "digest": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Digest",
+          "type": "string"
+        },
+        "draws": {
+          "items": {
+            "$ref": "#/$defs/RealizedDraw"
+          },
+          "maxItems": 1000,
+          "title": "Draws",
+          "type": "array"
+        },
+        "sequence": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "trace_count": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Trace Count",
+          "type": "integer"
+        },
+        "traces": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Traces",
+          "type": "array"
+        },
+        "values": {
+          "items": {
+            "$ref": "#/$defs/ComparisonRow"
+          },
+          "maxItems": 10,
+          "title": "Values",
+          "type": "array"
+        }
+      },
+      "required": [
+        "sequence",
+        "day",
+        "digest",
+        "coverage",
+        "consequences",
+        "trace_count",
+        "traces",
+        "draws",
+        "values"
+      ],
+      "title": "TimelineEntry",
+      "type": "object"
+    },
+    "TimelineReply": {
+      "additionalProperties": false,
+      "properties": {
+        "assumptions": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1001,
+          "title": "Assumptions",
+          "type": "array"
+        },
+        "checkpoint": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "comparisons": {
+          "items": {
+            "$ref": "#/$defs/ComparisonRow"
+          },
+          "maxItems": 10,
+          "title": "Comparisons",
+          "type": "array"
+        },
+        "control": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExperimentControl"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "differences": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Differences",
+          "type": "array"
+        },
+        "distributions": {
+          "items": {
+            "$ref": "#/$defs/DrawSpec"
+          },
+          "maxItems": 1000,
+          "title": "Distributions",
+          "type": "array"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/TimelineEntry"
+          },
+          "maxItems": 10,
+          "title": "Entries",
+          "type": "array"
+        },
+        "experiments": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Experiments",
+          "type": "array"
+        },
+        "head": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "indicators": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 1000,
+          "title": "Indicators",
+          "type": "array"
+        },
+        "next_after": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Next After"
+        },
+        "notice": {
+          "title": "Notice",
+          "type": "string"
+        },
+        "opening": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        },
+        "query": {
+          "$ref": "#/$defs/TimelineRequest"
+        },
+        "schedule": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 3000,
+          "title": "Schedule",
+          "type": "array"
+        }
+      },
+      "required": [
+        "query",
+        "experiments",
+        "head",
+        "checkpoint",
+        "opening",
+        "origin",
+        "control",
+        "entries",
+        "next_after",
+        "schedule",
+        "assumptions",
+        "differences",
+        "indicators",
+        "distributions",
+        "comparisons",
+        "notice"
+      ],
+      "title": "TimelineReply",
+      "type": "object"
+    },
+    "TimelineRequest": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "read",
+            "create",
+            "advance",
+            "pause",
+            "resume",
+            "cancel",
+            "fork",
+            "schedule",
+            "preview_schedule"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "after": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "After"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "control": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ExperimentControl"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "expected": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/BoundaryOutcome"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "experiment_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Experiment Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Indicator Id"
+        },
+        "operation_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Operation Id",
+          "type": "string"
+        },
+        "other_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Other Id"
+        },
+        "realization_policy": {
+          "default": "preserve",
+          "enum": [
+            "preserve",
+            "new_realization"
+          ],
+          "title": "Realization Policy",
+          "type": "string"
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "sequence": {
+          "default": 0,
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Sequence",
+          "type": "integer"
+        },
+        "source_revision_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Source Revision Id"
+        },
+        "target_day": {
+          "default": 0,
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Target Day",
+          "type": "integer"
+        },
+        "trace_offset": {
+          "default": 0,
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Trace Offset",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "context",
+        "action",
+        "experiment_id",
+        "operation_id"
+      ],
+      "title": "TimelineRequest",
+      "type": "object"
+    },
+    "UniformInteger": {
+      "additionalProperties": false,
+      "properties": {
+        "high": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "High",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "uniform_integer",
+          "title": "Kind",
+          "type": "string"
+        },
+        "low": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Low",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "low",
+        "high"
+      ],
+      "title": "UniformInteger",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "WeightedValue": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "weight": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Weight",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "weight"
+      ],
+      "title": "WeightedValue",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/TimelineRequest"
+    },
+    {
+      "$ref": "#/$defs/TimelineReply"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+// Generated; do not edit.
+export type Bernoulli = { "kind": "bernoulli"; "numerator": number; "denominator": number };
+export type BoundaryOutcome = { "boundary_contract": 1; "context": ExperimentContext; "sequence": number; "day": number; "boundary_digest": string };
+export type Categorical = { "kind": "categorical"; "outcomes": (WeightedValue)[] };
+export type ComparisonRow = { "id": string; "left": ComparisonValue; "right": ComparisonValue; "delta": QuantityValue | UnknownValue | LabelValue | ReferenceValue | null; "reasons": (string)[] };
+export type ComparisonValue = { "origin": "retained_evidence" | "unavailable"; "definition": IndicatorDefinition | null; "observation": MeasurementObservation | null; "trace_state": "complete" | "incomplete" | "unavailable" };
+export type DiagnosticRule = { "id": string; "version": string; "name": string; "operation": "lt" | "le" | "eq" | "ne" | "ge" | "gt"; "threshold": QuantityValue; "category": "physical_shortage" | "selected_policy_breach" | "institutional_gap" | "uncertainty"; "interpretation": string; "source_refs": (string)[]; "assumption_refs": (string)[] };
+export type DrawKey = { "mechanism_id": string; "mechanism_version": string; "instance_id": string; "entity_id": string; "scope_id": string; "purpose": string; "event_id": string; "draw_name": string; "index": number };
+export type DrawSpec = { "variable_id": string; "key": DrawKey; "day": number; "distribution": Bernoulli | UniformInteger | Categorical; "lifetime"?: "event" | "persistent"; "source_refs": (string)[]; "dependence": "declared_independent" | "shared_realization"; "assumption_refs": (string)[] };
+export type EffectiveTime = { "tick": number; "calendar_id": string };
+export type ExperimentContext = { "data_store_id": string; "civilization_id": string; "experiment_id": string };
+export type ExperimentControl = { "sequence": number; "state": "ready" | "paused" | "cancelled" };
+export type IndicatorDefinition = { "id": string; "version": string; "name": string; "procedure": "identity" | "sum" | "mean" | "minimum" | "maximum" | "difference" | "ratio"; "inputs": (MeasurementInput)[]; "unit_id": string; "scope_id": string; "aggregation": "same_scope"; "time_basis_id": string | null; "denominator_scope_id": string | null; "coverage": "known" | "partial" | "missing_input" | "unmodeled" | "conflict" | "solver_failure" | "not_applicable"; "interpretation": string; "source_refs": (string)[]; "assumption_refs": (string)[]; "diagnostics": (DiagnosticRule)[] };
+export type LabelValue = { "kind": "label"; "value": string };
+export type MeasurementInput = { "node": (string)[]; "scope_id": string };
+export type MeasurementObservation = { "indicator_id": string; "definition_version": string; "scope_id": string; "effective_time": EffectiveTime; "status": "known" | "partial" | "missing_input" | "unmodeled" | "conflict" | "solver_failure" | "not_applicable"; "reason": string; "value": QuantityValue | UnknownValue | LabelValue | ReferenceValue; "diagnostic": "neutral" | "within_named_thresholds" | "flagged" | "unavailable"; "trace_refs": (string)[]; "source_refs": (string)[]; "assumption_refs": (string)[] };
+export type QuantityValue = { "kind": "quantity"; "value": string; "unit_id": string; "time_basis_id": string | null; "denominator_scope_id": string | null };
+export type RandomRuntime = { "rng"?: string; "key"?: string; "sampling"?: string };
+export type RealizedDraw = { "runtime": RandomRuntime; "seed": string; "spec": DrawSpec; "value": string; "rejected_blocks": number; "accepted_block": string };
+export type ReferenceValue = { "kind": "reference"; "entity_id": string };
+export type RevisionContext = { "data_store_id": string; "civilization_id": string; "branch_id": string; "revision_id": string };
+export type TimelineEntry = { "sequence": number; "day": number; "digest": string; "coverage": string; "consequences": (string)[]; "trace_count": number; "traces": (string)[]; "draws": (RealizedDraw)[]; "values": (ComparisonRow)[] };
+export type TimelineReply = { "query": TimelineRequest; "experiments": (string)[]; "head": BoundaryOutcome | null; "checkpoint": BoundaryOutcome | null; "opening": BoundaryOutcome | null; "origin": BoundaryOutcome | null; "control": ExperimentControl | null; "entries": (TimelineEntry)[]; "next_after": number | null; "schedule": (string)[]; "assumptions": (string)[]; "differences": (string)[]; "indicators": (string)[]; "distributions": (DrawSpec)[]; "comparisons": (ComparisonRow)[]; "notice": string };
+export type TimelineRequest = { "context": RevisionContext; "action": "read" | "create" | "advance" | "pause" | "resume" | "cancel" | "fork" | "schedule" | "preview_schedule"; "experiment_id": string; "operation_id": string; "sequence"?: number; "target_day"?: number; "other_id"?: string | null; "source_revision_id"?: string | null; "expected"?: BoundaryOutcome | null; "control"?: ExperimentControl | null; "after"?: number | null; "indicator_id"?: string | null; "trace_offset"?: number; "realization_policy"?: "preserve" | "new_realization"; "seed"?: string | null };
+export type UniformInteger = { "kind": "uniform_integer"; "low": number; "high": number };
+export type UnknownValue = { "kind": "unknown"; "reason": string };
+export type WeightedValue = { "value": string; "weight": number };

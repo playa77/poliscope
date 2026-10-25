@@ -1,0 +1,74 @@
+{
+  "version": 1,
+  "package": "WP-037",
+  "verified_before_delivery_metadata": true,
+  "implementation_test_fingerprint": "045b18b0c807fcf1048ce9118a58044b470faa400aa486d06ab43f608fd9c1b9",
+  "suites": [
+    {
+      "suite": "engine",
+      "run_id": "445ef0bf-f3f2-4012-aa35-922ff56a2bb7",
+      "candidate": "02ae3c249b7733c8d970dc1d100e0f23255e6f535167cc8011b72e78d1fdc09a",
+      "head": "b42302abc7bb298049149f0d90a9a797d820cb52",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "pytest",
+        "--junitxml=/tmp/poliscope-wp037-parent-engine/junit.xml"
+      ],
+      "status": "passed",
+      "report_sha256": "683d96cff629c8a4054e755e7ccbfb52b6018f6125ffb8c71083cadf0ae0a941",
+      "results": {
+        "tests": 4722,
+        "failed": 0,
+        "skipped": 0
+      }
+    },
+    {
+      "suite": "unit",
+      "run_id": "c1c4a2b7-b82b-4d97-982d-30c83359de0c",
+      "candidate": "02ae3c249b7733c8d970dc1d100e0f23255e6f535167cc8011b72e78d1fdc09a",
+      "head": "b42302abc7bb298049149f0d90a9a797d820cb52",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=/tmp/poliscope-wp037-parent-unit/junit.xml"
+      ],
+      "status": "passed",
+      "report_sha256": "336b9f8eb92593870482efc462b88a0aa1d24a690671de51dbd3eaa58793cc2e",
+      "results": {
+        "tests": 234,
+        "failed": 0,
+        "skipped": 0
+      }
+    }
+  ],
+  "desktop": {
+    "platform": "Linux x64",
+    "package": "passed",
+    "full_regression": {
+      "tests": 17,
+      "passed": 16,
+      "failed": 1,
+      "reason": "Preload allowlist assertion needed the new named timeline method; corrected afterward"
+    },
+    "final_rebuilt_selection": {
+      "tests": 2,
+      "passed": 2,
+      "failed": 0,
+      "skipped": 0,
+      "files": [
+        "tests/desktop/bootstrap.spec.ts",
+        "tests/desktop/timeline.spec.ts"
+      ],
+      "report_sha256": "0e033b97cd3318e663190eec9837af7b983452117a0d05f5ef1574ebe953ca01"
+    },
+    "windows": "unrun"
+  },
+  "gate_claim": false
+}

@@ -130,6 +130,8 @@
     "static-system.ts",
     "stochastic.schema.json",
     "stochastic.ts",
+    "timeline-workspace.schema.json",
+    "timeline-workspace.ts",
     "timeline.schema.json",
     "timeline.ts",
     "tool-inputs.json",
