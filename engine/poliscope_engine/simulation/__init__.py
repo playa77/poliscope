@@ -33,6 +33,8 @@ from poliscope_engine.revisions import graph
 from poliscope_engine.policies import resolve
 from poliscope_engine.timeline import boundaries, stage_changes
 
+from poliscope_engine.stochastic import realize, available
+
 REDUCER_ID = 'atomic-transitions-v1'
 ACCOUNT_OWNER = 'shared_accounts'
 
@@ -202,6 +204,9 @@ def verify_receipt(receipt):
     receipt = TransitionReceipt.model_validate_json(receipt.model_dump_json())
     if receipt.receipt_digest != digest(receipt.model_dump(exclude={'receipt_digest'})):
         raise TransitionError('transition_receipt_digest_mismatch')
+    ids = [d.spec.variable_id for d in receipt.random_draws]
+    if len(set(ids)) != len(ids) or any(not available(d.spec, receipt.day) for d in receipt.random_draws):
+        raise TransitionError('invalid_random_receipt_identity')
     for witness in receipt.balances:
         if (Fraction(parse(witness.opening)) + Fraction(parse(witness.inflow)) - Fraction(parse(witness.outflow))
                 != Fraction(parse(witness.closing)) or Fraction(parse(witness.closing)) < 0):
@@ -287,6 +292,7 @@ class TransitionReducer:
             base, claim_owners = _carry_book(base, base.batch, {}, self.mechanisms.units)
         if base is not None:
             _bindings(plan, opening.state.inputs, base.batch, self.mechanisms.units)
+        random_draws = [] if plan.random_plan is None else realize(plan.random_plan, due.day, checkpoint=checkpoint)
         proposals, adapters, invocations, steps = {}, {}, {}, {}
         prior_unmet = {} if base is None else {c.claim_id: Fraction(c.unmet)
             for c in AccountBook(base.batch, self.mechanisms.units).evaluate().claims}
@@ -342,7 +348,9 @@ class TransitionReducer:
             if not isinstance(callback, TransitionAdapter):
                 steps[identity] = step('coverage_gap', 'transition_adapter_unavailable')
                 continue
-            invocation = TransitionInvocation(inputs=_physical_view(inputs, definition,
+            selected_variables = set() if plan.random_plan is None else {
+                r.variable_id for r in plan.random_plan.references if r.instance_id == identity}
+            invocation = TransitionInvocation(random_draws=[d for d in random_draws if d.spec.variable_id in selected_variables], inputs=_physical_view(inputs, definition,
                 mechanisms=self.mechanisms, civilization_id=experiment.context.civilization_id), instance=instance,
                 opening_day=opening.record.day, day=due.day, allocation=None, claim_ids=[],
                 pending_claims=[o for cid, o in claim_owners.items()
@@ -517,6 +525,8 @@ class TransitionReducer:
             plan_digest=digest(plan), day=due.day, request=request, allocation=allocation,
             steps=sorted(steps.values(), key=lambda s: s.instance_id), balances=balances,
             claim_owners=sorted(claim_owners.values(), key=lambda c: c.claim_id), coverage=coverage)
+        if random_draws:
+            payload['random_draws'] = random_draws
         receipt = TransitionReceipt(**payload, receipt_digest=digest(payload))
         return BoundaryCandidate(inputs=closing, evidence=evidence, transition=receipt)
 

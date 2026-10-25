@@ -898,6 +898,60 @@
       "title": "AssumptionValue",
       "type": "object"
     },
+    "Bernoulli": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Denominator",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "bernoulli",
+          "title": "Kind",
+          "type": "string"
+        },
+        "numerator": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Numerator",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "numerator",
+        "denominator"
+      ],
+      "title": "Bernoulli",
+      "type": "object"
+    },
+    "Categorical": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "categorical",
+          "title": "Kind",
+          "type": "string"
+        },
+        "outcomes": {
+          "items": {
+            "$ref": "#/$defs/WeightedValue"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Outcomes",
+          "type": "array"
+        }
+      },
+      "required": [
+        "kind",
+        "outcomes"
+      ],
+      "title": "Categorical",
+      "type": "object"
+    },
     "ChunkProgress": {
       "additionalProperties": false,
       "properties": {
@@ -988,6 +1042,192 @@
       "title": "ClaimResult",
       "type": "object"
     },
+    "DrawKey": {
+      "additionalProperties": false,
+      "properties": {
+        "draw_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Draw Name",
+          "type": "string"
+        },
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "event_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Event Id",
+          "type": "string"
+        },
+        "index": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Index",
+          "type": "integer"
+        },
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "mechanism_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Id",
+          "type": "string"
+        },
+        "mechanism_version": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Mechanism Version",
+          "type": "string"
+        },
+        "purpose": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Purpose",
+          "type": "string"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "mechanism_id",
+        "mechanism_version",
+        "instance_id",
+        "entity_id",
+        "scope_id",
+        "purpose",
+        "event_id",
+        "draw_name",
+        "index"
+      ],
+      "title": "DrawKey",
+      "type": "object"
+    },
+    "DrawReference": {
+      "additionalProperties": false,
+      "properties": {
+        "instance_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Instance Id",
+          "type": "string"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "instance_id",
+        "variable_id"
+      ],
+      "title": "DrawReference",
+      "type": "object"
+    },
+    "DrawSpec": {
+      "additionalProperties": false,
+      "properties": {
+        "assumption_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "minItems": 1,
+          "title": "Assumption Refs",
+          "type": "array"
+        },
+        "day": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Day",
+          "type": "integer"
+        },
+        "dependence": {
+          "enum": [
+            "declared_independent",
+            "shared_realization"
+          ],
+          "title": "Dependence",
+          "type": "string"
+        },
+        "distribution": {
+          "discriminator": {
+            "mapping": {
+              "bernoulli": "#/$defs/Bernoulli",
+              "categorical": "#/$defs/Categorical",
+              "uniform_integer": "#/$defs/UniformInteger"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/Bernoulli"
+            },
+            {
+              "$ref": "#/$defs/UniformInteger"
+            },
+            {
+              "$ref": "#/$defs/Categorical"
+            }
+          ],
+          "title": "Distribution"
+        },
+        "key": {
+          "$ref": "#/$defs/DrawKey"
+        },
+        "lifetime": {
+          "default": "event",
+          "enum": [
+            "event",
+            "persistent"
+          ],
+          "title": "Lifetime",
+          "type": "string"
+        },
+        "source_refs": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 100,
+          "title": "Source Refs",
+          "type": "array"
+        },
+        "variable_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Variable Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "variable_id",
+        "key",
+        "day",
+        "distribution",
+        "source_refs",
+        "dependence",
+        "assumption_refs"
+      ],
+      "title": "DrawSpec",
+      "type": "object"
+    },
     "EffectiveTime": {
       "additionalProperties": false,
       "description": "Simulation time; no wall-clock timestamp participates in this identity.",
@@ -1058,6 +1298,36 @@
         "provenance"
       ],
       "title": "EntityDTO",
+      "type": "object"
+    },
+    "ForkRealization": {
+      "additionalProperties": false,
+      "properties": {
+        "parent_plan_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Parent Plan Digest",
+          "type": "string"
+        },
+        "parent_seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Parent Seed",
+          "type": "string"
+        },
+        "policy": {
+          "enum": [
+            "preserve",
+            "new_realization"
+          ],
+          "title": "Policy",
+          "type": "string"
+        }
+      },
+      "required": [
+        "parent_plan_digest",
+        "parent_seed",
+        "policy"
+      ],
+      "title": "ForkRealization",
       "type": "object"
     },
     "FundingRequirement": {
@@ -1823,6 +2093,131 @@
       "title": "QuantityValue",
       "type": "object"
     },
+    "RandomPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "contract_version": {
+          "const": 1,
+          "title": "Contract Version",
+          "type": "integer"
+        },
+        "draws": {
+          "items": {
+            "$ref": "#/$defs/DrawSpec"
+          },
+          "maxItems": 1000,
+          "title": "Draws",
+          "type": "array"
+        },
+        "fork": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ForkRealization"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "references": {
+          "items": {
+            "$ref": "#/$defs/DrawReference"
+          },
+          "maxItems": 1000,
+          "title": "References",
+          "type": "array"
+        },
+        "runtime": {
+          "$ref": "#/$defs/RandomRuntime"
+        },
+        "seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Seed",
+          "type": "string"
+        }
+      },
+      "required": [
+        "contract_version",
+        "seed",
+        "runtime",
+        "draws",
+        "references"
+      ],
+      "title": "RandomPlan",
+      "type": "object"
+    },
+    "RandomRuntime": {
+      "additionalProperties": false,
+      "properties": {
+        "key": {
+          "default": "named-draw-json-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Key",
+          "type": "string"
+        },
+        "rng": {
+          "default": "hmac-sha256-counter-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Rng",
+          "type": "string"
+        },
+        "sampling": {
+          "default": "exact-discrete-rejection-v1",
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Sampling",
+          "type": "string"
+        }
+      },
+      "title": "RandomRuntime",
+      "type": "object"
+    },
+    "RealizedDraw": {
+      "additionalProperties": false,
+      "properties": {
+        "accepted_block": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Accepted Block",
+          "type": "string"
+        },
+        "rejected_blocks": {
+          "exclusiveMaximum": 128,
+          "minimum": 0,
+          "title": "Rejected Blocks",
+          "type": "integer"
+        },
+        "runtime": {
+          "$ref": "#/$defs/RandomRuntime"
+        },
+        "seed": {
+          "pattern": "^[0-9a-f]{64}$",
+          "title": "Seed",
+          "type": "string"
+        },
+        "spec": {
+          "$ref": "#/$defs/DrawSpec"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "runtime",
+        "seed",
+        "spec",
+        "value",
+        "rejected_blocks",
+        "accepted_block"
+      ],
+      "title": "RealizedDraw",
+      "type": "object"
+    },
     "ReferenceType": {
       "additionalProperties": false,
       "properties": {
@@ -2298,6 +2693,14 @@
           "maxItems": 1000,
           "title": "Pending Claims",
           "type": "array"
+        },
+        "random_draws": {
+          "items": {
+            "$ref": "#/$defs/RealizedDraw"
+          },
+          "maxItems": 1000,
+          "title": "Random Draws",
+          "type": "array"
         }
       },
       "required": [
@@ -2370,6 +2773,17 @@
           "minimum": 1,
           "title": "Operation Limit",
           "type": "integer"
+        },
+        "random_plan": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/RandomPlan"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -2604,6 +3018,14 @@
           "title": "Plan Digest",
           "type": "string"
         },
+        "random_draws": {
+          "items": {
+            "$ref": "#/$defs/RealizedDraw"
+          },
+          "maxItems": 1000,
+          "title": "Random Draws",
+          "type": "array"
+        },
         "receipt_digest": {
           "pattern": "^sha256:[0-9a-f]{64}$",
           "title": "Receipt Digest",
@@ -2783,6 +3205,35 @@
       "title": "TransitionStep",
       "type": "object"
     },
+    "UniformInteger": {
+      "additionalProperties": false,
+      "properties": {
+        "high": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "High",
+          "type": "integer"
+        },
+        "kind": {
+          "const": "uniform_integer",
+          "title": "Kind",
+          "type": "string"
+        },
+        "low": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Low",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "kind",
+        "low",
+        "high"
+      ],
+      "title": "UniformInteger",
+      "type": "object"
+    },
     "UnknownValue": {
       "additionalProperties": false,
       "properties": {
@@ -2803,6 +3254,29 @@
         "reason"
       ],
       "title": "UnknownValue",
+      "type": "object"
+    },
+    "WeightedValue": {
+      "additionalProperties": false,
+      "properties": {
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Value",
+          "type": "string"
+        },
+        "weight": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Weight",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "value",
+        "weight"
+      ],
+      "title": "WeightedValue",
       "type": "object"
     },
     "WorldProvenance": {

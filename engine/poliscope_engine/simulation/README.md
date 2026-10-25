@@ -3,7 +3,7 @@
 This is the trusted Python WP-034 host. It composes WP-033 scheduling/adoption,
 WP-015 finite allocation, WP-027 domain authority and the merged
 WP-036-boundary-store. No renderer endpoint, source-code loader, default civic
-policy, random stream, overall score or implicit stock/capacity renewal exists.
+policy, overall score or implicit stock/capacity renewal exists.
 
 An experiment explicitly selects a `TransitionPlan`: its opening finite book,
 canonical account/value bindings, instance order, old/new claim precedence and
@@ -90,3 +90,9 @@ instance/claim priority orders remain semantic sequences.
 Historical reads need no historical numerical registry or callback. The only
 new numerical class examples are explicitly hypothetical test models; real source
 transition activation and empirical model validation remain separate domain work.
+
+WP-035 adds an optional frozen `random_plan`. Explicit named draws are realized
+privately before proposals, charged to the quota and passed through each
+invocation only for its declared references. Full realizations remain in the
+confirmed transition receipt. See [the sampling contract](../stochastic/README.md)
+for dependence, persistent variables, fork policies and historical/runtime rules.

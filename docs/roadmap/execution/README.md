@@ -1288,3 +1288,15 @@ The full 4,547-case Python suite and 232 JavaScript unit cases pass. This is a p
 engine framework; transition reduction, durable timeline commits and complete G4
 workflows remain allocated to later packages. Route:
 **solo-validated; agent review deferred**.
+
+
+## Full WP-035 parent delivery
+
+[WP-035](WP-035.md) supplies versioned named HMAC draws, exact declared discrete
+sampling, shared/persistent variable references, explicit seed/fork policy and
+retained realizations integrated with the real atomic transition reducer. The
+full 4,690-case Python and 232-case JavaScript suites pass; no source probability
+or scientific model is inferred. Native Windows verification is available as a
+manual workflow and remains unrun. After merge continue the remaining full
+WP-036 checkpoints/controller/replay/fork workflows. Route:
+**solo-validated; agent review deferred**.
