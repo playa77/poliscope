@@ -33,9 +33,12 @@
   "kind": "work_package",
   "scope": "Full WP-040: retained Markdown inquiry reports and typed CSV measurements/distributions/time series/comparisons, whole-history privacy projection, bounded main-owned local file export for native and imported histories",
   "publication": {
-    "status": "local implementation complete; publication pending",
+    "status": "blocked pending explicit user approval",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-040-reports",
-    "action": "Push branch and open a regular PR against main; do not merge"
+    "action": "Push branch and open a regular PR against main; do not merge",
+    "implementation_commit": "a4d50fb",
+    "reason": "Automatic approval review rejected publishing potentially sensitive source contents without explicit authorization for this payload and GitHub destination",
+    "next_action": "Request user approval to push codex/wp-040-reports to playa77/poliscope and open a regular PR against main; do not merge"
   }
 }

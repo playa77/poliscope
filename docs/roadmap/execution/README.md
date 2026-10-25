@@ -11,6 +11,11 @@ acceptance is inferred. After delivery/merge reassess full
 WP-041 migration, historical mode and recovery prerequisites. Earlier package
 records remain historical evidence, not allocations for this session.
 
+Implementation is committed at `a4d50fb`. Automatic approval review rejected the
+push because this payload/destination needs explicit publication authorization.
+No branch was pushed and no PR was opened. The full package remains committed
+locally; see the [publication blocker](WP-040.md#publication-blocker).
+
 Implementation began on 2026-10-17 at base
 `4b9cac6fd994491db92518fccebf4e9142b42e03`. The planning registers remain the
 scope authority; this directory records execution rather than rewriting their
