@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "package": "WP-044",
+  "route": "solo-validated; agent review deferred",
+  "base": "fa98bbfa0713f9ee4eedfab15045ee6826d21116",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted tracked/intended new desktop engine contracts scripts packaging and package.json package-lock.json pyproject.toml uv.lock; path NUL file bytes NUL",
+    "sha256": "4be17db002f1b982967200bca7fbc90d2bf1cbdb5f778c94d8346ab0ae9a69e3"
+  },
+  "tests": {
+    "engine_full": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv-cache uv run --frozen pytest -q",
+      "tool_session": 80062,
+      "cases": 4869,
+      "subtests": 54,
+      "failures": 0,
+      "skipped": 0,
+      "warnings": 4,
+      "duration_seconds": 368.47,
+      "report": null,
+      "scope_note": "Full collection preceded creation of the 13 new schema-only Python tests. Engine application sources were unchanged after this full run; the final focused DTO report covers all new Python tests."
+    },
+    "unit_full": {
+      "status": "passed",
+      "command": "npm exec -- vitest run --reporter=default --reporter=junit --outputFile=/tmp/wp-044-unit-final.xml",
+      "tool_session": 17930,
+      "report_sha256": "0b032056e6d05ffd486b68da92e74e894f6b710be22652c9d4517b544c171635",
+      "counts": {
+        "tests": 342,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "contracts_focused": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv-cache uv run --frozen pytest tests/engine/test_generation_contract.py tests/engine/test_provider_contract.py -q --junitxml=/tmp/wp-044-contracts.xml",
+      "tool_session": 51047,
+      "report_sha256": "b039ba6c0919593603649c530ea1061f12c55a5abb29d5ba60269444df57a730",
+      "counts": {
+        "tests": 22,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "desktop_focused": {
+      "status": "passed",
+      "command": "DISPLAY=:99 PLAYWRIGHT_JUNIT_OUTPUT_FILE=/tmp/wp-044-ui-focused.xml npx playwright test tests/desktop/provider-requests.spec.ts --reporter=line,junit",
+      "tool_session": 54165,
+      "report_sha256": "fa439439f346d135807980572e33f78b7bf81ab464239e75cde88c06943e3a40",
+      "counts": {
+        "tests": 1,
+        "failures": 0,
+        "skipped": 0
+      }
+    },
+    "desktop_full": {
+      "status": "passed",
+      "command": "DISPLAY=:99 PLAYWRIGHT_JUNIT_OUTPUT_FILE=/tmp/wp-044-desktop-final.xml npx playwright test --reporter=line,junit",
+      "tool_session": 81059,
+      "report_sha256": "86b1efea8e29d101487c0358672bf47bc5843cf79a944df323d47d15e88c1821",
+      "counts": {
+        "tests": 24,
+        "failures": 0,
+        "skipped": 0
+      }
+    }
+  },
+  "new_tests": {
+    "desktop_unit": 46,
+    "python": 13,
+    "packaged_linux": 1
+  },
+  "checks": {
+    "frozen_node_install": "passed",
+    "frozen_python_install": "passed",
+    "contracts": "passed",
+    "content": "passed",
+    "typecheck": "passed",
+    "roadmap_manifest": "passed",
+    "roadmap_baseline": "passed",
+    "roadmap_unittest_cases": 51,
+    "roadmap_unittest_status": "passed",
+    "diff_check": "passed",
+    "linux_x64_package": "passed"
+  },
+  "inspection": "Separate author inspection; no independent reviewer allocated. Fixed serialization, model effort revalidation, default-field preservation and accessible labels.",
+  "limitations": [
+    "No paid/live provider calls or real credential/keychain validation",
+    "Native Windows unrun",
+    "No cumulative M6/G6 acceptance",
+    "Pure builder/normalizer; actual dispatch and SSE assembly are WP-045",
+    "Trusted per-model context/tokenizer receipts and explicit compatible declarations are required; no universal tokenizer claimed",
+    "Local schema dialect is deliberately restricted; other keywords reject",
+    "Final Linux acceptance uses isolated Xorg and the existing --no-sandbox test harness"
+  ],
+  "diagnostics": "Initial packaged run was invalidated by label failure and an overlapping rebuild; it is not acceptance evidence. Final stable-build run is recorded separately."
+}

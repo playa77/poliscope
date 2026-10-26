@@ -59,6 +59,8 @@
     "expression.schema.json",
     "expression.ts",
     "fixtures.json",
+    "generation.schema.json",
+    "generation.ts",
     "governance-adjudication.schema.json",
     "governance-adjudication.ts",
     "governance-communication.schema.json",

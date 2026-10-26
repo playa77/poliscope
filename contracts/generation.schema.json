@@ -1,0 +1,292 @@
+{
+  "$defs": {
+    "GenerationFormat": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Name"
+        },
+        "schema_text": {
+          "anyOf": [
+            {
+              "maxLength": 32768,
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Schema Text"
+        },
+        "type": {
+          "enum": [
+            "text",
+            "json_object",
+            "json_schema"
+          ],
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type"
+      ],
+      "title": "GenerationFormat",
+      "type": "object"
+    },
+    "GenerationMessage": {
+      "additionalProperties": false,
+      "properties": {
+        "content": {
+          "maxLength": 262144,
+          "minLength": 1,
+          "title": "Content",
+          "type": "string"
+        },
+        "role": {
+          "enum": [
+            "system",
+            "user",
+            "assistant"
+          ],
+          "title": "Role",
+          "type": "string"
+        }
+      },
+      "required": [
+        "role",
+        "content"
+      ],
+      "title": "GenerationMessage",
+      "type": "object"
+    },
+    "GenerationPlan": {
+      "additionalProperties": false,
+      "properties": {
+        "expected_revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "generation_contract": {
+          "const": 1,
+          "title": "Generation Contract",
+          "type": "integer"
+        },
+        "messages": {
+          "items": {
+            "$ref": "#/$defs/GenerationMessage"
+          },
+          "maxItems": 128,
+          "minItems": 1,
+          "title": "Messages",
+          "type": "array"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "response_format": {
+          "$ref": "#/$defs/GenerationFormat"
+        },
+        "stream": {
+          "title": "Stream",
+          "type": "boolean"
+        },
+        "tool_choice": {
+          "default": "auto",
+          "maxLength": 64,
+          "title": "Tool Choice",
+          "type": "string"
+        },
+        "tools": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/GenerationTool"
+          },
+          "maxItems": 32,
+          "title": "Tools",
+          "type": "array"
+        }
+      },
+      "required": [
+        "generation_contract",
+        "profile_id",
+        "expected_revision",
+        "messages",
+        "stream",
+        "response_format"
+      ],
+      "title": "GenerationPlan",
+      "type": "object"
+    },
+    "GenerationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_model": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Model"
+        },
+        "actual_provider": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Provider"
+        },
+        "finish_reason": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finish Reason"
+        },
+        "generation_contract": {
+          "const": 1,
+          "title": "Generation Contract",
+          "type": "integer"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameter"
+        },
+        "selected_model": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Selected Model",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete",
+            "refused",
+            "structured-invalid",
+            "provider-rejected",
+            "unsupported-parameter",
+            "response-invalid"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "maxLength": 1048576,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Text"
+        },
+        "validated_json": {
+          "anyOf": [
+            {
+              "maxLength": 1048576,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Validated Json"
+        }
+      },
+      "required": [
+        "generation_contract",
+        "selected_model",
+        "actual_model",
+        "actual_provider",
+        "finish_reason",
+        "status",
+        "validated_json",
+        "text"
+      ],
+      "title": "GenerationResult",
+      "type": "object"
+    },
+    "GenerationTool": {
+      "additionalProperties": false,
+      "properties": {
+        "description": {
+          "maxLength": 4096,
+          "title": "Description",
+          "type": "string"
+        },
+        "name": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Name",
+          "type": "string"
+        },
+        "parameters_json": {
+          "maxLength": 32768,
+          "minLength": 2,
+          "title": "Parameters Json",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "description",
+        "parameters_json"
+      ],
+      "title": "GenerationTool",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/GenerationPlan"
+    },
+    {
+      "$ref": "#/$defs/GenerationResult"
+    }
+  ]
+}

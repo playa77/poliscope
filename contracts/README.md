@@ -536,3 +536,14 @@ Model/endpoint unknown fields are bounded JSON strings, rendered only as text.
 Five-model reply pages and a 2 MiB authorized IPC bound keep complete metadata
 separate from the 8 MiB main transport/cache limit. See
 [metadata conventions](../docs/provider_metadata.md) for source and freshness rules.
+
+## Generation plans (WP-044)
+
+`generation.schema.json` and `generation.ts` are generated from canonical Python
+schema-only DTOs. Generation-plan v1 is consumed by the pure main request builder;
+it is not an engine command or an added renderer IPC dispatch method. Bounded
+messages, tool/format schema text and profile revision are distinct from trusted
+main-owned capability/context receipts. No credential or spend/sharing grant is
+present. Provider-settings v1 adds optional backward-compatible routing, price,
+model-fallback, sampling and reasoning preferences. See
+[request contracts and validation](../docs/provider_requests.md).

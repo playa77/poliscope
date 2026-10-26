@@ -7,6 +7,22 @@ ProfileId = Annotated[str, Field(pattern=r'^[a-zA-Z0-9_-]{1,64}$')]
 Text = Annotated[str, Field(min_length=1, max_length=256)]
 Revision = Annotated[int, Field(ge=1, le=9007199254740991)]
 Support = Literal['unknown', 'supported', 'unsupported']
+DecimalControl = Annotated[str, Field(pattern=r'^-?[0-9]{1,9}(\.[0-9]{1,9})?$')]
+
+
+class ProviderPrice(Contract):
+    # USD per million prompt/completion tokens; USD per request/image.
+    prompt: DecimalControl | None = None
+    completion: DecimalControl | None = None
+    request: DecimalControl | None = None
+    image: DecimalControl | None = None
+
+
+class ProviderReasoning(Contract):
+    effort: Literal['none', 'minimal', 'low', 'medium', 'high', 'xhigh', 'max'] | None = None
+    max_tokens: Annotated[int, Field(ge=1, le=2147483647)] | None = None
+    enabled: bool | None = None
+    exclude: bool | None = None
 
 
 class ProviderCapabilities(Contract):
@@ -26,6 +42,11 @@ class ProviderRouting(Contract):
     allow_fallbacks: bool
     require_parameters: bool
     data_collection: Literal['unknown', 'allow', 'deny']
+    # Provider failover does not authorize a different model.
+    model_fallbacks: Annotated[list[Text], Field(max_length=8)] = []
+    zdr: bool | None = None
+    sort: Literal['price', 'throughput', 'latency'] | None = None
+    max_price: ProviderPrice | None = None
 
 
 class ProviderGeneration(Contract):
@@ -33,6 +54,11 @@ class ProviderGeneration(Contract):
     temperature: Annotated[str, Field(pattern=r'^[0-9]{1,3}(\.[0-9]{1,6})?$')] | None
     top_p: Annotated[str, Field(pattern=r'^[0-9]{1,3}(\.[0-9]{1,6})?$')] | None
     max_output_tokens: Annotated[int, Field(ge=1, le=2147483647)] | None
+    frequency_penalty: DecimalControl | None = None
+    presence_penalty: DecimalControl | None = None
+    seed: Annotated[int, Field(ge=0, le=2147483647)] | None = None
+    stop: Annotated[list[Text], Field(min_length=1, max_length=4)] | None = None
+    reasoning: ProviderReasoning | None = None
 
 
 class ProviderProfile(Contract):
