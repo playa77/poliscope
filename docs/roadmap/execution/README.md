@@ -11,7 +11,8 @@ narrowing has 21 focused cases and 2 final rebuilt scenarios. See
 [the receipt](WP-046-validation.json). Native Windows,
 real provider/keychain certification and full M6/G6 acceptance remain unclaimed.
 Implementation is committed at `d5f2bcb`. Automatic approval review blocked the
-branch push; explicit destination/publication approval is required. No PR exists.
+branch push initially; the requesting user subsequently explicitly authorized
+this branch push and PR. Publication may proceed.
 See [the publication blocker](WP-046.md#publication-blocker).
 After authorized publication/review/merge, reassess full WP-047; do not merge without user authorization.
 
