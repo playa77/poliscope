@@ -10,10 +10,19 @@
             "status",
             "revoke",
             "continue",
-            "preview-proposal"
+            "preview-proposal",
+            "delete",
+            "save-artifact"
           ],
           "title": "Action",
           "type": "string"
+        },
+        "artifact_index": {
+          "default": 0,
+          "maximum": 1,
+          "minimum": 0,
+          "title": "Artifact Index",
+          "type": "integer"
         },
         "proposal_index": {
           "default": 0,
@@ -43,6 +52,15 @@
           "title": "Action",
           "type": "string"
         },
+        "attachments": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/Attachment"
+          },
+          "maxItems": 4,
+          "title": "Attachments",
+          "type": "array"
+        },
         "expected_revision": {
           "maximum": 9007199254740991,
           "minimum": 1,
@@ -64,6 +82,16 @@
             }
           ],
           "default": null
+        },
+        "output": {
+          "default": "text",
+          "enum": [
+            "text",
+            "image",
+            "audio"
+          ],
+          "title": "Output",
+          "type": "string"
         },
         "profile_id": {
           "pattern": "^[a-zA-Z0-9_-]{1,128}$",
@@ -113,11 +141,23 @@
     "AssistantReply": {
       "additionalProperties": false,
       "properties": {
+        "artifacts_json": {
+          "default": "[]",
+          "maxLength": 196608,
+          "title": "Artifacts Json",
+          "type": "string"
+        },
         "assistant_contract": {
           "const": 1,
           "default": 1,
           "title": "Assistant Contract",
           "type": "integer"
+        },
+        "attachments_json": {
+          "default": "[]",
+          "maxLength": 8192,
+          "title": "Attachments Json",
+          "type": "string"
         },
         "context_json": {
           "maxLength": 2048,
@@ -172,7 +212,7 @@
           "title": "Grounding Json"
         },
         "payload_json": {
-          "maxLength": 65536,
+          "maxLength": 196608,
           "title": "Payload Json",
           "type": "string"
         },
@@ -327,6 +367,78 @@
         "value"
       ],
       "title": "AssumptionEdit",
+      "type": "object"
+    },
+    "Attachment": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "default": "private",
+          "enum": [
+            "private",
+            "public"
+          ],
+          "title": "Classification",
+          "type": "string"
+        },
+        "consent": {
+          "const": "this-turn",
+          "title": "Consent",
+          "type": "string"
+        },
+        "data_base64": {
+          "maxLength": 90000,
+          "minLength": 4,
+          "title": "Data Base64",
+          "type": "string"
+        },
+        "mime": {
+          "enum": [
+            "text/plain",
+            "image/png",
+            "audio/wav",
+            "video/mp4",
+            "application/pdf"
+          ],
+          "title": "Mime",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 128,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "processing": {
+          "enum": [
+            "local-excerpt",
+            "provider"
+          ],
+          "title": "Processing",
+          "type": "string"
+        },
+        "provenance": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Provenance",
+          "type": "string"
+        },
+        "retention": {
+          "const": "session",
+          "default": "session",
+          "title": "Retention",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "mime",
+        "data_base64",
+        "processing",
+        "provenance",
+        "consent"
+      ],
+      "title": "Attachment",
       "type": "object"
     },
     "GenerationResult": {

@@ -1,0 +1,71 @@
+{
+  "version": 1,
+  "package": "WP-047",
+  "route": "solo-validated; agent review deferred",
+  "base": "68e1065206d1376d81d27f378386f797f2454ef8",
+  "branch": "codex/wp-047-modalities",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted tracked/intended desktop engine contracts scripts packaging and manifests, excluding Markdown; path NUL bytes NUL",
+    "sha256": "233663ea38f63012132472842695edb07d9ad999ceef695305f9fcd264eecd6b",
+    "integrated_before_final_audio_model_and_UI_narrowing": "bb601bcac22720362cd1032890f7b04b8f12e99e34318f01a45f5f5fece9e8f0"
+  },
+  "evidence": {
+    "engine_full": {
+      "log_sha256": "ec389ea93716ca4732c64a15998762625ef428e9f8e287d39e205cb8219b164a",
+      "log_path_at_execution": "/tmp/wp047-pytest.log"
+    },
+    "engine_contracts": {
+      "log_sha256": "7ca2ccfb9b8013a88d9f9d0cd25c39adf540d69fd88b2c08cc4e4b98b24d47ed",
+      "log_path_at_execution": "/tmp/wp047-contract-tests-final.log"
+    },
+    "desktop_full": {
+      "log_sha256": "0c587ff36d72edce9ecb17e5c0f98c60428a097c76d37ce8bad871415bb18866",
+      "log_path_at_execution": "/tmp/wp047-desktop-units-final.log"
+    },
+    "desktop_final_affected": {
+      "log_sha256": "2cad83527a80d4ccdb2e87d101a856ac5d8001f1e335983ce3783ed3093ae689",
+      "log_path_at_execution": "/tmp/wp047-focused-final.log"
+    },
+    "packaged_integrated": {
+      "log_sha256": "62ca2b25e3e2d7fc8d902ad1f58dc5cd1c35f0fbf2d668236586cc8395b8fac9",
+      "log_path_at_execution": "/tmp/wp047-packaged-all.log"
+    },
+    "packaged_final_affected": {
+      "log_sha256": "68aeed742704cf7bce075f32c7912401dbaa51175d29cbda46a53aae60228e35",
+      "log_path_at_execution": "/tmp/wp047-packaged-final-affected.log"
+    },
+    "typecheck": {
+      "log_sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125",
+      "log_path_at_execution": "/tmp/wp047-typecheck.log"
+    }
+  },
+  "counts": {
+    "engine_full": 4911,
+    "subtests": 54,
+    "engine_final_assistant_contracts": 20,
+    "new_engine_contracts": 6,
+    "desktop_full": 411,
+    "desktop_final_affected": 71,
+    "new_content_units": 11,
+    "roadmap": 51,
+    "packaged_integrated": 27,
+    "packaged_final_affected": 3,
+    "new_packaged": 1
+  },
+  "limits": [
+    "Windows unrun",
+    "Live providers/real keychains unrun",
+    "No full M6/G6/E2E-013/014 acceptance",
+    "Dedicated image generation, video/PDF processing and unknown codecs/tokenizers explicitly unsupported"
+  ],
+  "notes": [
+    "Full engine collection preceded six added assistant contract cases; final assistant contract file is separately validated, not folded into the full-run count.",
+    "Final source narrows audio model support, improves error/retention guidance and corrects a WAV diagnostic; final rebuilt media/assistant/grounding scenarios verify the affected paths.",
+    "No paid provider dispatch; all transport fixtures synthetic."
+  ],
+  "provider_documentation": {
+    "wp047-audio-doc.md": "b0da4dc921abcc5aef4afcb0531dad010b91953a3bd9bb1805e131dc95c021c5",
+    "wp047-image-generation-doc.md": "7595a4ea2e0cd9cd428916548f90aa345dc9536eda04fe93f64cb2affad0a994",
+    "wp047-image-doc.md": "a193d8078c76b9f5bf33562169dd75e08266c6dc897b9b2cadf7e5e778a89ae1"
+  }
+}

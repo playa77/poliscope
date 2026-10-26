@@ -564,3 +564,8 @@ Assistant v1 accepts optional grounding, bounded continuation and explicit ordin
 proposal-preview actions. Generation messages add typed assistant tool calls and
 matched tool results. Workbench adds retained proposal origin/coverage receipts;
 no provider tool obtains Apply authority. Existing text-only inputs remain valid.
+
+WP-047 adds optional typed text/PNG/WAV message parts, session attachment consent
+and ownership fields, bounded opaque continuation JSON and requested output
+modalities. Canonical Python remains the schema/type source. Main validates
+actual bytes, model bounds, routing and consent beyond structural DTO validation.

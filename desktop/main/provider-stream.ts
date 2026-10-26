@@ -1,3 +1,4 @@
+import { opaque, artifact, bytes64, type Artifact } from './assistant-content';
 /** Bounded incremental SSE and chat assembly. No dispatch, logging or tool execution. */
 import type { BuiltRequest } from './provider-requests';
 import { validateStructured } from './provider-schema';
@@ -28,6 +29,7 @@ const record = (v: unknown): Record<string, unknown> => {
 };
 export interface AssembledTool { index: number; id: string; name: string; arguments: string }
 export interface StreamSnapshot {
+  opaque_json?:string; artifacts?:Artifact[];
   text: string; reasoning: string; tools: AssembledTool[]; usage_json: string | null;
   model: string | null; provider: string | null; finish_reason: string | null;
 }
@@ -38,6 +40,8 @@ export class ChatStream {
   private state: StreamSnapshot = {text:'',reasoning:'',tools:[],usage_json:null,model:null,provider:null,finish_reason:null};
   private tools = new Map<number, AssembledTool>();
   private refusal = false;
+  private details:Record<string,unknown>[]=[];
+  private audio:Buffer[]=[];private audioBytes=0;
   constructor(private request: BuiltRequest) {}
   snapshot(): StreamSnapshot { return structuredClone({...this.state,tools:[...this.tools.values()].sort((a,b)=>a.index-b.index)}); }
   push(bytes: Uint8Array) {
@@ -98,18 +102,45 @@ export class ChatStream {
       if (this.state.finish_reason !== null || typeof delta[key] !== 'string' || /\p{Surrogate}/u.test(delta[key])) throw new StreamError();
       this.state[target]+=delta[key]; if (this.state[target].length>1048576) throw new StreamError();
     };
+    if(['video','videos','file','files','attachments'].some(key=>delta[key]!=null))throw new StreamError();
     append('content','text'); append('reasoning','reasoning');
     if(delta.reasoning_details!=null) {
-      if(!Array.isArray(delta.reasoning_details)||delta.reasoning_details.length>128)throw new StreamError();
-      for(const item of delta.reasoning_details) {
-        const detail=record(item);
-        // Opaque encrypted continuation payloads stay out of visible reasoning.
+      if(this.state.finish_reason!==null)throw new StreamError();
+      let details:Record<string,unknown>[];try{details=opaque(delta.reasoning_details);}catch{throw new StreamError();}
+      for(const detail of details) {
+        const previous=detail.index==null?undefined:this.details.find(x=>x.index===detail.index);
+        if(previous) {
+          for(const [key,value] of Object.entries(detail)) {
+            if(['data','text','summary'].includes(key)) {
+              if(typeof value!=='string'||previous[key]!=null&&typeof previous[key]!=='string')throw new StreamError();
+              previous[key]=String(previous[key]??'')+value;
+            } else if(previous[key]!=null&&JSON.stringify(previous[key])!==JSON.stringify(value))throw new StreamError();
+            else previous[key]=value;
+          }
+        } else this.details.push(detail);
         const text=detail.type==='reasoning.text'?detail.text:detail.type==='reasoning.summary'?detail.summary:null;
         if(text!=null && delta.reasoning==null) {
-          if(typeof text!=='string'||this.state.finish_reason!==null||/\p{Surrogate}/u.test(text))throw new StreamError();
+          if(typeof text!=='string'||/\p{Surrogate}/u.test(text))throw new StreamError();
           this.state.reasoning+=text;if(this.state.reasoning.length>1048576)throw new StreamError();
         }
       }
+      try{this.state.opaque_json=JSON.stringify(opaque(this.details));}catch{throw new StreamError();}
+    }
+    if(delta.images!=null)throw new StreamError(); // Dedicated Image API is unsupported here.
+    if(delta.audio!=null) {
+      if(!this.request.plan.stream||this.state.finish_reason!==null||!this.request.plan.output_modalities?.includes('audio'))throw new StreamError();
+      try {
+        const audio=record(delta.audio);
+        if(audio.data!=null) {
+          if(typeof audio.data!=='string')throw new StreamError();
+          const bytes=bytes64(audio.data);this.audioBytes+=bytes.length;
+          if(this.audioBytes>65536)throw new StreamError();this.audio.push(bytes);
+        }
+        if(audio.transcript!=null) {
+          if(typeof audio.transcript!=='string'||/\p{Surrogate}/u.test(audio.transcript))throw new StreamError();
+          this.state.text+=audio.transcript;if(this.state.text.length>1048576)throw new StreamError();
+        }
+      }catch{throw new StreamError();}
     }
     if (delta.refusal != null) this.refusal=true;
     if (delta.tool_calls != null) {
@@ -144,6 +175,10 @@ export class ChatStream {
     try { this.consume(this.decoder.decode()); } catch { throw new StreamError(); }
     // SSE requires a blank line terminating the final event; EOF is not [DONE].
     if (this.line || this.data.length || !this.ended || !this.state.finish_reason) throw new StreamError();
+    if(this.request.plan.output_modalities?.includes('audio')&&!this.refusal) {
+      if(!this.audio.length)throw new StreamError();
+      try{this.state.artifacts=[artifact('audio/wav',Buffer.concat(this.audio).toString('base64'))];}catch{throw new StreamError();}
+    }
     if (this.tools.size && this.state.finish_reason!=='tool_calls') throw new StreamError();
     if (this.state.finish_reason==='tool_calls') {
       if (!this.tools.size || this.tools.size>32) throw new StreamError();

@@ -18,3 +18,17 @@ def test_continuation_cannot_inherit_existing_grants():
     assert AssistantAction(action='continue',request_id='old').action == 'continue'
     # Runtime requires a completed tool turn; this DTO conveys no spending or sharing grant.
     with pytest.raises(ValidationError):SpendBinding(dispatch_id='d',turn_id='t',session_id='s',profile_id='p',payload_sha256='not-digest',binding_sha256='b'*64,currency='USD',estimate_version='explicit-bounded-exposure-v1')
+
+@pytest.mark.parametrize('field,value',[('consent','forever'),('retention','permanent'),('mime','image/svg+xml'),('path','/tmp/private'),('url','https://sink.invalid')])
+def test_attachments_cannot_carry_unbounded_or_implicit_authority(field,value):
+    attachment=dict(name='private.txt',mime='text/plain',data_base64='eA==',processing='local-excerpt',provenance='explicit file selection',consent='this-turn',retention='session')
+    with pytest.raises(ValidationError):AssistantPrepare.model_validate(BASE|dict(attachments=[attachment|{field:value}]))
+
+
+def test_typed_media_and_attachment_contracts_preserve_old_text_inputs():
+    from poliscope_engine.contracts.generation import GenerationMessage
+    assert AssistantPrepare.model_validate(BASE).attachments == []
+    assert AssistantAction(action='delete',request_id='turn').action == 'delete'
+    assert GenerationMessage(role='user',content=[dict(type='image_url',image_url=dict(url='data:image/png;base64,eA==',detail='low'))]).content[0].type == 'image_url'
+    with pytest.raises(ValidationError):GenerationMessage(role='user',content=[dict(type='execute',code='evil')])
+    with pytest.raises(ValidationError):GenerationMessage(role='user',content=[dict(type='image_url',image_url=dict(url='x',detail='high'))])

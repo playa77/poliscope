@@ -1,3 +1,5 @@
+import { writeFile } from 'node:fs/promises';
+import { bytes64 } from './assistant-content';
 import { AssistantController } from './assistant';
 import { spendingService } from './spending';
 import { generationTransport } from './provider-network';
@@ -46,7 +48,11 @@ if (ownsData) void app.whenReady().then(async () => {
   providers = new ProviderController(app.getPath('userData'), safeStorage,
     keyTestTransport(options => net.request({ ...options, session: providerSession })), process.platform,
     metadataTransport(options => net.request({ ...options, session: providerSession })));
-  assistant = new AssistantController(providers, generationTransport(options => net.request({...options, session:providerSession})), spendingService(app.isPackaged, app.getAppPath(), process.resourcesPath, app.getPath('userData')), () => engine.assistantContext, selection => engine.groundAssistant(selection), edit => engine.previewWorkbench(edit));
+  assistant = new AssistantController(providers, generationTransport(options => net.request({...options, session:providerSession})), spendingService(app.isPackaged, app.getAppPath(), process.resourcesPath, app.getPath('userData')), () => engine.assistantContext, selection => engine.groundAssistant(selection), edit => engine.previewWorkbench(edit), async (artifact,signal) => {
+    const extension=artifact.mime==='image/png'?'png':'wav';
+    const result=await dialog.showSaveDialog(window!,{title:'Save untrusted provider artifact to a new file',defaultPath:`assistant-artifact.${extension}`,filters:[{name:'Provider artifact',extensions:[extension]}]});
+    if(!signal.aborted&&!result.canceled&&result.filePath)await writeFile(result.filePath,bytes64(artifact.data_base64),{flag:'wx',mode:0o600});
+  });
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',

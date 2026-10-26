@@ -1,3 +1,4 @@
+import { wireMessages, mediaTokenBound } from './assistant-content';
 /** Pure main-only construction. This module cannot obtain keys or dispatch.
  * WP-045 consumes these plans only after sharing and spend gates are available.
  */
@@ -68,9 +69,18 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
     }
   }
   if (pendingCalls.size) fail('invalid-plan');
-  const body: Record<string,unknown> = { model:p.model, messages:input.messages, stream:input.stream };
+  const outputs=input.output_modalities??['text'];
+  if(new Set(outputs).size!==outputs.length||!outputs.includes('text'))fail('invalid-plan');
+  if(outputs.includes('image'))fail('unsupported-control','image-api-required');
+  if(outputs.includes('audio')&&ids.some(id=>!['openai/gpt-4o-audio-preview','openai/gpt-4o-mini-audio-preview','openai/gpt-audio'].includes(id)))fail('unsupported-control','audio-format-unverified');
+  if(outputs.includes('audio')&&(compatible||!input.stream||input.tools?.length||input.response_format.type!=='text'))fail('unsupported-control','audio-stream-required');
+  if(input.messages.some(m=>m.reasoning_details_json!=null)&&(compatible||ids.length!==1||r.allow_fallbacks||r.only.length!==1))fail('unsupported-control','reasoning_details');
+  for(const id of ids)try{mediaTokenBound(input.messages,id);}catch{fail('unsupported-control','media-accounting');}
+  const body: Record<string,unknown> = { model:p.model, messages:wireMessages(input.messages), stream:input.stream };
   const parameters = new Set<string>();
   const selected = (key: string, value: unknown) => { body[key] = value; parameters.add(key); };
+  if(outputs.length>1)selected('modalities',outputs);
+  if(outputs.includes('audio'))selected('audio',{voice:'alloy',format:'wav'});
   const decimal = (value: string, low: number, high: number, key: string, exclusiveLow = false) => {
     const number = Number(value);
     if (!Number.isFinite(number) || number < low || number > high || (exclusiveLow && number === low)) fail('invalid-control',key);
@@ -150,7 +160,10 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
     if (!fresh(m.observed_at,now)) fail('stale-metadata');
     if ((!compatible && m.source !== 'openrouter:/models') || (compatible && !m.source.startsWith('declared:'))) fail('capability-unknown');
     if (m.input_modalities === null || m.output_modalities === null || !m.input_modalities.includes('text') || !m.output_modalities.includes('text')) fail('capability-unknown','text');
-    for (const capability of ['text',...(tools.length ? ['tools'] : []),...(format.type === 'json_schema' ? ['structured_output'] : []),...(g.reasoning ? ['reasoning'] : [])] as (keyof typeof m.capabilities)[]) {
+    const media=new Set(input.messages.flatMap(message=>typeof message.content==='string'?[]:message.content.flatMap(part=>part.type==='image_url'?['image']:part.type==='input_audio'?['audio']:[])));
+    for(const modality of media)if(!m.input_modalities.includes(modality))fail('capability-unknown',modality);
+    for(const modality of outputs)if(!m.output_modalities.includes(modality))fail('capability-unknown',modality);
+    for (const capability of ['text',...media,...outputs.filter(x=>x!=='text'),...(tools.length ? ['tools'] : []),...(format.type === 'json_schema' ? ['structured_output'] : []),...(g.reasoning ? ['reasoning'] : [])] as (keyof typeof m.capabilities)[]) {
       if (p.capabilities[capability] === 'unsupported' || m.capabilities[capability] !== 'supported') fail('capability-unknown',capability);
     }
     if (!compatible && m.routing !== 'supported') fail('capability-unknown','provider');
