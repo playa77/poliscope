@@ -7,8 +7,10 @@ session ownership/deletion, streamed private WAV artifacts and opaque compatible
 history are accepted under SV; [receipt](WP-047-validation.json). The
 [explicit matrix](../../assistant_modalities.md) records unavailable dedicated image
 generation/video/PDF paths; no universal modality or M6/G6 claim. All 27 integrated
-Linux scenarios and three final rebuilt affected scenarios pass. Publication is
-pending; merge remains unauthorized. Reassess WP-048 after review/merge.
+Linux scenarios and three final rebuilt affected scenarios pass. Implementation is committed at `9d99814`. Automatic approval review blocked
+publication pending explicit user authorization to push this branch to
+`playa77/poliscope` and open its PR. No push/PR occurred; merge remains unauthorized.
+Reassess WP-048 after review/merge.
 
 
 **Current delivery, 2026-10-26:** [WP-046 in full](WP-046.md), on fetched main
