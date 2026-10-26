@@ -31,12 +31,13 @@
   "kind": "work_package",
   "scope": "WP-047 bounded typed modalities/attachments, session ownership and omission, streamed audio artifacts, opaque reasoning and compatible history; explicit unsupported matrix",
   "publication": {
-    "status": "authorized; publication pending",
+    "status": "published; regular PR open",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-047-modalities",
     "action": "Push completed branch and open a regular PR against main; do not merge",
     "implementation_commit": "9d99814",
     "reason": "The requesting user explicitly authorized pushing codex/wp-047-modalities to playa77/poliscope and opening its PR.",
-    "next_action": "Push the authorized branch and open a regular PR against main; do not merge."
+    "next_action": "Review PR #118; do not merge without user authorization.",
+    "url": "https://github.com/playa77/poliscope/pull/118"
   }
 }

@@ -10,7 +10,8 @@ generation/video/PDF paths; no universal modality or M6/G6 claim. All 27 integra
 Linux scenarios and three final rebuilt affected scenarios pass. Implementation is committed at `9d99814`. Automatic approval review blocked
 publication pending explicit user authorization to push this branch to
 `playa77/poliscope` and open its PR. The user subsequently explicitly authorized this branch push and PR; publication
-may proceed. Merge remains unauthorized.
+has completed: [PR #118](https://github.com/playa77/poliscope/pull/118) is open against `main`.
+Merge remains unauthorized.
 Reassess WP-048 after review/merge.
 
 
