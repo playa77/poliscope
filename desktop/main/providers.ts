@@ -1,3 +1,5 @@
+import { adapterFor, metadataCode, CATALOG_TTL, type MetadataTransport } from './provider-adapters';
+import type { MetadataAction, ModelMetadata, CatalogPage, EndpointMetadata } from '../../contracts/provider';
 /** Main-only settings, credential vault and fixed, non-billable key tests. */
 import { mkdir, open, readFile, rename, unlink, stat, readdir } from 'node:fs/promises';
 import { join, isAbsolute } from 'node:path';
@@ -5,11 +7,11 @@ import { randomUUID } from 'node:crypto';
 import type { ProviderProfile, ProviderReply, ProviderView, ProviderList, ProviderSave, ProviderKeyAction, ProviderReplaceKey } from '../../contracts/provider';
 import schema from '../../contracts/provider.schema.json';
 import { valid, type Schema } from './wire';
-export type ProviderRequest = ProviderList | ProviderSave | ProviderKeyAction | ProviderReplaceKey;
+export type ProviderRequest = ProviderList | ProviderSave | ProviderKeyAction | ProviderReplaceKey | MetadataAction;
 const defs = schema.$defs as Record<string, Schema>;
 export const providerValid = (input: unknown, type: string) => valid(input, defs[type], defs);
 export function providerRequestValid(input: unknown): input is ProviderRequest {
-  return ['ProviderList', 'ProviderSave', 'ProviderKeyAction', 'ProviderReplaceKey'].some(t => providerValid(input, t));
+  return ['ProviderList', 'ProviderSave', 'ProviderKeyAction', 'ProviderReplaceKey', 'MetadataAction'].some(t => providerValid(input, t));
 }
 export interface Protection {
   isEncryptionAvailable(): boolean;
@@ -35,18 +37,18 @@ export function providerEndpoint(value: string, kind: ProviderProfile['kind']): 
   url.pathname = url.pathname.replace(/\/+$/, '');
   return url.href.replace(/\/+$/, '');
 }
-async function boundedRead(path: string): Promise<Buffer> {
+async function boundedRead(path: string, maximum = MAX_FILE): Promise<Buffer> {
   const handle = await open(path, 'r');
   try {
-    if ((await handle.stat()).size > MAX_FILE) throw new Error('Settings too large');
-    const buffer = Buffer.alloc(MAX_FILE + 1);
+    if ((await handle.stat()).size > maximum) throw new Error('Settings too large');
+    const buffer = Buffer.alloc(maximum + 1);
     let offset = 0;
     while (offset < buffer.length) {
       const { bytesRead } = await handle.read(buffer, offset, buffer.length - offset, null);
       if (!bytesRead) break;
       offset += bytesRead;
     }
-    if (offset > MAX_FILE) throw new Error('Settings too large');
+    if (offset > maximum) throw new Error('Settings too large');
     return buffer.subarray(0, offset);
   } finally { await handle.close(); }
 }
@@ -71,7 +73,8 @@ export class ProviderController {
   private loaded = false;
   private closed = false;
   private directory: string;
-  constructor(directory: string, private protection: Protection, private test: KeyTest, private platform = process.platform) {
+  private metadataCache = new Map<string, CatalogCache>();
+  constructor(directory: string, private protection: Protection, private test: KeyTest, private platform = process.platform, private metadata?: MetadataTransport) {
     if (!isAbsolute(directory)) throw new Error('Invalid provider store');
     // App userData only, outside every selected civilization/archive store.
     this.directory = join(directory, 'providers');
@@ -167,6 +170,7 @@ export class ProviderController {
     if (!providerRequestValid(input) || Buffer.byteLength(JSON.stringify(input)) > 16_384) throw new Error('Invalid provider request');
     // No key-bearing request is retained on this controller or in a retry queue.
     const query = structuredClone(input);
+    if (query.action === 'catalog' || query.action === 'refresh-catalog' || query.action === 'model-endpoints' || query.action === 'key-status') return this.metadataRequest(query);
     const prepared = await this.serialize(async (): Promise<{ reply?: ProviderReply; testing?: Promise<Status> }> => {
       await this.load();
       if (this.closed) throw new Error('Provider service stopped');
@@ -181,7 +185,10 @@ export class ProviderController {
         if (row && row.revision >= Number.MAX_SAFE_INTEGER) throw new Error('Profile revision limit');
         if (row) {
           this.cancel(id);
-          if (row.profile.endpoint !== profile.endpoint || row.profile.kind !== profile.kind) await this.erase(row);
+          if (row.profile.endpoint !== profile.endpoint || row.profile.kind !== profile.kind) {
+            await this.erase(row); this.metadataCache.delete(id);
+            await unlink(this.cachePath(id)).catch(error => { if (!missing(error)) throw error; });
+          }
         }
         const updated = { profile, revision: (row?.revision ?? 0) + 1, key_ref: 'credential-' + id };
         try { await this.persist([...this.rows.filter(r => r !== row), updated]); }
@@ -199,7 +206,7 @@ export class ProviderController {
       if (row.revision >= Number.MAX_SAFE_INTEGER) throw new Error('Profile revision limit');
       try {
         await this.erase(row);
-        if (query.action === 'delete') await this.persist(this.rows.filter(r => r !== row));
+        if (query.action === 'delete') { await this.persist(this.rows.filter(r => r !== row)); this.metadataCache.delete(id); await unlink(this.cachePath(id)).catch(error => { if (!missing(error)) throw error; }); }
         else if (query.action === 'replace-key') {
           if (this.closed) throw new Error('Provider stopped');
           if (this.secure()) {
@@ -218,6 +225,104 @@ export class ProviderController {
     if (this.closed) return { provider_contract: 1, profiles: [], protection: 'session-only', status: 'cancelled' };
     return this.serialize(() => this.snapshot(result));
   }
+  private cachePath(id: string) { return join(this.directory, 'catalog-' + id + '.json'); }
+  private async cache(row: Row): Promise<CatalogCache> {
+    const existing = this.metadataCache.get(row.profile.id);
+    if (existing?.binding === this.binding(row)) return existing;
+    let cached: CatalogCache = { version:1, binding:this.binding(row), fetched_at:null, models:[], endpoints:{} };
+    try {
+      const parsed = JSON.parse((await boundedRead(this.cachePath(row.profile.id), 8 * 1024 * 1024)).toString('utf8'));
+      if (parsed.version !== 1 || parsed.binding !== cached.binding || !Array.isArray(parsed.models) || parsed.models.length > 10000
+          || !(parsed.fetched_at === null || validTime(parsed.fetched_at)) || !parsed.endpoints || typeof parsed.endpoints !== 'object' || Array.isArray(parsed.endpoints)
+          || Object.keys(parsed.endpoints).length > 32 || !parsed.models.every((m: unknown) => providerValid(m, 'ModelMetadata'))
+          || !Object.values(parsed.endpoints).every(e => providerValid(e, 'EndpointMetadata'))) throw new Error('Invalid cache');
+      cached = parsed;
+    } catch { /* Disposable metadata is never accepted-result evidence. */ }
+    this.metadataCache.set(row.profile.id, cached); return cached;
+  }
+  private page(row: Row, cached: CatalogCache, query: MetadataAction, fresh = false): CatalogPage {
+    const search = (query.search ?? '').toLowerCase();
+    const models = cached.models.filter(m => (m.id + ' ' + m.name).toLowerCase().includes(search));
+    return { profile_id:row.profile.id, endpoint:row.profile.endpoint, fetched_at:cached.fetched_at,
+      state:cached.fetched_at === null ? 'empty' : Date.now() - Date.parse(cached.fetched_at) >= CATALOG_TTL ? 'stale' : fresh ? 'fresh' : 'cached',
+      total:models.length, offset:query.offset ?? 0, models:models.slice(query.offset ?? 0, (query.offset ?? 0) + 5) };
+  }
+  private async metadataRequest(query: MetadataAction): Promise<ProviderReply> {
+    const prepared = await this.serialize(async () => {
+      await this.load();
+      const row = this.rows.find(r => r.profile.id === query.profile_id);
+      if (!row || row.revision !== query.expected_revision) return { reply:await this.snapshot('stale-profile') };
+      const cache = await this.cache(row);
+      if (query.action === 'catalog') return { reply:{ ...await this.snapshot('metadata-ready'), catalog:this.page(row, cache, query), endpoints:Object.hasOwn(cache.endpoints, query.model_id ?? '') ? cache.endpoints[query.model_id ?? ''] : null } };
+      const adapter = adapterFor(row.profile.kind);
+      const route = query.action === 'refresh-catalog' ? '/models' : query.action === 'key-status' ? row.profile.kind === 'openrouter' ? '/key' : undefined : adapter.endpointRoute(query.model_id ?? '');
+      if (!route || !this.metadata) return { reply:await this.snapshot('metadata-unsupported') };
+      const key = await this.secret(row);
+      if (!key) return { reply:await this.snapshot('key-unavailable') };
+      this.cancel(row.profile.id);
+      if (this.tests.size >= 8) return { reply:await this.snapshot('network-failed') };
+      const controller = new AbortController(); this.tests.set(row.profile.id, controller);
+      // Start under mutation ordering, await outside it so removal cancels.
+      const pending = this.fetchMetadata(row.profile.endpoint + route, key, controller);
+      return { row, cache, adapter, controller, pending };
+    });
+    if (prepared.reply) return prepared.reply;
+    const { row, cache, adapter, controller } = prepared;
+    const result = await prepared.pending!;
+    if (this.closed) return { provider_contract:1, profiles:[], protection:'session-only', status:'cancelled' };
+    return this.serialize(async () => {
+      const current = this.rows.find(r => r.profile.id === row!.profile.id);
+      if (controller!.signal.aborted || current !== row || this.tests.get(row!.profile.id) !== controller) {
+        if (this.tests.get(row!.profile.id) === controller) this.tests.delete(row!.profile.id);
+        return this.snapshot('cancelled');
+      }
+      this.tests.delete(row!.profile.id);
+      if (!result) return { ...await this.snapshot('network-failed'), catalog:this.page(row!, cache!, query) };
+      const status = metadataCode(result.code);
+      if (status !== 'metadata-ready') return { ...await this.snapshot(status), catalog:this.page(row!, cache!, query) };
+      let next = structuredClone(cache!);
+      const observed = new Date().toISOString();
+      let endpoints: EndpointMetadata | null = null;
+      try {
+        if (query.action === 'key-status') return { ...await this.snapshot(status), key_metadata:adapter!.key(result.data, observed) };
+        if (query.action === 'refresh-catalog') {
+          const models = adapter!.models(result.data, observed), ids = new Set(models.map(m => m.id));
+          if (!models.every(model => providerValid(model, 'ModelMetadata'))) throw new Error('Invalid normalized metadata');
+          next.models = [...models, ...next.models.filter(m => !ids.has(m.id)).map(m => ({ ...m, available:false }))];
+          if (next.models.length > 10000) throw new Error('Catalog history capacity');
+          next.fetched_at = observed;
+        } else {
+          endpoints = adapter!.endpoints(result.data, query.model_id ?? '', observed);
+          if (!providerValid(endpoints, 'EndpointMetadata')) throw new Error('Invalid normalized metadata');
+          // Bounded endpoint cache; expired entries can be refreshed deliberately.
+          const entries = Object.entries(next.endpoints).filter(([id]) => id !== query.model_id).slice(-31);
+          next.endpoints = Object.fromEntries([...entries, [query.model_id ?? '', endpoints]]);
+        }
+        const encoded = JSON.stringify(next);
+        if (Buffer.byteLength(encoded) > 8 * 1024 * 1024) throw new Error('Catalog capacity');
+      } catch { return { ...await this.snapshot('metadata-invalid'), catalog:this.page(row!, cache!, query) }; }
+      try { await atomicWrite(this.cachePath(row!.profile.id), JSON.stringify(next)); }
+      catch { return { ...await this.snapshot('storage-failed'), catalog:this.page(row!, cache!, query) }; }
+      this.metadataCache.set(row!.profile.id, next);
+      return { ...await this.snapshot(status), catalog:this.page(row!, next, query, true), endpoints };
+    });
+  }
+  private async fetchMetadata(url: string, key: string, controller: AbortController): Promise<{ code:number; data:unknown } | undefined> {
+    const timer = setTimeout(() => controller.abort(), 15000);
+    const aborted = new Promise<never>((_, reject) => controller.signal.addEventListener('abort', () => reject(new Error('Cancelled')), { once:true }));
+    try {
+      const response = await Promise.race([this.metadata!(url, key, controller.signal), aborted]);
+      if (response.code < 200 || response.code >= 300) return { code:response.code, data:null };
+      if (Buffer.byteLength(response.body) > 8 * 1024 * 1024) return { code:200, data:null };
+      let data: unknown;
+      try { data = JSON.parse(response.body); } catch { return { code:200, data:null }; }
+      // Reject credential echoes, including escaped JSON strings, before either
+      // raw forward-compatible model fields or allowlisted account fields escape.
+      if (JSON.stringify(data).includes(JSON.stringify(key).slice(1,-1))) return { code:200, data:null };
+      return { code:response.code, data };
+    } catch { return undefined; }
+    finally { clearTimeout(timer); }
+  }
   async close() {
     this.closed = true;
     for (const test of this.tests.values()) test.abort();
@@ -227,3 +332,6 @@ export class ProviderController {
     finally { clearTimeout(timer); this.sessions.clear(); }
   }
 }
+
+type CatalogCache = { version:1; binding:string; fetched_at:string | null; models:ModelMetadata[]; endpoints:Record<string, EndpointMetadata> };
+const validTime = (value: unknown): value is string => typeof value === 'string' && value.length <= 256 && Number.isFinite(Date.parse(value));

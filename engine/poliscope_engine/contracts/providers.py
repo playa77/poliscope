@@ -70,7 +70,74 @@ class ProviderReplaceKey(Contract):
     key: Annotated[str, Field(min_length=1, max_length=4096, pattern=r'^[!-~]+$')]
 
 
-ProviderRequest = Annotated[Union[ProviderList, ProviderSave, ProviderKeyAction, ProviderReplaceKey], Field(discriminator='action')]
+
+
+class MetadataAction(Contract):
+    action: Literal['catalog', 'refresh-catalog', 'model-endpoints', 'key-status']
+    profile_id: ProfileId
+    expected_revision: Revision
+    search: Annotated[str, Field(max_length=256)] = ''
+    offset: Annotated[int, Field(ge=0, le=10000)] = 0
+    model_id: Annotated[str, Field(max_length=256)] = ''
+
+
+class ModelMetadata(Contract):
+    id: Text
+    name: Text
+    available: bool
+    observed_at: Text
+    source: Text
+    context_length: Annotated[int, Field(ge=1, le=9007199254740991)] | None
+    max_output_tokens: Annotated[int, Field(ge=1, le=9007199254740991)] | None
+    input_modalities: Annotated[list[Text], Field(max_length=64)] | None
+    output_modalities: Annotated[list[Text], Field(max_length=64)] | None
+    supported_parameters: Annotated[list[Text], Field(max_length=128)] | None
+    capabilities: ProviderCapabilities
+    pricing: Annotated[dict[Text, Text], Field(max_length=64)] | None
+    routing: Support
+    # Open metadata survives schema evolution; bounded JSON data, never code.
+    raw_json: Annotated[str, Field(max_length=32768)]
+
+
+class CatalogPage(Contract):
+    profile_id: ProfileId
+    endpoint: Annotated[str, Field(max_length=2048)]
+    fetched_at: Text | None
+    state: Literal['fresh', 'cached', 'stale', 'empty']
+    total: Annotated[int, Field(ge=0, le=10000)]
+    offset: Annotated[int, Field(ge=0, le=10000)]
+    models: Annotated[list[ModelMetadata], Field(max_length=20)]
+
+
+class ProviderEndpointMetadata(Contract):
+    provider_name: Text
+    context_length: Annotated[int, Field(ge=1, le=9007199254740991)] | None
+    max_output_tokens: Annotated[int, Field(ge=1, le=9007199254740991)] | None
+    supported_parameters: Annotated[list[Text], Field(max_length=128)] | None
+    capabilities: ProviderCapabilities
+    pricing: Annotated[dict[Text, Text], Field(max_length=64)] | None
+
+
+class EndpointMetadata(Contract):
+    model_id: Text
+    observed_at: Text
+    source: Text
+    providers: Annotated[list[ProviderEndpointMetadata], Field(max_length=256)]
+    # Preserves per-provider prices, context, parameter and future fields.
+    raw_json: Annotated[str, Field(max_length=262144)]
+
+
+class KeyMetadata(Contract):
+    observed_at: Text
+    source: Text
+    limit: Annotated[str, Field(max_length=64)] | None
+    limit_remaining: Annotated[str, Field(max_length=64)] | None
+    usage: Annotated[str, Field(max_length=64)] | None
+    is_free_tier: bool | None
+    # Provider-reported metadata, not a local spending authorization.
+
+
+ProviderRequest = Annotated[Union[ProviderList, ProviderSave, ProviderKeyAction, ProviderReplaceKey, MetadataAction], Field(discriminator='action')]
 
 
 class ProviderView(Contract):
@@ -83,7 +150,11 @@ class ProviderReply(Contract):
     provider_contract: Literal[1]
     profiles: Annotated[list[ProviderView], Field(max_length=64)]
     protection: Literal['os-protected', 'session-only']
-    status: Literal['ready', 'saved', 'removed', 'test-accepted', 'unauthorized', 'redirect-blocked', 'cancelled', 'network-failed', 'provider-rejected', 'key-unavailable', 'storage-failed', 'stale-profile']
+    status: Literal['ready', 'saved', 'removed', 'test-accepted', 'unauthorized', 'redirect-blocked', 'cancelled', 'network-failed', 'provider-rejected', 'key-unavailable', 'storage-failed', 'stale-profile', 'metadata-ready', 'metadata-invalid', 'metadata-unsupported', 'rate-limited', 'credits-required', 'model-unavailable']
+
+    catalog: CatalogPage | None = None
+    endpoints: EndpointMetadata | None = None
+    key_metadata: KeyMetadata | None = None
 
 
 provider_adapter = TypeAdapter(Union[ProviderRequest, ProviderReply])

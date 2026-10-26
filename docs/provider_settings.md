@@ -52,3 +52,7 @@ No filesystem secure erasure is promised; old user backups, OS recovery and an
 OS-account compromise are outside this protection. Neither tests nor deletion
 alter simulation history. Paid generation, automatic retries, spending, context
 sharing, streaming and discovery are not implemented by these settings.
+
+Model discovery, cached search, provider capabilities and safe key-limit
+inspection are described in [provider metadata](provider_metadata.md), including
+current official schema evidence and the distinction from live generation.

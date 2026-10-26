@@ -526,3 +526,13 @@ Deleting active private material does not erase previous backups, WAL, filesyste
 recovery or shared copies; users dispose of backups explicitly.
 
 `provider.schema.json` / `provider.ts` define settings-only provider IPC v1. The canonical Python DTOs generate the contract but Python never receives key requests. Replies expose preferences and storage status only. Main validates endpoint identities separately and owns encryption and fixed metadata networking; the renderer has no arbitrary HTTP primitive.
+
+Provider metadata (WP-043) extends `provider-settings v1` additively with bounded
+`MetadataAction`, `ModelMetadata`, `CatalogPage`, `EndpointMetadata` and
+`KeyMetadata` DTOs. Replies optionally include catalog/provider/account evidence;
+old settings replies remain valid. Python defines these schemas only. Main owns
+metadata transport, credentials and cache; no engine protocol method is added.
+Model/endpoint unknown fields are bounded JSON strings, rendered only as text.
+Five-model reply pages and a 2 MiB authorized IPC bound keep complete metadata
+separate from the 8 MiB main transport/cache limit. See
+[metadata conventions](../docs/provider_metadata.md) for source and freshness rules.
