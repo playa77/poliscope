@@ -29,5 +29,13 @@
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-049 assistant/provider workspace, contextual interview review, retained turn navigation, optional private local transcripts, explicit qualitative design promotion and independent deletion"
+  "scope": "Full WP-049 assistant/provider workspace, contextual interview review, retained turn navigation, optional private local transcripts, explicit qualitative design promotion and independent deletion",
+  "publication": {
+    "status": "blocked by automatic approval review",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-049-workspace",
+    "implementation_commit": "239f724",
+    "reason": "Automatic approval review rejected the push: the current user request authorizes implementation but not explicit publication of repository code/history to this GitHub destination. No push, PR or indirect upload occurred.",
+    "next_action": "Obtain explicit user authorization to push codex/wp-049-workspace to playa77/poliscope and open its regular PR against main. Do not merge."
+  }
 }
