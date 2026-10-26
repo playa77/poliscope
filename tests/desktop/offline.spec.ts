@@ -148,7 +148,7 @@ test('E2E-006.a actual child crash failed save confirmed identity and restart', 
     const writer = lockOwner = spawn(resolve('.venv/bin/python'), ['-I', '-c', "import sys,sqlite3; from pathlib import Path; c=sqlite3.connect(Path(sys.argv[1])/'poliscope.sqlite3'); c.execute('BEGIN IMMEDIATE'); print('locked',flush=True); sys.stdin.readline(); c.rollback(); c.close()", worlds]);
     await new Promise<void>((resolve, reject) => { writer.stdout.once('data', () => resolve()); writer.once('error', reject); });
     await press(page, page.getByRole('button', { name: 'Apply draft', exact: true }));
-    await expect(interview.getByRole('alert')).toContainText('Apply confirmation unavailable');
+    await expect(interview.getByRole('alert')).toContainText('Save unconfirmed. Preview remains unsaved in this view.');
     await expect(page.getByLabel('Selected state')).toContainText(root.revision_id);
     await expect(page.getByText('Unsaved revision draft:', { exact: false })).toBeVisible();
     await new Promise<void>((resolve, reject) => { writer.once('exit', code => code === 0 ? resolve() : reject(new Error('Lock owner failed'))); writer.stdin.end('release\n'); });

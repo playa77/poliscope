@@ -250,6 +250,51 @@ class Revisions:
             self.store.complete_operation(scope, key, binding, outcome.model_dump_json())
             return outcome
 
+    def migration_status(self, context, operation_id, branch_id, name):
+        """Main-authorized recovery before loading the currently installed model."""
+        from poliscope_engine.contracts.recovery import ModelMigration
+        scope = self._context(context)
+        key = digest(dict(kind='model-migration', operation_id=operation_id))
+        row = self.store._connection.execute(
+            'SELECT binding FROM operations WHERE context_id=? AND id=?', (scope, key)).fetchone()
+        if row is None:
+            return None
+        saved = ModelMigration.model_validate(json.loads(row[0])['request'])
+        if (saved.context != context or saved.operation_id != operation_id or
+                saved.new_branch_id != branch_id or saved.name != name):
+            raise RevisionError('migration_recovery_binding_mismatch')
+        return self._operation(scope, 'model-migration', operation_id, saved)[2]
+
+    def migrate_model(self, request):
+        """Player-approved compatible inputs become a new branch and new evidence.
+
+        The source head is never moved. Replays return before source/head/model
+        checks, including after a restart or restored operation journal.
+        """
+        from poliscope_engine.contracts.recovery import ModelMigration
+        request = checked(ModelMigration, request)
+        scope = self._context(request.context)
+        with self.store.transaction():
+            key, binding, old = self._operation(scope, 'model-migration', request.operation_id, request)
+            if old:
+                return old
+            base = self.read(request.context)
+            if self.store.record_page(scope, self._kind(request.new_branch_id), limit=1):
+                raise RevisionError('migration_branch_exists')
+            # An explicit migration may change versions; ordinary edits cannot.
+            evidence = self._evaluate(request.inputs, request.context.civilization_id)
+            context = request.context.model_copy(update={'branch_id': request.new_branch_id,
+                'revision_id': digest(dict(migration=request))})
+            record = RevisionRecord(revision_contract=1, context=context,
+                parent_id=base.context.revision_id, inputs=request.inputs,
+                decision=EMPTY_DECISION, evidence_digest=evidence.closure_digest, applied_preview=None)
+            self._persist(scope, record, evidence)
+            self._save_branch(scope, BranchState(revision_contract=1, context=context,
+                name=request.name, sequence=0, redo=[], forked_from=request.context))
+            outcome = MutationOutcome(revision_contract=1, context=context, branch_sequence=0)
+            self.store.complete_operation(scope, key, binding, outcome.model_dump_json())
+            return outcome
+
     def _stage(self, request):
         base = self.read(request.context)
         inputs = base.inputs

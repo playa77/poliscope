@@ -1,4 +1,4 @@
-# SQLite foundation (storage schema 1)
+# SQLite foundation (storage schema 2; historical schema 1)
 
 `Store(absolute_user_data_path)` selects `poliscope.sqlite3` beneath the directory
 supplied by main. Python alone writes SQLite. A Store is thread-affine; use its
@@ -47,12 +47,23 @@ returned backup independently; it contains retained data and has its own disposa
 policy. Backups and WAL can retain older data; no secure-erasure guarantee applies.
 
 Application ID, user_version, schema structure and version history are checked.
-Only empty-database creation and storage schema 1 reopening are supported now.
-Unknown/foreign/altered schemas fail with preservation guidance; no implicit repair
-or upgrade runs. There is currently no older Poliscope schema to migrate. Before
-adding any upgrade, add an explicit migration, backup-before-migration and injected
-failure/recovery tests. Backup and migration metadata extensions require a versioned
-schema change. Full archive/historical reader support belongs to WP-010/041.
+New stores use schema 2. Writers reopen only schema 2; schema 1 remains readable
+through the trusted reader. The explicit `recovery.migrate_schema` action first
+uses SQLite backup to a new selected file, then adds recovery metadata and the
+version receipt in one FULL-synchronous transaction. Confirmed rows are unchanged.
+Both injected disk failure and process death before COMMIT leave schema 1 readable;
+after COMMIT schema 2 is readable. No automatic upgrade, repair or reset occurs.
+Unknown/foreign/altered schemas are rejected with preservation guidance.
+
+Recovery backups snapshot the database including committed WAL, accepted evidence,
+operation deduplication and historical redaction status. Separate private note and
+rationale payload stores and keys are excluded; missing payloads stay unavailable.
+Restore copies a validated backup into a new empty sandbox folder, never over the
+active database. Inspect that folder before deciding which history to continue.
+Keep the original and any backup until recovery is verified. Older backups, WAL,
+filesystem recovery and previously shared copies can retain deleted private data;
+there is no secure-erasure promise. Remove unneeded backups explicitly yourself.
+
 
 Tests use temporary synthetic databases, independent SQL assertions, process exit,
 real SQLite disk-full/write-lock errors, and live-WAL backup checks. They do not

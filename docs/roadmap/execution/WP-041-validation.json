@@ -1,0 +1,70 @@
+{
+  "version": 1,
+  "package": "WP-041",
+  "route": "solo-validated; agent review deferred",
+  "base": "e5edaeefcceb06d1755fd3b502aca8f7c3986a82",
+  "application_fingerprint": "c7c7b58894ebd4b0e17867cae9e67dd25934e979de371c755f9c612884cf70b0",
+  "tests": {
+    "engine": {
+      "count": 4860,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 618.45,
+      "candidate": "955f01b28fa664792024e16f0028784ae7dd72de223d1591bcecf60433b20a19",
+      "report_sha256": "fa055906fb8c5fb38c8b35ab93b7afeb94357b8f4e6494aa633c68ec4548ec82",
+      "run_id": "809e0605-d646-4ba1-88ce-9a7f6ce414ba"
+    },
+    "unit": {
+      "count": 242,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 105.0,
+      "candidate": "e8a2427b20672961093205fe3ec74c1bff586a95b4c95c1d4502fc17f927f890",
+      "report_sha256": "f9fd01b74fba8eadf12b8919b3a001e41559579625a68e3c6f49c828e333dc8a",
+      "run_id": "fd820477-1e13-42cf-9499-2367e7f274c9"
+    },
+    "desktop": {
+      "count": 21,
+      "failed": 0,
+      "skipped": 0,
+      "elapsed_seconds": 521.3,
+      "candidate": "e8a2427b20672961093205fe3ec74c1bff586a95b4c95c1d4502fc17f927f890",
+      "report_sha256": "031650919156a7d5cff1ae37ff454ed50839b029306865dabc0eefb80913d988",
+      "run_id": "babdb610-f26e-4a71-93e8-d84b66b50e26"
+    }
+  },
+  "new_cases": {
+    "engine": 21,
+    "unit": 2,
+    "desktop": 1
+  },
+  "checks": [
+    "Frozen Python/Node installs",
+    "Generated contracts",
+    "Content release",
+    "TypeScript",
+    "51 roadmap unittest cases",
+    "Roadmap manifest",
+    "Baseline traceability",
+    "git diff --check",
+    "Separate author inspection"
+  ],
+  "native_platforms": {
+    "linux_x64": "full packaged suite passed",
+    "windows_x64": "unrun"
+  },
+  "limits": [
+    "No independent/scientific review or cumulative G5/M5 gate claimed",
+    "Migration target is the installed workspace model; absent mechanisms reject",
+    "Database backups exclude separate private payload stores and keys; unavailable payloads remain unavailable",
+    "Older backups/WAL/filesystem/shared copies are not securely erased; disposal is user-selected",
+    "SQLite historical work is bounded to 10 seconds, backup to 15 seconds and recovery child to 30 seconds; oversize/slow sources reject with preservation guidance",
+    "Native Windows validation remains unrun"
+  ],
+  "post_engine_changes": [
+    "Updated packaged bootstrap expected API list to include recovery",
+    "Set bounded 20-second Playwright waits and a 30-second real-process overview unit deadline after observing correct serialized native reads exceed five seconds",
+    "Canonicalized migration replay identity to exclude pagination/irrelevant prior selection; affected desktop unit scenario covers restart with changed pagination. No engine sources/tests changed"
+  ],
+  "verification": "An initial packaged run competed with the engine suite; final packaged and unit suites ran sequentially after native-read timing failures were diagnosed and bounded test waits corrected. Earlier interrupted/diagnostic/timeout runs are not acceptance evidence. Engine receipt precedes desktop-only retry-identity and test wait/API-inventory corrections; engine sources and tests are unchanged; final desktop/unit candidate hashes match. Final application fingerprint reflects that desktop-only fix; full engine coverage remains applicable to unchanged engine sources. Subsequent changes are delivery documentation only; application fingerprint remains unchanged."
+}

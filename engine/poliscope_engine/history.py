@@ -6,7 +6,7 @@ import sqlite3
 import sys
 from pydantic import ValidationError
 from .contracts.history import HistoryRequest, HistoryResult, SavedEvidence
-from .storage.store import APPLICATION_ID, SCHEMA_VERSION, _SCHEMA
+from .storage.store import check_schema, StorageError
 
 MAX_BYTES = 1024 * 1024
 
@@ -23,7 +23,6 @@ def read(database: Path, context_id: str, grant: HistoryRequest, request: Histor
     if not database.is_absolute() or not database.is_file():
         raise HistoryFailure('UNREADABLE_HISTORY')
     connection = None
-    expected = sqlite3.connect(':memory:')
     try:
         connection = sqlite3.connect(database.as_uri() + '?mode=ro', uri=True, timeout=1)
         connection.enable_load_extension(False)
@@ -39,16 +38,10 @@ def read(database: Path, context_id: str, grant: HistoryRequest, request: Histor
             return int(budget <= 0)
         connection.set_progress_handler(progress, 1000)
         connection.execute('BEGIN')
-        if (connection.execute('PRAGMA application_id').fetchone()[0] != APPLICATION_ID
-                or connection.execute('PRAGMA user_version').fetchone()[0] != SCHEMA_VERSION):
-            raise HistoryFailure('UNREADABLE_HISTORY')
-        for statement in _SCHEMA:
-            expected.execute(statement)
-        query = "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type,name LIMIT 100"
-        if connection.execute(query).fetchall() != expected.execute(query).fetchall():
-            raise HistoryFailure('UNREADABLE_HISTORY')
-        if connection.execute('SELECT version FROM storage_versions ORDER BY version LIMIT 2').fetchall() != [(1,)]:
-            raise HistoryFailure('UNREADABLE_HISTORY')
+        try:
+            check_schema(connection)
+        except StorageError as exc:
+            raise HistoryFailure('UNREADABLE_HISTORY') from exc
         row = connection.execute('SELECT payload FROM evidence WHERE context_id=? AND id=?',
                                  (context_id, request.result_id)).fetchone()
         if row is None:
@@ -81,7 +74,6 @@ def read(database: Path, context_id: str, grant: HistoryRequest, request: Histor
             raise
         raise HistoryFailure('INVALID_EVIDENCE') from exc
     finally:
-        expected.close()
         if connection is not None:
             connection.close()
 

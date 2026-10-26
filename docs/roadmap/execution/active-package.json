@@ -1,36 +1,36 @@
 {
   "version": 1,
-  "package": "WP-040",
+  "package": "WP-041",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-040.md",
+  "record": "docs/roadmap/execution/WP-041.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "36f9f40a8e7fc63f955d3da180bfd710921f6f47",
-  "branch": "codex/wp-040-reports",
+  "base": "e5edaeefcceb06d1755fd3b502aca8f7c3986a82",
+  "branch": "codex/wp-041-recovery",
   "acceptance": [
     {
-      "id": "markdown",
+      "id": "schema-recovery",
       "status": "passed",
-      "evidence": "Retained inquiry/expectation/observation with optional note subtypes, original choices/alternatives, readable measurement interpretations, findings, input/state/policies, assumption/source descriptors, trace closure, versions and explicit gaps; no generated AI prose"
+      "evidence": "Explicit SQLite API backup precedes schema-1-to-2 transactional DDL; process death, disk/save/directory flush failure preserve confirmed history. Restore into a new empty folder retains operations and evidence."
     },
     {
-      "id": "typed-csv",
+      "id": "model-migration",
       "status": "passed",
-      "evidence": "Literal priority allocation 60, compatible child-minus-parent -40, definition mismatch withholding, explicit missing values, saved static and dynamic time series, rational declared laws, versioned reversible escaping and exact quantities"
+      "evidence": "Atomic native/import comparison branches with source lineage; old branch/results retained; completed migration recovery succeeds without an installed registry and across app restart."
     },
     {
-      "id": "privacy",
+      "id": "historical",
       "status": "passed",
-      "evidence": "Shared validated all-history privacy projection; default exclusions, old/current canaries, note opt-ins/subtypes, no key-file enumeration, cold imported and reduced evidence exports without runtime"
+      "evidence": "Cold native schema-1/2 catalogue/revision and portable archive reads without UI caches or model execution; absent mechanisms, unreadable schemas and reduced evidence are explicit; corruption diagnostics preserve originals."
     },
     {
       "id": "desktop",
       "status": "passed",
-      "evidence": "Main-owned save dialogs, bounded named path-free IPC and receipts, offline progress/cancel/failure, exclusive output preserving history; 2 new unit and 1 packaged scenario"
+      "evidence": "Main-owned file/folder grants, path-free bounded recovery IPC, keyboard-accessible retained facts, cancellation, safe overwrite/restore failure and visibly unconfirmed saves. Packaged cold discovery/backup/comparison/selected-backup restore passed."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "Full 4839 Python, 240 unit and 20 packaged Linux cases passed with no skips; final 26 report cases rerun; generated/content/types/roadmap/baseline and separate author inspection; Windows unrun"
+      "evidence": "Full 4860 Python, 242 unit and 21 packaged Linux cases passed without skips; generated/content/types/roadmap/baseline and separate author inspection. Native Windows unrun."
     }
   ]
 }

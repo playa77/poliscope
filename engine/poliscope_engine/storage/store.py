@@ -11,7 +11,7 @@ import sqlite3
 from typing import Iterator
 
 APPLICATION_ID = 0x504F4C49
-SCHEMA_VERSION = 1
+SCHEMA_VERSION = 2
 MAX_TEXT_BYTES = 1024 * 1024
 
 
@@ -85,6 +85,35 @@ _SCHEMA = (
 )
 
 
+_SCHEMA_V1 = _SCHEMA
+_MIGRATION_V2 = (
+    'CREATE TABLE recovery_metadata (id TEXT PRIMARY KEY NOT NULL, payload TEXT NOT NULL CHECK(json_valid(payload))) STRICT',
+    "INSERT INTO storage_versions VALUES (2, strftime('%Y-%m-%dT%H:%M:%fZ','now'))",
+)
+_SCHEMA = _SCHEMA_V1 + _MIGRATION_V2
+
+
+def check_schema(connection, *, supported=(1, 2)):
+    """Trusted schemas only; usable without opening a writer or loading models."""
+    version = connection.execute('PRAGMA user_version').fetchone()[0]
+    if connection.execute('PRAGMA application_id').fetchone()[0] != APPLICATION_ID or version not in supported:
+        raise StorageError('unsupported schema; preserve original and use a compatible reader')
+    expected = sqlite3.connect(':memory:')
+    try:
+        for statement in (_SCHEMA_V1 if version == 1 else _SCHEMA):
+            expected.execute(statement)
+        query = "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type,name"
+        if connection.execute(query).fetchall() != expected.execute(query).fetchall():
+            raise StorageError('storage schema differs; preserve original')
+        if connection.execute('SELECT version FROM storage_versions ORDER BY version').fetchall() != [(v,) for v in range(1, version + 1)]:
+            raise StorageError('invalid storage version history')
+        if connection.execute('PRAGMA quick_check').fetchall() != [('ok',)] or connection.execute('PRAGMA foreign_key_check').fetchone() is not None:
+            raise StorageError('corrupt database; preserve original and select a verified backup')
+        return version
+    finally:
+        expected.close()
+
+
 class Store:
     """One thread-affine connection. Only transaction() may delimit writes.
 
@@ -152,20 +181,7 @@ class Store:
             raise StorageError('unsupported or foreign database; preserve original and use a compatible reader')
 
     def _check_schema(self) -> None:
-        # Fail closed on a forged/truncated schema; never repair it implicitly.
-        expected = sqlite3.connect(':memory:')
-        try:
-            for statement in _SCHEMA:
-                expected.execute(statement)
-            query = "SELECT type,name,tbl_name,sql FROM sqlite_master WHERE name NOT LIKE 'sqlite_%' ORDER BY type,name"
-            if self._connection.execute(query).fetchall() != expected.execute(query).fetchall():
-                raise StorageError('storage schema differs; preserve original')
-            if self._connection.execute('SELECT version FROM storage_versions ORDER BY version').fetchall() != [(1,)]:
-                raise StorageError('invalid storage version history')
-            if self._connection.execute('PRAGMA foreign_key_check').fetchone() is not None:
-                raise StorageError('invalid storage references')
-        finally:
-            expected.close()
+        check_schema(self._connection, supported=(SCHEMA_VERSION,))
 
     @contextmanager
     def transaction(self) -> Iterator[None]:

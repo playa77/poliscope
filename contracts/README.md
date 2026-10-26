@@ -150,7 +150,7 @@ exits. Requests/responses include LF in the 1 MiB bound. Invalid requests and
 unsupported/unreadable stores return stable bounded error codes without raw data,
 SQL, paths or diagnostics. Main caps both output streams, kills after 10 seconds,
 permits one active reader per controller and rejects invalid/mismatched responses.
-Only storage schema 1 is readable; foreign/altered/future schemas are preserved
+Storage schemas 1 and 2 are readable; foreign/altered/future schemas are preserved
 with no migration. SQLite opens `mode=ro` and query-only, with extension loading
 and trusted schema disabled, exact schema validation, a statement work budget and
 bounded lengths. It reads committed WAL state; SQLite may maintain its normal
@@ -491,3 +491,36 @@ Main selects the destination through its save dialog and launches the bundled
 in `engine/poliscope_engine/REPORTS.md` and `tests/fixtures/reports/format-v1.json`.
 Archive-v1 gains an optional `note_kind` for explicitly included private notes;
 older readable histories with no subtype remain supported and labeled.
+
+
+## Recovery and explicit model comparison (WP-041)
+
+`recovery.schema.json` and `recovery.ts` are generated from canonical Python
+contracts. The named `recovery:request` IPC validates sender, arity, 16 KiB request
+and 1 MiB response. Main owns all source, backup and destination dialogs. Renderer
+requests carry only typed actions, context IDs, pagination and a comparison name;
+paths, SQL, executable definitions and arbitrary operation names are rejected.
+The one-shot `--recovery` host runs independently of numerical-engine handshake,
+with a 30-second main deadline and bounded SQLite work. Cold discovery opens
+query-only, trusted-schema-off SQLite and validates exact schemas 1/2. Archives
+pass the existing full data-only archive validator before text-only pagination.
+Missing/reduced evidence is unavailable, never silently recomputed. Unknown
+schemas, corrupt databases and corrupt archives have separate bounded diagnostics.
+
+Schema migration first creates a SQLite API backup, then applies versioned DDL
+transactionally. Restore requires a new empty folder. Compatible model migration
+is a distinct player action: validate against the installed workspace model,
+compute new evidence and atomically publish a new comparison branch with immutable
+lineage and replay identity. Source branches/results remain unchanged. Imported
+projections retain their source identities and redactions in a separately chosen
+sandbox; an atomic provenance record binds the new computation to the original
+archive/revision. No imported code or definitions enter the execution registry.
+Unsupported mechanisms reject instead of receiving invented implementations.
+Identical main-granted requests derive the same mutation identity across restart;
+uncertain requests can be retried, and confirmed outcomes replay before head or
+model checks. Different names or sources bind different operations.
+
+Database backups include retained evidence and operation journals but exclude
+separate private payload stores and keys. Their absence is reported as unavailable.
+Deleting active private material does not erase previous backups, WAL, filesystem
+recovery or shared copies; users dispose of backups explicitly.

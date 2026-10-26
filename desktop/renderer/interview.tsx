@@ -58,7 +58,7 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed }:
       const result = await window.poliscope.applyInterview({ candidate_digest: preview!.candidate_digest });
       setUncertain(false); setEdit(undefined); setPreview(undefined); onDirty(false);
       onConfirmed(result.state, result.status === 'stale' ? 'The branch changed. Nothing from this draft was applied. Review the current state and preview again.' : 'Applied one design revision. Alternatives are retained; any supplied rationale is stored privately.');
-    } catch { setError('Apply confirmation unavailable. Retry Apply with this same candidate, or reopen the confirmed branch to inspect saved history.'); }
+    } catch { setError('Save unconfirmed. Preview remains unsaved in this view. Retry Apply with this same candidate, or reopen the confirmed branch to inspect saved history.'); }
     finally { setBusy(false); }
   }
   if (question.isPending) return <p role="status">Loading the selected interview…</p>;
