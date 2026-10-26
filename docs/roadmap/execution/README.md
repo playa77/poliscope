@@ -8,8 +8,8 @@ fragmented SSE, cancellation/deliberate retry and necessary production
 parent acceptance. Final 4,904 Python plus 54 subtests, 392 desktop units,
 51 roadmap cases and all 25 packaged Linux scenarios; see [receipt](WP-045-validation.json).
 Implementation is committed at `8114efa`; automatic approval review blocked
-publication pending explicit user authorization for this branch/destination.
-No PR exists. Windows, real keychains and live providers remain unrun;
+publication initially. The user subsequently explicitly authorized this branch
+push and PR; publication may proceed. Windows, real keychains and live providers remain unrun;
 no full M6/G6 acceptance. Full WP-046 grounded integration is subsequent work.
 
 
