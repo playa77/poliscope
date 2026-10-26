@@ -36,12 +36,13 @@
   "kind": "work_package",
   "scope": "Full WP-046 grounded context, bounded read-only tools, reviewed same-turn continuations and ordinary player-approved parameter proposals",
   "publication": {
-    "status": "authorized; publication pending",
+    "status": "published; regular PR open",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-046-grounding",
     "implementation_commit": "d5f2bcb",
     "action": "Push completed branch and open a regular PR against main; do not merge",
     "reason": "The requesting user explicitly authorized pushing codex/wp-046-grounding to playa77/poliscope and opening its PR.",
-    "next_action": "Push the completed branch and open a regular PR against main; merge remains unauthorized."
+    "next_action": "Review PR #117; do not merge without user authorization.",
+    "url": "https://github.com/playa77/poliscope/pull/117"
   }
 }

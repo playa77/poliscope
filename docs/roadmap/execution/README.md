@@ -12,7 +12,8 @@ narrowing has 21 focused cases and 2 final rebuilt scenarios. See
 real provider/keychain certification and full M6/G6 acceptance remain unclaimed.
 Implementation is committed at `d5f2bcb`. Automatic approval review blocked the
 branch push initially; the requesting user subsequently explicitly authorized
-this branch push and PR. Publication may proceed.
+this branch push and PR. [Regular PR #117](https://github.com/playa77/poliscope/pull/117)
+is now open against main.
 See [the publication blocker](WP-046.md#publication-blocker).
 After authorized publication/review/merge, reassess full WP-047; do not merge without user authorization.
 
