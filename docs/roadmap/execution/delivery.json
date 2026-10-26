@@ -31,12 +31,12 @@
   "kind": "work_package",
   "scope": "WP-047 bounded typed modalities/attachments, session ownership and omission, streamed audio artifacts, opaque reasoning and compatible history; explicit unsupported matrix",
   "publication": {
-    "status": "blocked by automatic approval review",
+    "status": "authorized; publication pending",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-047-modalities",
     "action": "Push completed branch and open a regular PR against main; do not merge",
     "implementation_commit": "9d99814",
-    "reason": "Automatic approval review rejected private-code egress: the implementation request did not explicitly authorize publication to this GitHub destination.",
-    "next_action": "Request explicit user authorization to push codex/wp-047-modalities to playa77/poliscope and open its regular PR against main; do not merge."
+    "reason": "The requesting user explicitly authorized pushing codex/wp-047-modalities to playa77/poliscope and opening its PR.",
+    "next_action": "Push the authorized branch and open a regular PR against main; do not merge."
   }
 }

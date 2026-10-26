@@ -9,7 +9,8 @@ history are accepted under SV; [receipt](WP-047-validation.json). The
 generation/video/PDF paths; no universal modality or M6/G6 claim. All 27 integrated
 Linux scenarios and three final rebuilt affected scenarios pass. Implementation is committed at `9d99814`. Automatic approval review blocked
 publication pending explicit user authorization to push this branch to
-`playa77/poliscope` and open its PR. No push/PR occurred; merge remains unauthorized.
+`playa77/poliscope` and open its PR. The user subsequently explicitly authorized this branch push and PR; publication
+may proceed. Merge remains unauthorized.
 Reassess WP-048 after review/merge.
 
 
