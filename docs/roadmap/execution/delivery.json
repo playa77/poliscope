@@ -1,43 +1,43 @@
 {
   "version": 1,
-  "package": "WP-047",
+  "package": "WP-048",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-047.md",
+  "record": "docs/roadmap/execution/WP-048.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "68e1065206d1376d81d27f378386f797f2454ef8",
-  "branch": "codex/wp-047-modalities",
+  "base": "a6170b9f0cc606f1dea50b590e2928ae09ed2122",
+  "branch": "codex/wp-048-usage",
   "acceptance": [
     {
-      "id": "typed-content",
+      "id": "durable-reconciliation",
       "status": "passed",
-      "evidence": "Canonical typed parts; exact original/excerpt manifests; known-model per-fallback byte/framing/image/audio bounds; streamed WAV artifact assembly and explicit unsupported modality matrix. Public provider docs verified; no universal modality claim."
+      "evidence": "Durable per-dispatch token/outcome/generation facts, exact replay, late actuals, conservative conflicts and paginated profile recovery after restart/deletion; legacy references remain unresolved."
     },
     {
-      "id": "ownership-omission",
+      "id": "decimal-costs",
       "status": "passed",
-      "evidence": "Explicit this-turn inclusion, cleared selection after prepare, inherited private derivative ownership; no session objects in history/report/archive exports; exclusive explicit artifact export; root/child deletion and revocation; no passive SVG/CSS/media loads."
+      "evidence": "Python Decimal28 catalog and scope aggregation checked by independent Fraction fixtures; monetary JSON lexemes preserved only at documented paths; actual replaces estimate, explicit zero distinct from unknown."
     },
     {
-      "id": "reasoning-history",
+      "id": "spending-controls",
       "status": "passed",
-      "evidence": "Bounded indexed opaque reasoning retained separately from visible text; exact reviewed tool continuation; original model/endpoint/profile revision and single provider pin; incompatible model/routing requires fresh history."
+      "evidence": "Atomic turn/session/profile gates count unresolved exposure and actual overruns; concurrency 0.6+0.6 under allowance 1 grants one; continuation gates retained; explicit limit changes retain all charges and recover after denial."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4911 full Python cases plus 54 subtests; 20 final assistant contract cases; 411 full desktop units, 71 final affected units (11 new content cases), 51 roadmap cases; all 27 integrated packaged Linux scenarios plus 3 final rebuilt affected scenarios. SV; no Windows/live/provider certification."
+      "evidence": "4929 Python cases; 419 desktop units and 51 roadmap cases; final 196 engine/109 desktop affected cases; 27 packaged Linux scenarios and 3 final rebuilt affected scenarios. SV; Windows/live/keychains unclaimed."
     }
   ],
   "kind": "work_package",
-  "scope": "WP-047 bounded typed modalities/attachments, session ownership and omission, streamed audio artifacts, opaque reasoning and compatible history; explicit unsupported matrix",
+  "scope": "Full WP-048 durable usage reconciliation, Decimal costs, spending controls and usage-only recovery",
   "publication": {
     "status": "published; regular PR open",
     "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-047-modalities",
+    "branch": "codex/wp-048-usage",
     "action": "Push completed branch and open a regular PR against main; do not merge",
-    "implementation_commit": "9d99814",
-    "reason": "The requesting user explicitly authorized pushing codex/wp-047-modalities to playa77/poliscope and opening its PR.",
-    "next_action": "Review PR #118; do not merge without user authorization.",
-    "url": "https://github.com/playa77/poliscope/pull/118"
+    "implementation_commit": "1faf58b",
+    "reason": "The requesting user explicitly authorized pushing codex/wp-048-usage to playa77/poliscope and opening its regular PR against main.",
+    "next_action": "Review PR #119. Do not merge without user authorization.",
+    "url": "https://github.com/playa77/poliscope/pull/119"
   }
 }

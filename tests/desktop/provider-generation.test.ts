@@ -29,3 +29,13 @@ it('unknown tokenizer and removed models cannot acquire a context bound; complet
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[{...model,architecture:{...model.architecture,tokenizer:'Unknown'}}]})});await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:2});await expect(c.prepareGeneration(plan)).rejects.toThrow('context-unknown');
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[]})});await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:2});await expect(c.prepareGeneration(plan)).rejects.toThrow('model-unavailable');
 }));
+it('retrieves only the original OpenRouter generation route with bounded allowlisted usage',()=>fixture(async(c,metadata)=>{
+ const request=await c.prepareGeneration(plan);
+ metadata.mockResolvedValue({code:200,body:JSON.stringify({data:{id:'gen_123',model:'m',total_cost:'0.001234567890123456',tokens_prompt:5,tokens_completion:7,native_tokens_reasoning:2,secret:'private-provider-field'}})});
+ expect(await c.generationUsage(request,'gen_123')).toEqual({source:'generation-metadata',generation_id:'gen_123',actual_cost:'0.001234567890123456',actual_model:'m',normalized_input_tokens:5,normalized_output_tokens:7,reasoning_tokens:2});
+ expect(metadata.mock.calls.at(-1)?.[0]).toBe('https://openrouter.ai/api/v1/generation?id=gen_123');
+ for(const id of ['../models','other?secret=x','https://elsewhere.invalid'])await expect(c.generationUsage(request,id)).rejects.toThrow();
+ metadata.mockResolvedValue({code:200,body:JSON.stringify({data:{id:'wrong',total_cost:0}})});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
+ metadata.mockResolvedValue({code:200,body:JSON.stringify({data:{id:'gen_123',total_cost:0,secret:'synthetic-generation-key'}})});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
+ await c.request({action:'remove-key',profile_id:'p',expected_revision:2});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
+}));

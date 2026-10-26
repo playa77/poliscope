@@ -46,3 +46,18 @@ describe('bounded SSE assembly',()=> {
     const refused=new ChatStream(request);refused.push(Buffer.from(event(delta({refusal:'no'},'stop'))+'data: [DONE]\n\n'));expect(refused.end().result.status).toBe('refused');
   });
 });
+
+it('preserves precise decimal USD observations and rejects malformed prices',async()=> {
+ const {costText,usageObservation}=await import('../../desktop/main/provider-stream');
+ expect(costText(1e-7)).toBe('0.0000001');expect(costText('0.012345678901234567')).toBe('0.012345678901234567');
+ expect(JSON.parse(usageObservation({cost:'0.012345678901234567'})).cost_observation).toBe('0.012345678901234567');
+ for(const value of [-1,NaN,Infinity,'-1','USD 1',{},'0.0000000000000000001'])expect(()=>costText(value)).toThrow();
+});
+it('preserves only documented monetary JSON paths and leaves opaque nested metadata unchanged',async()=>{
+ const {providerJson,costText}=await import('../../desktop/main/provider-stream');
+ const value=providerJson('{"usage":{"cost":0.123456789012345678},"data":{"total_cost":1e-7},"text":"cost: 99","tokens":7,"choices":[{"delta":{"reasoning_details":[{"type":"reasoning.encrypted","cost":5}]}}]}') as {usage:{cost:string};data:{total_cost:string};text:string;tokens:number;choices:unknown};
+ expect(value.usage.cost).toBe('0.123456789012345678');expect(costText(value.data.total_cost)).toBe('0.0000001');expect(value.tokens).toBe(7);expect(value.text).toBe('cost: 99');
+ expect(value.choices).toEqual([{delta:{reasoning_details:[{type:'reasoning.encrypted',cost:5}]}}]);
+ expect(providerJson('{"usage":{"co\\u0073t":0.000000000000000001}}')).toEqual({usage:{cost:'0.000000000000000001'}});
+ for(const malformed of ['{"usage":{"cost":01}}','{"usage":{"cost":1x}}','{"text":"unterminated}'])expect(()=>providerJson(malformed)).toThrow();
+});

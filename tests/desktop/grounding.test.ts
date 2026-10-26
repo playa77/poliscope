@@ -29,8 +29,9 @@ async function terminal(app:AssistantController,id:string){let reply:AssistantRe
 async function first(f:ReturnType<typeof fixture>){const reply=await f.app.request(query);await f.app.request({action:'send',request_id:reply.request_id});return terminal(f.app,reply.request_id);}
 it('complete calls execute once; exact continuation needs fresh approval and distinct same-turn spending',async()=>{
  const f=fixture();const initial=await first(f);expect(initial.status).toBe('tool-calls');expect(f.ground.execute).not.toHaveBeenCalled();
+ await vi.waitFor(async()=>expect((await f.app.request({action:'status',request_id:initial.request_id})).spending).toBeDefined());
  const [next,duplicate]=await Promise.all([f.app.request({action:'continue',request_id:initial.request_id}),f.app.request({action:'continue',request_id:initial.request_id})]);
- expect(next.request_id).toBe(duplicate.request_id);expect(next.request_id).not.toBe(initial.request_id);expect(next.status).toBe('prepared');expect(f.ground.execute).toHaveBeenCalledTimes(1);expect(f.sent).toHaveLength(1);
+ expect(next.request_id).toBe(duplicate.request_id);expect(next.request_id).not.toBe(initial.request_id);expect(next.status).toBe('prepared');expect(next.spending).toBeNull();expect(f.ground.execute).toHaveBeenCalledTimes(1);expect(f.sent).toHaveLength(1);
  const body=JSON.parse(next.payload_json);expect(body.messages.at(-1)).toEqual({role:'tool',tool_call_id:'call_1_0',content:'{"value":"12","unit":"people"}'});expect(body.messages.at(-2).tool_calls[0].function.name).toBe('inspect_context');
  await f.app.request({action:'send',request_id:next.request_id});expect((await terminal(f.app,next.request_id)).status).toBe('complete');
  const reserves=f.grants.filter(q=>q.action==='reserve');expect(reserves).toHaveLength(2);expect(reserves[0].binding.turn_id).toBe(reserves[1].binding.turn_id);expect(reserves[0].binding.dispatch_id).not.toBe(reserves[1].binding.dispatch_id);expect(reserves[0].binding.payload_sha256).not.toBe(reserves[1].binding.payload_sha256);

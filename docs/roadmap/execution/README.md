@@ -1,5 +1,18 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-048 in full](WP-048.md), on fetched main
+`a6170b9` (merged WP-047 / PR #118). Durable Decimal usage reconciliation, explicit
+allowance controls and usage-only restart recovery pass parent acceptance under
+SV; [receipt](WP-048-validation.json). Full 4,929 Python cases, 419 desktop units,
+51 roadmap cases and all 27 packaged Linux scenarios pass, plus final 196 engine /
+109 desktop affected cases and 3 final rebuilt packaged scenarios. Native Windows,
+real keychains and paid/live providers remain untested; no full M6/G6 claim.
+Implementation is committed at `1faf58b`. Automatic approval review blocked
+publication initially. The user subsequently explicitly authorized pushing this
+branch to `playa77/poliscope` and opening its PR. [Regular PR #119](https://github.com/playa77/poliscope/pull/119)
+is now open against `main`; no merge was performed. Reassess WP-049 after
+review/merge. Historical delivery entries follow.
+
 **Current delivery, 2026-10-26:** [WP-047](WP-047.md), based on fetched main
 `68e1065` (merged WP-046 / PR #117), tracked in [active-package.json](active-package.json).
 Bounded typed PNG/WAV/text inputs, explicit attachment consent/provenance,

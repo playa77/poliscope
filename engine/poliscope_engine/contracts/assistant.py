@@ -2,7 +2,7 @@
 from typing import Annotated, Literal, Union
 from pydantic import Field, TypeAdapter
 from .base import Contract
-from .spending import Id, Money
+from .spending import Id, Money, SpendReply
 from .generation import GenerationResult, Attachment
 from .providers import Revision
 from .grounding import GroundingSelection
@@ -23,8 +23,13 @@ class AssistantPrepare(Contract):
     profile_limit: Money
 
 class AssistantAction(Contract):
-    action: Literal['send', 'cancel', 'status', 'revoke', 'continue', 'preview-proposal', 'delete', 'save-artifact']
+    action: Literal['send', 'cancel', 'status', 'revoke', 'continue', 'preview-proposal', 'delete', 'save-artifact', 'usage', 'reconcile', 'configure-spending', 'usage-history', 'reconcile-history']
     request_id: Id
+    lookup_dispatch: Id | None = None
+    before_dispatch: Id | None = None
+    turn_limit: Money | None = None
+    session_limit: Money | None = None
+    profile_limit: Money | None = None
     artifact_index: Annotated[int, Field(ge=0, le=1)] = 0
     proposal_index: Annotated[int, Field(ge=0, le=7)] = 0
 
@@ -48,6 +53,7 @@ class AssistantReply(Contract):
     attachments_json: Annotated[str, Field(max_length=8192)] = '[]'
     artifacts_json: Annotated[str, Field(max_length=196608)] = '[]'
     round: Annotated[int, Field(ge=0, le=3)] = 0
+    spending: SpendReply | None = None
     exposure: Money
     exposure_status: Literal['not-reserved', 'reserved', 'unresolved', 'no-send']
 

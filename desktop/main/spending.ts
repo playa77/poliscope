@@ -2,18 +2,18 @@
 import { execFile } from 'node:child_process';
 import { join } from 'node:path';
 import { engineCommand } from './engine';
-import type { SpendReserve, SpendTransition, SpendReply } from '../../contracts/spending';
+import type { SpendReserve, SpendTransition, SpendObserve, SpendConfigure, SpendHistory, SpendReply } from '../../contracts/spending';
 import schema from '../../contracts/spending.schema.json';
 import { valid, type Schema } from './wire';
 const defs=schema.$defs as Record<string,Schema>;
-export type Spend = (query:SpendReserve|SpendTransition)=>Promise<SpendReply>;
+export type Spend = (query:SpendReserve|SpendTransition|SpendObserve|SpendConfigure|SpendHistory)=>Promise<SpendReply>;
 export function spendingService(packaged:boolean,root:string,resources:string,userData:string):Spend {
   const command=engineCommand(packaged,root,resources);
   return query=>new Promise((resolve,reject)=> {
-    if (!valid(query,defs.SpendReserve,defs) && !valid(query,defs.SpendTransition,defs)) {reject(new Error('Invalid spending request'));return;}
+    if (!['SpendReserve','SpendTransition','SpendObserve','SpendConfigure','SpendHistory'].some(type=>valid(query,defs[type],defs))) {reject(new Error('Invalid spending request'));return;}
     const args=packaged?['--spending']:['-I','-m','poliscope_engine.spending_host'];
     const child=execFile(command.executable,[...args,'--database',join(userData,'assistant-private','spending.sqlite3')],{
-      shell:false,windowsHide:true,encoding:'buffer',maxBuffer:16384,timeout:15000,killSignal:'SIGKILL',
+      shell:false,windowsHide:true,encoding:'buffer',maxBuffer:1048576,timeout:15000,killSignal:'SIGKILL',
       env:Object.fromEntries(['SYSTEMROOT','WINDIR','TEMP','TMP','LANG','LC_ALL'].flatMap(k=>process.env[k]===undefined?[]:[[k,process.env[k]!]])),
     },(error,stdout)=> {
       try {
