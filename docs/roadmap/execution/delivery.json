@@ -34,5 +34,14 @@
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-041: explicit schema backup/migration, safe selected restore, cold trusted historical database/archive inspection, compatible model comparison branches and uncertain-operation recovery"
+  "scope": "Full WP-041: explicit schema backup/migration, safe selected restore, cold trusted historical database/archive inspection, compatible model comparison branches and uncertain-operation recovery",
+  "publication": {
+    "status": "blocked; explicit publication authorization required",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-041-recovery",
+    "action": "Push branch and open a regular PR against main; do not merge",
+    "implementation_commit": "4a0f5b5",
+    "reason": "Automatic approval review rejected the push because publishing WP-041 to this destination was not explicitly authorized; previous authorization was scoped to WP-040 only.",
+    "next_action": "Obtain explicit user authorization for this WP-041 branch push and PR, then publish without merging."
+  }
 }
