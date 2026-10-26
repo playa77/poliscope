@@ -34,5 +34,14 @@
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-042: profile preferences, secure/session-only key lifecycle, fixed main-owned Electron metadata transport, endpoint/redirect isolation and accessible settings UI"
+  "scope": "Full WP-042: profile preferences, secure/session-only key lifecycle, fixed main-owned Electron metadata transport, endpoint/redirect isolation and accessible settings UI",
+  "publication": {
+    "status": "blocked; explicit WP-042 authorization required",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-042-provider",
+    "implementation_commit": "ad4b544",
+    "action": "Push completed branch and open a regular PR against main; do not merge",
+    "reason": "Automatic approval review rejected exporting the private repository contents: ownership/trust and explicit user authorization for this WP-042 payload/destination are not established. Earlier authorization applied to WP-041 only.",
+    "next_action": "Request explicit authorization to push codex/wp-042-provider to playa77/poliscope and open its PR."
+  }
 }
