@@ -31,9 +31,12 @@
   "kind": "work_package",
   "scope": "Full WP-045 generation, fragmented SSE, safe failures/cancellation/retry, integrated production sharing-envelope and spending-reservation prerequisites",
   "publication": {
-    "status": "pending",
+    "status": "blocked by automatic approval review",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-045-generation",
-    "action": "Push complete branch and open a regular PR against main; do not merge"
+    "implementation_commit": "8114efa",
+    "action": "Push completed branch and open a regular PR against main; do not merge",
+    "reason": "Automatic approval review rejected sensitive private source egress: no trusted user message explicitly authorizes this branch payload and destination.",
+    "next_action": "Request explicit user authorization to push codex/wp-045-generation to playa77/poliscope and open its regular PR against main."
   }
 }
