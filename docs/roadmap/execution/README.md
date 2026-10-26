@@ -7,7 +7,9 @@ SV; [receipt](WP-048-validation.json). Full 4,929 Python cases, 419 desktop unit
 51 roadmap cases and all 27 packaged Linux scenarios pass, plus final 196 engine /
 109 desktop affected cases and 3 final rebuilt packaged scenarios. Native Windows,
 real keychains and paid/live providers remain untested; no full M6/G6 claim.
-Publication is the remaining delivery action; do not merge. Reassess WP-049 after
+Implementation is committed at `1faf58b`. Automatic approval review blocked
+publication pending explicit user authorization to push this branch to
+`playa77/poliscope` and open its PR; do not merge. Reassess WP-049 after
 review/merge. Historical delivery entries follow.
 
 **Current delivery, 2026-10-26:** [WP-047](WP-047.md), based on fetched main
