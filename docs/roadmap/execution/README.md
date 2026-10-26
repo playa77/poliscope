@@ -9,7 +9,8 @@ parent acceptance. Final 4,904 Python plus 54 subtests, 392 desktop units,
 51 roadmap cases and all 25 packaged Linux scenarios; see [receipt](WP-045-validation.json).
 Implementation is committed at `8114efa`; automatic approval review blocked
 publication initially. The user subsequently explicitly authorized this branch
-push and PR; publication may proceed. Windows, real keychains and live providers remain unrun;
+push and PR. [PR #116](https://github.com/playa77/poliscope/pull/116) is open;
+merge remains unauthorized. Windows, real keychains and live providers remain unrun;
 no full M6/G6 acceptance. Full WP-046 grounded integration is subsequent work.
 
 
@@ -36,7 +37,8 @@ SV; see [validation](WP-043-validation.json). Full Python, final 296 units and
 Windows/authenticated providers and cumulative M6/G6 remain unrun. Implementation
 is committed at `6d3b01b`. Automatic approval review blocked publication pending
 explicit WP-043 branch/destination authorization. The user subsequently authorized
-this push and PR; publication may proceed. See the
+this push and PR. [PR #116](https://github.com/playa77/poliscope/pull/116) is open;
+merge remains unauthorized. See the
 [publication blocker](WP-043.md#publication-blocker). Merging is not authorized.
 After review/merge reassess full WP-044. Records below are historical deliveries.
 
@@ -64,7 +66,8 @@ reassess full WP-042. Earlier delivery records below remain historical evidence.
 
 Implementation is committed at `4a0f5b5`. Automatic approval review blocked the
 branch push pending explicit WP-041 publication authorization. The user has now
-explicitly authorized this branch push and PR; publication may proceed. See
+explicitly authorized this branch push and PR. [PR #116](https://github.com/playa77/poliscope/pull/116) is open;
+merge remains unauthorized. See
 see the [publication blocker](WP-041.md#publication-blocker).
 
 **Current delivery, 2026-10-25:** [WP-040 in full](WP-040.md), tracked in
