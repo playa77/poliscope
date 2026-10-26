@@ -36,9 +36,12 @@
   "kind": "work_package",
   "scope": "Full WP-044 typed provider request construction, routing/generation controls, capability/context and structured-output validation",
   "publication": {
-    "status": "pending",
+    "status": "blocked by automatic approval review; explicit user authorization required",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-044-requests",
-    "action": "Push completed branch and open a regular PR against main; do not merge"
+    "implementation_commit": "129a566",
+    "action": "Push completed branch and open a regular PR against main; do not merge",
+    "reason": "Automatic approval review rejected private source egress: trusted user content has not explicitly authorized this WP-044 payload to this destination. No branch was pushed and no PR created.",
+    "next_action": "Obtain explicit user authorization to push codex/wp-044-requests to playa77/poliscope and open its regular PR against main."
   }
 }

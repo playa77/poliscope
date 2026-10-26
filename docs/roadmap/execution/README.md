@@ -7,7 +7,9 @@ controls, capability/context checks and strict local structured-output validatio
 are complete under SV. Final 342 units, 4,869 full Python cases plus 54 subtests,
 13 new Python contract cases separately and all 24 packaged Linux scenarios pass.
 [Receipt](WP-044-validation.json). Live providers/Windows remain unrun; no M6/G6
-acceptance inferred. Publish this full branch/regular PR; merge is not authorized.
+acceptance inferred. Implementation committed at `129a566`; automatic approval
+review blocked the branch push pending explicit WP-044 publication authorization.
+No branch was pushed and no PR created; merge is not authorized.
 After review/merge reassess full WP-045. Earlier delivery records are historical.
 
 **Current delivery, 2026-10-26:** [WP-043 in full](WP-043.md), on fetched main
