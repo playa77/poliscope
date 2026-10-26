@@ -10,7 +10,10 @@ parameter proposals retaining origin/coverage. Full parent acceptance passes und
 narrowing has 21 focused cases and 2 final rebuilt scenarios. See
 [the receipt](WP-046-validation.json). Native Windows,
 real provider/keychain certification and full M6/G6 acceptance remain unclaimed.
-After review/merge, reassess full WP-047; do not merge without user authorization.
+Implementation is committed at `d5f2bcb`. Automatic approval review blocked the
+branch push; explicit destination/publication approval is required. No PR exists.
+See [the publication blocker](WP-046.md#publication-blocker).
+After authorized publication/review/merge, reassess full WP-047; do not merge without user authorization.
 
 **Current delivery, 2026-10-26:** [WP-045 in full](WP-045.md), on fetched main
 `3c1f3d2` (merged PR #115 / WP-044), tracked in [active-package.json](active-package.json).
