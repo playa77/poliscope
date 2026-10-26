@@ -1,3 +1,4 @@
+import { mediaTokenBound } from './assistant-content';
 import type { GenerationPlan } from '../../contracts/generation';
 import { buildGenerationRequest, contextPayloadHash, type BuiltRequest } from './provider-requests';
 import { adapterFor, metadataCode, CATALOG_TTL, type MetadataTransport } from './provider-adapters';
@@ -344,9 +345,10 @@ export class ProviderController {
       // description/schema and role, with 1024 reserved per framing unit. The
       // escaped JSON byte count intentionally overestimates ordinary content.
       if(raw.architecture?.tokenizer!=='GPT' || plan.response_format.type!=='text')return [];
+      let media:number;try{media=mediaTokenBound(plan.messages,id);}catch{return [];}
       const framing=1024*(plan.messages.length+(plan.tools??[]).length+1);
       const bytes=Buffer.byteLength(JSON.stringify({messages:plan.messages,tools:plan.tools??[]}));
-      return [{model_id:id,input_tokens_upper_bound:bytes+framing,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
+      return [{model_id:id,input_tokens_upper_bound:bytes+framing+media,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
     });
     return buildGenerationRequest({profile:row.profile,revision:row.revision,key_status:'missing'},plan,{profile_id:row.profile.id,revision:row.revision,endpoint:row.profile.endpoint,models:cache.models,endpoints:Object.values(cache.endpoints),budgets});
   }

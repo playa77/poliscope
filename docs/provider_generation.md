@@ -127,3 +127,9 @@ WP-046 adds [grounded context, bounded tools and ordinary proposals](assistant_g
 Its cumulative turn envelope supersedes the original single-message consumer
 limits above; each continuation receives a fresh exact-payload review and a
 distinct durable spending grant in the same turn. No automatic paid retry is added.
+
+See [content and compatibility](assistant_modalities.md) for WP-047 typed inputs,
+streamed audio artifacts, ownership/deletion, opaque history and the explicit
+unsupported modality matrix. Earlier single-text-only bounds are superseded only
+by those documented bounded paths. No general multimodal/provider certification
+is inferred.

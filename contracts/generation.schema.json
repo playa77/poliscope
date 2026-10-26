@@ -1,5 +1,46 @@
 {
   "$defs": {
+    "AudioData": {
+      "additionalProperties": false,
+      "properties": {
+        "data": {
+          "maxLength": 90000,
+          "minLength": 1,
+          "title": "Data",
+          "type": "string"
+        },
+        "format": {
+          "const": "wav",
+          "title": "Format",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data",
+        "format"
+      ],
+      "title": "AudioData",
+      "type": "object"
+    },
+    "AudioPart": {
+      "additionalProperties": false,
+      "properties": {
+        "input_audio": {
+          "$ref": "#/$defs/AudioData"
+        },
+        "type": {
+          "const": "input_audio",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "input_audio"
+      ],
+      "title": "AudioPart",
+      "type": "object"
+    },
     "GenerationCall": {
       "additionalProperties": false,
       "properties": {
@@ -96,10 +137,46 @@
       "additionalProperties": false,
       "properties": {
         "content": {
-          "maxLength": 262144,
-          "minLength": 1,
-          "title": "Content",
-          "type": "string"
+          "anyOf": [
+            {
+              "maxLength": 262144,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "items": {
+                "anyOf": [
+                  {
+                    "$ref": "#/$defs/TextPart"
+                  },
+                  {
+                    "$ref": "#/$defs/ImagePart"
+                  },
+                  {
+                    "$ref": "#/$defs/AudioPart"
+                  }
+                ]
+              },
+              "maxItems": 5,
+              "minItems": 1,
+              "type": "array"
+            }
+          ],
+          "title": "Content"
+        },
+        "reasoning_details_json": {
+          "anyOf": [
+            {
+              "maxLength": 65536,
+              "minLength": 2,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Details Json"
         },
         "role": {
           "enum": [
@@ -170,6 +247,23 @@
           "maxItems": 128,
           "minItems": 1,
           "title": "Messages",
+          "type": "array"
+        },
+        "output_modalities": {
+          "default": [
+            "text"
+          ],
+          "items": {
+            "enum": [
+              "text",
+              "image",
+              "audio"
+            ],
+            "type": "string"
+          },
+          "maxItems": 2,
+          "minItems": 1,
+          "title": "Output Modalities",
           "type": "array"
         },
         "profile_id": {
@@ -355,6 +449,69 @@
         "parameters_json"
       ],
       "title": "GenerationTool",
+      "type": "object"
+    },
+    "ImagePart": {
+      "additionalProperties": false,
+      "properties": {
+        "image_url": {
+          "$ref": "#/$defs/ImageURL"
+        },
+        "type": {
+          "const": "image_url",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "image_url"
+      ],
+      "title": "ImagePart",
+      "type": "object"
+    },
+    "ImageURL": {
+      "additionalProperties": false,
+      "properties": {
+        "detail": {
+          "const": "low",
+          "default": "low",
+          "title": "Detail",
+          "type": "string"
+        },
+        "url": {
+          "maxLength": 90000,
+          "minLength": 1,
+          "title": "Url",
+          "type": "string"
+        }
+      },
+      "required": [
+        "url"
+      ],
+      "title": "ImageURL",
+      "type": "object"
+    },
+    "TextPart": {
+      "additionalProperties": false,
+      "properties": {
+        "text": {
+          "maxLength": 262144,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "type": {
+          "const": "text",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "type",
+        "text"
+      ],
+      "title": "TextPart",
       "type": "object"
     }
   },

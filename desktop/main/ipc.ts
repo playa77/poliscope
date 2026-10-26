@@ -17,7 +17,7 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
     register(channel, async (event, ...args) => {
       try {
         authorize(event);
-        if (args.length !== arity || Buffer.byteLength(JSON.stringify(args)) > 16_384) throw new Error();
+        if (args.length !== arity || Buffer.byteLength(JSON.stringify(args)) > (channel==='assistant:request'?131_072:16_384)) throw new Error();
         const reply = await action(...args);
         if (!check(reply)) throw new Error();
         return reply;

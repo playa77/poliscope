@@ -1,36 +1,31 @@
 {
   "version": 1,
-  "package": "WP-046",
+  "package": "WP-047",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-046.md",
+  "record": "docs/roadmap/execution/WP-047.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "282b1abcbc489029fdc9c8318a046a16b7de4ef0",
-  "branch": "codex/wp-046-grounding",
+  "base": "68e1065206d1376d81d27f378386f797f2454ef8",
+  "branch": "codex/wp-047-modalities",
   "acceptance": [
     {
-      "id": "grounding",
+      "id": "typed-content",
       "status": "passed",
-      "evidence": "Python-owned exact public scope/task manifests; immutable revision/version/time; transitive private-provenance withholding, bounded entries and explicit limits. Unknowns and units retained; no-tool manifests supported."
+      "evidence": "Canonical typed parts; exact original/excerpt manifests; known-model per-fallback byte/framing/image/audio bounds; streamed WAV artifact assembly and explicit unsupported modality matrix. Public provider docs verified; no universal modality claim."
     },
     {
-      "id": "tools",
+      "id": "ownership-omission",
       "status": "passed",
-      "evidence": "Canonical generated inspect_context schema; completed validated calls; main-retained store/context, fixed denials without excluded-reference probes; 3 rounds/8 calls and byte/context limits."
+      "evidence": "Explicit this-turn inclusion, cleared selection after prepare, inherited private derivative ownership; no session objects in history/report/archive exports; exclusive explicit artifact export; root/child deletion and revocation; no passive SVG/CSS/media loads."
     },
     {
-      "id": "sharing-continuations",
+      "id": "reasoning-history",
       "status": "passed",
-      "evidence": "Exact complete-payload review for every continuation; distinct dispatch grant in the original turn/session/profile; root revocation and post-grant revalidation. Real Electron/bundled-engine navigation and hostile private-note calls remain scoped."
-    },
-    {
-      "id": "proposal-authority",
-      "status": "passed",
-      "evidence": "Real pure registered-mechanism parameter preview; explicit ordinary player preview/Apply with stale/idempotent checks and retained source request/manifest/origin/coverage. No model Apply, edit-model, timeline, file, URL or key tool."
+      "evidence": "Bounded indexed opaque reasoning retained separately from visible text; exact reviewed tool continuation; original model/endpoint/profile revision and single provider pin; incompatible model/routing requires fresh history."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4910 full Python cases plus 54 subtests, 401 desktop units, 51 roadmap cases and 26 full packaged Linux scenarios. Final account-without-trace narrowing separately passes 21 grounding/workbench cases and 2 final rebuilt assistant scenarios. Frozen setup/contracts/content/type/roadmap/baseline/whitespace checks; separate author inspection; SV. Windows/live providers/keychains unrun; no full M6/G6 claim."
+      "evidence": "4911 full Python cases plus 54 subtests; 20 final assistant contract cases; 411 full desktop units, 71 final affected units (11 new content cases), 51 roadmap cases; all 27 integrated packaged Linux scenarios plus 3 final rebuilt affected scenarios. SV; no Windows/live/provider certification."
     }
   ]
 }
