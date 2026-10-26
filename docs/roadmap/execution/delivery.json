@@ -34,5 +34,14 @@
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-043 provider adapters and capability/catalog metadata"
+  "scope": "Full WP-043 provider adapters and capability/catalog metadata",
+  "publication": {
+    "status": "blocked; explicit authorization required",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-043-adapters",
+    "implementation_commit": "6d3b01b",
+    "action": "Push completed branch and open a regular PR against main; do not merge",
+    "reason": "Automatic approval review rejected the push as sensitive private-source egress without explicit user authorization for this WP-043 payload and repository.",
+    "next_action": "Obtain explicit authorization to push codex/wp-043-adapters to playa77/poliscope and open its regular PR. No indirect publication attempted."
+  }
 }

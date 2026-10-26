@@ -7,8 +7,10 @@ model/variant search, explicit unknown capabilities, provider endpoints, safe ke
 limits and timestamped offline caches. Full parent acceptance is complete under
 SV; see [validation](WP-043-validation.json). Full Python, final 296 units and
 23 packaged Linux scenarios pass, with 4 final rebuilt affected scenarios.
-Windows/authenticated providers and cumulative M6/G6 remain unrun. Commit/push
-and regular PR delivery remain the next action; merging is not authorized.
+Windows/authenticated providers and cumulative M6/G6 remain unrun. Implementation
+is committed at `6d3b01b`. Automatic approval review blocked publication pending
+explicit WP-043 branch/destination authorization; see the
+[publication blocker](WP-043.md#publication-blocker). Merging is not authorized.
 After review/merge reassess full WP-044. Records below are historical deliveries.
 
 **Current delivery, 2026-10-26:** [WP-042 in full](WP-042.md), on fetched
