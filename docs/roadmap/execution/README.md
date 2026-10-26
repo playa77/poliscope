@@ -9,7 +9,8 @@ are complete under SV. Final 342 units, 4,869 full Python cases plus 54 subtests
 [Receipt](WP-044-validation.json). Live providers/Windows remain unrun; no M6/G6
 acceptance inferred. Implementation committed at `129a566`; automatic approval
 review blocked the branch push pending explicit WP-044 publication authorization.
-No branch was pushed and no PR created; merge is not authorized.
+The user subsequently explicitly authorized this branch push and PR; publication
+may proceed. Merge is not authorized. See [authorization](WP-044.md#publication-authorization).
 After review/merge reassess full WP-045. Earlier delivery records are historical.
 
 **Current delivery, 2026-10-26:** [WP-043 in full](WP-043.md), on fetched main
