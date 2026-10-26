@@ -9,8 +9,8 @@ metadata networking; full parent acceptance is complete under SV, with
 remain subsequent work. Native Windows and live provider/keychain validation
 remain unrun; no cumulative M6/G6 acceptance is inferred. Implementation is
 committed at `ad4b544`; automatic approval review blocked WP-042 publication
-pending explicit authorization for this branch/destination. No PR was created;
-see [the blocker](WP-042.md#publication-blocker).
+The user subsequently explicitly authorized this branch push and PR;
+publication may proceed. See [authorization](WP-042.md#publication-authorization).
 
 
 **Current delivery, 2026-10-26:** [WP-041 in full](WP-041.md), tracked in
