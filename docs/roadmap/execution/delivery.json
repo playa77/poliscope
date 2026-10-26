@@ -32,10 +32,13 @@
     }
   ],
   "publication": {
-    "status": "ready to publish",
+    "status": "blocked by automatic approval review",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-050-provider-validation",
-    "action": "Push completed authorized offline child and open regular PR against main; do not merge"
+    "action": "Push completed authorized offline child and open regular PR against main; do not merge",
+    "implementation_commit": "1cc92f7",
+    "reason": "Automatic approval review rejected git push: external GitHub publication is sensitive code egress and the trusted transcript does not explicitly authorize this payload and destination.",
+    "next_action": "Obtain explicit authorization to push codex/wp-050-provider-validation to https://github.com/playa77/poliscope.git and open a regular PR against main; do not merge."
   },
   "parent_blocker": "Live harness/run requires separately authorized bounded scope and securely configured OpenRouter credentials/credits. User explicitly selected offline evidence only. Full WP-050 and G6/M6 acceptance remain blocked."
 }
