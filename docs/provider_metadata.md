@@ -33,8 +33,8 @@ semantics, including dynamic/negative sentinels. Unknown fields, modalities and
 parameters remain in the complete model/endpoint JSON for forward compatibility.
 Metadata is data displayed as escaped text; imported definitions are not executed.
 No currency arithmetic, spending approval or generation suitability is inferred.
-A future request builder must revalidate all selected controls and current model
-and provider evidence before dispatch (WP-044 onward).
+The [WP-044 request builder](provider_requests.md) revalidates selected controls and
+model evidence before construction; actual dispatch is a subsequent package.
 
 Caches live separately from civilization data, alongside app provider settings.
 They bind profile ID, provider kind and canonical endpoint. Reads are offline and

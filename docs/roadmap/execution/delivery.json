@@ -1,47 +1,44 @@
 {
   "version": 1,
-  "package": "WP-043",
+  "package": "WP-044",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-043.md",
+  "record": "docs/roadmap/execution/WP-044.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "a59884a19accac87126b8efc6dc1adaf72fd0c4d",
-  "branch": "codex/wp-043-adapters",
+  "base": "fa98bbfa0713f9ee4eedfab15045ee6826d21116",
+  "branch": "codex/wp-044-requests",
   "acceptance": [
     {
-      "id": "adapters",
+      "id": "requests",
       "status": "passed",
-      "evidence": "Dedicated OpenRouter and separate compatible metadata adapters; official documentation dated/hashed; schema fixtures and explicit unknown generic capabilities."
+      "evidence": "Immutable fixed-route streamed/nonstreamed chat request construction; literal current-schema snapshots, optional sampling/output/reasoning controls and separate compatible mapping. No dispatch or credential capability."
     },
     {
-      "id": "catalog",
+      "id": "routing",
       "status": "passed",
-      "evidence": "Open IDs/variants/search/pagination; source/time/context/exact string prices; raw future fields retained; removed IDs and original model choice preserved; atomic endpoint-bound cold/stale cache."
+      "evidence": "Separate explicit model/provider fallback; all candidates revalidate; order/only/ignore, parameter enforcement, privacy/ZDR/sort and correct-unit price ceilings preserve choices or reject explicitly. Cold settings and packaged restart pass."
     },
     {
-      "id": "key-status",
+      "id": "validation",
       "status": "passed",
-      "evidence": "Fixed authenticated OpenRouter /key allowlist without labels/organization IDs or account caching; safe auth/credit/rate/model/network errors; key changes revoke requests and clear visible account evidence."
+      "evidence": "Profile/endpoint/revision and per-model payload-bound context receipts; fresh directional capabilities, parameter and reasoning options; stale/removed/unknown/conflicting data reject. Unsupported local schema vocabulary rejects before construction."
     },
     {
-      "id": "capabilities",
+      "id": "responses",
       "status": "passed",
-      "evidence": "Directional modality lists and three-state parameter support; per-provider capability/price/limit observations; generic unsupported endpoints disabled; discovery/preferences never authorize generation."
+      "evidence": "Selected/reported actual model/provider and finish reasons stay explicit; only complete locally schema-valid/object data populates validated_json. Refusal/truncation/filters/unexpected models and safe parameter errors covered."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4869 Python cases plus 54 subtests; final 296 unit cases; full 23 packaged Linux scenarios then final rebuilt 4 affected scenarios; generated/content/type/roadmap/baseline checks and separate author inspection. Windows/live providers unrun."
+      "evidence": "Final 342 desktop units; full 4869 Python plus 54 subtests and final focused 22 DTO cases including 13 new; final rebuilt 24 packaged Linux scenarios; frozen/contracts/content/type/roadmap/baseline/51 roadmap cases. Separate author inspection; Windows/live providers unrun."
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-043 provider adapters and capability/catalog metadata",
+  "scope": "Full WP-044 typed provider request construction, routing/generation controls, capability/context and structured-output validation",
   "publication": {
-    "status": "explicitly authorized; publication pending",
+    "status": "pending",
     "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-043-adapters",
-    "implementation_commit": "6d3b01b",
-    "action": "Push completed branch and open a regular PR against main; do not merge",
-    "reason": "The requesting user explicitly authorized this branch push to playa77/poliscope and opening its PR.",
-    "next_action": "Push codex/wp-043-adapters and open a regular PR against main; do not merge."
+    "branch": "codex/wp-044-requests",
+    "action": "Push completed branch and open a regular PR against main; do not merge"
   }
 }

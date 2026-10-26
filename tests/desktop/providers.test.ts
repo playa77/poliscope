@@ -173,3 +173,16 @@ it('never writes a profile set larger than the bounded cold reader can reopen', 
   await controller.close();const cold=new ProviderController(dir,os,vi.fn());
   expect((await cold.request({action:'list'})).profiles).toHaveLength(count);await cold.close();
 }),30000);
+
+it('cold-reopens explicit WP-044 controls without conflating provider and model fallback', () => fixture(async dir => {
+  const p=profile(); p.kind='openrouter'; p.endpoint='https://openrouter.ai/api/v1';
+  Object.assign(p.routing,{model_fallbacks:['future/alternate:free'],zdr:true,sort:'price',max_price:{prompt:'1.25',completion:'0'}});
+  Object.assign(p.generation,{frequency_penalty:'-1.5',presence_penalty:'0.1',seed:0,stop:['END'],reasoning:{effort:'low',exclude:true}});
+  const controller=new ProviderController(dir,protection(false),vi.fn());
+  const saved=await controller.request({action:'save',profile:p,expected_revision:null}); await controller.close();
+  const cold=new ProviderController(dir,protection(false),vi.fn());
+  const reply=await cold.request({action:'list'}); expect(reply.profiles[0].profile).toEqual(p);
+  expect(reply.profiles[0].revision).toBe(saved.profiles[0].revision);
+  expect(reply.profiles[0].profile.routing.allow_fallbacks).toBe(false);
+  expect(reply.profiles[0].profile.routing.model_fallbacks).toEqual(['future/alternate:free']); await cold.close();
+}));

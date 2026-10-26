@@ -576,6 +576,19 @@
     "ProviderGeneration": {
       "additionalProperties": false,
       "properties": {
+        "frequency_penalty": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Frequency Penalty"
+        },
         "max_output_tokens": {
           "anyOf": [
             {
@@ -588,6 +601,63 @@
             }
           ],
           "title": "Max Output Tokens"
+        },
+        "presence_penalty": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Presence Penalty"
+        },
+        "reasoning": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProviderReasoning"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "seed": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Seed"
+        },
+        "stop": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 4,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Stop"
         },
         "temperature": {
           "anyOf": [
@@ -669,6 +739,65 @@
       "title": "ProviderList",
       "type": "object"
     },
+    "ProviderPrice": {
+      "additionalProperties": false,
+      "properties": {
+        "completion": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Completion"
+        },
+        "image": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Image"
+        },
+        "prompt": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Prompt"
+        },
+        "request": {
+          "anyOf": [
+            {
+              "pattern": "^-?[0-9]{1,9}(\\.[0-9]{1,9})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Request"
+        }
+      },
+      "title": "ProviderPrice",
+      "type": "object"
+    },
     "ProviderProfile": {
       "additionalProperties": false,
       "properties": {
@@ -723,6 +852,72 @@
         "capabilities"
       ],
       "title": "ProviderProfile",
+      "type": "object"
+    },
+    "ProviderReasoning": {
+      "additionalProperties": false,
+      "properties": {
+        "effort": {
+          "anyOf": [
+            {
+              "enum": [
+                "none",
+                "minimal",
+                "low",
+                "medium",
+                "high",
+                "xhigh",
+                "max"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Effort"
+        },
+        "enabled": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Enabled"
+        },
+        "exclude": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Exclude"
+        },
+        "max_tokens": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Max Tokens"
+        }
+      },
+      "title": "ProviderReasoning",
       "type": "object"
     },
     "ProviderReplaceKey": {
@@ -878,6 +1073,28 @@
           "title": "Ignore",
           "type": "array"
         },
+        "max_price": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProviderPrice"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "model_fallbacks": {
+          "default": [],
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 8,
+          "title": "Model Fallbacks",
+          "type": "array"
+        },
         "only": {
           "items": {
             "maxLength": 256,
@@ -901,6 +1118,35 @@
         "require_parameters": {
           "title": "Require Parameters",
           "type": "boolean"
+        },
+        "sort": {
+          "anyOf": [
+            {
+              "enum": [
+                "price",
+                "throughput",
+                "latency"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Sort"
+        },
+        "zdr": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Zdr"
         }
       },
       "required": [

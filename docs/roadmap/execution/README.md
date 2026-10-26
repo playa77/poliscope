@@ -1,5 +1,15 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-044 in full](WP-044.md), on fetched main
+`fa98bbf` (merged WP-043 / PR #114), tracked by [active-package.json](active-package.json).
+Typed provider requests, explicit model/provider fallback, routing/privacy/price
+controls, capability/context checks and strict local structured-output validation
+are complete under SV. Final 342 units, 4,869 full Python cases plus 54 subtests,
+13 new Python contract cases separately and all 24 packaged Linux scenarios pass.
+[Receipt](WP-044-validation.json). Live providers/Windows remain unrun; no M6/G6
+acceptance inferred. Publish this full branch/regular PR; merge is not authorized.
+After review/merge reassess full WP-045. Earlier delivery records are historical.
+
 **Current delivery, 2026-10-26:** [WP-043 in full](WP-043.md), on fetched main
 `a59884a` (PR #113 / WP-042 merged), tracked in
 [active-package.json](active-package.json). Dedicated provider metadata adapters,

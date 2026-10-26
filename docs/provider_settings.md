@@ -8,7 +8,7 @@ query parameters or fragments. Save endpoint changes before entering another key
 Changing the endpoint/provider type removes its previous key and cancels its tests.
 Profiles and model/generation/routing/capability preferences survive restart;
 capability declarations are unverified preferences, not discovered capabilities.
-Unsupported preference handling and generation belong to subsequent packages.
+The WP-044 builder rejects unsupported selected controls; actual generation transport remains a subsequent package.
 
 The temporary password field clears on transfer to main, including failed
 transfers. Keys are never returned. With Electron OS-backed safeStorage, main
@@ -56,3 +56,8 @@ sharing, streaming and discovery are not implemented by these settings.
 Model discovery, cached search, provider capabilities and safe key-limit
 inspection are described in [provider metadata](provider_metadata.md), including
 current official schema evidence and the distinction from live generation.
+
+WP-044 adds independent model fallback lists, explicit ZDR, provider price/sort
+choices and sampling/reasoning settings. Provider fallback alone cannot switch
+models. Saving a preference sends no generation request and does not establish
+capability or spending authorization. See [request validation](provider_requests.md).
