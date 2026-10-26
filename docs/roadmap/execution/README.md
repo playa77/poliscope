@@ -1,5 +1,16 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-045 in full](WP-045.md), on fetched main
+`3c1f3d2` (merged PR #115 / WP-044), tracked in [active-package.json](active-package.json).
+One sequential Codex /root; SV with separate author inspection. Full generation,
+fragmented SSE, cancellation/deliberate retry and necessary production
+[sharing](WP-046-envelope.md)/[reservation](WP-048-reservation.md) children pass
+parent acceptance. Final 4,904 Python plus 54 subtests, 392 desktop units,
+51 roadmap cases and all 25 packaged Linux scenarios; see [receipt](WP-045-validation.json).
+Publication is pending. Windows, real keychains and live providers remain unrun;
+no full M6/G6 acceptance. Full WP-046 grounded integration is subsequent work.
+
+
 **Current delivery, 2026-10-26:** [WP-044 in full](WP-044.md), on fetched main
 `fa98bbf` (merged WP-043 / PR #114), tracked by [active-package.json](active-package.json).
 Typed provider requests, explicit model/provider fallback, routing/privacy/price

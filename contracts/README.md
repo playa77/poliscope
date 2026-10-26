@@ -547,3 +547,13 @@ main-owned capability/context receipts. No credential or spend/sharing grant is
 present. Provider-settings v1 adds optional backward-compatible routing, price,
 model-fallback, sampling and reasoning preferences. See
 [request contracts and validation](../docs/provider_requests.md).
+
+WP-045 adds `assistant` and `spending` v1 contracts generated from canonical
+Python DTOs. Assistant IPC allows bounded explicit-text preparation and named
+send/status/cancel/revoke actions. It grants no arbitrary endpoint, engine
+operation, tokenizer receipt, tool execution, file or key capability. Whole-payload
+sharing approval and durable per-dispatch spending remain main-owned checks.
+Spending DTOs contain IDs, digests and decimal-string USD exposure/limits only;
+the Python private-ledger host never receives credentials or prompt text. See
+[dispatch safeguards](../docs/provider_generation.md). These contracts do not
+claim full grounded tools, actual-cost reconciliation or live compatibility.

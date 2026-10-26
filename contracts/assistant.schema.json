@@ -1,0 +1,356 @@
+{
+  "$defs": {
+    "AssistantAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "send",
+            "cancel",
+            "status",
+            "revoke"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Request Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "request_id"
+      ],
+      "title": "AssistantAction",
+      "type": "object"
+    },
+    "AssistantPrepare": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "prepare",
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "profile_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Profile Limit",
+          "type": "string"
+        },
+        "session_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Session Limit",
+          "type": "string"
+        },
+        "stream": {
+          "title": "Stream",
+          "type": "boolean"
+        },
+        "text": {
+          "maxLength": 8192,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        },
+        "turn_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Turn Limit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "profile_id",
+        "expected_revision",
+        "text",
+        "stream",
+        "exposure",
+        "turn_limit",
+        "session_limit",
+        "profile_limit"
+      ],
+      "title": "AssistantPrepare",
+      "type": "object"
+    },
+    "AssistantReply": {
+      "additionalProperties": false,
+      "properties": {
+        "assistant_contract": {
+          "const": 1,
+          "default": 1,
+          "title": "Assistant Contract",
+          "type": "integer"
+        },
+        "context_json": {
+          "maxLength": 2048,
+          "title": "Context Json",
+          "type": "string"
+        },
+        "diagnostic": {
+          "default": "none",
+          "enum": [
+            "none",
+            "authentication",
+            "credits",
+            "rate-limit",
+            "model",
+            "provider",
+            "network",
+            "invalid-response",
+            "budget",
+            "sharing",
+            "configuration",
+            "redirect"
+          ],
+          "title": "Diagnostic",
+          "type": "string"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "exposure_status": {
+          "enum": [
+            "not-reserved",
+            "reserved",
+            "unresolved",
+            "no-send"
+          ],
+          "title": "Exposure Status",
+          "type": "string"
+        },
+        "payload_json": {
+          "maxLength": 65536,
+          "title": "Payload Json",
+          "type": "string"
+        },
+        "reasoning": {
+          "default": "",
+          "maxLength": 1048576,
+          "title": "Reasoning",
+          "type": "string"
+        },
+        "request_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Request Id",
+          "type": "string"
+        },
+        "result": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GenerationResult"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "sharing_json": {
+          "maxLength": 4096,
+          "title": "Sharing Json",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "prepared",
+            "pending",
+            "streaming",
+            "complete",
+            "tool-calls",
+            "incomplete",
+            "cancelled",
+            "failed",
+            "revoked"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "text": {
+          "default": "",
+          "maxLength": 1048576,
+          "title": "Text",
+          "type": "string"
+        },
+        "tools_json": {
+          "default": "[]",
+          "maxLength": 1048576,
+          "title": "Tools Json",
+          "type": "string"
+        },
+        "usage_json": {
+          "anyOf": [
+            {
+              "maxLength": 16384,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Usage Json"
+        }
+      },
+      "required": [
+        "request_id",
+        "status",
+        "context_json",
+        "sharing_json",
+        "payload_json",
+        "exposure",
+        "exposure_status"
+      ],
+      "title": "AssistantReply",
+      "type": "object"
+    },
+    "GenerationResult": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_model": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Model"
+        },
+        "actual_provider": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Actual Provider"
+        },
+        "finish_reason": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Finish Reason"
+        },
+        "generation_contract": {
+          "const": 1,
+          "title": "Generation Contract",
+          "type": "integer"
+        },
+        "parameter": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Parameter"
+        },
+        "selected_model": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Selected Model",
+          "type": "string"
+        },
+        "status": {
+          "enum": [
+            "complete",
+            "incomplete",
+            "refused",
+            "structured-invalid",
+            "provider-rejected",
+            "unsupported-parameter",
+            "response-invalid"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "text": {
+          "anyOf": [
+            {
+              "maxLength": 1048576,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Text"
+        },
+        "validated_json": {
+          "anyOf": [
+            {
+              "maxLength": 1048576,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Validated Json"
+        }
+      },
+      "required": [
+        "generation_contract",
+        "selected_model",
+        "actual_model",
+        "actual_provider",
+        "finish_reason",
+        "status",
+        "validated_json",
+        "text"
+      ],
+      "title": "GenerationResult",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/AssistantPrepare"
+    },
+    {
+      "$ref": "#/$defs/AssistantAction"
+    },
+    {
+      "$ref": "#/$defs/AssistantReply"
+    }
+  ]
+}

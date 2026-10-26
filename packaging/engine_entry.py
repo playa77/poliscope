@@ -1,6 +1,9 @@
 import sys
 
-if '--recovery' in sys.argv[1:]:
+if '--spending' in sys.argv[1:]:
+    from poliscope_engine.spending_host import main
+    sys.argv.remove('--spending')
+elif '--recovery' in sys.argv[1:]:
     from poliscope_engine.recovery_host import main
     sys.argv.remove('--recovery')
 elif '--report' in sys.argv[1:]:

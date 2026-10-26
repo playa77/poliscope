@@ -1,36 +1,31 @@
 {
   "version": 1,
-  "package": "WP-044",
+  "package": "WP-045",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-044.md",
+  "record": "docs/roadmap/execution/WP-045.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "fa98bbfa0713f9ee4eedfab15045ee6826d21116",
-  "branch": "codex/wp-044-requests",
+  "base": "3c1f3d2b5041cc873c28d50d5d4e1495b84372ae",
+  "branch": "codex/wp-045-generation",
   "acceptance": [
     {
-      "id": "requests",
+      "id": "streaming",
       "status": "passed",
-      "evidence": "Immutable fixed-route streamed/nonstreamed chat request construction; literal current-schema snapshots, optional sampling/output/reasoning controls and separate compatible mapping. No dispatch or credential capability."
+      "evidence": "Every-byte UTF-8/CRLF SSE fixtures, documented repeated-finish usage frame, whole JSON, parallel indexed schema-validated tool fragments, visible reasoning, safe error/usage normalization; malformed/incomplete/cancelled output never completes."
     },
     {
-      "id": "routing",
+      "id": "lifecycle",
       "status": "passed",
-      "evidence": "Separate explicit model/provider fallback; all candidates revalidate; order/only/ignore, parameter enforcement, privacy/ZDR/sort and correct-unit price ceilings preserve choices or reject explicitly. Cold settings and packaged restart pass."
+      "evidence": "Main-generated immutable request/context identity, explicit exact-payload review/send, duplicate-send rejection, original context across actual civilization navigation, key/profile/metadata revocation, partial cancellation and deliberate fresh-request retry; no automatic generation retry."
     },
     {
-      "id": "validation",
+      "id": "dispatch-gates",
       "status": "passed",
-      "evidence": "Profile/endpoint/revision and per-model payload-bound context receipts; fresh directional capabilities, parameter and reasoning options; stale/removed/unknown/conflicting data reject. Unsupported local schema vocabulary rejects before construction."
-    },
-    {
-      "id": "responses",
-      "status": "passed",
-      "evidence": "Selected/reported actual model/provider and finish reasons stay explicit; only complete locally schema-valid/object data populates validated_json. Refusal/truncation/filters/unexpected models and safe parameter errors covered."
+      "evidence": "Production WP-046-envelope exact-byte revocable sharing manifest and WP-048-reservation durable atomic Python multi-scope grants. Revalidation after asynchronous grants, uncertainty before POST, retained exposure after cancel/key removal/restart; 12-connection independent concurrency oracle and packaged bundled-host integration."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "Final 342 desktop units; full 4869 Python plus 54 subtests and final focused 22 DTO cases including 13 new; final rebuilt 24 packaged Linux scenarios; frozen/contracts/content/type/roadmap/baseline/51 roadmap cases. Separate author inspection; Windows/live providers unrun."
+      "evidence": "4904 Python cases plus 54 subtests; 392 desktop units; 51 roadmap cases; all 25 final packaged Linux scenarios. Frozen setup, contracts/content/type/roadmap/baseline/whitespace checks; separate author inspection. Windows/live providers/real keychains unrun; no full M6/G6 claim."
     }
   ]
 }

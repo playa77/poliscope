@@ -1,0 +1,189 @@
+{
+  "$defs": {
+    "SpendBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Binding Sha256",
+          "type": "string"
+        },
+        "currency": {
+          "const": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "dispatch_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Dispatch Id",
+          "type": "string"
+        },
+        "estimate_version": {
+          "const": "explicit-bounded-exposure-v1",
+          "title": "Estimate Version",
+          "type": "string"
+        },
+        "payload_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Payload Sha256",
+          "type": "string"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "turn_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Turn Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dispatch_id",
+        "turn_id",
+        "session_id",
+        "profile_id",
+        "payload_sha256",
+        "binding_sha256",
+        "currency",
+        "estimate_version"
+      ],
+      "title": "SpendBinding",
+      "type": "object"
+    },
+    "SpendReply": {
+      "additionalProperties": false,
+      "properties": {
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "dispatch_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Dispatch Id",
+          "type": "string"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "spending_contract": {
+          "const": 1,
+          "default": 1,
+          "title": "Spending Contract",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "reserved",
+            "uncertain",
+            "complete",
+            "no-send",
+            "missing",
+            "denied",
+            "conflict"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dispatch_id",
+        "status",
+        "exposure"
+      ],
+      "title": "SpendReply",
+      "type": "object"
+    },
+    "SpendReserve": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "reserve",
+            "amend"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "profile_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Profile Limit",
+          "type": "string"
+        },
+        "session_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Session Limit",
+          "type": "string"
+        },
+        "turn_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Turn Limit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "binding",
+        "exposure",
+        "turn_limit",
+        "session_limit",
+        "profile_limit"
+      ],
+      "title": "SpendReserve",
+      "type": "object"
+    },
+    "SpendTransition": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "uncertain",
+            "complete",
+            "no-send",
+            "status"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        }
+      },
+      "required": [
+        "action",
+        "binding"
+      ],
+      "title": "SpendTransition",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/SpendReserve"
+    },
+    {
+      "$ref": "#/$defs/SpendTransition"
+    },
+    {
+      "$ref": "#/$defs/SpendReply"
+    }
+  ]
+}

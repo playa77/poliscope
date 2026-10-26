@@ -1,0 +1,89 @@
+{
+  "version": 1,
+  "package": "WP-045",
+  "route": "solo-validated; agent review deferred",
+  "base": "3c1f3d2b5041cc873c28d50d5d4e1495b84372ae",
+  "branch": "codex/wp-045-generation",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted tracked/intended desktop engine contracts scripts packaging and package.json package-lock.json pyproject.toml uv.lock; path NUL file bytes NUL",
+    "sha256": "83c07ea0a96fd3ed59fba5b9017d1661ffa2074f51aad7d50a605a3c616bcb44"
+  },
+  "tests": {
+    "engine_full": {
+      "status": "passed",
+      "command": ".venv/bin/python -m pytest -q --junitxml=/tmp/wp045-engine-final.xml",
+      "tool_session": 30566,
+      "cases": 4904,
+      "subtests": 54,
+      "counts": {
+        "tests": 4958,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "warnings": 4,
+      "duration_seconds": 356.7,
+      "report_sha256": "96dfd8339ea6023b8cb5bfdee76b0d41004655b9b77202c8f08a5be8fd1505c2",
+      "log_sha256": "41b4230422c2ba51e540e3bfe145b7a3c3e0f714a45897b31a41e6b2c4bb7569"
+    },
+    "unit_full": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv npm test",
+      "tool_session": 49479,
+      "vitest_cases": 392,
+      "roadmap_unittest_cases": 51,
+      "failures": 0,
+      "skips": 0,
+      "log_sha256": "cfb627b3c9ad8bbabb44ba8acb234f9d0c80730c236693c9a21e04f1bb7e65d2"
+    },
+    "packaged_linux_full": {
+      "status": "passed",
+      "command": "DISPLAY=:99 PLAYWRIGHT_JUNIT_OUTPUT_FILE=/tmp/wp045-desktop-final.xml npx playwright test --reporter=line,junit",
+      "tool_session": 12555,
+      "counts": {
+        "tests": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      "duration_minutes": 6.2,
+      "report_sha256": "2f7a30745b5a6cce8adbbcc7115a6c99b8321cedef9bfff4bddc9c13cfcc5c58",
+      "log_sha256": "629cbce3b2d70decfe731bb51d16a9d3806263be69c3007181599f296ea69fa5",
+      "transport_note": "Synthetic OpenRouter fixture rewrites test-process net.request destination to loopback. Production profile validation, actual Electron POST, controller, gateway and packaged Python spending host execute. No live API or paid request."
+    }
+  },
+  "checks": {
+    "npm_ci": "passed; Node 24.19.0 / npm 11.9.0; locks unchanged",
+    "uv_sync": "passed; frozen Python 3.12; locks unchanged",
+    "contracts": "passed",
+    "content": "passed; immutable release unchanged",
+    "typecheck": "passed",
+    "roadmap_manifest": "passed; 30 cases / 8 gate definitions, not gate execution",
+    "baseline": "passed; 1053 clauses / 68 parents / 178 planned child scopes",
+    "package_linux": "passed; tool session 87296; /tmp/wp045-package-final.log",
+    "whitespace": "passed before final records; rechecked at commit"
+  },
+  "new_tests": {
+    "desktop_unit_cases": 50,
+    "python_cases": 22,
+    "packaged_scenarios": 1,
+    "note": "Distinct from cumulative passes; test counts do not measure features."
+  },
+  "limitations": [
+    "Native Windows, real keys/keychains, authenticated proxies and live paid providers unrun.",
+    "No full M6/G6 or cumulative E2E-013/014 acceptance: subsequent grounded tools, modalities, reconciliation and transcripts remain subsequent packages.",
+    "Supported dispatch consumer shares one explicitly entered text message; no automatic world/private/history/tool/attachment context or continuation IPC.",
+    "Unknown tokenizer/compatible capability bounds remain blocked. GPT byte-BPE plus explicit single-message framing assumption is a conservative bound, not live suitability evidence.",
+    "Reported numeric cost is an unreconciled observation after JSON decoding; full WP-048 must preserve exact source cost lexemes for authoritative reconciliation.",
+    "Six-decimal USD bounded exposure persists after completion/cancel; no reconciliation/reset UI yet. Local exposure is not an upstream billing cap.",
+    "16 in-memory reviewed requests per app lifetime; no durable transcript or history deletion claim.",
+    "Native tests use an isolated Xorg dummy display and existing --no-sandbox harness; sandbox enforcement is not certified."
+  ],
+  "early_diagnostics": [
+    "Initial sandbox fetch/install/cache/display/Forge attempts lacked proxy/cache/display access; approved environment execution and private /tmp caches resolved prerequisites.",
+    "Initial unit pass found the expected named IPC allowlist changes; both unit and packaged API inventories were updated.",
+    "Initial controller test fixture had an object closure typo, corrected before accepted runs.",
+    "First Python full collection had 4890 cases before the final 14 schema authority/exposure cases; the final full collection has 4904 and is authoritative.",
+    "Focused native run passed an earlier candidate. Final full 25-scenario rebuilt run is the acceptance candidate."
+  ]
+}
