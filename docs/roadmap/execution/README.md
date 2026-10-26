@@ -10,7 +10,8 @@ Native Windows is unrun; no cumulative G5/M5 acceptance is inferred. After merge
 reassess full WP-042. Earlier delivery records below remain historical evidence.
 
 Implementation is committed at `4a0f5b5`. Automatic approval review blocked the
-branch push pending explicit WP-041 publication authorization. No PR exists yet;
+branch push pending explicit WP-041 publication authorization. The user has now
+explicitly authorized this branch push and PR; publication may proceed. See
 see the [publication blocker](WP-041.md#publication-blocker).
 
 **Current delivery, 2026-10-25:** [WP-040 in full](WP-040.md), tracked in
