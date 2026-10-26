@@ -9,7 +9,8 @@ SV; [receipt](WP-048-validation.json). Full 4,929 Python cases, 419 desktop unit
 real keychains and paid/live providers remain untested; no full M6/G6 claim.
 Implementation is committed at `1faf58b`. Automatic approval review blocked
 publication initially. The user subsequently explicitly authorized pushing this
-branch to `playa77/poliscope` and opening its PR; publication may proceed. Do not merge. Reassess WP-049 after
+branch to `playa77/poliscope` and opening its PR. [Regular PR #119](https://github.com/playa77/poliscope/pull/119)
+is now open against `main`; no merge was performed. Reassess WP-049 after
 review/merge. Historical delivery entries follow.
 
 **Current delivery, 2026-10-26:** [WP-047](WP-047.md), based on fetched main
