@@ -39,7 +39,7 @@ async function pages(state: WorkspaceState, scope: string, collection: Workspace
 const VIEWS = ['Civilization overview', 'Society map', 'Decision atlas', 'Dependency matrix',
   'World and institutions', 'Uncertainty and sensitivity', 'Timeline and experiments', 'History and comparison', 'Evidence and models', 'Assistant and provider settings'];
 
-export function Workspace({ onDraftChange, onProviders }: { onDraftChange?: (dirty: boolean) => void; onProviders?: () => void }) {
+export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDraftChange?: (dirty: boolean) => void; onProviders?: () => void; onAskAssistant?: (text:string)=>void }) {
   const client = useQueryClient();
   const [dirty, setDirty] = useState(false);
   const [notice, setNotice] = useState('');
@@ -143,7 +143,7 @@ export function Workspace({ onDraftChange, onProviders }: { onDraftChange?: (dir
             {domain && <section aria-label="Selected domain" id="selected-interview" tabIndex={-1}><h4>{catalogue.domains.find(d => d.id === domain)?.name ?? 'Source question · domain mapping unresolved'}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>
               {selectedScope && <Interview key={JSON.stringify([state.context, selectedScope, domain, questionId])}
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}
-                historical={state.context.revision_id !== state.branch.context.revision_id} onDirty={draftChanged}
+                historical={state.context.revision_id !== state.branch.context.revision_id} onDirty={draftChanged} onAskAssistant={onAskAssistant}
                 onConfirmed={(next, message) => { draftChanged(false); setNotice(message); setState(next); void client.invalidateQueries({ queryKey: ['world'] }); }} />}</section>}
           {view === 'Uncertainty and sensitivity' && <Uncertainty key={JSON.stringify([state.context, selectedScope])} state={state} values={(values.data ?? []).filter(v => 'partition' in v)} disabled={loading} />}
             {view === 'Timeline and experiments' && <Timeline key={JSON.stringify(state.context)} state={state} disabled={loading} />}

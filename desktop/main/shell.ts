@@ -99,6 +99,7 @@ export class DesktopShell {
   }
   previewInterview(input: unknown) { return this.workspaceRun(() => this.workspace.previewInterview(input)); }
   applyInterview(input: unknown) { return this.workspaceRun(() => this.workspace.applyInterview(input)); }
+  cancelAssistantPreview(kind:'interview'|'workbench',digest:string) { return this.workspaceRun(()=>this.workspace.cancelAssistantPreview(kind,digest)); }
   cancelInterview() { return this.workspaceRun(() => this.workspace.cancelInterview()); }
   get status(): ShellStatus { if (this.workspace.active) return { state: 'ready', detail: 'Local sandbox ready' }; return this.historical ? { state: 'historical', detail: this.detail } : { ...this.engine.status }; }
   start() { this.engine.start(this.packaged, this.root, this.resources); }

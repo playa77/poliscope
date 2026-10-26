@@ -1,3 +1,4 @@
+import { assistantQuestion } from './assistant-question';
 import React, { useEffect, useState } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { InterviewQuery, InterviewEdit, InterviewPreview, PartitionValueDTO } from '../../contracts/interview';
@@ -19,8 +20,9 @@ export function Commitment({ text }: { text: string }) {
   } catch { /* Older data remains inspectable as plain text. */ }
   return <p>{text}</p>;
 }
-export function Interview({ query, versions, historical, onDirty, onConfirmed }: {
+export function Interview({ query, versions, historical, onDirty, onConfirmed, onAskAssistant }: {
   query: InterviewQuery; versions: WorkspaceState['versions']; historical: boolean; onDirty: (dirty: boolean) => void;
+  onAskAssistant?: (text:string)=>void;
   onConfirmed: (state: WorkspaceState, status: string) => void;
 }) {
   const question = useQuery({ queryKey: ['interview', query, versions], retry: false, queryFn: () => window.poliscope.interview(query) });
@@ -64,10 +66,12 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed }:
   if (question.isPending) return <p role="status">Loading the selected interview…</p>;
   if (question.isError) return <p role="alert">Interview could not be read. <button onClick={() => void question.refetch()}>Retry interview read</button></p>;
   const q = question.data;
+  const assistantDraft=assistantQuestion(q);
   return <section className="interview" aria-label="Domain interview"><h5>{q.definition.original_text}</h5>
     <p>Origin: {q.definition.origin} · Evidence: {q.definition.evidence} · Modeling: {q.definition.modeling} · Version: {q.definition.version}</p>
     <p>Scope: {query.scope_id} · Revision: {query.context.revision_id}</p>
     <details><summary>Original wording and source</summary><p>{q.definition.original_text}</p><p>Definition {q.definition.id}. Source adoption is historical context; only Apply records a player choice. Inspect source text and license in the Decision atlas. Source references: {q.definition.source_refs.join(', ') || 'none'}. Assumption references: {q.definition.assumption_refs.join(', ') || 'none'}.</p></details>
+    {onAskAssistant&&<><button disabled={busy||Boolean(edit)||!assistantDraft} onClick={()=>onAskAssistant(assistantDraft!)}>Review this question with optional assistance</button><p>Copies authored wording and public references for local review only. No private rationale, draft or current commitment is included; nothing is sent automatically.</p></>}
     <details><summary>Clarification and dependencies</summary><p>{q.clarification}</p><ul>{q.dependencies.map(d => <li key={d}>{d}</li>)}</ul></details>
     {q.current_commitment && <details className="current-commitment"><summary>Current qualitative commitment</summary><Commitment text={q.current_commitment} /></details>}
     {historical && <p>This is a retained revision. Open the current branch head to edit.</p>}

@@ -1,3 +1,11 @@
+<!-- Latest full parent delivery supersedes historical entries below. -->
+**Current delivery, 2026-10-26:** [WP-049](WP-049.md), based on fetched main
+`2514749` (merged WP-048 / PR #119). Contextual interview review, retained turns,
+optional private local text snapshots, explicit qualitative excerpt promotion and
+independent deletion are accepted under SV. [Validation receipt](WP-049-validation.json)
+records the exact full/affected runs and their limits. No Windows/live/M6/G6 claim.
+Publication remains the final delivery step; do not merge without authorization.
+
 # Implementation execution ledger
 
 **Current delivery, 2026-10-26:** [WP-048 in full](WP-048.md), on fetched main

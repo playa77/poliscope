@@ -1,3 +1,5 @@
+import type { InterviewEdit, InterviewPreview } from '../../contracts/interview';
+import type { TranscriptStore } from './transcripts';
 import { attachments, bytes64, type Artifact } from './assistant-content';
 import { contextTool, type Ground, type GroundedSession } from './grounding';
 import type { WorkbenchEdit, WorkbenchPreview } from '../../contracts/workbench';
@@ -17,13 +19,17 @@ import type { Spend } from './spending';
 const defs=schema.$defs as Record<string,Schema>;
 export const assistantValid=(input:unknown,type:string)=>valid(input,defs[type],defs);
 export const assistantRequestValid=(input:unknown):input is AssistantPrepare|AssistantAction=>assistantValid(input,'AssistantPrepare')||assistantValid(input,'AssistantAction');
-type Job={reply:AssistantReply;request:BuiltRequest;envelope:SharingEnvelope;controller:AbortController;query:AssistantPrepare;binding:SpendBinding;started:boolean;ground?:GroundedSession;calls:number;round:number;proposals:WorkbenchEdit[];continuation?:Promise<AssistantReply>;opaque?:string;deleted?:boolean;generationId?:string;actualModel?:string;actualProvider?:string};
+type Job={created_at:string;reply:AssistantReply;request:BuiltRequest;envelope:SharingEnvelope;controller:AbortController;query:AssistantPrepare;binding:SpendBinding;started:boolean;ground?:GroundedSession;calls:number;round:number;proposals:WorkbenchEdit[];continuation?:Promise<AssistantReply>;opaque?:string;deleted?:boolean;generationId?:string;actualModel?:string;actualProvider?:string};
 export class AssistantController {
   private jobs=new Map<string,Job>();private session=randomUUID();private closed=false;
   private pending=0;
-  constructor(private providers:Pick<ProviderController,'prepareGeneration'|'dispatchGeneration'>&Partial<Pick<ProviderController,'generationUsage'>>,private transport:GenerationTransport,private spend:Spend,private context:()=>string, private ground?:Ground, private previewProposal?:(edit:WorkbenchEdit)=>Promise<WorkbenchPreview>,private saveArtifact?:(artifact:Artifact,signal:AbortSignal)=>Promise<void>) {}
+  constructor(private providers:Pick<ProviderController,'prepareGeneration'|'dispatchGeneration'>&Partial<Pick<ProviderController,'generationUsage'>>,private transport:GenerationTransport,private spend:Spend,private context:()=>string, private ground?:Ground, private previewProposal?:(edit:WorkbenchEdit)=>Promise<WorkbenchPreview>,private saveArtifact?:(artifact:Artifact,signal:AbortSignal)=>Promise<void>,private transcripts?:TranscriptStore,private previewQualitative?:(edit:InterviewEdit)=>Promise<InterviewPreview>,private cancelPreview?:(kind:'interview'|'workbench',digest:string)=>Promise<void>) {}
   async request(input:unknown):Promise<AssistantReply> {
     if(this.closed||!assistantRequestValid(input)||Buffer.byteLength(JSON.stringify(input))>131072)throw new Error('Assistant request rejected');
+    if(input.action==='workspace'||input.action==='delete-transcript') {
+      if(input.action==='delete-transcript')this.transcripts?.deleteSaved(input.request_id);
+      return this.workspace();
+    }
     if(input.action==='prepare') {
       if(input.output==='image')throw new Error('Dedicated Image API unavailable; select text or streamed audio');
       if(this.jobs.size+this.pending>=16)throw new Error('Delete a retained turn or close the application to clear requests');
@@ -42,7 +48,7 @@ export class AssistantController {
         const envelope=new SharingEnvelope(request,context_json,196608,undefined,[...(ground?['explicit-user-text','public-scoped']:['explicit-user-text']),...(content.manifest.length?['explicit-attachment','owned-derivatives']:[])]), id=envelope.id;
         const reply:AssistantReply={assistant_contract:1,request_id:id,status:'prepared',context_json,sharing_json:JSON.stringify(envelope.manifest),payload_json:request.json,text:'',reasoning:'',tools_json:'[]',usage_json:null,spending:null,result:null,diagnostic:'none',exposure:input.exposure,exposure_status:'not-reserved',grounding_json:ground?JSON.stringify(ground.manifest):null,proposals_json:'[]',proposal_preview:null,round:0,attachments_json:JSON.stringify(content.manifest),artifacts_json:'[]'};
         if(!assistantValid(reply,'AssistantReply'))throw new Error('Assistant preview exceeds bounds');
-        this.jobs.set(id,{reply,request,envelope,controller:new AbortController(),query:structuredClone(input),binding:{dispatch_id:id,turn_id:id,session_id:this.session,profile_id:input.profile_id,payload_sha256:envelope.payload_sha256,binding_sha256:envelope.binding_sha256,currency:'USD',estimate_version:'explicit-bounded-exposure-v1'},started:false,ground,calls:0,round:0,proposals:[]});
+        this.jobs.set(id,{created_at:new Date().toISOString(),reply,request,envelope,controller:new AbortController(),query:structuredClone(input),binding:{dispatch_id:id,turn_id:id,session_id:this.session,profile_id:input.profile_id,payload_sha256:envelope.payload_sha256,binding_sha256:envelope.binding_sha256,currency:'USD',estimate_version:'explicit-bounded-exposure-v1'},started:false,ground,calls:0,round:0,proposals:[]});
         return structuredClone(reply);
       }finally{this.pending--;}
     }
@@ -80,9 +86,19 @@ export class AssistantController {
       if(!artifact||!this.saveArtifact||job.deleted)throw new Error('Artifact unavailable');
       bytes64(artifact.data_base64);await this.saveArtifact(structuredClone(artifact),job.controller.signal);
     }
+    if(input.action==='save-transcript') {
+      if(!this.transcripts||job.deleted||job.controller.signal.aborted||!['complete','incomplete','tool-calls'].includes(job.reply.status)||job.query.attachments?.length||(job.reply.text??'').length>32768)throw new Error('Text snapshot unavailable');
+      this.transcripts.save({request_id:job.reply.request_id,turn_id:job.binding.turn_id,created_at:job.created_at,saved_at:new Date().toISOString(),context_json:job.reply.context_json,status:job.reply.status,selected_model:job.request.selected_model,actual_model:job.reply.result?.actual_model??null,actual_provider:job.reply.result?.actual_provider??null,prompt:job.query.text,text:job.reply.text??''});
+    }
     if(input.action==='delete') {
       job.envelope.revoke();job.controller.abort();
-      const tombstone:AssistantReply={...job.reply,status:'revoked',text:'',reasoning:'',payload_json:'',sharing_json:'{}',context_json:'{}',grounding_json:null,tools_json:'[]',proposals_json:'[]',proposal_preview:null,result:null,usage_json:null,spending:null,attachments_json:'[]',artifacts_json:'[]'};
+      for(const owned of this.jobs.values())if(owned.binding.turn_id===job.binding.turn_id) {
+        if(owned.reply.interview_preview)await this.cancelPreview?.('interview',owned.reply.interview_preview.candidate_digest);
+        if(owned.reply.proposal_preview)await this.cancelPreview?.('workbench',owned.reply.proposal_preview.candidate_digest);
+      }
+      // Fail visibly if the local copy cannot be deleted; never claim erasure.
+      this.transcripts?.deleteTurn(job.binding.turn_id);
+      const tombstone:AssistantReply={...job.reply,status:'revoked',text:'',reasoning:'',payload_json:'',sharing_json:'{}',context_json:'{}',grounding_json:null,tools_json:'[]',proposals_json:'[]',proposal_preview:null,interview_preview:null,qualitative_text:null,result:null,usage_json:null,spending:null,attachments_json:'[]',artifacts_json:'[]'};
       for(const [id,owned] of this.jobs)if(owned.binding.turn_id===job.binding.turn_id){owned.deleted=true;owned.opaque=undefined;owned.proposals=[];owned.continuation=undefined;owned.reply=structuredClone(tombstone);owned.request={...owned.request,json:'',plan:{...owned.request.plan,messages:[]}};owned.query={...owned.query,text:'',attachments:[]};this.jobs.delete(id);}
       return tombstone;
     }
@@ -90,10 +106,23 @@ export class AssistantController {
       if(!job.continuation)job.continuation=this.continue(job);
       return job.continuation;
     }
+    if(input.action==='cancel-preview') {
+      if(job.reply.interview_preview)await this.cancelPreview?.('interview',job.reply.interview_preview.candidate_digest);
+      if(job.reply.proposal_preview)await this.cancelPreview?.('workbench',job.reply.proposal_preview.candidate_digest);
+      job.reply.interview_preview=null;job.reply.qualitative_text=null;job.reply.proposal_preview=null;
+    }
+    if(input.action==='preview-qualitative') {
+      if(!this.previewQualitative||!job.ground||job.deleted||job.controller.signal.aborted||job.query.attachments?.length||job.reply.status!=='complete'||!input.proposal_text?.trim()||!input.domain_id||!job.reply.text?.includes(input.proposal_text))throw new Error('Qualitative promotion unavailable');
+      const preview=await this.previewQualitative({query:{context:job.ground.manifest.context,scope_id:job.ground.manifest.selection.scope_id,domain_id:input.domain_id},choice_id:'player:proposal',proposal:input.proposal_text,population:null,land_area:null,rationale:'',promotion:{source_request_id:job.binding.turn_id,manifest_digest:job.ground.manifest.digest,coverage:'unverified qualitative assistant excerpt'}});
+      if(this.closed||job.deleted||job.controller.signal.aborted){await this.cancelPreview?.('interview',preview.candidate_digest);throw new Error('Revoked');}
+      job.reply.interview_preview=preview;job.reply.qualitative_text=input.proposal_text;
+    }
     if(input.action==='preview-proposal') {
       if(!job.proposals.length||job.controller.signal.aborted||!this.previewProposal)throw new Error('Proposal unavailable');
       const proposal=job.proposals[input.proposal_index??0];if(!proposal)throw new Error('Proposal unavailable');
-      job.reply.proposal_preview=await this.previewProposal(proposal);
+      const preview=await this.previewProposal(proposal);
+      if(this.closed||job.deleted||job.controller.signal.aborted){await this.cancelPreview?.('workbench',preview.candidate_digest);throw new Error('Revoked');}
+      job.reply.proposal_preview=preview;
     }
     if(input.action==='send'&&!job.started&&job.reply.status==='prepared') {
       job.envelope.approve();job.started=true;job.reply.status='pending';void this.run(job);
@@ -104,6 +133,10 @@ export class AssistantController {
     }
     job.reply.sharing_json=JSON.stringify(job.envelope.manifest);
     return structuredClone(job.reply);
+  }
+  private workspace():AssistantReply {
+    return {assistant_contract:1,request_id:'workspace',status:'revoked',context_json:'{}',sharing_json:'{}',payload_json:'',text:'',reasoning:'',tools_json:'[]',result:null,usage_json:null,exposure:'0',exposure_status:'not-reserved',
+      turns:[...this.jobs.values()].map(job=>({request_id:job.reply.request_id,created_at:job.created_at,context_json:job.reply.context_json,status:job.reply.status,selected_model:job.request.selected_model})),transcripts:this.transcripts?.list()??[]};
   }
   private async continue(job:Job):Promise<AssistantReply> {
     if(this.closed||!job.ground||!job.ground.manifest.selection.tools||job.reply.status!=='tool-calls'||job.round>=3||job.controller.signal.aborted||this.jobs.size+this.pending>=16)throw new Error('Continuation unavailable');
@@ -126,9 +159,9 @@ export class AssistantController {
       const request=await this.providers.prepareGeneration({...job.request.plan,messages});
       const envelope=new SharingEnvelope(request,job.reply.context_json,196608,job.envelope,['explicit-user-text','public-scoped','provider-output','approved-tool-results',...(job.query.attachments?.length?['explicit-attachment','owned-derivatives']:[])]);
       if(this.closed||job.controller.signal.aborted)throw new Error('Revoked');
-      const id=envelope.id,reply:AssistantReply={...structuredClone(job.reply),request_id:id,status:'prepared',payload_json:request.json,sharing_json:JSON.stringify(envelope.manifest),text:'',reasoning:'',tools_json:'[]',artifacts_json:'[]',usage_json:null,spending:null,result:null,diagnostic:'none',exposure_status:'not-reserved',proposals_json:JSON.stringify(proposals),proposal_preview:null,round:job.round+1};
+      const id=envelope.id,reply:AssistantReply={...structuredClone(job.reply),request_id:id,status:'prepared',payload_json:request.json,sharing_json:JSON.stringify(envelope.manifest),text:'',reasoning:'',tools_json:'[]',artifacts_json:'[]',usage_json:null,spending:null,result:null,diagnostic:'none',exposure_status:'not-reserved',proposals_json:JSON.stringify(proposals),proposal_preview:null,interview_preview:null,qualitative_text:null,round:job.round+1};
       if(!assistantValid(reply,'AssistantReply'))throw new Error('Continuation exceeds bounds');
-      this.jobs.set(id,{reply,request,envelope,controller:job.controller,query:job.query,binding:{...job.binding,dispatch_id:id,payload_sha256:envelope.payload_sha256,binding_sha256:envelope.binding_sha256},started:false,ground:job.ground,calls:job.calls+calls.length,round:job.round+1,proposals});
+      this.jobs.set(id,{created_at:job.created_at,reply,request,envelope,controller:job.controller,query:job.query,binding:{...job.binding,dispatch_id:id,payload_sha256:envelope.payload_sha256,binding_sha256:envelope.binding_sha256},started:false,ground:job.ground,calls:job.calls+calls.length,round:job.round+1,proposals});
       return structuredClone(reply);
     }finally{this.pending--;}
   }

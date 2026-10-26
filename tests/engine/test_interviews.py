@@ -165,3 +165,45 @@ def test_condition_editor_cannot_claim_another_writer_state(tmp_path):
         interviews.stage(service, edit(current, population='1'), 'forbidden')
     assert len(history(service, current.context)) == 2
     store.close()
+
+
+def test_assistant_excerpt_promotion_is_pure_qualitative_and_retains_only_explicit_content(tmp_path):
+    store, service, state = setup(tmp_path)
+    try:
+        promotion = dict(source_request_id='turn-id', manifest_digest='sha256:'+'a'*64,
+                         coverage='unverified qualitative assistant excerpt')
+        changes = edit(state, domain='domain:3', choice_id='player:proposal',
+                       proposal='Public selected alternative', rationale='', promotion=promotion)
+        before = '\n'.join(store._connection.iterdump())
+        preview = interviews.stage(service, changes, 'promotion')[3]
+        assert '\n'.join(store._connection.iterdump()) == before
+        result = interviews.apply(service, dict(edit=changes, candidate_digest=preview.candidate_digest), 'promotion')
+        assert result.status == 'applied'
+        assert interviews.apply(service, dict(edit=changes, candidate_digest=preview.candidate_digest), 'promotion') == result
+        record = service.read(result.state.context)
+        commitment = next(v for v in record.inputs.values if v.property_id == 'interview:commitment')
+        metadata = json.loads(commitment.value.value)
+        assert metadata['option']['origin'] == 'ai_proposed'
+        assert metadata['option']['original_text'] == changes['proposal']
+        assert metadata['promotion'] == promotion
+        assert 'Private rationale canary' not in record.model_dump_json()
+        assert not record.inputs.design.policies and not record.inputs.design.execution.dependencies.instances
+        assert not (tmp_path/'private-interviews').exists()
+        assert len(history(service, result.state.context)) == 2
+    finally:
+        store.close()
+
+
+def test_assistant_promotion_cannot_label_an_authored_option_or_claim_supported_coverage(tmp_path):
+    store, service, state = setup(tmp_path)
+    try:
+        receipt = dict(source_request_id='turn', manifest_digest='sha256:'+'a'*64,
+                       coverage='unverified qualitative assistant excerpt')
+        with pytest.raises(ValueError):
+            interviews.stage(service, edit(state, promotion=receipt), 'forged')
+        with pytest.raises(ValueError):
+            interviews.stage(service, edit(state, choice_id='player:proposal', proposal='Text',
+                promotion=receipt | {'coverage':'scientifically validated'}), 'forged')
+        assert len(history(service, state.context)) == 1
+    finally:
+        store.close()

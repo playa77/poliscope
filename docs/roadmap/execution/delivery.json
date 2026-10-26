@@ -1,43 +1,33 @@
 {
   "version": 1,
-  "package": "WP-048",
+  "package": "WP-049",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-048.md",
+  "record": "docs/roadmap/execution/WP-049.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "a6170b9f0cc606f1dea50b590e2928ae09ed2122",
-  "branch": "codex/wp-048-usage",
+  "base": "2514749bf745992e5a631ebd950e72e44efb701f",
+  "branch": "codex/wp-049-workspace",
   "acceptance": [
     {
-      "id": "durable-reconciliation",
+      "id": "contextual-workspace",
       "status": "passed",
-      "evidence": "Durable per-dispatch token/outcome/generation facts, exact replay, late actuals, conservative conflicts and paginated profile recovery after restart/deletion; legacy references remain unresolved."
+      "evidence": "Existing provider discovery/settings/routing/usage plus explicit public interview draft, original-context retained-turn navigation and editable clarification/evidence/comparison/alternative tasks. Packaged interview and immutable-grounding paths pass."
     },
     {
-      "id": "decimal-costs",
+      "id": "private-transcript-lifecycle",
       "status": "passed",
-      "evidence": "Python Decimal28 catalog and scope aggregation checked by independent Fraction fixtures; monetary JSON lexemes preserved only at documented paths; actual replaces estimate, explicit zero distinct from unknown."
+      "evidence": "Explicit bounded main-owned text snapshots survive keyless restart; no automatic history reuse or report inclusion; malformed/oversized/linked/capacity failures preserve copies. Saved-copy and full-lineage deletion are independent of public history and spending."
     },
     {
-      "id": "spending-controls",
+      "id": "explicit-design-promotion",
       "status": "passed",
-      "evidence": "Atomic turn/session/profile gates count unresolved exposure and actual overruns; concurrency 0.6+0.6 under allowance 1 grants one; continuation gates retained; explicit limit changes retain all charges and recover after denial."
+      "evidence": "Main verifies an exact visible excerpt and original grounded context; Python ordinary qualitative Preview/Apply retains AI origin/unverified coverage and only selected content. Actual packaged SQLite flow confirms deletion preserves accepted choice and excludes the private prompt. Late and descendant preview grants are revoked."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4929 Python cases; 419 desktop units and 51 roadmap cases; final 196 engine/109 desktop affected cases; 27 packaged Linux scenarios and 3 final rebuilt affected scenarios. SV; Windows/live/keychains unclaimed."
+      "evidence": "4931 full Python cases; 428 full desktop units plus 48 final affected; 51 roadmap cases. All 27 distinct packaged Linux scenarios have passing evidence across integrated and rebuilt affected runs; exact scope and superseded failures in WP-049-validation.json. SV; Windows/live/keychains unclaimed."
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-048 durable usage reconciliation, Decimal costs, spending controls and usage-only recovery",
-  "publication": {
-    "status": "published; regular PR open",
-    "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-048-usage",
-    "action": "Push completed branch and open a regular PR against main; do not merge",
-    "implementation_commit": "1faf58b",
-    "reason": "The requesting user explicitly authorized pushing codex/wp-048-usage to playa77/poliscope and opening its regular PR against main.",
-    "next_action": "Review PR #119. Do not merge without user authorization.",
-    "url": "https://github.com/playa77/poliscope/pull/119"
-  }
+  "scope": "Full WP-049 assistant/provider workspace, contextual interview review, retained turn navigation, optional private local transcripts, explicit qualitative design promotion and independent deletion"
 }

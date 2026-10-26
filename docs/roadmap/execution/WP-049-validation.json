@@ -1,0 +1,100 @@
+{
+  "package": "WP-049",
+  "route": "solo-validated; agent review deferred",
+  "base": "2514749bf745992e5a631ebd950e72e44efb701f",
+  "source_sha256": "b0bc92f6d476758b4adc53ae9052ddc0260c83d75c0c5d3d7aed238cfee3bb37",
+  "source_files": {
+    "contracts/assistant.schema.json": "236eac4d260fa8353e55d2cf866a24daf69c2adf4dce7a11bac07aad3f67e5de",
+    "contracts/assistant.ts": "278b17c34d7a7349fc438e666a05dc38fcb5557e8d23f13b1bf0d06dfeb1cfec",
+    "contracts/interview.schema.json": "00c119a4c6e368f668cba0e74ce458a62b10bedc1bc1e5f3e774ca5540d9cd6f",
+    "contracts/interview.ts": "971c27a8926aa24eeaabeee8fca6c00912b7e6880ee4d91db6d8aa2c1c33e206",
+    "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
+    "desktop/main/index.ts": "9a8e99c004a96309c923869cc7a80823ed8ea182f56162e5128b342c7fe1494e",
+    "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
+    "desktop/main/transcripts.ts": "1001a641a68e720a81ea4a17c3ac52fc82004311ddf5ae7af5d5b5730de00bcb",
+    "desktop/main/workspace.ts": "edc859ea455328e4c0beec899e207e4ee8b0bc5d97ed1b5ce4797d6d86df68d7",
+    "desktop/renderer/assistant-question.ts": "7690ba736ab8dd82e75ec0a9d98996a300a14d359961c16f53a3f73a5510077d",
+    "desktop/renderer/assistant.tsx": "a416c8b11f5fe51d8153252817bd17df78d8b5ccd862be46ec9dcd9e35f5f779",
+    "desktop/renderer/interview.tsx": "99060924a8f0707847b858bbb36c2293f305fee3565397997db939ac635c9524",
+    "desktop/renderer/providers.tsx": "eb862f2c7700d1f05c39e857579720d363a9f3c488ea9df74f71259a6216559e",
+    "desktop/renderer/src.tsx": "c93bb7a313eefdbc96806b8aa8f94a80f20e4bbc79bce4d62fa50349d8a8da44",
+    "desktop/renderer/workspace.tsx": "0afb3b2ea0d710b5301d960906c6782af45cc5e7e2d59238e6405e89306585f4",
+    "engine/poliscope_engine/contracts/assistant.py": "25edd9b62b5237faab02e625f9a2ee57ceb195c547f8ca5ff3ca497aabdd5857",
+    "engine/poliscope_engine/contracts/interview.py": "a4248d6792cb0a19c876049b9e281ea630d3d90cf98ab43068679f3c842dcea0",
+    "engine/poliscope_engine/interviews.py": "a4532d38dd06516ede6117ecf08772b4f96b48f7e0f5dda62054ff56e94eb238",
+    "tests/desktop/assistant-question.test.ts": "8e63590a6a1daf652c3544696d193db972925d40c66cab49b184d49c8f612598",
+    "tests/desktop/assistant.spec.ts": "af391169553203322e651bbf375882b27fb5b86efd4f369360e81231ca916c77",
+    "tests/desktop/assistant.test.ts": "e36bfc3d9f097f79d31e108d06a24696d0d3747bead2db9138eeb1fd6626668d",
+    "tests/desktop/grounding.test.ts": "7ea67394f545426a865901fbea0d0fb99732f6c4f46a558af2ca5e0b1a9c1fd7",
+    "tests/desktop/interview.spec.ts": "4eb7c877a3f55eff794e502cb9fdc84d65e78b548114e865f2ec64365959bd34",
+    "tests/desktop/transcripts.test.ts": "5e2741bc42b2b5af965036ca906859e8caf36ad38c66bcedc623e9088f95d722",
+    "tests/engine/test_interviews.py": "920328f14883f3180504f5fc85e3343c4128318877bf3e13ab6293e5169b0b37"
+  },
+  "logs": {
+    "engine_full": {
+      "path_at_execution": "/tmp/wp049-pytest-final.log",
+      "sha256": "60cd6dae2eb1a0714067dd7e60a8698cfc59c6c75c5ab8d95eed59e0e81b519b"
+    },
+    "desktop_full_units": {
+      "path_at_execution": "/tmp/wp049-vitest-final.log",
+      "sha256": "5adaa5c89d4cc5521084b4c9a8478006c3e9b6a8b061a289a277620a54aa51d1"
+    },
+    "final_affected_units": {
+      "path_at_execution": "/tmp/wp049-final-units.log",
+      "sha256": "471468d9eae44afd9fe82adbcffe0202fa784f5b8bd109ff793a9dc200219af1"
+    },
+    "roadmap": {
+      "path_at_execution": "/tmp/wp049-roadmap-final.log",
+      "sha256": "347d4556337c1378f9513b25a6c1bb28743d10f4be548c0dc90405a596d482b5"
+    },
+    "packaged_integrated": {
+      "path_at_execution": "/tmp/wp049-desktop.log",
+      "sha256": "d63b31da77acee977378f9375691df02a9849d0a6da5bd67ea60dd4931edca97"
+    },
+    "packaged_final_affected": {
+      "path_at_execution": "/tmp/wp049-accepted-desktop.log",
+      "sha256": "06da7c9a1d7ae9321579a5fdf115b42e2b65e0fccb9d3dde9681a016748fd8e3"
+    },
+    "packaged_final_assistant": {
+      "path_at_execution": "/tmp/wp049-assistant-final.log",
+      "sha256": "024ca3eb7778860fc3881d3617a21e78ccb4154e4adeef0a82ed8bd2589ea1e2"
+    },
+    "package": {
+      "path_at_execution": "/tmp/wp049-package-final.log",
+      "sha256": "68b96c3f31d64c4e54b1e8ced8b2bf0b64cca4ac84d4055ac7e3efa75f956c2b"
+    },
+    "typecheck": {
+      "path_at_execution": "/tmp/wp049-typecheck.log",
+      "sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125"
+    }
+  },
+  "counts": {
+    "engine_full": 4931,
+    "desktop_full_units": 428,
+    "final_affected_units": 48,
+    "roadmap": 51,
+    "packaged_integrated_passed": 25,
+    "packaged_integrated_failed_superseded": 2,
+    "packaged_rebuilt_affected_passed": 5,
+    "packaged_final_assistant_passed": 1,
+    "distinct_packaged_scenarios_covered": 27,
+    "new_engine_cases": 2,
+    "new_desktop_units": 10,
+    "new_packaged_scenarios": 0,
+    "extended_packaged_scenarios": 2
+  },
+  "notes": [
+    "Full engine uses final engine/schema source. Four existing hostile DTO serializer warnings remain.",
+    "Full desktop unit run passed 428; final 48 affected units include one additional descendant-deletion case after that full run. Do not claim 429 cases in the full run.",
+    "Integrated packaged run passed 25/27. The two development failures (assistant timing and a comparison during rebuilding) are superseded by final rebuilt affected evidence. Five scenarios pass in the final affected selection; the assistant scenario is then rerun alone with explicit keyboard enabled-state waits and passes. Together all 27 distinct scenarios have passing evidence; this is not a single clean final 27-case run.",
+    "The final assistant scenario exercises keyless snapshot reading after restart, report omission, original context, costs/cancel/errors, selected excerpt Preview/Apply and deletion preserving accepted public content. The extended interview scenario checks a public local draft without a provider key.",
+    "No live or paid provider was called. No lock or content release changed."
+  ],
+  "limits": [
+    "Windows unrun",
+    "Paid/live providers and real OS keychains unrun",
+    "No full M6/G6 certification",
+    "Snapshots are optional bounded text records; no attachment, reasoning, tool or artifact persistence; no automatic reuse or transcript export inclusion",
+    "Filesystem backups and explicit external exports remain outside deletion; no secure-erasure claim"
+  ]
+}

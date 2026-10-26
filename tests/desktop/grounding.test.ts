@@ -14,7 +14,7 @@ import type { GroundedSession } from '../../desktop/main/grounding';
 const query:AssistantPrepare={action:'prepare',profile_id:'p',expected_revision:1,text:'Explain only the supplied inputs.',stream:false,exposure:'0.01',turn_limit:'0.05',session_limit:'0.1',profile_limit:'1',grounding:{scope_id:'home',task:'Explain',collections:['facts'],tools:true}};
 const args=(id='facts:one',operation='inspect')=>JSON.stringify({operation,entry_id:id,other_id:null,value_json:null});
 const complete=(content:string)=>JSON.stringify({model:'m',choices:[{index:0,message:{content},finish_reason:'stop'}]});
-function fixture(options:{callCount?:number;denied?:boolean;execute?:GroundedSession['execute'];allTools?:boolean;budgetDenied?:boolean}={}) {
+function fixture(options:{previewQualitative?:ConstructorParameters<typeof AssistantController>[8];cancelPreview?:ConstructorParameters<typeof AssistantController>[9];callCount?:number;denied?:boolean;execute?:GroundedSession['execute'];allTools?:boolean;budgetDenied?:boolean}={}) {
  const sent:string[]=[],grants:Parameters<Spend>[0][]=[];
  const ground:GroundedSession={manifest:{grounding_contract:1,context:{data_store_id:'s',civilization_id:'c',branch_id:'main',revision_id:'r'},selection:query.grounding!,versions:{world_schema:1,catalog_id:'cat',model_id:'mod',numeric_runtime_id:'runtime'},effective_time:{tick:0,calendar_id:'calendar'},entries:[{id:'facts:one',collection:'facts',coverage:'declared input',data_json:'{"value":"12","unit":"people"}'}],limitations:['No private data or other scopes'],digest:'sha256:'+'a'.repeat(64)},execute:vi.fn<GroundedSession['execute']>(options.execute??(async()=>({status:options.denied?'unavailable':'available',data_json:options.denied?'{"status":"unavailable"}':'{"value":"12","unit":"people"}'})))};
  const providers={prepareGeneration:vi.fn(async(plan:BuiltRequest['plan']):Promise<BuiltRequest>=>({profile_id:'p',revision:1,endpoint:'http://127.0.0.1:1234',method:'POST',path:'/chat/completions',json:JSON.stringify({model:'m',messages:plan.messages,tools:plan.tools}),selected_model:'m',allowed_models:['m'],plan})),dispatchGeneration:async<T>(_r:BuiltRequest,signal:AbortSignal,send:(key:string,signal:AbortSignal)=>Promise<T>)=>send('credential-canary',signal)};
@@ -22,7 +22,7 @@ function fixture(options:{callCount?:number;denied?:boolean;execute?:GroundedSes
   sent.push(json);
   if(sent.length===1||options.allTools)return{code:200,body:JSON.stringify({model:'m',choices:[{index:0,message:{content:'',tool_calls:Array.from({length:options.callCount??1},(_,i)=>({id:'call_'+sent.length+'_'+i,type:'function',function:{name:'inspect_context',arguments:args(options.denied?'forged-private-ref':'facts:one')}}))},finish_reason:'tool_calls'}]})};
   return{code:200,body:complete('Grounded answer with explicit coverage.')};
- },async q=>{grants.push(q);return{spending_contract:1,dispatch_id:q.binding.dispatch_id,status:options.budgetDenied&&sent.length===1?'denied':q.action==='reserve'?'reserved':q.action==='uncertain'?'uncertain':'complete',exposure:'0.01',currency:'USD'};},()=>'{"branch":"original"}',async()=>ground);
+ },async q=>{grants.push(q);return{spending_contract:1,dispatch_id:q.binding.dispatch_id,status:options.budgetDenied&&sent.length===1?'denied':q.action==='reserve'?'reserved':q.action==='uncertain'?'uncertain':'complete',exposure:'0.01',currency:'USD'};},()=>'{"branch":"original"}',async()=>ground,undefined,undefined,undefined,options.previewQualitative,options.cancelPreview);
  return{app,sent,grants,ground,providers};
 }
 async function terminal(app:AssistantController,id:string){let reply:AssistantReply;await vi.waitFor(async()=>{reply=await app.request({action:'status',request_id:id});expect(['pending','streaming']).not.toContain(reply.status);});return reply!;}
@@ -78,4 +78,35 @@ it('a grounded turn cannot change committed state; only explicit ordinary previe
  // No preview callback is installed in this fixture: a model-produced proposal
  // cannot manufacture an ordinary Apply grant or an engine mutation tool.
  await expect(f.app.request({action:'preview-proposal',request_id:next.request_id})).rejects.toThrow('Proposal unavailable');expect(f.sent).toHaveLength(1);
+});
+
+it('only explicit exact visible excerpts of completed grounded replies can enter ordinary qualitative preview',async()=>{
+ const preview=vi.fn<NonNullable<ConstructorParameters<typeof AssistantController>[8]>>(async()=>{throw new Error('stale original context');});
+ const f=fixture({previewQualitative:preview});const initial=await first(f);
+ await expect(f.app.request({action:'preview-qualitative',request_id:initial.request_id,proposal_text:'invented',domain_id:'domain:3'})).rejects.toThrow();expect(preview).not.toHaveBeenCalled();
+ const child=await f.app.request({action:'continue',request_id:initial.request_id});await f.app.request({action:'send',request_id:child.request_id});const reply=await terminal(f.app,child.request_id);
+ await expect(f.app.request({action:'preview-qualitative',request_id:reply.request_id,proposal_text:'private prompt canary',domain_id:'domain:3'})).rejects.toThrow();expect(preview).not.toHaveBeenCalled();
+ await expect(f.app.request({action:'preview-qualitative',request_id:reply.request_id,proposal_text:'Grounded answer',domain_id:'domain:3'})).rejects.toThrow('stale original context');
+ expect(preview).toHaveBeenCalledTimes(1);expect(preview.mock.calls[0][0]).toMatchObject({query:{context:f.ground.manifest.context,scope_id:'home',domain_id:'domain:3'},proposal:'Grounded answer',rationale:'',promotion:{source_request_id:initial.request_id,coverage:'unverified qualitative assistant excerpt'}});
+ await f.app.request({action:'revoke',request_id:reply.request_id});await expect(f.app.request({action:'preview-qualitative',request_id:reply.request_id,proposal_text:'Grounded answer',domain_id:'domain:3'})).rejects.toThrow();expect(preview).toHaveBeenCalledTimes(1);
+});
+
+it('deletion during an ordinary qualitative preview revokes late grants without restoring private turn data',async()=>{
+ let release!:(preview:Awaited<ReturnType<NonNullable<ConstructorParameters<typeof AssistantController>[8]>>>)=>void;
+ const preview=vi.fn<NonNullable<ConstructorParameters<typeof AssistantController>[8]>>(()=>new Promise(resolve=>{release=resolve;}));
+ const cancel=vi.fn(async()=>{}),f=fixture({previewQualitative:preview,cancelPreview:cancel});
+ const initial=await first(f),child=await f.app.request({action:'continue',request_id:initial.request_id});await f.app.request({action:'send',request_id:child.request_id});await terminal(f.app,child.request_id);
+ const pending=f.app.request({action:'preview-qualitative',request_id:child.request_id,proposal_text:'Grounded answer',domain_id:'domain:3'});
+ await vi.waitFor(()=>expect(preview).toHaveBeenCalledTimes(1));
+ await f.app.request({action:'delete',request_id:initial.request_id});
+ release({interview_contract:1,query:{context:f.ground.manifest.context,scope_id:'home',domain_id:'domain:3'},candidate_digest:'sha256:'+'b'.repeat(64),affected_scope_ids:['home'],changed_value_ids:[],coverage:'qualitative',findings:[],dependencies:[],accounts:[],alternatives:['player:proposal'],selected_id:'player:proposal',before:[],after:[]});
+ await expect(pending).rejects.toThrow('Revoked');expect(cancel).toHaveBeenCalledWith('interview','sha256:'+'b'.repeat(64));
+ expect((await f.app.request({action:'workspace',request_id:'workspace'})).turns).toEqual([]);
+});
+it('deleting a root turn cancels a completed descendant preview while preserving public history authority',async()=>{
+ const cancel=vi.fn(async()=>{});
+ const f=fixture({cancelPreview:cancel,previewQualitative:async edit=>({interview_contract:1,query:edit.query,candidate_digest:'sha256:'+'c'.repeat(64),affected_scope_ids:['home'],changed_value_ids:[],coverage:'qualitative',findings:[],dependencies:[],accounts:[],alternatives:['player:proposal'],selected_id:'player:proposal',before:[],after:[]})});
+ const initial=await first(f),child=await f.app.request({action:'continue',request_id:initial.request_id});await f.app.request({action:'send',request_id:child.request_id});await terminal(f.app,child.request_id);
+ const staged=await f.app.request({action:'preview-qualitative',request_id:child.request_id,proposal_text:'Grounded answer',domain_id:'domain:3'});expect(staged.qualitative_text).toBe('Grounded answer');
+ const deleted=await f.app.request({action:'delete',request_id:initial.request_id});expect(cancel).toHaveBeenCalledWith('interview','sha256:'+'c'.repeat(64));expect(deleted.interview_preview).toBeNull();expect((await f.app.request({action:'workspace',request_id:'workspace'})).turns).toEqual([]);
 });

@@ -345,6 +345,10 @@ export class WorkspaceController {
     this.candidate = undefined;
     return result;
   }
+  async cancelAssistantPreview(kind:'interview'|'workbench', digest:string):Promise<void> {
+    if(kind==='interview'&&this.candidate?.preview.candidate_digest===digest)await this.cancelInterview();
+    if(kind==='workbench'&&this.workbenchCandidate?.preview.candidate_digest===digest)await this.cancelWorkbench();
+  }
   async cancelInterview(): Promise<void> {
     if (this.candidate?.applying || this.workbenchCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
     this.candidate = undefined;

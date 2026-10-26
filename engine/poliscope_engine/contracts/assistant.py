@@ -7,6 +7,7 @@ from .generation import GenerationResult, Attachment
 from .providers import Revision
 from .grounding import GroundingSelection
 from .workbench import WorkbenchPreview
+from .interview import InterviewPreview
 
 class AssistantPrepare(Contract):
     action: Literal['prepare']
@@ -23,8 +24,10 @@ class AssistantPrepare(Contract):
     profile_limit: Money
 
 class AssistantAction(Contract):
-    action: Literal['send', 'cancel', 'status', 'revoke', 'continue', 'preview-proposal', 'delete', 'save-artifact', 'usage', 'reconcile', 'configure-spending', 'usage-history', 'reconcile-history']
+    action: Literal['send', 'cancel', 'status', 'revoke', 'continue', 'preview-proposal', 'delete', 'save-artifact', 'usage', 'reconcile', 'configure-spending', 'usage-history', 'reconcile-history', 'workspace', 'save-transcript', 'delete-transcript', 'preview-qualitative', 'cancel-preview']
     request_id: Id
+    proposal_text: Annotated[str, Field(min_length=1, max_length=1024)] | None = None
+    domain_id: Annotated[str, Field(pattern=r'^domain:([1-9]|1[0-2])$')] | None = None
     lookup_dispatch: Id | None = None
     before_dispatch: Id | None = None
     turn_limit: Money | None = None
@@ -33,7 +36,29 @@ class AssistantAction(Contract):
     artifact_index: Annotated[int, Field(ge=0, le=1)] = 0
     proposal_index: Annotated[int, Field(ge=0, le=7)] = 0
 
+class AssistantTurn(Contract):
+    request_id: Id
+    created_at: Annotated[str, Field(max_length=32)]
+    context_json: Annotated[str, Field(max_length=2048)]
+    status: Annotated[str, Field(max_length=32)]
+    selected_model: Annotated[str, Field(max_length=256)]
+
+class AssistantTranscript(Contract):
+    request_id: Id
+    turn_id: Id
+    created_at: Annotated[str, Field(max_length=32)]
+    saved_at: Annotated[str, Field(max_length=32)]
+    context_json: Annotated[str, Field(max_length=2048)]
+    status: Annotated[str, Field(max_length=32)]
+    selected_model: Annotated[str, Field(max_length=256)]
+    actual_model: Annotated[str, Field(max_length=256)] | None = None
+    actual_provider: Annotated[str, Field(max_length=256)] | None = None
+    prompt: Annotated[str, Field(max_length=8192)]
+    text: Annotated[str, Field(max_length=32768)]
+
 class AssistantReply(Contract):
+    turns: Annotated[list[AssistantTurn], Field(max_length=16)] = []
+    transcripts: Annotated[list[AssistantTranscript], Field(max_length=16)] = []
     assistant_contract: Literal[1] = 1
     request_id: Id
     status: Literal['prepared', 'pending', 'streaming', 'complete', 'tool-calls', 'incomplete', 'cancelled', 'failed', 'revoked']
@@ -49,6 +74,8 @@ class AssistantReply(Contract):
     diagnostic: Literal['none', 'authentication', 'credits', 'rate-limit', 'model', 'provider', 'network', 'invalid-response', 'budget', 'sharing', 'configuration', 'redirect'] = 'none'
     grounding_json: Annotated[str, Field(max_length=40000)] | None = None
     proposal_preview: WorkbenchPreview | None = None
+    interview_preview: InterviewPreview | None = None
+    qualitative_text: Annotated[str, Field(max_length=1024)] | None = None
     proposals_json: Annotated[str, Field(max_length=40000)] = '[]'
     attachments_json: Annotated[str, Field(max_length=8192)] = '[]'
     artifacts_json: Annotated[str, Field(max_length=196608)] = '[]'
