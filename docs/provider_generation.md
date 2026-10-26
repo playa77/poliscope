@@ -6,14 +6,17 @@ and review the exact serialized payload, destination, original context and
 sharing manifest before approving a single send. No generation is sent by
 catalog refresh, preparing a request, status polling or opening settings.
 
-This first generation consumer includes only the explicitly entered text. It does
-not retrieve society data, private notes, attachments, tools or earlier replies.
-The original selected civilization/branch/revision and effective time remain local
-on the request record when navigation changes. With no selected world it is
-explicitly standalone. Provider output is rendered as text, never Markdown or
-active media. It cannot apply a society change. Tool assemblies are inspectable
-by the main consumer; this UI neither requests nor executes tools. Broader grounded
-context, tool execution and transcript retention remain WP-046/047/049.
+Text-only requests share just the explicitly entered text. WP-046 also offers an
+explicitly selected public scope/task manifest and bounded read-only tools, with
+fresh exact-payload review for each continuation. Private notes, rationale,
+attachments and unrelated branches are excluded. See
+[grounded assistance](assistant_grounding.md) for the projection and tool limits.
+The original selected civilization/branch/revision and effective time remain pinned
+when navigation changes. With no selected world, text-only assistance is explicitly
+standalone. Provider output is rendered as text, never Markdown or active media.
+AI parameter proposals can enter the ordinary preview path; only the player's
+separate ordinary Apply action can commit them. Attachments and stored transcript
+handling remain WP-047/049.
 
 Each reviewed request has a main-generated identity. Duplicate sends of that
 identity return its existing state. A deliberate retry creates a fresh review,
@@ -30,8 +33,8 @@ whole-body authorization runs before reservation and again immediately before
 transport. The cumulative manifest records each exact payload hash once and
 bounds total disclosed bytes. Revocation blocks dispatch. Altered history,
 continuation, tool results, errors, attachments or other context cannot inherit an
-existing exact-payload grant. There is no generic continuation IPC: later consumers
-must obtain the same sharing and reservation checks for their separate dispatches.
+existing exact-payload grant. The bounded WP-046 continuation action obtains these same sharing and reservation
+checks for each separate dispatch; it cannot accept arbitrary context or payloads.
 Only explicit user text is classified as included by this consumer. No classification
 is inferred from provider prose, a tool's read-only status or model instructions.
 
@@ -65,10 +68,11 @@ exceed the selected exposure; provider account limits remain separate.
 The pure WP-044 builder revalidates every selected control, model and fallback
 against fresh main-owned metadata at preparation and again before obtaining the
 credential lease. Renderer data cannot supply a tokenizer receipt. This consumer
-supports only a single text message with OpenRouter's declared `GPT` byte-BPE
-architecture: at most one base token per UTF-8 byte, plus a conservative 1024-token
-chat framing reserve. Merging reduces the byte-BPE token count. No tool/schema
-serialization or extra history is admitted to this bound. This is an explicit
+supports text messages and bounded grounded-tool histories with OpenRouter's
+declared `GPT` byte-BPE architecture: at most one base token per UTF-8 byte of
+the complete serialized messages/tools, plus a conservative 1024-token reserve
+per message/tool and one outer framing unit. Merging reduces the byte-BPE token
+count. Roles, call IDs, arguments and tool schemas are included in the bound. This is an explicit
 conservative model bound, not a general assertion that bytes equal tokens.
 Unknown/other tokenizers and generic OpenAI-compatible catalog capabilities stay
 blocked until a trusted matching bound and declared capabilities exist. Catalog
@@ -118,3 +122,8 @@ provider cost lexemes before using them for authoritative reconciliation. Missin
 acceptance is inferred. Ordinary tests use only synthetic providers, mock protection
 and loopback HTTP; real keys, paid dispatch, native Windows, authenticated proxies
 and real keychain backends remain untested.
+
+WP-046 adds [grounded context, bounded tools and ordinary proposals](assistant_grounding.md).
+Its cumulative turn envelope supersedes the original single-message consumer
+limits above; each continuation receives a fresh exact-payload review and a
+distinct durable spending grant in the same turn. No automatic paid retry is added.

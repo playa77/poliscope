@@ -737,6 +737,85 @@
       "title": "PrivateReference",
       "type": "object"
     },
+    "ProposalEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "proposal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "player_input",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_request_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Request Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "value",
+        "origin",
+        "source_request_id",
+        "coverage",
+        "manifest_digest"
+      ],
+      "title": "ProposalEdit",
+      "type": "object"
+    },
     "QuantityValue": {
       "additionalProperties": false,
       "properties": {
@@ -964,13 +1043,17 @@
             "mapping": {
               "assumption": "#/$defs/AssumptionEdit",
               "goal": "#/$defs/GoalEdit",
-              "note": "#/$defs/NoteEdit"
+              "note": "#/$defs/NoteEdit",
+              "proposal": "#/$defs/ProposalEdit"
             },
             "propertyName": "kind"
           },
           "oneOf": [
             {
               "$ref": "#/$defs/AssumptionEdit"
+            },
+            {
+              "$ref": "#/$defs/ProposalEdit"
             },
             {
               "$ref": "#/$defs/GoalEdit"

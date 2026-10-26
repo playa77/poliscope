@@ -1,0 +1,105 @@
+{
+  "version": 1,
+  "package": "WP-046",
+  "route": "solo-validated; agent review deferred",
+  "base": "282b1abcbc489029fdc9c8318a046a16b7de4ef0",
+  "branch": "codex/wp-046-grounding",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted git tracked/intended desktop engine contracts scripts packaging plus package.json package-lock.json pyproject.toml uv.lock, excluding Markdown; path NUL bytes NUL",
+    "sha256": "5b310909f9db46cf1a1dd69d14d9f6b0355a22c9e95da9a279b24f8fb0844dd5",
+    "integrated_before_final_account_guard": "78f28c6087c8a56157aa10231954c07220cb0658e1500ea681eee34da017eb1b"
+  },
+  "tests": {
+    "engine_full": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv uv run --frozen pytest -q --junitxml=/tmp/wp046-python-final.xml",
+      "tool_session": 70606,
+      "cases": 4910,
+      "subtests": 54,
+      "counts": {
+        "tests": "4964",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "372.636"
+      },
+      "warnings": 4,
+      "log_sha256": "5e53b60fce76d2d6823845baafb118aa25ea6097f26491300fb58ddce7d0aa36",
+      "report_sha256": "5bf129f549351b77d1df7e59607a06a44fd34be603f3c26c2399c3fdce32e1d8",
+      "candidate": "integrated-before-final-account-guard"
+    },
+    "unit_full": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv npm test",
+      "tool_session": 39489,
+      "cases": 401,
+      "files": 34,
+      "roadmap_cases": 51,
+      "log_sha256": "11ad08ac0d77f9abe84e5e49020ee99a8ac72cf8be4bcf5a447d165d01b3f8a3"
+    },
+    "final_account_privacy": {
+      "status": "passed",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv uv run --frozen pytest tests/engine/test_grounding.py tests/engine/test_workbench.py -q",
+      "tool_session": 56360,
+      "cases": 21,
+      "log_sha256": "62143fcdf7b791bf84be4896d64f8fd0d4eef5f6589a8d9426437ede92ad66ed",
+      "candidate": "final"
+    },
+    "packaged_linux_full": {
+      "status": "passed",
+      "command": "DISPLAY=:99 npx playwright test",
+      "tool_session": 12661,
+      "candidate": "integrated-before-final-account-guard",
+      "cases": 26,
+      "failures": 0,
+      "skipped": 0,
+      "log_sha256": "4979d727a53553f2a81af01f3602f1f5281d7dc1021daf0038c8a99b24278101"
+    },
+    "packaged_linux_final_rebuild": {
+      "status": "passed",
+      "candidate": "final",
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv npm run build:engine; node scripts/desktop.mjs package; DISPLAY=:99 npx playwright test tests/desktop/grounding.spec.ts tests/desktop/assistant.spec.ts",
+      "tool_sessions": [
+        8440,
+        59132,
+        69026
+      ],
+      "cases": 2,
+      "failures": 0,
+      "skipped": 0,
+      "log_sha256": "fd1d70742400859bd53e903d0e9bf9841024662257e7fc2200fae1be67415bba",
+      "engine_build_log_sha256": "ef88bd33f510976e050d2e720691dd82e40448217fdf86a687f9996e5febcd42",
+      "package_log_sha256": "56abd48116d4c3e182727475d818427fc115a4d3dcff8b9f06199a13de477592"
+    }
+  },
+  "checks": [
+    "Frozen npm ci and uv sync --frozen --python 3.12",
+    "contracts:check",
+    "content:validate",
+    "typecheck",
+    "check_roadmap.py",
+    "check_baseline.py",
+    "git diff --check"
+  ],
+  "new_coverage": {
+    "python_cases": 7,
+    "desktop_unit_cases": 9,
+    "packaged_linux_cases": 1,
+    "note": "Counts describe tests, not feature size. Full Python run includes six new grounding cases; the seventh is the supplemental final account guard regression."
+  },
+  "separate_author_inspection": [
+    "Whole-payload approval and durable same-turn grants on every dispatch",
+    "Transitive private provenance taint and denial without excluded-reference probing",
+    "Immutable original context across actual navigation",
+    "Only ordinary stale/idempotent player Apply commits a proposal; origin and coverage survive",
+    "No apply, key, model-edit, filesystem, URL or timeline tool"
+  ],
+  "limitations": [
+    "Native Windows unrun",
+    "Real keychain and live/paid provider compatibility unrun",
+    "No full M6/G6 or scientific validity claim",
+    "Full engine and packaged runs precede only the final account-without-trace withholding guard; final focused engine and rebuilt packaged evidence are separate",
+    "Projection/turn/response budgets and supported-tokenizer assumptions documented in docs/assistant_grounding.md",
+    "Pending proposals are session local; WP-049 transcript persistence and WP-048 cost reconciliation remain later packages"
+  ]
+}

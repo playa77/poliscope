@@ -8,10 +8,19 @@
             "send",
             "cancel",
             "status",
-            "revoke"
+            "revoke",
+            "continue",
+            "preview-proposal"
           ],
           "title": "Action",
           "type": "string"
+        },
+        "proposal_index": {
+          "default": 0,
+          "maximum": 7,
+          "minimum": 0,
+          "title": "Proposal Index",
+          "type": "integer"
         },
         "request_id": {
           "pattern": "^[a-zA-Z0-9_-]{1,128}$",
@@ -44,6 +53,17 @@
           "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
           "title": "Exposure",
           "type": "string"
+        },
+        "grounding": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/GroundingSelection"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "profile_id": {
           "pattern": "^[a-zA-Z0-9_-]{1,128}$",
@@ -138,9 +158,39 @@
           "title": "Exposure Status",
           "type": "string"
         },
+        "grounding_json": {
+          "anyOf": [
+            {
+              "maxLength": 40000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Grounding Json"
+        },
         "payload_json": {
           "maxLength": 65536,
           "title": "Payload Json",
+          "type": "string"
+        },
+        "proposal_preview": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/WorkbenchPreview"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "proposals_json": {
+          "default": "[]",
+          "maxLength": 40000,
+          "title": "Proposals Json",
           "type": "string"
         },
         "reasoning": {
@@ -164,6 +214,13 @@
             }
           ],
           "default": null
+        },
+        "round": {
+          "default": 0,
+          "maximum": 3,
+          "minimum": 0,
+          "title": "Round",
+          "type": "integer"
         },
         "sharing_json": {
           "maxLength": 4096,
@@ -221,6 +278,55 @@
         "exposure_status"
       ],
       "title": "AssistantReply",
+      "type": "object"
+    },
+    "AssumptionEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "assumption",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "value"
+      ],
+      "title": "AssumptionEdit",
       "type": "object"
     },
     "GenerationResult": {
@@ -339,6 +445,543 @@
         "text"
       ],
       "title": "GenerationResult",
+      "type": "object"
+    },
+    "GoalEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "goal": {
+          "$ref": "#/$defs/PlayerGoal"
+        },
+        "kind": {
+          "const": "goal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "remove": {
+          "default": false,
+          "title": "Remove",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "kind",
+        "goal"
+      ],
+      "title": "GoalEdit",
+      "type": "object"
+    },
+    "GroundingSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "collections": {
+          "items": {
+            "enum": [
+              "facts",
+              "choices",
+              "accounts",
+              "traces",
+              "sources",
+              "assumptions"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Collections",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "task": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task",
+          "type": "string"
+        },
+        "tools": {
+          "default": false,
+          "title": "Tools",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "scope_id",
+        "task",
+        "collections"
+      ],
+      "title": "GroundingSelection",
+      "type": "object"
+    },
+    "LabelValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "label",
+          "title": "Kind",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 131072,
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value"
+      ],
+      "title": "LabelValue",
+      "type": "object"
+    },
+    "NoteEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Id"
+        },
+        "kind": {
+          "const": "note",
+          "title": "Kind",
+          "type": "string"
+        },
+        "note_kind": {
+          "enum": [
+            "inquiry",
+            "expectation",
+            "observation",
+            "model_gap",
+            "proposal"
+          ],
+          "title": "Note Kind",
+          "type": "string"
+        },
+        "text": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Text",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "note_kind",
+        "text"
+      ],
+      "title": "NoteEdit",
+      "type": "object"
+    },
+    "PlayerGoal": {
+      "additionalProperties": false,
+      "properties": {
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "indicator_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Indicator Id"
+        },
+        "kind": {
+          "enum": [
+            "narrative",
+            "comparison"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "operation": {
+          "anyOf": [
+            {
+              "enum": [
+                "lt",
+                "le",
+                "eq",
+                "ne",
+                "ge",
+                "gt"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Operation"
+        },
+        "question": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "title": "Question",
+          "type": "string"
+        },
+        "threshold": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "type": "null"
+            }
+          ]
+        }
+      },
+      "required": [
+        "id",
+        "kind",
+        "question",
+        "indicator_id",
+        "operation",
+        "threshold"
+      ],
+      "title": "PlayerGoal",
+      "type": "object"
+    },
+    "ProposalEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "proposal",
+          "title": "Kind",
+          "type": "string"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "origin": {
+          "enum": [
+            "authored",
+            "player_input",
+            "ai_proposed"
+          ],
+          "title": "Origin",
+          "type": "string"
+        },
+        "source_request_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Request Id",
+          "type": "string"
+        },
+        "value": {
+          "discriminator": {
+            "mapping": {
+              "label": "#/$defs/LabelValue",
+              "quantity": "#/$defs/QuantityValue",
+              "reference": "#/$defs/ReferenceValue",
+              "unknown": "#/$defs/UnknownValue"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/QuantityValue"
+            },
+            {
+              "$ref": "#/$defs/UnknownValue"
+            },
+            {
+              "$ref": "#/$defs/LabelValue"
+            },
+            {
+              "$ref": "#/$defs/ReferenceValue"
+            }
+          ],
+          "title": "Value"
+        }
+      },
+      "required": [
+        "kind",
+        "id",
+        "value",
+        "origin",
+        "source_request_id",
+        "coverage",
+        "manifest_digest"
+      ],
+      "title": "ProposalEdit",
+      "type": "object"
+    },
+    "QuantityValue": {
+      "additionalProperties": false,
+      "properties": {
+        "denominator_scope_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Denominator Scope Id"
+        },
+        "kind": {
+          "const": "quantity",
+          "title": "Kind",
+          "type": "string"
+        },
+        "time_basis_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Time Basis Id"
+        },
+        "unit_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Unit Id",
+          "type": "string"
+        },
+        "value": {
+          "maxLength": 256,
+          "minLength": 1,
+          "pattern": "^-?(0|[1-9][0-9]*)(\\.[0-9]+)?([eE][+-]?[0-9]+)?$",
+          "title": "Value",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "value",
+        "unit_id",
+        "time_basis_id",
+        "denominator_scope_id"
+      ],
+      "title": "QuantityValue",
+      "type": "object"
+    },
+    "ReferenceValue": {
+      "additionalProperties": false,
+      "properties": {
+        "entity_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entity Id",
+          "type": "string"
+        },
+        "kind": {
+          "const": "reference",
+          "title": "Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "entity_id"
+      ],
+      "title": "ReferenceValue",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "UnknownValue": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "unknown",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "maxLength": 1024,
+          "minLength": 1,
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "UnknownValue",
+      "type": "object"
+    },
+    "WorkbenchEdit": {
+      "additionalProperties": false,
+      "properties": {
+        "change": {
+          "discriminator": {
+            "mapping": {
+              "assumption": "#/$defs/AssumptionEdit",
+              "goal": "#/$defs/GoalEdit",
+              "note": "#/$defs/NoteEdit",
+              "proposal": "#/$defs/ProposalEdit"
+            },
+            "propertyName": "kind"
+          },
+          "oneOf": [
+            {
+              "$ref": "#/$defs/AssumptionEdit"
+            },
+            {
+              "$ref": "#/$defs/ProposalEdit"
+            },
+            {
+              "$ref": "#/$defs/GoalEdit"
+            },
+            {
+              "$ref": "#/$defs/NoteEdit"
+            }
+          ],
+          "title": "Change"
+        },
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "context",
+        "scope_id",
+        "change"
+      ],
+      "title": "WorkbenchEdit",
+      "type": "object"
+    },
+    "WorkbenchPreview": {
+      "additionalProperties": false,
+      "properties": {
+        "candidate_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Candidate Digest",
+          "type": "string"
+        },
+        "changed_observations": {
+          "minimum": 0,
+          "title": "Changed Observations",
+          "type": "integer"
+        },
+        "disclosure": {
+          "maxLength": 4096,
+          "title": "Disclosure",
+          "type": "string"
+        },
+        "edit": {
+          "$ref": "#/$defs/WorkbenchEdit"
+        },
+        "physical_after": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Physical After",
+          "type": "string"
+        },
+        "physical_before": {
+          "anyOf": [
+            {
+              "pattern": "^sha256:[0-9a-f]{64}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Physical Before"
+        },
+        "workbench_contract": {
+          "const": 1,
+          "title": "Workbench Contract",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "workbench_contract",
+        "edit",
+        "candidate_digest",
+        "physical_before",
+        "physical_after",
+        "changed_observations",
+        "disclosure"
+      ],
+      "title": "WorkbenchPreview",
       "type": "object"
     }
   },

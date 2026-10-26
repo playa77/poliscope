@@ -5,9 +5,20 @@ from .base import Contract
 from .providers import ProfileId, Revision, Text
 
 
+class GenerationCallFunction(Contract):
+    name: Annotated[str, Field(pattern=r'^[a-zA-Z0-9_-]{1,64}$')]
+    arguments: Annotated[str, Field(max_length=16384)]
+
+class GenerationCall(Contract):
+    id: Annotated[str, Field(pattern=r'^[a-zA-Z0-9_-]{1,128}$')]
+    type: Literal['function'] = 'function'
+    function: GenerationCallFunction
+
 class GenerationMessage(Contract):
-    role: Literal['system', 'user', 'assistant']
+    role: Literal['system', 'user', 'assistant', 'tool']
     content: Annotated[str, Field(min_length=1, max_length=262144)]
+    tool_calls: Annotated[list[GenerationCall], Field(min_length=1, max_length=8)] | None = None
+    tool_call_id: Annotated[str, Field(pattern=r'^[a-zA-Z0-9_-]{1,128}$')] | None = None
 
 
 class GenerationFormat(Contract):

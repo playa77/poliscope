@@ -1,3 +1,6 @@
+import groundingSchema from '../../contracts/grounding.schema.json';
+import type { GroundingSelection, GroundingManifest, GroundingResult } from '../../contracts/grounding';
+import type { GroundedSession } from './grounding';
 import recoverySchema from '../../contracts/recovery.schema.json';
 import reportSchema from '../../contracts/report.schema.json';
 import type { ReportRequest, ReportReply } from '../../contracts/report';
@@ -30,7 +33,7 @@ import type { OverviewQuery, OverviewPage, TargetQuery, TargetReply, ChartQuery,
 import interviewSchema from '../../contracts/interview.schema.json';
 import type { InterviewQuery, InterviewEdit, InterviewQuestion, InterviewPreview, InterviewApply, InterviewCommit } from '../../contracts/interview';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceSelection, WorkspaceState, WorkspacePageRequest, WorkspacePage } from '../../contracts/workspace';
-const defs = { ...recoverySchema.$defs, ...reportSchema.$defs, ...archiveSchema.$defs, ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs, ...uncertaintySchema.$defs } as Record<string, Schema>;
+const defs = { ...groundingSchema.$defs, ...recoverySchema.$defs, ...reportSchema.$defs, ...archiveSchema.$defs, ...schema.$defs, ...interviewSchema.$defs, ...overviewSchema.$defs, ...comparisonSchema.$defs, ...atlasSchema.$defs, ...matrixSchema.$defs, ...explorationSchema.$defs, ...workbenchSchema.$defs, ...timelineSchema.$defs, ...uncertaintySchema.$defs } as Record<string, Schema>;
 export function workspaceValid(value: unknown, type: string): boolean { return valid(value, defs[type], defs); }
 export function decodeWorkspace(frame: Buffer, type: string): unknown {
   if (frame.length > 1_048_576) throw new Error('Workspace response exceeds limit');
@@ -56,12 +59,12 @@ export class WorkspaceController {
   private branches?: WorkspaceCatalogue['branches'];
   constructor(private packaged: boolean, private root: string, private resources: string) {}
   clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; this.worldCandidate = undefined; this.workbenchCandidate = undefined; }
-  private async request(operation: string, input: unknown, type: string, identity = 'unused'): Promise<unknown> {
-    if (!this.directory) throw new Error('Select a store first');
+  private async request(operation: string, input: unknown, type: string, identity = 'unused', directory = this.directory): Promise<unknown> {
+    if (!directory) throw new Error('Select a store first');
     const command = engineCommand(this.packaged, this.root, this.resources);
     const args = this.packaged ? ['--workspace'] : ['-I', '-m', 'poliscope_engine.workspace'];
     const frame = await new Promise<Buffer>((resolve, reject) => {
-      const child = execFile(command.executable, [...args, '--directory', this.directory!, '--operation', operation, '--identity', identity], {
+      const child = execFile(command.executable, [...args, '--directory', directory, '--operation', operation, '--identity', identity], {
         shell: false, windowsHide: true, encoding: 'buffer', maxBuffer: 1_048_576, timeout: 15_000, killSignal: 'SIGKILL',
         env: Object.fromEntries(['SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'LANG', 'LC_ALL'].flatMap(k => process.env[k] === undefined ? [] : [[k, process.env[k]!]])),
       }, (error, stdout) => error ? reject(new Error('Workspace request failed')) : resolve(stdout));
@@ -69,6 +72,20 @@ export class WorkspaceController {
       child.stdin?.end(JSON.stringify(input) + '\n');
     });
     return decodeWorkspace(frame, type);
+  }
+  async ground(selection: GroundingSelection): Promise<GroundedSession> {
+    if (!this.selected || !this.directory || !workspaceValid(selection, 'GroundingSelection')) throw new Error('Select a revision and scope first');
+    const context = structuredClone(this.selected.context), directory = this.directory;
+    const manifest = await this.request('grounding', {context, selection}, 'GroundingManifest', 'unused', directory) as GroundingManifest;
+    if (!isDeepStrictEqual(manifest.context, context) || !isDeepStrictEqual(manifest.selection, {tools:false,...selection})) throw new Error('Context binding mismatch');
+    return {manifest, execute: async (argumentsJSON, requestId) => {
+      // Main retained immutable context; navigation cannot relabel this closure.
+      try {
+        const query:unknown = JSON.parse(argumentsJSON);
+        if (!workspaceValid(query, 'GroundingTool')) throw new Error();
+        return await this.request('grounding-tool', {manifest, query}, 'GroundingResult', requestId, directory) as GroundingResult;
+      } catch { return {status:'unavailable',data_json:'{"status":"unavailable"}',proposal_json:null}; }
+    }};
   }
   async report(input: unknown, choose: (format: 'markdown' | 'csv') => Promise<string | undefined>): Promise<ReportReply> {
     if (!this.directory || !workspaceValid(input, 'ReportRequest')) throw new Error('Invalid report grant');
@@ -174,13 +191,14 @@ export class WorkspaceController {
   async previewWorkbench(input: unknown): Promise<WorkbenchPreview> {
     if (!workspaceValid(input, 'WorkbenchEdit') || this.workbenchCandidate?.applying || this.candidate?.applying || this.worldCandidate?.applying) throw new Error('Resolve pending Apply');
     const edit = structuredClone(input as WorkbenchEdit);
+    if (edit.change.kind === 'proposal' && (this.workbenchCandidate || this.candidate || this.worldCandidate || this.pendingHistory)) throw new Error('Resolve existing draft first');
     this.authorizeHistory(edit.context);
     if (!isDeepStrictEqual(this.selected!.context, this.selected!.branch.context)) throw new Error('Historical state is read only');
     this.workbenchCandidate = undefined; this.candidate = undefined; this.worldCandidate = undefined;
     const identity = randomUUID();
     const reply = await this.request('preview-workbench', edit, 'WorkbenchPreview', identity) as WorkbenchPreview;
     const expected = { ...edit, change: edit.change.kind === 'goal' ? { remove: false, ...edit.change } : edit.change.kind === 'note' ? { id: null, ...edit.change } : edit.change };
-    if (!isDeepStrictEqual(reply.edit, expected) || (edit.change.kind !== 'assumption' && reply.physical_before !== reply.physical_after)) throw new Error('Evidence preview binding mismatch');
+    if (!isDeepStrictEqual(reply.edit, expected) || (!['assumption','proposal'].includes(edit.change.kind) && reply.physical_before !== reply.physical_after)) throw new Error('Evidence preview binding mismatch');
     this.workbenchCandidate = { edit, identity, preview: reply, applying: false };
     return reply;
   }

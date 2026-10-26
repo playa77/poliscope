@@ -36,7 +36,7 @@ function App() {
   const saved = result && 'result' in result ? result.result : undefined;
   return <main><p className="eyebrow">Poliscope</p><h1>A society, open to possibility.</h1>
     <button onClick={openProviders}>Open provider settings</button>
-    {providersOpen && <Providers />}
+    {providersOpen && <Providers locked={draft} onApplied={()=>setWorkspaceGeneration(n=>n+1)} />}
     <Workspace key={workspaceGeneration} onDraftChange={setDraft} onProviders={openProviders} />
     <p role="status">{status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine'}</p>
     <button disabled={busy || draft} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>

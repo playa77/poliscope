@@ -329,7 +329,8 @@ export class ProviderController {
   }
   /** Main-owned, conservative GPT byte-BPE bound, never a renderer receipt.
    * Unknown tokenizer/compatible catalog entries remain blocked. Full tokenizer
-   * negotiation and grounded tool payloads belong to subsequent integration.
+   * negotiation remains explicit; tools/history include serialized bytes plus a
+   * framing reserve per message/tool. No renderer can provide a budget receipt.
    */
   private async build(row: Row, plan: GenerationPlan): Promise<BuiltRequest> {
     const cache=await this.cache(row);
@@ -339,10 +340,13 @@ export class ProviderController {
       let raw: {architecture?:{tokenizer?:string}}={};
       try {raw=JSON.parse(model?.raw_json ?? '{}');} catch {return [];}
       // GPT byte-level BPE has a base token for each UTF-8 byte; merges only
-      // reduce counts. This path permits one plain text message, no schemas/tools.
-      // 1024 tokens reserves framing for this single documented chat message.
-      if(raw.architecture?.tokenizer!=='GPT' || plan.messages.length!==1 || plan.messages[0].role!=='user' || (plan.tools ?? []).length || plan.response_format.type!=='text')return [];
-      return [{model_id:id,input_tokens_upper_bound:Buffer.byteLength(plan.messages[0].content)+1024,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
+      // reduce counts. Count every serialized message, call ID/argument, tool
+      // description/schema and role, with 1024 reserved per framing unit. The
+      // escaped JSON byte count intentionally overestimates ordinary content.
+      if(raw.architecture?.tokenizer!=='GPT' || plan.response_format.type!=='text')return [];
+      const framing=1024*(plan.messages.length+(plan.tools??[]).length+1);
+      const bytes=Buffer.byteLength(JSON.stringify({messages:plan.messages,tools:plan.tools??[]}));
+      return [{model_id:id,input_tokens_upper_bound:bytes+framing,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
     });
     return buildGenerationRequest({profile:row.profile,revision:row.revision,key_status:'missing'},plan,{profile_id:row.profile.id,revision:row.revision,endpoint:row.profile.endpoint,models:cache.models,endpoints:Object.values(cache.endpoints),budgets});
   }

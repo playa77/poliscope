@@ -54,6 +54,20 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
   if (compatible && (fallback.length || r.order.length || r.only.length || r.ignore.length || r.allow_fallbacks || r.data_collection !== 'unknown' || r.zdr != null || r.sort != null || r.max_price != null)) fail('unsupported-control','provider');
   for (const list of [r.order,r.only,r.ignore]) if (new Set(list).size !== list.length) fail('invalid-control','provider');
   if (r.only.some(x => r.ignore.includes(x)) || r.order.some(x => r.ignore.includes(x) || (r.only.length && !r.only.includes(x))) || (r.sort && r.order.length)) fail('invalid-control','provider');
+  // Validate tool reply sequencing before serializing any provider payload.
+  let pendingCalls = new Set<string>();
+  for (const message of input.messages) {
+    if (message.role === 'tool') {
+      if (!message.tool_call_id || message.tool_calls != null || !pendingCalls.delete(message.tool_call_id)) fail('invalid-plan');
+    } else {
+      if (pendingCalls.size || message.tool_call_id != null || (message.tool_calls != null && message.role !== 'assistant')) fail('invalid-plan');
+      for (const call of message.tool_calls ?? []) {
+        if (pendingCalls.has(call.id) || !(input.tools ?? []).some(t => t.name === call.function.name)) fail('invalid-plan');
+        pendingCalls.add(call.id);
+      }
+    }
+  }
+  if (pendingCalls.size) fail('invalid-plan');
   const body: Record<string,unknown> = { model:p.model, messages:input.messages, stream:input.stream };
   const parameters = new Set<string>();
   const selected = (key: string, value: unknown) => { body[key] = value; parameters.add(key); };

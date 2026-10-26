@@ -18,7 +18,7 @@ const messages: Record<ProviderReply['status'], string> = {
   'key-unavailable': 'Key unavailable. Enter a replacement; protected storage may be unavailable on this account.', 'storage-failed': 'Settings or key could not be saved. Check local storage and refresh before retrying.',
   'stale-profile': 'This profile changed. Refresh settings before retrying.',
 };
-export function Providers() {
+export function Providers({locked=false,onApplied}:{locked?:boolean;onApplied?:()=>void}) {
   const [reply, setReply] = useState<ProviderReply>();
   const [profile, setProfile] = useState<ProviderProfile>(empty);
   const [metadata, setMetadata] = useState<ProviderReply>();
@@ -139,6 +139,6 @@ export function Providers() {
       <button disabled={busy} onClick={() => void request({ action: 'delete', profile_id: row.profile.id, expected_revision: row.revision })}>Delete provider profile</button>
     </>}
     <p>Removing a key deletes active stored material and cancels requests. Filesystem backups or OS recovery may retain older encrypted data; secure erasure is not promised. Key testing does not make a paid generation request.</p>
-  <Assistant view={row} disabled={busy || testing || changed} />
+  <Assistant view={row} onApplied={onApplied} disabled={locked || busy || testing || changed} />
   </section>;
 }
