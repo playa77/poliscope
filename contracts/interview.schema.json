@@ -354,6 +354,17 @@
           ],
           "title": "Population"
         },
+        "promotion": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/ProposalPromotion"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "proposal": {
           "anyOf": [
             {
@@ -863,6 +874,34 @@
         "provenance"
       ],
       "title": "PartitionValueDTO",
+      "type": "object"
+    },
+    "ProposalPromotion": {
+      "additionalProperties": false,
+      "properties": {
+        "coverage": {
+          "const": "unverified qualitative assistant excerpt",
+          "default": "unverified qualitative assistant excerpt",
+          "title": "Coverage",
+          "type": "string"
+        },
+        "manifest_digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Manifest Digest",
+          "type": "string"
+        },
+        "source_request_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source Request Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "source_request_id",
+        "manifest_digest"
+      ],
+      "title": "ProposalPromotion",
       "type": "object"
     },
     "QuantityValue": {

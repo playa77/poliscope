@@ -75,6 +75,13 @@ test('E2E-005 packaged interview cancel apply stale rejection qualitative propos
     await expect(interview.getByRole('status')).toContainText('Deferred');
     await page.locator('.domain-grid button').nth(6).click();
     await expect(interview).toContainText('Health and wellbeing');
+    // Optional clarification is a local, explicit public draft, usable without a key.
+    await interview.getByRole('button',{name:'Review this question with optional assistance',exact:true}).press('Enter');
+    const assistant=page.getByRole('region',{name:'Optional text assistance'});
+    await expect(assistant.getByText('Authored interview question for optional review',{exact:true})).toBeVisible();
+    await assistant.getByRole('button',{name:'Use this public question as the editable draft',exact:true}).press('Enter');
+    const draft=await assistant.getByLabel('Text to share',{exact:true}).inputValue();expect(draft).toContain('Clarify this authored interview question');expect(draft).not.toContain('Private UI rationale canary');
+    await expect(assistant.getByRole('button',{name:'Review request',exact:true})).toBeDisabled();
     await page.screenshot({ path: '/tmp/poliscope-interview.png', fullPage: true });
     await app.close();
     app = await electron.launch({ executablePath, args: ['--no-sandbox'], env: environment(join(directory, 'app')) });

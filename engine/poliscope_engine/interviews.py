@@ -157,8 +157,8 @@ def stage(service, data, identity):
     if is_proposal:
         if not edit.proposal or not edit.proposal.strip():
             raise ValueError('empty_proposal')
-        proposed = definition('player:proposal', 'option', q.definition.id, edit.proposal, 'player_proposed')
-    elif edit.proposal is not None:
+        proposed = definition('player:proposal', 'option', q.definition.id, edit.proposal, 'ai_proposed' if edit.promotion else 'player_proposed')
+    elif edit.proposal is not None or edit.promotion is not None:
         raise ValueError('unexpected_proposal')
     if not is_proposal and edit.choice_id not in {o.definition.id for o in options}:
         raise ValueError('unknown_option')
@@ -203,6 +203,8 @@ def stage(service, data, identity):
                         domain_refs=domain_refs, branch_refs=branch_refs,
                         card=next((dict(label=o.label, benefit=o.benefit, cost=o.cost, mechanism=o.mechanism) for o in q.options if o.definition.id == option.id),
                                   dict(label='Player qualitative alternative', benefit='Unreviewed proposal', cost='Unspecified requirements', mechanism=LIMIT)))
+        if option.origin == 'ai_proposed' and edit.promotion:
+            metadata['promotion'] = edit.promotion.model_dump(mode='json')
         value = dict(id=cid, entity_id=cid + ':entity', scope_id=edit.query.scope_id, partition='design', property_id='interview:commitment',
             effective_time=base['design']['effective_time'], provenance=PROVENANCE,
             value=dict(kind='label', value=json.dumps(metadata, separators=(',', ':'), ensure_ascii=False)))

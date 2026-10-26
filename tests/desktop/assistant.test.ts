@@ -1,3 +1,4 @@
+import { TranscriptStore } from '../../desktop/main/transcripts';
 import { it,expect,vi } from 'vitest';
 import { mkdtemp,rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
@@ -12,7 +13,7 @@ const query:AssistantPrepare={action:'prepare',profile_id:'profile',expected_rev
 const event=(content:string,finish:string|null=null)=>'data: '+JSON.stringify({model:'m',choices:[{index:0,delta:{content},finish_reason:finish}]})+'\n\n';
 const complete=event('A sufficiently long synthetic answer.','stop')+'data: [DONE]\n\n';
 const empty:BuiltRequest={profile_id:'profile',revision:1,endpoint:'http://127.0.0.1:1234',method:'POST',path:'/chat/completions',json:'{}',selected_model:'m',allowed_models:['m'],plan:{generation_contract:1,profile_id:'profile',expected_revision:1,messages:[{role:'user',content:'explicit'}],stream:true,response_format:{type:'text'},tools:[]}};
-function fixture(transport?:GenerationTransport,spend?:Spend) {
+function fixture(transport?:GenerationTransport,spend?:Spend,transcripts?:TranscriptStore) {
   const order:string[]=[];let context='{"branch":"original"}';let keyLease=new AbortController();
   const providers={prepareGeneration:vi.fn(async(plan:BuiltRequest['plan'])=>({...empty,plan,json:JSON.stringify({model:'m',messages:plan.messages,stream:plan.stream})})),dispatchGeneration:async<T>(_r:BuiltRequest,signal:AbortSignal,send:(key:string,signal:AbortSignal)=>Promise<T>)=> {
     order.push('lease');const abort=()=>keyLease.abort();signal.addEventListener('abort',abort,{once:true});
@@ -20,7 +21,7 @@ function fixture(transport?:GenerationTransport,spend?:Spend) {
   }};
   const send=vi.fn<GenerationTransport>(transport??(async(_url,_json,_key,_signal,_stream,chunk)=>{order.push('transport');chunk(Buffer.from(complete));return{code:200,body:''};}));
   const ledger:Spend=spend??(async q=>{order.push(q.action);return{spending_contract:1,dispatch_id:q.binding.dispatch_id,status:q.action==='reserve'?'reserved':q.action==='uncertain'?'uncertain':q.action==='no-send'?'no-send':'complete',exposure:'0.04',currency:'USD'};});
-  const app=new AssistantController(providers,send,ledger,()=>context);
+  const app=new AssistantController(providers,send,ledger,()=>context,undefined,undefined,undefined,transcripts);
   return{app,send,order,providers,changeContext:()=>{context='{"branch":"different"}';},removeKey:()=>keyLease.abort()};
 }
 async function start(f:ReturnType<typeof fixture>,q=query){const prepared=await f.app.request(q);await f.app.request({action:'send',request_id:prepared.request_id});return prepared.request_id;}
@@ -133,5 +134,39 @@ it('recovers usage after controller restart without storing or resending the ori
   const reconciled=await recovered.app.request({action:'reconcile-history',request_id:selected.request_id,lookup_dispatch:old});expect(reconciled.spending?.profile_total).toBe('0.01');expect(recovered.send).not.toHaveBeenCalled();
   expect(JSON.stringify(reconciled.spending)).not.toContain(query.text);
   await recovered.app.request({action:'delete',request_id:selected.request_id});
+ }finally{await rm(dir,{recursive:true,force:true});}
+});
+
+it('optional text snapshots survive restart, never enter fresh context and delete with turn ownership',async()=> {
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-transcripts-'));
+ try {
+  const store=new TranscriptStore(dir),f=fixture(undefined,undefined,store);
+  const id=await start(f);await terminal(f,id);
+  await f.app.request({action:'save-transcript',request_id:id});
+  const workspace=await f.app.request({action:'workspace',request_id:'workspace'});
+  expect(workspace.turns).toHaveLength(1);expect(workspace.transcripts).toHaveLength(1);
+  expect(workspace.transcripts![0].context_json).toContain('original');
+  expect(Object.keys(store.list()[0]).sort()).toEqual(['actual_model','actual_provider','context_json','created_at','prompt','request_id','saved_at','selected_model','status','text','turn_id']);
+  f.changeContext();const next=await f.app.request({...query,text:'fresh canary'});
+  expect(next.context_json).toContain('different');expect(next.payload_json).not.toContain(query.text);
+  expect((await f.app.request({action:'status',request_id:id})).context_json).toContain('original');
+  const reopened=fixture(undefined,undefined,new TranscriptStore(dir));
+  expect((await reopened.app.request({action:'workspace',request_id:'workspace'})).transcripts![0].text).toContain('synthetic answer');
+  await f.app.request({action:'delete',request_id:id});expect(store.list()).toEqual([]);
+  await expect(f.app.request({action:'status',request_id:id})).rejects.toThrow();
+  expect((await f.app.request({action:'status',request_id:next.request_id})).status).toBe('prepared');
+ }finally{await rm(dir,{recursive:true,force:true});}
+});
+it('saved-copy deletion is independent of the live turn and stopped/attachment turns cannot be saved',async()=> {
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-transcripts-'));
+ try {
+  const store=new TranscriptStore(dir),f=fixture(undefined,undefined,store),id=await start(f);await terminal(f,id);
+  await f.app.request({action:'save-transcript',request_id:id});
+  await f.app.request({action:'delete-transcript',request_id:id});expect(store.list()).toEqual([]);
+  expect((await f.app.request({action:'status',request_id:id})).text).toContain('synthetic answer');
+  const pending=await f.app.request(query);await expect(f.app.request({action:'save-transcript',request_id:pending.request_id})).rejects.toThrow();
+  const media=await start(f,{...query,attachments:[{name:'private.txt',mime:'text/plain',data_base64:Buffer.from('private attachment').toString('base64'),processing:'local-excerpt',provenance:'fixture',classification:'private',consent:'this-turn',retention:'session'}]});await terminal(f,media);
+  await expect(f.app.request({action:'save-transcript',request_id:media})).rejects.toThrow();expect(store.list()).toEqual([]);
+  await f.app.request({action:'revoke',request_id:id});await expect(f.app.request({action:'save-transcript',request_id:id})).rejects.toThrow();
  }finally{await rm(dir,{recursive:true,force:true});}
 });

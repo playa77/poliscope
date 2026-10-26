@@ -1,3 +1,4 @@
+import { TranscriptStore } from './transcripts';
 import { writeFile } from 'node:fs/promises';
 import { bytes64 } from './assistant-content';
 import { AssistantController } from './assistant';
@@ -52,7 +53,11 @@ if (ownsData) void app.whenReady().then(async () => {
     const extension=artifact.mime==='image/png'?'png':'wav';
     const result=await dialog.showSaveDialog(window!,{title:'Save untrusted provider artifact to a new file',defaultPath:`assistant-artifact.${extension}`,filters:[{name:'Provider artifact',extensions:[extension]}]});
     if(!signal.aborted&&!result.canceled&&result.filePath)await writeFile(result.filePath,bytes64(artifact.data_base64),{flag:'wx',mode:0o600});
-  });
+  }, new TranscriptStore(join(app.getPath('userData'),'assistant-private')), async edit=>{
+    const question=await engine.interview(edit.query);
+    const original=(id:string)=>{const row=question.conditions.find(v=>v.id===id);return row?.value.kind==='quantity'?row.value.value:null;};
+    return engine.previewInterview({...edit,population:original('population:value'),land_area:original('land:value')});
+  }, (kind,digest)=>engine.cancelAssistantPreview(kind,digest));
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',

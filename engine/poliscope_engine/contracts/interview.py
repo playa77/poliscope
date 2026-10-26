@@ -32,7 +32,13 @@ class InterviewQuestion(Contract):
     conditions: Annotated[list[PartitionValueDTO], Field(max_length=2)]
     current_commitment: Annotated[str, Field(max_length=131072)] | None
 
+class ProposalPromotion(Contract):
+    source_request_id: Identifier
+    manifest_digest: Digest
+    coverage: Literal['unverified qualitative assistant excerpt'] = 'unverified qualitative assistant excerpt'
+
 class InterviewEdit(Contract):
+    promotion: ProposalPromotion | None = None
     query: InterviewQuery
     choice_id: Identifier
     proposal: Annotated[str, Field(max_length=1024)] | None
