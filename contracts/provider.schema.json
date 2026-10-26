@@ -1,0 +1,481 @@
+{
+  "$defs": {
+    "ProviderCapabilities": {
+      "additionalProperties": false,
+      "properties": {
+        "audio": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Audio",
+          "type": "string"
+        },
+        "image": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Image",
+          "type": "string"
+        },
+        "reasoning": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Reasoning",
+          "type": "string"
+        },
+        "structured_output": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Structured Output",
+          "type": "string"
+        },
+        "text": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Text",
+          "type": "string"
+        },
+        "tools": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Tools",
+          "type": "string"
+        },
+        "video": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Video",
+          "type": "string"
+        }
+      },
+      "required": [
+        "text",
+        "image",
+        "audio",
+        "video",
+        "tools",
+        "structured_output",
+        "reasoning"
+      ],
+      "title": "ProviderCapabilities",
+      "type": "object"
+    },
+    "ProviderGeneration": {
+      "additionalProperties": false,
+      "properties": {
+        "max_output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 2147483647,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Max Output Tokens"
+        },
+        "temperature": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{1,3}(\\.[0-9]{1,6})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Temperature"
+        },
+        "top_p": {
+          "anyOf": [
+            {
+              "pattern": "^[0-9]{1,3}(\\.[0-9]{1,6})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Top P"
+        }
+      },
+      "required": [
+        "temperature",
+        "top_p",
+        "max_output_tokens"
+      ],
+      "title": "ProviderGeneration",
+      "type": "object"
+    },
+    "ProviderKeyAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "remove-key",
+            "test-key",
+            "delete"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Profile Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "profile_id",
+        "expected_revision"
+      ],
+      "title": "ProviderKeyAction",
+      "type": "object"
+    },
+    "ProviderList": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "list",
+          "title": "Action",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action"
+      ],
+      "title": "ProviderList",
+      "type": "object"
+    },
+    "ProviderProfile": {
+      "additionalProperties": false,
+      "properties": {
+        "capabilities": {
+          "$ref": "#/$defs/ProviderCapabilities"
+        },
+        "endpoint": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "generation": {
+          "$ref": "#/$defs/ProviderGeneration"
+        },
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "kind": {
+          "enum": [
+            "openrouter",
+            "openai-compatible"
+          ],
+          "title": "Kind",
+          "type": "string"
+        },
+        "model": {
+          "maxLength": 256,
+          "title": "Model",
+          "type": "string"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "routing": {
+          "$ref": "#/$defs/ProviderRouting"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "kind",
+        "endpoint",
+        "model",
+        "generation",
+        "routing",
+        "capabilities"
+      ],
+      "title": "ProviderProfile",
+      "type": "object"
+    },
+    "ProviderReplaceKey": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "replace-key",
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "key": {
+          "maxLength": 4096,
+          "minLength": 1,
+          "pattern": "^[!-~]+$",
+          "title": "Key",
+          "type": "string"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Profile Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "profile_id",
+        "expected_revision",
+        "key"
+      ],
+      "title": "ProviderReplaceKey",
+      "type": "object"
+    },
+    "ProviderReply": {
+      "additionalProperties": false,
+      "properties": {
+        "profiles": {
+          "items": {
+            "$ref": "#/$defs/ProviderView"
+          },
+          "maxItems": 64,
+          "title": "Profiles",
+          "type": "array"
+        },
+        "protection": {
+          "enum": [
+            "os-protected",
+            "session-only"
+          ],
+          "title": "Protection",
+          "type": "string"
+        },
+        "provider_contract": {
+          "const": 1,
+          "title": "Provider Contract",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "ready",
+            "saved",
+            "removed",
+            "test-accepted",
+            "unauthorized",
+            "redirect-blocked",
+            "cancelled",
+            "network-failed",
+            "provider-rejected",
+            "key-unavailable",
+            "storage-failed",
+            "stale-profile"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "provider_contract",
+        "profiles",
+        "protection",
+        "status"
+      ],
+      "title": "ProviderReply",
+      "type": "object"
+    },
+    "ProviderRouting": {
+      "additionalProperties": false,
+      "properties": {
+        "allow_fallbacks": {
+          "title": "Allow Fallbacks",
+          "type": "boolean"
+        },
+        "data_collection": {
+          "enum": [
+            "unknown",
+            "allow",
+            "deny"
+          ],
+          "title": "Data Collection",
+          "type": "string"
+        },
+        "ignore": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "title": "Ignore",
+          "type": "array"
+        },
+        "only": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "title": "Only",
+          "type": "array"
+        },
+        "order": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 32,
+          "title": "Order",
+          "type": "array"
+        },
+        "require_parameters": {
+          "title": "Require Parameters",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "order",
+        "only",
+        "ignore",
+        "allow_fallbacks",
+        "require_parameters",
+        "data_collection"
+      ],
+      "title": "ProviderRouting",
+      "type": "object"
+    },
+    "ProviderSave": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "save",
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_revision": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Expected Revision"
+        },
+        "profile": {
+          "$ref": "#/$defs/ProviderProfile"
+        }
+      },
+      "required": [
+        "action",
+        "profile",
+        "expected_revision"
+      ],
+      "title": "ProviderSave",
+      "type": "object"
+    },
+    "ProviderView": {
+      "additionalProperties": false,
+      "properties": {
+        "key_status": {
+          "enum": [
+            "missing",
+            "protected",
+            "session-only",
+            "unavailable"
+          ],
+          "title": "Key Status",
+          "type": "string"
+        },
+        "profile": {
+          "$ref": "#/$defs/ProviderProfile"
+        },
+        "revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Revision",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "profile",
+        "revision",
+        "key_status"
+      ],
+      "title": "ProviderView",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "discriminator": {
+        "mapping": {
+          "delete": "#/$defs/ProviderKeyAction",
+          "list": "#/$defs/ProviderList",
+          "remove-key": "#/$defs/ProviderKeyAction",
+          "replace-key": "#/$defs/ProviderReplaceKey",
+          "save": "#/$defs/ProviderSave",
+          "test-key": "#/$defs/ProviderKeyAction"
+        },
+        "propertyName": "action"
+      },
+      "oneOf": [
+        {
+          "$ref": "#/$defs/ProviderList"
+        },
+        {
+          "$ref": "#/$defs/ProviderSave"
+        },
+        {
+          "$ref": "#/$defs/ProviderKeyAction"
+        },
+        {
+          "$ref": "#/$defs/ProviderReplaceKey"
+        }
+      ]
+    },
+    {
+      "$ref": "#/$defs/ProviderReply"
+    }
+  ]
+}

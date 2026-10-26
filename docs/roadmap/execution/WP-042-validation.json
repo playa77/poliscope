@@ -1,0 +1,103 @@
+{
+  "version": 1,
+  "package": "WP-042",
+  "route": "solo-validated; agent review deferred",
+  "base": "d85efa89c092d6d92a318a5ec3365b23301af0dc",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted tracked desktop engine contracts scripts packaging and package.json package-lock.json pyproject.toml uv.lock; path NUL file bytes NUL",
+    "sha256": "2e3a63c3c56517f6cc2488fd93f76ca6b77235b9b23f1e7be3332afa16c657bb"
+  },
+  "tests": {
+    "engine": {
+      "tests": 4921,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 451.055,
+      "report_sha256": "febf2fb5d3b94b49745df997b8bba7b054396d480cc8e82d90dfec527913cb55",
+      "execution_session_id": 82561,
+      "case_count": 4867,
+      "subtests": 54,
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv uv run --frozen pytest --junitxml=/tmp/wp-042-engine.xml -q"
+    },
+    "unit": {
+      "tests": 275,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 59.437438227,
+      "report_sha256": "33ce61915c2a7d6e4006fd7add0baf6dec577c3b574df14237c57b121ff509b0",
+      "execution_session_id": 15278,
+      "command": "npx vitest run --reporter=default --reporter=junit --outputFile.junit=/tmp/wp-042-unit-final.xml"
+    },
+    "desktop_full": {
+      "tests": 22,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 378.278,
+      "report_sha256": "a60b97ef4c5f5cb09f863df4e747ca7d3f35d24167c56ad8394f4cb44feaf460",
+      "execution_session_id": 81252,
+      "command": "DISPLAY=:99 npx playwright test --reporter=line,junit"
+    },
+    "desktop_final_affected": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 8.26,
+      "report_sha256": "51d819c73fe56683d890fe7380d59bdfddf41ca188f851afe4535c536ae57723",
+      "execution_session_id": 97229,
+      "command": "DISPLAY=:99 npx playwright test tests/desktop/providers.spec.ts tests/desktop/bootstrap.spec.ts tests/desktop/security.spec.ts --reporter=line,junit"
+    },
+    "provider_final_focused": {
+      "tests": 38,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "elapsed_seconds": 1.386940194,
+      "report_sha256": "db31a561a08e932c90dbab884a8abe90d68bb86e509acd3268708ee7bb6d2d6e",
+      "execution_session_id": 24940,
+      "command": "npx vitest run tests/desktop/provider-isolation.test.ts tests/desktop/providers.test.ts tests/desktop/provider-network.test.ts tests/desktop/security.test.ts --reporter=default --reporter=junit"
+    }
+  },
+  "new_cases": {
+    "engine": 7,
+    "unit": 33,
+    "desktop": 1
+  },
+  "roadmap_unittest": {
+    "passed": 51,
+    "failed": 0,
+    "skipped": 0
+  },
+  "checks": [
+    "Frozen npm/uv install; locks unchanged",
+    "Generated contracts",
+    "Immutable content",
+    "TypeScript",
+    "Roadmap manifest",
+    "Baseline traceability",
+    "git diff --check",
+    "Separate author inspection"
+  ],
+  "native_platforms": {
+    "linux_x64": "Engine/Electron package; 22 full scenarios plus 3 final affected scenarios passed",
+    "windows_x64": "unrun"
+  },
+  "verification": "Full Python sources unchanged after the 4867-case run. Full unit 275 passes on the final application. The full 22-case packaged run precedes the last change: persist rejects settings exceeding the existing 512 KiB cold-reader bound. The new oversized-profile regression and all provider tests passed (38 focused including existing IPC security); the final rebuilt package passed all 3 affected provider/bootstrap/security scenarios. No application or test changes follow these accepted runs. The full packaged application fingerprint before that two-line capacity check was 8e9dc4cdc6981e2a82d904ccbcda307097b08a03e0729e89c0d0854dbb533f13. Documentation/evidence changes do not change final fingerprint.",
+  "limits": [
+    "No real keys, paid generation or live provider requests",
+    "Protected backend is exercised with encrypted fixtures; packaged Electron exercises unavailable-backend session-only behavior and real local metadata networking",
+    "No native Windows, real OS-keychain or authenticated proxy login acceptance",
+    "No cumulative M6/G6 or independent review claim",
+    "Stored preferences are unverified declarations; adapters/discovery/generation/spending/sharing/streaming remain subsequent packages",
+    "Removing active keys does not securely erase external backups or filesystem recovery"
+  ],
+  "superseded": [
+    "Early exact-label selector failure",
+    "Initial IPC/preload method allowlists omitted provider",
+    "Unit run overlapped staging-cleanup source change",
+    "Earlier full desktop run interrupted before final lifecycle/staging rebuild"
+  ]
+}

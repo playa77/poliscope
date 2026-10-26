@@ -524,3 +524,5 @@ Database backups include retained evidence and operation journals but exclude
 separate private payload stores and keys. Their absence is reported as unavailable.
 Deleting active private material does not erase previous backups, WAL, filesystem
 recovery or shared copies; users dispose of backups explicitly.
+
+`provider.schema.json` / `provider.ts` define settings-only provider IPC v1. The canonical Python DTOs generate the contract but Python never receives key requests. Replies expose preferences and storage status only. Main validates endpoint identities separately and owns encryption and fixed metadata networking; the renderer has no arbitrary HTTP primitive.
