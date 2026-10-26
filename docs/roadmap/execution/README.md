@@ -4,9 +4,9 @@
 optional private local text snapshots, explicit qualitative excerpt promotion and
 independent deletion are accepted under SV. [Validation receipt](WP-049-validation.json)
 records the exact full/affected runs and their limits. No Windows/live/M6/G6 claim.
-Implementation committed at `239f724`; the user has explicitly authorized pushing
-this branch to `playa77/poliscope` and opening its regular PR. Publication is pending;
-merge remains unauthorized.
+Implementation committed at `239f724`; the authorized branch is pushed and
+[regular PR #120](https://github.com/playa77/poliscope/pull/120) is open against `main`.
+No merge was performed.
 
 # Implementation execution ledger
 

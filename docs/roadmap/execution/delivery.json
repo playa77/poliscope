@@ -31,11 +31,12 @@
   "kind": "work_package",
   "scope": "Full WP-049 assistant/provider workspace, contextual interview review, retained turn navigation, optional private local transcripts, explicit qualitative design promotion and independent deletion",
   "publication": {
-    "status": "authorized; publication pending",
+    "status": "published; regular PR open",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-049-workspace",
     "implementation_commit": "239f724",
     "reason": "The requesting user explicitly authorized pushing codex/wp-049-workspace to playa77/poliscope and opening its regular PR against main.",
-    "next_action": "Push the authorized branch and open its regular PR against main; do not merge."
+    "next_action": "Review PR #120. Do not merge without user authorization.",
+    "url": "https://github.com/playa77/poliscope/pull/120"
   }
 }
