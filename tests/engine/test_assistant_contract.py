@@ -15,5 +15,6 @@ def test_invalid_exposure(amount):
     with pytest.raises(ValidationError):AssistantPrepare.model_validate(BASE|dict(exposure=amount))
 
 def test_continuation_cannot_inherit_existing_grants():
-    with pytest.raises(ValidationError):AssistantAction(action='continue',request_id='old')
+    assert AssistantAction(action='continue',request_id='old').action == 'continue'
+    # Runtime requires a completed tool turn; this DTO conveys no spending or sharing grant.
     with pytest.raises(ValidationError):SpendBinding(dispatch_id='d',turn_id='t',session_id='s',profile_id='p',payload_sha256='not-digest',binding_sha256='b'*64,currency='USD',estimate_version='explicit-bounded-exposure-v1')

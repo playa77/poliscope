@@ -1,0 +1,373 @@
+{
+  "$defs": {
+    "EffectiveTime": {
+      "additionalProperties": false,
+      "description": "Simulation time; no wall-clock timestamp participates in this identity.",
+      "properties": {
+        "calendar_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Calendar Id",
+          "type": "string"
+        },
+        "tick": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Tick",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "tick",
+        "calendar_id"
+      ],
+      "title": "EffectiveTime",
+      "type": "object"
+    },
+    "GroundingEntry": {
+      "additionalProperties": false,
+      "properties": {
+        "classification": {
+          "const": "public-scoped",
+          "default": "public-scoped",
+          "title": "Classification",
+          "type": "string"
+        },
+        "collection": {
+          "enum": [
+            "facts",
+            "choices",
+            "accounts",
+            "traces",
+            "sources",
+            "assumptions"
+          ],
+          "title": "Collection",
+          "type": "string"
+        },
+        "coverage": {
+          "maxLength": 256,
+          "title": "Coverage",
+          "type": "string"
+        },
+        "data_json": {
+          "maxLength": 16000,
+          "title": "Data Json",
+          "type": "string"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "collection",
+        "coverage",
+        "data_json"
+      ],
+      "title": "GroundingEntry",
+      "type": "object"
+    },
+    "GroundingManifest": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "digest": {
+          "pattern": "^sha256:[0-9a-f]{64}$",
+          "title": "Digest",
+          "type": "string"
+        },
+        "effective_time": {
+          "$ref": "#/$defs/EffectiveTime"
+        },
+        "entries": {
+          "items": {
+            "$ref": "#/$defs/GroundingEntry"
+          },
+          "maxItems": 60,
+          "title": "Entries",
+          "type": "array"
+        },
+        "grounding_contract": {
+          "const": 1,
+          "default": 1,
+          "title": "Grounding Contract",
+          "type": "integer"
+        },
+        "limitations": {
+          "items": {
+            "type": "string"
+          },
+          "maxItems": 12,
+          "title": "Limitations",
+          "type": "array"
+        },
+        "selection": {
+          "$ref": "#/$defs/GroundingSelection"
+        },
+        "versions": {
+          "$ref": "#/$defs/WorldVersions"
+        }
+      },
+      "required": [
+        "context",
+        "selection",
+        "versions",
+        "effective_time",
+        "entries",
+        "limitations",
+        "digest"
+      ],
+      "title": "GroundingManifest",
+      "type": "object"
+    },
+    "GroundingQuery": {
+      "additionalProperties": false,
+      "properties": {
+        "context": {
+          "$ref": "#/$defs/RevisionContext"
+        },
+        "selection": {
+          "$ref": "#/$defs/GroundingSelection"
+        }
+      },
+      "required": [
+        "context",
+        "selection"
+      ],
+      "title": "GroundingQuery",
+      "type": "object"
+    },
+    "GroundingResult": {
+      "additionalProperties": false,
+      "properties": {
+        "data_json": {
+          "maxLength": 16000,
+          "title": "Data Json",
+          "type": "string"
+        },
+        "proposal_json": {
+          "anyOf": [
+            {
+              "maxLength": 8000,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Proposal Json"
+        },
+        "status": {
+          "enum": [
+            "available",
+            "unavailable"
+          ],
+          "title": "Status",
+          "type": "string"
+        }
+      },
+      "required": [
+        "status",
+        "data_json"
+      ],
+      "title": "GroundingResult",
+      "type": "object"
+    },
+    "GroundingSelection": {
+      "additionalProperties": false,
+      "properties": {
+        "collections": {
+          "items": {
+            "enum": [
+              "facts",
+              "choices",
+              "accounts",
+              "traces",
+              "sources",
+              "assumptions"
+            ],
+            "type": "string"
+          },
+          "maxItems": 6,
+          "minItems": 1,
+          "title": "Collections",
+          "type": "array"
+        },
+        "scope_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Scope Id",
+          "type": "string"
+        },
+        "task": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Task",
+          "type": "string"
+        },
+        "tools": {
+          "default": false,
+          "title": "Tools",
+          "type": "boolean"
+        }
+      },
+      "required": [
+        "scope_id",
+        "task",
+        "collections"
+      ],
+      "title": "GroundingSelection",
+      "type": "object"
+    },
+    "GroundingTool": {
+      "additionalProperties": false,
+      "properties": {
+        "entry_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Entry Id",
+          "type": "string"
+        },
+        "operation": {
+          "enum": [
+            "read",
+            "inspect",
+            "compare",
+            "retrieve",
+            "validate",
+            "preview"
+          ],
+          "title": "Operation",
+          "type": "string"
+        },
+        "other_id": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Other Id"
+        },
+        "value_json": {
+          "anyOf": [
+            {
+              "maxLength": 4096,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Value Json"
+        }
+      },
+      "required": [
+        "operation",
+        "entry_id"
+      ],
+      "title": "GroundingTool",
+      "type": "object"
+    },
+    "RevisionContext": {
+      "additionalProperties": false,
+      "properties": {
+        "branch_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Branch Id",
+          "type": "string"
+        },
+        "civilization_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Civilization Id",
+          "type": "string"
+        },
+        "data_store_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Data Store Id",
+          "type": "string"
+        },
+        "revision_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Revision Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "data_store_id",
+        "civilization_id",
+        "branch_id",
+        "revision_id"
+      ],
+      "title": "RevisionContext",
+      "type": "object"
+    },
+    "WorldVersions": {
+      "additionalProperties": false,
+      "properties": {
+        "catalog_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Catalog Id",
+          "type": "string"
+        },
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "numeric_runtime_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Numeric Runtime Id",
+          "type": "string"
+        },
+        "world_schema": {
+          "const": 1,
+          "title": "World Schema",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "world_schema",
+        "catalog_id",
+        "model_id",
+        "numeric_runtime_id"
+      ],
+      "title": "WorldVersions",
+      "type": "object"
+    }
+  },
+  "anyOf": [
+    {
+      "$ref": "#/$defs/GroundingQuery"
+    },
+    {
+      "$ref": "#/$defs/GroundingManifest"
+    },
+    {
+      "$ref": "#/$defs/GroundingTool"
+    },
+    {
+      "$ref": "#/$defs/GroundingResult"
+    }
+  ]
+}

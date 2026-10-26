@@ -12,7 +12,7 @@ from poliscope_engine import private_notes
 
 def supported(record, assumption, definition, scope):
     return (definition is not None and definition.scope_id == scope and
-        definition.origin == 'player_input' and definition.uncertainty_form == 'point' and
+        definition.origin in ('player_input', 'ai_proposed') and definition.uncertainty_form == 'point' and
         assumption.value.kind in ('quantity', 'label') and
         any(v.value_id == assumption.id for v in record.inputs.design.assumption_inputs))
 
@@ -83,7 +83,7 @@ def stage(service, data, identity):
     raw = record.inputs.model_dump(mode='json')
     change, ref = edit.change, None
     disclosure = ''
-    if change.kind == 'assumption':
+    if change.kind in ('assumption', 'proposal'):
         old = next((a for a in record.inputs.assumptions if a.id == change.id), None)
         definition = next((r.assumption for r in saved.references if r.id == change.id and
             r.kind == 'assumption' and r.visibility == 'public' and r.availability == 'available'), None)
@@ -95,6 +95,22 @@ def stage(service, data, identity):
                 for f in ('unit_id', 'time_basis_id', 'denominator_scope_id')):
             raise ValueError('assumption_metadata_changed')
         raw['assumptions'] = [a | dict(value=change.value.model_dump()) if a['id'] == change.id else a for a in raw['assumptions']]
+        if change.kind == 'proposal':
+            import json
+            # Retained public evidence records origin and coverage; never alter
+            # mechanism definitions or activate unsupported numerical models.
+            receipt = dict(origin=change.origin, source_request_id=change.source_request_id,
+                coverage=change.coverage, manifest_digest=change.manifest_digest)
+            for item in raw['references']:
+                if item['id'] == change.id and item.get('assumption'):
+                    item['assumption']['origin'] = change.origin
+                    item['description'] = json.dumps(receipt, sort_keys=True)
+        else:
+            for item in raw['references']:
+                if item['id'] == change.id and item.get('assumption'):
+                    item['assumption']['origin'] = 'player_input'
+                    if definition.origin == 'ai_proposed':
+                        item['description'] = 'Player-edited parameter; prior AI origin and coverage remain in immutable history.'
         disclosure = 'This parameter becomes ordinary simulation input. Its retained definition, units, scope and uncertainty form stay fixed. Compare branches to inspect supported consequences; this does not validate scientific extrapolation.'
     elif change.kind == 'goal':
         goal = change.goal

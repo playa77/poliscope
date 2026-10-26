@@ -557,3 +557,10 @@ Spending DTOs contain IDs, digests and decimal-string USD exposure/limits only;
 the Python private-ledger host never receives credentials or prompt text. See
 [dispatch safeguards](../docs/provider_generation.md). These contracts do not
 claim full grounded tools, actual-cost reconciliation or live compatibility.
+
+WP-046 adds `grounding.schema.json`, `grounding.ts` and generated
+`grounding-tools.json` from canonical Python context/selection/tool/result DTOs.
+Assistant v1 accepts optional grounding, bounded continuation and explicit ordinary
+proposal-preview actions. Generation messages add typed assistant tool calls and
+matched tool results. Workbench adds retained proposal origin/coverage receipts;
+no provider tool obtains Apply authority. Existing text-only inputs remain valid.

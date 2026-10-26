@@ -46,7 +46,7 @@ if (ownsData) void app.whenReady().then(async () => {
   providers = new ProviderController(app.getPath('userData'), safeStorage,
     keyTestTransport(options => net.request({ ...options, session: providerSession })), process.platform,
     metadataTransport(options => net.request({ ...options, session: providerSession })));
-  assistant = new AssistantController(providers, generationTransport(options => net.request({...options, session:providerSession})), spendingService(app.isPackaged, app.getAppPath(), process.resourcesPath, app.getPath('userData')), () => engine.assistantContext);
+  assistant = new AssistantController(providers, generationTransport(options => net.request({...options, session:providerSession})), spendingService(app.isPackaged, app.getAppPath(), process.resourcesPath, app.getPath('userData')), () => engine.assistantContext, selection => engine.groundAssistant(selection), edit => engine.previewWorkbench(edit));
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',

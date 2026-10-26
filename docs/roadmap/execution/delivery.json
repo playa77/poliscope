@@ -1,43 +1,44 @@
 {
   "version": 1,
-  "package": "WP-045",
+  "package": "WP-046",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-045.md",
+  "record": "docs/roadmap/execution/WP-046.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "3c1f3d2b5041cc873c28d50d5d4e1495b84372ae",
-  "branch": "codex/wp-045-generation",
+  "base": "282b1abcbc489029fdc9c8318a046a16b7de4ef0",
+  "branch": "codex/wp-046-grounding",
   "acceptance": [
     {
-      "id": "streaming",
+      "id": "grounding",
       "status": "passed",
-      "evidence": "Every-byte UTF-8/CRLF SSE fixtures, documented repeated-finish usage frame, whole JSON, parallel indexed schema-validated tool fragments, visible reasoning, safe error/usage normalization; malformed/incomplete/cancelled output never completes."
+      "evidence": "Python-owned exact public scope/task manifests; immutable revision/version/time; transitive private-provenance withholding, bounded entries and explicit limits. Unknowns and units retained; no-tool manifests supported."
     },
     {
-      "id": "lifecycle",
+      "id": "tools",
       "status": "passed",
-      "evidence": "Main-generated immutable request/context identity, explicit exact-payload review/send, duplicate-send rejection, original context across actual civilization navigation, key/profile/metadata revocation, partial cancellation and deliberate fresh-request retry; no automatic generation retry."
+      "evidence": "Canonical generated inspect_context schema; completed validated calls; main-retained store/context, fixed denials without excluded-reference probes; 3 rounds/8 calls and byte/context limits."
     },
     {
-      "id": "dispatch-gates",
+      "id": "sharing-continuations",
       "status": "passed",
-      "evidence": "Production WP-046-envelope exact-byte revocable sharing manifest and WP-048-reservation durable atomic Python multi-scope grants. Revalidation after asynchronous grants, uncertainty before POST, retained exposure after cancel/key removal/restart; 12-connection independent concurrency oracle and packaged bundled-host integration."
+      "evidence": "Exact complete-payload review for every continuation; distinct dispatch grant in the original turn/session/profile; root revocation and post-grant revalidation. Real Electron/bundled-engine navigation and hostile private-note calls remain scoped."
+    },
+    {
+      "id": "proposal-authority",
+      "status": "passed",
+      "evidence": "Real pure registered-mechanism parameter preview; explicit ordinary player preview/Apply with stale/idempotent checks and retained source request/manifest/origin/coverage. No model Apply, edit-model, timeline, file, URL or key tool."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "4904 Python cases plus 54 subtests; 392 desktop units; 51 roadmap cases; all 25 final packaged Linux scenarios. Frozen setup, contracts/content/type/roadmap/baseline/whitespace checks; separate author inspection. Windows/live providers/real keychains unrun; no full M6/G6 claim."
+      "evidence": "4910 full Python cases plus 54 subtests, 401 desktop units, 51 roadmap cases and 26 full packaged Linux scenarios. Final account-without-trace narrowing separately passes 21 grounding/workbench cases and 2 final rebuilt assistant scenarios. Frozen setup/contracts/content/type/roadmap/baseline/whitespace checks; separate author inspection; SV. Windows/live providers/keychains unrun; no full M6/G6 claim."
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-045 generation, fragmented SSE, safe failures/cancellation/retry, integrated production sharing-envelope and spending-reservation prerequisites",
+  "scope": "Full WP-046 grounded context, bounded read-only tools, reviewed same-turn continuations and ordinary player-approved parameter proposals",
   "publication": {
-    "status": "published; regular PR open",
+    "status": "pending",
     "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-045-generation",
-    "implementation_commit": "8114efa",
-    "action": "Push completed branch and open a regular PR against main; do not merge",
-    "reason": "The requesting user explicitly authorized pushing this branch to playa77/poliscope and opening its PR.",
-    "next_action": "Review PR #116; do not merge without user authorization.",
-    "url": "https://github.com/playa77/poliscope/pull/116"
+    "branch": "codex/wp-046-grounding",
+    "action": "Push completed branch and open a regular PR against main; do not merge"
   }
 }

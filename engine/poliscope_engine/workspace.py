@@ -99,6 +99,14 @@ def page(service, options):
 
 
 def dispatch(service, operation, data, identity):
+    if operation == 'grounding':
+        from poliscope_engine.grounding import assemble
+        return assemble(service, data)
+    if operation == 'grounding-tool':
+        from poliscope_engine.grounding import tool
+        if set(data) != {'manifest', 'query'}:
+            raise ValueError('invalid_grounding_tool')
+        return tool(service, data['manifest'], data['query'], identity)
     if operation in ('uncertainty', 'sensitivity', 'capacity'):
         from poliscope_engine import uncertainty_service
         return {'uncertainty': uncertainty_service.analyze, 'sensitivity': uncertainty_service.sensitivity, 'capacity': uncertainty_service.capacity}[operation](service, data)
@@ -156,12 +164,13 @@ def dispatch(service, operation, data, identity):
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--directory', required=True)
-    parser.add_argument('--operation', choices=['uncertainty', 'sensitivity', 'capacity', 'timeline', 'workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
+    parser.add_argument('--operation', choices=['grounding', 'grounding-tool', 'uncertainty', 'sensitivity', 'capacity', 'timeline', 'workbench', 'preview-workbench', 'apply-workbench', 'delete-note', 'exploration', 'preview-world', 'apply-world', 'matrix', 'matrix-model', 'atlas', 'atlas-source', 'rationale', 'lineage', 'compare', 'history-action', 'catalogue', 'create', 'select', 'page', 'interview', 'preview-interview', 'apply-interview', 'overview', 'target', 'chart'], required=True)
     parser.add_argument('--identity', default='unused')
     args = parser.parse_args()
     try:
-        raw = sys.stdin.buffer.readline(16385)
-        if not raw.endswith(b'\n') or len(raw) > 16384 or sys.stdin.buffer.read(1):
+        bound = 65536 if args.operation == 'grounding-tool' else 16384
+        raw = sys.stdin.buffer.readline(bound + 1)
+        if not raw.endswith(b'\n') or len(raw) > bound or sys.stdin.buffer.read(1):
             raise ValueError('invalid_workspace_frame')
         data = json.loads(raw)
         with Store(Path(args.directory)) as store:

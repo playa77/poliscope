@@ -49,6 +49,15 @@ class AssumptionEdit(Contract):
     id: Identifier
     value: WorldValue
 
+class ProposalEdit(Contract):
+    kind: Literal['proposal']
+    id: Identifier
+    value: WorldValue
+    origin: Literal['authored', 'player_input', 'ai_proposed']
+    source_request_id: Identifier
+    coverage: Annotated[str, Field(min_length=1, max_length=256)]
+    manifest_digest: Digest
+
 class GoalEdit(Contract):
     kind: Literal['goal']
     goal: PlayerGoal
@@ -63,7 +72,7 @@ class NoteEdit(Contract):
 class WorkbenchEdit(Contract):
     context: RevisionContext
     scope_id: Identifier
-    change: Annotated[AssumptionEdit | GoalEdit | NoteEdit, Field(discriminator='kind')]
+    change: Annotated[AssumptionEdit | ProposalEdit | GoalEdit | NoteEdit, Field(discriminator='kind')]
 
 class WorkbenchPreview(Contract):
     workbench_contract: Literal[1]

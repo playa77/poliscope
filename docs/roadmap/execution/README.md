@@ -1,5 +1,17 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-046 in full](WP-046.md), on fetched main
+`282b1ab` (WP-045 / PR #116 merged), tracked by [active-package.json](active-package.json).
+One sequential Codex /root; SV with separate author inspection. Python-built
+public scope/task manifests, bounded read-only tools, exact reviewed tool
+continuations with distinct same-turn spending, and ordinary player-approved
+parameter proposals retaining origin/coverage. Full parent acceptance passes under SV: 4,910 Python cases plus 54 subtests,
+401 units, 51 roadmap cases and 26 packaged Linux scenarios; final privacy
+narrowing has 21 focused cases and 2 final rebuilt scenarios. See
+[the receipt](WP-046-validation.json). Native Windows,
+real provider/keychain certification and full M6/G6 acceptance remain unclaimed.
+After review/merge, reassess full WP-047; do not merge without user authorization.
+
 **Current delivery, 2026-10-26:** [WP-045 in full](WP-045.md), on fetched main
 `3c1f3d2` (merged PR #115 / WP-044), tracked in [active-package.json](active-package.json).
 One sequential Codex /root; SV with separate author inspection. Full generation,

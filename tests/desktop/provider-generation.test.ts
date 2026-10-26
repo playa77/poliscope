@@ -23,8 +23,9 @@ it.each(['remove-key','delete','refresh-catalog','close'])('%s revokes a real ge
  const rejected=expect(pending).rejects.toThrow('cancelled');await vi.waitFor(()=>expect(entered).toBe(true));
  if(action==='close')await c.close();else await c.request({action,profile_id:'p',expected_revision:2});await rejected;
 }));
-it('unknown tokenizer, removed model, extra history and tools cannot acquire the single-text context bound',()=>fixture(async(c,metadata)=>{
- await expect(c.prepareGeneration({...plan,messages:[...plan.messages,...plan.messages]})).rejects.toThrow('context-unknown');
+it('unknown tokenizer and removed models cannot acquire a context bound; complete text history is counted',()=>fixture(async(c,metadata)=>{
+ expect((await c.prepareGeneration({...plan,messages:[...plan.messages,...plan.messages]})).plan.messages).toHaveLength(2);
+ await expect(c.prepareGeneration({...plan,messages:[{role:'user',content:'x'.repeat(8192)}]})).rejects.toThrow('context-exceeded');
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[{...model,architecture:{...model.architecture,tokenizer:'Unknown'}}]})});await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:2});await expect(c.prepareGeneration(plan)).rejects.toThrow('context-unknown');
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[]})});await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:2});await expect(c.prepareGeneration(plan)).rejects.toThrow('model-unavailable');
 }));

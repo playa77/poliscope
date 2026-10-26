@@ -1,5 +1,51 @@
 {
   "$defs": {
+    "GenerationCall": {
+      "additionalProperties": false,
+      "properties": {
+        "function": {
+          "$ref": "#/$defs/GenerationCallFunction"
+        },
+        "id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Id",
+          "type": "string"
+        },
+        "type": {
+          "const": "function",
+          "default": "function",
+          "title": "Type",
+          "type": "string"
+        }
+      },
+      "required": [
+        "id",
+        "function"
+      ],
+      "title": "GenerationCall",
+      "type": "object"
+    },
+    "GenerationCallFunction": {
+      "additionalProperties": false,
+      "properties": {
+        "arguments": {
+          "maxLength": 16384,
+          "title": "Arguments",
+          "type": "string"
+        },
+        "name": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Name",
+          "type": "string"
+        }
+      },
+      "required": [
+        "name",
+        "arguments"
+      ],
+      "title": "GenerationCallFunction",
+      "type": "object"
+    },
     "GenerationFormat": {
       "additionalProperties": false,
       "properties": {
@@ -59,10 +105,41 @@
           "enum": [
             "system",
             "user",
-            "assistant"
+            "assistant",
+            "tool"
           ],
           "title": "Role",
           "type": "string"
+        },
+        "tool_call_id": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tool Call Id"
+        },
+        "tool_calls": {
+          "anyOf": [
+            {
+              "items": {
+                "$ref": "#/$defs/GenerationCall"
+              },
+              "maxItems": 8,
+              "minItems": 1,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Tool Calls"
         }
       },
       "required": [
