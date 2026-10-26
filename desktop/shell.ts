@@ -1,3 +1,5 @@
+import type { ProviderReply } from '../contracts/provider';
+import type { ProviderRequest } from './main/providers';
 import type { RecoveryRequest, RecoveryReply } from '../contracts/recovery';
 import type { ReportRequest, ReportReply } from '../contracts/report';
 import type { ArchiveRequest, ArchiveReply } from '../contracts/archive';
@@ -16,6 +18,7 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  provider(query: ProviderRequest): Promise<ProviderReply>;
   recovery(query: RecoveryRequest): Promise<RecoveryReply>;
   report(query: ReportRequest): Promise<ReportReply>;
   archive(query: ArchiveRequest): Promise<ArchiveReply>;

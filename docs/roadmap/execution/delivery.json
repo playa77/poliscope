@@ -1,47 +1,38 @@
 {
   "version": 1,
-  "package": "WP-041",
+  "package": "WP-042",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-041.md",
+  "record": "docs/roadmap/execution/WP-042.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "e5edaeefcceb06d1755fd3b502aca8f7c3986a82",
-  "branch": "codex/wp-041-recovery",
+  "base": "d85efa89c092d6d92a318a5ec3365b23301af0dc",
+  "branch": "codex/wp-042-provider",
   "acceptance": [
     {
-      "id": "schema-recovery",
+      "id": "profiles",
       "status": "passed",
-      "evidence": "Explicit SQLite API backup precedes schema-1-to-2 transactional DDL; process death, disk/save/directory flush failure preserve confirmed history. Restore into a new empty folder retains operations and evidence."
+      "evidence": "Persistent explicit endpoint/model/generation/routing/capability preferences; revision-bound updates, saved-destination display and unsaved endpoint guard; bounded settings remain cold-readable."
     },
     {
-      "id": "model-migration",
+      "id": "keys",
       "status": "passed",
-      "evidence": "Atomic native/import comparison branches with source lineage; old branch/results retained; completed migration recovery succeeds without an installed registry and across app restart."
+      "evidence": "OS-protection fixtures, unavailable/basic_text session-only fallback, one-time cleared entry, encrypted profile/endpoint binding, corrupt/copy refusal, replacement/removal/restart and interrupted staging cleanup."
     },
     {
-      "id": "historical",
+      "id": "networking",
       "status": "passed",
-      "evidence": "Cold native schema-1/2 catalogue/revision and portable archive reads without UI caches or model execution; absent mechanisms, unreadable schemas and reduced evidence are explicit; corruption diagnostics preserve originals."
+      "evidence": "Electron net isolated memory session/system-proxy wiring; fixed metadata GET, no cookies/interactive auth, all redirects aborted, 64 KiB/10s bounds and cancellation on changes/removal/shutdown; actual loopback acceptance."
     },
     {
-      "id": "desktop",
+      "id": "isolation",
       "status": "passed",
-      "evidence": "Main-owned file/folder grants, path-free bounded recovery IPC, keyboard-accessible retained facts, cancellation, safe overwrite/restore failure and visibly unconfirmed saves. Packaged cold discovery/backup/comparison/selected-backup restore passed."
+      "evidence": "Authorized bounded path-free IPC and status-only replies; metadata body/header redaction; engine environment inspection; actual SQLite/decompressed export excludes keys/blobs/preferences even with co-located provider store."
     },
     {
       "id": "parent-validation",
       "status": "passed",
-      "evidence": "Full 4860 Python, 242 unit and 21 packaged Linux cases passed without skips; generated/content/types/roadmap/baseline and separate author inspection. Native Windows unrun."
+      "evidence": "4867 Python plus 54 subtests, 275 full unit, 51 roadmap cases, 22 full packaged Linux cases; final capacity-only change verified by focused regression and 3 final rebuilt affected scenarios. Windows/live providers/real keychain unrun; SV."
     }
   ],
   "kind": "work_package",
-  "scope": "Full WP-041: explicit schema backup/migration, safe selected restore, cold trusted historical database/archive inspection, compatible model comparison branches and uncertain-operation recovery",
-  "publication": {
-    "status": "explicitly authorized; publication pending",
-    "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-041-recovery",
-    "action": "Push branch and open a regular PR against main; do not merge",
-    "implementation_commit": "4a0f5b5",
-    "reason": "The requesting user explicitly instructed: push codex/wp-041-recovery to playa77/poliscope and open a pr.",
-    "next_action": "Push the authorized branch and open a regular PR against main; do not merge."
-  }
+  "scope": "Full WP-042: profile preferences, secure/session-only key lifecycle, fixed main-owned Electron metadata transport, endpoint/redirect isolation and accessible settings UI"
 }

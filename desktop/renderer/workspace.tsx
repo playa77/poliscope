@@ -39,7 +39,7 @@ async function pages(state: WorkspaceState, scope: string, collection: Workspace
 const VIEWS = ['Civilization overview', 'Society map', 'Decision atlas', 'Dependency matrix',
   'World and institutions', 'Uncertainty and sensitivity', 'Timeline and experiments', 'History and comparison', 'Evidence and models', 'Assistant and provider settings'];
 
-export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) => void }) {
+export function Workspace({ onDraftChange, onProviders }: { onDraftChange?: (dirty: boolean) => void; onProviders?: () => void }) {
   const client = useQueryClient();
   const [dirty, setDirty] = useState(false);
   const [notice, setNotice] = useState('');
@@ -127,7 +127,7 @@ export function Workspace({ onDraftChange }: { onDraftChange?: (dirty: boolean) 
             }
           }} /></label><p>Press Enter to open the revision. Saved revisions remain attached to their original state.</p>
         </div>
-        <div className="workspace-layout"><nav aria-label="Workspaces">{VIEWS.map(name => <button key={name} disabled={dirty} aria-current={view === name ? 'page' : undefined} onClick={() => setView(name)}>{name}</button>)}</nav>
+        <div className="workspace-layout"><nav aria-label="Workspaces">{VIEWS.map(name => <button key={name} disabled={dirty} aria-current={view === name ? 'page' : undefined} onClick={() => name === 'Assistant and provider settings' ? onProviders?.() : setView(name)}>{name}</button>)}</nav>
           <article className="workspace-body"><h3>{view}</h3>
             <p>{state.goal_count} declared goals · {state.policy_count} selected policies · {state.mechanism_count} registered mechanisms</p>
             <p>{state.mechanism_count === 0 ? 'This starting model has no numerical social mechanisms. Qualitative commitments have no calculated social effects; observations below are authored conditions.' : 'This saved model contains mechanism bindings. Synthetic qualitative interviews are available; execution requires the matching registered model.'}</p>

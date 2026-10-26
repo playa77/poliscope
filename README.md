@@ -260,3 +260,5 @@ For a model contribution, identify its mechanism, scopes, inputs, outputs, units
 New domain content uses the shared contracts. It must not duplicate resource stocks, silently choose political precedence, hide missing inputs, or introduce an overall civilization score.
 
 Preserve source attribution and historical alternatives. Keep credentials and private data out of issues, test fixtures, logs, and pull requests.
+
+Provider settings and key storage: see [the local BYOK guide](docs/provider_settings.md). WP-042 provides profiles and fixed metadata key tests; full provider adapters and generation remain subsequent packages.

@@ -1,4 +1,6 @@
-import { app, BrowserWindow, ipcMain, session, dialog } from 'electron';
+import { ProviderController } from './providers';
+import { keyTestTransport } from './provider-network';
+import { app, safeStorage, net, BrowserWindow, ipcMain, session, dialog } from 'electron';
 import { isAbsolute, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
 import { DesktopShell } from './shell';
@@ -13,13 +15,15 @@ if (dataPath) {
 const ownsData = app.requestSingleInstanceLock();
 if (!ownsData) app.quit();
 const engine = new DesktopShell(app.isPackaged, process.env.POLISCOPE_PROJECT_ROOT ?? '', process.resourcesPath);
+let providers: ProviderController | undefined;
 let closing = false;
 let window: BrowserWindow | undefined;
 app.on('before-quit', (event) => {
   if (closing) return;
   event.preventDefault();
   closing = true;
-  void engine.stop().then(() => app.quit()).catch(() => { closing = false; });
+  const providerStop = providers?.close();
+  void Promise.all([engine.stop(), providerStop]).then(() => app.quit()).catch(() => { closing = false; });
 });
 app.on('window-all-closed', () => app.quit());
 if (ownsData) void app.whenReady().then(async () => {
@@ -31,6 +35,11 @@ if (ownsData) void app.whenReady().then(async () => {
     preload: join(__dirname, 'preload.cjs'), nodeIntegration: false, contextIsolation: true, sandbox: true,
   }});
   secureWindow(window);
+  // Memory-only session separates provider networking from renderer CSP/cookies.
+  const providerSession = session.fromPartition('poliscope-providers');
+  providerSession.setPermissionRequestHandler((_contents, _permission, callback) => callback(false));
+  providers = new ProviderController(app.getPath('userData'), safeStorage,
+    keyTestTransport(options => net.request({ ...options, session: providerSession })));
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',
@@ -62,7 +71,7 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showOpenDialog(window!, { title: kind === 'restore' ? 'Restore into a new empty folder' : kind === 'sandbox' ? 'Choose comparison sandbox folder' : kind === 'archive' ? 'Inspect portable archive without a model' : 'Inspect saved database without a model',
         properties: folder ? ['openDirectory', 'createDirectory'] : ['openFile'] });
       return result.canceled ? undefined : result.filePaths[0];
-    });
+    }, providers);
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();
   if (devURL) await window.loadURL(devURL);

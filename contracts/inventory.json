@@ -103,6 +103,8 @@
     "pack.ts",
     "policy.schema.json",
     "policy.ts",
+    "provider.schema.json",
+    "provider.ts",
     "provisioning-care.schema.json",
     "provisioning-care.ts",
     "provisioning-continuity.schema.json",

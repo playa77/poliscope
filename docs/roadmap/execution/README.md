@@ -1,5 +1,15 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-042 in full](WP-042.md), on fetched
+main `d85efa8` (PR #112 / WP-041 merged), tracked in
+[active-package.json](active-package.json). One sequential Codex /root; SV with
+separate author inspection. Profiles, protected/session-only keys and main-owned
+metadata networking; full parent acceptance is complete under SV, with
+[validation receipts](WP-042-validation.json). WP-043 adapters and generation
+remain subsequent work. Native Windows and live provider/keychain validation
+remain unrun; no cumulative M6/G6 acceptance is inferred.
+
+
 **Current delivery, 2026-10-26:** [WP-041 in full](WP-041.md), tracked in
 [active-package.json](active-package.json). Fetched baseline `e5edaee` merges
 PR #111 / WP-040. The clean checkout needed no stash or discarded work. WP-041
