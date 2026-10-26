@@ -1,3 +1,4 @@
+import type { AssistantPrepare, AssistantAction, AssistantReply } from '../contracts/assistant';
 import type { ProviderReply } from '../contracts/provider';
 import type { ProviderRequest } from './main/providers';
 import type { RecoveryRequest, RecoveryReply } from '../contracts/recovery';
@@ -18,6 +19,7 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  assistant(query: AssistantPrepare | AssistantAction): Promise<AssistantReply>;
   provider(query: ProviderRequest): Promise<ProviderReply>;
   recovery(query: RecoveryRequest): Promise<RecoveryReply>;
   report(query: ReportRequest): Promise<ReportReply>;

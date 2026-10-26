@@ -68,3 +68,31 @@ it('metadata transport bounds responses, rejects invalid UTF-8, timeout and canc
     } finally { vi.useRealTimers(); }
   }
 });
+
+import { generationTransport } from '../../desktop/main/provider-network';
+it('generation POST uses exact approved JSON, no cookies/redirects, and returns only safe HTTP status for errors',async()=> {
+ for(const code of [200,401,402,429,500]) {
+  const request=Object.assign(new EventEmitter(),{abort:vi.fn(),setHeader:vi.fn(),end:vi.fn()});const create=vi.fn(()=>request as unknown as ClientRequest);const chunk=vi.fn();
+  const pending=generationTransport(create)('https://openrouter.ai/api/v1/chat/completions','{"model":"m"}','synthetic-key',new AbortController().signal,false,chunk);
+  const response=Object.assign(new EventEmitter(),{statusCode:code,headers:{'content-type':'application/json'}});request.emit('response',response);response.emit('data',Buffer.from(code===200?'{}':'Authorization: private-error-canary'));response.emit('end');
+  expect(await pending).toEqual({code,body:code===200?'{}':''});expect(request.end).toHaveBeenCalledWith('{"model":"m"}');expect(create).toHaveBeenCalledWith({url:'https://openrouter.ai/api/v1/chat/completions',method:'POST',redirect:'manual',credentials:'omit',useSessionCookies:false});expect(chunk).not.toHaveBeenCalled();
+ }
+});
+it('generation transport aborts redirects, timeout, errors, oversized/invalid responses and cancellation',async()=> {
+ for(const mode of ['redirect','cancel','login','error','timeout','size','type','utf8','callback']) {
+  vi.useFakeTimers();
+  try {
+   const request=Object.assign(new EventEmitter(),{abort:vi.fn(),setHeader:vi.fn(),end:vi.fn()}),controller=new AbortController();
+   const pending=generationTransport(()=>request as unknown as ClientRequest)('https://example.com/chat/completions','{}','key',controller.signal,mode==='callback',()=>{throw new Error('safe-parser-failure');});
+   const result=mode==='redirect'?expect(pending).resolves.toEqual({code:307,body:''}):expect(pending).rejects.toThrow(mode==='callback'?'safe-parser-failure':'Provider connection failed');
+   if(mode==='redirect')request.emit('redirect',307);
+   else if(mode==='cancel')controller.abort();else if(mode==='login')request.emit('login',{},()=>{});else if(mode==='error')request.emit('error',new Error('secret-error'));else if(mode==='timeout')await vi.advanceTimersByTimeAsync(120000);
+   else {
+    const response=Object.assign(new EventEmitter(),{statusCode:200,headers:{'content-type':mode==='callback'?'text/event-stream':mode==='type'?'text/html':'application/json'}});request.emit('response',response);
+    response.emit('data',mode==='size'?Buffer.alloc(2097153):mode==='utf8'?Buffer.from([0xff]):Buffer.from('data'));
+    response.emit('end');
+   }
+   await result;
+  }finally{vi.useRealTimers();}
+ }
+});

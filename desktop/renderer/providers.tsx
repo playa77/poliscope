@@ -1,3 +1,4 @@
+import { Assistant } from './assistant';
 import React, { useEffect, useRef, useState } from 'react';
 import type { ProviderProfile, ProviderReply } from '../../contracts/provider';
 import type { ProviderRequest } from '../main/providers';
@@ -138,5 +139,6 @@ export function Providers() {
       <button disabled={busy} onClick={() => void request({ action: 'delete', profile_id: row.profile.id, expected_revision: row.revision })}>Delete provider profile</button>
     </>}
     <p>Removing a key deletes active stored material and cancels requests. Filesystem backups or OS recovery may retain older encrypted data; secure erasure is not promised. Key testing does not make a paid generation request.</p>
+  <Assistant view={row} disabled={busy || testing || changed} />
   </section>;
 }

@@ -44,6 +44,7 @@ export class DesktopShell {
     this.recoveryController = new RecoveryController(packaged, root, resources);
     this.workspace = new WorkspaceController(packaged, root, resources);
   }
+  get assistantContext(): string { return this.workspace.assistantContext; }
   chooseWorkspace(choose: () => Promise<string | undefined>) {
     this.interviewGeneration++;
     return this.workspaceRun(async () => {

@@ -1,3 +1,6 @@
+import { AssistantController } from './assistant';
+import { spendingService } from './spending';
+import { generationTransport } from './provider-network';
 import { ProviderController } from './providers';
 import { keyTestTransport, metadataTransport } from './provider-network';
 import { app, safeStorage, net, BrowserWindow, ipcMain, session, dialog } from 'electron';
@@ -16,12 +19,14 @@ const ownsData = app.requestSingleInstanceLock();
 if (!ownsData) app.quit();
 const engine = new DesktopShell(app.isPackaged, process.env.POLISCOPE_PROJECT_ROOT ?? '', process.resourcesPath);
 let providers: ProviderController | undefined;
+let assistant: AssistantController | undefined;
 let closing = false;
 let window: BrowserWindow | undefined;
 app.on('before-quit', (event) => {
   if (closing) return;
   event.preventDefault();
   closing = true;
+  assistant?.close();
   const providerStop = providers?.close();
   void Promise.all([engine.stop(), providerStop]).then(() => app.quit()).catch(() => { closing = false; });
 });
@@ -41,6 +46,7 @@ if (ownsData) void app.whenReady().then(async () => {
   providers = new ProviderController(app.getPath('userData'), safeStorage,
     keyTestTransport(options => net.request({ ...options, session: providerSession })), process.platform,
     metadataTransport(options => net.request({ ...options, session: providerSession })));
+  assistant = new AssistantController(providers, generationTransport(options => net.request({...options, session:providerSession})), spendingService(app.isPackaged, app.getAppPath(), process.resourcesPath, app.getPath('userData')), () => engine.assistantContext);
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',
@@ -72,7 +78,7 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showOpenDialog(window!, { title: kind === 'restore' ? 'Restore into a new empty folder' : kind === 'sandbox' ? 'Choose comparison sandbox folder' : kind === 'archive' ? 'Inspect portable archive without a model' : 'Inspect saved database without a model',
         properties: folder ? ['openDirectory', 'createDirectory'] : ['openFile'] });
       return result.canceled ? undefined : result.filePaths[0];
-    }, providers);
+    }, providers, assistant);
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();
   if (devURL) await window.loadURL(devURL);

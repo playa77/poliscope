@@ -1,6 +1,7 @@
 import type { ShellAPI } from '../shell';
 import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('poliscope', Object.freeze({
+  assistant: query => ipcRenderer.invoke('assistant:request', query),
   provider: query => ipcRenderer.invoke('provider:request', query),
   recovery: query => ipcRenderer.invoke('recovery:request', query),
   report: query => ipcRenderer.invoke('report:export', query),

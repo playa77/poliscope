@@ -49,6 +49,7 @@ export class WorkspaceController {
   private pendingHistory?: { query: HistoryAction; identity: string };
   private directory?: string;
   private storeId?: string;
+  get assistantContext(): string { return JSON.stringify(this.selected ? {kind:'design',context:this.selected.context,effective_time:this.selected.effective_time,sharing:'Only explicitly entered text; no automatic world data'} : {kind:'standalone',sharing:'Only explicitly entered text; no world selected'}); }
   get active(): boolean { return Boolean(this.directory && this.storeId); }
   private pendingCreate?: { input: string; identity: string };
   private selected?: WorkspaceState;

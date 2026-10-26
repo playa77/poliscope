@@ -1,3 +1,5 @@
+import type { GenerationPlan } from '../../contracts/generation';
+import { buildGenerationRequest, contextPayloadHash, type BuiltRequest } from './provider-requests';
 import { adapterFor, metadataCode, CATALOG_TTL, type MetadataTransport } from './provider-adapters';
 import type { MetadataAction, ModelMetadata, CatalogPage, EndpointMetadata } from '../../contracts/provider';
 /** Main-only settings, credential vault and fixed, non-billable key tests. */
@@ -68,6 +70,7 @@ export class ProviderController {
   private rows: Row[] = [];
   private sessions = new Map<string, { binding: string; key: string }>();
   private tests = new Map<string, AbortController>();
+  private generations = new Map<string, Set<AbortController>>();
   private tail: Promise<unknown> = Promise.resolve();
   private queued = 0;
   private loaded = false;
@@ -85,7 +88,7 @@ export class ProviderController {
   }
   private keyPath(row: Row) { return join(this.directory, row.key_ref + '.bin'); }
   private binding(row: Row) { return JSON.stringify([row.profile.id, row.profile.kind, row.profile.endpoint]); }
-  private cancel(id: string) { this.tests.get(id)?.abort(); this.tests.delete(id); }
+  private cancel(id: string) { for (const active of this.generations.get(id) ?? []) active.abort(); this.tests.get(id)?.abort(); this.tests.delete(id); }
   private serialize<T>(action: () => Promise<T>): Promise<T> {
     if (this.closed || this.queued >= 32) return Promise.reject(new Error('Provider service unavailable'));
     this.queued++;
@@ -303,6 +306,7 @@ export class ProviderController {
       } catch { return { ...await this.snapshot('metadata-invalid'), catalog:this.page(row!, cache!, query) }; }
       try { await atomicWrite(this.cachePath(row!.profile.id), JSON.stringify(next)); }
       catch { return { ...await this.snapshot('storage-failed'), catalog:this.page(row!, cache!, query) }; }
+      for(const active of this.generations.get(row!.profile.id) ?? [])active.abort();
       this.metadataCache.set(row!.profile.id, next);
       return { ...await this.snapshot(status), catalog:this.page(row!, next, query, true), endpoints };
     });
@@ -323,8 +327,58 @@ export class ProviderController {
     } catch { return undefined; }
     finally { clearTimeout(timer); }
   }
+  /** Main-owned, conservative GPT byte-BPE bound, never a renderer receipt.
+   * Unknown tokenizer/compatible catalog entries remain blocked. Full tokenizer
+   * negotiation and grounded tool payloads belong to subsequent integration.
+   */
+  private async build(row: Row, plan: GenerationPlan): Promise<BuiltRequest> {
+    const cache=await this.cache(row);
+    const ids=[row.profile.model,...(row.profile.routing.model_fallbacks ?? [])];
+    const budgets=ids.flatMap(id=> {
+      const model=cache.models.find(m=>m.id===id);
+      let raw: {architecture?:{tokenizer?:string}}={};
+      try {raw=JSON.parse(model?.raw_json ?? '{}');} catch {return [];}
+      // GPT byte-level BPE has a base token for each UTF-8 byte; merges only
+      // reduce counts. This path permits one plain text message, no schemas/tools.
+      // 1024 tokens reserves framing for this single documented chat message.
+      if(raw.architecture?.tokenizer!=='GPT' || plan.messages.length!==1 || plan.messages[0].role!=='user' || (plan.tools ?? []).length || plan.response_format.type!=='text')return [];
+      return [{model_id:id,input_tokens_upper_bound:Buffer.byteLength(plan.messages[0].content)+1024,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
+    });
+    return buildGenerationRequest({profile:row.profile,revision:row.revision,key_status:'missing'},plan,{profile_id:row.profile.id,revision:row.revision,endpoint:row.profile.endpoint,models:cache.models,endpoints:Object.values(cache.endpoints),budgets});
+  }
+  async prepareGeneration(plan: GenerationPlan): Promise<BuiltRequest> {
+    return this.serialize(async()=> {
+      await this.load();
+      const row=this.rows.find(r=>r.profile.id===plan.profile_id);
+      if(!row || row.revision!==plan.expected_revision)throw new Error('Provider configuration changed');
+      return this.build(row,plan);
+    });
+  }
+  /** Revalidate before acquiring a credential; key removal cancels this lease. */
+  async dispatchGeneration<T>(request: BuiltRequest, signal: AbortSignal, send:(key:string,signal:AbortSignal)=>Promise<T>):Promise<T> {
+    const prepared=await this.serialize(async()=> {
+      await this.load();
+      const row=this.rows.find(r=>r.profile.id===request.profile_id);
+      if(!row || signal.aborted || this.closed || row.revision!==request.revision)throw new Error('Provider configuration changed');
+      const current=await this.build(row,request.plan);
+      if(current.json!==request.json)throw new Error('Provider configuration changed');
+      const key=await this.secret(row);if(!key)throw new Error('Provider key unavailable');
+      const controller=new AbortController();
+      const abort=()=>controller.abort();signal.addEventListener('abort',abort,{once:true});
+      if(signal.aborted)controller.abort();
+      const active=this.generations.get(row.profile.id) ?? new Set<AbortController>();
+      active.add(controller);this.generations.set(row.profile.id,active);
+      return {key,controller,active,abort};
+    });
+    try {
+      if(prepared.controller.signal.aborted)throw new Error('Provider cancelled');
+      return await send(prepared.key,prepared.controller.signal);
+    } finally {signal.removeEventListener('abort',prepared.abort);prepared.active.delete(prepared.controller);}
+  }
   async close() {
     this.closed = true;
+    for (const group of this.generations.values()) for (const active of group) active.abort();
+    this.generations.clear();
     for (const test of this.tests.values()) test.abort();
     this.tests.clear(); this.sessions.clear();
     let timer: ReturnType<typeof setTimeout> | undefined;
