@@ -31,12 +31,12 @@
   "kind": "work_package",
   "scope": "Full WP-048 durable usage reconciliation, Decimal costs, spending controls and usage-only recovery",
   "publication": {
-    "status": "blocked pending explicit user authorization",
+    "status": "authorized; publication pending",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-048-usage",
     "action": "Push completed branch and open a regular PR against main; do not merge",
     "implementation_commit": "1faf58b",
-    "reason": "Automatic approval review rejected git push: implementing the package does not explicitly authorize exporting repository changes to the unverified external GitHub destination.",
-    "next_action": "Request explicit authorization to push codex/wp-048-usage to playa77/poliscope and open its regular PR against main. Do not merge."
+    "reason": "The requesting user explicitly authorized pushing codex/wp-048-usage to playa77/poliscope and opening its regular PR against main.",
+    "next_action": "Push the authorized branch and open its regular PR against main. Do not merge."
   }
 }
