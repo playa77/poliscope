@@ -1,5 +1,411 @@
 {
   "$defs": {
+    "CatalogPage": {
+      "additionalProperties": false,
+      "properties": {
+        "endpoint": {
+          "maxLength": 2048,
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "fetched_at": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Fetched At"
+        },
+        "models": {
+          "items": {
+            "$ref": "#/$defs/ModelMetadata"
+          },
+          "maxItems": 20,
+          "title": "Models",
+          "type": "array"
+        },
+        "offset": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "state": {
+          "enum": [
+            "fresh",
+            "cached",
+            "stale",
+            "empty"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "total": {
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Total",
+          "type": "integer"
+        }
+      },
+      "required": [
+        "profile_id",
+        "endpoint",
+        "fetched_at",
+        "state",
+        "total",
+        "offset",
+        "models"
+      ],
+      "title": "CatalogPage",
+      "type": "object"
+    },
+    "EndpointMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "model_id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "observed_at": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "providers": {
+          "items": {
+            "$ref": "#/$defs/ProviderEndpointMetadata"
+          },
+          "maxItems": 256,
+          "title": "Providers",
+          "type": "array"
+        },
+        "raw_json": {
+          "maxLength": 262144,
+          "title": "Raw Json",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "model_id",
+        "observed_at",
+        "source",
+        "providers",
+        "raw_json"
+      ],
+      "title": "EndpointMetadata",
+      "type": "object"
+    },
+    "KeyMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "is_free_tier": {
+          "anyOf": [
+            {
+              "type": "boolean"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Is Free Tier"
+        },
+        "limit": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Limit"
+        },
+        "limit_remaining": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Limit Remaining"
+        },
+        "observed_at": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "maxLength": 64,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Usage"
+        }
+      },
+      "required": [
+        "observed_at",
+        "source",
+        "limit",
+        "limit_remaining",
+        "usage",
+        "is_free_tier"
+      ],
+      "title": "KeyMetadata",
+      "type": "object"
+    },
+    "MetadataAction": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "enum": [
+            "catalog",
+            "refresh-catalog",
+            "model-endpoints",
+            "key-status"
+          ],
+          "title": "Action",
+          "type": "string"
+        },
+        "expected_revision": {
+          "maximum": 9007199254740991,
+          "minimum": 1,
+          "title": "Expected Revision",
+          "type": "integer"
+        },
+        "model_id": {
+          "default": "",
+          "maxLength": 256,
+          "title": "Model Id",
+          "type": "string"
+        },
+        "offset": {
+          "default": 0,
+          "maximum": 10000,
+          "minimum": 0,
+          "title": "Offset",
+          "type": "integer"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,64}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "search": {
+          "default": "",
+          "maxLength": 256,
+          "title": "Search",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "profile_id",
+        "expected_revision"
+      ],
+      "title": "MetadataAction",
+      "type": "object"
+    },
+    "ModelMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "available": {
+          "title": "Available",
+          "type": "boolean"
+        },
+        "capabilities": {
+          "$ref": "#/$defs/ProviderCapabilities"
+        },
+        "context_length": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Context Length"
+        },
+        "id": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Id",
+          "type": "string"
+        },
+        "input_modalities": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Input Modalities"
+        },
+        "max_output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Max Output Tokens"
+        },
+        "name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "observed_at": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "output_modalities": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 64,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Output Modalities"
+        },
+        "pricing": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 64,
+              "propertyNames": {
+                "maxLength": 256,
+                "minLength": 1
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pricing"
+        },
+        "raw_json": {
+          "maxLength": 32768,
+          "title": "Raw Json",
+          "type": "string"
+        },
+        "routing": {
+          "enum": [
+            "unknown",
+            "supported",
+            "unsupported"
+          ],
+          "title": "Routing",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        },
+        "supported_parameters": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 128,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Supported Parameters"
+        }
+      },
+      "required": [
+        "id",
+        "name",
+        "available",
+        "observed_at",
+        "source",
+        "context_length",
+        "max_output_tokens",
+        "input_modalities",
+        "output_modalities",
+        "supported_parameters",
+        "capabilities",
+        "pricing",
+        "routing",
+        "raw_json"
+      ],
+      "title": "ModelMetadata",
+      "type": "object"
+    },
     "ProviderCapabilities": {
       "additionalProperties": false,
       "properties": {
@@ -77,6 +483,94 @@
         "reasoning"
       ],
       "title": "ProviderCapabilities",
+      "type": "object"
+    },
+    "ProviderEndpointMetadata": {
+      "additionalProperties": false,
+      "properties": {
+        "capabilities": {
+          "$ref": "#/$defs/ProviderCapabilities"
+        },
+        "context_length": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Context Length"
+        },
+        "max_output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 1,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Max Output Tokens"
+        },
+        "pricing": {
+          "anyOf": [
+            {
+              "additionalProperties": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxProperties": 64,
+              "propertyNames": {
+                "maxLength": 256,
+                "minLength": 1
+              },
+              "type": "object"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Pricing"
+        },
+        "provider_name": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Provider Name",
+          "type": "string"
+        },
+        "supported_parameters": {
+          "anyOf": [
+            {
+              "items": {
+                "maxLength": 256,
+                "minLength": 1,
+                "type": "string"
+              },
+              "maxItems": 128,
+              "type": "array"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "title": "Supported Parameters"
+        }
+      },
+      "required": [
+        "provider_name",
+        "context_length",
+        "max_output_tokens",
+        "supported_parameters",
+        "capabilities",
+        "pricing"
+      ],
+      "title": "ProviderEndpointMetadata",
       "type": "object"
     },
     "ProviderGeneration": {
@@ -270,6 +764,39 @@
     "ProviderReply": {
       "additionalProperties": false,
       "properties": {
+        "catalog": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CatalogPage"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "endpoints": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/EndpointMetadata"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "key_metadata": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/KeyMetadata"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "profiles": {
           "items": {
             "$ref": "#/$defs/ProviderView"
@@ -304,7 +831,13 @@
             "provider-rejected",
             "key-unavailable",
             "storage-failed",
-            "stale-profile"
+            "stale-profile",
+            "metadata-ready",
+            "metadata-invalid",
+            "metadata-unsupported",
+            "rate-limited",
+            "credits-required",
+            "model-unavailable"
           ],
           "title": "Status",
           "type": "string"
@@ -450,8 +983,12 @@
     {
       "discriminator": {
         "mapping": {
+          "catalog": "#/$defs/MetadataAction",
           "delete": "#/$defs/ProviderKeyAction",
+          "key-status": "#/$defs/MetadataAction",
           "list": "#/$defs/ProviderList",
+          "model-endpoints": "#/$defs/MetadataAction",
+          "refresh-catalog": "#/$defs/MetadataAction",
           "remove-key": "#/$defs/ProviderKeyAction",
           "replace-key": "#/$defs/ProviderReplaceKey",
           "save": "#/$defs/ProviderSave",
@@ -471,6 +1008,9 @@
         },
         {
           "$ref": "#/$defs/ProviderReplaceKey"
+        },
+        {
+          "$ref": "#/$defs/MetadataAction"
         }
       ]
     },

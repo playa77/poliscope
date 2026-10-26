@@ -38,3 +38,33 @@ it('does not create a request when already cancelled', async () => {
   const create=vi.fn(), controller=new AbortController(); controller.abort();
   await expect(keyTestTransport(create)('https://example.com','key',controller.signal)).rejects.toThrow('cancelled'); expect(create).not.toHaveBeenCalled();
 });
+
+import { metadataTransport } from '../../desktop/main/provider-network';
+it('metadata transport preserves fragmented UTF-8 JSON and suppresses error/redirect bodies', async () => {
+  for (const code of [200,401,429]) {
+    const request=Object.assign(new EventEmitter(),{abort:vi.fn(),setHeader:vi.fn(),end:vi.fn()});
+    const create=vi.fn(()=>request as unknown as ClientRequest);
+    const pending=metadataTransport(create)('https://openrouter.ai/api/v1/models','synthetic-key',new AbortController().signal);
+    const response=Object.assign(new EventEmitter(),{statusCode:code});request.emit('response',response);
+    const body=Buffer.from('{"name":"Modèle 🐘"}');for(let i=0;i<body.length;i++)response.emit('data',body.subarray(i,i+1));response.emit('end');
+    expect(await pending).toEqual({code,body:code===200?body.toString('utf8'):''});
+    expect(create).toHaveBeenCalledWith(expect.objectContaining({redirect:'manual',credentials:'omit',useSessionCookies:false}));
+  }
+  const request=Object.assign(new EventEmitter(),{abort:vi.fn(),setHeader:vi.fn(),end:vi.fn()});
+  const pending=metadataTransport(()=>request as unknown as ClientRequest)('https://openrouter.ai/api/v1/models','key',new AbortController().signal);
+  request.emit('redirect',307);expect(await pending).toEqual({code:307,body:''});expect(request.abort).toHaveBeenCalledOnce();
+});
+it('metadata transport bounds responses, rejects invalid UTF-8, timeout and cancellation safely', async () => {
+  for(const mode of ['size','utf8','cancel','login','error','timeout']) {
+    vi.useFakeTimers();
+    try {
+      const request=Object.assign(new EventEmitter(),{abort:vi.fn(),setHeader:vi.fn(),end:vi.fn()});const controller=new AbortController();
+      const pending=metadataTransport(()=>request as unknown as ClientRequest)('https://example.com/models','key',controller.signal);
+      const rejected=expect(pending).rejects.toThrow('Provider connection failed');
+      const response=Object.assign(new EventEmitter(),{statusCode:200});
+      if(mode==='size'||mode==='utf8'){request.emit('response',response);response.emit('data',mode==='size'?Buffer.alloc(8*1024*1024+1):Buffer.from([0xc3,0x28]));response.emit('end');}
+      else if(mode==='cancel')controller.abort();else if(mode==='login')request.emit('login',{},()=>{});else if(mode==='timeout')await vi.advanceTimersByTimeAsync(15000);else request.emit('error',new Error('secret'));
+      await rejected;
+    } finally { vi.useRealTimers(); }
+  }
+});

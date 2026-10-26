@@ -27,7 +27,7 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
   handle('recovery:request', 1, input => { if (!workspaceValid(input, 'RecoveryRequest')) throw new Error(); return shell.recovery(input, chooseRecovery); }, workspaceReply('RecoveryReply'));
-  handle('provider:request', 1, input => { if (!providers || !providerRequestValid(input)) throw new Error(); return providers.request(input); }, reply => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && providerValid(reply, 'ProviderReply'));
+  handle('provider:request', 1, input => { if (!providers || !providerRequestValid(input)) throw new Error(); return providers.request(input); }, reply => Buffer.byteLength(JSON.stringify(reply)) <= 2_097_152 && providerValid(reply, 'ProviderReply'));
   handle('report:export', 1, input => { if (!workspaceValid(input, 'ReportRequest')) throw new Error(); return shell.report(input, chooseReport); }, workspaceReply('ReportReply'));
   handle('archive:request', 1, input => { if (!workspaceValid(input, 'ArchiveRequest')) throw new Error(); return shell.archive(input, chooseArchive); }, workspaceReply('ArchiveReply'));
   handle('uncertainty:read', 1, input => { if (!workspaceValid(input, 'UncertaintyQuery')) throw new Error(); return shell.uncertainty(input); }, workspaceReply('UncertaintyReport'));

@@ -1,5 +1,16 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-043 in full](WP-043.md), on fetched main
+`a59884a` (PR #113 / WP-042 merged), tracked in
+[active-package.json](active-package.json). Dedicated provider metadata adapters,
+model/variant search, explicit unknown capabilities, provider endpoints, safe key
+limits and timestamped offline caches. Full parent acceptance is complete under
+SV; see [validation](WP-043-validation.json). Full Python, final 296 units and
+23 packaged Linux scenarios pass, with 4 final rebuilt affected scenarios.
+Windows/authenticated providers and cumulative M6/G6 remain unrun. Commit/push
+and regular PR delivery remain the next action; merging is not authorized.
+After review/merge reassess full WP-044. Records below are historical deliveries.
+
 **Current delivery, 2026-10-26:** [WP-042 in full](WP-042.md), on fetched
 main `d85efa8` (PR #112 / WP-041 merged), tracked in
 [active-package.json](active-package.json). One sequential Codex /root; SV with

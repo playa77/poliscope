@@ -1,0 +1,170 @@
+{
+  "version": 1,
+  "package": "WP-043",
+  "route": "solo-validated; agent review deferred",
+  "base": "a59884a19accac87126b8efc6dc1adaf72fd0c4d",
+  "application_fingerprint": {
+    "algorithm": "sha256 over sorted tracked and intended new desktop engine contracts scripts packaging and package.json package-lock.json pyproject.toml uv.lock; path NUL file bytes NUL",
+    "sha256": "1d7738544d09a7571297656daf9bb0260474672723a62a92b04262a790983c5e"
+  },
+  "tests": {
+    "engine": {
+      "run_id": "7f95befa-3fe4-48fb-ab39-d0db5b6ecf9e",
+      "status": "passed",
+      "candidate": "26a0950154fab9f4e814bf8d09cc25fd341068c1a0ca800b1c21ddaa2b181901",
+      "report_sha256": "9874a915d8f4d7e3db377082746ee0a4843d1106b54a85de5a29ada76623419d",
+      "command": [
+        "uv",
+        "run",
+        "--frozen",
+        "pytest",
+        "--junitxml=/workspace/poliscope/artifacts/wp-043-engine/junit.xml"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 4869,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "junit_suite": {
+        "name": "pytest",
+        "errors": "0",
+        "failures": "0",
+        "skipped": "0",
+        "tests": "4923",
+        "time": "464.207",
+        "timestamp": "2026-10-26T09:31:34.637513+00:00",
+        "hostname": "383141a86ea1"
+      }
+    },
+    "unit": {
+      "run_id": "3b4d4cb2-7630-497d-bba5-38068f37d2f5",
+      "status": "passed",
+      "candidate": "26a0950154fab9f4e814bf8d09cc25fd341068c1a0ca800b1c21ddaa2b181901",
+      "report_sha256": "a08216ff4a2b4f933c73cb789a54880a2fe52c8a7a1a1e3eb5a9d5ff5adcce9a",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=/workspace/poliscope/artifacts/wp-043-unit/junit.xml"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 292,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "junit_suite": {
+        "name": "tests/desktop/archives.test.ts",
+        "timestamp": "2026-10-26T09:32:50.441Z",
+        "hostname": "383141a86ea1",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "3.285558535"
+      }
+    },
+    "desktop": {
+      "run_id": "89550518-9418-4bfb-822b-63c146c47442",
+      "status": "passed",
+      "candidate": "26a0950154fab9f4e814bf8d09cc25fd341068c1a0ca800b1c21ddaa2b181901",
+      "report_sha256": "f52d2bd643c15f89509fed605249631ae8f1b681021eb6d1317a8b201f423914",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "playwright",
+        "test",
+        "--reporter=junit"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 23,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "junit_suite": {
+        "name": "archives.spec.ts",
+        "timestamp": "2026-10-26T09:33:06.461Z",
+        "hostname": "",
+        "tests": "1",
+        "failures": "0",
+        "skipped": "0",
+        "time": "10.415",
+        "errors": "0"
+      }
+    },
+    "unit-final": {
+      "run_id": "81f67278-423d-442d-93d1-550e68610c59",
+      "status": "passed",
+      "candidate": "58b3ed00e79aaebbda179ef71b878ebeacc462135120d2dd9f168d2cb23ec457",
+      "report_sha256": "09adce78e94103b7dd6381b4b2b8875d767b5eedb3aca4252a0131749ca4ab76",
+      "command": [
+        "npm",
+        "exec",
+        "--",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=/workspace/poliscope/artifacts/wp-043-unit-final/junit.xml"
+      ],
+      "exit_code": 0,
+      "counts": {
+        "tests": 296,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "junit_suite": {
+        "name": "tests/desktop/archives.test.ts",
+        "timestamp": "2026-10-26T09:42:12.835Z",
+        "hostname": "383141a86ea1",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0",
+        "time": "3.411232702"
+      }
+    },
+    "desktop-final": {
+      "candidate": "58b3ed00e79aaebbda179ef71b878ebeacc462135120d2dd9f168d2cb23ec457",
+      "tests": 4,
+      "failed": 0,
+      "skipped": 0,
+      "report_sha256": "59fcbc8e6c0aa906bd848696a08e411c543c1d6838d4f177a96f3625092c6b7b",
+      "command": "DISPLAY=:99 PLAYWRIGHT_JUNIT_OUTPUT_FILE=/tmp/wp-043-desktop-final.xml npx playwright test tests/desktop/provider-metadata.spec.ts tests/desktop/providers.spec.ts tests/desktop/bootstrap.spec.ts tests/desktop/security.spec.ts --reporter=line,junit",
+      "execution_session_id": 68336
+    }
+  },
+  "checks": [
+    "Frozen npm ci and uv sync --frozen --python 3.12; unchanged locks",
+    "contracts:check",
+    "content:validate",
+    "typecheck",
+    "check_roadmap.py",
+    "check_baseline.py",
+    "51 roadmap unittests",
+    "git diff --check",
+    "Separate author inspection"
+  ],
+  "post_full_run_changes": [
+    "Desktop-only final fixes: raw model/endpoint UTF-8 byte limits, incomplete-list refusal, cached selected-provider UI query, clear account evidence on credential changes. Four new desktop regressions cover UTF-8/partial listing, offline endpoint reads, cache-write failure and pagination/stale/inherited keys.",
+    "No Python contract, engine or engine-test changes after the complete engine run. Final full unit and four rebuilt affected packaged scenarios pass on identical final candidates. Subsequent changes are delivery documentation only."
+  ],
+  "limits": [
+    "No native Windows, real OS keychain, authenticated live provider or generation acceptance",
+    "No independent agent review or cumulative M6/G6 acceptance",
+    "Catalog evidence is provider-reported, cached observations can change; preferences cannot establish unsupported or unknown execution support",
+    "Metadata transport and cache bounds are explicit; capacity/schema failure preserves old catalog",
+    "Sandbox fetch/package/display initially failed; approved native/network runs supplied actual successful acceptance. Early CLI usage and test TypeScript errors were corrected before accepted runs."
+  ]
+}

@@ -1,5 +1,5 @@
 import { ProviderController } from './providers';
-import { keyTestTransport } from './provider-network';
+import { keyTestTransport, metadataTransport } from './provider-network';
 import { app, safeStorage, net, BrowserWindow, ipcMain, session, dialog } from 'electron';
 import { isAbsolute, join } from 'node:path';
 import { pathToFileURL } from 'node:url';
@@ -39,7 +39,8 @@ if (ownsData) void app.whenReady().then(async () => {
   const providerSession = session.fromPartition('poliscope-providers');
   providerSession.setPermissionRequestHandler((_contents, _permission, callback) => callback(false));
   providers = new ProviderController(app.getPath('userData'), safeStorage,
-    keyTestTransport(options => net.request({ ...options, session: providerSession })));
+    keyTestTransport(options => net.request({ ...options, session: providerSession })), process.platform,
+    metadataTransport(options => net.request({ ...options, session: providerSession })));
   registerShellIPC((channel, handler) => ipcMain.handle(channel, handler),
     event => authorizeCaller(event, window, documentURL), engine, async () => {
       const result = await dialog.showOpenDialog(window!, { title: 'Select saved historical evidence store',
