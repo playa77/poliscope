@@ -210,7 +210,7 @@ OS minimum versions and installer formats are settled in WP-004 and tested in WP
 
 ## 7. Provider capability acceptance matrix
 
-WP-050 maintains a dated model/provider-specific table with mock test IDs, live case/result, route metadata, limitations and evidence link. All rows below are **unrun** at this baseline. Test only capabilities actually supported by the selected documented model/provider; explicitly unsupported behavior is rejected and documented, not silently removed from requests. Select suitable models to exercise each required application capability path.
+WP-050 maintains a dated model/provider-specific table with mock test IDs, live case/result, route metadata, limitations and evidence link. Current deterministic paths and explicit live blockers are recorded in the [dated compatibility table](../provider_compatibility.md) and its executable fixture matrix. All live capability rows remain **access-blocked / untested** as of 2026-10-26; no OpenRouter compatibility or G6/M6 acceptance is inferred. Test only capabilities actually supported by the selected documented model/provider; explicitly unsupported behavior is rejected and documented, not silently removed from requests. Select suitable models to exercise each required application capability path.
 
 | Capability family | Required cases | Packages |
 |---|---|---|

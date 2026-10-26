@@ -244,11 +244,12 @@ Native packages are built on their target operating system and architecture. Sig
 
 Current tests cover roadmap integrity, bootstrap process lifecycle, engine path
 selection and the packaged Electron shell with its bundled engine. Content and
-contract commands explicitly validate empty inventories until their production
-packages arrive. Numerical, storage, timeline, archive and provider tests remain
-future work. Paid live-provider checks will require explicit opt-in.
+contract commands validate tracked inventories and generated contracts. Numerical,
+storage, timeline, archive and provider coverage is recorded in the corresponding
+package evidence. Paid live-provider checks require separate explicit opt-in.
 
-BYOK settings are not implemented yet. Keep real civilizations, transcripts, keys,
+BYOK settings and capability-checked generation are optional; live provider
+compatibility remains unverified. Keep real civilizations, transcripts, keys,
 and local configuration outside tracked source files.
 
 ## Contributing
@@ -261,4 +262,6 @@ New domain content uses the shared contracts. It must not duplicate resource sto
 
 Preserve source attribution and historical alternatives. Keep credentials and private data out of issues, test fixtures, logs, and pull requests.
 
-Provider settings and key storage: see [the local BYOK guide](docs/provider_settings.md). WP-042 provides profiles and fixed metadata key tests; full provider adapters and generation remain subsequent packages.
+Provider settings and key storage: see [the local BYOK guide](docs/provider_settings.md). The guide covers profiles, key protection and fixed metadata requests; the compatibility evidence below records current adapter/generation limits.
+
+Provider capability checks and current limitations: [compatibility evidence](docs/provider_compatibility.md). Run `npm run test:providers` for the exact deterministic desktop/Python selection; it makes no paid provider calls. Live provider acceptance remains separately blocked.

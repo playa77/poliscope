@@ -8,7 +8,7 @@ query parameters or fragments. Save endpoint changes before entering another key
 Changing the endpoint/provider type removes its previous key and cancels its tests.
 Profiles and model/generation/routing/capability preferences survive restart;
 capability declarations are unverified preferences, not discovered capabilities.
-The WP-044 builder rejects unsupported selected controls; actual generation transport remains a subsequent package.
+The WP-044 builder rejects unsupported selected controls. Generation transport and the assistant workspace are implemented; current capability limits and the blocked live acceptance are recorded in the [provider compatibility table](provider_compatibility.md).
 
 The temporary password field clears on transfer to main, including failed
 transfers. Keys are never returned. With Electron OS-backed safeStorage, main

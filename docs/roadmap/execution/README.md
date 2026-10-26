@@ -1467,3 +1467,7 @@ use the same validated projection without evaluating a model or calling a provid
 Main owns file dialogs; failure/cancel leaves saved history intact. Full engine,
 unit and packaged Linux suites pass. **solo-validated; agent review deferred**.
 No scientific, Windows or G5/M5 acceptance is inferred.
+
+## WP-050 authorized offline evidence
+
+The user authorized [WP-050-offline](WP-050-offline.md): deterministic provider checks, dated official contract inspection and the public compatibility table. The [full WP-050 parent](WP-050.md) remains active; live harness/run and G6/M6 acceptance are blocked pending separately authorized bounded checks with securely configured credentials. No live model/provider support is certified.

@@ -1,31 +1,40 @@
 {
   "version": 1,
-  "package": "WP-049",
-  "status": "complete",
-  "record": "docs/roadmap/execution/WP-049.md",
+  "package": "WP-050",
+  "status": "in_progress",
+  "record": "docs/roadmap/execution/WP-050.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2514749bf745992e5a631ebd950e72e44efb701f",
-  "branch": "codex/wp-049-workspace",
+  "base": "8dc9291f3f6e7a4e9577ea4826b3a4ab9e32d560",
+  "branch": "codex/wp-050-provider-validation",
+  "execution_unit": "WP-050-offline",
+  "authorization": {
+    "source": "user",
+    "scope": "WP-050-offline",
+    "instruction": "Deliver offline evidence; record live blocker"
+  },
   "acceptance": [
     {
-      "id": "contextual-workspace",
+      "id": "offline-capabilities",
       "status": "passed",
-      "evidence": "Existing provider discovery/settings/routing/usage plus explicit public interview draft, original-context retained-turn navigation and editable clarification/evidence/comparison/alternative tasks. Packaged interview and immutable-grounding paths pass."
+      "evidence": "Exact offline selection: 191 desktop cases and 69 Python cases pass; actual production controller/context/SQLite spending paths, synthetic transport only."
     },
     {
-      "id": "private-transcript-lifecycle",
+      "id": "official-contract",
       "status": "passed",
-      "evidence": "Explicit bounded main-owned text snapshots survive keyless restart; no automatic history reuse or report inclusion; malformed/oversized/linked/capacity failures preserve copies. Saved-copy and full-lineage deletion are independent of public history and spending."
+      "evidence": "2026-10-26 official OpenAPI projection with full-source hash; exact decimal-string routing ceilings; dated public compatibility table; no live claims."
     },
     {
-      "id": "explicit-design-promotion",
-      "status": "passed",
-      "evidence": "Main verifies an exact visible excerpt and original grounded context; Python ordinary qualitative Preview/Apply retains AI origin/unverified coverage and only selected content. Actual packaged SQLite flow confirms deletion preserves accepted choice and excludes the private prompt. Late and descendant preview grants are revoked."
+      "id": "bounded-live",
+      "status": "pending",
+      "evidence": "Blocked: user selected offline evidence; no configured provider credential or paid-run authorization."
     },
     {
-      "id": "parent-validation",
+      "id": "validation",
       "status": "passed",
-      "evidence": "4931 full Python cases; 428 full desktop units plus 48 final affected; 51 roadmap cases. All 27 distinct packaged Linux scenarios have passing evidence across integrated and rebuilt affected runs; exact scope and superseded failures in WP-049-validation.json. SV; Windows/live/keychains unclaimed."
+      "evidence": "4931 full Python cases; 435 unit cases covered by integrated selection plus exact 8-case isolated rerun (initial 433 pass/2 fail); 191 provider desktop/69 Python and 51 roadmap cases. Static/contract/content checks pass; packaged/native/live unrun."
     }
+  ],
+  "blockers": [
+    "Live harness/run requires separately authorized bounded scope and securely configured OpenRouter credentials/credits. User explicitly selected offline evidence only. Full WP-050 and G6/M6 acceptance remain blocked."
   ]
 }

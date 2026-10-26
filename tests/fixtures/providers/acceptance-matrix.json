@@ -1,0 +1,205 @@
+{
+  "version": 1,
+  "as_of": "2026-10-26",
+  "package": "WP-050",
+  "kind": "offline-evidence; live acceptance blocked",
+  "official_contract": "tests/fixtures/providers/openrouter-contract-2026-10-26.json",
+  "capabilities": [
+    {
+      "id": "keys-endpoints",
+      "unit_suites": [
+        "tests/desktop/providers.test.ts",
+        "tests/desktop/provider-network.test.ts",
+        "tests/desktop/provider-isolation.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "catalog",
+      "unit_suites": [
+        "tests/desktop/provider-adapters.test.ts",
+        "tests/desktop/provider-metadata.test.ts",
+        "tests/desktop/provider-generation.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "routing-privacy",
+      "unit_suites": [
+        "tests/desktop/provider-requests.test.ts",
+        "tests/desktop/provider-acceptance.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "generation-schema",
+      "unit_suites": [
+        "tests/desktop/provider-requests.test.ts",
+        "tests/desktop/provider-generation.test.ts",
+        "tests/desktop/provider-stream.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "parallel-tools-continuation",
+      "unit_suites": [
+        "tests/desktop/provider-stream.test.ts",
+        "tests/desktop/grounding.test.ts",
+        "tests/desktop/provider-acceptance.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "reasoning-history",
+      "unit_suites": [
+        "tests/desktop/provider-stream.test.ts",
+        "tests/desktop/provider-requests.test.ts",
+        "tests/desktop/assistant-content.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "modalities",
+      "unit_suites": [
+        "tests/desktop/assistant-content.test.ts",
+        "tests/desktop/provider-requests.test.ts",
+        "tests/desktop/provider-stream.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "usage-spending",
+      "unit_suites": [
+        "tests/desktop/assistant.test.ts",
+        "tests/desktop/provider-acceptance.test.ts",
+        "tests/desktop/provider-generation.test.ts",
+        "tests/desktop/provider-stream.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "failures-cancellation",
+      "unit_suites": [
+        "tests/desktop/assistant.test.ts",
+        "tests/desktop/provider-network.test.ts",
+        "tests/desktop/provider-stream.test.ts",
+        "tests/desktop/provider-acceptance.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "context-ownership",
+      "unit_suites": [
+        "tests/desktop/grounding.test.ts",
+        "tests/desktop/assistant.test.ts",
+        "tests/desktop/transcripts.test.ts",
+        "tests/desktop/provider-acceptance.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    },
+    {
+      "id": "generic-compatible",
+      "unit_suites": [
+        "tests/desktop/provider-adapters.test.ts",
+        "tests/desktop/provider-requests.test.ts",
+        "tests/desktop/provider-generation.test.ts"
+      ],
+      "live": {
+        "status": "access-blocked",
+        "model": null,
+        "provider": null,
+        "run_at": null,
+        "cost_ceiling_usd": null,
+        "actual_cost_usd": null,
+        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+      }
+    }
+  ],
+  "engine_suites": [
+    "tests/engine/test_provider_contract.py",
+    "tests/engine/test_generation_contract.py",
+    "tests/engine/test_assistant_contract.py",
+    "tests/engine/test_grounding.py",
+    "tests/engine/test_spending.py"
+  ]
+}

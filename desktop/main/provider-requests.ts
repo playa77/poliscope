@@ -138,18 +138,11 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
       const prices = Object.entries(r.max_price).filter(([,v]) => v != null);
       if (!prices.length) fail('invalid-control','max_price');
       provider.max_price = Object.fromEntries(prices.map(([k,v]) => {
-        const price = decimal(v!,0,999999999,'max_price');
-        // Never round a user's price ceiling upward (or silently alter it).
-        // This is serialization validation, not a currency/accounting rule.
-        const canonical = (s: string) => {
-          const [mantissa, exponent = '0'] = s.toLowerCase().split('e');
-          const [whole, fraction = ''] = mantissa.split('.');
-          let digits = (whole+fraction).replace(/^0+(?=\d)/,''), scale = fraction.length-Number(exponent);
-          while (digits.length > 1 && digits.endsWith('0')) { digits = digits.slice(0,-1); scale--; }
-          return digits === '0' ? '0' : digits+':'+scale;
-        };
-        if (canonical(String(price)) !== canonical(v!)) fail('invalid-control','max_price');
-        return [k,price];
+        // The official ProviderPreferences schema uses decimal strings here.
+        // Validate the existing supported range, then preserve the exact ceiling;
+        // converting to a JSON number could round it upward.
+        decimal(v!,0,999999999,'max_price');
+        return [k,v];
       }));
     }
     body.provider = provider;

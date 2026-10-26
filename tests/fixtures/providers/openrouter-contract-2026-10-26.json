@@ -1,0 +1,254 @@
+{
+  "source": "https://openrouter.ai/openapi.json",
+  "retrieved": "2026-10-26",
+  "api_version": "1.0.0",
+  "source_sha256": "385cedf846f292aeab67572de5ce4413786a5e323dc78ed32ad96ac363bb63ee",
+  "projection": "Verbatim selected schema fields; omitted fields are not declared unsupported by the provider. No live execution evidence.",
+  "routes": {
+    "/chat/completions": [
+      "post",
+      "parameters"
+    ],
+    "/models": [
+      "get",
+      "parameters"
+    ],
+    "/models/{author}/{slug}/endpoints": [
+      "get",
+      "parameters"
+    ],
+    "/key": [
+      "get",
+      "parameters"
+    ],
+    "/generation": [
+      "get",
+      "parameters"
+    ]
+  },
+  "provider_preferences": {
+    "additionalProperties": false,
+    "description": "When multiple model providers are available, optionally indicate your routing preference.",
+    "example": {
+      "allow_fallbacks": true
+    },
+    "properties": {
+      "allow_fallbacks": {
+        "description": "Whether to allow backup providers to serve requests\n- true: (default) when the primary provider (or your custom providers in \"order\") is unavailable, use the next best provider.\n- false: use only the primary/custom provider, and return the upstream error if it's unavailable.\n",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "data_collection": {
+        "description": "Data collection setting. If no available model provider meets the requirement, your request will return an error.\n- allow: (default) allow providers which store user data non-transiently and may train on it\n\n- deny: use only providers which do not collect user data.",
+        "enum": [
+          "deny",
+          "allow",
+          null
+        ],
+        "example": "allow",
+        "type": [
+          "string",
+          "null"
+        ],
+        "x-speakeasy-unknown-values": "allow"
+      },
+      "enforce_distillable_text": {
+        "description": "Whether to restrict routing to only models that allow text distillation. When true, only models where the author has allowed distillation will be used.",
+        "example": true,
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "ignore": {
+        "description": "List of provider slugs to ignore. If provided, this list is merged with your account-wide ignored provider settings for this request.",
+        "example": [
+          "openai",
+          "anthropic"
+        ],
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/ProviderName"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "max_price": {
+        "description": "The object specifying the maximum price you want to pay for this request. USD price per million tokens, for prompt and completion.",
+        "properties": {
+          "audio": {
+            "description": "Maximum price in USD per audio unit",
+            "type": "string"
+          },
+          "completion": {
+            "description": "Maximum price in USD per million completion tokens",
+            "type": "string"
+          },
+          "image": {
+            "description": "Maximum price in USD per image",
+            "type": "string"
+          },
+          "prompt": {
+            "description": "Maximum price in USD per million prompt tokens",
+            "type": "string"
+          },
+          "request": {
+            "description": "Maximum price in USD per request",
+            "type": "string"
+          }
+        },
+        "type": "object"
+      },
+      "only": {
+        "description": "List of provider slugs to allow. If provided, this list is merged with your account-wide allowed provider settings for this request.",
+        "example": [
+          "openai",
+          "anthropic"
+        ],
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/ProviderName"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "options": {
+        "$ref": "#/components/schemas/ProviderOptions"
+      },
+      "order": {
+        "description": "An ordered list of provider slugs. The router will attempt to use the first provider in the subset of this list that supports your requested model, and fall back to the next if it is unavailable. If no providers are available, the request will fail with an error message.",
+        "example": [
+          "openai",
+          "anthropic"
+        ],
+        "items": {
+          "anyOf": [
+            {
+              "$ref": "#/components/schemas/ProviderName"
+            },
+            {
+              "type": "string"
+            }
+          ]
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "preferred_max_latency": {
+        "$ref": "#/components/schemas/PreferredMaxLatency"
+      },
+      "preferred_min_throughput": {
+        "$ref": "#/components/schemas/PreferredMinThroughput"
+      },
+      "quantizations": {
+        "description": "A list of quantization levels to filter the provider by.",
+        "items": {
+          "$ref": "#/components/schemas/Quantization"
+        },
+        "type": [
+          "array",
+          "null"
+        ]
+      },
+      "require_parameters": {
+        "description": "Whether to filter providers to only those that support the parameters you've provided. If this setting is omitted or set to false, then providers will receive only the parameters they support, and ignore the rest.",
+        "type": [
+          "boolean",
+          "null"
+        ]
+      },
+      "sort": {
+        "anyOf": [
+          {
+            "$ref": "#/components/schemas/ProviderSort"
+          },
+          {
+            "$ref": "#/components/schemas/ProviderSortConfig"
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "description": "The sorting strategy to use for this request, if \"order\" is not specified. When set, no load balancing is performed.",
+        "example": "price"
+      },
+      "zdr": {
+        "description": "Whether to restrict routing to only ZDR (Zero Data Retention) endpoints. When true, only endpoints that do not retain prompts will be used.",
+        "example": true,
+        "type": [
+          "boolean",
+          "null"
+        ]
+      }
+    },
+    "type": [
+      "object",
+      "null"
+    ]
+  },
+  "chat_request_fields": [
+    "cache_control",
+    "debug",
+    "deferred_tools",
+    "frequency_penalty",
+    "image_config",
+    "logit_bias",
+    "logprobs",
+    "max_completion_tokens",
+    "max_tokens",
+    "messages",
+    "metadata",
+    "min_p",
+    "modalities",
+    "model",
+    "models",
+    "parallel_tool_calls",
+    "plugins",
+    "prediction",
+    "presence_penalty",
+    "prompt_cache_key",
+    "prompt_cache_options",
+    "provider",
+    "reasoning",
+    "reasoning_effort",
+    "repetition_penalty",
+    "response_format",
+    "route",
+    "seed",
+    "service_tier",
+    "session_id",
+    "stop",
+    "stop_server_tools_when",
+    "stream",
+    "stream_options",
+    "temperature",
+    "tool_choice",
+    "tools",
+    "top_a",
+    "top_k",
+    "top_logprobs",
+    "top_p",
+    "trace",
+    "user"
+  ]
+}

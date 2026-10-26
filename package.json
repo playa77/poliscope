@@ -21,7 +21,8 @@
     "test": "vitest run && uv run --frozen python -m unittest discover -s tests/roadmap -v",
     "test:desktop": "npm run package && playwright test",
     "build:engine": "uv run --frozen python scripts/build_engine.py",
-    "package": "npm run build:engine && node scripts/desktop.mjs package"
+    "package": "npm run build:engine && node scripts/desktop.mjs package",
+    "test:providers": "vitest run --config vitest.providers.config.mts && uv run --frozen pytest tests/engine/test_provider_contract.py tests/engine/test_generation_contract.py tests/engine/test_assistant_contract.py tests/engine/test_grounding.py tests/engine/test_spending.py"
   },
   "dependencies": {
     "react": "19.3.1",
