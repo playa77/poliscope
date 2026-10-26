@@ -1,0 +1,102 @@
+{
+  "version": 1,
+  "package": "WP-048",
+  "route": "solo-validated; agent review deferred",
+  "base": "a6170b9f0cc606f1dea50b590e2928ae09ed2122",
+  "branch": "codex/wp-048-usage",
+  "application_fingerprint": {
+    "files": 499,
+    "algorithm": "sorted tracked production paths, path NUL bytes NUL; desktop engine contracts scripts packaging and manifests; excludes Markdown",
+    "integrated_source_sha256": "84b80440d3d845998538f911a550d2d4fb041177adb877ff5bf91b2210bbff8b",
+    "final_source_sha256": "52c026539343ca8e8f3cfd19ac987ac579a3eef214f623f94c9b161b7d07f62f"
+  },
+  "packaged_integrated_artifacts": {
+    "out/Poliscope-linux-x64/resources/app.asar": "52706489d78463083d3fc34537d56d3c38d94a9f2d62ecfcba388ff0f8d978e9",
+    "out/Poliscope-linux-x64/resources/poliscope-engine/poliscope-engine": "2c4a01fd10aafca72ebc47ae1daae0a27d061fe65835e1aa60d522b6dcbdd82a"
+  },
+  "packaged_final_artifacts": {
+    "out/Poliscope-linux-x64/resources/app.asar": "70a9bda069a33640ad44ce3e4d77ee421ec88feccb28206426eca3f1fa13f814",
+    "out/Poliscope-linux-x64/resources/poliscope-engine/poliscope-engine": "2c4a01fd10aafca72ebc47ae1daae0a27d061fe65835e1aa60d522b6dcbdd82a"
+  },
+  "evidence": {
+    "engine_full": {
+      "log_sha256": "9c1a68313e81e6fc663fa0e4380dd8d128d0a60e14ae8beae40c1e49e1b1294e",
+      "log_path_at_execution": "/tmp/wp048-engine-final.log"
+    },
+    "desktop_full": {
+      "log_sha256": "54f3ca1bb39bccbae440d2113023378766bb1e75221fec9625d110d2462dec3a",
+      "log_path_at_execution": "/tmp/wp048-units-fixed.log"
+    },
+    "desktop_final_affected": {
+      "log_sha256": "90743c9bfdbb293065db77855c99e965c3cfffbd5202949ac701b01b34a7f981",
+      "log_path_at_execution": "/tmp/wp048-focused-final.log"
+    },
+    "roadmap": {
+      "log_sha256": "2946132de9a46c683a9a9a314989a8c895a3299755bcd10ceccfb742d11c62e3",
+      "log_path_at_execution": "/tmp/wp048-roadmap-tests.log"
+    },
+    "packaged_integrated": {
+      "log_sha256": "925d25c0cd5829d7c1a902d94541e01187fcefd70c4964df7e1d7ce582862511",
+      "log_path_at_execution": "/tmp/wp048-packaged-final.log"
+    },
+    "packaged_final_affected": {
+      "log_sha256": "cd916d098a90d76ff36dcd01aa3bba3c3bd98ee7d5a4c0603a0b97d20b7403c8",
+      "log_path_at_execution": "/tmp/wp048-packaged-affected.log"
+    },
+    "engine_final_affected": {
+      "log_sha256": "143aab96b463d8ecba163a050f21931c9420e09a5cb3dae3c62e418ba13b75c0",
+      "log_path_at_execution": "/tmp/wp048-engine-focused.log"
+    },
+    "typecheck": {
+      "log_sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125",
+      "log_path_at_execution": "/tmp/wp048-typecheck.log"
+    },
+    "contracts": {
+      "log_sha256": "3f625556283c69e9a210f81677f4f4bbacbbb4edea0b5995a9a79fb894036cab",
+      "log_path_at_execution": "/tmp/wp048-contracts.log"
+    },
+    "content": {
+      "log_sha256": "b40a0eeb11ab1039e95d894e2009c35bcef08e26c0cef7d0b8ae36b1f061e6c2",
+      "log_path_at_execution": "/tmp/wp048-content.log"
+    },
+    "baseline": {
+      "log_sha256": "da1bd9b69528e27ded4a3fbbc8c90ac157f2e06eebdb8c5a9c755ede16fa3f63",
+      "log_path_at_execution": "/tmp/wp048-baseline.log"
+    },
+    "roadmap_manifest": {
+      "log_sha256": "611764fbb18f1feebd7a6bc3d490ab683a65f60b09e1b7808cd67ab23fd64b36",
+      "log_path_at_execution": "/tmp/wp048-roadmap.log"
+    },
+    "package_final": {
+      "log_sha256": "93966beb30224dc60c4d569b3f54cdffea16911bd855930c0fcd446a8d192c69",
+      "log_path_at_execution": "/tmp/wp048-package-accepted.log"
+    }
+  },
+  "counts": {
+    "engine_full": 4929,
+    "engine_final_affected": 196,
+    "new_spending_cases": 12,
+    "desktop_full": 419,
+    "desktop_final_affected": 109,
+    "new_desktop_units": 7,
+    "roadmap": 51,
+    "packaged_integrated": 27,
+    "packaged_final_affected": 3,
+    "new_packaged_scenarios": 0,
+    "extended_packaged_spending_scenarios": 1
+  },
+  "limits": [
+    "Windows unrun",
+    "Real OS keychains and paid/live providers unrun",
+    "No full M6/G6/E2E-013/014 acceptance",
+    "Old reservation records without reconstructible references remain counted as legacy; no fabricated lookup",
+    "Compatible-provider USD cost semantics remain unknown; metadata retrieval is OpenRouter-only"
+  ],
+  "notes": [
+    "Final full engine uses stable Python/schema sources. Four pre-existing hostile-DTO serializer warnings remain.",
+    "Full desktop uses one worker and an explicit 15-second test timeout for production subprocess work; 419 unique cases pass. Final narrowing separately passes 109 affected cases.",
+    "Full packaged Linux build passes all 27 scenarios, including restart usage recovery. Final source clears continuation spending, retains partial model/provider metadata, keeps absent request rates unknown and restricts monetary lexeme parsing to documented paths; the final rebuilt assistant/content/grounding paths pass three scenarios.",
+    "Earlier source-changing and interrupted development runs are not represented as accepted gates. No paid provider was called.",
+    "No content release or dependency-lock changes."
+  ]
+}

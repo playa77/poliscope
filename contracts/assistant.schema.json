@@ -12,7 +12,12 @@
             "continue",
             "preview-proposal",
             "delete",
-            "save-artifact"
+            "save-artifact",
+            "usage",
+            "reconcile",
+            "configure-spending",
+            "usage-history",
+            "reconcile-history"
           ],
           "title": "Action",
           "type": "string"
@@ -23,6 +28,45 @@
           "minimum": 0,
           "title": "Artifact Index",
           "type": "integer"
+        },
+        "before_dispatch": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Before Dispatch"
+        },
+        "lookup_dispatch": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lookup Dispatch"
+        },
+        "profile_limit": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Profile Limit"
         },
         "proposal_index": {
           "default": 0,
@@ -35,6 +79,32 @@
           "pattern": "^[a-zA-Z0-9_-]{1,128}$",
           "title": "Request Id",
           "type": "string"
+        },
+        "session_limit": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Limit"
+        },
+        "turn_limit": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Turn Limit"
         }
       },
       "required": [
@@ -266,6 +336,17 @@
           "maxLength": 4096,
           "title": "Sharing Json",
           "type": "string"
+        },
+        "spending": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpendReply"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "status": {
           "enum": [
@@ -971,6 +1052,312 @@
       "title": "RevisionContext",
       "type": "object"
     },
+    "SpendBinding": {
+      "additionalProperties": false,
+      "properties": {
+        "binding_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Binding Sha256",
+          "type": "string"
+        },
+        "currency": {
+          "const": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "dispatch_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Dispatch Id",
+          "type": "string"
+        },
+        "estimate_version": {
+          "const": "explicit-bounded-exposure-v1",
+          "title": "Estimate Version",
+          "type": "string"
+        },
+        "payload_sha256": {
+          "pattern": "^[a-f0-9]{64}$",
+          "title": "Payload Sha256",
+          "type": "string"
+        },
+        "profile_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Profile Id",
+          "type": "string"
+        },
+        "session_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Session Id",
+          "type": "string"
+        },
+        "turn_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Turn Id",
+          "type": "string"
+        }
+      },
+      "required": [
+        "dispatch_id",
+        "turn_id",
+        "session_id",
+        "profile_id",
+        "payload_sha256",
+        "binding_sha256",
+        "currency",
+        "estimate_version"
+      ],
+      "title": "SpendBinding",
+      "type": "object"
+    },
+    "SpendOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_models": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Allowed Models",
+          "type": "array"
+        },
+        "endpoint": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "provider_kind": {
+          "enum": [
+            "openrouter",
+            "openai-compatible"
+          ],
+          "title": "Provider Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endpoint",
+        "provider_kind",
+        "allowed_models"
+      ],
+      "title": "SpendOrigin",
+      "type": "object"
+    },
+    "SpendRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpendOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "state": {
+          "enum": [
+            "reserved",
+            "uncertain",
+            "complete",
+            "no-send"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UsageObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "binding",
+        "state",
+        "exposure"
+      ],
+      "title": "SpendRecord",
+      "type": "object"
+    },
+    "SpendReply": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_cost": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Cost"
+        },
+        "catalog_estimate": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalog Estimate"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "dispatch_id": {
+          "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+          "title": "Dispatch Id",
+          "type": "string"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "history_before": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "History Before"
+        },
+        "legacy_requests": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Legacy Requests",
+          "type": "integer"
+        },
+        "profile_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Profile Total"
+        },
+        "reconciliation_conflict": {
+          "default": false,
+          "title": "Reconciliation Conflict",
+          "type": "boolean"
+        },
+        "records": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SpendRecord"
+          },
+          "maxItems": 64,
+          "title": "Records",
+          "type": "array"
+        },
+        "session_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Total"
+        },
+        "spending_contract": {
+          "const": 1,
+          "default": 1,
+          "title": "Spending Contract",
+          "type": "integer"
+        },
+        "status": {
+          "enum": [
+            "reserved",
+            "uncertain",
+            "complete",
+            "no-send",
+            "missing",
+            "denied",
+            "conflict",
+            "configured"
+          ],
+          "title": "Status",
+          "type": "string"
+        },
+        "turn_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Turn Total"
+        },
+        "unresolved_requests": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Unresolved Requests",
+          "type": "integer"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UsageObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "dispatch_id",
+        "status",
+        "exposure"
+      ],
+      "title": "SpendReply",
+      "type": "object"
+    },
     "UnknownValue": {
       "additionalProperties": false,
       "properties": {
@@ -991,6 +1378,213 @@
         "reason"
       ],
       "title": "UnknownValue",
+      "type": "object"
+    },
+    "UsageObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_cost": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Cost"
+        },
+        "actual_model": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Model"
+        },
+        "actual_provider": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Provider"
+        },
+        "cache_write_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Write Tokens"
+        },
+        "cached_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cached Tokens"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "generation_id": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generation Id"
+        },
+        "input_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Tokens"
+        },
+        "normalized_input_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Input Tokens"
+        },
+        "normalized_output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Output Tokens"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "enum": [
+                "complete",
+                "incomplete",
+                "cancelled"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome"
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Tokens"
+        },
+        "reasoning_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Tokens"
+        },
+        "source": {
+          "enum": [
+            "response",
+            "generation-metadata"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "total_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Total Tokens"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "UsageObservation",
       "type": "object"
     },
     "WorkbenchEdit": {

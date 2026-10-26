@@ -1,5 +1,60 @@
 {
   "$defs": {
+    "CatalogEstimate": {
+      "additionalProperties": false,
+      "properties": {
+        "completion_rate": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+          "title": "Completion Rate",
+          "type": "string"
+        },
+        "input_bound": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Input Bound",
+          "type": "integer"
+        },
+        "observed_at": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Observed At",
+          "type": "string"
+        },
+        "output_bound": {
+          "maximum": 9007199254740991,
+          "minimum": 0,
+          "title": "Output Bound",
+          "type": "integer"
+        },
+        "prompt_rate": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+          "title": "Prompt Rate",
+          "type": "string"
+        },
+        "request_rate": {
+          "default": "0",
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+          "title": "Request Rate",
+          "type": "string"
+        },
+        "source": {
+          "maxLength": 256,
+          "minLength": 1,
+          "title": "Source",
+          "type": "string"
+        }
+      },
+      "required": [
+        "input_bound",
+        "output_bound",
+        "prompt_rate",
+        "completion_rate",
+        "source",
+        "observed_at"
+      ],
+      "title": "CatalogEstimate",
+      "type": "object"
+    },
     "SpendBinding": {
       "additionalProperties": false,
       "properties": {
@@ -57,9 +112,229 @@
       "title": "SpendBinding",
       "type": "object"
     },
+    "SpendConfigure": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "configure",
+          "title": "Action",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "profile_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Profile Limit",
+          "type": "string"
+        },
+        "session_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Session Limit",
+          "type": "string"
+        },
+        "turn_limit": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Turn Limit",
+          "type": "string"
+        }
+      },
+      "required": [
+        "action",
+        "binding",
+        "turn_limit",
+        "session_limit",
+        "profile_limit"
+      ],
+      "title": "SpendConfigure",
+      "type": "object"
+    },
+    "SpendHistory": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "history",
+          "title": "Action",
+          "type": "string"
+        },
+        "before_dispatch": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Before Dispatch"
+        },
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "lookup_dispatch": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Lookup Dispatch"
+        }
+      },
+      "required": [
+        "action",
+        "binding"
+      ],
+      "title": "SpendHistory",
+      "type": "object"
+    },
+    "SpendObserve": {
+      "additionalProperties": false,
+      "properties": {
+        "action": {
+          "const": "observe",
+          "title": "Action",
+          "type": "string"
+        },
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "observation": {
+          "$ref": "#/$defs/UsageObservation"
+        }
+      },
+      "required": [
+        "action",
+        "binding",
+        "observation"
+      ],
+      "title": "SpendObserve",
+      "type": "object"
+    },
+    "SpendOrigin": {
+      "additionalProperties": false,
+      "properties": {
+        "allowed_models": {
+          "items": {
+            "maxLength": 256,
+            "minLength": 1,
+            "type": "string"
+          },
+          "maxItems": 16,
+          "minItems": 1,
+          "title": "Allowed Models",
+          "type": "array"
+        },
+        "endpoint": {
+          "maxLength": 2048,
+          "minLength": 1,
+          "title": "Endpoint",
+          "type": "string"
+        },
+        "provider_kind": {
+          "enum": [
+            "openrouter",
+            "openai-compatible"
+          ],
+          "title": "Provider Kind",
+          "type": "string"
+        }
+      },
+      "required": [
+        "endpoint",
+        "provider_kind",
+        "allowed_models"
+      ],
+      "title": "SpendOrigin",
+      "type": "object"
+    },
+    "SpendRecord": {
+      "additionalProperties": false,
+      "properties": {
+        "binding": {
+          "$ref": "#/$defs/SpendBinding"
+        },
+        "exposure": {
+          "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
+          "title": "Exposure",
+          "type": "string"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpendOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
+        "state": {
+          "enum": [
+            "reserved",
+            "uncertain",
+            "complete",
+            "no-send"
+          ],
+          "title": "State",
+          "type": "string"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UsageObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        }
+      },
+      "required": [
+        "binding",
+        "state",
+        "exposure"
+      ],
+      "title": "SpendRecord",
+      "type": "object"
+    },
     "SpendReply": {
       "additionalProperties": false,
       "properties": {
+        "actual_cost": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Cost"
+        },
+        "catalog_estimate": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Catalog Estimate"
+        },
         "currency": {
           "const": "USD",
           "default": "USD",
@@ -76,6 +351,63 @@
           "title": "Exposure",
           "type": "string"
         },
+        "history_before": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,128}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "History Before"
+        },
+        "legacy_requests": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Legacy Requests",
+          "type": "integer"
+        },
+        "profile_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Profile Total"
+        },
+        "reconciliation_conflict": {
+          "default": false,
+          "title": "Reconciliation Conflict",
+          "type": "boolean"
+        },
+        "records": {
+          "default": [],
+          "items": {
+            "$ref": "#/$defs/SpendRecord"
+          },
+          "maxItems": 64,
+          "title": "Records",
+          "type": "array"
+        },
+        "session_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Session Total"
+        },
         "spending_contract": {
           "const": 1,
           "default": 1,
@@ -90,10 +422,40 @@
             "no-send",
             "missing",
             "denied",
-            "conflict"
+            "conflict",
+            "configured"
           ],
           "title": "Status",
           "type": "string"
+        },
+        "turn_total": {
+          "anyOf": [
+            {
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Turn Total"
+        },
+        "unresolved_requests": {
+          "default": 0,
+          "minimum": 0,
+          "title": "Unresolved Requests",
+          "type": "integer"
+        },
+        "usage": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/UsageObservation"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         }
       },
       "required": [
@@ -118,10 +480,32 @@
         "binding": {
           "$ref": "#/$defs/SpendBinding"
         },
+        "catalog": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/CatalogEstimate"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
+        },
         "exposure": {
           "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
           "title": "Exposure",
           "type": "string"
+        },
+        "origin": {
+          "anyOf": [
+            {
+              "$ref": "#/$defs/SpendOrigin"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null
         },
         "profile_limit": {
           "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,6})?$",
@@ -173,6 +557,213 @@
       ],
       "title": "SpendTransition",
       "type": "object"
+    },
+    "UsageObservation": {
+      "additionalProperties": false,
+      "properties": {
+        "actual_cost": {
+          "anyOf": [
+            {
+              "pattern": "^(0|[1-9][0-9]{0,6})(\\.[0-9]{1,18})?$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Cost"
+        },
+        "actual_model": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Model"
+        },
+        "actual_provider": {
+          "anyOf": [
+            {
+              "maxLength": 256,
+              "minLength": 1,
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Actual Provider"
+        },
+        "cache_write_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cache Write Tokens"
+        },
+        "cached_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Cached Tokens"
+        },
+        "currency": {
+          "const": "USD",
+          "default": "USD",
+          "title": "Currency",
+          "type": "string"
+        },
+        "generation_id": {
+          "anyOf": [
+            {
+              "pattern": "^[a-zA-Z0-9_-]{1,256}$",
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Generation Id"
+        },
+        "input_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Input Tokens"
+        },
+        "normalized_input_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Input Tokens"
+        },
+        "normalized_output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Normalized Output Tokens"
+        },
+        "outcome": {
+          "anyOf": [
+            {
+              "enum": [
+                "complete",
+                "incomplete",
+                "cancelled"
+              ],
+              "type": "string"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Outcome"
+        },
+        "output_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Output Tokens"
+        },
+        "reasoning_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Reasoning Tokens"
+        },
+        "source": {
+          "enum": [
+            "response",
+            "generation-metadata"
+          ],
+          "title": "Source",
+          "type": "string"
+        },
+        "total_tokens": {
+          "anyOf": [
+            {
+              "maximum": 9007199254740991,
+              "minimum": 0,
+              "type": "integer"
+            },
+            {
+              "type": "null"
+            }
+          ],
+          "default": null,
+          "title": "Total Tokens"
+        }
+      },
+      "required": [
+        "source"
+      ],
+      "title": "UsageObservation",
+      "type": "object"
     }
   },
   "anyOf": [
@@ -181,6 +772,15 @@
     },
     {
       "$ref": "#/$defs/SpendTransition"
+    },
+    {
+      "$ref": "#/$defs/SpendObserve"
+    },
+    {
+      "$ref": "#/$defs/SpendConfigure"
+    },
+    {
+      "$ref": "#/$defs/SpendHistory"
     },
     {
       "$ref": "#/$defs/SpendReply"

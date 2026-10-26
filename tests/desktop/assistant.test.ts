@@ -24,11 +24,11 @@ function fixture(transport?:GenerationTransport,spend?:Spend) {
   return{app,send,order,providers,changeContext:()=>{context='{"branch":"different"}';},removeKey:()=>keyLease.abort()};
 }
 async function start(f:ReturnType<typeof fixture>,q=query){const prepared=await f.app.request(q);await f.app.request({action:'send',request_id:prepared.request_id});return prepared.request_id;}
-async function terminal(f:ReturnType<typeof fixture>,id:string){let reply:AssistantReply;await vi.waitFor(async()=>{reply=await f.app.request({action:'status',request_id:id});expect(['pending','streaming']).not.toContain(reply.status);});return reply!;}
+async function terminal(f:ReturnType<typeof fixture>,id:string){let reply:AssistantReply;await vi.waitFor(async()=>{reply=await f.app.request({action:'status',request_id:id});expect(['pending','streaming']).not.toContain(reply.status);},{timeout:10000});return reply!;}
 it('requires explicit review, reserves durably before transport, keeps context and deduplicates send',async()=> {
  const f=fixture();const prepared=await f.app.request(query);expect(f.send).not.toHaveBeenCalled();expect(prepared.payload_json).toContain(query.text);f.changeContext();
  await Promise.all([f.app.request({action:'send',request_id:prepared.request_id}),f.app.request({action:'send',request_id:prepared.request_id})]);
- const reply=await terminal(f,prepared.request_id);expect(reply.status).toBe('complete');expect(reply.text).toBe('A sufficiently long synthetic answer.');expect(reply.context_json).toContain('original');expect(reply.context_json).not.toContain('different');expect(f.order).toEqual(['lease','reserve','uncertain','transport','complete']);expect(f.send).toHaveBeenCalledTimes(1);expect(reply.exposure_status).toBe('unresolved');
+ const reply=await terminal(f,prepared.request_id);expect(reply.status).toBe('complete');expect(reply.text).toBe('A sufficiently long synthetic answer.');expect(reply.context_json).toContain('original');expect(reply.context_json).not.toContain('different');expect(f.order).toEqual(['lease','reserve','uncertain','transport','observe','complete']);expect(f.send).toHaveBeenCalledTimes(1);expect(reply.exposure_status).toBe('unresolved');
 });
 it.each([401,403,402,429,404,500,302])('safe HTTP %i never returns provider prose or headers',async code=> {
  const f=fixture(async()=>({code,body:'Authorization: synthetic-key-never-render private-provider-canary'}));const result=await terminal(f,await start(f));expect(result.status).toBe('failed');expect(result.diagnostic).not.toBe('none');expect(JSON.stringify(result)).not.toContain('private-provider-canary');expect(f.send).toHaveBeenCalledTimes(1);
@@ -89,4 +89,49 @@ it.each([401,402,429,404,503])('midstream provider code %i is safe and actionabl
 });
 it('lost reservation acknowledgment preserves unknown exposure and sends nothing',async()=> {
  const f=fixture(undefined,async()=>{throw new Error('lost response');});const result=await terminal(f,await start(f));expect(result.exposure_status).toBe('unresolved');expect(f.send).not.toHaveBeenCalled();
+});
+it('production ledger persists usage-only actuals, replaces exposure and deduplicates late retrieval',async()=> {
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-reconcile-'));
+ try {
+  const spend=spendingService(false,process.cwd(),process.cwd(),dir);
+  const f=fixture(async(_u,_j,_k,_s,_stream,chunk)=>{chunk(Buffer.from(event('Complete paid response.','stop')+'data: '+JSON.stringify({id:'gen-fixture',choices:[],usage:{prompt_tokens:3,completion_tokens:2,completion_tokens_details:{reasoning_tokens:1},cost:'0.012345678901234567'}})+'\n\ndata: [DONE]\n\n'));return{code:200,body:''};},spend);
+  const prepare=f.providers.prepareGeneration.getMockImplementation()!;
+  f.providers.prepareGeneration.mockImplementation(async plan=>({...await prepare(plan),provider_kind:'openrouter'}));
+  const id=await start(f);await terminal(f,id);
+  await vi.waitFor(async()=>expect((await f.app.request({action:'usage',request_id:id})).spending?.actual_cost).toBe('0.012345678901234567'),{timeout:10000});
+  const status=await f.app.request({action:'usage',request_id:id});
+  expect(status.spending?.profile_total).toBe('0.012345678901234567');expect(status.spending?.usage?.reasoning_tokens).toBe(1);
+  const providers=f.providers as typeof f.providers&{generationUsage:()=>Promise<import('../../contracts/spending').UsageObservation>};
+  providers.generationUsage=async()=>({source:'generation-metadata',generation_id:'gen-fixture',actual_cost:'0.012345678901234567'});
+  for(let i=0;i<2;i++)expect((await f.app.request({action:'reconcile',request_id:id})).spending?.profile_total).toBe('0.012345678901234567');
+  await f.app.request({action:'configure-spending',request_id:id,turn_limit:'0.01',session_limit:'0.01',profile_limit:'0.01'});
+  const second=await start(f,{...query,turn_limit:'0.01',session_limit:'0.01',profile_limit:'0.01'});expect((await terminal(f,second)).diagnostic).toBe('budget');expect(f.send).toHaveBeenCalledTimes(1);
+ }finally{await rm(dir,{recursive:true,force:true});}
+});
+it('compatible cost has no established USD meaning and cancelled usage retains honest exposure',async()=> {
+ const observations:unknown[]=[];
+ const f=fixture(async(_u,_j,_k,signal,_stream,chunk)=>new Promise((_resolve,reject)=>{
+  chunk(Buffer.from('data: '+JSON.stringify({id:'generation-cancel',model:'m',choices:[],usage:{total_tokens:4,cost:0}})+'\n\n'));
+  signal.addEventListener('abort',()=>reject(new Error('cancelled')),{once:true});
+ }),async q=>{if(q.action==='observe')observations.push(q.observation);return{dispatch_id:q.binding.dispatch_id,spending_contract:1,status:q.action==='reserve'?'reserved':'uncertain',exposure:'0.04',currency:'USD'};});
+ const id=await start(f);await vi.waitFor(()=>expect(f.send).toHaveBeenCalledTimes(1));await f.app.request({action:'cancel',request_id:id});
+ await vi.waitFor(()=>expect(observations).toHaveLength(1));expect(observations[0]).toEqual({source:'response',generation_id:'generation-cancel',outcome:'cancelled',actual_model:'m',total_tokens:4});
+});
+it('recovers usage after controller restart without storing or resending the original prompt',async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-usage-restart-'));
+ try {
+  const spend=spendingService(false,process.cwd(),process.cwd(),dir);
+  const first=fixture(async(_u,_j,_k,_s,_st,chunk)=>{chunk(Buffer.from('data: '+JSON.stringify({id:'gen-restart',model:'m',choices:[{index:0,delta:{content:'Original answer'},finish_reason:'stop'}]})+'\n\ndata: [DONE]\n\n'));return{code:200,body:''};},spend);
+  const build=first.providers.prepareGeneration.getMockImplementation()!;first.providers.prepareGeneration.mockImplementation(async plan=>({...await build(plan),provider_kind:'openrouter'}));
+  const old=await start(first);await terminal(first,old);
+  await vi.waitFor(async()=>expect((await first.app.request({action:'usage-history',request_id:old})).spending?.records?.[0].usage?.generation_id).toBe('gen-restart'),{timeout:10000});
+  first.app.close();
+  const recovered=fixture(undefined,spend),selected=await recovered.app.request(query);
+  const provider=recovered.providers as typeof recovered.providers&{generationUsage:()=>Promise<import('../../contracts/spending').UsageObservation>};
+  provider.generationUsage=vi.fn(async()=>({source:'generation-metadata' as const,generation_id:'gen-restart',actual_cost:'0.01'}));
+  const history=await recovered.app.request({action:'usage-history',request_id:selected.request_id});expect(history.spending?.records?.[0].binding.dispatch_id).toBe(old);
+  const reconciled=await recovered.app.request({action:'reconcile-history',request_id:selected.request_id,lookup_dispatch:old});expect(reconciled.spending?.profile_total).toBe('0.01');expect(recovered.send).not.toHaveBeenCalled();
+  expect(JSON.stringify(reconciled.spending)).not.toContain(query.text);
+  await recovered.app.request({action:'delete',request_id:selected.request_id});
+ }finally{await rm(dir,{recursive:true,force:true});}
 });

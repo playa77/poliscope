@@ -1,3 +1,4 @@
+import { costText, providerJson } from './provider-stream';
 import { mediaTokenBound } from './assistant-content';
 import type { GenerationPlan } from '../../contracts/generation';
 import { buildGenerationRequest, contextPayloadHash, type BuiltRequest } from './provider-requests';
@@ -380,6 +381,37 @@ export class ProviderController {
       if(prepared.controller.signal.aborted)throw new Error('Provider cancelled');
       return await send(prepared.key,prepared.controller.signal);
     } finally {signal.removeEventListener('abort',prepared.abort);prepared.active.delete(prepared.controller);}
+  }
+  /** Explicit non-billable lookup, bound to the original profile and generation. */
+  async generationUsage(request:Pick<BuiltRequest,'profile_id'|'revision'|'endpoint'|'allowed_models'|'provider_kind'>,id:string):Promise<import('../../contracts/spending').UsageObservation> {
+    if(request.provider_kind!=='openrouter'||!/^[-a-zA-Z0-9_]{1,256}$/.test(id)||!this.metadata)throw new Error('Usage lookup unavailable');
+    const lease=await this.serialize(async()=> {
+      await this.load();
+      const row=this.rows.find(r=>r.profile.id===request.profile_id);
+      if(!row||this.closed||row.revision!==request.revision||row.profile.kind!=='openrouter'||row.profile.endpoint!==request.endpoint)throw new Error('Usage profile changed');
+      const key=await this.secret(row);if(!key)throw new Error('Provider key unavailable');
+      const controller=new AbortController(), active=this.generations.get(row.profile.id)??new Set<AbortController>();
+      active.add(controller);this.generations.set(row.profile.id,active);
+      return {key,controller,active};
+    });
+    const key=lease.key,signal=lease.controller.signal;
+    try {
+      const response=await this.metadata!(request.endpoint+'/generation?id='+encodeURIComponent(id),key,signal);
+      if(response.code!==200||response.body.includes(key))throw new Error('Usage lookup unavailable');
+      const data=(providerJson(response.body) as {data?:Record<string,unknown>})?.data;
+      if(!data||data.id!==id||data.model&&(typeof data.model!=='string'||!request.allowed_models.includes(data.model)))throw new Error('Usage identity mismatch');
+      const observation:import('../../contracts/spending').UsageObservation={source:'generation-metadata',generation_id:id};
+      if(data.total_cost!=null)observation.actual_cost=costText(data.total_cost);
+      if(typeof data.model==='string')observation.actual_model=data.model;
+      if(typeof data.provider_name==='string'&&data.provider_name.length>0&&data.provider_name.length<=256&&!/[\u0000-\u001f\u007f]/.test(data.provider_name))observation.actual_provider=data.provider_name;
+      if(data.cancelled===true)observation.outcome='cancelled';
+      for(const [field,target] of [['tokens_prompt','normalized_input_tokens'],['tokens_completion','normalized_output_tokens'],['native_tokens_prompt','input_tokens'],['native_tokens_completion','output_tokens'],['native_tokens_cached','cached_tokens'],['native_tokens_reasoning','reasoning_tokens']] as const)if(data[field]!=null) {
+        if(!Number.isSafeInteger(data[field])||(data[field] as number)<0)throw new Error('Invalid usage');
+        observation[target]=data[field] as number;
+      }
+      if(signal.aborted||JSON.stringify(observation).includes(JSON.stringify(key).slice(1,-1)))throw new Error('Usage lookup revoked or unsafe');
+      return observation;
+    }finally{lease.active.delete(lease.controller);}
   }
   async close() {
     this.closed = true;

@@ -20,8 +20,52 @@ export function usageObservation(value: unknown): string {
     }
     result[key]=safe;
   }
-  if(input.cost!=null) {if(typeof input.cost!=='number'||!Number.isFinite(input.cost)||input.cost<0)throw new StreamError();result.cost_observation=String(input.cost);}
+  if(input.cost!=null) result.cost_observation=costText(input.cost);
   return JSON.stringify(result);
+}
+/** Keep monetary JSON number lexemes out of binary floating-point conversion. */
+export function providerJson(raw:string):unknown {
+  let output='', cursor=0;
+  const stack:{path:string[];kind:string;key?:string}[]=[];
+  while(cursor<raw.length) {
+    const char=raw[cursor],parent=stack.at(-1);
+    if(char!=='"') {
+      if(char==='{'||char==='[')stack.push({kind:char,path:parent?[...parent.path,parent.kind==='{'?parent.key??'*':'*']:[]});
+      else if(char==='}'||char===']')stack.pop();
+      else if(char===','&&parent)parent.key=undefined;
+      output+=raw[cursor++];continue;
+    }
+    const start=cursor++;
+    while(cursor<raw.length) {
+      if(raw[cursor]==='\\'){cursor+=2;continue;}
+      if(raw[cursor++]==='"')break;
+    }
+    const token=raw.slice(start,cursor);output+=token;
+    const key:unknown=JSON.parse(token),tail=/^\s*:\s*/.exec(raw.slice(cursor));
+    if(!tail||typeof key!=='string'||!parent)continue;
+    parent.key=key;
+    // Preserve exactly the documented money paths. Opaque continuation metadata
+    // and provider-generated structured content retain their original value types.
+    const money=parent.path.length===1&&((parent.path[0]==='usage'&&key==='cost')||(parent.path[0]==='data'&&key==='total_cost'));
+    if(!money)continue;
+    output+=tail[0];cursor+=tail[0].length;
+    const number=/^-?(?:0|[1-9][0-9]*)(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?/.exec(raw.slice(cursor));
+    if(number){output+=JSON.stringify(number[0]);cursor+=number[0].length;}
+  }
+  return JSON.parse(output);
+}
+/** Preserve decimal digits supplied as strings; expand JSON numeric exponents without arithmetic. */
+export function costText(value:unknown):string {
+  if(typeof value!=='string'&&typeof value!=='number')throw new StreamError();
+  let text=String(value);
+  const match=/^(\d+)(?:\.(\d+))?[eE]([+-]?\d+)$/.exec(text);
+  if(match) {
+    const exponent=Number(match[3]);if(Math.abs(exponent)>24)throw new StreamError();
+    const digits=match[1]+(match[2]??''), point=match[1].length+exponent;
+    text=point<=0?'0.'+'0'.repeat(-point)+digits:point>=digits.length?digits+'0'.repeat(point-digits.length):digits.slice(0,point)+'.'+digits.slice(point);
+  }
+  if(!/^(0|[1-9][0-9]{0,6})(\.[0-9]{1,18})?$/.test(text))throw new StreamError();
+  return text;
 }
 const record = (v: unknown): Record<string, unknown> => {
   if (!v || typeof v !== 'object' || Array.isArray(v)) throw new StreamError();
@@ -29,7 +73,7 @@ const record = (v: unknown): Record<string, unknown> => {
 };
 export interface AssembledTool { index: number; id: string; name: string; arguments: string }
 export interface StreamSnapshot {
-  opaque_json?:string; artifacts?:Artifact[];
+  generation_id?:string; opaque_json?:string; artifacts?:Artifact[];
   text: string; reasoning: string; tools: AssembledTool[]; usage_json: string | null;
   model: string | null; provider: string | null; finish_reason: string | null;
 }
@@ -72,11 +116,12 @@ export class ChatStream {
     if (this.ended || ++this.events>16384) throw new StreamError();
     if (data === '[DONE]') { this.ended=true; return; }
     let body: Record<string,unknown>;
-    try { body=record(JSON.parse(data)); } catch { throw new StreamError(); }
+    try { body=record(providerJson(data)); } catch { throw new StreamError(); }
     if(body.error!=null) {
       const error=record(body.error), code=error.code;
       throw new ProviderStreamError(code===401||code===403?'authentication':code===402?'credits':code===429?'rate-limit':code===404?'model':'provider');
     }
+    if(body.id!=null) {if(typeof body.id!=='string'||!/^[-a-zA-Z0-9_]{1,256}$/.test(body.id)||this.state.generation_id&&this.state.generation_id!==body.id)throw new StreamError();this.state.generation_id=body.id;}
     for (const key of ['model','provider'] as const) if (body[key] != null) {
       const value=body[key];
       if (typeof value !== 'string' || !value || value.length>256 || /[\u0000-\u001f\u007f]|\p{Surrogate}/u.test(value)) throw new StreamError();
@@ -206,7 +251,7 @@ export function wholeResponse(request:BuiltRequest,value:unknown):{snapshot:Stre
     delta.tool_calls=delta.tool_calls.map((call,index)=>({...record(call),index}));
   }
   const parser=new ChatStream(request);
-  const event={model:body.model,provider:body.provider,choices:[{index:0,delta,finish_reason:choice.finish_reason}]};
+  const event={id:body.id,model:body.model,provider:body.provider,choices:[{index:0,delta,finish_reason:choice.finish_reason}]};
   const wire='data: '+JSON.stringify(event)+'\n\n'+(body.usage!=null?'data: '+JSON.stringify({choices:[],usage:body.usage})+'\n\n':'')+'data: [DONE]\n\n';
   parser.push(Buffer.from(wire));return parser.end();
 }

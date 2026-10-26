@@ -161,3 +161,10 @@ it('preserves small price ceilings when the wire uses equivalent scientific nota
   const f=fixture(); f.view.profile.routing.max_price={request:'0.000000001',completion:'0001.2500'};
   expect(JSON.parse(f.build().json).provider.max_price).toEqual({request:1e-9,completion:1.25});
 });
+it('retains catalog estimate inputs without doing authoritative money arithmetic in TypeScript',()=>{
+ const f=fixture();f.evidence.models[0].pricing={prompt:'0.000001',completion:'0.000002',request:'0.01'};
+ expect(f.build().catalog).toEqual({input_bound:100,output_bound:128,prompt_rate:'0.000001',completion_rate:'0.000002',request_rate:'0.01',source:f.evidence.models[0].source,observed_at:time});
+ delete f.evidence.models[0].pricing.request;expect(f.build().catalog).toBeUndefined();
+ f.evidence.models[0].pricing.request='0.01';f.evidence.models[0].pricing.image='0.1';expect(f.build().catalog).toBeUndefined();
+ f.evidence.models[0].pricing={prompt:'-1',completion:'0'};expect(f.build().catalog).toBeUndefined();
+});

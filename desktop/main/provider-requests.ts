@@ -27,6 +27,8 @@ export interface BuiltRequest {
   profile_id: string; revision: number; endpoint: string;
   path: '/chat/completions'; method: 'POST'; json: string;
   selected_model: string; allowed_models: readonly string[];
+  catalog?: import('../../contracts/spending').CatalogEstimate;
+  provider_kind?: ProviderView['profile']['kind'];
   plan: GenerationPlan;
 }
 function fail(code: RequestError['code'], parameter: string | null = null): never { throw new RequestError(code,parameter); }
@@ -187,6 +189,15 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
     }
   }
   const result: BuiltRequest = {profile_id:p.id,revision:view.revision,endpoint,path:'/chat/completions',method:'POST',json:JSON.stringify(body),selected_model:p.model,allowed_models:ids,plan:input};
+  result.provider_kind=p.kind;
+  // Only a single text model with plain token/request prices has an unambiguous
+  // catalog estimate. Fallbacks, media and extra price categories stay unknown.
+  const model=evidence.models.find(m=>m.id===p.model), price=model?.pricing;
+  const rate=(v:unknown):v is string=>typeof v==='string'&&/^(0|[1-9][0-9]{0,6})(\.[0-9]{1,18})?$/.test(v);
+  const bound=evidence.budgets.find(b=>b.model_id===p.model);
+  if(ids.length===1&&outputs.length===1&&outputs[0]==='text'&&input.messages.every(m=>typeof m.content==='string')&&price&&rate(price.prompt)&&rate(price.completion)&&rate(price.request)&&Object.entries(price).every(([k,v])=>['prompt','completion','request'].includes(k)||/^0(?:\.0+)?$/.test(v))&&bound) {
+    result.catalog={input_bound:bound.input_tokens_upper_bound,output_bound:output,prompt_rate:price.prompt,completion_rate:price.completion,request_rate:price.request,source:model!.source,observed_at:model!.observed_at};
+  }
   if (Buffer.byteLength(result.json) > 1048576) fail('invalid-plan');
   return freeze(result);
 }
