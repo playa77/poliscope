@@ -143,7 +143,7 @@ def test_backup_includes_live_wal_and_never_overwrites(store, tmp_path):
     with sqlite3.connect(destination) as backup:
         assert backup.execute('PRAGMA integrity_check').fetchone() == ('ok',)
         assert backup.execute('PRAGMA application_id').fetchone() == (APPLICATION_ID,)
-        assert backup.execute('PRAGMA user_version').fetchone() == (1,)
+        assert backup.execute('PRAGMA user_version').fetchone() == (2,)
         assert backup.execute('SELECT payload FROM evidence').fetchone() == (EXACT,)
         assert backup.execute('SELECT outcome FROM operations').fetchone() == (OUTCOME,)
     before = destination.read_bytes()
@@ -171,7 +171,7 @@ def test_unsupported_databases_preserved(tmp_path, variant):
             conn.execute('CREATE TABLE external (id INTEGER)')
             if variant == 'future':
                 conn.execute(f'PRAGMA application_id={APPLICATION_ID}')
-                conn.execute('PRAGMA user_version=2')
+                conn.execute('PRAGMA user_version=999')
     before = path.read_bytes()
     with pytest.raises(StorageError):
         Store(tmp_path)

@@ -1,3 +1,4 @@
+import type { RecoveryRequest, RecoveryReply } from '../contracts/recovery';
 import type { ReportRequest, ReportReply } from '../contracts/report';
 import type { ArchiveRequest, ArchiveReply } from '../contracts/archive';
 import type { UncertaintyQuery, UncertaintyReport, SensitivityQuery, SensitivityReport, CapacityQuery, CapacityReport } from '../contracts/uncertainty';
@@ -15,6 +16,7 @@ export type ShellStatus = { state: 'starting' | 'ready' | 'failed' | 'historical
 export type HistorySelection = { storage_context_id: string; request: HistoryRequest };
 export type HistoryReply = HistoryResult | HistoryError | null;
 export interface ShellAPI {
+  recovery(query: RecoveryRequest): Promise<RecoveryReply>;
   report(query: ReportRequest): Promise<ReportReply>;
   archive(query: ArchiveRequest): Promise<ArchiveReply>;
   uncertainty(query: UncertaintyQuery): Promise<UncertaintyReport>;

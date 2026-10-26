@@ -1,3 +1,4 @@
+import { RecoveryController, type RecoveryChoice } from './recovery';
 import { WorkspaceController } from './workspace';
 import { isAbsolute } from 'node:path';
 import type { HistoryRequest } from '../../contracts/history';
@@ -28,6 +29,7 @@ export class DesktopShell {
   private historical = false;
   private detail = 'Stored historical evidence; simulation and edits unavailable';
   private workspace: WorkspaceController;
+  private recoveryController: RecoveryController;
   private workspaceQueued = 0;
   private interviewGeneration = 0;
   private workspaceTail: Promise<unknown> = Promise.resolve();
@@ -39,6 +41,7 @@ export class DesktopShell {
     return pending;
   }
   constructor(private packaged: boolean, private root: string, private resources: string) {
+    this.recoveryController = new RecoveryController(packaged, root, resources);
     this.workspace = new WorkspaceController(packaged, root, resources);
   }
   chooseWorkspace(choose: () => Promise<string | undefined>) {
@@ -51,6 +54,9 @@ export class DesktopShell {
       this.historical = false;
       return this.workspace.choose(directory);
     });
+  }
+  recovery(input: unknown, choose: (kind: RecoveryChoice) => Promise<string | undefined>) {
+    return this.workspaceRun(() => this.recoveryController.request(input, choose));
   }
   report(input: unknown, choose: (format: 'markdown' | 'csv') => Promise<string | undefined>) { return this.workspaceRun(() => this.workspace.report(input, choose)); }
   archive(input: unknown, choose: (action: 'import' | 'export') => Promise<string | undefined>) { return this.workspaceRun(() => this.workspace.archive(input, choose)); }

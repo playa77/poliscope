@@ -64,7 +64,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
     if (!preview) return;
     setBusy(true); setError(''); setUncertain(true);
     try { const reply = await window.poliscope.applyWorkbench({ candidate_digest: preview.candidate_digest }); onDirty(false); onSelected(reply.state); }
-    catch { setError('Apply outcome is uncertain. Retry the same Apply to recover the confirmed outcome.'); }
+    catch { setError('Save unconfirmed. Preview remains unsaved in this view. Retry the same Apply to recover the confirmed outcome.'); }
     finally { setBusy(false); }
   }
   async function erase(note: WorkbenchRow) {

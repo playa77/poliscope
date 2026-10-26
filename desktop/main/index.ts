@@ -53,6 +53,15 @@ if (ownsData) void app.whenReady().then(async () => {
       const result = await dialog.showSaveDialog(window!, { title: 'Export inquiry report to a new file',
         filters: [{ name: format === 'markdown' ? 'Markdown inquiry report' : 'Typed measurements CSV', extensions: [format === 'markdown' ? 'md' : 'csv'] }] });
       return result.canceled ? undefined : result.filePath;
+    }, async kind => {
+      if (kind === 'backup') {
+        const result = await dialog.showSaveDialog(window!, { title: 'Save a new database backup', filters: [{ name: 'SQLite backup', extensions: ['sqlite3'] }] });
+        return result.canceled ? undefined : result.filePath;
+      }
+      const folder = kind === 'restore' || kind === 'sandbox';
+      const result = await dialog.showOpenDialog(window!, { title: kind === 'restore' ? 'Restore into a new empty folder' : kind === 'sandbox' ? 'Choose comparison sandbox folder' : kind === 'archive' ? 'Inspect portable archive without a model' : 'Inspect saved database without a model',
+        properties: folder ? ['openDirectory', 'createDirectory'] : ['openFile'] });
+      return result.canceled ? undefined : result.filePaths[0];
     });
   app.on('second-instance', () => { if (window?.isMinimized()) window.restore(); window?.focus(); });
   engine.start();

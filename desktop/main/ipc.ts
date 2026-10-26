@@ -1,3 +1,4 @@
+import type { RecoveryChoice } from './recovery';
 import { workspaceValid } from './workspace';
 import type { IpcMainInvokeEvent } from 'electron';
 import type { DesktopShell } from './shell';
@@ -9,7 +10,7 @@ export const IPC_ERROR = 'Desktop request rejected. Retry or reconnect.';
 type Register = (channel: string, handler: (event: IpcMainInvokeEvent, ...args: unknown[]) => Promise<unknown>) => void;
 /** No renderer-controlled channel or operation name reaches a service. */
 export function registerShellIPC(register: Register, authorize: (event: IpcMainInvokeEvent) => void,
-  shell: DesktopShell, choose: () => Promise<string | undefined>, chooseWorkspace: () => Promise<string | undefined> = async () => undefined, chooseArchive: (action: 'import' | 'export') => Promise<string | undefined> = async () => undefined, chooseReport: (format: 'markdown' | 'csv') => Promise<string | undefined> = async () => undefined): void {
+  shell: DesktopShell, choose: () => Promise<string | undefined>, chooseWorkspace: () => Promise<string | undefined> = async () => undefined, chooseArchive: (action: 'import' | 'export') => Promise<string | undefined> = async () => undefined, chooseReport: (format: 'markdown' | 'csv') => Promise<string | undefined> = async () => undefined, chooseRecovery: (kind: RecoveryChoice) => Promise<string | undefined> = async () => undefined): void {
   function handle(channel: string, arity: number, action: (...args: unknown[]) => unknown | Promise<unknown>, check: (reply: unknown) => boolean) {
     register(channel, async (event, ...args) => {
       try {
@@ -24,6 +25,7 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&
     (valid(reply, definitions.HistoryResult, definitions) || valid(reply, definitions.HistoryError, definitions));
   const workspaceReply = (type: string) => (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 && workspaceValid(reply, type);
+  handle('recovery:request', 1, input => { if (!workspaceValid(input, 'RecoveryRequest')) throw new Error(); return shell.recovery(input, chooseRecovery); }, workspaceReply('RecoveryReply'));
   handle('report:export', 1, input => { if (!workspaceValid(input, 'ReportRequest')) throw new Error(); return shell.report(input, chooseReport); }, workspaceReply('ReportReply'));
   handle('archive:request', 1, input => { if (!workspaceValid(input, 'ArchiveRequest')) throw new Error(); return shell.archive(input, chooseArchive); }, workspaceReply('ArchiveReply'));
   handle('uncertainty:read', 1, input => { if (!workspaceValid(input, 'UncertaintyQuery')) throw new Error(); return shell.uncertainty(input); }, workspaceReply('UncertaintyReport'));

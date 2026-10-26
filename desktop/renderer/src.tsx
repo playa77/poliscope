@@ -1,3 +1,4 @@
+import { Recovery } from './recovery';
 import { Workspace } from './workspace';
 import React, { useState } from 'react';
 import { createRoot } from 'react-dom/client';
@@ -34,6 +35,7 @@ function App() {
     <Workspace key={workspaceGeneration} onDraftChange={setDraft} />
     <p role="status">{status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine'}</p>
     <button disabled={busy || draft} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>
+    <Recovery locked={busy || draft} />
     <section aria-labelledby="history-heading"><h2 id="history-heading">Read saved historical evidence</h2>
       <p>Supply the retained result’s identities, then choose its SQLite store. Reading stored evidence does not reproduce a simulation or enable edits. Supported saved-evidence schema: 1.</p>
       <form onSubmit={open}><fieldset disabled={busy || draft}><legend>Saved result selection</legend>

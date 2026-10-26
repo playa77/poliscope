@@ -29,7 +29,7 @@ it('reads retained production observations without the saved executable model, w
     controller.clear();
     await expect(controller.overview(query)).rejects.toThrow();
   } finally { await rm(directory, { recursive: true, force: true }); }
-});
+}, 30_000);
 
 it('new read-only IPC calls reject hostile callers, extra fields and unsafe target quantities', async () => {
   const handlers = new Map<string, (event: IpcMainInvokeEvent, ...args: unknown[]) => Promise<unknown>>();

@@ -1,5 +1,19 @@
 # Implementation execution ledger
 
+**Current delivery, 2026-10-26:** [WP-041 in full](WP-041.md), tracked in
+[active-package.json](active-package.json). Fetched baseline `e5edaee` merges
+PR #111 / WP-040. The clean checkout needed no stash or discarded work. WP-041
+adds explicit schema backup/migration, selected restore into a new folder,
+model-independent historical discovery and compatible model comparison branches.
+Full parent acceptance is complete under SV; see [validation](WP-041-validation.json).
+Native Windows is unrun; no cumulative G5/M5 acceptance is inferred. After merge,
+reassess full WP-042. Earlier delivery records below remain historical evidence.
+
+Implementation is committed at `4a0f5b5`. Automatic approval review blocked the
+branch push pending explicit WP-041 publication authorization. The user has now
+explicitly authorized this branch push and PR; publication may proceed. See
+see the [publication blocker](WP-041.md#publication-blocker).
+
 **Current delivery, 2026-10-25:** [WP-040 in full](WP-040.md), tracked in
 [active-package.json](active-package.json). Fetched current-main base `36f9f40`
 merges PR #110 / WP-039. The clean checkout fast-forwarded without stash or

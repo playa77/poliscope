@@ -59,7 +59,7 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
     if (!preview) return;
     setBusy(true); setError(''); setUncertain(true);
     try { const reply = await window.poliscope.applyWorld({ candidate_digest: preview.candidate_digest }); onDirty(false); onSelected(reply.state); }
-    catch { setError('Apply outcome is uncertain. Retry the same Apply to recover the recorded outcome.'); }
+    catch { setError('Save unconfirmed. Preview remains unsaved in this view. Retry the same Apply to recover the recorded outcome.'); }
     finally { setBusy(false); }
   }
   const rows = result.data?.items ?? [];
