@@ -29,6 +29,29 @@ def test_overlapping_views_do_not_duplicate_canonical_water_stock():
     assert len(graph.registry.values) == 1
 
 
+def test_adjacency_matches_full_scan_order_filters_and_detached_self_edges():
+    from copy import deepcopy
+    from poliscope_engine.evaluation.identity import digest
+    rows = [edge('a'), edge('self', source='asset', target='asset', kind='connectivity',
+            rule=dict(kind='non_aggregating')), edge('b', target='political')]
+    graph = WorldGraph(world(), rows)
+    assert digest(graph) == digest(dict(registry=graph.registry, _relationships=graph._relationships))
+    assert deepcopy(graph) == graph
+    for identity in ['asset', 'watershed', 'political', 'care']:
+        for kind in [None, 'access', 'connectivity', 'supplies']:
+            expected = tuple(r for r in graph.relationships if identity in (r.from_id, r.to_id)
+                and (kind is None or r.relationship_kind == kind))
+            assert graph.related(identity, kind=kind) == expected
+    assert [r.id for r in graph.related('asset')].count('self') == 1
+    graph.related('asset')[0].provenance.source_refs.append('untrusted:mutation')
+    assert graph.related('asset')[0].provenance.source_refs == []
+    replacement = graph.with_relationships(rows[:1])
+    assert [r.id for r in replacement.related('asset')] == ['a']
+    assert len(graph.related('asset')) == 3
+    with pytest.raises(WorldError, match='missing_reference'):
+        graph.related('unknown')
+
+
 def test_explicit_disjoint_weights_and_exact_fractional_sum():
     graph = WorldGraph(world(), [edge('a', rule=dict(kind='weight', weight='0.25')),
                                 edge('b', target='political', rule=dict(kind='weight', weight='0.75'))])

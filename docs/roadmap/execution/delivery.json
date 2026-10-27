@@ -1,45 +1,35 @@
 {
   "version": 1,
-  "package": "WP-050",
+  "package": "WP-051",
   "status": "complete",
   "kind": "authorized_child",
-  "child": "WP-050-offline",
-  "record": "docs/roadmap/execution/WP-050.md",
+  "child": "WP-051-diagnostics",
+  "record": "docs/roadmap/execution/WP-051.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "8dc9291f3f6e7a4e9577ea4826b3a4ab9e32d560",
-  "branch": "codex/wp-050-provider-validation",
+  "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
+  "branch": "codex/wp-051-scale",
   "authorization": {
     "source": "user",
-    "scope": "WP-050-offline",
-    "instruction": "Deliver offline evidence; record live blocker"
+    "scope": "WP-051-diagnostics",
+    "instruction": "Publish diagnostic child; keep parent open"
   },
-  "scope": "User-authorized offline provider capability/integration checks, official schema correction and public compatibility/limitations evidence; live parent acceptance stays blocked.",
+  "scope": "Explicitly authorized diagnostic child: exact structural admission probes, real 1000-revision/20-branch history and archive, bounded query/cache library APIs, reproducible fail-closed timing evidence. Full WP-051 remains open.",
   "acceptance": [
     {
-      "id": "offline-capabilities",
+      "id": "bounded-diagnostics",
       "status": "passed",
-      "evidence": "Exact offline selection: 191 desktop cases and 69 Python cases pass; actual production controller/context/SQLite spending paths, synthetic transport only."
+      "evidence": "Exact structural counts and production admission failures; 30-sample API/primitive diagnostics; 1000 actual revisions, 20 branches, validated archive and bounded pages. Release gates remain explicitly blocked."
     },
     {
-      "id": "official-contract",
+      "id": "query-cache-invariants",
       "status": "passed",
-      "evidence": "2026-10-26 official OpenAPI projection with full-source hash; exact decimal-string routing ceilings; dated public compatibility table; no live claims."
+      "evidence": "85 distinct affected cases covered across focused/final runs; 139 shared engine regressions; 435 full desktop units and 51 roadmap units. Exact counts and source scope in validation receipt."
     },
     {
-      "id": "validation",
+      "id": "fail-closed-handoff",
       "status": "passed",
-      "evidence": "4931 full Python cases; 435 unit cases covered by integrated selection plus exact 8-case isolated rerun (initial 433 pass/2 fail); 191 provider desktop/69 Python and 51 roadmap cases. Static/contract/content checks pass; packaged/native/live unrun."
+      "evidence": "Explicit user child authorization retained; default benchmark command fails while native/full-scale gates remain open. Parent acceptance stays pending, no release/native or full WP-051 claim."
     }
   ],
-  "publication": {
-    "status": "published; regular PR open",
-    "destination": "https://github.com/playa77/poliscope.git",
-    "branch": "codex/wp-050-provider-validation",
-    "action": "Push completed authorized offline child and open regular PR against main; do not merge",
-    "implementation_commit": "1cc92f7",
-    "reason": "On 2026-10-27 the requesting user explicitly authorized pushing codex/wp-050-provider-validation to playa77/poliscope and opening a regular PR.",
-    "next_action": "Review PR #121; do not merge without user authorization.",
-    "url": "https://github.com/playa77/poliscope/pull/121"
-  },
-  "parent_blocker": "Live harness/run requires separately authorized bounded scope and securely configured OpenRouter credentials/credits. User explicitly selected offline evidence only. Full WP-050 and G6/M6 acceptance remain blocked."
+  "parent_blocker": "Full coupled DEC-06 fixture and scaled ingestion/trace/quota integration remain; native reference/UI/combined-RSS and Windows evidence unavailable."
 }

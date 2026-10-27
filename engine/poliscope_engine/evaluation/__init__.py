@@ -220,11 +220,18 @@ class EvaluationCache:
     discipline. Complete manifests still participate in the portable cache key.
     There is no API to import arbitrary persisted entries as trusted results.
     """
-    def __init__(self, capacity=16):
+    def __init__(self, capacity=16, *, max_bytes=64 * 1024 * 1024):
         if type(capacity) is not int or not 1 <= capacity <= 1000:
             raise EvaluationError('invalid_cache_capacity')
         self.capacity = capacity
+        if type(max_bytes) is not int or not 1 <= max_bytes <= 256 * 1024 * 1024:
+            raise EvaluationError('invalid_cache_byte_limit')
+        self.max_bytes = max_bytes
         self._entries = {}
+
+    def clear(self):
+        """Discard disposable results; accepted evidence belongs to revisions."""
+        self._entries.clear()
 
     def evaluate(self, world, design, assumptions, model_identity, *, registry):
         prepared = _prepare(world, design, assumptions, model_identity, registry)
@@ -234,9 +241,21 @@ class EvaluationCache:
             result = EvaluationResult.model_validate_json(entry[1])
             payload = result.model_dump(mode='json', exclude={'identities'})
             if result.identities.output_digest == digest(payload):
+                # A hit refreshes recency without retaining mutable DTOs.
+                self._entries[key] = self._entries.pop(key)
                 return result
         result = _run(prepared, world, registry)
-        if key not in self._entries and len(self._entries) >= self.capacity:
-            del self._entries[next(iter(self._entries))]
-        self._entries[key] = registry, result.model_dump_json()
+        payload = result.model_dump_json()
+        size = len(payload.encode('utf-8'))
+        self._entries.pop(key, None)
+        # An oversized result remains complete, but is never cached. The quota
+        # bounds serialized result bytes, not Python/registry process RSS.
+        if size > self.max_bytes:
+            return result
+        retained = sum(len(entry[1].encode('utf-8')) for entry in self._entries.values())
+        while self._entries and (len(self._entries) >= self.capacity or retained + size > self.max_bytes):
+            oldest = next(iter(self._entries))
+            retained -= len(self._entries[oldest][1].encode('utf-8'))
+            del self._entries[oldest]
+        self._entries[key] = registry, payload
         return result

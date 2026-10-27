@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "package": "WP-051",
+  "execution_unit": "WP-051-diagnostics",
+  "status": "authorized-child-validated; parent-open",
+  "route": "solo-validated; agent review deferred",
+  "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
+  "source_sha256": {
+    "scripts/benchmark_scale.py": "49d8941fb8f10ee09236990caebf2b6000e288c7527f871ed1236e5d7d339d6b",
+    "scripts/scale_fixtures.py": "16b9f836f433ff9b7711a58be98cc4c9abb02ebc5a9156bd444f487f8d315a41",
+    "tests/engine/headless_fixture.py": "56d845f5accdad889d469800f6f60a09bffad6653b12c3c96ad5b3c2bc425d1f",
+    "engine/poliscope_engine/world/membership.py": "67ca5f538318a3e320bd292fb73f344cb3d2c8c1d7f983476338be00d15c63d7",
+    "engine/poliscope_engine/evaluation/__init__.py": "96ea7ad82ff7b138c8d6c567ef98d892cdf6444f9eb18d742ab4f06eea14d85b",
+    "docs/roadmap/execution/benchmarks.json": "377b861ce1baf4387d14dec209d410e50770185744a9db472097e20667b327d7"
+  },
+  "benchmark": "docs/roadmap/execution/WP-051-diagnostics.json",
+  "validation": [
+    {
+      "command": ".venv/bin/pytest tests/engine/test_scale_probes.py tests/engine/test_evaluation.py tests/engine/test_world_membership.py -q",
+      "result": "83 passed after final runtime changes; before two added CLI gate cases"
+    },
+    {
+      "command": ".venv/bin/pytest tests/engine/test_scale_probes.py tests/engine/test_world_membership.py -q",
+      "result": "31 passed, including two added CLI gate cases; 85 unique affected cases across both runs"
+    },
+    {
+      "command": ".venv/bin/pytest tests/engine/test_dependencies.py tests/engine/test_solvers.py tests/engine/test_headless_slice.py tests/engine/test_atlas.py tests/engine/test_grounding.py tests/engine/test_spending.py -q",
+      "result": "139 passed; 224 unique engine cases with affected selection; not the full Python suite"
+    },
+    {
+      "command": "UV_CACHE_DIR=/tmp/poliscope-uv npx vitest run --maxWorkers=2 --testTimeout=20000",
+      "result": "435 passed in 38 files; isolated authoritative full desktop unit run"
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests/roadmap -v",
+      "result": "51 passed"
+    },
+    {
+      "command": "npm run typecheck",
+      "result": "passed"
+    },
+    {
+      "command": ".venv/bin/python scripts/generate_contracts.py --check",
+      "result": "passed"
+    },
+    {
+      "command": ".venv/bin/python scripts/build_content.py --check",
+      "result": "passed; source models remain blocked"
+    },
+    {
+      "command": ".venv/bin/python scripts/check_baseline.py; .venv/bin/python scripts/check_roadmap.py",
+      "result": "passed; planning validation only"
+    },
+    {
+      "command": ".venv/bin/python scripts/benchmark_scale.py --output /tmp/wp051-scale-final.json --diagnostic-only",
+      "result": "completed isolated current-source diagnostics; receipt release-blocked with five named blockers; diagnostic exit 0 is not release acceptance"
+    },
+    {
+      "command": "git diff --check; validate_delivery on pending diff",
+      "result": "passed; explicit child authorization and open parent declared"
+    }
+  ],
+  "new_engine_cases": 12,
+  "full_python_regression": "not run; selected affected/shared regressions only",
+  "packaged_ui_native": "not run; no renderer changes and no native reference selection",
+  "superseded_attempts": [
+    "Initial uv/npm setup failed on read-only default home caches; repeated frozen installs with temporary writable caches passed. Locks unchanged.",
+    "First diagnostic development attempts failed on required population declarations and reuse of an archive destination; corrected before accepted run.",
+    "First pytest collection could not import scripts namespace; corrected before passing runs.",
+    "Initial desktop invocation npm test -- --maxWorkers=2 did not constrain Vitest and forwarded an invalid unittest option. It overlapped benchmarks, showed five host timeout failures and was interrupted. No passing full-run claim derives from that attempt; the corrected isolated 435-case run passes.",
+    "Initial diagnostic receipt overlapped tests and preceded the final serialization-preservation change. Superseded entirely by the isolated current-source receipt."
+  ],
+  "log_sha256": {
+    "/tmp/wp051-affected-final.log": "8ce8c7534fa879748ed87b2db26f9669493a115f966d3b1c411a862b37e3a58f",
+    "/tmp/wp051-child-final.log": "9a481c33be723351823885494cfeceb1f7473a188c1967676187c31f3b483af7",
+    "/tmp/wp051-regression.log": "badddf97d2d0b0aa0b6f36b60cff4fc0081314e00b0125efa6debdf7b1c795c7",
+    "/tmp/wp051-unit-final.log": "1608007cf053a350cd47172ec04555a6fe2d9fdc56b1933b43a34b26a6dafe14",
+    "/tmp/wp051-roadmap.log": "c705954759860abe8cb5ac65dfddffa460c33ba51b244cfffadc78042d09272f",
+    "/tmp/wp051-typecheck.log": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125",
+    "/tmp/wp051-scale-final.log": "c0fda12dba3505ccec30c24e9ac2a7aab16dec057da1435a232fbd555b239251"
+  },
+  "limits": [
+    "classroom/exploratory coupled preview and advance",
+    "100000 retained trace nodes in semantic accepted evidence",
+    "scaled twelve-domain archives/context",
+    "public sparse matrix pages",
+    "solver/time/memory quota integration",
+    "Windows correctness/replay",
+    "renderer progress and stale query cancellation"
+  ]
+}

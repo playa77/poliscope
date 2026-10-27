@@ -1,40 +1,49 @@
 {
   "version": 1,
-  "package": "WP-050",
+  "package": "WP-051",
   "status": "in_progress",
-  "record": "docs/roadmap/execution/WP-050.md",
+  "record": "docs/roadmap/execution/WP-051.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "8dc9291f3f6e7a4e9577ea4826b3a4ab9e32d560",
-  "branch": "codex/wp-050-provider-validation",
-  "execution_unit": "WP-050-offline",
-  "authorization": {
-    "source": "user",
-    "scope": "WP-050-offline",
-    "instruction": "Deliver offline evidence; record live blocker"
-  },
+  "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
+  "branch": "codex/wp-051-scale",
   "acceptance": [
     {
-      "id": "offline-capabilities",
-      "status": "passed",
-      "evidence": "Exact offline selection: 191 desktop cases and 69 Python cases pass; actual production controller/context/SQLite spending paths, synthetic transport only."
-    },
-    {
-      "id": "official-contract",
-      "status": "passed",
-      "evidence": "2026-10-26 official OpenAPI projection with full-source hash; exact decimal-string routing ceilings; dated public compatibility table; no live claims."
-    },
-    {
-      "id": "bounded-live",
+      "id": "scale-workflows",
       "status": "pending",
-      "evidence": "Blocked: user selected offline evidence; no configured provider credential or paid-run authorization."
+      "evidence": "Structural target admission is blocked by production DTO limits; full coupled workloads and semantic trace closure remain implementation obligations."
     },
     {
-      "id": "validation",
+      "id": "cache-correctness",
       "status": "passed",
-      "evidence": "4931 full Python cases; 435 unit cases covered by integrated selection plus exact 8-case isolated rerun (initial 433 pass/2 fail); 191 provider desktop/69 Python and 51 roadmap cases. Static/contract/content checks pass; packaged/native/live unrun."
+      "evidence": "Complete result identity, byte-quota rejection/eviction/clear, immutable adjacency order/kind/self-edge/detachment and canonical world serialization regressions pass. Public application integration remains in other pending parent criteria."
+    },
+    {
+      "id": "quotas-cancellation",
+      "status": "pending",
+      "evidence": "Native running-work/stale-query/solver/time/memory integration remains open."
+    },
+    {
+      "id": "reference-budgets",
+      "status": "pending",
+      "evidence": "PERF-REF-001: native reference desktop and power mode unavailable; cloud diagnostics cannot certify release budgets."
     }
   ],
   "blockers": [
-    "Live harness/run requires separately authorized bounded scope and securely configured OpenRouter credentials/credits. User explicitly selected offline evidence only. Full WP-050 and G6/M6 acceptance remain blocked."
-  ]
+    "PERF-REF-001: native reference desktop unavailable",
+    "PERF-ADMISSION-classroom-v1 / exploratory-v1: scaled DTO ingestion and full workflow implementation pending",
+    "PERF-MODEL-001: coupled synthetic numerical fixture and independent oracle pending",
+    "PERF-UI-001: integrated renderer/cancellation/combined-RSS measurement pending"
+  ],
+  "previous_parent": {
+    "package": "WP-050",
+    "status": "in_progress",
+    "record": "docs/roadmap/execution/WP-050.md",
+    "blocker": "Separately authorized live provider validation and securely configured credentials/credits remain unavailable; offline delivery merged in PR #121."
+  },
+  "execution_unit": "WP-051-diagnostics",
+  "authorization": {
+    "source": "user",
+    "scope": "WP-051-diagnostics",
+    "instruction": "Publish diagnostic child; keep parent open"
+  }
 }
