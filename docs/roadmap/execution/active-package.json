@@ -1,68 +1,61 @@
 {
   "version": 1,
-  "package": "WP-051",
+  "package": "WP-052",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-051.md",
+  "record": "docs/roadmap/execution/WP-052.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "d724340",
-  "branch": "codex/wp-051-finish",
+  "base": "2f623b58af7e17688eb505db19a5c6c623536f79",
+  "branch": "codex/wp-052-usability",
+  "execution_unit": "WP-052",
+  "review_route": "solo-validated; agent review deferred",
+  "authorization": {
+    "source": "user",
+    "scope": "WP-052",
+    "instruction": "implement the next work package."
+  },
   "acceptance": [
     {
-      "id": "scale-workflows",
+      "id": "keyboard-focus",
       "status": "passed",
-      "evidence": "Exact classroom/exploratory target admission and coupled numerical fixtures are implemented and tested, alongside the previously accepted semantic history. The user accepts the current prototype implementation and explicitly defers further optimization. No completed full-scale 365-day run or final thirty-sample coupled preview measurement is claimed. See WP-051-optimization.json and WP-051.md owner acceptance."
+      "evidence": "Core native control semantics audited; skip link, provider return, edit/preview destinations, Apply recovery, cancel restoration, inspector Escape and 200% zoom pass real packaged Electron checks. Fifteen existing broad scenarios pass; four final affected scenarios pass, overlapping three existing cases (sixteen distinct total). Native assistive testing remains owner-run."
     },
     {
-      "id": "cache-correctness",
+      "id": "accessible-equivalents",
       "status": "passed",
-      "evidence": "Integrated engine regression: 4976 tests / 59 subtests. Final checksum/fail-fast/shared-chunk changes: 74 focused cases and 8 final guard cases. Exact v1 encoding differential tests, full internal-vs-external boundary equivalence, detached public views, cache clearing/corruption and missing-chunk checks pass. Solo validation; agent review deferred."
+      "evidence": "Every renderer table declares header axes. Existing exact matrix/world/network/distribution/timeline/uncertainty tables preserve graphical information; all related broad packaged scenarios pass. Status text, names, noncolor coverage and authored contrast pairs are inspected in docs/accessibility_usability.md."
     },
     {
-      "id": "quotas-cancellation",
+      "id": "educational-inquiry",
       "status": "passed",
-      "evidence": "Bounded chunk admission, nested cooperative work limits, typed cancellation/quota outcomes, subprocess abort and superseded-query suppression implemented. Transition cancellation at every real checkpoint and failure after every storage write preserve the committed head. Full desktop unit run: 440 tests / 39 files. Native application validation is owner-run, not claimed."
-    },
-    {
-      "id": "reference-budgets",
-      "status": "passed",
-      "evidence": "Owner-accepted prototype performance exception: the user accepted the order-of-magnitude improvement and deferred further optimization until all packages and thorough project testing are complete. The recorded three-day classroom probe takes 2657.120 ms; 323.283-second annual projection still exceeds the unchanged 30-second target. This is acceptance by explicit owner disposition, not a measured budget pass. Native testing remains owner-run."
+      "evidence": "New offline packaged scenario connects expectation, interview preview/apply/deferral, matrix table, retained comparison/fork, observation and opted-in Markdown report. Local exclusion/trace/assumption/source walkthrough and neutral diagnostic/target checks pass overview regression. Student/designer/educator author perspectives recorded; no participant study or G7 claim."
     }
   ],
+  "blockers": [],
   "previous_parent": {
     "package": "WP-050",
     "status": "in_progress",
     "record": "docs/roadmap/execution/WP-050.md",
-    "blocker": "Separately authorized live provider validation and securely configured credentials/credits remain unavailable; offline delivery merged in PR #121."
+    "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
   },
-  "execution_unit": "WP-051",
-  "authorization": {
-    "source": "user",
-    "scope": "WP-051",
-    "instruction": "The achieved optimization is good enough for this prototype. Further optimization follows completion of all work packages and thorough project testing. Prepare and open a PR with this work."
+  "previous_delivery": {
+    "package": "WP-051",
+    "status": "complete",
+    "record": "docs/roadmap/execution/WP-051.md",
+    "merged_pr": 124,
+    "deferred": "Owner accepted prototype performance; PERF-DYNAMIC-001 and final annual/preview measurements remain deferred, not measured passes."
   },
   "native_validation": {
     "status": "owner-run",
-    "decision": "2026-10-27 project-wide owner waiver",
-    "record": "docs/platform_scope.md"
+    "record": "docs/platform_scope.md",
+    "claim": "Cloud packaged functional checks only; no native OS or screen-reader certification."
   },
-  "parent_authorization": {
-    "source": "user",
-    "scope": "WP-051",
-    "instruction": "The achieved optimization is good enough for this prototype. Further optimization follows completion of all work packages and thorough project testing. Prepare and open a PR with this work."
-  },
-  "classroom_target": "Each student runs the application locally on a mid-level PC; no GPU/model server/accelerator requirement.",
-  "review_route": "solo-validated; agent review deferred",
-  "deferred_follow_up": [
-    "PERF-DYNAMIC-001: repeated evidence materialization/serialization still exceeds classroom throughput; 323.283-second projected year versus 30-second budget. Annual runner correctly stops at three days.",
-    "Final thirty-sample coupled preview and public-query budget acceptance remains open; no full-parent or native performance pass claimed."
-  ],
-  "blockers": [],
-  "prototype_acceptance": {
-    "source": "user",
-    "date": "2026-10-27",
-    "instruction": "this is an optimization by factor 10 / an order of magnitude. that is good enough for this prototype. we will do further optimization after we have finished all work packages and thoroughly tested the project. i am pleased. prepare and open a pr with your work.",
-    "disposition": "Accept current WP-051 prototype and publish the complete work; retain measured budget misses and unrun performance validation as deferred follow-up.",
-    "performance_budget_pass": false,
-    "full_annual_run_pass": false
+  "publication": {
+    "status": "published; regular PR open",
+    "branch": "codex/wp-052-usability",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "06fb663",
+    "authorization": "User explicitly requested: push codex/wp-052-usability to GitHub and open a PR.",
+    "merge": "not authorized; not performed",
+    "url": "https://github.com/playa77/poliscope/pull/125"
   }
 }

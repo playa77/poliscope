@@ -48,7 +48,7 @@ export function Recovery({ locked }: { locked: boolean }) {
     {error && <p role="alert">{error}</p>}
     {uncertain && <button disabled={busy} onClick={() => void act(uncertain.action)}>Retry identical migration</button>}
     {reply && <><p role={reply.status === 'failed' ? 'alert' : 'status'}>{reply.status}: {reply.diagnostic}. {reply.detail}</p>
-      <table><caption>Retained historical facts</caption><thead><tr><th>Fact</th><th>Value</th></tr></thead><tbody>{(reply.rows ?? []).map((r,i) => <tr key={i}><th scope="row">{r.label}</th><td style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>{r.detail}</td></tr>)}</tbody></table>
+      <table><caption>Retained historical facts</caption><thead><tr><th scope="col">Fact</th><th scope="col">Value</th></tr></thead><tbody>{(reply.rows ?? []).map((r,i) => <tr key={i}><th scope="row">{r.label}</th><td style={{ whiteSpace: 'pre-wrap', overflowWrap: 'anywhere' }}>{r.detail}</td></tr>)}</tbody></table>
       {reply.next_offset !== null && <button disabled={busy || locked} onClick={() => void act(archive ? 'archive-read' : 'read', reply.next_offset!)}>More retained facts</button>}
     </>}
   </section>;
