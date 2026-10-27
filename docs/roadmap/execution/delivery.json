@@ -37,10 +37,12 @@
   ],
   "blockers": [],
   "publication": {
-    "status": "prepared for regular PR",
+    "status": "published; regular PR open",
     "branch": "codex/wp-051-finish",
     "destination": "https://github.com/playa77/poliscope.git",
-    "merge": "not authorized; not performed"
+    "merge": "not authorized; not performed",
+    "url": "https://github.com/playa77/poliscope/pull/124",
+    "implementation_commit": "c410545"
   },
   "previous_delivery": {
     "version": 1,
