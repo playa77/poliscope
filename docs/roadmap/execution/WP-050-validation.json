@@ -1,0 +1,80 @@
+{
+  "package": "WP-050",
+  "child": "WP-050-offline",
+  "base": "8dc9291f3f6e7a4e9577ea4826b3a4ab9e32d560",
+  "route": "solo-validated; agent review deferred",
+  "date": "2026-10-26",
+  "source_files": {
+    "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+    "desktop/main/providers.ts": "f892abbc82e4d7484e3ea05d448f965c55cbdcfed4db1783b8906c1cf6e54976",
+    "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
+    "desktop/main/grounding.ts": "658c77a57b6c72d003e0ee8b3a475b2b0fcb9ffc77f8bebc07d9e72672b9e65b",
+    "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
+    "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
+    "desktop/main/workspace.ts": "edc859ea455328e4c0beec899e207e4ee8b0bc5d97ed1b5ce4797d6d86df68d7",
+    "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
+    "engine/poliscope_engine/spending.py": "3de850c919bc37a476c110855d4c19cebdf632fc4b748c1a1374df6e9cb3ce58",
+    "tests/desktop/provider-requests.test.ts": "5f580295c4d8bf45a39e01ed59024caed16052745d0c3103d2db0e6ccb64d109",
+    "tests/desktop/provider-acceptance.test.ts": "622a84e3f23cba21777311544d99007df86e937c697f9eece90d4ce11e4586b3",
+    "tests/fixtures/providers/acceptance-matrix.json": "f141a72fe3277a4257729ef1ed9a4173f3fb9da32a9a4fc97945516b807ee9c6",
+    "tests/fixtures/providers/openrouter-contract-2026-10-26.json": "cf4d1bd86a58e1a16c30e00032a61f291e3d64608c8f4e26f0b3b8be4a186400",
+    "vitest.providers.config.mts": "6152e767e7e77ee65d2516a2e304548555d35523b1e446a195e17cbe8e2738cc",
+    "package.json": "a5cf8606d0201081cbd10d97527d357e33e443f343428097868931dc0c6765d7"
+  },
+  "source_sha256": "78a95f10adb85068ad02bb713f1843b711641d8d5915b27724510cffe1bf5961",
+  "results": [
+    {
+      "command": "npm run test:providers",
+      "status": "passed",
+      "desktop_cases": 191,
+      "python_cases": 69,
+      "log_sha256": "37844d26dd2801399cb477434a0f6d9a5a16bc43ffd9edca016877ae4442dccb"
+    },
+    {
+      "command": "uv run --frozen pytest",
+      "status": "passed",
+      "cases": 4931,
+      "warnings": 4,
+      "seconds": "887.09",
+      "log_sha256": "af1ffed70e67275f2dd2a65f0f5b7a8716da5d902e06403b1f5a050365dd2b06"
+    },
+    {
+      "command": "npx vitest run --maxWorkers=2 --testTimeout=20000 --reporter=default --reporter=junit --outputFile=/tmp/wp050-unit.xml",
+      "status": "failed; both failures superseded by isolated full-file rerun",
+      "passed": 433,
+      "failed": [
+        {
+          "file": "tests/desktop/interview.test.ts",
+          "name": "returns a current state on stale Apply without committing the stale proposal"
+        },
+        {
+          "file": "tests/desktop/overview.test.ts",
+          "name": "reads retained production observations without the saved executable model, with exact context grants"
+        }
+      ],
+      "skipped": 0,
+      "junit_sha256": "8f50e6a1012594ffec496fcd2bc5198ecd05f1440f0fa03feafd1073ec62fec5"
+    },
+    {
+      "command": "npx vitest run tests/desktop/interview.test.ts tests/desktop/overview.test.ts --maxWorkers=1 --testTimeout=20000 --reporter=default --reporter=junit --outputFile=/tmp/wp050-unit-rerun.xml",
+      "status": "passed",
+      "cases": 8,
+      "skipped": 0,
+      "initial_failures_verified_passing": true,
+      "covered_full_selection_cases": 435,
+      "junit_sha256": "3a3b68fe6b1d0f4fb2d8ebee5a784cb2d8c2f7536caa24eeb9156966136b8a6a"
+    },
+    {
+      "command": "npm run typecheck; contract/content consistency; roadmap/baseline checks; roadmap unittest; new links/matrix paths; git diff --check",
+      "status": "passed",
+      "roadmap_cases": 51
+    }
+  ],
+  "limitations": [
+    "Full WP-050 and G6/M6 remain blocked on separately authorized live harness/run with secure credentials and credits.",
+    "No live generation or authenticated metadata run; all live model/provider identities and costs remain unknown.",
+    "Packaged Electron UI and native Windows not run; no renderer change, Electron binary/display runner unavailable.",
+    "Initial integrated unit selection was not wholly green; exact failed cases passed isolated rerun.",
+    "Four full Python warnings are deliberate invalid-fixture Pydantic serialization warnings."
+  ]
+}

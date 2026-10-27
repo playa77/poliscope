@@ -31,7 +31,7 @@ it('constructs documented literal OpenRouter requests without inventing defaults
 it('preserves all explicit routing, privacy and price choices with correct price units and streamed output', () => {
   const f = fixture(); f.plan.stream = true;
   Object.assign(f.view.profile.routing,{order:['provider-a'],only:['provider-a','provider-b'],ignore:['provider-c'],allow_fallbacks:true,zdr:true,max_price:{prompt:'1.25',completion:'0',request:'0.01',image:'0.5'}}); f.bind();
-  expect(JSON.parse(f.build().json).provider).toEqual({order:['provider-a'],only:['provider-a','provider-b'],ignore:['provider-c'],allow_fallbacks:true,require_parameters:true,data_collection:'deny',zdr:true,max_price:{prompt:1.25,completion:0,request:0.01,image:0.5}});
+  expect(JSON.parse(f.build().json).provider).toEqual({order:['provider-a'],only:['provider-a','provider-b'],ignore:['provider-c'],allow_fallbacks:true,require_parameters:true,data_collection:'deny',zdr:true,max_price:{prompt:'1.25',completion:'0',request:'0.01',image:'0.5'}});
   expect(JSON.parse(f.build().json).stream).toBe(true);
   f.view.profile.routing.order=[]; f.view.profile.routing.sort='latency'; expect(JSON.parse(f.build().json).provider.sort).toBe('latency');
 });
@@ -137,8 +137,8 @@ it('local schema dialect handles nested arrays, alternatives, null, Unicode and 
   for(const text of ['{"items":["two"]}','{"items":[],"__proto__":{}}','{"items":[null,null,null]}']) expect(()=>validateStructured(text,nested)).toThrow();
   expect(()=>validateStructured('1e999')).toThrow(); expect(()=>validateStructured('"\\ud800"')).toThrow();
 });
-it('refuses price ceilings that cannot round-trip without changing the selected decimal', () => {
-  const f=fixture(); f.view.profile.routing.max_price={prompt:'123456789.123456789'}; error(f.build,'invalid-control','max_price');
+it('preserves precise decimal price ceilings without a binary floating-point round trip', () => {
+  const f=fixture(); f.view.profile.routing.max_price={prompt:'123456789.123456789'}; expect(JSON.parse(f.build().json).provider.max_price.prompt).toBe('123456789.123456789');
 });
 it('empty JSON-object mode, stale provider evidence, unknown controls and unsound tool selection fail explicitly', () => {
   const f=fixture(); f.plan.response_format={type:'json_object'}; f.bind();
@@ -157,9 +157,9 @@ it('compatible reasoning emits only the documented scalar and checks declared ef
   expect(JSON.parse(f.build().json).reasoning_effort).toBe('max');
   f.view.profile.generation.reasoning={effort:'max',exclude:true}; error(f.build,'unsupported-control','reasoning');
 });
-it('preserves small price ceilings when the wire uses equivalent scientific notation', () => {
+it('preserves small and padded price ceilings as exact documented strings', () => {
   const f=fixture(); f.view.profile.routing.max_price={request:'0.000000001',completion:'0001.2500'};
-  expect(JSON.parse(f.build().json).provider.max_price).toEqual({request:1e-9,completion:1.25});
+  expect(JSON.parse(f.build().json).provider.max_price).toEqual({request:'0.000000001',completion:'0001.2500'});
 });
 it('retains catalog estimate inputs without doing authoritative money arithmetic in TypeScript',()=>{
  const f=fixture();f.evidence.models[0].pricing={prompt:'0.000001',completion:'0.000002',request:'0.01'};
