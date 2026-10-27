@@ -31,5 +31,14 @@
       "evidence": "Explicit user child authorization retained; default benchmark command fails while native/full-scale gates remain open. Parent acceptance stays pending, no release/native or full WP-051 claim."
     }
   ],
-  "parent_blocker": "Full coupled DEC-06 fixture and scaled ingestion/trace/quota integration remain; native reference/UI/combined-RSS and Windows evidence unavailable."
+  "parent_blocker": "Full coupled DEC-06 fixture and scaled ingestion/trace/quota integration remain; native reference/UI/combined-RSS and Windows evidence unavailable.",
+  "publication": {
+    "status": "published; regular PR open",
+    "implementation_commit": "41745ac",
+    "url": "https://github.com/playa77/poliscope/pull/122",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "branch": "codex/wp-051-scale",
+    "authorization": "Requesting user: Publish diagnostic child; keep parent open",
+    "merge": "not authorized; not performed"
+  }
 }
