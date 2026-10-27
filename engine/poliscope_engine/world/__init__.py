@@ -1,5 +1,7 @@
 """Pure identity/state registry. Persistence and membership are separate services."""
 from dataclasses import dataclass
+from types import MappingProxyType
+from hashlib import sha256
 from typing import Literal
 
 from pydantic import TypeAdapter
@@ -123,6 +125,27 @@ class WorldRegistry:
         object.__setattr__(self, '_values', value_data)
         object.__setattr__(self, 'owners', owner_data)
         object.__setattr__(self, 'populations', population_data)
+        # Derived immutable indexes stay outside dataclass fields/canonical data.
+        object.__setattr__(self, '_entity_index', MappingProxyType({
+            e.id: raw for e, raw in zip(entity_map.values(), entity_data, strict=True)}))
+        object.__setattr__(self, '_scope_index', MappingProxyType({
+            s.id: raw for s, raw in zip(scope_map.values(), scope_data, strict=True)}))
+        shape = sha256()
+        for part in (civilization_id, *entity_data, *scope_data, repr(owner_data), repr(population_data)):
+            encoded = part.encode()
+            shape.update(len(encoded).to_bytes(8, 'big'))
+            shape.update(encoded)
+        object.__setattr__(self, '_shape_token', shape.hexdigest())
+        from poliscope_engine.evaluation.canonical import Fragment
+        for name, rows in (('entities', tuple(entity_map.values())), ('scopes', tuple(scope_map.values())),
+                           ('owners', owner_data), ('populations', population_data)):
+            object.__setattr__(self, '_canonical_' + name, Fragment(rows, name))
+        object.__setattr__(self, '_entity_kinds', MappingProxyType({k: v.entity_kind for k, v in entity_map.items()}))
+        object.__setattr__(self, '_scope_kinds', MappingProxyType({k: v.scope_kind for k, v in scope_map.items()}))
+
+    def __deepcopy__(self, memo):
+        memo[id(self)] = self
+        return self
 
     @property
     def entities(self):
@@ -137,16 +160,16 @@ class WorldRegistry:
         return tuple(map(PartitionValueDTO.model_validate_json, self._values))
 
     def entity(self, identity: str):
-        for entity in self.entities:
-            if entity.id == identity:
-                return entity
-        raise WorldError('missing_entity')
+        raw = self._entity_index.get(identity)
+        if raw is None:
+            raise WorldError('missing_entity')
+        return EntityDTO.model_validate_json(raw)
 
     def scope(self, identity: str):
-        for scope in self.scopes:
-            if scope.id == identity:
-                return scope
-        raise WorldError('missing_scope')
+        raw = self._scope_index.get(identity)
+        if raw is None:
+            raise WorldError('missing_scope')
+        return ScopeDTO.model_validate_json(raw)
 
     def with_values(self, *, writer_id: str, partition: Partition, changes):
         """Stage a full validated candidate; failed batches leave the base intact."""
@@ -169,5 +192,39 @@ class WorldRegistry:
             ) != (*slot, value.scope_id):
                 raise WorldError('identity_rebound')
             old[value.id] = value
-        return WorldRegistry(self.civilization_id, entities=self.entities, scopes=self.scopes,
-                             values=old.values(), owners=self.owners, populations=self.populations)
+        return self._replace_values(old.values())
+
+    def _replace_values(self, values):
+        """Constructor-equivalent value validation over a verified static shape."""
+        values = tuple(PartitionValueDTO.model_validate_json(v.model_dump_json()) for v in values)
+        # Static identities/ownership were already validated and are immutable.
+        # Validate the resulting value namespace without reparsing every entity
+        # and scope once per domain write.
+        seen_ids = set(self._entity_index) | set(self._scope_index)
+        seen_slots = set()
+        ownership = {o.key: o.writer_id for o in self.owners}
+        for value in values:
+            if value.id in seen_ids:
+                raise WorldError('duplicate_identity')
+            seen_ids.add(value.id)
+            slot = value.entity_id, value.property_id, value.partition
+            if slot in seen_slots:
+                raise WorldError('duplicate_state_slot')
+            seen_slots.add(slot)
+            if value.entity_id not in self._entity_index or value.scope_id not in self._scope_index:
+                raise WorldError('missing_reference')
+            if slot not in ownership:
+                raise WorldError('missing_state_owner')
+            if isinstance(value.value, ReferenceValue) and value.value.entity_id not in self._entity_index:
+                raise WorldError('missing_reference')
+            if isinstance(value.value, QuantityValue):
+                parse(value.value.value)
+                if value.value.denominator_scope_id is not None and value.value.denominator_scope_id not in self._scope_index:
+                    raise WorldError('missing_reference')
+        result = object.__new__(WorldRegistry)
+        for field in ('civilization_id', '_entities', '_scopes', 'owners', 'populations',
+                      '_entity_index', '_scope_index', '_shape_token', '_entity_kinds', '_scope_kinds',
+                      '_canonical_entities', '_canonical_scopes', '_canonical_owners', '_canonical_populations'):
+            object.__setattr__(result, field, getattr(self, field))
+        object.__setattr__(result, '_values', tuple(v.model_dump_json() for v in values))
+        return result

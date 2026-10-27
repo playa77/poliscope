@@ -17,6 +17,7 @@ class WorldGraph:
         rows = tuple(RelationshipDTO.model_validate_json(r.model_dump_json()) for r in relationships)
         entities = {e.id: e for e in registry.entities}
         scopes = {s.id for s in registry.scopes}
+        endpoints = entities.keys() | scopes
         namespace = set(entities) | scopes | {v.id for v in registry.values}
         edges = {}
         memberships = set()
@@ -24,7 +25,7 @@ class WorldGraph:
             if row.id in namespace:
                 raise WorldError('duplicate_identity')
             namespace.add(row.id)
-            if row.from_id not in entities.keys() | scopes or row.to_id not in entities.keys() | scopes:
+            if row.from_id not in endpoints or row.to_id not in endpoints:
                 raise WorldError('missing_reference')
             if row.relationship_kind == 'containment':
                 edges.setdefault(row.from_id, []).append(row.to_id)
@@ -59,6 +60,16 @@ class WorldGraph:
                     stack.extend((child, False) for child in edges.get(node, ()))
         object.__setattr__(self, 'registry', registry)
         object.__setattr__(self, '_relationships', tuple(r.model_dump_json() for r in rows))
+        object.__setattr__(self, '_relationship_ids', frozenset(r.id for r in rows))
+        from poliscope_engine.evaluation.canonical import Fragment
+        object.__setattr__(self, '_canonical_relationships', Fragment(rows, 'relationships'))
+        object.__setattr__(self, '_jurisdiction', frozenset((r.from_id, r.to_id) for r in rows
+            if r.relationship_kind == 'jurisdiction'))
+        member_index = {scope: set() for scope in scopes}
+        for row in rows:
+            if row.aggregation.kind != 'non_aggregating':
+                member_index[row.to_id].add(row.from_id)
+        object.__setattr__(self, '_members', MappingProxyType({k: frozenset(v) for k, v in member_index.items()}))
         adjacency = {identity: [] for identity in entities.keys() | scopes}
         for index, row in enumerate(rows):
             for identity in {row.from_id, row.to_id}:
@@ -67,6 +78,18 @@ class WorldGraph:
         # canonical serialization and equality retain the original world identity.
         object.__setattr__(self, '_adjacency', MappingProxyType(
             {identity: tuple(indices) for identity, indices in adjacency.items()}))
+
+    def with_registry(self, registry):
+        if registry._shape_token != self.registry._shape_token:
+            return WorldGraph(registry, self.relationships)
+        if any(v.id in self._relationship_ids for v in registry.values):
+            raise WorldError('duplicate_identity')
+        result = object.__new__(WorldGraph)
+        object.__setattr__(result, 'registry', registry)
+        for name in ('_relationships', '_relationship_ids', '_adjacency',
+                     '_canonical_relationships', '_jurisdiction', '_members'):
+            object.__setattr__(result, name, getattr(self, name))
+        return result
 
     def __deepcopy__(self, memo):
         # All stored snapshots/index entries are immutable; DTO reads detach.

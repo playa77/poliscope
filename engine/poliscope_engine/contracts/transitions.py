@@ -100,9 +100,9 @@ class TransitionReadView(Contract):
     """Physical data only; no player goals, notes, diagnostics or execution grants."""
     versions: WorldVersions
     effective_time: EffectiveTime
-    entities: Annotated[list[EntityDTO], Field(max_length=1000)]
+    entities: Annotated[list[EntityDTO], Field(max_length=5000)]
     scopes: Annotated[list[ScopeDTO], Field(max_length=1000)]
-    relationships: Annotated[list[RelationshipDTO], Field(max_length=1000)]
+    relationships: Annotated[list[RelationshipDTO], Field(max_length=30000)]
     values: Annotated[list[PartitionValueDTO], Field(max_length=1000)]
     policies: PolicyEvaluation | None
     assumptions: Annotated[list[AssumptionValue], Field(max_length=1000)] | None

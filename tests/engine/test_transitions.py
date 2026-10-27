@@ -146,26 +146,36 @@ def test_failure_at_each_private_computation_stage_preserves_confirmed_boundary(
         fail if stage=='resolution' else original.resolve,fail if stage=='invariant' else original.validate)
     with Store(tmp_path) as store:
         reducer,opened,_=setup(store,adapters={'a':modified})
-        if stage=='closing-evaluation':monkeypatch.setattr(runtime,'evaluate',fail)
+        if stage=='closing-evaluation':monkeypatch.setattr(reducer.revisions,'_evaluate',fail)
         before=reducer.store.read(opened.context)
         with pytest.raises(RuntimeError,match='injected private stage'):
             reducer.advance_boundary(opened,1,operation_id='failure')
         assert reducer.store.read(opened.context)==before
 
 
-def test_all_cancellation_checkpoints_in_staging_validation_and_commit_preserve_head(tmp_path):
+def test_all_cancellation_checkpoints_in_staging_validation_and_commit_preserve_head(tmp_path, monkeypatch):
     with Store(tmp_path) as store:
         reducer,opened,_=setup(store)
         calls=0
-        # Count private preview checkpoints without modifying the experiment.
+        completed = False
+        complete = store.complete_operation
+        def staged(*args, **kwargs):
+            nonlocal completed
+            complete(*args, **kwargs)
+            completed = True
+        monkeypatch.setattr(store, 'complete_operation', staged)
+        # Count the real checkpoints, canceling after the final staged write.
         def count():
             nonlocal calls
             calls+=1
-            return False
-        reducer.preview(opened,1,cancelled=count)
+            return completed
+        with pytest.raises(BoundaryError, match='boundary_cancelled'):
+            reducer.advance_boundary(opened,1,operation_id='cancel',cancelled=count)
         private_calls=calls
-        # Confirmation repeats those checks, plus four store checkpoints.
-        for target in range(1,private_calls*2+5):
+        monkeypatch.setattr(store, 'complete_operation', complete)
+        # The checked internal producer is not rerun at confirmation. Each
+        # checkpoint that actually precedes its commit must still roll back.
+        for target in range(1,private_calls+1):
             seen=0
             def cancel():
                 nonlocal seen
@@ -473,7 +483,7 @@ def test_due_event_conditions_reach_models_before_any_effect_and_remain_private(
         assert numbers(saved)['processed-a']=='0' and numbers(saved)['processed-b']=='8'
         assert saved.record.changes.events[0].status=='applied'
         assert saved.state.conditions[0].value.value=='denied'
-        assert observed==['proposal']*4  # detached repeat plus precommit recomputation
+        assert observed==['proposal']*2  # detached deterministic callback repeat
 
 
 def test_callbacks_use_fresh_decimal_context_and_never_leak_precision(tmp_path):

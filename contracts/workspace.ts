@@ -23,6 +23,7 @@ export type ScopePage = { "next_cursor": string | null; "kind": "scopes"; "items
 export type SetupEntry = { "id": "blank" | "reference:small-settlement"; "name": string; "reference": boolean; "population": string | null; "land_area": string | null };
 export type UnknownValue = { "kind": "unknown"; "reason": string };
 export type ValuePage = { "next_cursor": string | null; "kind": "values"; "items": (PartitionValueDTO)[] };
+export type WorkFailure = { "kind": "work_stopped"; "reason": "work_cancelled" | "work_time_quota" | "work_snapshot_byte_quota" };
 export type WorkspaceCatalogue = { "workspace_contract": 1; "data_store_id": string; "branches": (BranchState)[]; "domains": (DomainEntry)[]; "setups": (SetupEntry)[] };
 export type WorkspacePage = { "workspace_contract": 1; "scope_id": string; "result": WorldPageResult };
 export type WorkspacePageRequest = { "context": RevisionContext; "scope_id": string; "collection": "scopes" | "entities" | "values" | "relationships"; "cursor": string | null };

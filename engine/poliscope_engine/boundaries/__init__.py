@@ -6,6 +6,8 @@ This service verifies storage/context/evidence/scheduling structure. A configure
 host validator must independently validate dynamic transitions before confirmation.
 """
 from collections.abc import Callable
+from dataclasses import dataclass
+from hashlib import sha256
 import json
 from pydantic import TypeAdapter
 
@@ -22,6 +24,23 @@ from poliscope_engine.storage.blobs import RetainedBlobs
 from poliscope_engine.timeline import boundaries, stage_changes, schedule_digest, validate_approval
 
 JOURNAL = 'confirmed-boundary:v1'
+
+
+@dataclass(frozen=True)
+class _Prepared:
+    authority: object
+    validator: object
+    validator_id: str
+    expected: object
+    candidate_signature: bytes
+    closing: object
+    experiment: object
+    due: object
+    changes: object
+
+
+def _signature(candidate):
+    return sha256(candidate.model_dump_json().encode()).digest()
 
 
 class BoundaryError(ValueError):
@@ -53,7 +72,8 @@ def _record(context, sequence, state, evidence, plan_digest, parent_digest, vali
 
 def state_digest(state):
     # Optional consumer extensions must not change existing v1 history identities.
-    return digest(state.model_dump(exclude={'transition'} if state.transition is None else set()))
+    return (digest(dict(inputs=state.inputs, conditions=state.conditions)) if state.transition is None
+            else digest(state))
 
 
 def plan_digest(plan, transition_plan):
@@ -80,6 +100,105 @@ class BoundaryStore:
         self.blobs = RetainedBlobs(self.store)
         # Trusted controller hook runs inside the same transaction as confirmation.
         self.on_persist = None
+        self._verified_payloads = {}
+        self._request_digests = {}
+        self._preparation_authority = object()
+        self._frames = {}
+
+    def _advance_opening(self, context):
+        """Private committed frame; storage integrity is checked on every use."""
+        self._confirmed_only()
+        record = self._head(context)
+        cached = self._frames.get(record.boundary_digest)
+        if cached is not None:
+            scope = self._scope(context)
+            # A warm frame cannot conceal a deleted or damaged retained chunk.
+            state = self.blobs.read(scope, 'boundary-state', record.state_digest)
+            evidence = self.blobs.read(scope, 'boundary-evidence', record.evidence_digest, evidence=True)
+            marker = sha256((state + '\0' + evidence).encode()).digest()
+            if marker == cached[1] and cached[0].record == record:
+                return cached[0]
+        return self._read(context)
+
+    def _remember_frame(self, frame):
+        state, evidence = serialized(frame.state), serialized(frame.evidence)
+        size = len(state.encode()) + len(evidence.encode())
+        if size > 32 * 1024 * 1024:
+            return
+        if len(self._frames) >= 2:
+            del self._frames[next(iter(self._frames))]
+        self._frames[frame.record.boundary_digest] = (frame,
+            sha256((state + '\0' + evidence).encode()).digest())
+
+    def _prepare_publication(self, opening, experiment, due, changes, facts, candidate):
+        """Private host capability, never accepted from a serialized request.
+
+        The reducer has already checked callbacks, finite balances and closing
+        evaluation. Bind those checks to the exact detached candidate bytes.
+        External confirm requests always take the independent reduction path.
+        """
+        if not self.revisions._matches_assembly(candidate.inputs, candidate.evidence,
+                                               experiment.context.civilization_id):
+            return None
+        # The assembly witness binds all world/design/measurement/reference
+        # bytes to the actual producer. Check the independent transition witness
+        # here; do not rebuild that same complete closing evidence again.
+        from poliscope_engine.simulation import verify_receipt
+        from poliscope_engine.stochastic import check_retained
+        verify_receipt(candidate.transition)
+        check_retained(experiment.transition_plan.random_plan, due.day, candidate.transition.random_draws)
+        if (candidate.inputs.design.effective_time.tick != due.day or
+                candidate.inputs.design.effective_time.calendar_id != experiment.plan.calendar.id or
+                candidate.inputs.versions != opening.state.inputs.versions or
+                candidate.transition.opening_digest != opening.record.boundary_digest or
+                candidate.transition.plan_digest != digest(experiment.transition_plan)):
+            raise BoundaryError('incompatible_boundary_candidate')
+        evidence = candidate.evidence
+        if evidence.evaluation.identities.model_digest != opening.evidence.evaluation.identities.model_digest:
+            raise BoundaryError('experiment_model_runtime_changed')
+        closing = BoundaryState(inputs=candidate.inputs, conditions=[BoundaryCondition(
+            scope_id=s, condition_id=c, value=v) for (s, c), v in sorted(facts.items())], transition=candidate.transition)
+        return _Prepared(self._preparation_authority, self.validator, self.validator_id, outcome(opening.record),
+            _signature(candidate), closing, experiment, due, changes)
+
+    def _confirm_prepared(self, request, prepared, *, cancelled=None):
+        self._confirmed_only()
+        def check():
+            if (prepared.authority is not self._preparation_authority or request.expected != prepared.expected
+                    or self.validator != prepared.validator or self.validator_id != prepared.validator_id
+                    or _signature(request.candidate) != prepared.candidate_signature
+                    or prepared.closing.inputs is not request.candidate.inputs
+                    or prepared.closing.transition is not request.candidate.transition):
+                raise BoundaryError('transition_candidate_mismatch')
+        check()
+        scope, experiment = self._experiment(request.expected.context)
+        key, binding, old = self._operation(scope, request)
+        if old is not None:
+            return old
+        _cancel(cancelled)
+        if experiment != prepared.experiment or self.validator is None:
+            raise BoundaryError('transition_validator_unavailable')
+        with self.store.transaction():
+            key, binding, old = self._operation(scope, request)
+            if old is not None:
+                return old
+            _cancel(cancelled)
+            check()
+            if outcome(self._head(request.expected.context)) != request.expected:
+                raise BoundaryError('stale_boundary')
+            result = self._persist(scope, request.expected.context, request.expected.sequence + 1,
+                prepared.closing, request.candidate.evidence, experiment.plan_digest,
+                request.expected.boundary_digest, self.validator_id, prepared.due, prepared.changes)
+            self.store.complete_operation(scope, key, binding, result.model_dump_json())
+            _cancel(cancelled)
+            check()
+            record = BoundaryRecord.model_validate_json(self.store.read_record(
+                scope, JOURNAL, f'{result.sequence:016d}'))
+        # This private frame is published only after COMMIT. Public reads still
+        # construct detached objects from their retained bytes.
+        self._remember_frame(ConfirmedBoundary(record=record, state=prepared.closing,
+            evidence=request.candidate.evidence))
+        return result
 
     def _scope(self, context):
         context = checked(ExperimentContext, context)
@@ -105,12 +224,20 @@ class BoundaryStore:
         key = digest(dict(boundary_operation=request.operation_id))
         # Full accepted evidence can exceed the store's 1 MiB row bound. Bind
         # its canonical digest; the complete state/closure is retained in chunks.
-        payload = request.model_dump()
+        signature = sha256(request.model_dump_json().encode()).digest()
+        request_digest = self._request_digests.get(signature)
+        payload = {name: getattr(request, name) for name in type(request).model_fields}
         if kind == 'create' and request.transition_plan is None:
             payload.pop('transition_plan', None)
         if kind == 'confirm' and request.candidate.transition is None:
-            payload['candidate'].pop('transition', None)
-        binding = serialized(dict(boundary_contract=1, kind=kind, request_digest=digest(payload)))
+            payload['candidate'] = {name: getattr(request.candidate, name)
+                for name in type(request.candidate).model_fields if name != 'transition'}
+        if request_digest is None:
+            request_digest = digest(payload)
+            if len(self._request_digests) == 8:
+                del self._request_digests[next(iter(self._request_digests))]
+            self._request_digests[signature] = request_digest
+        binding = serialized(dict(boundary_contract=1, kind=kind, request_digest=request_digest))
         raw = self.store.operation_outcome(scope, key, binding)
         return key, binding, BoundaryOutcome.model_validate_json(raw) if raw else None
 
@@ -138,10 +265,11 @@ class BoundaryStore:
         inputs = state.inputs
         world = graph(inputs, context.civilization_id)
         snapshot = dict(civilization_id=world.registry.civilization_id,
-            entities=world.registry.entities, scopes=world.registry.scopes,
-            values=world.registry.values, owners=world.registry.owners,
-            populations=world.registry.populations, relationships=world.relationships)
-        expected = dict(world=snapshot, design=inputs.design.model_dump(mode='json', exclude={'realization'}),
+            entities=world.registry._canonical_entities, scopes=world.registry._canonical_scopes,
+            values=world.registry.values, owners=world.registry._canonical_owners,
+            populations=world.registry._canonical_populations, relationships=world._canonical_relationships)
+        expected = dict(world=snapshot, design={name: getattr(inputs.design, name)
+            for name in type(inputs.design).model_fields if name != 'realization'},
                         assumptions=sorted(inputs.assumptions, key=lambda a: a.id))
         evaluation, report = evidence.evaluation, evidence.report
         model = json.loads(evaluation.model_json)
@@ -173,9 +301,36 @@ class BoundaryStore:
         self.blobs.put(scope, 'boundary-state', record.state_digest, state)
         self.blobs.put(scope, 'boundary-evidence', evidence.closure_digest, evidence, evidence=True)
         self.store.add_record(scope, JOURNAL, f'{sequence:016d}', record.model_dump_json())
+        projection = dict(boundary_digest=record.boundary_digest,
+            coverage='not_assessed' if state.transition is None else state.transition.coverage)
+        self.store.add_record(scope, 'boundary-progress:v1', f'{sequence:016d}',
+            serialized(dict(projection, projection_digest=digest(projection))))
         if self.on_persist is not None:
             self.on_persist(record)
         return outcome(record)
+
+    def progress_coverage(self, expected):
+        """Bounded committed projection; legacy history retains a read fallback."""
+        self._confirmed_only()
+        scope = self._scope(expected.context)
+        raw = self.store.read_record(scope, JOURNAL, f'{expected.sequence:016d}')
+        if raw is None:
+            raise BoundaryError('unknown_confirmed_boundary')
+        record = BoundaryRecord.model_validate_json(raw)
+        if (outcome(record) != expected or record.boundary_digest !=
+                digest(record.model_dump(exclude={'boundary_digest'}))):
+            raise BoundaryError('boundary_record_identity_mismatch')
+        raw = self.store.read_record(scope, 'boundary-progress:v1', f'{expected.sequence:016d}')
+        if raw is None:
+            transition = self.read(expected.context, expected.sequence).state.transition
+            return 'not_assessed' if transition is None else transition.coverage
+        projection = json.loads(raw)
+        checksum = projection.pop('projection_digest', None)
+        if (set(projection) != {'boundary_digest', 'coverage'} or digest(projection) != checksum
+                or projection['boundary_digest'] != expected.boundary_digest or
+                projection['coverage'] not in ('not_assessed', 'complete', 'partial', 'unresolved')):
+            raise BoundaryError('boundary_progress_identity_mismatch')
+        return projection['coverage']
 
     def create(self, request: CreateExperiment, *, cancelled=None):
         request = checked(CreateExperiment, request)
@@ -256,10 +411,15 @@ class BoundaryStore:
                 or record.boundary_digest != digest(record.model_dump(exclude={'boundary_digest'}))
                 or (sequence is not None and record.sequence != sequence)):
             raise BoundaryError('boundary_record_identity_mismatch')
-        state = BoundaryState.model_validate_json(self.blobs.read(scope, 'boundary-state', record.state_digest))
-        evidence = AcceptedEvidence.model_validate_json(self.blobs.read(scope, 'boundary-evidence', record.evidence_digest, evidence=True))
-        evidence = self._check_state_evidence(context, state, evidence)
-        if (state_digest(state) != record.state_digest or evidence.closure_digest != record.evidence_digest
+        state_text = self.blobs.read(scope, 'boundary-state', record.state_digest)
+        evidence_text = self.blobs.read(scope, 'boundary-evidence', record.evidence_digest, evidence=True)
+        marker = sha256((raw + '\0' + experiment.plan_digest + '\0' + state_text + '\0' + evidence_text).encode()).digest()
+        state = BoundaryState.model_validate_json(state_text)
+        evidence = AcceptedEvidence.model_validate_json(evidence_text)
+        verified = marker in self._verified_payloads
+        if not verified:
+            evidence = self._check_state_evidence(context, state, evidence)
+        if (not verified and state_digest(state) != record.state_digest or evidence.closure_digest != record.evidence_digest
                 or state.inputs.design.effective_time.tick != record.day
                 or state.inputs.design.effective_time.calendar_id != experiment.plan.calendar.id):
             raise BoundaryError('boundary_payload_identity_mismatch')
@@ -287,7 +447,23 @@ class BoundaryStore:
         if state.transition is not None and not fork_opening:
             from poliscope_engine.stochastic import check_retained
             check_retained(experiment.transition_plan.random_plan, record.day, state.transition.random_draws)
+        if not verified:
+            if len(self._verified_payloads) == 8:
+                del self._verified_payloads[next(iter(self._verified_payloads))]
+            self._verified_payloads[marker] = True
         return ConfirmedBoundary(record=record, state=state, evidence=evidence)
+
+    def _head(self, context):
+        """The write-lock stale check needs the journal identity, not its payload."""
+        scope, experiment = self._experiment(context)
+        rows = self.store.record_page(scope, JOURNAL, limit=1, descending=True)
+        if not rows:
+            raise BoundaryError('unknown_confirmed_boundary')
+        record = BoundaryRecord.model_validate_json(rows[0][1])
+        if (record.context != context or record.plan_digest != experiment.plan_digest or
+                record.boundary_digest != digest(record.model_dump(exclude={'boundary_digest'}))):
+            raise BoundaryError('boundary_record_identity_mismatch')
+        return record
 
     def confirm(self, request: ConfirmBoundary, *, cancelled=None):
         self._confirmed_only()
@@ -337,7 +513,7 @@ class BoundaryStore:
             if old is not None:
                 return old
             _cancel(cancelled)
-            if outcome(self._read(context).record) != request.expected:
+            if outcome(self._head(context)) != request.expected:
                 raise BoundaryError('stale_boundary')
             result = self._persist(scope, context, opening.record.sequence + 1, closing, evidence,
                 experiment.plan_digest, opening.record.boundary_digest, self.validator_id, due, changes)

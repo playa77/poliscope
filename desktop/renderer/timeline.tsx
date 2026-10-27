@@ -17,6 +17,7 @@ export function Timeline({ state, disabled }: { state: WorkspaceState; disabled:
   const [realization, setRealization] = useState<'preserve' | 'new_realization'>('preserve');
   const [seed, setSeed] = useState('');
   const [busy, setBusy] = useState(false);
+  const [cancelling, setCancelling] = useState(false);
   const [pending, setPending] = useState<TimelineRequest>();
   const [error, setError] = useState('');
   const generation = useRef(0);
@@ -29,7 +30,7 @@ export function Timeline({ state, disabled }: { state: WorkspaceState; disabled:
     try {
       const next = await window.poliscope.timeline(request);
       if (id !== generation.current) return;
-      setReply(next); setPending(undefined);
+      setReply(next); setPending(undefined); setCancelling(false);
       if (next.head) setName(next.head.context.experiment_id);
     } catch {
       if (id === generation.current) setError('Request not confirmed. Retry the same command or inspect saved boundaries. No preview is shown as saved. Historical clocks or models may be unavailable.');
@@ -67,6 +68,10 @@ export function Timeline({ state, disabled }: { state: WorkspaceState; disabled:
     </fieldset>
     {error && <p role="alert">{error}</p>}
     {busy && <p role="status">Waiting for confirmed progress…</p>}
+    {busy && pending?.action === 'advance' && !cancelling && <button onClick={() => {
+      setCancelling(true); void send(query('cancel'));
+    }}>Cancel running advance</button>}
+    {cancelling && <p role="status">Cancellation requested. The current bounded boundary may finish first; confirmed work stays saved. Inspect saved boundaries if acknowledgement is unconfirmed.</p>}
     {pending && <button disabled={busy} onClick={() => void send(pending)}>Retry same timeline command</button>}
     {pending && <button disabled={busy} onClick={() => void send(query('read'))}>Inspect saved boundaries</button>}
     {reply && <p>{reply.notice}</p>}

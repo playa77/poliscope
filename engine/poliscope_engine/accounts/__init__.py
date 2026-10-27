@@ -38,20 +38,25 @@ class AccountBook:
     The host supplies canonical IDs, reviewed mechanism outputs and unit registry.
     This checks accounting, not mechanism authorization or scientific validity.
     """
-    __slots__ = ('_snapshot', '_units')
+    __slots__ = ('_snapshot', '_units', '_result')
 
     def __init__(self, batch: AccountBatch, units: Registry):
         batch = AccountBatch.model_validate_json(batch.model_dump_json())
         # Validate the entire candidate before retaining it. No partial results.
         self._snapshot = batch.model_dump_json()
         self._units = Registry(tuple(units.units))
-        self.evaluate()
+        self._result = self._evaluate().model_dump_json()
 
     @property
     def batch(self):
         return AccountBatch.model_validate_json(self._snapshot)
 
     def evaluate(self) -> AccountEvaluation:
+        # Construction already validates this immutable snapshot. Repeated
+        # queries detach the exact result rather than rerunning its arithmetic.
+        return AccountEvaluation.model_validate_json(self._result)
+
+    def _evaluate(self) -> AccountEvaluation:
         batch = self.batch
         accounts, postings, claims, reservations, subtotals = map(index, (
             batch.accounts, batch.postings, batch.claims, batch.reservations, batch.subtotals))

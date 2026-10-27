@@ -6,6 +6,7 @@ integer quantum counts check representability/conservation independently.
 from dataclasses import dataclass
 from decimal import Context, Decimal, DecimalException, ROUND_HALF_EVEN, localcontext, InvalidOperation, DivisionByZero, Overflow, Underflow
 from fractions import Fraction
+from functools import lru_cache
 import re
 from typing import Literal
 
@@ -48,7 +49,14 @@ def _checked(value: Decimal) -> Decimal:
 
 
 def parse(value: str) -> Decimal:
-    if type(value) is not str or len(value) > 256 or not _PATTERN.fullmatch(value):
+    if type(value) is not str or len(value) > 256:
+        raise NumericError('invalid_decimal')
+    return _parse_checked(value)
+
+
+@lru_cache(maxsize=8192)
+def _parse_checked(value):
+    if not _PATTERN.fullmatch(value):
         raise NumericError('invalid_decimal')
     try:
         return _checked(Decimal(value))

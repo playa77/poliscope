@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { workStatus } from './work-status';
+import React, { useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { ExplorationQuery, ExplorationEdit, ExplorationPreview, ExplorationRow, ValueEdit, EntityEdit, EntityDTO, RelationshipDTO } from '../../contracts/exploration';
 import type { WorkspaceState } from '../../contracts/workspace';
@@ -27,6 +28,7 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
   const [valueRow, setValueRow] = useState<ExplorationRow['value']>(null);
   const [value, setValue] = useState('');
   const [preview, setPreview] = useState<ExplorationPreview>();
+  const previewGeneration = useRef(0);
   const [error, setError] = useState(''); const [busy, setBusy] = useState(false); const [draft, setDraft] = useState(false);
   const [uncertain, setUncertain] = useState(false);
   const [inspector, setInspector] = useState<ExplorationRow['inspector']>(null);
@@ -41,6 +43,7 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
     if (row.value) { setMode('value'); setValueRow(row.value); setValue(row.value.value.kind === 'quantity' || row.value.value.kind === 'label' ? row.value.value.value : ''); }
   }
   async function showPreview() {
+    const generation = ++previewGeneration.current;
     setBusy(true); setError('');
     try {
       let change: ExplorationEdit['change'];
@@ -51,9 +54,10 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
         if (!valueRow || !['quantity', 'label'].includes(valueRow.value.kind)) throw new Error();
         change = { kind: 'value', value_id: valueRow.id, value: { ...valueRow.value, value } as ValueEdit['value'] };
       }
-      setPreview(await window.poliscope.previewWorld({ context: state.context, scope_id: scope, change }));
-    } catch { setError('This edit could not be previewed. Check identities, relationship version, membership rule and value ownership. Saved state is unchanged.'); }
-    finally { setBusy(false); }
+      const result = await window.poliscope.previewWorld({ context: state.context, scope_id: scope, change });
+      if (generation === previewGeneration.current) setPreview(result);
+    } catch (error) { if (generation === previewGeneration.current) setError(workStatus(error, 'This edit could not be previewed. Check identities, relationship version, membership rule and value ownership. Saved state is unchanged.')); }
+    finally { if (generation === previewGeneration.current) setBusy(false); }
   }
   async function apply() {
     if (!preview) return;
@@ -110,9 +114,10 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
           <button onClick={() => void showPreview()}>Preview world edit</button>
         </fieldset>
         {preview && <section aria-label="World edit preview"><p>{preview.coverage}</p><h5>Before</h5><pre>{preview.before || 'No previous record'}</pre><h5>After</h5><pre>{preview.after}</pre><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry world Apply' : 'Apply world edit'}</button></section>}
-        <button disabled={busy || uncertain} onClick={() => { void window.poliscope.cancelWorld().then(() => { setDraft(false); setPreview(undefined); onDirty(false); }); }}>Cancel world edit</button>
+        <button disabled={uncertain} onClick={() => { previewGeneration.current++; void window.poliscope.cancelWorld().then(() => { setBusy(false); setDraft(false); setPreview(undefined); onDirty(false); }); }}>Cancel world edit</button>
       </section>}
     </>}
+    {busy && !uncertain && <p role="status">Computing preview. You can cancel this draft while it runs.</p>}
     {error && <p role="alert">{error}</p>}
   </section>;
 }

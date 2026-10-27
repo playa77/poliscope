@@ -4,11 +4,43 @@ This service prepares and reads data. WP-018 must persist the complete closure
 atomically with acceptance, independently of disposable evaluation caches.
 """
 import json
+from hashlib import sha256
+import orjson
+from types import MappingProxyType
 from poliscope_engine.contracts.measurements import (
     CalculationTrace, MechanismRef, MeasurementReport, AcceptedEvidence,
     EvidenceReference, TraceQuery, CalculationTracePage)
 from poliscope_engine.dependencies import _components
 from poliscope_engine.evaluation.identity import digest, serialized
+from poliscope_engine.evaluation.canonical import Memo
+
+_trace_plans = Memo(8 * 1024 * 1024, entries=4)
+_reference_sets = Memo(8 * 1024 * 1024, entries=16)
+
+
+def _trace_plan(observations, edges):
+    key = tuple(sorted(observations)), tuple(sorted(edges))
+    cached = _trace_plans.get(key)
+    if cached is not None:
+        return cached
+    groups = _components(observations, edges, set())
+    node_trace = {}
+    for group in groups:
+        trace_id = digest(dict(trace_schema=1, nodes=group.nodes))
+        node_trace.update((node, trace_id) for node in group.nodes)
+    dependencies = {node_trace[g.nodes[0]]: set() for g in groups}
+    internal = {identity: [] for identity in dependencies}
+    for a, b in sorted(edges):
+        source, target = node_trace[a], node_trace[b]
+        if source != target:
+            dependencies[target].add(source)
+        else:
+            internal[source].append((a, b))
+    plan = (groups, MappingProxyType(node_trace),
+        MappingProxyType({k: tuple(sorted(v)) for k, v in dependencies.items()}),
+        MappingProxyType({k: tuple(v) for k, v in internal.items()}))
+    _trace_plans.put(key, plan, len(repr(key).encode()) + len(repr(plan).encode()))
+    return plan
 
 # Fixed host-authored text is separate from numerical values and any AI prose.
 TEMPLATES = {
@@ -27,13 +59,14 @@ class EvidenceError(ValueError):
 
 def build_traces(result):
     """Condense SCCs; every evaluated node belongs to exactly one DAG vertex."""
-    observations = {tuple(o.node): o.model_copy(deep=True) for o in result.observations}
+    from poliscope_engine.contracts.evaluation import NodeObservation
+    observations = {tuple(o.node): NodeObservation.model_validate_json(o.model_dump_json()) for o in result.observations}
     if len(observations) != len(result.observations):
         raise EvidenceError('duplicate_trace_node')
     edges = {(tuple(e.source), tuple(e.target)) for e in result.trace_edges}
     if any(a not in observations or b not in observations for a, b in edges):
         raise EvidenceError('dangling_trace_edge')
-    snapshot = json.loads(result.input_json)
+    snapshot = orjson.loads(result.input_json)
     design = snapshot['design']
     world_values = {v['id']: v for v in snapshot['world']['values']}
     for binding in design['world_inputs']:
@@ -51,21 +84,8 @@ def build_traces(result):
         observations[key] = row.model_copy(update={'assumption_refs': sorted(set(row.assumption_refs) | {binding['value_id']})})
     instances = design['execution']['dependencies']['instances']
     instances = {i['id']: MechanismRef(instance_id=i['id'], **{k: v for k, v in i.items() if k != 'id'}) for i in instances}
-    groups = _components(observations, edges, set())
-    # A coupled component may contain thousands of nodes. Hash its membership
-    # once, rather than serializing the whole component once per member.
-    node_trace = {}
-    for group in groups:
-        trace_id = digest(dict(trace_schema=1, nodes=group.nodes))
-        node_trace.update((node, trace_id) for node in group.nodes)
-    dependencies = {node_trace[group.nodes[0]]: set() for group in groups}
-    internal = {key: [] for key in dependencies}
-    for a, b in sorted(edges):
-        source, target = node_trace[a], node_trace[b]
-        if source != target:
-            dependencies[target].add(source)
-        else:
-            internal[source].append((list(a), list(b)))
+    groups, planned_nodes, dependencies, internal = _trace_plan(observations, edges)
+    node_trace = dict(planned_nodes)
     traces = []
     for group in groups:
         key = node_trace[group.nodes[0]]
@@ -74,16 +94,17 @@ def build_traces(result):
             raise EvidenceError('missing_trace_mechanism')
         traces.append(CalculationTrace(id=key, kind='solved_component' if group.cyclic else 'node',
             members=[observations[n] for n in group.nodes], mechanisms=[instances[i] for i in sorted(refs)],
-            effective_time=result.effective_time, dependency_refs=sorted(dependencies[key]), internal_edges=internal[key]))
+            effective_time=result.effective_time, dependency_refs=list(dependencies[key]),
+            internal_edges=[(list(a), list(b)) for a, b in internal[key]]))
     # Final account and distribution values also need traversable evidence;
     # they are not all compiler ports (e.g. closing balance and unmet claims).
     if result.accounts is not None:
         from poliscope_engine.contracts.evaluation import NodeObservation
         from poliscope_engine.contracts.world import QuantityValue, LabelValue
-        batch = json.loads(result.final_batch_json)
+        batch = orjson.loads(result.final_batch_json)
         accounts = {a['id']: a for a in batch['accounts']}
         claims = {c['id']: c for c in batch['claims']}
-        execution = json.loads(result.input_json)['design']['execution']
+        execution = orjson.loads(result.input_json)['design']['execution']
         mappings = {c['account_claim_id']: c for c in execution['claims']}
         def final_trace(kind, identity, fields, account, source_refs, dependencies):
             members = [NodeObservation(node=[kind, identity, name], scope_id=account['scope_id'],
@@ -139,8 +160,12 @@ def build_traces(result):
 
 def verify_report(report):
     report = MeasurementReport.model_validate_json(report.model_dump_json())
+    from poliscope_engine.verification import contains, remember
+    if contains('report', report):
+        return report
     if digest(report.model_dump(mode='json', exclude={'report_digest'})) != report.report_digest:
         raise EvidenceError('report_identity_mismatch')
+    remember('report', report)
     return report
 
 
@@ -203,11 +228,12 @@ def _referenced(value):
             for name, val in item.items():
                 if name in ('source_refs', 'assumption_refs', 'supersedes_refs'):
                     found.update(('assumption' if name == 'assumption_refs' else 'source', ref) for ref in val)
-                else:
+                elif isinstance(val, (dict, list)):
                     visit(val)
         elif isinstance(item, list):
             for val in item:
-                visit(val)
+                if isinstance(val, (dict, list)):
+                    visit(val)
     visit(value)
     return found
 
@@ -215,7 +241,12 @@ def _referenced(value):
 def _reference_closure(evaluation, report, indexed):
     required = _referenced(report.model_dump(mode='json'))
     for snapshot in (evaluation.input_json, evaluation.model_json):
-        required |= _referenced(json.loads(snapshot))
+        key = sha256(snapshot.encode()).digest()
+        refs = _reference_sets.get(key)
+        if refs is None:
+            refs = frozenset(_referenced(orjson.loads(snapshot)))
+            _reference_sets.put(key, refs, len(repr(refs).encode()) + 32)
+        required |= refs
     pending = list(required)
     while pending:
         key = pending.pop()
@@ -235,11 +266,16 @@ def retain(evaluation, report, references=()):
     Missing reference metadata is unavailable and private by default.
     """
     from poliscope_engine.measurements import verify_evaluation, observe
-    evaluation = verify_evaluation(evaluation)
-    report = verify_report(report)
-    expected = observe(evaluation, report.definitions, report.goal_definitions)
-    if expected != report:
-        raise EvidenceError('report_evaluation_mismatch')
+    from poliscope_engine.verification import contains, remember
+    # A report just produced from these exact evaluation bytes already passed
+    # the computation below. Changes to either member invalidate this proof.
+    if not contains('observed', evaluation, report):
+        evaluation = verify_evaluation(evaluation)
+        report = verify_report(report)
+        expected = observe(evaluation, report.definitions, report.goal_definitions)
+        if expected != report:
+            raise EvidenceError('report_evaluation_mismatch')
+        remember('observed', evaluation, report)
     references = [EvidenceReference.model_validate_json(r.model_dump_json()) for r in references]
     indexed = {(r.kind, r.id): r for r in references}
     if len(indexed) != len(references):
@@ -252,7 +288,13 @@ def retain(evaluation, report, references=()):
         raise EvidenceError('unreferenced_evidence_metadata')
     payload = dict(evidence_version=1, state='complete', evaluation=evaluation, report=report,
         references=[indexed[key] for key in sorted(indexed)])
-    return AcceptedEvidence.model_validate_json(serialized(dict(payload, closure_digest=digest(payload))))
+    from poliscope_engine.evaluation.canonical import seal, remember_document
+    _, text = seal(payload, 'closure_digest')
+    saved = AcceptedEvidence.model_validate_json(text)
+    remember_document(saved, text)
+    from poliscope_engine.verification import remember
+    remember('closure', saved)
+    return saved
 
 
 def unavailable():
@@ -264,6 +306,9 @@ def unavailable():
 def read_retained(data):
     """Trusted data-only read with no registry, callback, cache or evaluator call."""
     saved = AcceptedEvidence.model_validate_json(data)
+    from poliscope_engine.verification import contains, remember
+    if contains('closure', saved):
+        return saved
     if saved.closure_digest != digest(saved.model_dump(mode='json', exclude={'closure_digest'})):
         raise EvidenceError('closure_identity_mismatch')
     if saved.state == 'unavailable':
@@ -285,6 +330,7 @@ def read_retained(data):
     refs = {(r.kind, r.id) for r in saved.references}
     if len(refs) != len(saved.references) or refs != required:
         raise EvidenceError('reference_closure_mismatch')
+    remember('closure', saved)
     return saved
 
 

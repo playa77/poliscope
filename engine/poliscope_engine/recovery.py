@@ -39,6 +39,8 @@ def historical_service(path):
         store.path, store._connection, store._writing = Path(path), connection, False
         service = Revisions.__new__(Revisions)
         service.store, service.registry = store, None
+        # Data-only verification markers contain no evaluator or registry.
+        service._verified_evidence = {}
         raw = store.read_context('revision-service:v1')
         if raw is None:
             raise StorageError('no revision catalogue')

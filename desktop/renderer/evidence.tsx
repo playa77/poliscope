@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import { workStatus } from './work-status';
+import React, { useState, useRef } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { WorkspaceState } from '../../contracts/workspace';
 import type { WorkbenchQuery, WorkbenchRow, WorkbenchEdit, WorkbenchPreview } from '../../contracts/workbench';
@@ -23,6 +24,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
   const [operation, setOperation] = useState<'ge' | 'le' | 'eq' | 'ne' | 'gt' | 'lt'>('ge');
   const [value, setValue] = useState(''); const [remove, setRemove] = useState(false);
   const [preview, setPreview] = useState<WorkbenchPreview>();
+  const previewGeneration = useRef(0);
   const [busy, setBusy] = useState(false); const [uncertain, setUncertain] = useState(false); const [error, setError] = useState('');
   const [source, setSource] = useState(''); const [model, setModel] = useState<{ id: string; version: string | null }>();
   const historical = state.context.revision_id !== state.branch.context.revision_id;
@@ -42,6 +44,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
     setOperation(selected?.goal?.operation ?? 'ge'); setValue(selected?.goal?.threshold?.value ?? (selected?.assumption?.value.kind === 'quantity' || selected?.assumption?.value.kind === 'label' ? selected.assumption.value.value : ''));
   }
   async function showPreview() {
+    const generation = ++previewGeneration.current;
     setBusy(true); setError('');
     try {
       let change: WorkbenchEdit['change'];
@@ -56,9 +59,10 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
           indicator_id: indicator?.id ?? null, operation: indicator ? operation : null,
           threshold: indicator ? { kind: 'quantity', value, unit_id: indicator.definition.unit_id, time_basis_id: indicator.definition.time_basis_id, denominator_scope_id: indicator.definition.denominator_scope_id } : null } };
       }
-      setPreview(await window.poliscope.previewWorkbench({ context: state.context, scope_id: scope, change }));
-    } catch { setError('This change could not be previewed. Check scope, exact values, target units and supported assumption ownership. Saved state is unchanged.'); }
-    finally { setBusy(false); }
+      const result = await window.poliscope.previewWorkbench({ context: state.context, scope_id: scope, change });
+      if (generation === previewGeneration.current) setPreview(result);
+    } catch (error) { if (generation === previewGeneration.current) setError(workStatus(error, 'This change could not be previewed. Check scope, exact values, target units and supported assumption ownership. Saved state is unchanged.')); }
+    finally { if (generation === previewGeneration.current) setBusy(false); }
   }
   async function apply() {
     if (!preview) return;
@@ -121,8 +125,9 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
       <button onClick={() => void showPreview()}>Preview evidence edit</button>
     </fieldset>
     {preview && <section aria-label="Evidence edit preview"><p>{preview.disclosure}</p><pre>{JSON.stringify(preview.edit.change, null, 2)}</pre><p>Physical result {preview.physical_before === preview.physical_after ? 'unchanged' : 'changed'} · {preview.changed_observations} changed observations</p><p>Before {preview.physical_before}<br />After {preview.physical_after}</p><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry evidence Apply' : 'Apply evidence edit'}</button></section>}
-    <button disabled={busy || uncertain} onClick={() => { void window.poliscope.cancelWorkbench().then(() => { setDraft(undefined); setRow(undefined); setText(''); setValue(''); setPreview(undefined); onDirty(false); }).catch(() => setError('Cancel could not complete. Retry cancellation.')); }}>Cancel evidence edit</button>
+    <button disabled={uncertain} onClick={() => { previewGeneration.current++; void window.poliscope.cancelWorkbench().then(() => { setBusy(false); setDraft(undefined); setRow(undefined); setText(''); setValue(''); setPreview(undefined); onDirty(false); }).catch(() => setError('Cancel could not complete. Retry cancellation.')); }}>Cancel evidence edit</button>
     </section>}
+    {busy && !uncertain && <p role="status">Computing preview. You can cancel this draft while it runs.</p>}
     {error && <p role="alert">{error}</p>}
   </section>;
 }

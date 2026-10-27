@@ -1076,7 +1076,7 @@
           "type": "integer"
         },
         "mechanism_count": {
-          "maximum": 100,
+          "maximum": 3000,
           "minimum": 0,
           "title": "Mechanism Count",
           "type": "integer"
