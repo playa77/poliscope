@@ -33,15 +33,11 @@ def resolve(bindings, *, graph, mechanisms, rules=(), phase='static'):
         if len(keys) != len(set(keys)):
             raise PolicyError('duplicate_identity')
     world = graph.registry
-    entities = {e.id: e for e in world.entities}
-    scopes = {s.id: s for s in world.scopes}
-    edges = graph.relationships
-    jurisdiction = {(r.from_id, r.to_id) for r in edges if r.relationship_kind == 'jurisdiction'}
-    members = {scope: {r.from_id for r in edges if r.to_id == scope and
-                       r.aggregation.kind != 'non_aggregating'} for scope in scopes}
+    entities, scopes = world._entity_kinds, world._scope_kinds
+    jurisdiction, members = graph._jurisdiction, graph._members
 
     def institution(identity):
-        if identity not in entities or entities[identity].entity_kind != 'institution':
+        if identity not in entities or entities[identity] != 'institution':
             raise PolicyError('invalid_authority')
 
     def authorized(authority, scope, entity):
@@ -64,12 +60,12 @@ def resolve(bindings, *, graph, mechanisms, rules=(), phase='static'):
         if binding.scope_id not in scopes or not set(binding.entity_ids) <= entities.keys():
             raise PolicyError('missing_reference')
         for refs, kind in ((binding.account_refs, 'account'), (binding.choice_refs, 'decision')):
-            if any(ref not in entities or entities[ref].entity_kind != kind for ref in refs):
+            if any(ref not in entities or entities[ref] != kind for ref in refs):
                 raise PolicyError('invalid_affected_reference')
         definition = mechanisms.definition(binding.mechanism.id, binding.mechanism.version)
         if definition.policy is None:
             raise PolicyError('missing_policy_declaration')
-        if scopes[binding.scope_id].scope_kind not in definition.scope_kinds:
+        if scopes[binding.scope_id] not in definition.scope_kinds:
             raise PolicyError('unsupported_scope')
         port = next((p for p in definition.inputs if p.id == binding.parameter_id), None)
         if port is None:

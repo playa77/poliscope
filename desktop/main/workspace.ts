@@ -1,3 +1,4 @@
+import { QueryWork, WorkspaceWorkStopped } from './query-work';
 import groundingSchema from '../../contracts/grounding.schema.json';
 import type { GroundingSelection, GroundingManifest, GroundingResult } from '../../contracts/grounding';
 import type { GroundedSession } from './grounding';
@@ -42,10 +43,12 @@ export function decodeWorkspace(frame: Buffer, type: string): unknown {
   const tokens = text.match(/"(?:[^"\\]|\\.)*"|-?\d+(?:\.\d+)?(?:[eE][+-]?\d+)?/g) ?? [];
   if (tokens.some(token => !token.startsWith('"') && (!/^-?\d+$/.test(token) || !Number.isSafeInteger(Number(token))))) throw new Error('Invalid workspace numeric token');
   const value: unknown = JSON.parse(text);
+  if (workspaceValid(value, 'WorkFailure')) throw new WorkspaceWorkStopped((value as { reason: 'work_cancelled' | 'work_time_quota' | 'work_snapshot_byte_quota' }).reason);
   if (!workspaceValid(value, type)) throw new Error('Invalid workspace response');
   return value;
 }
 export class WorkspaceController {
+  private readonly queries = new QueryWork();
   private workbenchCandidate?: { edit: WorkbenchEdit; identity: string; preview: WorkbenchPreview; applying: boolean };
   private worldCandidate?: { edit: ExplorationEdit; identity: string; preview: ExplorationPreview; applying: boolean };
   private candidate?: { edit: InterviewEdit; identity: string; preview: InterviewPreview; applying: boolean };
@@ -58,19 +61,30 @@ export class WorkspaceController {
   private selected?: WorkspaceState;
   private branches?: WorkspaceCatalogue['branches'];
   constructor(private packaged: boolean, private root: string, private resources: string) {}
-  clear() { this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; this.worldCandidate = undefined; this.workbenchCandidate = undefined; }
+  clear() { this.queries.cancel(); this.directory = undefined; this.storeId = undefined; this.selected = undefined; this.branches = undefined; this.pendingCreate = undefined; this.candidate = undefined; this.pendingHistory = undefined; this.worldCandidate = undefined; this.workbenchCandidate = undefined; }
   private async request(operation: string, input: unknown, type: string, identity = 'unused', directory = this.directory): Promise<unknown> {
     if (!directory) throw new Error('Select a store first');
     const command = engineCommand(this.packaged, this.root, this.resources);
     const args = this.packaged ? ['--workspace'] : ['-I', '-m', 'poliscope_engine.workspace'];
-    const frame = await new Promise<Buffer>((resolve, reject) => {
+    const execute = (signal?: AbortSignal) => new Promise<Buffer>((resolve, reject) => {
       const child = execFile(command.executable, [...args, '--directory', directory, '--operation', operation, '--identity', identity], {
-        shell: false, windowsHide: true, encoding: 'buffer', maxBuffer: 1_048_576, timeout: 15_000, killSignal: 'SIGKILL',
+        shell: false, windowsHide: true, encoding: 'buffer', maxBuffer: 1_048_576, timeout: 15_000, killSignal: 'SIGKILL', signal,
         env: Object.fromEntries(['SYSTEMROOT', 'WINDIR', 'TEMP', 'TMP', 'LANG', 'LC_ALL'].flatMap(k => process.env[k] === undefined ? [] : [[k, process.env[k]!]])),
-      }, (error, stdout) => error ? reject(new Error('Workspace request failed')) : resolve(stdout));
+      }, (error, stdout) => {
+        if (!error) { resolve(stdout); return; }
+        const reason = signal?.aborted ? 'work_cancelled' : error.killed ? 'work_time_quota' :
+          error.code === 'ERR_CHILD_PROCESS_STDIO_MAXBUFFER' ? 'work_snapshot_byte_quota' : null;
+        reject(reason ? new WorkspaceWorkStopped(reason) : new Error('Workspace request failed'));
+      });
       child.stdin?.on('error', () => {});
       child.stdin?.end(JSON.stringify(input) + '\n');
     });
+    const pure = new Set(['select', 'catalogue', 'page', 'overview', 'target', 'chart', 'workbench', 'exploration', 'matrix', 'matrix-model',
+      'atlas', 'atlas-source', 'interview', 'uncertainty', 'sensitivity', 'capacity', 'rationale', 'lineage', 'compare',
+      'grounding', 'grounding-tool', 'preview-interview', 'preview-world', 'preview-workbench']);
+    const key = operation.startsWith('preview-') ? 'preview' : operation;
+    const cancellable = pure.has(operation) || (operation === 'timeline' && ['read', 'preview_schedule'].includes((input as TimelineRequest).action));
+    const frame = cancellable ? await this.queries.run(key, execute) : await execute();
     return decodeWorkspace(frame, type);
   }
   async ground(selection: GroundingSelection): Promise<GroundedSession> {
@@ -160,6 +174,7 @@ export class WorkspaceController {
     if (!workspaceValid(input, 'WorkspaceSelection')) throw new Error('Invalid selection');
     const selection = input as WorkspaceSelection;
     if (!this.branches?.some(b => b.context.civilization_id === selection.civilization_id && b.context.branch_id === selection.branch_id)) throw new Error('Selection is outside the store grant');
+    this.queries.cancel();
     const state = await this.request('select', selection, 'WorkspaceState') as WorkspaceState;
     if (state.context.civilization_id !== selection.civilization_id || state.context.branch_id !== selection.branch_id ||
         (selection.revision_id !== null && state.context.revision_id !== selection.revision_id) ||
@@ -218,6 +233,7 @@ export class WorkspaceController {
   }
   async cancelWorkbench(): Promise<void> {
     if (this.workbenchCandidate?.applying) throw new Error('Retry uncertain Apply');
+    this.queries.cancel('preview');
     this.workbenchCandidate = undefined;
   }
   async deleteNote(input: unknown): Promise<DeleteNoteReply> {
@@ -266,6 +282,7 @@ export class WorkspaceController {
   }
   async cancelWorld(): Promise<void> {
     if (this.worldCandidate?.applying || this.workbenchCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
+    this.queries.cancel('preview');
     this.worldCandidate = undefined;
   }
   async matrixModel(input: unknown): Promise<MatrixModelReply> {
@@ -351,6 +368,7 @@ export class WorkspaceController {
   }
   async cancelInterview(): Promise<void> {
     if (this.candidate?.applying || this.workbenchCandidate?.applying) throw new Error('Retry uncertain apply or reopen confirmed state');
+    this.queries.cancel('preview');
     this.candidate = undefined;
   }
   private async observationRequest(input: unknown, type: string, operation: string, replyType: string) {

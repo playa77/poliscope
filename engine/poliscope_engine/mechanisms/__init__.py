@@ -3,6 +3,7 @@ from dataclasses import dataclass
 from hashlib import sha256
 import json
 from typing import Callable
+from types import MappingProxyType
 
 from poliscope_engine.contracts.mechanisms import MechanismDefinition
 from poliscope_engine.contracts.world import PartitionValueDTO, QuantityValue, ReferenceValue
@@ -100,6 +101,13 @@ class MechanismRegistry:
                 _definition_keys=tuple((d.id, d.version) for d in definitions),
                 _graphs=tuple(g.model_dump_json() for g in graphs)).items():
             object.__setattr__(self, name, value)
+        object.__setattr__(self, '_declaration_hashes', MappingProxyType({
+            (d.id, d.version): declaration_digest(d) for d in definitions}))
+        # Process-local structural compilation authority. All public registry
+        # data are detached immutable tuples; a replacement creates a new token.
+        object.__setattr__(self, '_cache_token', object())
+        object.__setattr__(self, '_compiled_dependencies', {})
+        object.__setattr__(self, '_compiled_bytes', 0)
 
     @property
     def definitions(self):
@@ -199,7 +207,8 @@ class MechanismRegistry:
         fixtures = {(f.fixture.id, f.fixture.version) for f in definition.fixtures}
         if not fixtures or not fixtures <= self.fixture_ids:
             raise MechanismError('unresolved_fixtures')
-        review = next((r for r in self.reviews if r.declaration_digest == declaration_digest(definition) and r.graph_digest == digest), None)
+        declaration = self._declaration_hashes[definition.id, definition.version]
+        review = next((r for r in self.reviews if r.declaration_digest == declaration and r.graph_digest == digest), None)
         if review is None or (review.model_id, review.model_version) != self.model:
             raise MechanismError('review_required')
         ownership = {o.key: o.writer_id for o in world.owners}

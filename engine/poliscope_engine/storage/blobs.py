@@ -4,6 +4,7 @@ The caller owns the surrounding transaction. Manifests and every chunk share its
 commit. Identical content can be reused; corrupt/missing data is never repaired.
 """
 import json
+from hashlib import sha256
 from poliscope_engine.evaluation.identity import digest, serialized
 from .store import StorageError
 
@@ -28,9 +29,23 @@ class RetainedBlobs:
                 raise StorageError('immutable_blob_conflict')
             return
         chunks = [text[i:i + CHUNK_CHARACTERS] for i in range(0, len(text), CHUNK_CHARACTERS)]
+        shared = kind in ('boundary-state', 'boundary-evidence')
+        references = []
         for index, chunk in enumerate(chunks):
-            self.store.add_record(scope, 'chunk:' + kind, identity + ':' + str(index), serialized(chunk))
+            if shared:
+                reference = sha256(chunk.encode()).hexdigest()
+                payload = serialized(chunk)
+                old = self.store.read_record(scope, 'chunk-content:v1', reference)
+                if old is None:
+                    self.store.add_record(scope, 'chunk-content:v1', reference, payload)
+                elif old != payload:
+                    raise StorageError('immutable_chunk_conflict')
+                references.append(reference)
+            else:
+                self.store.add_record(scope, 'chunk:' + kind, identity + ':' + str(index), serialized(chunk))
         manifest = serialized(dict(chunks=len(chunks), digest=digest(text)))
+        if shared:
+            manifest = serialized(dict(blob_version=2, chunks=len(chunks), refs=references, digest=digest(text)))
         if evidence:
             self.store.retain_evidence(scope, kind + ':' + identity, manifest)
         else:
@@ -41,19 +56,28 @@ class RetainedBlobs:
         if raw is None:
             raise StorageError('missing_boundary_blob')
         manifest = json.loads(raw)
-        if not isinstance(manifest, dict) or set(manifest) != {'chunks', 'digest'}:
+        if not isinstance(manifest, dict):
+            raise StorageError('invalid_boundary_manifest')
+        shared = set(manifest) == {'blob_version', 'chunks', 'refs', 'digest'} and manifest['blob_version'] == 2
+        if not shared and set(manifest) != {'chunks', 'digest'}:
             raise StorageError('invalid_boundary_manifest')
         count = manifest['chunks']
         if type(count) is not int or not 1 <= count <= MAX_BYTES // CHUNK_CHARACTERS + 1:
             raise StorageError('invalid_boundary_manifest')
+        if shared and (type(manifest['refs']) is not list or len(manifest['refs']) != count or
+                any(type(ref) is not str or len(ref) != 64 for ref in manifest['refs'])):
+            raise StorageError('invalid_boundary_manifest')
         chunks, size = [], 0
         for index in range(count):
-            raw = self.store.read_record(scope, 'chunk:' + kind, identity + ':' + str(index))
+            raw = (self.store.read_record(scope, 'chunk-content:v1', manifest['refs'][index]) if shared else
+                self.store.read_record(scope, 'chunk:' + kind, identity + ':' + str(index)))
             if raw is None:
                 raise StorageError('missing_boundary_chunk')
             chunk = json.loads(raw)
             if not isinstance(chunk, str) or len(chunk) > CHUNK_CHARACTERS:
                 raise StorageError('invalid_boundary_chunk')
+            if shared and sha256(chunk.encode()).hexdigest() != manifest['refs'][index]:
+                raise StorageError('boundary_chunk_identity_mismatch')
             size += len(chunk.encode('utf-8'))
             if size > MAX_BYTES:
                 raise StorageError('boundary_blob_too_large')

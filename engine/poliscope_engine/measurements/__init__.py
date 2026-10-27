@@ -1,5 +1,7 @@
 """Pure post-evaluation observations. No callbacks, I/O, ranking or world mutation."""
 import json
+import orjson
+from hashlib import sha256
 from fractions import Fraction
 from poliscope_engine.contracts.evaluation import EvaluationResult
 from poliscope_engine.contracts.measurements import (
@@ -8,6 +10,13 @@ from poliscope_engine.contracts.measurements import (
 from poliscope_engine.contracts.world import QuantityValue, UnknownValue
 from poliscope_engine.evaluation.identity import digest, serialized
 from poliscope_engine.numeric import parse, exact, canonical, NumericError
+from poliscope_engine.evaluation.canonical import Memo, seal, remember_document
+
+_observations = Memo(16 * 1024 * 1024, entries=8)
+
+
+def clear_observation_cache():
+    _observations.clear()
 
 COMPARISONS = dict(lt=lambda a, b: a < b, le=lambda a, b: a <= b,
                    eq=lambda a, b: a == b, ne=lambda a, b: a != b,
@@ -26,12 +35,16 @@ def coverage(statuses):
 
 def verify_evaluation(result):
     result = EvaluationResult.model_validate_json(result.model_dump_json())
+    from poliscope_engine.verification import contains, remember
+    if contains('evaluation', result):
+        return result
     if (digest(result.model_dump(mode='json', exclude={'identities'})) != result.identities.output_digest
-            or digest(json.loads(result.input_json)) != result.identities.input_digest
-            or digest(json.loads(result.model_json)) != result.identities.model_digest
-            or digest(json.loads(result.realization_json)) != result.identities.realization_digest
+            or digest(orjson.loads(result.input_json)) != result.identities.input_digest
+            or digest(orjson.loads(result.model_json)) != result.identities.model_digest
+            or digest(orjson.loads(result.realization_json)) != result.identities.realization_digest
             or digest(result.identities.model_dump(exclude={'cache_key', 'output_digest'})) != result.identities.cache_key):
         raise MeasurementError('evaluation_identity_mismatch')
+    remember('evaluation', result)
     return result
 
 
@@ -67,16 +80,23 @@ def observe(evaluation, definitions=(), goals=()):
         raise MeasurementError('observation_limit')
     _unique(definitions)
     _unique(goals)
+    key = digest(dict(physical=result.identities.output_digest, definitions=definitions, goals=goals))
+    cached = _observations.get(key)
+    if cached is not None and sha256(cached[0]).digest() == cached[1]:
+        report = MeasurementReport.model_validate_json(cached[0])
+        from poliscope_engine.verification import remember
+        remember('observed', result, report)
+        return report
     nodes = _unique(result.observations, lambda n: tuple(n.node))
     traces, node_trace = build_traces(result)
     # Final reconciled accounts/distributions are explicit observable nodes too.
     for trace in traces:
         for member in trace.members:
             nodes.setdefault(tuple(member.node), member)
-    model = json.loads(result.model_json)
+    model = orjson.loads(result.model_json)
     units = {u['id']: u for u in model['units']}
     times = {t['id'] for t in model['times']}
-    scopes = {s['id'] for s in json.loads(result.input_json)['world']['scopes']}
+    scopes = {s['id'] for s in orjson.loads(result.input_json)['world']['scopes']}
     sources, assumptions = set(model['source_ids']), set(model['assumption_ids'])
     observations, findings = [], []
 
@@ -209,11 +229,11 @@ def observe(evaluation, definitions=(), goals=()):
 
     # Production insufficiency is evidence even without any selected indicator.
     if result.accounts is not None:
-        batch = json.loads(result.final_batch_json)
+        batch = orjson.loads(result.final_batch_json)
         claims = {c['id']: c for c in batch['claims']}
         accounts = {a['id']: a for a in batch['accounts']}
         available = {a.account_id: parse(a.available) for a in result.accounts.accounts}
-        choices = {c['claim_id']: c for p in json.loads(result.input_json)['design']['execution']['allocations'] for c in p['choices']}
+        choices = {c['claim_id']: c for p in orjson.loads(result.input_json)['design']['execution']['allocations'] for c in p['choices']}
         for claim in result.accounts.claims:
             if parse(claim.unmet) > 0:
                 demand = claims[claim.claim_id]
@@ -245,4 +265,12 @@ def observe(evaluation, definitions=(), goals=()):
     payload = dict(measurement_schema=1, physical_output_digest=result.identities.output_digest,
         definitions=definitions, goal_definitions=goals, measurements=observations, goals=goal_rows,
         findings=sorted(findings, key=lambda f: f.id), traces=traces, coverage=status, sufficient=sufficient)
-    return MeasurementReport.model_validate_json(serialized(dict(payload, report_digest=digest(payload))))
+    _, text = seal(payload, 'report_digest')
+    report = MeasurementReport.model_validate_json(text)
+    remember_document(report, text)
+    from poliscope_engine.verification import remember
+    remember('report', report)
+    remember('observed', result, report)
+    body = report.model_dump_json().encode()
+    _observations.put(key, (body, sha256(body).digest()), len(body) + len(key) + 32)
+    return report

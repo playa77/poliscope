@@ -1,3 +1,4 @@
+import { WorkspaceWorkStopped } from './query-work';
 import { assistantValid, assistantRequestValid, type AssistantController } from './assistant';
 import { providerRequestValid, providerValid, type ProviderController } from './providers';
 import type { RecoveryChoice } from './recovery';
@@ -21,7 +22,7 @@ export function registerShellIPC(register: Register, authorize: (event: IpcMainI
         const reply = await action(...args);
         if (!check(reply)) throw new Error();
         return reply;
-      } catch { throw new Error(IPC_ERROR); }
+      } catch (error) { throw new Error(error instanceof WorkspaceWorkStopped ? error.message : IPC_ERROR); }
     });
   }
   const historyReply = (reply: unknown) => Buffer.byteLength(JSON.stringify(reply)) <= 1_048_576 &&

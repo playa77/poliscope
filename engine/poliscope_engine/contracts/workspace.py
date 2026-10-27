@@ -44,7 +44,7 @@ class WorkspaceState(Contract):
     effective_time: EffectiveTime
     goal_count: Annotated[int, Field(ge=0, le=1000)]
     policy_count: Annotated[int, Field(ge=0, le=1000)]
-    mechanism_count: Annotated[int, Field(ge=0, le=100)]
+    mechanism_count: Annotated[int, Field(ge=0, le=3000)]
 
 class WorkspacePageRequest(Contract):
     context: RevisionContext
@@ -57,4 +57,8 @@ class WorkspacePage(Contract):
     scope_id: Identifier
     result: WorldPageResult
 
-workspace_adapter = TypeAdapter(CreateOptions | WorkspaceCatalogue | WorkspaceSelection | WorkspaceState | WorkspacePageRequest | WorkspacePage)
+class WorkFailure(Contract):
+    kind: Literal['work_stopped']
+    reason: Literal['work_cancelled', 'work_time_quota', 'work_snapshot_byte_quota']
+
+workspace_adapter = TypeAdapter(CreateOptions | WorkspaceCatalogue | WorkspaceSelection | WorkspaceState | WorkspacePageRequest | WorkspacePage | WorkFailure)

@@ -3,7 +3,10 @@ name = "poliscope-engine"
 version = "0.1.0"
 description = "Poliscope managed runtime scaffold"
 requires-python = "==3.12.*"
-dependencies = ["pydantic==2.12.5"]
+dependencies = [
+    "orjson==3.11.3",
+    "pydantic==2.12.5",
+]
 
 [dependency-groups]
 dev = ["pytest==9.0.2", "pyinstaller==6.19.0"]

@@ -25,12 +25,12 @@ class PopulationDTO(Contract):
 
 class RevisionInputs(Contract):
     versions: WorldVersions
-    entities: Annotated[list[EntityDTO], Rows]
+    entities: Annotated[list[EntityDTO], Field(max_length=5000)]
     scopes: Annotated[list[ScopeDTO], Rows]
     values: Annotated[list[PartitionValueDTO], Rows]
     owners: Annotated[list[OwnerDTO], Rows]
     populations: Annotated[list[PopulationDTO], Rows]
-    relationships: Annotated[list[RelationshipDTO], Rows]
+    relationships: Annotated[list[RelationshipDTO], Field(max_length=30000)]
     design: EvaluationDesign
     assumptions: Annotated[list[AssumptionValue], Rows]
     measurements: Annotated[list[IndicatorDefinition], Rows]

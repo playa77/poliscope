@@ -60,7 +60,8 @@ def encode(value):
 
 
 def serialized(value):
-    return encode(normalize(value))
+    from .canonical import encoded
+    return encoded(value)
 
 
 def digest(value):

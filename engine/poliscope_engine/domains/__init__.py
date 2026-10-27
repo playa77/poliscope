@@ -28,6 +28,7 @@ class DomainRegistry:
         unique([(a.entity_id, a.property_id, a.partition) for m in modules for a in m.authorities])
         object.__setattr__(self, '_modules', tuple(m.model_dump_json() for m in modules))
         object.__setattr__(self, '_pairs', tuple(p.model_dump_json() for p in pairs))
+        object.__setattr__(self, '_validated_shapes', {})
 
     @property
     def modules(self):
@@ -39,6 +40,16 @@ class DomainRegistry:
 
     def validate(self, *, world, mechanisms, branch_ids):
         """Resolve declarations against actual authorities; never grant activation."""
+        branch_ids = tuple(branch_ids)
+        key = (world._shape_token, mechanisms._cache_token, tuple(sorted(set(branch_ids))))
+        if key in self._validated_shapes:
+            return
+        self._validate(world=world, mechanisms=mechanisms, branch_ids=branch_ids)
+        if len(self._validated_shapes) == 4:
+            del self._validated_shapes[next(iter(self._validated_shapes))]
+        self._validated_shapes[key] = True
+
+    def _validate(self, *, world, mechanisms, branch_ids):
         ownership = {o.key: o.writer_id for o in world.owners}
         branch_ids = set(branch_ids)
         interfaces = {}

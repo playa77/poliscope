@@ -1,5 +1,6 @@
+import { workStatus } from './work-status';
 import { assistantQuestion } from './assistant-question';
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { InterviewQuery, InterviewEdit, InterviewPreview, PartitionValueDTO } from '../../contracts/interview';
 import type { WorkspaceState } from '../../contracts/workspace';
@@ -28,6 +29,7 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
   const question = useQuery({ queryKey: ['interview', query, versions], retry: false, queryFn: () => window.poliscope.interview(query) });
   const [edit, setEdit] = useState<InterviewEdit>();
   const [preview, setPreview] = useState<InterviewPreview>();
+  const previewGeneration = useRef(0);
   const [busy, setBusy] = useState(false);
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState('');
@@ -43,16 +45,19 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
   }
   function update(change: Partial<InterviewEdit>) { setEdit({ ...edit!, ...change }); setPreview(undefined); setError(''); }
   async function cancel(defer = false) {
+    previewGeneration.current++;
     setBusy(true); setError('');
     try { await window.poliscope.cancelInterview(); setEdit(undefined); setPreview(undefined); setDeferred(defer); }
     catch { setError('Cancellation could not be confirmed. Retry, or resolve an uncertain Apply.'); }
     finally { setBusy(false); }
   }
   async function runPreview() {
+    const generation = ++previewGeneration.current;
     setBusy(true); setError(''); setPreview(undefined);
-    try { setPreview(await window.poliscope.previewInterview(edit!)); }
-    catch { setError('Preview unavailable. Check nonnegative decimal quantities and whole people, then retry. No revision was applied.'); }
-    finally { setBusy(false); }
+    try { const result = await window.poliscope.previewInterview(edit!);
+      if (generation === previewGeneration.current) setPreview(result); }
+    catch (error) { if (generation === previewGeneration.current) setError(workStatus(error, 'Preview unavailable. Check nonnegative decimal quantities and whole people, then retry. No revision was applied.')); }
+    finally { if (generation === previewGeneration.current) setBusy(false); }
   }
   async function apply() {
     setBusy(true); setError(''); setUncertain(true);
@@ -91,6 +96,7 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
         <button disabled={edit.choice_id === 'player:proposal' && !edit.proposal?.trim()} onClick={() => void runPreview()}>Preview draft</button>
       </>}
     </fieldset>
+    {busy && !uncertain && <p role="status">Computing preview. You can cancel this draft while it runs.</p>}
     {error && <p role="alert">{error}</p>}
     {preview && <section aria-label="Noncommitting preview"><h5>Preview · not applied</h5><p>{preview.coverage}</p>
       <p>Affected scopes: {preview.affected_scope_ids.join(', ')}. Changed values: {preview.changed_value_ids.join(', ') || 'None'}.</p>
@@ -101,8 +107,8 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
       {preview.before.length > 0 && <table><caption>Condition changes</caption><thead><tr><th>Condition</th><th>Before</th><th>After</th></tr></thead><tbody>{preview.before.map(row => <tr key={row.id}><th>{row.property_id}</th><td>{display(row)}</td><td>{display(preview.after.find(v => v.id === row.id)!)}</td></tr>)}</tbody></table>}
       <button disabled={busy || historical} onClick={() => void apply()}>{uncertain ? 'Retry Apply' : 'Apply draft'}</button>
     </section>}
-    <button disabled={busy || uncertain || historical} onClick={() => void cancel()}>Cancel draft</button>
-    <button disabled={busy || uncertain || historical} onClick={() => void cancel(true)}>Defer this question</button>
+    <button disabled={uncertain || historical} onClick={() => void cancel()}>Cancel draft</button>
+    <button disabled={uncertain || historical} onClick={() => void cancel(true)}>Defer this question</button>
     {deferred && <p role="status">Deferred in this session. Your saved design is unchanged; enter any other domain.</p>}
     {uncertain && <button disabled={busy} onClick={() => {
       setBusy(true);

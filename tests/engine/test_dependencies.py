@@ -289,7 +289,7 @@ def test_nested_bypass_and_contract_bounds_revalidated():
     with pytest.warns(UserWarning, match='Pydantic serializer'), pytest.raises(ValidationError):
         compile(bypassed)
     data = req.model_dump(mode='json')
-    data['instances'] *= 101
+    data['instances'] *= 3001
     with pytest.raises(ValidationError):
         DependencyRequest.model_validate(data)
 

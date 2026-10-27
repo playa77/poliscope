@@ -117,7 +117,7 @@ def test_coupled_trace_identity_is_hashed_once_and_feedback_is_complete(monkeypa
 
 
 @pytest.mark.parametrize('name', ['classroom-v1', 'exploratory-v1'])
-def test_stable_exact_structural_counts_and_explicit_admission_blockers(name):
+def test_stable_exact_structural_counts_and_bounded_aggregate_admission(name):
     counts = MANIFEST['fixtures'][name]
     entities, scopes, edges = structural(counts)
     assert len(scopes) == counts['scopes']
@@ -130,9 +130,8 @@ def test_stable_exact_structural_counts_and_explicit_admission_blockers(name):
         for i in range(counts['cohorts']))
     a, b = admission(counts), admission(counts)
     assert a == b
-    assert a['status'] == 'blocked'
-    assert any(e['path'] == ['relationships'] and e['type'] == 'too_long' for e in a['errors'])
-    assert any(e['contract'] == 'DependencyRequest' and e['path'] == ['instances'] for e in a['errors'])
+    assert a['status'] == 'admitted-structure-only'
+    assert a['errors'] == []
     g = graph(counts)
     target = 'scale:asset:00000'
     assert [r.id for r in g.related(target)] == [r.id for r in edges if target in (r.from_id, r.to_id)]

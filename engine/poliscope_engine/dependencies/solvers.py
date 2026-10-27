@@ -18,6 +18,7 @@ from poliscope_engine.accounts import AccountBook, AccountError
 from poliscope_engine.allocations import allocate
 from poliscope_engine.numeric import parse, canonical, context, NumericError, RUNTIME_ID
 from poliscope_engine.mechanisms import MechanismError
+from poliscope_engine.work_limits import checkpoint
 from . import compile_dependencies, DependencyError, _components
 
 VALUE = TypeAdapter(WorldValue)
@@ -75,7 +76,7 @@ def linear_eliminate(matrix, rhs, spend):
     return [row[n] for row in a]
 
 
-def execute(request, registry, world, *, conditions=(), input_statuses=()):
+def execute(request, registry, world, *, conditions=(), input_statuses=(), pure_cache=None):
     request = ExecutionRequest.model_validate_json(request.model_dump_json())
     graph = compile_dependencies(request.dependencies, registry, world)
     from poliscope_engine.evaluation.conditions import validate_conditions, check_conditions
@@ -179,6 +180,7 @@ def execute(request, registry, world, *, conditions=(), input_statuses=()):
 
     def spend():
         nonlocal operations
+        checkpoint('solving')
         if operations >= request.operation_limit:
             raise Failure('budget_exhausted')
         operations += 1
@@ -219,6 +221,14 @@ def execute(request, registry, world, *, conditions=(), input_statuses=()):
                 if code is not None:
                     raise Failure(code)
             port = next(p for p in definition.outputs if p.id == key[2])
+            source_inputs = {p: state['input', key[1], p] for p in port.input_refs
+                if ('input', key[1], p) in state}
+            cache_key = (registry._cache_token, world._shape_token, key[1],
+                instances[key[1]].scope_id, instances[key[1]].entity_id, definition.id, definition.version, key[2],
+                tuple((p, value.model_dump_json()) for p, value in sorted(source_inputs.items())))
+            cached = pure_cache.get(cache_key) if pure_cache is not None else None
+            if cached is not None:
+                return VALUE.validate_json(cached)
             inputs = {p: VALUE.validate_json(state['input', key[1], p].model_dump_json()) for p in port.input_refs
                       if ('input', key[1], p) in state}
             procedure = definition.support.static
@@ -239,6 +249,10 @@ def execute(request, registry, world, *, conditions=(), input_statuses=()):
             if value.kind == 'unknown':
                 raise Failure('missing_input')
             registry.validate_value(port.value_type, value, world)
+            body = value.model_dump_json()
+            size = len(repr(cache_key).encode()) + len(body.encode())
+            if pure_cache is not None:
+                pure_cache.put(cache_key, body, size)
             return value
         if kind == 'account':
             if batch is None:
@@ -352,6 +366,7 @@ def execute(request, registry, world, *, conditions=(), input_statuses=()):
 
     with localcontext(context()):
         for component in graph.components:
+            checkpoint('executing')
             keys = component.nodes
             external = [p for k in keys for p in parents[k] if p not in keys]
             if any(k in overridden for k in keys):

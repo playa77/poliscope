@@ -1006,6 +1006,31 @@
       "title": "ValuePage",
       "type": "object"
     },
+    "WorkFailure": {
+      "additionalProperties": false,
+      "properties": {
+        "kind": {
+          "const": "work_stopped",
+          "title": "Kind",
+          "type": "string"
+        },
+        "reason": {
+          "enum": [
+            "work_cancelled",
+            "work_time_quota",
+            "work_snapshot_byte_quota"
+          ],
+          "title": "Reason",
+          "type": "string"
+        }
+      },
+      "required": [
+        "kind",
+        "reason"
+      ],
+      "title": "WorkFailure",
+      "type": "object"
+    },
     "WorkspaceCatalogue": {
       "additionalProperties": false,
       "properties": {
@@ -1182,7 +1207,7 @@
           "type": "integer"
         },
         "mechanism_count": {
-          "maximum": 100,
+          "maximum": 3000,
           "minimum": 0,
           "title": "Mechanism Count",
           "type": "integer"
@@ -1371,6 +1396,9 @@
     },
     {
       "$ref": "#/$defs/WorkspacePage"
+    },
+    {
+      "$ref": "#/$defs/WorkFailure"
     }
   ]
 }

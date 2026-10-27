@@ -1,10 +1,11 @@
 """Pure, review-gated static dependency compiler; never executes a mechanism."""
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from hashlib import sha256
 from heapq import heapify, heappop, heappush
 import json
 
 from poliscope_engine.contracts.dependencies import DependencyRequest
+from poliscope_engine.work_limits import checkpoint
 
 # Tuple namespaces avoid collisions even when imported IDs contain punctuation.
 Key = tuple[str, ...]
@@ -87,6 +88,7 @@ def _components(keys, edges, missing):
     heapify(ready)
     result, statuses = [], {}
     while ready:
+        checkpoint('components')
         group, i = heappop(ready)
         cyclic = len(group) > 1 or (group[0], group[0]) in edges
         status = ('solver_required' if cyclic else
@@ -109,6 +111,30 @@ def compile_dependencies(request, registry, world):
     Cyclic components remain explicitly unresolved until WP-014-solvers.
     """
     request = DependencyRequest.model_validate_json(request.model_dump_json())
+    # Validate the complete DTO even on hits. Numerical values/effects are never
+    # cached here; only an immutable schedule for this exact typed request and
+    # reviewed registry/world structure is reused.
+    data = request.model_dump(mode='json')
+    shape = data | {'fixed_inputs': [row | {'value': row['value'] | {'value': '0'}}
+        if row['value']['kind'] == 'quantity' else row for row in data['fixed_inputs']]}
+    cache_key = (world._shape_token, json.dumps(shape, sort_keys=True, separators=(',', ':')))
+    cached = registry._compiled_dependencies.get(cache_key)
+    if cached is not None:
+        registry._compiled_dependencies[cache_key] = registry._compiled_dependencies.pop(cache_key)
+        # Quantity magnitudes do not alter topology, but remain validated and
+        # bound into this request's compiler digest. Unknown/reference/type
+        # changes have different shape keys and take the complete compiler.
+        from poliscope_engine.numeric import parse
+        for item in request.fixed_inputs:
+            if item.value.kind == 'quantity':
+                parse(item.value.value)
+        for field, order in cached[3].items():
+            data[field] = [data[field][index] for index in order]
+        encoded = json.dumps(data, sort_keys=True, separators=(',', ':'))
+        fingerprint = '{"definitions":' + cached[2] + ',"model":' + json.dumps(registry.model,
+            separators=(',', ':')) + ',"request":' + encoded + '}'
+        return replace(cached[0], request_json=encoded,
+            digest='sha256:' + sha256(fingerprint.encode()).hexdigest())
     instances = {i.id: i for i in request.instances}
     if len(instances) != len(request.instances):
         raise DependencyError('duplicate_instance')
@@ -126,6 +152,7 @@ def compile_dependencies(request, registry, world):
         return key
 
     for identity, definition in sorted(definitions.items()):
+        checkpoint('compiling')
         for port in definition.inputs:
             key = add(('input', identity, port.id), port.value_type)
             inputs[key] = port
@@ -248,14 +275,26 @@ def compile_dependencies(request, registry, world):
     components = _components(nodes, edges, missing)
     # Canonicalize unordered request collections; political procedure order is
     # absent here and must be supplied explicitly to the allocator by the solver.
-    data = request.model_dump(mode='json')
+    orders = {}
     for field in ('instances', 'bindings', 'fixed_inputs', 'claims', 'account_producers', 'relationships'):
-        data[field].sort(key=lambda v: json.dumps(v, sort_keys=True))
+        orders[field] = tuple(sorted(range(len(data[field])), key=lambda i: json.dumps(data[field][i], sort_keys=True)))
+        data[field] = [data[field][index] for index in orders[field]]
     encoded = json.dumps(data, sort_keys=True, separators=(',', ':'))
-    fingerprint = json.dumps(dict(request=data, model=registry.model,
-        definitions={i: d.model_dump(mode='json') for i, d in sorted(definitions.items())}),
+    definitions_json = json.dumps({i: d.model_dump(mode='json') for i, d in sorted(definitions.items())},
         sort_keys=True, separators=(',', ':'))
-    return CompiledDependencies(encoded, registry.model,
+    fingerprint = '{"definitions":' + definitions_json + ',"model":' + json.dumps(registry.model,
+        separators=(',', ':')) + ',"request":' + encoded + '}'
+    result = CompiledDependencies(encoded, registry.model,
         'sha256:' + sha256(fingerprint.encode()).hexdigest(),
         tuple(Node(k, nodes[k]) for k in sorted(nodes)), tuple(sorted(edges)),
         components, tuple(sorted(missing)), tuple(sorted(context)))
+    size = len(repr(result).encode()) + len(cache_key[1].encode()) + len(definitions_json.encode())
+    if size <= 16 * 1024 * 1024:
+        retained = registry._compiled_bytes
+        while registry._compiled_dependencies and (len(registry._compiled_dependencies) == 4 or
+                retained + size > 16 * 1024 * 1024):
+            oldest = next(iter(registry._compiled_dependencies))
+            retained -= registry._compiled_dependencies.pop(oldest)[1]
+        registry._compiled_dependencies[cache_key] = (result, size, definitions_json, orders)
+        object.__setattr__(registry, '_compiled_bytes', retained + size)
+    return result

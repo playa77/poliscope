@@ -1,16 +1,19 @@
 """Reviewed transition proposals, shared finite reduction and durable confirmation.
 
 No default social dynamics, hidden priority, aggregate skipping or code loading.
-Each private candidate is recomputed by the boundary-store validator before its
-single commit. Missing models remain retained coverage gaps beside supported work.
+External candidates are recomputed by the boundary-store validator. Internal
+advances carry an exact-byte capability from the checked producer to the single
+commit. Missing models remain retained coverage gaps beside supported work.
 """
 from copy import deepcopy
+import json
 from dataclasses import dataclass
 from fractions import Fraction
 from decimal import localcontext
 from typing import Callable
 from pydantic import TypeAdapter
 from poliscope_engine.contracts.base import Identifier
+from poliscope_engine.contracts.base import Contract
 
 from poliscope_engine.accounts import AccountBook, AccountError
 from poliscope_engine.allocations import allocate, encoded
@@ -34,6 +37,8 @@ from poliscope_engine.policies import resolve
 from poliscope_engine.timeline import boundaries, stage_changes
 
 from poliscope_engine.stochastic import realize, available
+from poliscope_engine.work_limits import checkpoint as work_checkpoint
+from poliscope_engine.readonly import freeze, ReadOnlyError
 
 REDUCER_ID = 'atomic-transitions-v1'
 ACCOUNT_OWNER = 'shared_accounts'
@@ -69,16 +74,30 @@ class TransitionAdapter:
         return self.propose(invocation)
 
 
-def _pure(callback, *args):
+def _detached(value):
+    # Contract validation is both a deep detach and a check against forged
+    # model_copy updates. It avoids deepcopy's per-attribute Python traversal.
+    if isinstance(value, Contract):
+        return type(value).model_validate_json(value.model_dump_json())
+    if isinstance(value, tuple):
+        return tuple(_detached(v) for v in value)
+    if isinstance(value, list):
+        return [_detached(v) for v in value]
+    return deepcopy(value)
+
+
+def _pure(callback, *args, _cache=None):
+    supplied = freeze(args, {} if _cache is None else _cache)
     results = []
     for _ in range(2):
-        supplied = deepcopy(args)
-        before = digest(supplied)
-        with localcontext(context()):
-            result = callback(*supplied)
-        if digest(supplied) != before:
-            raise TransitionError('mutated_transition_inputs')
-        results.append(deepcopy(result))
+        work_checkpoint('transition_callback')
+        try:
+            with localcontext(context()):
+                result = callback(*supplied)
+        except ReadOnlyError as error:
+            raise TransitionError('mutated_transition_inputs') from error
+        work_checkpoint('transition_callback')
+        results.append(_detached(result))
     if digest(results[0]) != digest(results[1]):
         raise TransitionError('nondeterministic_transition')
     return results[0]
@@ -248,20 +267,24 @@ class TransitionReducer:
         self.revisions, self.mechanisms, self.catalog = revisions, revisions.registry, catalog
         self.store = BoundaryStore(revisions, validator=self.validate, validator_id=REDUCER_ID)
 
-    def _reduce(self, opening, experiment, due, *, cancelled=None, recorded_draws=None):
+    def _reduce(self, opening, experiment, due, *, cancelled=None, recorded_draws=None, _prepared=None):
         if self.mechanisms is None or experiment.transition_plan is None:
             raise TransitionError('transition_runtime_or_plan_unavailable')
         plan = experiment.transition_plan
         spent = 0
         def checkpoint(cost=1):
             nonlocal spent
+            work_checkpoint('transition')
             if cancelled is not None and cancelled():
                 raise BoundaryError('boundary_cancelled')
             spent += cost
             if spent > plan.operation_limit:
                 raise TransitionError('transition_operation_quota')
         checkpoint()
-        inputs = opening.state.inputs.model_copy(deep=True)
+        # All staging replaces DTOs/containers; callbacks receive detached deep
+        # read-only views. Copying immutable geography for every boundary adds
+        # no isolation and made the cost proportional to world size per writer.
+        inputs = opening.state.inputs.model_copy()
         changes, facts = stage_changes(experiment.plan, due.day, inputs.design.policies,
             {(c.scope_id, c.condition_id): c.value for c in opening.state.conditions},
             read_revision=self.revisions.read)
@@ -303,6 +326,10 @@ class TransitionReducer:
                 verify_draw(draw)
             random_draws = recorded_draws
         proposals, adapters, invocations, steps = {}, {}, {}, {}
+        callback_views = {}
+        def pure(callback, *args):
+            return _pure(callback, *args, _cache=callback_views)
+        physical_views = {}
         prior_unmet = {} if base is None else {c.claim_id: Fraction(c.unmet)
             for c in AccountBook(base.batch, self.mechanisms.units).evaluate().claims}
         new_claims, new_choices, new_order = [], [], []
@@ -359,14 +386,17 @@ class TransitionReducer:
                 continue
             selected_variables = set() if plan.random_plan is None else {
                 r.variable_id for r in plan.random_plan.references if r.instance_id == identity}
-            invocation = TransitionInvocation(random_draws=[d for d in random_draws if d.spec.variable_id in selected_variables], inputs=_physical_view(inputs, definition,
-                mechanisms=self.mechanisms, civilization_id=experiment.context.civilization_id), instance=instance,
+            view_key = tuple(definition.read_partitions)
+            if view_key not in physical_views:
+                physical_views[view_key] = _physical_view(inputs, definition,
+                    mechanisms=self.mechanisms, civilization_id=experiment.context.civilization_id)
+            invocation = TransitionInvocation(random_draws=[d for d in random_draws if d.spec.variable_id in selected_variables], inputs=physical_views[view_key], instance=instance,
                 opening_day=opening.record.day, day=due.day, allocation=None, claim_ids=[],
                 pending_claims=[o for cid, o in claim_owners.items()
                                 if o.instance_id == identity and prior_unmet.get(cid, 0)],
                 conditions=[dict(scope_id=s, condition_id=c, value=v) for (s, c), v in sorted(facts.items())])
             try:
-                proposed = _pure(callback, invocation)
+                proposed = pure(callback, invocation)
                 proposal = TransitionProposal.model_validate_json(proposed.model_dump_json())
             except TransitionUnresolved as error:
                 steps[identity] = step('unresolved', 'model_unresolved')
@@ -493,7 +523,7 @@ class TransitionReducer:
                     'unresolved_finite_allocation' if invocation.claim_ids else proposal.reason})
                 continue
             try:
-                raw = _pure(adapters[identity].resolve, invocation, proposal)
+                raw = pure(adapters[identity].resolve, invocation, proposal)
             except TransitionUnresolved:
                 # Resource spending cannot survive a failed post-allocation model.
                 raise TransitionError('unresolved_after_allocation')
@@ -514,18 +544,22 @@ class TransitionReducer:
             writes_by_instance[identity] = writes
             steps[identity] = steps[identity].model_copy(update={'status': 'applied', 'changes': writes, 'reason': 'validated_actual_allocation'})
         closing = inputs.model_copy(update={'values': list(world.values)})
+        closing_view = _physical_view(closing, mechanisms=self.mechanisms,
+            civilization_id=experiment.context.civilization_id)
         for identity, writes in writes_by_instance.items():
             checkpoint()
-            closing_view = _physical_view(closing, mechanisms=self.mechanisms,
-                civilization_id=experiment.context.civilization_id)
-            if _pure(adapters[identity].validate, invocations[identity], proposals[identity], writes, closing_view) is not None:
+            if pure(adapters[identity].validate, invocations[identity], proposals[identity], writes, closing_view) is not None:
                 raise TransitionError('invalid_model_validation_result')
         checkpoint()
-        result = evaluate(graph(closing, experiment.context.civilization_id), closing.design,
-            closing.assumptions, self.mechanisms.model, registry=self.mechanisms)
+        if self.revisions.registry is self.mechanisms:
+            evidence = self.revisions._evaluate(closing, experiment.context.civilization_id)
+            result = evidence.evaluation
+        else:
+            result = evaluate(graph(closing, experiment.context.civilization_id), closing.design,
+                closing.assumptions, self.mechanisms.model, registry=self.mechanisms)
+            evidence = retain(result, observe(result, closing.measurements, closing.goals), closing.references)
         if any(o.status == 'solver_failure' for o in result.observations):
             raise TransitionError('closing_solver_failure')
-        evidence = retain(result, observe(result, closing.measurements, closing.goals), closing.references)
         checkpoint()
         unresolved_book = request is not None and (allocation is None or allocation.status == 'unresolved')
         coverage = ('unresolved' if unresolved_book or any(s.status == 'unresolved' for s in steps.values()) else
@@ -537,10 +571,18 @@ class TransitionReducer:
         if random_draws:
             payload['random_draws'] = random_draws
         receipt = TransitionReceipt(**payload, receipt_digest=digest(payload))
+        if _prepared is not None:
+            _prepared.append((changes, facts))
         return BoundaryCandidate(inputs=closing, evidence=evidence, transition=receipt)
 
     def preview(self, expected, day, *, cancelled=None):
-        opening = self.store.read(expected.context)
+        candidate, _ = self._preview(expected, day, cancelled=cancelled)
+        # Public callers own their preview; nested lists must not alias a private
+        # confirmed frame or the next reduction's immutable geography.
+        return BoundaryCandidate.model_validate_json(candidate.model_dump_json())
+
+    def _preview(self, expected, day, *, cancelled=None):
+        opening = self.store._advance_opening(expected.context)
         if outcome(opening.record) != expected:
             raise BoundaryError('stale_boundary')
         _, experiment = self.store._experiment(expected.context)
@@ -549,7 +591,11 @@ class TransitionReducer:
         due = next(boundaries(experiment.plan, day, after_day=opening.record.day))
         if due.day != day:
             raise TransitionError('skipped_required_boundary')
-        return self._reduce(opening, experiment, due, cancelled=cancelled)
+        staged = []
+        candidate = self._reduce(opening, experiment, due, cancelled=cancelled, _prepared=staged)
+        prepared = (self.store._prepare_publication(opening, experiment, due, *staged[0], candidate)
+                    if self.store.validator == self.validate else None)
+        return candidate, prepared
 
     def validate(self, validation):
         self._validate_cancellable(validation, None)
@@ -573,8 +619,10 @@ class TransitionReducer:
                     if saved.record.day != day:
                         raise TransitionError('operation_id_bound_to_different_boundary')
                     return old
-        candidate = self.preview(expected, day, cancelled=cancelled)
+        candidate, prepared = self._preview(expected, day, cancelled=cancelled)
         request = ConfirmBoundary(boundary_contract=1, expected=expected, operation_id=operation_id, candidate=candidate)
+        if prepared is not None:
+            return self.store._confirm_prepared(request, prepared, cancelled=cancelled)
         # Carry cancellation into the validation recomputation as well as writes.
         previous = self.store.validator
         self.store.validator = lambda check: self._validate_cancellable(check, cancelled)
@@ -586,7 +634,9 @@ class TransitionReducer:
     def _validate_cancellable(self, validation, cancelled):
         _, experiment = self.store._experiment(validation.opening.record.context)
         expected = self._reduce(validation.opening, experiment, validation.due, cancelled=cancelled)
-        if (digest(expected.inputs) != digest(validation.closing.inputs) or digest(expected.evidence) != digest(validation.evidence)
+        from poliscope_engine.explanation import read_retained
+        verified = read_retained(validation.evidence.model_dump_json())
+        if (digest(expected.inputs) != digest(validation.closing.inputs) or expected.evidence.closure_digest != verified.closure_digest
                 or digest(expected.transition) != digest(validation.closing.transition)):
             raise TransitionError('transition_candidate_mismatch')
 
@@ -595,20 +645,20 @@ class TransitionReducer:
         if type(max_boundaries) is not int or not 1 <= max_boundaries <= 1000:
             raise TransitionError('invalid_chunk_quota')
         _, experiment = self.store._experiment(expected.context)
-        if outcome(self.store.read(expected.context).record) != expected:
+        if outcome(self.store._head(expected.context)) != expected:
             raise BoundaryError('stale_boundary')
         current, completed = expected, 0
         coverage = 'not_assessed'
         def event(status):
             nonlocal coverage
-            saved = self.store.read(current.context, current.sequence)
-            observed = 'not_assessed' if saved.state.transition is None else saved.state.transition.coverage
+            observed = self.store.progress_coverage(current)
             rank = {'not_assessed': -1, 'complete': 0, 'partial': 1, 'unresolved': 2}
             if rank[observed] > rank[coverage]:
                 coverage = observed
             return ChunkProgress(day=current.day, sequence=current.sequence, boundary_digest=current.boundary_digest,
                 completed=completed, status=status, coverage=coverage)
         for due in boundaries(experiment.plan, target_day, after_day=expected.day):
+            work_checkpoint('transition_boundary')
             if completed == max_boundaries:
                 break
             try:

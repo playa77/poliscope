@@ -1,0 +1,61 @@
+{
+  "package": "WP-051",
+  "disposition": "Owner-accepted prototype; further optimization deferred until all packages and thorough project testing are complete.",
+  "review_route": "solo-validated; agent review deferred",
+  "checks": [
+    {
+      "name": "Full Python regression",
+      "command": ".venv/bin/python -m pytest -q",
+      "result": "4976 passed; 59 subtests; 4 expected serialization warnings",
+      "scope": "Before the final observation-cache checksum guard; subsequent focused runs cover that guard.",
+      "log_sha256": "d43e49c39b033d46258e3cf796878e25043e7a349ec9ca121bcb23cf63f68b08"
+    },
+    {
+      "name": "Final focused regression",
+      "command": ".venv/bin/python -m pytest tests/engine/test_scale_fail_fast.py tests/engine/test_retained_chunks.py tests/engine/test_transition_prepared.py tests/engine/test_measurements.py -q",
+      "result": "74 passed",
+      "scope": "After the checksum guard; overlaps the full suite.",
+      "log_sha256": "4c0285d582124a136992cbe9628c6ce1b34bf03277a23682de0f3891d41285d8"
+    },
+    {
+      "name": "Final guard regression",
+      "command": ".venv/bin/python -m pytest tests/engine/test_canonical_fast.py tests/engine/test_scale_fail_fast.py tests/engine/test_retained_chunks.py -q",
+      "result": "8 passed",
+      "scope": "Includes added time/body identity and corrupt-observation-cache cases; overlaps other runs.",
+      "log_sha256": "46eeca69ea0e18836f428056a7edef902d96740af7ad13c74d32b91c7660ff6c"
+    },
+    {
+      "name": "Desktop units",
+      "command": "npm exec vitest -- run",
+      "result": "440 passed; 39 files",
+      "scope": "Full desktop unit suite, not packaged native application validation.",
+      "log_sha256": "c1429b9bb3950278cfc658c46cbca71f72dd9b4f96dbb36e002acb7091dc1957"
+    },
+    {
+      "name": "TypeScript",
+      "command": "npm run typecheck",
+      "result": "passed",
+      "scope": "",
+      "log_sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125"
+    },
+    {
+      "name": "Roadmap",
+      "command": ".venv/bin/python -m unittest discover -s tests/roadmap -q",
+      "result": "52 passed",
+      "scope": "After owner prototype acceptance was recorded.",
+      "log_sha256": "9d2fee6086307c92c8d2c53e71914581415ae369b2f59cd9ccfb201581094c19"
+    }
+  ],
+  "additional_checks": [
+    "scripts/check_baseline.py: passed",
+    "scripts/check_roadmap.py: passed",
+    "scripts/build_content.py --check: passed",
+    "scripts/generate_contracts.py --check: passed",
+    "git diff --check: passed"
+  ],
+  "performance_receipt": "docs/roadmap/execution/WP-051-optimization.json",
+  "performance_claim": "Three days measured; projected annual time misses original budget. No completed full-scale year, final 30-sample coupled preview, native platform, or combined Electron RSS pass is claimed.",
+  "measurement_identity": "The performance receipt candidate field is the base HEAD at measurement. Its source hashes bind the then-uncommitted engine and fixture code.",
+  "native_validation": "owner-run; not claimed passed",
+  "publication_authorization": "User explicitly accepted prototype performance and requested a PR."
+}

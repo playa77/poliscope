@@ -12,6 +12,7 @@ from poliscope_engine.mechanisms import MechanismRegistry
 from poliscope_engine.numeric import Registry, Unit, RUNTIME_ID, parse
 from poliscope_engine.revisions import Revisions
 from poliscope_engine.storage import Store
+from poliscope_engine.work_limits import WorkStopped
 
 DOMAIN_NAMES = (
     'Resource & Material Base', 'Economy & Exchange', 'Governance & Collective Decision-Making',
@@ -87,8 +88,7 @@ def select(service, options):
 def page(service, options):
     query = WorkspacePageRequest.model_validate(options)
     # Scope must belong to this immutable revision. Never invent a zero/empty scope.
-    record = service.read(query.context)
-    if query.collection != 'scopes' and query.scope_id not in {s.id for s in record.inputs.scopes}:
+    if query.collection != 'scopes' and not service.has_scope(query.context, query.scope_id):
         raise ValueError('unknown_scope')
     result = service.inspect(WorldInspectParams(world_schema=1, context=query.context,
         collection=query.collection, cursor=query.cursor, limit=25))
@@ -174,11 +174,17 @@ def main():
             raise ValueError('invalid_workspace_frame')
         data = json.loads(raw)
         with Store(Path(args.directory)) as store:
-            reply = dispatch(Revisions(store, registry=registry()), args.operation, data, args.identity)
+            from poliscope_engine.work_limits import WorkLimits
+            reply = dispatch(Revisions(store, registry=registry(), limits=WorkLimits(seconds=12)), args.operation, data, args.identity)
             frame = reply.model_dump_json().encode() + b'\n'
             if len(frame) > 1048576:
                 raise ValueError('workspace_response_too_large')
         sys.stdout.buffer.write(frame)
+        return 0
+    except WorkStopped as error:
+        from poliscope_engine.contracts.workspace import WorkFailure
+        failure = WorkFailure(kind='work_stopped', reason=str(error))
+        sys.stdout.buffer.write(failure.model_dump_json().encode() + b'\n')
         return 0
     except Exception:
         # Never expose user paths, saved private text, or arbitrary diagnostics.

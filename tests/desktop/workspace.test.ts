@@ -84,3 +84,21 @@ it('late old-state responses stay in their own query cache when branch, scope or
   }
   unsubscribe(); client.clear();
 });
+
+it('cancels a real running pure preview without granting Apply or changing the saved head', async () => {
+  const directory = await mkdtemp(join(tmpdir(), 'poliscope-cancel-preview-'));
+  try {
+    const controller = new WorkspaceController(false, resolve('.'), '');
+    await controller.choose(directory);
+    const initial = await controller.create(options);
+    const pending = controller.previewWorld({ context: initial.context, scope_id: 'home', change: {
+      kind: 'entity', entity: { id: 'synthetic:cancelled', entity_kind: 'asset', label: 'Cancelled draft',
+        provenance: { origin: 'player_input', source_refs: [], assumption_refs: [] } }, population_role: null,
+    } });
+    const rejected = expect(pending).rejects.toThrow();
+    await controller.cancelWorld(); await rejected;
+    await expect(controller.applyWorld({ candidate_digest: 'sha256:' + '0'.repeat(64) })).rejects.toThrow('No granted');
+    const reopened = await controller.select({ civilization_id: initial.context.civilization_id, branch_id: 'main', revision_id: null });
+    expect(reopened.context).toEqual(initial.context);
+  } finally { await rm(directory, { recursive: true, force: true }); }
+}, 30_000);

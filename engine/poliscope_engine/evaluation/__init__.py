@@ -18,6 +18,7 @@ from poliscope_engine.numeric import RUNTIME_ID, parse
 from poliscope_engine.policies import resolve
 from .identity import serialized, digest
 from .conditions import validate_conditions
+from poliscope_engine.work_limits import checkpoint
 
 # v3 permits retained denied time claims to fund a subsequent allocation phase.
 EVALUATOR_ID = 'pure-static-v3'
@@ -37,6 +38,7 @@ def index(rows):
 
 
 def _prepare(world, design, assumptions, model_identity, registry):
+    checkpoint('preparing')
     # Normalize the actual execution snapshots as well as their identities.
     design = EvaluationDesign.model_validate_json(serialized(design))
     assumptions = tuple(AssumptionValue.model_validate_json(serialized(a)) for a in assumptions)
@@ -122,18 +124,27 @@ def _prepare(world, design, assumptions, model_identity, registry):
             raise EvaluationError('unknown_claimant')
         AccountBook(execution.batch, registry.units).evaluate()
     world_snapshot = dict(civilization_id=world.registry.civilization_id,
-        entities=world.registry.entities, scopes=world.registry.scopes,
-        values=world.registry.values, owners=world.registry.owners,
-        populations=world.registry.populations, relationships=world.relationships)
-    input_data = dict(world=world_snapshot, design=design.model_dump(mode='json', exclude={'realization'}),
+        entities=world.registry._canonical_entities, scopes=world.registry._canonical_scopes,
+        values=world.registry.values, owners=world.registry._canonical_owners,
+        populations=world.registry._canonical_populations, relationships=world._canonical_relationships)
+    input_data = dict(world=world_snapshot, design={name: getattr(design, name)
+        for name in type(design).model_fields if name != 'realization'},
                       assumptions=assumptions)
-    model_data = dict(identity=registry.model, evaluator=EVALUATOR_ID, numeric=RUNTIME_ID,
+    from .canonical import Fragment
+    input_data = Fragment(input_data)
+    model_key = EVALUATOR_ID, RUNTIME_ID, PYTHON_RUNTIME, decimal.__libmpdec_version__, pydantic.__version__
+    previous_model = getattr(registry, '_model_snapshot', None)
+    model_data = previous_model[1] if previous_model is not None and previous_model[0] == model_key else None
+    if model_data is None:
+        model_data = Fragment(dict(identity=registry.model, evaluator=EVALUATOR_ID, numeric=RUNTIME_ID,
         python=PYTHON_RUNTIME, decimal_library=decimal.__libmpdec_version__,
         pydantic=pydantic.__version__, definitions=registry.definitions, graphs=registry.graphs,
         reviews=[asdict(r) for r in registry.reviews],
         implementations=[dict(id=i.id, version=i.version, phase=i.phase) for i in registry.implementations],
         units=registry.units.units, times=registry.times, source_ids=registry.source_ids,
-        assumption_ids=registry.assumption_ids, fixture_ids=registry.fixture_ids)
+        assumption_ids=registry.assumption_ids, fixture_ids=registry.fixture_ids))
+        object.__setattr__(registry, '_model_snapshot', (model_key, model_data))
+    checkpoint('prepared', size=lambda: len(serialized(input_data).encode()) + len(serialized(model_data).encode()))
     identity = dict(canonical_version=1, input_digest=digest(input_data),
         model_digest=digest(model_data), realization_digest=digest(design.realization))
     identity['cache_key'] = digest(identity)
@@ -150,10 +161,10 @@ def _status(code):
     return 'solver_failure'
 
 
-def _run(prepared, world, registry):
+def _run(prepared, world, registry, *, pure_cache=None):
     design, execution, policies, overrides, input_data, model_data, identity = prepared
     numerical = execute(execution, registry, world.registry, conditions=design.conditions,
-                        input_statuses=overrides)
+                        input_statuses=overrides, pure_cache=pure_cache)
     values = {key: VALUE.validate_json(value) for key, value in numerical.values}
     instances = {i.id: i for i in execution.dependencies.instances}
     definitions = {i.id: registry.definition(i.mechanism_id, i.mechanism_version) for i in instances.values()}
@@ -198,9 +209,14 @@ def _run(prepared, world, registry):
         final_batch_json=serialized(final_batch) if final_batch else None,
         input_json=serialized(input_data), model_json=serialized(model_data),
         realization_json=serialized(design.realization))
-    identity = identity | {'output_digest': digest(payload)}
-    result = EvaluationResult(identities=EvaluationIdentities(**identity), **payload)
-    return EvaluationResult.model_validate_json(serialized(result))
+    from .canonical import seal, remember_document
+    _, text = seal(payload, 'output_digest', container='identities', identity=identity)
+    checkpoint('evaluated', size=len(text.encode()))
+    result = EvaluationResult.model_validate_json(text)
+    remember_document(result, text)
+    from poliscope_engine.verification import remember
+    remember('evaluation', result)
+    return result
 
 
 def evaluate(world, design, assumptions, model_identity, *, registry):
@@ -220,7 +236,7 @@ class EvaluationCache:
     discipline. Complete manifests still participate in the portable cache key.
     There is no API to import arbitrary persisted entries as trusted results.
     """
-    def __init__(self, capacity=16, *, max_bytes=64 * 1024 * 1024):
+    def __init__(self, capacity=16, *, max_bytes=64 * 1024 * 1024, incremental_bytes=0):
         if type(capacity) is not int or not 1 <= capacity <= 1000:
             raise EvaluationError('invalid_cache_capacity')
         self.capacity = capacity
@@ -228,10 +244,16 @@ class EvaluationCache:
             raise EvaluationError('invalid_cache_byte_limit')
         self.max_bytes = max_bytes
         self._entries = {}
+        if type(incremental_bytes) is not int or not 0 <= incremental_bytes <= 16 * 1024 * 1024:
+            raise EvaluationError('invalid_incremental_byte_limit')
+        from .canonical import Memo
+        self._pure = Memo(incremental_bytes, entries=4096) if incremental_bytes else None
 
     def clear(self):
         """Discard disposable results; accepted evidence belongs to revisions."""
         self._entries.clear()
+        if self._pure is not None:
+            self._pure.clear()
 
     def evaluate(self, world, design, assumptions, model_identity, *, registry):
         prepared = _prepare(world, design, assumptions, model_identity, registry)
@@ -241,10 +263,11 @@ class EvaluationCache:
             result = EvaluationResult.model_validate_json(entry[1])
             payload = result.model_dump(mode='json', exclude={'identities'})
             if result.identities.output_digest == digest(payload):
+                checkpoint('cache_hit', size=len(entry[1].encode()))
                 # A hit refreshes recency without retaining mutable DTOs.
                 self._entries[key] = self._entries.pop(key)
                 return result
-        result = _run(prepared, world, registry)
+        result = _run(prepared, world, registry, pure_cache=self._pure)
         payload = result.model_dump_json()
         size = len(payload.encode('utf-8'))
         self._entries.pop(key, None)

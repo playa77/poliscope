@@ -827,7 +827,7 @@
           "items": {
             "$ref": "#/$defs/NumericalBinding"
           },
-          "maxItems": 1000,
+          "maxItems": 30000,
           "title": "Bindings",
           "type": "array"
         },
@@ -848,7 +848,7 @@
           "items": {
             "$ref": "#/$defs/FixedInput"
           },
-          "maxItems": 1000,
+          "maxItems": 10000,
           "title": "Fixed Inputs",
           "type": "array"
         },
@@ -856,7 +856,7 @@
           "items": {
             "$ref": "#/$defs/MechanismInstance"
           },
-          "maxItems": 100,
+          "maxItems": 3000,
           "title": "Instances",
           "type": "array"
         },
@@ -864,7 +864,7 @@
           "items": {
             "$ref": "#/$defs/ContextRelationship"
           },
-          "maxItems": 1000,
+          "maxItems": 30000,
           "title": "Relationships",
           "type": "array"
         }
@@ -2858,7 +2858,7 @@
           "items": {
             "$ref": "#/$defs/EntityDTO"
           },
-          "maxItems": 1000,
+          "maxItems": 5000,
           "title": "Entities",
           "type": "array"
         },
@@ -2922,7 +2922,7 @@
           "items": {
             "$ref": "#/$defs/RelationshipDTO"
           },
-          "maxItems": 1000,
+          "maxItems": 30000,
           "title": "Relationships",
           "type": "array"
         },
