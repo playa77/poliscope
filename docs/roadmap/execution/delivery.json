@@ -31,9 +31,15 @@
       "evidence": "New offline packaged scenario connects expectation, interview preview/apply/deferral, matrix table, retained comparison/fork, observation and opted-in Markdown report. Local exclusion/trace/assumption/source walkthrough and neutral diagnostic/target checks pass overview regression. Student/designer/educator author perspectives recorded; no participant study or G7 claim."
     }
   ],
-  "blockers": [],
+  "blockers": [
+    "Publication only: explicit user approval to push this branch to origin and open a regular PR. Implementation and acceptance checks are complete locally."
+  ],
   "publication": {
-    "status": "pending push and regular PR",
+    "status": "blocked by automatic approval review; explicit user publication approval required",
+    "branch": "codex/wp-052-usability",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "06fb663",
+    "reason": "Automatic review states that implementing the package does not itself authorize exporting repository code/history to GitHub; destination trust and explicit egress authorization require user confirmation. No push or PR performed.",
     "merge": "not authorized; not performed"
   },
   "validation": "docs/roadmap/execution/WP-052-validation.json"
