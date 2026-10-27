@@ -32,13 +32,14 @@
     }
   ],
   "publication": {
-    "status": "authorized; ready to publish",
+    "status": "published; regular PR open",
     "destination": "https://github.com/playa77/poliscope.git",
     "branch": "codex/wp-050-provider-validation",
     "action": "Push completed authorized offline child and open regular PR against main; do not merge",
     "implementation_commit": "1cc92f7",
     "reason": "On 2026-10-27 the requesting user explicitly authorized pushing codex/wp-050-provider-validation to playa77/poliscope and opening a regular PR.",
-    "next_action": "Push the branch and open a regular PR against main; do not merge."
+    "next_action": "Review PR #121; do not merge without user authorization.",
+    "url": "https://github.com/playa77/poliscope/pull/121"
   },
   "parent_blocker": "Live harness/run requires separately authorized bounded scope and securely configured OpenRouter credentials/credits. User explicitly selected offline evidence only. Full WP-050 and G6/M6 acceptance remain blocked."
 }
