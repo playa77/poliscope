@@ -8,6 +8,15 @@ request; do not start unrelated implementation packages or rewrite requirements.
 
 Target Windows x64 and Linux x64 only. The owner deferred Mac support to a later product version because nobody on the team owns a Mac for testing. Do not plan, implement or require Mac work for this version. See [platform scope](docs/platform_scope.md).
 
+The repository owner explicitly waived agent-run native machine validation for
+the entire project on 2026-10-27 and will test packages on their own machine.
+Do not require native Windows/Linux runners, reference desktop hardware or power
+settings, or native packaging/performance results as a condition of agent delivery.
+Run the relevant checks available in the current environment and report their
+scope honestly. Native validation is owner-run and must not be reported as passed
+without the owner's results. This waiver does not remove implementation work,
+functional regression checks, or the IPC/resource safety limits.
+
 ## Start with the actual repository
 
 - Inspect `git status`, the current branch, relevant files, and applicable
@@ -201,8 +210,8 @@ npm run package
 - Keep dependency locks and generated contracts tracked. Use frozen installs;
   do not regenerate locks merely to get past an unexplained failure. Document
   intentional dependency changes and additional runtime dependencies.
-- Native packages must be built and validated on their target OS/architecture;
-  a Linux run cannot certify Windows support.
+- Native validation is owner-run under the project-wide waiver above; a Linux
+  run cannot certify Windows support.
 - Keep patches focused and avoid unrelated formatting or speculative abstractions.
   Do not commit credentials, personal saves, transcripts, caches, or build output.
   Check the final diff and working-tree status; preserve unrelated user work.

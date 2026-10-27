@@ -22,6 +22,17 @@ def require(condition, message):
         raise ValueError(message)
 
 
+def validate_benchmarks(benchmark):
+    reference = benchmark['reference']
+    owner_run = (reference.get('validation') == 'owner-run'
+        and reference.get('decision_ref') == 'docs/platform_scope.md'
+        and bool(re.fullmatch(r'\d{4}-\d{2}-\d{2}', reference.get('decision_date', '')))
+        and bool(reference.get('owner')))
+    require(benchmark['measurement']['samples_min'] >= 30
+        and (reference.get('blocker') or owner_run), 'Unmeasurable benchmark/reference status')
+    require(benchmark['budgets']['ipc_max_bytes'] == 1048576, 'IPC limit cannot be relaxed')
+
+
 def validate_requirements(ledger, children, root=ROOT):
     require(ledger.get("version") == 1, "Unknown requirement ledger version")
     ids = set()
@@ -168,9 +179,7 @@ def validate_baseline(directory=DATA, root=ROOT):
                 row["transition_child"] in children and row["review_child"] in children,
                 f"{pid}: missing substantive behavior/review owner")
     benchmark = read("benchmarks.json", directory)
-    require(benchmark["measurement"]["samples_min"] >= 30 and benchmark["reference"]["blocker"],
-            "Unmeasurable benchmark/reference status")
-    require(benchmark["budgets"]["ipc_max_bytes"] == 1048576, "IPC limit cannot be relaxed")
+    validate_benchmarks(benchmark)
     return len(ledger["requirements"]), len(packages["packages"]), len(children)
 
 

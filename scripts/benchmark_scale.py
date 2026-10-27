@@ -55,6 +55,13 @@ def measure(function, samples):
     return summarize(values), result
 
 
+def reference_blockers(manifest):
+    """Honor the owner's project-wide native-validation decision explicitly."""
+    if manifest['reference'].get('validation') == 'owner-run':
+        return []
+    return [dict(id='PERF-REF-001', reason='Exact native reference hardware and power settings not selected.')]
+
+
 def machine():
     """Nonsecret host facts; unknown SSD/power configuration stays unknown."""
     data = dict(logical_cpus=os.cpu_count(), cpu_model=None, ram_bytes=None,
@@ -161,10 +168,17 @@ def collect(samples):
         logical_cpus=os.cpu_count(), clock='perf_counter_ns; monotonic', samples=samples,
         memory_scope='single diagnostic Python process high-water RSS; excludes Electron; not combined budget evidence',
         reference_machine=False, budgets=manifest['budgets'], workloads={}, blockers=[
-            dict(id='PERF-REF-001', reason='Exact native four-core/16-GiB/SSD reference and power settings not selected; cloud timings are diagnostic.'),
             dict(id='PERF-MODEL-001', reason='DEC-06 coupled twelve-domain arithmetic, SCC coefficients and 365-day transition fixture not frozen; structural probes cannot certify evaluation/advance.'),
-            dict(id='PERF-UI-001', reason='Combined Electron RSS, running-work keyboard/navigation/cancel p95 and stale-query cancellation require native integrated measurement.'),
         ])
+    report['native_validation'] = manifest['reference'].get('validation', 'required')
+    report['blockers'].extend(reference_blockers(manifest))
+    report['owner_run_validation'] = [
+        'native Windows/Linux correctness and replay',
+        'combined Electron RSS and running-work keyboard/navigation/cancel p95',
+        'native reference desktop latency and throughput budgets',
+    ] if report['native_validation'] == 'owner-run' else []
+    if report['native_validation'] != 'owner-run':
+        report['blockers'].append(dict(id='PERF-UI-001', reason='Native integrated UI/RSS measurements pending.'))
     report['source_sha256'] = {name: hashlib.sha256((ROOT/name).read_bytes()).hexdigest() for name in [
         'scripts/benchmark_scale.py', 'scripts/scale_fixtures.py', 'tests/engine/headless_fixture.py',
         'engine/poliscope_engine/world/membership.py', 'engine/poliscope_engine/evaluation/__init__.py',

@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "package": "WP-051",
+  "workload": "semantic-history-archive-v1",
+  "candidate": "bccb80cf530ef08782f4b49e5adbe990326b5669",
+  "tracked_diff_sha256": "3a7239e4d14d6987fe18a41a398913a570b94853982d38a1d5850e1e0bb3d04c",
+  "command": [
+    "scripts/benchmark_archive.py",
+    "--store",
+    "/tmp/wp051-semantic-full/store",
+    "--archive",
+    "/tmp/wp051-semantic-full/semantic-history-bounded.zip",
+    "--output",
+    "/tmp/wp051-semantic-archive.json"
+  ],
+  "machine": {
+    "logical_cpus": 3,
+    "cpu_model": "INTEL(R) XEON(R) PLATINUM 8573C",
+    "ram_bytes": 10452471808,
+    "cpu_quota": "200000 100000",
+    "power_mode": null,
+    "ssd_verified": false,
+    "native_reference": false,
+    "workspace_disk_total_bytes": 33770192896
+  },
+  "python": "3.12.14",
+  "source_sha256": {
+    "scripts/benchmark_archive.py": "e110e843ce8b9f241c19e8ba9b27f897a5b49714106d24eebd071d3dd581849e",
+    "engine/poliscope_engine/archives.py": "84c280fdac249cb4c05c3ade27c0532073ad8f9d63e4b8f9c7258cd7990324a8"
+  },
+  "samples": 1,
+  "memory_scope": "single Python process high-water RSS; excludes Electron",
+  "native_validation": "owner-run",
+  "status": "validated",
+  "revisions": 1000,
+  "branches": 20,
+  "entries": 1020,
+  "bytes": 13179765,
+  "export_ms": 288571.575158,
+  "validate_ms": 101637.36753,
+  "peak_rss_bytes": 1082281984
+}

@@ -145,29 +145,36 @@ def project(service, options, *, cancelled=None):
         def bid(civilization, identity):
             try:return branch_ids[civilization,identity]
             except KeyError as exc:raise ArchiveError('missing_branch_reference') from exc
-        records, evidence, mapping = [], {}, {}
+        # Keep only revision contexts and reference classification across the
+        # first pass. SQLite pins the immutable records for the second pass;
+        # retaining every decoded input/evidence graph here doubles peak memory
+        # while the projected archive is being built.
+        records, mapping = [], {}
+        allowed, private = set(), set()
         snapshot_bytes = 0
         for civ in sorted({b.context.civilization_id for b in branches}):
             scope = service._scope(service.data_store_id, civ)
             for _, raw in _page(store, scope, 'revision_index'):
+                _cancel(cancelled)
                 summary = RevisionSummary.model_validate_json(raw)
                 record = service.read(summary.context)
                 key = (civ, record.context.revision_id)
                 if key in mapping:
                     raise ArchiveError('duplicate_revision')
                 mapping[key] = 'revision:' + str(len(records))
-                records.append(record)
-                evidence[key] = service.evidence(record.context)
-                snapshot_bytes += len(record.model_dump_json().encode()) + len(evidence[key].model_dump_json().encode())
+                records.append(record.context)
+                saved = service.evidence(record.context)
+                allowed.update(r.id for r in saved.references
+                    if r.visibility == 'public' and r.availability == 'available')
+                private.update(r.id for r in saved.references if r.visibility != 'public')
+                snapshot_bytes += len(record.model_dump_json().encode()) + len(saved.model_dump_json().encode())
                 if snapshot_bytes > MAX_ARCHIVE:
                     raise ArchiveError('archive_snapshot_budget')
                 if len(records) > MAX_ENTRIES:
                     raise ArchiveError('archive_entry_budget')
         # Missing/unknown reference descriptors are private by default across history.
-        allowed = {r.id for saved in evidence.values() for r in saved.references
-                   if r.visibility == 'public' and r.availability == 'available'}
         # A reference ever classified private stays private even if another version exposes it.
-        allowed -= {r.id for saved in evidence.values() for r in saved.references if r.visibility != 'public'}
+        allowed -= private
         def rid(civ, identity):
             if identity is None:
                 return None
@@ -187,11 +194,12 @@ def project(service, options, *, cancelled=None):
                 self.size += size
                 super().append(item)
         items, omissions = BoundedItems(), []
-        for record in records:
+        for record_context in records:
             _cancel(cancelled)
+            record = service.read(record_context)
             civ, old = record.context.civilization_id, record.context.revision_id
             identity = rid(civ, old)
-            saved = evidence[civ, old]
+            saved = service.evidence(record_context)
             items.append(ArchiveRevision.model_validate(dict(id=identity, civilization_id=civ,
                 branch_id=bid(civ,record.context.branch_id), parent_id=rid(civ, record.parent_id),
                 inputs=_scrub(record.inputs, allowed), alternatives=_scrub(record.decision.alternatives, allowed),

@@ -4,18 +4,18 @@
   "status": "in_progress",
   "record": "docs/roadmap/execution/WP-051.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
+  "base": "bccb80cf530ef08782f4b49e5adbe990326b5669",
   "branch": "codex/wp-051-scale",
   "acceptance": [
     {
       "id": "scale-workflows",
       "status": "pending",
-      "evidence": "Structural target admission is blocked by production DTO limits; full coupled workloads and semantic trace closure remain implementation obligations."
+      "evidence": "Semantic history passes: 1000 immutable revisions, twenty branches and 100000 connected retained traces with every value checked by an integer oracle and bounded dependency pages. Structural target admission and the full coupled DEC-06 preview/365-day workflow remain implementation obligations."
     },
     {
       "id": "cache-correctness",
       "status": "passed",
-      "evidence": "Complete result identity, byte-quota rejection/eviction/clear, immutable adjacency order/kind/self-edge/detachment and canonical world serialization regressions pass. Public application integration remains in other pending parent criteria."
+      "evidence": "Complete result identity, byte-quota rejection/eviction/clear, immutable adjacency order/kind/self-edge/detachment and canonical world serialization regressions pass. Public application integration remains in other pending parent criteria. Continuation: SCC membership hashing preserves exact trace identities/feedback; two-pass archive projection preserves pinned snapshot privacy and releases decoded first-pass graphs. Affected 312 engine cases pass."
     },
     {
       "id": "quotas-cancellation",
@@ -25,14 +25,13 @@
     {
       "id": "reference-budgets",
       "status": "pending",
-      "evidence": "PERF-REF-001: native reference desktop and power mode unavailable; cloud diagnostics cannot certify release budgets."
+      "evidence": "Native reference hardware, power settings and Windows/Linux testing are owner-run under the project-wide user waiver of 2026-10-27. No native result is claimed. Available implementation and service performance evidence must still be completed."
     }
   ],
   "blockers": [
-    "PERF-REF-001: native reference desktop unavailable",
     "PERF-ADMISSION-classroom-v1 / exploratory-v1: scaled DTO ingestion and full workflow implementation pending",
     "PERF-MODEL-001: coupled synthetic numerical fixture and independent oracle pending",
-    "PERF-UI-001: integrated renderer/cancellation/combined-RSS measurement pending"
+    "PERF-UI-001: running-work progress, stale-query and resource-quota integration pending; native testing is owner-run"
   ],
   "previous_parent": {
     "package": "WP-050",
@@ -40,10 +39,20 @@
     "record": "docs/roadmap/execution/WP-050.md",
     "blocker": "Separately authorized live provider validation and securely configured credentials/credits remain unavailable; offline delivery merged in PR #121."
   },
-  "execution_unit": "WP-051-diagnostics",
+  "execution_unit": "WP-051-semantic-history",
   "authorization": {
     "source": "user",
-    "scope": "WP-051-diagnostics",
-    "instruction": "Publish diagnostic child; keep parent open"
+    "scope": "WP-051-semantic-history",
+    "instruction": "very good. prepare and open a pr with your work."
+  },
+  "native_validation": {
+    "status": "owner-run",
+    "decision": "2026-10-27 project-wide owner waiver",
+    "record": "docs/platform_scope.md"
+  },
+  "parent_authorization": {
+    "source": "user",
+    "scope": "WP-051",
+    "instruction": "finish WP-051."
   }
 }

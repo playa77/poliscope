@@ -1,44 +1,79 @@
 {
   "version": 1,
   "package": "WP-051",
-  "status": "complete",
-  "kind": "authorized_child",
-  "child": "WP-051-diagnostics",
   "record": "docs/roadmap/execution/WP-051.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
+  "base": "bccb80cf530ef08782f4b49e5adbe990326b5669",
   "branch": "codex/wp-051-scale",
+  "status": "complete",
+  "kind": "authorized_child",
+  "child": "WP-051-semantic-history",
   "authorization": {
     "source": "user",
-    "scope": "WP-051-diagnostics",
-    "instruction": "Publish diagnostic child; keep parent open"
+    "scope": "WP-051-semantic-history",
+    "instruction": "very good. prepare and open a pr with your work."
   },
-  "scope": "Explicitly authorized diagnostic child: exact structural admission probes, real 1000-revision/20-branch history and archive, bounded query/cache library APIs, reproducible fail-closed timing evidence. Full WP-051 remains open.",
+  "scope": "User-authorized WP-051 checkpoint: semantic history with 1000 immutable revisions, twenty branches and 100000 connected retained traces; exact SCC trace identity optimization; pinned two-pass archive projection and early cancellation; project-wide owner-run native validation disposition. Full WP-051 remains open.",
   "acceptance": [
     {
-      "id": "bounded-diagnostics",
+      "id": "semantic-history",
       "status": "passed",
-      "evidence": "Exact structural counts and production admission failures; 30-sample API/primitive diagnostics; 1000 actual revisions, 20 branches, validated archive and bounded pages. Release gates remain explicitly blocked."
+      "evidence": "WP-051-semantic-history.json validates 1000 revisions, twenty branches and 100000 traces, every value against the integer oracle, bounded pages, cache clearing and data-only retained reads, plus a complete archive."
     },
     {
-      "id": "query-cache-invariants",
+      "id": "trace-archive-invariants",
       "status": "passed",
-      "evidence": "85 distinct affected cases covered across focused/final runs; 139 shared engine regressions; 435 full desktop units and 51 roadmap units. Exact counts and source scope in validation receipt."
+      "evidence": "312 affected engine cases, including six new cases; SCC identity/feedback retained, first-pass graphs released and immediate cancellation reads no evidence. WP-051-semantic-archive.json validates 1020 entries at 1082281984 bytes single-process Python peak RSS; manifest and every entry digest match the baseline. Extra rereads increase archive time; no speedup claimed."
     },
     {
-      "id": "fail-closed-handoff",
+      "id": "scope-and-native-disposition",
       "status": "passed",
-      "evidence": "Explicit user child authorization retained; default benchmark command fails while native/full-scale gates remain open. Parent acceptance stays pending, no release/native or full WP-051 claim."
+      "evidence": "52 roadmap cases, baseline/roadmap/generated-contract checks and whitespace checks pass. Project-wide native validation waiver is recorded; owner-run native tests are not claimed as passed. Parent acceptance remains pending."
     }
   ],
-  "parent_blocker": "Full coupled DEC-06 fixture and scaled ingestion/trace/quota integration remain; native reference/UI/combined-RSS and Windows evidence unavailable.",
-  "publication": {
-    "status": "published; regular PR open",
-    "implementation_commit": "41745ac",
-    "url": "https://github.com/playa77/poliscope/pull/122",
-    "destination": "https://github.com/playa77/poliscope.git",
+  "parent_blocker": "Scaled ingestion, the coupled DEC-06 365-day fixture and integrated quota/cancellation work remain implementation obligations. Native validation is owner-run.",
+  "previous_delivery": {
+    "version": 1,
+    "package": "WP-051",
+    "status": "complete",
+    "kind": "authorized_child",
+    "child": "WP-051-diagnostics",
+    "record": "docs/roadmap/execution/WP-051.md",
+    "owner": "Codex /root, controlled by the requesting repository user",
+    "base": "705ee1e47716ace5a23b33d4018fa2e08d64c758",
     "branch": "codex/wp-051-scale",
-    "authorization": "Requesting user: Publish diagnostic child; keep parent open",
-    "merge": "not authorized; not performed"
+    "authorization": {
+      "source": "user",
+      "scope": "WP-051-diagnostics",
+      "instruction": "Publish diagnostic child; keep parent open"
+    },
+    "scope": "Explicitly authorized diagnostic child: exact structural admission probes, real 1000-revision/20-branch history and archive, bounded query/cache library APIs, reproducible fail-closed timing evidence. Full WP-051 remains open.",
+    "acceptance": [
+      {
+        "id": "bounded-diagnostics",
+        "status": "passed",
+        "evidence": "Exact structural counts and production admission failures; 30-sample API/primitive diagnostics; 1000 actual revisions, 20 branches, validated archive and bounded pages. Release gates remain explicitly blocked."
+      },
+      {
+        "id": "query-cache-invariants",
+        "status": "passed",
+        "evidence": "85 distinct affected cases covered across focused/final runs; 139 shared engine regressions; 435 full desktop units and 51 roadmap units. Exact counts and source scope in validation receipt."
+      },
+      {
+        "id": "fail-closed-handoff",
+        "status": "passed",
+        "evidence": "Explicit user child authorization retained; default benchmark command fails while native/full-scale gates remain open. Parent acceptance stays pending, no release/native or full WP-051 claim."
+      }
+    ],
+    "parent_blocker": "Full coupled DEC-06 fixture and scaled ingestion/trace/quota integration remain; native reference/UI/combined-RSS and Windows evidence unavailable.",
+    "publication": {
+      "status": "published; regular PR open",
+      "implementation_commit": "41745ac",
+      "url": "https://github.com/playa77/poliscope/pull/122",
+      "destination": "https://github.com/playa77/poliscope.git",
+      "branch": "codex/wp-051-scale",
+      "authorization": "Requesting user: Publish diagnostic child; keep parent open",
+      "merge": "not authorized; not performed"
+    }
   }
 }

@@ -1,0 +1,91 @@
+{
+  "version": 1,
+  "package": "WP-051",
+  "status": "in_progress",
+  "base": "bccb80cf530ef08782f4b49e5adbe990326b5669",
+  "branch": "codex/wp-051-scale",
+  "native_validation": "owner-run under project-wide user waiver; not an agent blocker",
+  "review": "solo-validated; agent review deferred",
+  "validation": [
+    {
+      "command": ".venv/bin/python -m pytest tests/engine/test_scale_probes.py tests/engine/test_archives.py tests/engine/test_measurements.py tests/engine/test_revisions.py tests/engine/test_evaluation.py tests/engine/test_dependencies.py tests/engine/test_solvers.py -q",
+      "status": "passed",
+      "cases": 312,
+      "elapsed_seconds": 24.62,
+      "new_cases": 6,
+      "scope": "affected selection; not full Python regression suite"
+    },
+    {
+      "command": ".venv/bin/python -m unittest discover -s tests/roadmap -v",
+      "status": "passed",
+      "cases": 52,
+      "new_cases": 1,
+      "elapsed_seconds": 1.245
+    },
+    {
+      "command": ".venv/bin/python scripts/check_baseline.py",
+      "status": "passed"
+    },
+    {
+      "command": ".venv/bin/python scripts/check_roadmap.py",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    },
+    {
+      "command": ".venv/bin/python scripts/generate_contracts.py --check",
+      "status": "passed",
+      "scope": "Generated contracts unchanged"
+    }
+  ],
+  "logs": [
+    {
+      "path": "/tmp/wp051-continuation-tests.log",
+      "sha256": "e115ae038556390fe1fffd4308761b155d4b21a9b0ab9cdee04c5f528466efa9"
+    },
+    {
+      "path": "/tmp/wp051-continuation-roadmap.log",
+      "sha256": "6aa065176c1a703c53f159d7832e9c896e62473a39b7db8416d005e3256bd965"
+    }
+  ],
+  "semantic_history": {
+    "command": ".venv/bin/python scripts/benchmark_history.py --directory /tmp/wp051-semantic-full --output /tmp/wp051-semantic-history.json",
+    "status": "passed",
+    "receipt": "docs/roadmap/execution/WP-051-semantic-history.json",
+    "scope": "1000 revisions x 100 connected semantic traces; twenty branches; independent integer oracle and archive validation. Not coupled twelve-domain DEC-06 acceptance.",
+    "archive": "baseline archive path; subsequent memory optimization validated separately"
+  },
+  "remaining": [
+    "scaled revision/dependency ingestion and bounded public application integration",
+    "coupled DEC-06 fixture and 365-day production transitions with independent oracle",
+    "solver/time/memory and stale-query/running-work progress/cancellation integration"
+  ],
+  "publication": "No partial-child PR authorized; full parent remains open.",
+  "source_sha256": {
+    "engine/poliscope_engine/archives.py": "84c280fdac249cb4c05c3ade27c0532073ad8f9d63e4b8f9c7258cd7990324a8",
+    "engine/poliscope_engine/explanation/__init__.py": "f6d5ce576f92b548727df6dbd50fb51a0521987a60c27e47ff3e082a151dbfa7",
+    "scripts/benchmark_history.py": "2d5e9e1715e68e1d4d2923094b126d31e46aafc7c8461f7a2709fdaca15cfd97",
+    "scripts/benchmark_archive.py": "e110e843ce8b9f241c19e8ba9b27f897a5b49714106d24eebd071d3dd581849e",
+    "scripts/scale_fixtures.py": "39d1c3944210f76154350cb45b794b28a101211f299b686fc70d50e4dc970204",
+    "scripts/benchmark_scale.py": "d14a2feec37d8d173400c3c4e981e85ab6e8b2c1e9143a0af7edc427df25338b",
+    "scripts/check_baseline.py": "10c664a57ced5bf080452994e4af10cad185c02c8ea40ef8442171776087c57c",
+    "tests/engine/test_scale_probes.py": "a8d786bd25d7367464b54fad0e1e4a2a3575a75866f0c889c2454431e9a1790a",
+    "tests/engine/test_archives.py": "3e72f8835bdcf1b0ae0b7addf9d62f5c02e3c0075e6f584ba0f2dec63ca6d26d",
+    "tests/roadmap/test_baseline.py": "ebe1453f90180c352d8d10e785baca53130fcd89b44d3c7276b8abfd374cd10b"
+  },
+  "delivery_guard": {
+    "status": "rejected as expected",
+    "reason": "Incomplete delivery: retain the active package and concrete blockers",
+    "scope": "Full parent remains in_progress; this checkpoint is not an authorized partial-child delivery."
+  },
+  "archive_memory": {
+    "status": "passed",
+    "command": ".venv/bin/python scripts/benchmark_archive.py --store /tmp/wp051-semantic-full/store --archive /tmp/wp051-semantic-full/semantic-history-bounded.zip --output /tmp/wp051-semantic-archive.json",
+    "receipt": "docs/roadmap/execution/WP-051-semantic-archive.json",
+    "manifest_identical_to_baseline": true,
+    "projection_digest": "sha256:ea03acade94a8ade3b8d7adc8a392958d639856e90b5c85a3963d1493ed982b9",
+    "scope": "1000 revisions, twenty branches, 1020 entries; one export/validation sample, not p95; single-process Python peak RSS 1082281984 bytes; no combined Electron/native claim"
+  }
+}
