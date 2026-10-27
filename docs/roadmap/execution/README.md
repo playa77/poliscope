@@ -1,3 +1,11 @@
+**Current authorized child, 2026-10-27:** [WP-051-diagnostics](WP-051-diagnostics.md)
+adds deterministic scale admission probes, real long-history/archive diagnostics and
+bounded query/cache library APIs. The user authorized this child and keeping the
+full [WP-051](WP-051.md) parent open. Native/full-scale application acceptance and
+WP-050 live acceptance remain blocked. Resume full WP-051 after this child; no
+release-performance or full-parent completion is claimed. Validation/publication
+are recorded in the parent receipt.
+
 <!-- Latest full parent delivery supersedes historical entries below. -->
 **Current delivery, 2026-10-26:** [WP-049](WP-049.md), based on fetched main
 `2514749` (merged WP-048 / PR #119). Contextual interview review, retained turns,

@@ -26,6 +26,41 @@ from test_solvers import host, quantity, execution, plan, loop, split_contention
 MODEL = ('synthetic:model', 'v1')
 
 
+@pytest.mark.parametrize('limit', [0, -1, True, 1.5, 256 * 1024 * 1024 + 1])
+def test_cache_rejects_invalid_byte_quota(limit):
+    with pytest.raises(EvaluationError, match='invalid_cache_byte_limit'):
+        EvaluationCache(max_bytes=limit)
+
+
+def test_byte_quota_eviction_and_clear_preserve_complete_result_identity():
+    d = plain(('synthetic:in',))
+    calls = []
+    def implementation(port, values):
+        calls.append(port)
+        return values['synthetic:in']
+    host_registry = host(d, implementation)
+    w, des = WorldGraph(world()), design()
+    expected = evaluate(w, des, (), MODEL, registry=host_registry)
+    size = len(expected.model_dump_json().encode('utf-8'))
+    tiny = EvaluationCache(max_bytes=size-1)
+    assert tiny.evaluate(w, des, (), MODEL, registry=host_registry) == expected
+    assert tiny._entries == {}  # a complete result, never a truncated cache entry
+    cache = EvaluationCache(capacity=3, max_bytes=size+100)
+    assert cache.evaluate(w, des, (), MODEL, registry=host_registry) == expected
+    calls.clear()
+    assert cache.evaluate(w, des, (), MODEL, registry=host_registry) == expected
+    assert calls == []
+    changed = des.model_copy(update={'effective_time': des.effective_time.model_copy(update={'tick': 1})})
+    cache.evaluate(w, changed, (), MODEL, registry=host_registry)
+    calls.clear()
+    assert cache.evaluate(w, des, (), MODEL, registry=host_registry) == expected
+    assert calls  # byte quota evicted the older identity despite spare entry capacity
+    cache.clear()
+    calls.clear()
+    assert cache.evaluate(w, des, (), MODEL, registry=host_registry) == expected
+    assert calls
+
+
 def design(dep=None, **updates):
     d = plain(('synthetic:in',))
     if dep is None:

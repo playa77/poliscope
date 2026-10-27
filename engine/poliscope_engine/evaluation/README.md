@@ -61,6 +61,12 @@ entry under copied implementation IDs. Host code changes must increment the
 implementation/model/runtime versions: manifests are not Python source hashes.
 A digest detects accidental corruption, not hostile host memory changes. This
 cache is disposable and never a repository of accepted result evidence.
+It bounds both entry count and serialized UTF-8 result bytes (64 MiB by default),
+refreshes recency on hits and evicts older entries before admission. An oversized
+result is returned complete without caching. `clear()` discards disposable entries
+without changing retained evidence. This byte quota does not bound registry
+objects, Python overhead or combined application RSS; those need measured process
+budgets. The wrapper remains an explicit host API, not automatic revision caching.
 
 Purity tests install tripwires for filesystem, SQLite, sockets, wall clock and
 random draws, verify normal evaluation makes no calls, and show injected impure

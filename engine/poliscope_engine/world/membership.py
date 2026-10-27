@@ -1,5 +1,6 @@
 """Pure relationship snapshots and explicit direct-membership aggregation."""
 from dataclasses import dataclass
+from types import MappingProxyType
 from fractions import Fraction
 
 from poliscope_engine.contracts.world import RelationshipDTO, QuantityValue, UnknownValue
@@ -58,17 +59,29 @@ class WorldGraph:
                     stack.extend((child, False) for child in edges.get(node, ()))
         object.__setattr__(self, 'registry', registry)
         object.__setattr__(self, '_relationships', tuple(r.model_dump_json() for r in rows))
+        adjacency = {identity: [] for identity in entities.keys() | scopes}
+        for index, row in enumerate(rows):
+            for identity in {row.from_id, row.to_id}:
+                adjacency[identity].append(index)
+        # Derived index deliberately stays outside dataclass fields, so generic
+        # canonical serialization and equality retain the original world identity.
+        object.__setattr__(self, '_adjacency', MappingProxyType(
+            {identity: tuple(indices) for identity, indices in adjacency.items()}))
+
+    def __deepcopy__(self, memo):
+        # All stored snapshots/index entries are immutable; DTO reads detach.
+        return self
 
     @property
     def relationships(self):
         return tuple(map(RelationshipDTO.model_validate_json, self._relationships))
 
     def related(self, identity, *, kind=None):
-        if identity not in {e.id for e in self.registry.entities} | {s.id for s in self.registry.scopes}:
+        if identity not in self._adjacency:
             raise WorldError('missing_reference')
-        return tuple(r for r in self.relationships
-                     if identity in (r.from_id, r.to_id)
-                     and (kind is None or r.relationship_kind == kind))
+        rows = (RelationshipDTO.model_validate_json(self._relationships[i])
+                for i in self._adjacency[identity])
+        return tuple(r for r in rows if kind is None or r.relationship_kind == kind)
 
     def with_relationships(self, relationships):
         """Validate an entire replacement snapshot before returning a candidate."""
