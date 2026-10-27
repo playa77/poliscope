@@ -33,12 +33,13 @@
   ],
   "blockers": [],
   "publication": {
-    "status": "user authorized; pending push and regular PR",
+    "status": "published; regular PR open",
     "branch": "codex/wp-052-usability",
     "destination": "https://github.com/playa77/poliscope.git",
     "implementation_commit": "06fb663",
     "authorization": "User explicitly requested: push codex/wp-052-usability to GitHub and open a PR.",
-    "merge": "not authorized; not performed"
+    "merge": "not authorized; not performed",
+    "url": "https://github.com/playa77/poliscope/pull/125"
   },
   "validation": "docs/roadmap/execution/WP-052-validation.json"
 }
