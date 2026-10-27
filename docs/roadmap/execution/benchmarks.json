@@ -5,8 +5,11 @@
   "reference": {
     "minimum": "native desktop, four modern CPU cores, 16 GiB RAM, SSD",
     "exact_machine": null,
-    "blocker": "PERF-REF-001",
-    "owner": "WP-019-verification selects and records exact native hardware/OS/power mode before first benchmark claim; WP-051-benchmarks enforces release budgets"
+    "blocker": null,
+    "validation": "owner-run",
+    "decision_date": "2026-10-27",
+    "decision_ref": "docs/platform_scope.md",
+    "owner": "Project owner waived agent-run native validation project-wide and will test work packages on their own machine. Cloud results remain labeled as cloud measurements."
   },
   "fixtures": {
     "classroom-v1": {

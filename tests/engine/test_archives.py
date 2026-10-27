@@ -67,6 +67,50 @@ def test_real_roundtrip_branches_evidence_reopen_no_model_or_cache(tmp_path):
         assert read_item(target,summary.id,index)[0] == revision
 
 
+def test_archive_projection_releases_decoded_snapshot_before_projecting_history(tmp_path, monkeypatch):
+    import weakref
+    from poliscope_engine import archives
+    store, service, context = source(tmp_path/'source')
+    try:
+        for i in range(2):
+            _, changed = commit(service, edit(context, note('Synthetic memory regression')), f'change:{i}')
+            context = changed.state.context
+        refs, projected = [], []
+        original_read, original_project = service.evidence, archives._evidence
+        def read(context):
+            saved = original_read(context)
+            refs.append(weakref.ref(saved))
+            return saved
+        def project(saved, allowed, options):
+            # The three first-pass graphs must not be retained alongside the
+            # archive being built. The read snapshot, not decoded DTO ownership,
+            # supplies consistency across passes.
+            assert all(ref() is None for ref in refs[:3])
+            projected.append(saved.closure_digest)
+            return original_project(saved, allowed, options)
+        monkeypatch.setattr(service, 'evidence', read)
+        monkeypatch.setattr(archives, '_evidence', project)
+        path = tmp_path/'bounded.zip'
+        assert export_archive(service, path).revisions == 3
+        assert len(projected) == 3
+        assert sum(isinstance(item, ArchiveRevision) for item in validate_archive(path)[1]) == 3
+    finally:
+        store.close()
+
+
+def test_cancelled_export_does_not_decode_history_before_acknowledgement(tmp_path, monkeypatch):
+    store, service, _ = source(tmp_path/'source')
+    try:
+        monkeypatch.setattr(service, 'evidence', lambda *a: pytest.fail('cancelled export decoded history'))
+        path = tmp_path/'cancelled.zip'
+        with pytest.raises(ArchiveError, match='cancelled'):
+            export_archive(service, path, cancelled=lambda: True)
+        assert not path.exists()
+        assert not store._connection.in_transaction
+    finally:
+        store.close()
+
+
 def test_real_stochastic_experiment_and_retrospective_fork(tmp_path):
     with Store(tmp_path/'source') as store:
         experiments, opening, _ = setup(store)

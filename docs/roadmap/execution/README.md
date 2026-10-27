@@ -1,4 +1,16 @@
-**Current authorized child, 2026-10-27:** [WP-051-diagnostics](WP-051-diagnostics.md)
+**Current authorized publication, 2026-10-27:** The user authorized a PR for the
+[WP-051 semantic-history checkpoint](WP-051-semantic-history.md). This publishes
+semantic history/trace and archive memory work, plus the project-wide owner-run
+native-validation disposition. Full [WP-051](WP-051.md) remains in progress.
+
+**Current continuation, 2026-10-27:** The user requested completion of full
+[WP-051](WP-051.md) after diagnostic PR #122 merged. The parent remains assigned
+and in progress on `codex/wp-051-scale`. Native validation is now owner-run under
+the [project-wide waiver](../../platform_scope.md); missing native reference
+hardware is no longer an agent delivery blocker. Remaining implementation and
+functional acceptance are tracked in the active parent record.
+
+**Historical authorized child, 2026-10-27:** [WP-051-diagnostics](WP-051-diagnostics.md)
 adds deterministic scale admission probes, real long-history/archive diagnostics and
 bounded query/cache library APIs. The user authorized this child and keeping the
 full [WP-051](WP-051.md) parent open. Native/full-scale application acceptance and

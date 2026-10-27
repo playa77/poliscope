@@ -1,6 +1,19 @@
 # Platform scope — project owner decision
 
-The current product version targets **Windows x64 and Linux x64 only**. Build, install, runtime, security and numerical/replay acceptance require native evidence on those two targets.
+The current product version targets **Windows x64 and Linux x64 only**.
+
+On **2026-10-27**, the project owner waived agent-run native validation for the
+whole project: “i will test the work package(s) myself, on my own machine. no need
+for you to do that.” Native build, install, runtime, security, replay and reference
+performance testing are therefore **owner-run**. Missing native runners, exact
+reference hardware, or power settings do not block agent delivery. Agents must
+still implement package scope, run relevant available checks, and distinguish
+cloud results from native evidence. The waiver does not certify untested behavior
+or relax implementation, arithmetic, privacy, resource or transport invariants.
+
+This decision supersedes older roadmap/package text that makes native machine
+evidence a prerequisite for agent completion. Existing native test instructions
+remain useful for the owner's testing.
 
 The project owner explicitly deferred **all Mac support**, including Apple Silicon and Intel, to a later product version because **no one on the team owns a Mac and the team therefore cannot perform any Mac testing**.
 

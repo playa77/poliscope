@@ -41,6 +41,21 @@ class BaselineTests(unittest.TestCase):
         self.assertEqual(parents, 68)
         self.assertGreater(children, 68)
 
+    def test_native_owner_run_disposition_preserves_other_benchmark_gates(self):
+        benchmark = baseline.read('benchmarks.json')
+        self.assertIsNone(benchmark['reference']['blocker'])
+        baseline.validate_benchmarks(benchmark)
+        for field in ('decision_ref', 'decision_date', 'owner'):
+            missing = deepcopy(benchmark)
+            missing['reference'].pop(field)
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, 'Unmeasurable'):
+                baseline.validate_benchmarks(missing)
+        for field, value, error in [('samples_min', 29, 'Unmeasurable'), ('ipc_max_bytes', 2097152, 'IPC limit')]:
+            changed = deepcopy(benchmark)
+            changed['measurement' if field == 'samples_min' else 'budgets'][field] = value
+            with self.subTest(field=field), self.assertRaisesRegex(ValueError, error):
+                baseline.validate_benchmarks(changed)
+
     def test_missing_leaf_fails(self):
         ledger = deepcopy(self.requirements)
         ledger["requirements"].pop()

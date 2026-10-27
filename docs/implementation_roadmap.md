@@ -184,6 +184,12 @@ These are proposed engineering acceptance targets to make DEC-06 actionable, not
 
 Use a native reference desktop with four modern CPU cores, 16 GiB RAM and SSD storage; record exact hardware/OS and power settings. Run cold and warm caches separately, with at least 30 independent preview/query samples and labeled workload/model identities. Network latency and upstream generation time are excluded from local UI/engine targets and reported separately.
 
+**Owner decision, 2026-10-27:** Native validation, including the reference-machine
+requirements above, is owner-run for the entire project. Agents do not need native
+runners or hardware/power-setting evidence to deliver work packages. See
+[platform scope](platform_scope.md). Keep cloud measurements accurately labeled;
+implementation, functional validation, resource and transport requirements remain.
+
 | Fixture or operation | Initial workload / target |
 |---|---|
 | Small classroom world | 20 scopes, 40 cohorts, 100 assets, 300 decision instances, 2,000 active typed edges; all twelve domains and explicit overlap |

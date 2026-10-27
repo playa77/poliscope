@@ -52,7 +52,12 @@ def build_traces(result):
     instances = design['execution']['dependencies']['instances']
     instances = {i['id']: MechanismRef(instance_id=i['id'], **{k: v for k, v in i.items() if k != 'id'}) for i in instances}
     groups = _components(observations, edges, set())
-    node_trace = {node: digest(dict(trace_schema=1, nodes=group.nodes)) for group in groups for node in group.nodes}
+    # A coupled component may contain thousands of nodes. Hash its membership
+    # once, rather than serializing the whole component once per member.
+    node_trace = {}
+    for group in groups:
+        trace_id = digest(dict(trace_schema=1, nodes=group.nodes))
+        node_trace.update((node, trace_id) for node in group.nodes)
     dependencies = {node_trace[group.nodes[0]]: set() for group in groups}
     internal = {key: [] for key in dependencies}
     for a, b in sorted(edges):
