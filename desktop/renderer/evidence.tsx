@@ -1,5 +1,5 @@
 import { workStatus } from './work-status';
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { WorkspaceState } from '../../contracts/workspace';
 import type { WorkbenchQuery, WorkbenchRow, WorkbenchEdit, WorkbenchPreview } from '../../contracts/workbench';
@@ -19,12 +19,25 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
   const [cursors, setCursors] = useState<(string | null)[]>([null]);
   const [draft, setDraft] = useState<'note' | 'goal' | 'assumption'>();
   const [row, setRow] = useState<WorkbenchRow>();
+  const draftOrigin = useRef<HTMLElement | null>(null);
+  const addButton = useRef<HTMLButtonElement>(null);
+  const wasDraft = useRef(false);
+  const editHeading = useRef<HTMLHeadingElement>(null);
+  const previewHeading = useRef<HTMLHeadingElement>(null);
   const [text, setText] = useState(''); const [noteKind, setNoteKind] = useState<NoteKind>('inquiry');
   const [goalId, setGoalId] = useState(''); const [indicatorId, setIndicatorId] = useState('');
   const [operation, setOperation] = useState<'ge' | 'le' | 'eq' | 'ne' | 'gt' | 'lt'>('ge');
   const [value, setValue] = useState(''); const [remove, setRemove] = useState(false);
   const [preview, setPreview] = useState<WorkbenchPreview>();
   const previewGeneration = useRef(0);
+  useEffect(() => {
+    if (draft) editHeading.current?.focus();
+    else if (wasDraft.current && document.activeElement === document.body) {
+      (draftOrigin.current?.isConnected ? draftOrigin.current : addButton.current)?.focus();
+    }
+    wasDraft.current = Boolean(draft);
+  }, [draft]);
+  useEffect(() => { if (preview) previewHeading.current?.focus(); }, [preview]);
   const [busy, setBusy] = useState(false); const [uncertain, setUncertain] = useState(false); const [error, setError] = useState('');
   const [source, setSource] = useState(''); const [model, setModel] = useState<{ id: string; version: string | null }>();
   const historical = state.context.revision_id !== state.branch.context.revision_id;
@@ -38,6 +51,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
     } while (cursor); return rows;
   } });
   function begin(kind: typeof draft, selected?: WorkbenchRow) {
+    draftOrigin.current = document.activeElement instanceof HTMLElement ? document.activeElement : null;
     setDraft(kind); setRow(selected); setPreview(undefined); setError(''); setRemove(false); onDirty(true);
     setText(selected?.text ?? selected?.goal?.question ?? ''); setNoteKind(selected?.note_kind ?? 'inquiry');
     setGoalId(selected?.goal?.id ?? ''); setIndicatorId(selected?.goal?.indicator_id ?? '');
@@ -90,7 +104,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
       {data.isError && <p role="alert">Evidence unavailable. <button onClick={() => void data.refetch()}>Retry workspace evidence</button></p>}
       {data.data && <><p>Physical result identity: {data.data.physical_output_digest ?? 'Unavailable'}</p>
         {!data.data.items.length && <p>No recorded {collection} in this scope. Goals start empty. Missing models and evidence remain unresolved.</p>}
-        <table><caption>Retained {collection}</caption><thead><tr><th>Identity</th><th>Definition and content</th><th>Inspect or edit</th></tr></thead><tbody>{data.data.items.map(r => <tr key={r.id}><th>{r.id}</th><td>
+        <table><caption>Retained {collection}</caption><thead><tr><th scope="col">Identity</th><th scope="col">Definition and content</th><th scope="col">Inspect or edit</th></tr></thead><tbody>{data.data.items.map(r => <tr key={r.id}><th scope="row">{r.id}</th><td>
           {r.assumption && <><p>{valueText(r.assumption.value)}</p><pre>{JSON.stringify(r.definition, null, 2)}</pre><p>{r.editable ? 'Supported player point parameter' : 'Read only; range/distribution/qualitative or unsupported input is not a point parameter'}</p></>}
           {r.reference && <><p>{r.reference.kind} · {r.reference.visibility} · {r.reference.availability}</p><pre>{JSON.stringify(r.reference, null, 2)}</pre></>}
           {r.model_id && <p>Retained model {r.model_id} · {r.model_version}</p>}
@@ -112,8 +126,8 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
     {source && <Source key={JSON.stringify([state.context, source])} state={state} identity={source} />}
     {model && <Model key={JSON.stringify([state.context, model])} state={state} kind="mechanism" identity={model.id} version={model.version} />}
     <p>Private notes are excluded from simulation and sharing by default. Deleting a note removes all active versions and owned derivatives, while history keeps noncontent references. Filesystem recovery, external backups and previously shared copies are not securely erased.</p>
-    {historical ? <p>This retained revision is read only. Fork in History and comparison before editing.</p> : !draft && <><button disabled={busy} onClick={() => begin('note')}>Add private inquiry or note</button><button disabled={busy} onClick={() => begin('goal')}>Add declared goal or target</button></>}
-    {draft && <section aria-label="Evidence edit"><fieldset disabled={busy || uncertain}><legend>Proposed {draft}</legend>
+    {historical ? <p>This retained revision is read only. Fork in History and comparison before editing.</p> : !draft && <><button ref={addButton} disabled={busy} onClick={() => begin('note')}>Add private inquiry or note</button><button disabled={busy} onClick={() => begin('goal')}>Add declared goal or target</button></>}
+    {draft && <section aria-label="Evidence edit"><h4 ref={editHeading} tabIndex={-1}>Edit evidence · unsaved</h4><fieldset disabled={busy || uncertain}><legend>Proposed {draft}</legend>
       {draft === 'note' && <label>Private note kind<select value={noteKind} onChange={e => { setNoteKind(e.target.value as NoteKind); setPreview(undefined); }}>{['inquiry','expectation','observation','model_gap','proposal'].map(k => <option key={k}>{k}</option>)}</select></label>}
       {draft !== 'assumption' && <label>{draft === 'note' ? 'Private note text' : 'Declared goal question'}<textarea maxLength={2048} value={text} onChange={e => { setText(e.target.value); setPreview(undefined); }} /></label>}
       {draft === 'goal' && <><label>Goal ID<input maxLength={128} disabled={Boolean(row?.goal)} value={goalId} onChange={e => { setGoalId(e.target.value); setPreview(undefined); }} /></label>
@@ -124,7 +138,7 @@ export function Evidence({ state, scope, onDirty, onSelected, onCompare, collect
       {(draft === 'assumption' || (draft === 'goal' && indicatorId)) && <label>Exact parameter or target value<input maxLength={256} value={value} onChange={e => { setValue(e.target.value); setPreview(undefined); }} /></label>}
       <button onClick={() => void showPreview()}>Preview evidence edit</button>
     </fieldset>
-    {preview && <section aria-label="Evidence edit preview"><p>{preview.disclosure}</p><pre>{JSON.stringify(preview.edit.change, null, 2)}</pre><p>Physical result {preview.physical_before === preview.physical_after ? 'unchanged' : 'changed'} · {preview.changed_observations} changed observations</p><p>Before {preview.physical_before}<br />After {preview.physical_after}</p><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry evidence Apply' : 'Apply evidence edit'}</button></section>}
+    {preview && <section aria-label="Evidence edit preview"><h4 ref={previewHeading} tabIndex={-1}>Preview · not applied</h4><p>{preview.disclosure}</p><pre>{JSON.stringify(preview.edit.change, null, 2)}</pre><p>Physical result {preview.physical_before === preview.physical_after ? 'unchanged' : 'changed'} · {preview.changed_observations} changed observations</p><p>Before {preview.physical_before}<br />After {preview.physical_after}</p><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry evidence Apply' : 'Apply evidence edit'}</button></section>}
     <button disabled={uncertain} onClick={() => { previewGeneration.current++; void window.poliscope.cancelWorkbench().then(() => { setBusy(false); setDraft(undefined); setRow(undefined); setText(''); setValue(''); setPreview(undefined); onDirty(false); }).catch(() => setError('Cancel could not complete. Retry cancellation.')); }}>Cancel evidence edit</button>
     </section>}
     {busy && !uncertain && <p role="status">Computing preview. You can cancel this draft while it runs.</p>}

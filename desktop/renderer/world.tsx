@@ -1,5 +1,5 @@
 import { workStatus } from './work-status';
-import React, { useState, useRef } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@tanstack/react-query';
 import type { ExplorationQuery, ExplorationEdit, ExplorationPreview, ExplorationRow, ValueEdit, EntityEdit, EntityDTO, RelationshipDTO } from '../../contracts/exploration';
 import type { WorkspaceState } from '../../contracts/workspace';
@@ -31,11 +31,24 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
   const previewGeneration = useRef(0);
   const [error, setError] = useState(''); const [busy, setBusy] = useState(false); const [draft, setDraft] = useState(false);
   const [uncertain, setUncertain] = useState(false);
+  const draftOrigin = useRef<HTMLElement | null>(null);
+  const addButton = useRef<HTMLButtonElement>(null);
+  const wasDraft = useRef(false);
+  const editHeading = useRef<HTMLHeadingElement>(null);
+  const previewHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => {
+    if (draft) editHeading.current?.focus();
+    else if (wasDraft.current && document.activeElement === document.body) {
+      (draftOrigin.current?.isConnected ? draftOrigin.current : addButton.current)?.focus();
+    }
+    wasDraft.current = Boolean(draft);
+  }, [draft]);
+  useEffect(() => { if (preview) previewHeading.current?.focus(); }, [preview]);
   const [inspector, setInspector] = useState<ExplorationRow['inspector']>(null);
   const historical = state.context.revision_id !== state.branch.context.revision_id;
   const query: ExplorationQuery = { context: state.context, scope_id: scope, projection, identity: identity || null, cursor: cursors.at(-1)! };
   const result = useQuery({ queryKey: ['world', state.context, scope, 'exploration', query], retry: false, queryFn: () => window.poliscope.exploration(query) });
-  function begin() { setDraft(true); onDirty(true); setPreview(undefined); setError(''); }
+  function begin() { draftOrigin.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; setDraft(true); onDirty(true); setPreview(undefined); setError(''); }
   function edit(row: ExplorationRow) {
     begin(); setId(row.id); setTerms(null);
     if (row.entity) { setMode('entity'); setLabel(row.entity.label); setEntityKind(row.entity.entity_kind); setPopulationRole(null); }
@@ -89,7 +102,7 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
         {edges.map(r => { const a = point(r.from_id), b = point(r.to_id); return <g key={r.id}><line x1={a[0]} y1={a[1]} x2={b[0]} y2={b[1]} stroke="currentColor" markerEnd="url(#world-arrow)" /><text x={(a[0]+b[0])/2} y={(a[1]+b[1])/2}>{r.relationship_kind}</text></g>; })}
         {nodes.map(id => { const p = point(id); return <g key={id}><circle cx={p[0]} cy={p[1]} r="5" fill="currentColor" /><text x={p[0]+8} y={p[1]+5}>{id.length > 28 ? id.slice(0,25) + '…' : id}</text><title>{id}</title></g>; })}
       </svg><p>Diagram positions are temporary seeded presentation state. They never enter simulation inputs. Endpoints may be listed on another page; the table records every visible edge.</p>
-      <table><caption>Canonical entities, scopes, relationships and local values</caption><thead><tr><th>Identity</th><th>Kind</th><th>Meaning / direction</th><th>Inspect or edit</th></tr></thead><tbody>{rows.map(r => <tr key={JSON.stringify([r.id, r.inspector?.collection, r.entity?.entity_kind, r.relationship?.relationship_kind])}><th>{r.id}</th><td>{r.entity?.entity_kind ?? r.scope?.scope_kind ?? r.relationship?.relationship_kind ?? r.value?.partition ?? 'account'}</td><td>{r.entity?.label ?? r.scope?.label ?? (r.relationship ? `${r.relationship.from_id} → ${r.relationship.to_id} · ${r.relationship.aggregation.kind} · ${r.relationship.relationship_version}` : r.value ? `${r.value.entity_id} · ${r.value.property_id.startsWith('world:relationship:') ? 'Declared relationship terms' : r.value.property_id} · ${r.value.scope_id}: ${valueText(r.value.value)}` : 'Exact retained local account')}</td><td>
+      <table><caption>Canonical entities, scopes, relationships and local values</caption><thead><tr><th scope="col">Identity</th><th scope="col">Kind</th><th scope="col">Meaning / direction</th><th scope="col">Inspect or edit</th></tr></thead><tbody>{rows.map(r => <tr key={JSON.stringify([r.id, r.inspector?.collection, r.entity?.entity_kind, r.relationship?.relationship_kind])}><th scope="row">{r.id}</th><td>{r.entity?.entity_kind ?? r.scope?.scope_kind ?? r.relationship?.relationship_kind ?? r.value?.partition ?? 'account'}</td><td>{r.entity?.label ?? r.scope?.label ?? (r.relationship ? `${r.relationship.from_id} → ${r.relationship.to_id} · ${r.relationship.aggregation.kind} · ${r.relationship.relationship_version}` : r.value ? `${r.value.entity_id} · ${r.value.property_id.startsWith('world:relationship:') ? 'Declared relationship terms' : r.value.property_id} · ${r.value.scope_id}: ${valueText(r.value.value)}` : 'Exact retained local account')}</td><td>
         {r.inspector && <button disabled={draft} onClick={() => setInspector(r.inspector)}>Inspect evidence {r.id}</button>}
         {(r.entity || r.relationship) && <button disabled={draft} onClick={() => { setIdentity(r.relationship?.from_id ?? r.id); setCursors([null]); }}>Explore {r.id}</button>}
         {!historical && (r.entity || r.relationship || (r.value?.partition === 'conditions' && ['quantity', 'label'].includes(r.value.value.kind))) && <button disabled={draft} onClick={() => edit(r)}>Edit {r.id}</button>}
@@ -98,8 +111,8 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
     </>}
     {inspector && <Inspector key={JSON.stringify(inspector)} state={state} scope={scope} selection={{ collection: inspector.collection, id: inspector.item_id! }} close={() => setInspector(null)} />}
     {historical ? <p>Historical world is read only. Fork from History and comparison to edit.</p> : <>
-      {!draft && <button onClick={() => { setMode('entity'); setEntityKind('asset'); setPopulationRole(null); setId(''); setLabel(''); begin(); }}>Add entity or relationship</button>}
-      {draft && <section aria-label="World edit"><h4>Canonical world edit</h4><p>Apply records shared design content in immutable history. Declared obligations do not imply fulfillment.</p>
+      {!draft && <button ref={addButton} onClick={() => { setMode('entity'); setEntityKind('asset'); setPopulationRole(null); setId(''); setLabel(''); begin(); }}>Add entity or relationship</button>}
+      {draft && <section aria-label="World edit"><h4 ref={editHeading} tabIndex={-1}>Canonical world edit</h4><p>Apply records shared design content in immutable history. Declared obligations do not imply fulfillment.</p>
         <fieldset disabled={busy || uncertain}><legend>Proposed change</legend>
           <label>Edit kind<select aria-label="Edit kind" value={mode} onChange={e => { setMode(e.target.value as typeof mode); setPreview(undefined); }}><option value="entity">entity</option><option value="relationship">relationship</option>{valueRow && <option value="value">value</option>}</select></label>
           {mode !== 'value' && <label>Canonical ID<input maxLength={128} value={id} onChange={e => { setId(e.target.value); setPreview(undefined); }} /></label>}
@@ -113,7 +126,7 @@ export function World({ state, scope, onDirty, onSelected, onMatrix, onDecisions
           {mode === 'value' && <><p>{valueRow?.property_id} · {valueRow && valueText(valueRow.value)} · Units, scope and denominator are retained.</p><label>Condition value<input value={value} maxLength={1024} onChange={e => { setValue(e.target.value); setPreview(undefined); }} /></label></>}
           <button onClick={() => void showPreview()}>Preview world edit</button>
         </fieldset>
-        {preview && <section aria-label="World edit preview"><p>{preview.coverage}</p><h5>Before</h5><pre>{preview.before || 'No previous record'}</pre><h5>After</h5><pre>{preview.after}</pre><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry world Apply' : 'Apply world edit'}</button></section>}
+        {preview && <section aria-label="World edit preview"><h5 ref={previewHeading} tabIndex={-1}>Preview · not applied</h5><p>{preview.coverage}</p><h5>Before</h5><pre>{preview.before || 'No previous record'}</pre><h5>After</h5><pre>{preview.after}</pre><button disabled={busy} onClick={() => void apply()}>{uncertain ? 'Retry world Apply' : 'Apply world edit'}</button></section>}
         <button disabled={uncertain} onClick={() => { previewGeneration.current++; void window.poliscope.cancelWorld().then(() => { setBusy(false); setDraft(false); setPreview(undefined); onDirty(false); }); }}>Cancel world edit</button>
       </section>}
     </>}

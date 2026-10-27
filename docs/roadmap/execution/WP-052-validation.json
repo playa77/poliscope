@@ -1,0 +1,93 @@
+{
+  "version": 1,
+  "package": "WP-052",
+  "base": "2f623b58af7e17688eb505db19a5c6c623536f79",
+  "branch": "codex/wp-052-usability",
+  "review_route": "solo-validated; agent review deferred",
+  "checks": [
+    {
+      "command": "npm test",
+      "result": "passed",
+      "desktop_units": 440,
+      "desktop_files": 39,
+      "roadmap_units": 52,
+      "scope": "Full unit/roadmap run; final renderer-only refinements subsequently covered by final affected packaged checks and TypeScript."
+    },
+    {
+      "command": "npm run package",
+      "result": "passed",
+      "scope": "Final Linux x64 cloud package, bundled engine. No native owner-machine claim."
+    },
+    {
+      "command": "DISPLAY=:99 npx playwright test (14 named core spec files; see broad_specs)",
+      "result": "15 existing scenarios passed; new learner scenario initially failed readiness assertion",
+      "scope": "Broad core regression; superseded learner failure waited for a disabled comparison control. New helper waits for enabled state before keyboard activation."
+    },
+    {
+      "command": "DISPLAY=:99 npx playwright test tests/desktop/accessibility.spec.ts tests/desktop/overview.spec.ts tests/desktop/workbench.spec.ts tests/desktop/exploration.spec.ts",
+      "result": "4 passed",
+      "scope": "Final runtime and tests: complete learner task, 200% zoom, cancel focus, Escape/return, retained local evidence and shared world editing."
+    },
+    {
+      "command": "npm run typecheck; npm run contracts:check; uv run --frozen python scripts/check_roadmap.py; git diff --check",
+      "result": "passed"
+    }
+  ],
+  "broad_specs": [
+    "accessibility",
+    "overview",
+    "workspace",
+    "interview",
+    "workbench",
+    "exploration",
+    "matrix",
+    "atlas",
+    "design-history",
+    "timeline",
+    "uncertainty",
+    "reports",
+    "archives",
+    "recovery"
+  ],
+  "distinct_packaged_scenarios": 16,
+  "new_scenarios": 1,
+  "modified_existing_scenarios": 1,
+  "source_sha256": {
+    "desktop/renderer/archives.tsx": "3c3bdb6e7ef7927e77ee3ef1177bd8bf866f97f714e3b6ee4011534bf8ceea20",
+    "desktop/renderer/assistant.tsx": "a416c8b11f5fe51d8153252817bd17df78d8b5ccd862be46ec9dcd9e35f5f779",
+    "desktop/renderer/atlas.tsx": "3a9ee6f356e744067d566c6cf0581a12a9c122e345182a81bba6be15448f54de",
+    "desktop/renderer/design-history.tsx": "f2118cfb8daec4289e68845d41c347e8be32c6de312d6c4a7bcc28841b880eec",
+    "desktop/renderer/evidence.tsx": "44f9c39137e5953eebabc2339662b817537f91291ab965042c6d86b091125533",
+    "desktop/renderer/interview.tsx": "25fed77ee6ef097b13413690df627259b5fdd453c56ffc1e83fa24caf97f4151",
+    "desktop/renderer/matrix.tsx": "6b0a2c5560e8992e700cd4e20e70d57daffad4a6399abeedc300db763b7f37b9",
+    "desktop/renderer/overview.tsx": "0b9948bfacebfff6341ddaf542d5318d63cffa759574681ff73d3ee5bbe92398",
+    "desktop/renderer/providers.tsx": "96b6a3ae8fc7a089e21c8442300ae30351d5df6378025e4d220c9002bcca81ad",
+    "desktop/renderer/recovery.tsx": "3f3dbfccae467181730d9b3ac48bd560f1bf7ad204021fe02004f978bba3d4b4",
+    "desktop/renderer/src.tsx": "d2f631c978bcdadaad0bd3b63195d0335bacde56bbe617c95ea6bf15daa346a8",
+    "desktop/renderer/style.css": "a43a800f0a4f9ed51cf3619660e338a70db775929d7791eeb207c215ebf87cba",
+    "desktop/renderer/timeline.tsx": "a0bfa95f6c280502c7ad26fddde813ef5000c7ffac66c87e425c13a171f25235",
+    "desktop/renderer/uncertainty.tsx": "ac0fda661cf609179e190b563a3fe158f6dbe9e53276ae8e681f9b637e074710",
+    "desktop/renderer/workspace.tsx": "09d298e6da077b5d1e649be0b4fb0ea7c9dc53ee709d6c81891e7427ec123cb2",
+    "desktop/renderer/world.tsx": "2e30b812a60b1c8c7e9b79a5453e665eabb4fa5a9eafe1140ab30919d29bd20a",
+    "tests/desktop/accessibility.spec.ts": "81fb341996d256f17595bb880dfcc53b39bf6ba5a107cc81fa74c7eedc34678c",
+    "tests/desktop/overview.spec.ts": "5a5a3599c629d696fa3212da67223db112515ad1dc2a2b5af83099436a7fdc78"
+  },
+  "log_sha256": {
+    "/tmp/wp052-unit-final.log": "b0134b88993f9f8c1b6b3c1ef3d1403dd4b8962d7d9a664037bc940f43fef4c7",
+    "/tmp/wp052-package-final.log": "74dc6e7651ef01fd1e940ef1d6db6f61696704fb5d7cbd10543eae06514cc692",
+    "/tmp/wp052-ui-final.log": "2762811ae6cc9564c689f952a377130f3422e8c741241ced89fac99cb980456c",
+    "/tmp/wp052-ui-affected.log": "99ca5268c2a2df1f37e0eb4de4a8cbedf6525487fffd18ba7c196e51afb4d487"
+  },
+  "superseded_attempts": [
+    "Sandboxed npm test stalled and was terminated; successful permitted full run is authoritative.",
+    "Sandboxed package could not fetch a Forge dependency; permitted final package succeeded.",
+    "Initial skip-link test exposed hash mutation invalidating IPC caller grants. Focus-only navigation fix passed all subsequent real workspace operations.",
+    "Learner comparison used keyboard activation before disabled state cleared. Final helper waits for enabled controls; complete final inquiry passes."
+  ],
+  "limitations": [
+    "No native Windows/Linux owner-machine validation or screen-reader speech certification.",
+    "No recruited student/designer/educator study or classroom learning-outcome claim.",
+    "No full Python regression: engine, contracts and content are unchanged. Production engine is exercised by packaged workflows and unit fixtures.",
+    "No cumulative G7/M7, live-provider or deferred WP-051 performance acceptance claim."
+  ]
+}

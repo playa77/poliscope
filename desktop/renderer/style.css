@@ -26,7 +26,7 @@ button[aria-current="page"], button[aria-pressed="true"] { background: #254e3c; 
 table { width: 100%; border-collapse: collapse; text-align: left; }
 th, td { padding: .6rem; border-bottom: 1px solid #cad6cb; }
 textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
-:focus-visible { outline: 3px solid #9d4c15; outline-offset: 3px; }
+:focus-visible { outline: 3px solid #ffd589; outline-offset: 3px; }
 @media (max-width: 760px) { .workspace-layout { grid-template-columns: 1fr; } .workspace-layout aside { grid-column: 1; } .workspace-header { align-items: start; flex-direction: column; } }
 .interview { margin-block: 1.5rem; border-top: 1px solid #54645c; padding-block: 1rem; }
 .interview h5 { font-size: 1.15rem; line-height: 1.55; margin-block: 1rem; }
@@ -62,3 +62,19 @@ summary { cursor: pointer; padding-block: .4rem; }
 .world-exploration table { table-layout: fixed; }
 .world-exploration th, .world-exploration td, .world-exploration td button { overflow-wrap: anywhere; }
 .world-exploration td button { max-width: 100%; white-space: normal; }
+
+/* Keep keyboard navigation visible at zoom and on narrow classroom displays. */
+:root { color-scheme: dark; }
+button, input, select, textarea { font: inherit; }
+input:is([type="checkbox"], [type="radio"]) { display: inline-block; width: auto; margin-inline-end: .5rem; }
+button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
+a { color: #c5e9ff; }
+.skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 10; padding: .8rem; background: #102321; transform: translateY(-200%); }
+.skip-link:focus { transform: translateY(0); }
+fieldset { min-width: 0; }
+article, section, td, th { overflow-wrap: anywhere; }
+.workspace-body { overflow-x: auto; }
+.inquiry-guide { border: 1px solid #b7c9bd; padding: 1rem; }
+.inquiry-guide li { line-height: 1.7; margin-block: .6rem; }
+@media (max-width: 480px) { main { padding: 1rem; } .option-grid, .indicator-grid { grid-template-columns: minmax(0, 1fr); } }
+@media (forced-colors: active) { :focus-visible { outline-color: Highlight; } .indicator { border-left-width: 1px; } }

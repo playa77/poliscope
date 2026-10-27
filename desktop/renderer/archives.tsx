@@ -60,7 +60,7 @@ export function Archives() {
       <button disabled={busy} onClick={() => void act('export', selected)}>Export this imported history</button>
       <button disabled={busy} onClick={() => void report('markdown', selected)}>Export imported inquiry report</button>
       <button disabled={busy} onClick={() => void report('csv', selected)}>Export imported typed CSV</button>
-      <table><caption>Stored facts and evidence</caption><thead><tr><th>Fact</th><th>Retained value</th></tr></thead><tbody>{(page.rows ?? []).map((row,i) => <tr key={i}><th scope="row">{row.label}</th><td style={{ overflowWrap: 'anywhere', whiteSpace: 'pre-wrap' }}>{row.detail}</td></tr>)}</tbody></table>
+      <table><caption>Stored facts and evidence</caption><thead><tr><th scope="col">Fact</th><th scope="col">Retained value</th></tr></thead><tbody>{(page.rows ?? []).map((row,i) => <tr key={i}><th scope="row">{row.label}</th><td style={{ overflowWrap: 'anywhere', whiteSpace: 'pre-wrap' }}>{row.detail}</td></tr>)}</tbody></table>
       <button disabled={busy || detail === 0} onClick={() => void act('read', selected, offset, Math.max(0, detail-25))}>Previous facts</button>
       <button disabled={busy || page.next_detail_offset == null} onClick={() => void act('read', selected, offset, page.next_detail_offset!)}>More facts</button>
       <button disabled={busy || offset === 0} onClick={() => void act('read', selected, offset-1, 0)}>Previous history entry</button>

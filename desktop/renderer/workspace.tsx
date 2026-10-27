@@ -8,7 +8,7 @@ import { Atlas, initialAtlasFilters, type AtlasFilters } from './atlas';
 import { DesignHistory } from './design-history';
 import { Overview, Inspector } from './overview';
 import { Interview } from './interview';
-import React, { useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceState, ScopeDTO, WorkspacePage, WorkspacePageRequest } from '../../contracts/workspace';
 
@@ -60,6 +60,17 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
   const [error, setError] = useState('');
   const [options, setOptions] = useState<CreateOptions>({ name: '', setup: 'blank', scope_name: 'Home', population: null, land_area: null });
   const generation = useRef(0);
+  const viewHeading = useRef<HTMLHeadingElement>(null);
+  const previousView = useRef(view);
+  const selectedState = useRef<HTMLDivElement>(null);
+  useLayoutEffect(() => {
+    // A replaced Apply control must not leave keyboard focus on the document body.
+    if (state && document.activeElement === document.body) selectedState.current?.focus();
+  }, [state]);
+  useLayoutEffect(() => {
+    if (previousView.current !== view) viewHeading.current?.focus();
+    previousView.current = view;
+  }, [view]);
   const scopes = useQuery({ queryKey: state ? contextKey(state, 'all', 'scope-directory') : ['no-world-scopes'],
     enabled: Boolean(state), retry: false,
     queryFn: ({ signal }) => pages(state!, 'all', 'scopes', signal) as Promise<ScopeDTO[]> });
@@ -79,11 +90,23 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
     setState(next); setScope(''); setConditionInspector(undefined);
   }
   return <section className="sandbox" aria-labelledby="sandbox-heading">
-    <header className="workspace-header"><div><p className="eyebrow">Local sandbox</p><h2 id="sandbox-heading">Design a society. Begin anywhere.</h2></div>
+    <header className="workspace-header"><div><p className="eyebrow">Local sandbox</p><h2 id="sandbox-heading" tabIndex={-1}>Design a society. Begin anywhere.</h2></div>
       <button disabled={loading} onClick={() => void act(async () => {
         const next = await window.poliscope.chooseWorkspace();
         if (next) { setCatalogue(next); setState(undefined); setScope(''); client.removeQueries({ queryKey: ['world'] }); }
       })}>Choose sandbox folder</button></header>
+    <details className="inquiry-guide"><summary>Explore a question without AI</summary>
+      <p>Begin in any domain. There is no required order or overall society score.</p>
+      <ol>
+        <li>Predict a consequence and name the people and place it concerns.</li>
+        <li>Choose a draft and preview it. A preview is unsaved and conditional on its declared model. Apply records a design choice, not proof; qualitative commitments have no calculated effects without a mechanism.</li>
+        <li>In Civilization overview, inspect a shortage or unmet requirement. Read local and group outcomes as well as aggregates: a total can conceal exclusion.</li>
+        <li>Open its evidence inspector to find inputs, assumptions, sources and coverage. Unknown means unavailable, not zero. A player target expresses your preference, not an engine judgment.</li>
+        <li>Use History and comparison to fork an alternative and compare the same scope and time. Use Timeline and experiments for confirmed simulation states.</li>
+        <li>Export a report and explain what changed, whose outcomes differ and which consequences remain unsupported. You can revise your prediction without choosing a winner.</li>
+      </ol>
+      <p>Read the selected branch, revision, scope, model and tick above each result. A design revision, noncommitting preview and confirmed simulation state describe different evidence.</p>
+    </details>
     <p>A local folder holds your civilizations and retained history. Civic choices and goals start unanswered.</p>
     {error && <p role="alert">{error}</p>}
     {notice && <p role="status">{notice}</p>}
@@ -115,7 +138,7 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
       <button disabled={loading} onClick={() => setView('Portable archives')}>Portable archives</button>
       {view === 'Portable archives' && <Archives key={catalogue.data_store_id} />}
       {state && <>
-        <div className="state-banner" aria-label="Selected state"><strong>{state.branch.name}</strong>
+        <div className="state-banner" aria-label="Selected state" role="region" ref={selectedState} tabIndex={-1}><strong>{state.branch.name}</strong>
           <span>Branch: {state.context.branch_id} · {state.context.revision_id === state.branch.context.revision_id ? 'Confirmed design revision' : 'Historical revision — read only'}</span>
           <span>Revision: {state.context.revision_id}</span><span>Model: {state.versions.model_id} · Tick: {state.effective_time.tick} · Calendar: {state.effective_time.calendar_id}</span>
           <label>Scope<select aria-label="Scope" disabled={loading || !scopes.data?.length} value={selectedScope} onChange={e => {
@@ -128,7 +151,7 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
           }} /></label><p>Press Enter to open the revision. Saved revisions remain attached to their original state.</p>
         </div>
         <div className="workspace-layout"><nav aria-label="Workspaces">{VIEWS.map(name => <button key={name} disabled={dirty} aria-current={view === name ? 'page' : undefined} onClick={() => name === 'Assistant and provider settings' ? onProviders?.() : setView(name)}>{name}</button>)}</nav>
-          <article className="workspace-body"><h3>{view}</h3>
+          <article className="workspace-body" aria-labelledby="workspace-view-heading"><h3 id="workspace-view-heading" ref={viewHeading} tabIndex={-1}>{view}</h3>
             <p>{state.goal_count} declared goals · {state.policy_count} selected policies · {state.mechanism_count} registered mechanisms</p>
             <p>{state.mechanism_count === 0 ? 'This starting model has no numerical social mechanisms. Qualitative commitments have no calculated social effects; observations below are authored conditions.' : 'This saved model contains mechanism bindings. Synthetic qualitative interviews are available; execution requires the matching registered model.'}</p>
             {view === 'Evidence and models' && selectedScope && <Evidence collection={evidenceCollection} setCollection={setEvidenceCollection} key={JSON.stringify([state.context, selectedScope])} state={state} scope={selectedScope} onDirty={draftChanged} onSelected={next => { setState(next); void client.invalidateQueries({ queryKey: ['world'] }); }} onCompare={() => setView('History and comparison')} />}
@@ -139,7 +162,7 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
             {view === 'World and institutions' && selectedScope && <World key={JSON.stringify([state.context, selectedScope, worldIdentity])} state={state} scope={selectedScope} initialIdentity={worldIdentity} onDirty={draftChanged} onSelected={next => { setState(next); setWorldIdentity(null); void client.invalidateQueries({ queryKey: ['world'] }); }} onMatrix={() => { setMatrixFilters({ ...initialMatrixFilters, axis: 'scope' }); setView('Dependency matrix'); }} onDecisions={() => setView('Decision atlas')} />}
             {view === 'Dependency matrix' && selectedScope && <Matrix onWorld={identity => { setWorldIdentity(identity); setView('World and institutions'); }} state={state} scope={selectedScope} disabled={dirty} filters={matrixFilters} setFilters={setMatrixFilters}
               onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} />}
-            <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { setDomain(d.id); setQuestionId(null); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
+            <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { setDomain(d.id); setQuestionId(null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
             {domain && <section aria-label="Selected domain" id="selected-interview" tabIndex={-1}><h4>{catalogue.domains.find(d => d.id === domain)?.name ?? 'Source question · domain mapping unresolved'}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>
               {selectedScope && <Interview key={JSON.stringify([state.context, selectedScope, domain, questionId])}
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}
@@ -150,7 +173,7 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
             {view !== 'Portable archives' && view !== 'Uncertainty and sensitivity' && view !== 'Timeline and experiments' && view !== 'Evidence and models' && view !== 'Civilization overview' && view !== 'World and institutions' && view !== 'Society map' && view !== 'History and comparison' && view !== 'Decision atlas' && view !== 'Dependency matrix' && <p>The {view.toLowerCase()} tools are not yet available. You can continue exploring every domain and the selected state.</p>}
             <h4>Starting conditions · {scopes.data?.find(s => s.id === selectedScope)?.label ?? 'Loading scope'}</h4>
             {(scopes.isError || values.isError) && <p role="alert">This state could not be read. Reopen the branch to retry.</p>}
-            {values.isFetching ? <p>Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th>Condition</th><th>Value</th><th>Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th>{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}
+            {values.isFetching ? <p role="status">Loading this state…</p> : <table><caption>Authored conditions for the selected revision and scope</caption><thead><tr><th scope="col">Condition</th><th scope="col">Value</th><th scope="col">Meaning</th></tr></thead><tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id}><th scope="row">{v.property_id}</th><td><button title="Inspect authored condition" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td>{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody></table>}
             {conditionInspector && <Inspector key={JSON.stringify([state.context, selectedScope, conditionInspector])} state={state} scope={selectedScope} selection={{ collection: 'conditions', id: conditionInspector }} close={() => setConditionInspector(undefined)} />}
             <button aria-expanded={inspector} onClick={() => setInspector(!inspector)}>State inspector</button>
           </article>

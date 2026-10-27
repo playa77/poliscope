@@ -55,7 +55,10 @@ test('packaged retained diagnostics, local shortage, exact traces, configuration
     await expect(inspector.getByRole('region', { name: 'Source or assumption' })).toContainText('No inter-scope transfer mechanism is declared.');
     await inspector.getByRole('button', { name: 'Next trace page', exact: true }).click();
     await expect(inspector.getByRole('button', { name: 'First trace page' })).toBeVisible();
-    await inspector.getByRole('button', { name: 'Close evidence inspector' }).click();
+    await inspector.getByRole('button', { name: 'Close evidence inspector' }).focus();
+    await page.keyboard.press('Escape');
+    await expect(inspector).toHaveCount(0);
+    await expect(target.getByRole('button', { name: 'Inspect Reserve', exact: true })).toBeFocused();
     await target.getByRole('button', { name: 'Show local/group distribution' }).click();
     await expect(overview.getByRole('table', { name: 'Exact retained values across local and group scopes' })).toContainText('200 kg');
     await expect(overview.getByRole('region', { name: 'Indicator distribution chart' })).toBeVisible();

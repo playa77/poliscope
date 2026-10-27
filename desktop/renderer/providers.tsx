@@ -62,7 +62,7 @@ export function Providers({locked=false,onApplied,interviewDraft}:{locked?:boole
   }
   return <section aria-label="Provider settings" id="provider-settings" tabIndex={-1}>
     <h2>Assistant and provider settings</h2>
-    <p>Optional BYOK settings. Offline society tools work without a provider. Key testing sends only a fixed metadata request to the saved endpoint; no society data or generation is sent.</p>
+    <p>Optional settings for your own provider key. Offline society tools work without a provider. Key testing sends only a fixed metadata request to the saved endpoint; no society data or generation is sent.</p>
     <p role="status">{notice}</p>{error && <p role="alert">{error}</p>}
     <p>{reply?.protection === 'os-protected' ? 'OS-protected key storage available.' : 'Session-only keys: secure OS protection is unavailable. Keys will be forgotten when the app closes.'}</p>
     <button disabled={busy || testing} onClick={() => void request({ action: 'list' })}>Refresh provider settings</button>

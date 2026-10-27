@@ -1,7 +1,7 @@
 import { Providers } from './providers';
 import { Recovery } from './recovery';
 import { Workspace } from './workspace';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { createRoot } from 'react-dom/client';
 import { QueryClient, QueryClientProvider, useQuery } from '@tanstack/react-query';
 import type { ShellAPI, HistoryReply } from '../shell';
@@ -12,7 +12,9 @@ function App() {
   const status = useQuery({ queryKey: ['bootstrap'], queryFn: () => window.poliscope.bootstrapStatus(), refetchInterval: 500, retry: false });
   const [assistantDraft,setAssistantDraft]=useState('');
   const [providersOpen, setProvidersOpen] = useState(false);
-  const openProviders = () => { setProvidersOpen(true); requestAnimationFrame(() => document.getElementById('provider-settings')?.focus()); };
+  const providerOrigin = useRef<HTMLElement | null>(null);
+  const providerButton = useRef<HTMLButtonElement>(null);
+  const openProviders = () => { providerOrigin.current = document.activeElement instanceof HTMLElement ? document.activeElement : null; setProvidersOpen(true); requestAnimationFrame(() => document.getElementById('provider-settings')?.focus()); };
   const [draft, setDraft] = useState(false);
   const [workspaceGeneration, setWorkspaceGeneration] = useState(0);
   const [result, setResult] = useState<HistoryReply>(null);
@@ -35,9 +37,9 @@ function App() {
     } }));
   }
   const saved = result && 'result' in result ? result.result : undefined;
-  return <main><p className="eyebrow">Poliscope</p><h1>A society, open to possibility.</h1>
-    <button onClick={openProviders}>Open provider settings</button>
-    {providersOpen && <Providers interviewDraft={assistantDraft} locked={draft} onApplied={()=>setWorkspaceGeneration(n=>n+1)} />}
+  return <><a className="skip-link" href="#sandbox-heading" onClick={event => { event.preventDefault(); document.getElementById('sandbox-heading')?.focus(); }}>Skip to society workspace</a><main><p className="eyebrow">Poliscope</p><h1>A society, open to possibility.</h1>
+    <button ref={providerButton} onClick={openProviders}>Open provider settings</button>
+    {providersOpen && <><button onClick={() => { setProvidersOpen(false); (providerOrigin.current?.isConnected ? providerOrigin.current : providerButton.current)?.focus(); }}>Close provider settings</button><Providers interviewDraft={assistantDraft} locked={draft} onApplied={()=>setWorkspaceGeneration(n=>n+1)} /></>}
     <Workspace key={workspaceGeneration} onDraftChange={setDraft} onProviders={openProviders} onAskAssistant={text=>{setAssistantDraft(text);openProviders();}} />
     <p role="status">{status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine'}</p>
     <button disabled={busy || draft} onClick={() => void action(async () => { await window.poliscope.reconnect(); setResult(null); setWorkspaceGeneration(n => n + 1); })}>Reconnect local engine</button>
@@ -61,6 +63,6 @@ function App() {
       </select></label>
       <button disabled={busy || draft} onClick={() => void action(() => window.poliscope.historyPage(collection, 0))}>Read collection</button>
     </section>}
-  </main>;
+  </main></>;
 }
 createRoot(document.getElementById('root')!).render(<React.StrictMode><QueryClientProvider client={new QueryClient()}><App /></QueryClientProvider></React.StrictMode>);

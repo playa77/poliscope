@@ -30,6 +30,8 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
   const [edit, setEdit] = useState<InterviewEdit>();
   const [preview, setPreview] = useState<InterviewPreview>();
   const previewGeneration = useRef(0);
+  const previewHeading = useRef<HTMLHeadingElement>(null);
+  useEffect(() => { if (preview) previewHeading.current?.focus(); }, [preview]);
   const [busy, setBusy] = useState(false);
   const [uncertain, setUncertain] = useState(false);
   const [error, setError] = useState('');
@@ -98,13 +100,13 @@ export function Interview({ query, versions, historical, onDirty, onConfirmed, o
     </fieldset>
     {busy && !uncertain && <p role="status">Computing preview. You can cancel this draft while it runs.</p>}
     {error && <p role="alert">{error}</p>}
-    {preview && <section aria-label="Noncommitting preview"><h5>Preview · not applied</h5><p>{preview.coverage}</p>
+    {preview && <section aria-label="Noncommitting preview"><h5 ref={previewHeading} tabIndex={-1}>Preview · not applied</h5><p>{preview.coverage}</p>
       <p>Affected scopes: {preview.affected_scope_ids.join(', ')}. Changed values: {preview.changed_value_ids.join(', ') || 'None'}.</p>
       <p>Affected numerical accounts: {preview.accounts.length ? preview.accounts.join(', ') : 'None; numerical mechanisms are not supplied.'}</p>
       <ul>{preview.findings.map((f, i) => <li key={i}>{f}</li>)}</ul>
       <p>Alternatives retained on Apply: {preview.alternatives.map(id => q.options.find(o => o.definition.id === id)?.label ?? 'Player qualitative alternative').join(', ')}</p>
       <ul>{preview.dependencies.map(d => <li key={d}>{d}</li>)}</ul>
-      {preview.before.length > 0 && <table><caption>Condition changes</caption><thead><tr><th>Condition</th><th>Before</th><th>After</th></tr></thead><tbody>{preview.before.map(row => <tr key={row.id}><th>{row.property_id}</th><td>{display(row)}</td><td>{display(preview.after.find(v => v.id === row.id)!)}</td></tr>)}</tbody></table>}
+      {preview.before.length > 0 && <table><caption>Condition changes</caption><thead><tr><th scope="col">Condition</th><th scope="col">Before</th><th scope="col">After</th></tr></thead><tbody>{preview.before.map(row => <tr key={row.id}><th scope="row">{row.property_id}</th><td>{display(row)}</td><td>{display(preview.after.find(v => v.id === row.id)!)}</td></tr>)}</tbody></table>}
       <button disabled={busy || historical} onClick={() => void apply()}>{uncertain ? 'Retry Apply' : 'Apply draft'}</button>
     </section>}
     <button disabled={uncertain || historical} onClick={() => void cancel()}>Cancel draft</button>

@@ -88,7 +88,7 @@ export function Overview({ state, scope }: { state: WorkspaceState; scope: strin
     <h4>Conditions and diagnostics</h4>
     <p>Results are retained evidence for this revision. Coverage applies to the declared model; a successful diagnostic never establishes whole-society sufficiency.</p>
     {indicators.isError && <Retry retry={() => void indicators.refetch()} />}
-    {indicators.isFetching && <p>Reading retained indicators…</p>}
+    {indicators.isFetching && <p role="status">Reading retained indicators…</p>}
     {indicators.data && <p>Retained evidence: {indicators.data.evidence_state} · model coverage: {STATUS[indicators.data.coverage]}. No whole-system sufficiency claim is made.</p>}
     {!indicators.isFetching && !indicators.isError && rows.length === 0 && <p>No retained indicator results are available for this scope. Starting conditions below remain inspectable; numerical social effects are unmodeled.</p>}
     {rows.length > 0 && <details><summary>Choose overview indicators ({ids.length}/8)</summary><fieldset><legend>Small indicator set · this session</legend>{rows.map(r => <label key={r.id}><input type="checkbox" checked={ids.includes(r.id)} disabled={!ids.includes(r.id) && ids.length >= 8}
@@ -112,7 +112,7 @@ export function Overview({ state, scope }: { state: WorkspaceState; scope: strin
       <label>Retained collection<select value={collection} onChange={e => { setCollection(e.target.value as typeof collection); setCharted(undefined); }}>{['indicators', 'accounts', 'policies', 'goals', 'conditions'].map(c => <option key={c} value={c}>{c}</option>)}</select></label>
       <p>Each row retains its own scope, unit and time basis. Overlapping groups are not added together. Policies are selected commitments; goals are player targets.</p>
       {extra.isError && <Retry retry={() => void extra.refetch()} />}
-      {extra.isFetching ? <p>Reading distribution…</p> : <table><caption>Exact retained values across local and group scopes</caption><thead><tr><th>Definition</th><th>Scope</th><th>Value / status</th></tr></thead><tbody>{extra.data?.items.map(r => <DistributionRow key={r.id} row={r} inspect={() => inspect(collection, r.id)} />)}</tbody></table>}
+      {extra.isFetching ? <p role="status">Reading distribution…</p> : <table><caption>Exact retained values across local and group scopes</caption><thead><tr><th scope="col">Definition</th><th scope="col">Scope</th><th scope="col">Value / status</th></tr></thead><tbody>{extra.data?.items.map(r => <DistributionRow key={r.id} row={r} inspect={() => inspect(collection, r.id)} />)}</tbody></table>}
       {!extra.isFetching && extra.data?.items.length === 0 && <p>No {collection} are recorded.</p>}
       {charted && rows.find(r => r.id === charted) && <Chart state={state} scope={scope} row={rows.find(r => r.id === charted)!} />}
     </details>
@@ -129,7 +129,7 @@ function DistributionRow({ row: r, inspect }: { row: OverviewRow; inspect: () =>
   if (r.kind === 'condition') text = valueText(r.condition.value);
   if (r.kind === 'policy') text = `Selected commitment: ${valueText(r.policy.value)}`;
   if (r.kind === 'goal') text = `${r.observation.status}: ${r.observation.matched === true ? 'within your target' : r.observation.matched === false ? 'outside your target' : r.observation.reason}`;
-  return <tr><th>{name}</th><td>{scope}</td><td><button onClick={inspect}>{text}</button></td></tr>;
+  return <tr><th scope="row">{name}</th><td>{scope}</td><td><button onClick={inspect}>{text}</button></td></tr>;
 }
 export function Inspector({ state, scope, selection, close }: { state: WorkspaceState; scope: string; selection: Selection; close: () => void }) {
   const closeButton = useRef<HTMLButtonElement>(null);
@@ -145,9 +145,9 @@ export function Inspector({ state, scope, selection, close }: { state: Workspace
   const row = detail.data?.items[0];
   const refs = row?.kind === 'indicator' ? row.observation : row?.kind === 'condition' || row?.kind === 'commitment' ? row.condition.provenance : row?.kind === 'finding' ? row.finding : row?.kind === 'account' ? row.definition : undefined;
   const roots = row?.kind === 'indicator' ? row.observation.trace_refs : row?.kind === 'account' ? row.trace_refs : row?.kind === 'finding' ? row.finding.trace_refs : [];
-  return <aside aria-label="Evidence inspector" className="evidence-inspector"><h4>Definition and evidence</h4><button ref={closeButton} onClick={close}>Close evidence inspector</button>
+  return <aside aria-label="Evidence inspector" className="evidence-inspector" onKeyDown={event => { if (event.key === 'Escape') { event.stopPropagation(); close(); } }}><h4>Definition and evidence</h4><button ref={closeButton} onClick={close}>Close evidence inspector</button>
     <p>Revision: {state.context.revision_id} · model {state.versions.model_id} · tick {state.effective_time.tick} · scope {scope}</p>
-    {detail.isFetching && <p>Reading definition and evidence…</p>}
+    {detail.isFetching && <p role="status">Reading definition and evidence…</p>}
     {detail.isError && <Retry retry={() => void detail.refetch()} />}
     {row?.kind === 'indicator' && <><h5>{row.definition.name}</h5><p>{STATUS[row.observation.status]} · {row.observation.reason} · {valueText(row.observation.value)}</p><p>{DIAGNOSTIC[row.observation.diagnostic]}</p>
       <h5>Definition and inputs</h5><p>{row.definition.procedure} · {row.definition.aggregation} · {row.definition.unit_id} · scope {row.definition.scope_id} · time {row.definition.time_basis_id ?? 'stock / observation instant'} · denominator {row.definition.denominator_scope_id ?? 'none'}</p>
@@ -158,7 +158,7 @@ export function Inspector({ state, scope, selection, close }: { state: Workspace
     </>}
     {row?.kind === 'condition' && <><h5>Authored condition: {row.condition.property_id}</h5><p>{valueText(row.condition.value)}</p><p>Scope {row.condition.scope_id} · tick {row.condition.effective_time.tick} · entity {row.condition.entity_id} · owner {row.writer_id ?? 'unavailable'} · origin {row.condition.provenance.origin}</p><p>Player/authored input, not a calculated social outcome. No numerical calculation trace is invented for this condition.</p></>}
     {row?.kind === 'account' && <><h5>Account: {row.id}</h5><p>{row.definition.kind} · {row.definition.unit_id} · scope {row.definition.scope_id} · period {row.definition.period_id ?? 'stock'} · invariant {row.definition.invariant}</p>
-      <table><caption>Exact reconciled account</caption><tbody>{['opening', 'quantum', 'maximum'].map(k => <tr key={k}><th>{k}</th><td>{row.definition[k as 'opening']} {row.definition.unit_id}</td></tr>)}{['closing', 'available', 'outstanding_reserved'].map(k => <tr key={k}><th>{k}</th><td>{row.result[k as 'closing']} {row.definition.unit_id}</td></tr>)}</tbody></table></>}
+      <table><caption>Exact reconciled account</caption><tbody>{['opening', 'quantum', 'maximum'].map(k => <tr key={k}><th scope="row">{k}</th><td>{row.definition[k as 'opening']} {row.definition.unit_id}</td></tr>)}{['closing', 'available', 'outstanding_reserved'].map(k => <tr key={k}><th scope="row">{k}</th><td>{row.result[k as 'closing']} {row.definition.unit_id}</td></tr>)}</tbody></table></>}
     {row?.kind === 'finding' && <><h5>{row.finding.category.replaceAll('_', ' ')}</h5><p>{row.message}</p><p>{STATUS[row.finding.status]} · scope {row.finding.scope_id ?? 'multiple/unspecified'} · rule {row.finding.rule_ref ?? 'none'}</p><ul>{row.finding.values.map((v, i) => <li key={i}>{valueText(v)}</li>)}</ul></>}
     {row?.kind === 'commitment' && <><h5>{row.label} · qualitative selected commitment</h5>{row.condition.value.kind === 'label' ? <Commitment text={row.condition.value.value} /> : <p>{valueText(row.condition.value)}</p>}<p>Scope {row.condition.scope_id} · origin {row.condition.provenance.origin}. No numerical effects are assigned to this prose.</p></>}
     {row?.kind === 'policy' && <><h5>Selected policy commitment</h5><p>{row.policy.mechanism.id} · {row.policy.mechanism.version} · authority {row.policy.authority_id} · scope {row.policy.scope_id}</p><p>{row.policy.parameter_id}: {valueText(row.policy.value)}</p></>}
@@ -188,7 +188,7 @@ function Traces({ state, scope, root, reference, follow }: { state: WorkspaceSta
   return <section aria-label="Calculation trace page">{data.isError && <Retry retry={() => void data.refetch()} />}{data.isFetching && <p>Reading trace page…</p>}
     {data.data?.items.map(r => r.kind === 'trace' && <details key={r.id} open={r.id === root}><summary>{r.id} · {r.trace.kind}</summary>
       <p>Tick {r.trace.effective_time.tick} · {r.trace.effective_time.calendar_id}</p><ul>{r.trace.mechanisms.map(m => <li key={m.instance_id}>{m.mechanism_id} · {m.mechanism_version} · scope {m.scope_id} · entity {m.entity_id}</li>)}</ul>
-      <table><caption>Typed inputs and calculated results</caption><thead><tr><th>Node</th><th>Scope / entity</th><th>Status / reason</th><th>Exact value</th></tr></thead><tbody>{r.trace.members.map(m => <tr key={JSON.stringify(m.node)}><th>{m.node.join(' → ')}</th><td>{m.scope_id} / {m.entity_id}</td><td>{STATUS[m.status]} · {m.reason}</td><td>{valueText(m.value)}</td></tr>)}</tbody></table>
+      <table><caption>Typed inputs and calculated results</caption><thead><tr><th scope="col">Node</th><th scope="col">Scope / entity</th><th scope="col">Status / reason</th><th scope="col">Exact value</th></tr></thead><tbody>{r.trace.members.map(m => <tr key={JSON.stringify(m.node)}><th scope="row">{m.node.join(' → ')}</th><td>{m.scope_id} / {m.entity_id}</td><td>{STATUS[m.status]} · {m.reason}</td><td>{valueText(m.value)}</td></tr>)}</tbody></table>
       <p>Feedback edges: {r.trace.internal_edges.map(e => e.map(n => n.join(' → ')).join(' → ')).join('; ') || 'none'}</p>
       {r.trace.members.flatMap(m => [...m.source_refs, ...m.assumption_refs]).filter((id, i, all) => all.indexOf(id) === i).map(id => <button key={id} onClick={() => reference(id)}>Evidence {id}</button>)}
       <p>Dependencies:</p>{r.trace.dependency_refs.map(id => <button key={id} onClick={() => follow(id)}>Follow dependency {id}</button>)}

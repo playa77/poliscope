@@ -54,7 +54,7 @@ export function DesignHistory({ state, disabled, onSelected }: { state: Workspac
       <button disabled={!name.trim()} onClick={() => void action('fork')}>Fork revision</button>
       <button disabled={!target} onClick={() => void action('restore')}>Restore revision and retain current future</button>
     </fieldset>
-    <table><caption>Retained design lineage · all futures in this civilization</caption><thead><tr><th>Revision and parent</th><th>Original choices and rationale</th><th>Explore</th></tr></thead><tbody>
+    <table><caption>Retained design lineage · all futures in this civilization</caption><thead><tr><th scope="col">Revision and parent</th><th scope="col">Original choices and rationale</th><th scope="col">Explore</th></tr></thead><tbody>
       {lineage.data?.items.map(row => <tr key={row.context.revision_id}><td>{row.context.revision_id}<p>Parent: {row.parent_id ?? 'Initial revision'}</p><p>Accepted on branch: {row.context.branch_id}</p></td>
         <td><p>Selected: {row.selected_id ?? 'No civic choice selected'}</p><details><summary>Offered alternatives</summary>{row.alternatives.map(a => <section key={a.id}><strong>{a.id}</strong>{a.wording.map((text, i) => <p key={i}>{text}</p>)}</section>)}</details>
           <p>{row.rationale ? `Private rationale: ${row.rationale.status}. Inspect this revision to read its separately stored text.` : 'No rationale recorded.'}</p></td>
@@ -67,8 +67,8 @@ export function DesignHistory({ state, disabled, onSelected }: { state: Workspac
     <label>Compare with retained revision<input maxLength={128} value={other} onChange={e => { setOther(e.target.value); setComparisonCursor(null); }} /></label>
     {comparison.data && <section aria-label="Retained comparison"><h4>Left: {state.context.revision_id} · Right: {other}</h4>
       <p>Left evidence: {comparison.data.left_evidence} · Model: {comparison.data.left_versions.model_id}. Right evidence: {comparison.data.right_evidence} · Model: {comparison.data.right_versions.model_id}.</p>
-      <table><caption>Exact retained outcomes and compatible deltas</caption><thead><tr><th>Indicator and scope</th><th>Left</th><th>Right</th><th>Right minus left</th></tr></thead><tbody>
-        {comparison.data.items.map(row => <tr key={row.id}><th>{row.left.definition?.name ?? row.right.definition?.name ?? row.id}<p>{row.id}</p><p>{row.left.definition?.scope_id ?? row.right.definition?.scope_id}</p></th>
+      <table><caption>Exact retained outcomes and compatible deltas</caption><thead><tr><th scope="col">Indicator and scope</th><th scope="col">Left</th><th scope="col">Right</th><th scope="col">Right minus left</th></tr></thead><tbody>
+        {comparison.data.items.map(row => <tr key={row.id}><th scope="row">{row.left.definition?.name ?? row.right.definition?.name ?? row.id}<p>{row.id}</p><p>{row.left.definition?.scope_id ?? row.right.definition?.scope_id}</p></th>
           {[row.left, row.right].map((v, i) => <td key={i}>{v.observation ? valueText(v.observation.value) : 'Unavailable'}<p>{v.origin === 'retained_evidence' ? 'Retained evidence' : 'Unavailable evidence'} · {v.observation?.status ?? 'Unavailable'}</p><p>Trace evidence: {v.trace_state}</p>{v.observation && <p>Tick {v.observation.effective_time.tick} · {v.observation.effective_time.calendar_id}</p>}</td>)}
           <td>{row.delta ? valueText(row.delta) : 'Not comparable'}{row.reasons.map(r => <p key={r}>{r}</p>)}</td></tr>)}
       </tbody></table>
