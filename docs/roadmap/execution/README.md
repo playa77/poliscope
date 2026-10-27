@@ -4,8 +4,7 @@ fetched main `2f623b5` (merged WP-051 / PR #124). [Validation](WP-052-validation
 440 desktop units, 52 roadmap units and sixteen distinct packaged core scenarios
 across broad/final affected runs. The complete offline learner inquiry and
 200% zoom pass; native assistive checks remain owner-run. Route:
-**solo-validated; agent review deferred**. Publication is blocked by automatic
-approval review pending explicit user approval to push/open a PR. Continue with WP-053 after merge;
+**solo-validated; agent review deferred**. Publication is explicitly user-authorized; push and regular PR are in progress. Continue with WP-053 after merge;
 WP-050 live acceptance and deferred WP-051 performance work remain separate.
 
 **Current authorized publication, 2026-10-27:** The user authorized a PR for the
