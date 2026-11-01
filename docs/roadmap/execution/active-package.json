@@ -1,65 +1,52 @@
 {
   "version": 1,
-  "package": "WP-054",
-  "status": "complete",
-  "record": "docs/roadmap/execution/WP-054.md",
+  "package": "WP-055",
+  "record": "docs/roadmap/execution/WP-055.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2529225a0410c669e1f33b3735b3f75cbb588fb3",
-  "branch": "codex/wp-054-native-packaging",
-  "execution_unit": "WP-054",
-  "review_route": "solo-validated; agent review deferred",
+  "base": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0",
+  "branch": "codex/wp-055-product-gate",
+  "status": "in_progress",
+  "execution_unit": "WP-055",
   "authorization": {
     "source": "user",
-    "scope": "WP-054",
-    "instruction": "implement the next work package."
+    "scope": "WP-055",
+    "instruction": "implement Wp-055."
   },
+  "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "native-build-and-identity",
-      "status": "passed",
-      "evidence": "Native x64 admission, external engine resources, ASAR identity/private-file and binary/dependency checks implemented; unsigned cloud Linux package and distribution pass. Windows build is owner-run under docs/platform_scope.md; no Windows native claim."
+      "id": "leaf-trace-and-rt-audit",
+      "status": "pending",
+      "evidence": "Cumulative audit implemented; 1,053 leaf obligations and 30 exact G7 subcases still need candidate-bound production inspection. Historical planning statuses are preserved."
     },
     {
-      "id": "install-upgrade-and-data",
-      "status": "passed",
-      "evidence": "Both per-user installers implemented; final Linux extraction/install into spaces passes. Synthetic upgrade/tamper/failure tests preserve previous launcher, installation and user data. Windows execution owner-run."
+      "id": "integrated-product-gate",
+      "status": "pending",
+      "evidence": "Full baseline engine: 4,990 passed. Vitest: 444 passed / 1 failed; isolated rerun remains failed. Final roadmap/audit: 58 passed. Direct ASAR positive/negative checks pass. Fresh package and Electron G7 blocked."
     },
     {
-      "id": "signing-and-artifact-evidence",
-      "status": "passed",
-      "evidence": "External certificate-store Authenticode and detached GPG signing/verification routes implemented and inspected. Unsigned artifact manifest and final checksum retained in WP-054-validation.json. Real signing unverified/owner-run; no signed distribution claim."
+      "id": "model-and-coverage-audit",
+      "status": "pending",
+      "evidence": "Current twelve-domain coverage is inventoried separately from authored synthetic behavior. Independent model review remains deferred."
     },
     {
-      "id": "bundled-runtime-and-offline-smoke",
-      "status": "passed",
-      "evidence": "Bundled known-answer, cold SQLite operation replay and archive round-trip pass with empty PATH; installed Electron cold restart and four additional packaged archive/provider/recovery/timeline scenarios pass. Real keychain/proxy/native checks remain owner-run."
+      "id": "provider-and-native-evidence",
+      "status": "pending",
+      "evidence": "WP-050 live acceptance remains open; no credentials/credits or bounded live authorization. Native checks owner-run under project waiver; no native/signing claim."
     }
   ],
-  "blockers": [],
-  "previous_parent": {
-    "package": "WP-050",
-    "status": "in_progress",
-    "record": "docs/roadmap/execution/WP-050.md",
-    "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
-  },
+  "blockers": [
+    "WP-050 live-provider prerequisite remains incomplete.",
+    "Proxy unreachable: current baseline fetch and fresh Forge Electron download failed.",
+    "No working display server for packaged Electron checks.",
+    "Current leaf and exact G7 workflow evidence not yet complete.",
+    "Full Vitest retains one repeatable subprocess-output harness failure; direct ASAR checks pass."
+  ],
   "previous_delivery": {
-    "package": "WP-053",
-    "status": "complete",
-    "merged_pr": 126
+    "package": "WP-054",
+    "status": "merged locally",
+    "merged_pr": 127,
+    "merge_commit": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0"
   },
-  "native_validation": {
-    "status": "owner-run",
-    "record": "docs/platform_scope.md",
-    "claim": "Cloud Linux functional checks only. Windows, real signing and native OS/keychain/proxy/sandbox acceptance are owner-run/unverified."
-  },
-  "validation": "docs/roadmap/execution/WP-054-validation.json",
-  "publication": {
-    "status": "published; regular PR open",
-    "branch": "codex/wp-054-native-packaging",
-    "destination": "https://github.com/playa77/poliscope.git",
-    "implementation_commit": "506a7ba",
-    "authorization": "User explicitly requested: push codex/wp-054-native-packaging to playa77/poliscope and open a PR.",
-    "url": "https://github.com/playa77/poliscope/pull/127",
-    "merge": "not authorized; not performed"
-  }
+  "validation": "docs/roadmap/execution/WP-055-validation.json"
 }

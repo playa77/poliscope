@@ -1,0 +1,162 @@
+{
+  "version": 1,
+  "package": "WP-055",
+  "status": "in_progress",
+  "acceptance": "not_established",
+  "date": "2026-11-01",
+  "base": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0",
+  "branch": "codex/wp-055-product-gate",
+  "review_route": "solo-validated; agent review deferred",
+  "source_identity": {
+    "scope": "Unchanged baseline production runtime; full runs began before audit-only changes. Not final frozen G7 evidence.",
+    "git_objects": {
+      "engine": "6045e46fb6ca63573cbcb4fc2957b4bf36478fdc",
+      "desktop": "6d7e34d5c5584fba8a5107f6aeba879fcbd68b32",
+      "content": "be627d79cab62630296f6c9c36ce8e49869ba86d",
+      "contracts": "289d5bc0e94e602a91cba22eb418dd029e29ba97",
+      "package.json": "9fa473efbc322fc10dd09ffc95b9180715136c25",
+      "package-lock.json": "3ebdc6cf2bd83193e8e337457c01f97cbc6f3fcb",
+      "uv.lock": "bb11d80b5ab64890a68dbfcfa0c6e1068a804a88",
+      "pyproject.toml": "b677130599902d0eea611cb815fafb0e5a861767",
+      "forge.config.cjs": "ab8e9b18c6f99151cb1113a1c24ecd0fc85ed95b"
+    }
+  },
+  "checks": [
+    {
+      "command": "uv run --frozen pytest --junitxml=work/wp-055/engine.xml",
+      "results": {
+        "tests": 4990,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/engine.xml",
+      "sha256": "627c915ec144a91ba433d604d2809d55109967efd490dda0f0fbd2279ef8a937",
+      "status": "passed"
+    },
+    {
+      "command": "npm exec -- vitest run --maxWorkers=2 --reporter=default --reporter=junit --outputFile=work/wp-055/unit.xml",
+      "results": {
+        "tests": 445,
+        "failed": 1,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/unit.xml",
+      "sha256": "7eaf345db7e684de5ff69cc91ce62dfb2a071152d485d72d6b37688cb113a2b1",
+      "status": "failed"
+    },
+    {
+      "command": "npm exec -- vitest run tests/desktop/packaging.test.ts --maxWorkers=1 --reporter=junit --outputFile=work/wp-055/packaging-retest.xml",
+      "results": {
+        "tests": 2,
+        "failed": 1,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/packaging-retest.xml",
+      "sha256": "85c18626a0ba21c21316a952b29b735f4f82e933a3221089f3c6bd31734bf9de",
+      "status": "failed"
+    },
+    {
+      "command": "uv run --frozen pytest tests/roadmap -q --junitxml=work/wp-055/roadmap-final.xml",
+      "results": {
+        "tests": 58,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/roadmap-final.xml",
+      "sha256": "c056f5440780a4cd89503147a2680b69a309c1584f86092dbdc5a31ea89cf9c1",
+      "status": "passed"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "passed",
+      "log_sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125"
+    },
+    {
+      "command": "npm run content:validate",
+      "status": "passed",
+      "log_sha256": "b40a0eeb11ab1039e95d894e2009c35bcef08e26c0cef7d0b8ae36b1f061e6c2"
+    },
+    {
+      "command": "npm run contracts:check",
+      "status": "passed",
+      "log_sha256": "3f625556283c69e9a210f81677f4f4bbacbbb4edea0b5995a9a79fb894036cab"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_baseline.py",
+      "status": "passed",
+      "log_sha256": "da1bd9b69528e27ded4a3fbbc8c90ac157f2e06eebdb8c5a9c755ede16fa3f63"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_roadmap.py",
+      "status": "passed",
+      "log_sha256": "611764fbb18f1feebd7a6bc3d490ab683a65f60b09e1b7808cd67ab23fd64b36"
+    },
+    {
+      "command": "uv run --frozen python scripts/audit_static_readiness.py --check",
+      "status": "passed",
+      "log_sha256": "ccc7c15e40ad617e48835f4627261e53febcb4f71a07a868153da97718d1cda8"
+    },
+    {
+      "command": "npm run package",
+      "status": "failed",
+      "log_sha256": "80d7ef5c3c4f741cb38e9aaf3e53750b7b6b0dbef5a64b0264b6019277dcd903"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/valid.asar",
+      "status": "passed",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "log_sha256": "66a6eaa6866d15d758aca9167b89d3a34627e35764d134d8f3460ef5e3e61015",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/private.asar",
+      "status": "passed",
+      "observed_exit": 1,
+      "expected_exit": 1,
+      "log_sha256": "6e0607f3b0e9101377e01256ccbf466ab6843defd433ed942e7970ec1f5556cf",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/mismatch.asar",
+      "status": "passed",
+      "observed_exit": 1,
+      "expected_exit": 1,
+      "log_sha256": "b171f260ef3f65992cfed3f132a00187261e4753508f2f05ebc1fbcd6354c2c0",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    }
+  ],
+  "new_tests": 6,
+  "expected_failures": 0,
+  "required_g7_unrun": 30,
+  "leaf_production_evidence_unmapped": 1053,
+  "rt_obligations_without_current_inspected_evidence": 14,
+  "defects": [
+    {
+      "classification": "test harness/environment",
+      "test": "rejects private ASAR files and mismatched packaged identity",
+      "result": "Repeated empty subprocess stdout, including trivial child Node script; synchronous probe reported EPERM despite status zero. Direct checker positive/private/identity cases pass. No application defect established; original test retained.",
+      "disposition": "Unresolved full unit failure; not waived or marked passed."
+    }
+  ],
+  "limitations": [
+    "Fresh package failed at Electron download through unreachable proxy after engine freeze/Vite build.",
+    "No usable X display; dummy Xorg could not establish sockets; packaged suite unrun.",
+    "WP-050 live-provider prerequisite incomplete; no live request made.",
+    "Native tests/signing owner-run under existing project waiver; no native claims.",
+    "Full leaf/scenario/RT production inspection incomplete. Historical plans are not evidence.",
+    "Independent model/product review deferred. Twelve-domain structural coverage reconciliation is not empirical validation."
+  ],
+  "publication": {
+    "status": "not attempted",
+    "reason": "Full parent acceptance is incomplete; existing delivery gate deliberately rejects incomplete feature deliveries. No merge performed."
+  },
+  "reports": {
+    "location": "Local ignored work/wp-055. User-facing archive export unavailable: configured /codex output root does not exist on this executor and /codex is read-only. Reports remain in the shared workspace.",
+    "privacy": "Synthetic isolated fixtures only; no environment values or private runtime databases exported."
+  }
+}
