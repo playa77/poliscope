@@ -330,7 +330,7 @@ export class ProviderController {
     finally { clearTimeout(timer); }
   }
   /** Main-owned, conservative GPT byte-BPE bound, never a renderer receipt.
-   * Reviewed DeepSeek V3.2 text uses the same byte-level bound (see
+   * Reviewed DeepSeek V3.2 / V4.1 Flash 1017 text uses the same byte-level bound (see
    * docs/provider_context_bounds.md). Unknown tokenizer/compatible entries remain
    * blocked. Full tokenizer
    * negotiation remains explicit; tools/history include serialized bytes plus a
@@ -348,7 +348,8 @@ export class ProviderController {
       // description/schema and role, with 1024 reserved per framing unit. The
       // escaped JSON byte count intentionally overestimates ordinary content.
       const byteLevel = raw.architecture?.tokenizer === 'GPT' ||
-        raw.architecture?.tokenizer === 'DeepSeek' && id === 'deepseek/deepseek-v3.2';
+        raw.architecture?.tokenizer === 'DeepSeek' &&
+          ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v4.1-flash-1017'].includes(id);
       if (!byteLevel) return [];
       // DeepSeek's reviewed bound covers text/tools only, not undocumented media.
       if (raw.architecture?.tokenizer === 'DeepSeek' && plan.messages.some(

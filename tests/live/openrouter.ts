@@ -15,11 +15,12 @@ import { AssistantController } from '../../desktop/main/assistant';
 import { WorkspaceController } from '../../desktop/main/workspace';
 import { spendingService } from '../../desktop/main/spending';
 import { keyTestTransport, metadataTransport, generationTransport, type GenerationTransport } from '../../desktop/main/provider-network';
+import { RequestError } from '../../desktop/main/provider-requests';
 import { openRouterAdapter } from '../../desktop/main/provider-adapters';
 import type { ProviderProfile } from '../../contracts/provider';
 import type { AssistantPrepare, AssistantReply } from '../../contracts/assistant';
 import type { GenerationPlan, GenerationFormat } from '../../contracts/generation';
-const MODEL = 'deepseek/deepseek-v3.2';
+const MODEL = 'deepseek/deepseek-v4.1-flash-1017';
 const ENDPOINT = 'https://openrouter.ai/api/v1';
 const directory = resolve('artifacts/wp-055-live');
 const preflight = process.argv.includes('--preflight');
@@ -28,7 +29,8 @@ delete process.env.OPENROUTER_API_KEY;
 const proxy = process.env.HTTPS_PROXY ?? process.env.HTTP_PROXY;
 const outcomes: Record<string, unknown>[] = [];
 const digest = (text: string) => createHash('sha256').update(text).digest('hex');
-function check(value: unknown, reason: string): asserts value { if (!value) throw new Error(reason); }
+class LiveCheckError extends Error {}
+function check(value: unknown, reason: string): asserts value { if (!value) throw new LiveCheckError(reason); }
 const pause = (ms: number) => new Promise(r => setTimeout(r, ms));
 const root = resolve('.');
 let posts = 0;
@@ -45,7 +47,8 @@ const report: Record<string, unknown> = {
   maximum_run_reserved_exposure_usd: '6',
   privacy: 'Isolated synthetic world, selected public facts, no private user data; credential main-only/session-only.',
   cases: outcomes, readiness: false,
-  unsupported_for_selected_model: ['image', 'audio', 'video'],
+  unsupported_for_selected_model: ['audio', 'video'],
+  advertised_but_unvalidated_live: ['image input: reviewed context accounting is text/tools only'],
   untested_live: ['other models/providers', 'OS-protected native keychain', 'provider account hard-cap enforcement'],
 };
 async function runCase(id: string, run: () => Promise<Record<string, unknown> | void>) {
@@ -147,7 +150,7 @@ async function main() {
     isEncryptionAvailable: () => false, encryptString: () => { throw new Error('No key persistence'); }, decryptString: () => { throw new Error('No key persistence'); },
   }, keyTestTransport(options => net.request(options)), process.platform, metadata);
   const profile: ProviderProfile = { id: 'live', name: 'Explicit bounded WP-055 live acceptance', kind: 'openrouter', endpoint: ENDPOINT, model: MODEL,
-    generation: { temperature: null, top_p: null, max_output_tokens: 1024 },
+    generation: { temperature: null, top_p: null, max_output_tokens: 1024, reasoning: { enabled: false } },
     routing: { order: [], only: [], ignore: [], allow_fallbacks: false, require_parameters: true, data_collection: 'deny', max_price: { prompt: '2', completion: '2', request: '0' } },
     capabilities: { text: 'unknown', tools: 'unknown', structured_output: 'unknown', reasoning: 'unknown', image: 'unknown', audio: 'unknown', video: 'unknown' } };
   await providers.request({ action: 'save', profile, expected_revision: null });
@@ -172,6 +175,7 @@ async function main() {
     check(url === ENDPOINT + '/chat/completions', 'Unexpected billable endpoint');
     const data = JSON.parse(body);
     check(data.model === MODEL && data.max_tokens === 1024 && !data.models && Buffer.byteLength(body) < 32768, 'Payload exceeds live scope');
+    check(Buffer.byteLength(body) + 1024 * (data.messages.length + (data.tools?.length ?? 0) + 1) < 200000, 'Live context exceeds reserved exposure policy');
     check(data.provider.max_price.prompt === '2' && data.provider.max_price.completion === '2' && data.provider.max_price.request === '0', 'Price guard missing');
     await budget!.reserve();
     posts = budget!.posts;
@@ -226,9 +230,9 @@ async function main() {
     return { ...summary(result), initial_tools: JSON.parse(tools.tools_json ?? '[]').length, separate_dispatch: true };
   });
   await runCase('explicit-reasoning', async () => {
-    // Catalog documents reasoning, but no supported effort/max-token range.
-    // enabled=true requests reasoning without inventing unsupported controls.
-    await providers!.request({ action: 'save', profile: { ...profile, generation: { ...profile.generation, reasoning: { enabled: true } } }, expected_revision: 2 });
+    // The exact model advertises low effort; keep reasoning bounded by the
+    // same total output-token ceiling and explicit spending reservation.
+    await providers!.request({ action: 'save', profile: { ...profile, generation: { ...profile.generation, reasoning: { effort: 'low' } } }, expected_revision: 2 });
     const result = await send(await controller!.request({ ...query('What is 2 plus 3? Explain in one short sentence.', true), expected_revision: 3 }));
     return { ...summary(result), reasoning_present: Boolean(result.reasoning) };
   });
@@ -248,8 +252,12 @@ async function main() {
   });
   report.status = 'passed';
 }
-main().catch(() => {
-  outcomes.push({ id: activeCase, status: 'failed', diagnostic: 'Live check failed; no provider body, prompt, key or account details retained' });
+main().catch(error => {
+  // Only our fixed assertion/status messages and typed request codes are safe;
+  // never forward arbitrary provider/OS errors that may carry a credential.
+  const diagnostic = error instanceof LiveCheckError ? error.message : error instanceof RequestError ? error.code : 'Live check failed; provider/OS details withheld';
+  outcomes.push({ id: activeCase, status: 'failed', diagnostic });
+  console.error(activeCase + ': failed (' + diagnostic + ')');
   report.status = 'failed';
   process.exitCode = 1;
 }).finally(async () => {

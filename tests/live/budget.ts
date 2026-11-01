@@ -26,7 +26,7 @@ export class LiveBudget {
       // crash produces an unreadable receipt and blocks future sends.
       const file = await open(join(this.directory, 'dispatches.json'), 'w', 0o600);
       try {
-        await file.writeFile(JSON.stringify({ posts: this.posts, model: 'deepseek/deepseek-v3.2', per_dispatch_exposure_usd: '0.5', maximum_reserved_exposure_usd: '6', authorized_budget_usd: '10' }) + '\n');
+        await file.writeFile(JSON.stringify({ posts: this.posts, model: 'deepseek/deepseek-v4.1-flash-1017', per_dispatch_exposure_usd: '0.5', maximum_reserved_exposure_usd: '6', authorized_budget_usd: '10' }) + '\n');
         await file.sync();
       } finally { await file.close(); }
     });

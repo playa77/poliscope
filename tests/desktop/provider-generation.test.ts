@@ -40,8 +40,7 @@ it('retrieves only the original OpenRouter generation route with bounded allowli
  await c.request({action:'remove-key',profile_id:'p',expected_revision:2});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
 }));
 
-it('admits only reviewed DeepSeek V3.2 text bounds including schema and rejects unknown variants and media',()=>fixture(async(c,metadata)=>{
- const id='deepseek/deepseek-v3.2';
+it.each(['deepseek/deepseek-v3.2','deepseek/deepseek-v4.1-flash-1017'])('admits reviewed %s text bounds including schema and rejects unknown tokenizers and media',id=>fixture(async(c,metadata)=>{
  const ds={...model,id,context_length:16384,architecture:{...model.architecture,tokenizer:'DeepSeek'},supported_parameters:['max_tokens','response_format','structured_outputs']};
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[ds]})});
  await c.request({action:'save',profile:{...profile,model:id},expected_revision:2});
@@ -53,4 +52,21 @@ it('admits only reviewed DeepSeek V3.2 text bounds including schema and rejects 
  await expect(c.prepareGeneration({...query,messages:[{role:'user',content:[{type:'image_url',image_url:{url:'data:image/png;base64,AAAA',detail:'low'}}]}]})).rejects.toThrow();
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[{...ds,architecture:{...ds.architecture,tokenizer:'Unknown'}}]})});
  await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:3});await expect(c.prepareGeneration(query)).rejects.toThrow('context-unknown');
+}));
+
+it('prepares the exact authorized V4.1 model from captured real metadata with bounded reasoning and strict output',()=>fixture(async(c,metadata)=>{
+ const { default: current } = await import('../fixtures/providers/openrouter-live-catalog-2026-11-01.json');
+ const id='deepseek/deepseek-v4.1-flash-1017';
+ metadata.mockResolvedValue({code:200,body:JSON.stringify(current)});
+ const selected={...profile,model:id,generation:{...profile.generation,max_output_tokens:1024,reasoning:{enabled:false}},routing:{...profile.routing,data_collection:'deny' as const,max_price:{prompt:'2',completion:'2',request:'0'}}};
+ await c.request({action:'save',profile:selected,expected_revision:2});
+ expect((await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:3})).status).toBe('metadata-ready');
+ const input={...plan,expected_revision:3};
+ const text=await c.prepareGeneration(input);
+ expect(JSON.parse(text.json)).toMatchObject({model:id,max_tokens:1024,reasoning:{enabled:false},provider:{allow_fallbacks:false,max_price:{prompt:'2',completion:'2',request:'0'}}});
+ expect(text.catalog).toBeUndefined(); // Scheduled pricing is not a flat estimate.
+ const schema=JSON.stringify({type:'object',properties:{status:{type:'string',enum:['READY']}},required:['status'],additionalProperties:false});
+ expect((await c.prepareGeneration({...input,response_format:{type:'json_schema',name:'live_check',schema_text:schema}})).selected_model).toBe(id);
+ await c.request({action:'save',profile:{...selected,generation:{...selected.generation,reasoning:{effort:'low'}}},expected_revision:3});
+ expect(JSON.parse((await c.prepareGeneration({...input,expected_revision:4})).json).reasoning).toEqual({effort:'low'});
 }));

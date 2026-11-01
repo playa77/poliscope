@@ -1,8 +1,10 @@
 # Bounded OpenRouter validation for WP-055
 
-The requesting user authorized a maximum USD 10 on 2026-11-01, preferring
-DeepSeek or GLM. The selected model is `deepseek/deepseek-v3.2`; the dated public
-catalog fixture quotes USD 0.26/M input and 0.38/M output. This is compatibility
+The requesting user authorized a maximum USD 10 on 2026-11-01 and later
+restricted live validation to exactly one model. The selected model is `deepseek/deepseek-v4.1-flash-1017`; the dated public
+catalog fixture quotes scheduled rates (observed base USD 0.15/M input and
+0.60/M output; some windows USD 0.30/M and 1.20/M). Normalized flat pricing
+remains unknown; provider price ceilings and explicit exposure stay enforced. This is compatibility
 validation, not a benchmark or scientific model evaluation.
 
 Run public, unbilled preflight:
