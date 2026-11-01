@@ -35,11 +35,18 @@
     }
   ],
   "publication": {
-    "status": "local implementation; publication pending",
+    "status": "blocked by automatic approval review; explicit user authorization required",
+    "branch": "codex/wp-054-native-packaging",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "506a7ba",
+    "blocked_action": "git push -u origin codex/wp-054-native-packaging",
+    "reason": "Automatic approval review rejected exporting repository code/history because the user authorized implementation but did not explicitly authorize this branch and destination. No workaround attempted.",
     "merge": "not authorized; not performed"
   },
   "validation": "docs/roadmap/execution/WP-054-validation.json",
   "kind": "work_package",
   "scope": "Full WP-054 implementation under the owner-run native waiver: native x64 admission; per-user Windows/Linux installers; external signing interfaces; ASAR/binary/dependency/identity checks; checksummed receipts; bundled known answers and cold replay; manual native workflow and owner guide.",
-  "blockers": []
+  "blockers": [
+    "Publication only: explicit authorization to push codex/wp-054-native-packaging to playa77/poliscope and open a regular PR. Implementation acceptance remains complete under the native-validation waiver."
+  ]
 }

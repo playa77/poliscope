@@ -35,7 +35,9 @@
       "evidence": "Bundled known-answer, cold SQLite operation replay and archive round-trip pass with empty PATH; installed Electron cold restart and four additional packaged archive/provider/recovery/timeline scenarios pass. Real keychain/proxy/native checks remain owner-run."
     }
   ],
-  "blockers": [],
+  "blockers": [
+    "Publication only: explicit authorization to push codex/wp-054-native-packaging to playa77/poliscope and open a regular PR. Implementation acceptance remains complete under the native-validation waiver."
+  ],
   "previous_parent": {
     "package": "WP-050",
     "status": "in_progress",
@@ -54,7 +56,12 @@
   },
   "validation": "docs/roadmap/execution/WP-054-validation.json",
   "publication": {
-    "status": "local implementation; publication pending",
+    "status": "blocked by automatic approval review; explicit user authorization required",
+    "branch": "codex/wp-054-native-packaging",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "506a7ba",
+    "blocked_action": "git push -u origin codex/wp-054-native-packaging",
+    "reason": "Automatic approval review rejected exporting repository code/history because the user authorized implementation but did not explicitly authorize this branch and destination. No workaround attempted.",
     "merge": "not authorized; not performed"
   }
 }
