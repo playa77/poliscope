@@ -57,7 +57,7 @@
     }
   ],
   "native_artifact_identity": "docs/releases/0.1.0-rc.1/artifacts.json",
-  "inventory": "docs/releases/0.1.0-rc.1/inventory.json",
+  "inventory": "docs/releases/0.1.0-rc.1/inventory.ci-history.json",
   "limitations": [
     "No new full engine/unit/packaged run: no product/build inputs changed; reuse exact WP-055 identities with source equality and retained acceptance.",
     "Frozen install commands reviewed against pinned manifests and native CI setup evidence; existing valid environment reused rather than repeating installs.",
@@ -94,5 +94,26 @@
       "added": 0,
       "removed": 0
     }
+  },
+  "ci_correction": {
+    "problem": "Engine checkout depth one omitted frozen baseline tree; aggregate check correctly failed.",
+    "supplied_ci": {
+      "tests": 5014,
+      "passed": 5013,
+      "failed": 1,
+      "reason": "fatal: not a tree object: 8244afb73a6bc91c7d49c654428c4fd1af8271cc"
+    },
+    "fix_commit": "dcf8a3b",
+    "scope": "Full-history checkout for engine, desktop and docs validation jobs; exact release tree and ancestry verification unchanged.",
+    "regression": "Real synthetic depth-one file:// clone fails on absent baseline, then the identical frozen record verifies after git fetch --unshallow.",
+    "tests": 77,
+    "subtests": 82,
+    "command": "uv run --frozen pytest tests/roadmap tests/harness/test_delivery_workflow.py tests/harness/test_gate_evidence.py -q --junitxml=artifacts/wp-056-ci-fix.xml",
+    "report": "docs/roadmap/execution/evidence/WP-056/ci-fix.xml.gz",
+    "sha256": "21c9458c348298f159e2d6e973a90dfe5b59677496b46f4c5cdc235b7b0b0b60",
+    "uncompressed_sha256": "856475c67db36aa288905a9fe713f287b88966b72979e9289fb2885709a7d177",
+    "inventory": "docs/releases/0.1.0-rc.1/inventory.ci-history.json",
+    "previous_inventory": "docs/releases/0.1.0-rc.1/inventory.json",
+    "full_engine_rerun": "Authoritative PR CI will rerun full selection after push; no new full-engine pass claimed by affected local checks."
   }
 }

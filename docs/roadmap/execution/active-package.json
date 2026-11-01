@@ -53,5 +53,11 @@
     "status": "exhausted; no paid dispatch authorized",
     "maximum_lifetime_usd": "10",
     "source": "docs/roadmap/execution/WP-055-live-review.json"
+  },
+  "ci_correction": {
+    "record": "docs/roadmap/execution/WP-056-validation.json",
+    "source_commit": "dcf8a3b",
+    "inventory": "docs/releases/0.1.0-rc.1/inventory.ci-history.json",
+    "scope": "CI history setup only; runtime/build/package bytes and release authority unchanged."
   }
 }
