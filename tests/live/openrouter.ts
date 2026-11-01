@@ -45,6 +45,8 @@ const report: Record<string, unknown> = {
   maximum_run_reserved_exposure_usd: '6',
   privacy: 'Isolated synthetic world, selected public facts, no private user data; credential main-only/session-only.',
   cases: outcomes, readiness: false,
+  unsupported_for_selected_model: ['image', 'audio', 'video'],
+  untested_live: ['other models/providers', 'OS-protected native keychain', 'provider account hard-cap enforcement'],
 };
 async function runCase(id: string, run: () => Promise<Record<string, unknown> | void>) {
   activeCase = id;
@@ -185,6 +187,16 @@ async function main() {
     first = await send(await controller!.request(query('Reply with exactly READY. This is a synthetic software compatibility check.')));
     check((first.text ?? '').includes('READY'), 'Expected answer absent');
     return summary(first);
+  });
+  await runCase('generation-metadata-and-durable-usage', async () => {
+    let reconciled: AssistantReply | undefined;
+    // Only this read-only metadata lookup may poll; generation is never retried.
+    for (let attempt = 0; attempt < 3; attempt++) {
+      try { reconciled = await controller!.request({ action: 'reconcile', request_id: first.request_id }); break; }
+      catch { if (attempt < 2) await pause(1000); }
+    }
+    check(reconciled?.spending?.actual_cost != null, 'Actual generation cost unavailable');
+    return { actual_cost_usd: reconciled.spending.actual_cost, usage_source: 'generation-metadata', deduplicated_ledger: true };
   });
   await runCase('streaming-generation', async () => summary(await send(await controller!.request(query('Reply with exactly STREAM_READY.', true)))));
   await runCase('structured-output', async () => {
