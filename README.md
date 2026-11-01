@@ -206,9 +206,10 @@ Read the [global game design architecture](docs/design_doc.md) and [global techn
 
 ## Development
 
-WP-001 planning and WP-002 runtime scaffold are complete under solo validation.
-The commands below install, run, check and package the minimal desktop and engine.
-Simulation, storage, content and provider features remain pending. See the
+Implementation through WP-055 is accepted within its declared prototype scope.
+The commands below install, run, check and package the desktop and bundled engine.
+See the [0.1.0 release candidate](docs/releases/0.1.0-rc.1/README.md) for frozen
+identities, functional evidence, supported mechanisms and known limitations. See the
 [development guide](docs/development.md) for exact tool versions, OS prerequisites,
 headless checks and current limitations, and the
 [execution ledger](docs/roadmap/execution/README.md) for package evidence.
@@ -246,14 +247,14 @@ Native packages are built on their target operating system and architecture. Sig
 Windows x64 or Linux x64 target. See [native distribution](docs/native_distribution.md)
 for installation, optional signing, upgrade/rollback and owner-run checks.
 
-Current tests cover roadmap integrity, bootstrap process lifecycle, engine path
-selection and the packaged Electron shell with its bundled engine. Content and
+Current tests cover numerical/domain invariants, immutable storage, timeline
+replay, archives/recovery, provider boundaries and packaged offline workflows. Content and
 contract commands validate tracked inventories and generated contracts. Numerical,
 storage, timeline, archive and provider coverage is recorded in the corresponding
 package evidence. Paid live-provider checks require separate explicit opt-in.
 
-BYOK settings and capability-checked generation are optional; live provider
-compatibility remains unverified. Keep real civilizations, transcripts, keys,
+BYOK settings and capability-checked generation are optional. Dated GLM/OpenRouter
+live evidence covers one route; other capabilities remain explicitly unverified. Keep real civilizations, transcripts, keys,
 and local configuration outside tracked source files.
 
 ## Contributing
@@ -268,4 +269,7 @@ Preserve source attribution and historical alternatives. Keep credentials and pr
 
 Provider settings and key storage: see [the local BYOK guide](docs/provider_settings.md). The guide covers profiles, key protection and fixed metadata requests; the compatibility evidence below records current adapter/generation limits.
 
-Provider capability checks and current limitations: [compatibility evidence](docs/provider_compatibility.md). Run `npm run test:providers` for the exact deterministic desktop/Python selection; it makes no paid provider calls. Live provider acceptance remains separately blocked.
+Provider capability checks and current limitations: [compatibility evidence](docs/provider_compatibility.md). Run `npm run test:providers` for the exact deterministic desktop/Python selection; it makes no paid provider calls. Further paid checks require new explicit bounded authorization; the prior budget is exhausted.
+
+User guides: [inquiry and reports](docs/user_inquiry.md), [backup/recovery](docs/data_recovery.md),
+[model contributions](docs/model_contributions.md), and [release handoff](docs/releases/0.1.0-rc.1/handoff.md).
