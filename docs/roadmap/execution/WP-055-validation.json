@@ -218,5 +218,19 @@
       "docs/roadmap/execution/WP-055-model-review.json",
       "docs/roadmap/execution/WP-055-owner-checks.md"
     ]
+  },
+  "restricted_model_continuation": {
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "authorization": "User restricted the key and live validation to this exact model; USD 10 maximum retained.",
+    "source": "ab33636",
+    "affected_provider_cases": 65,
+    "typecheck": "passed",
+    "native_https_public_preflight": "passed",
+    "billable_dispatches": 0,
+    "runtime_configuration": "Original attached configuration revision 1 still reports no secrets. User confirms key entered and poliscope configuration published; attachment/apply requested through UI because available environment tools are read-only.",
+    "report": "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz",
+    "report_sha256": "dd89f54fd2bc6d9c4dec412f4bcdd7322e3bda9ef8cc775da5d12427d42b5347",
+    "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_bytes": 6367257
   }
 }
