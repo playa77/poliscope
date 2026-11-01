@@ -64,11 +64,12 @@
     "retry_policy": "No retry timer needed after credential delivery; no further paid requests after exhausted lifetime allocation."
   },
   "publication": {
-    "status": "implementation source pushed; regular PR required against main",
+    "status": "published; regular PR open",
     "branch": "codex/wp-055-product-gate",
     "destination": "https://github.com/playa77/poliscope.git",
     "implementation_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
     "pr_link_source": "Authoritative GitHub branch PR and Codex task artifact, created after this declaration.",
-    "merge": "not authorized; not performed"
+    "merge": "not authorized; not performed",
+    "url": "https://github.com/playa77/poliscope/pull/128"
   }
 }

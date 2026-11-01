@@ -21,3 +21,13 @@ it('migrates every legacy reservation and bounds concurrent exposure across mode
     }
   } finally { await rm(directory,{recursive:true,force:true}); }
 });
+
+it('a fresh workspace cannot renew an allocation already exhausted in retained evidence',async()=>{
+ const directory=await mkdtemp(join(tmpdir(),'poliscope-live-budget-floor-'));
+ try {
+  const budget=await LiveBudget.acquire(directory,'z-ai/glm-5.3-flash',{posts:24,units:100});
+  expect(budget.posts).toBe(24);expect(budget.units).toBe(100);
+  await expect(budget.reserve()).rejects.toThrow('Lifetime live exposure allocation exhausted');
+  await budget.close();
+ }finally{await rm(directory,{recursive:true,force:true});}
+});

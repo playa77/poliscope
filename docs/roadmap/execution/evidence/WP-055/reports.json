@@ -289,6 +289,18 @@
         "skipped": 0,
         "skip_reasons": []
       }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/retained-budget-floor.xml.gz",
+      "compression": "gzip",
+      "sha256": "06f951a56332d1288c2423951b19fda2263a863d665b21ead760f600465825ca",
+      "uncompressed_sha256": "18f29fa870fbe8c984b0b99eb9e0514d318ad3c12614061c8bc0875c914b7ff7",
+      "results": {
+        "tests": 2,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
     }
   ]
 }

@@ -295,7 +295,13 @@
       "run": "https://github.com/playa77/poliscope/actions/runs/41333014228",
       "implementation_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
       "artifacts": "docs/roadmap/execution/WP-055-owner-checks.md",
-      "conclusions": "Authoritative workflow job conclusions and completed outcomes in the delivery PR. Documentation-only PR follow-up does not change package application sources."
+      "conclusions": "Both Windows and Linux native build/install/five-scenario jobs passed. Later documentation/live-test-only changes leave installed application and packaging source identical; authoritative workflow outcomes and artifact links are in the PR."
+    },
+    "retained_budget_floor": {
+      "report": "docs/roadmap/execution/evidence/WP-055/retained-budget-floor.xml.gz",
+      "tests": 2,
+      "result": "passed; malformed legacy state fails before minimum reconciliation, fresh workspace honors exhausted committed allocation",
+      "scope": "Live-test allocation guard only; no application/packaging runtime change or paid rerun."
     }
   },
   "diff_accounting": {

@@ -31,7 +31,8 @@ hostname, validity and server purpose; TLS verification is not disabled globally
 **The current allocation is exhausted. Do not send more paid requests under it.**
 The durable `artifacts/wp-055-live/dispatches.json` receipt records 24 dispatches
 and 100 policy units. The retained copy is in the live review. Never delete or
-reset either receipt to renew allowance. Reconcile any newer local receipt with
+reset either receipt to renew allowance. The runner also uses the retained
+receipt as a minimum, so a fresh checkout cannot forget the exhausted allocation. Reconcile any newer local receipt with
 the retained allocation before another authorized run.
 
 A policy unit is USD 0.10 of worst-case exposure, separate from provider actual

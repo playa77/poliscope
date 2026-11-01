@@ -6,7 +6,7 @@ import { open, readFile, rm } from 'node:fs/promises';
 import { join } from 'node:path';
 export class LiveBudget {
   private constructor(private directory: string, private lock: Awaited<ReturnType<typeof open>>, public posts: number, public units: number, private model: string) {}
-  static async acquire(directory: string, model = 'z-ai/glm-5.3-flash'): Promise<LiveBudget> {
+  static async acquire(directory: string, model = 'z-ai/glm-5.3-flash', minimum = {posts:0, units:0}): Promise<LiveBudget> {
     const lock = await open(join(directory, 'live-run.lock'), 'wx', 0o600);
     try {
       let posts = 0, units = 0;
@@ -19,6 +19,8 @@ export class LiveBudget {
         if (receipt.policy_unit_usd != null && receipt.policy_unit_usd !== '0.1') throw new Error('Invalid policy unit');
       } catch (error) { if ((error as NodeJS.ErrnoException).code !== 'ENOENT') throw new Error('Invalid dispatch budget receipt'); }
       if (!Number.isSafeInteger(posts) || posts < 0 || posts > 100 || !Number.isSafeInteger(units) || units < posts || units > posts * 5 || units > 100) throw new Error('Invalid dispatch budget count');
+      if (!Number.isSafeInteger(minimum.posts) || !Number.isSafeInteger(minimum.units) || minimum.posts < 0 || minimum.units < minimum.posts || minimum.units > minimum.posts * 5 || minimum.units > 100) throw new Error('Invalid retained allocation');
+      posts = Math.max(posts, minimum.posts); units = Math.max(units, minimum.units);
       return new LiveBudget(directory, lock, posts, units, model);
     } catch (error) { await lock.close(); await rm(join(directory, 'live-run.lock')); throw error; }
   }

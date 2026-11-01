@@ -6,8 +6,8 @@ Current implementation packages are built from `64d9aed02f43fc20324d1a6265498d6f
 `native-candidate-windows-2022-64d9aed02f43fc20324d1a6265498d6f1e495ea2` from that run.
 Their release archives include identity/checksum receipts. The linked job
 conclusions are authoritative; the delivery PR records the completed outcomes.
-Subsequent PR commits update documentation/acceptance metadata only, with no
-application or packaging source change from this package commit.
+Subsequent PR commits update documentation/acceptance metadata and live-test
+allocation guards only, with no application or packaging source change from this package commit.
 
 ## Historical comparison packages
 

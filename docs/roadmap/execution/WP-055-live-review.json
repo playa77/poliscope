@@ -172,5 +172,6 @@
     "Owner OS keychains/signing, provider account hard-cap enforcement, remote privacy promises and other models/providers unverified.",
     "All 100 allocation units are reserved; no further paid request under this authorization. Actual total includes uncertain failed/cancelled upstream outcomes and is not claimed."
   ],
-  "privacy": "Isolated public synthetic world and selected facts only. Key remains Electron-main/session-only, removed before exit; no key, prompts/completions, raw provider errors or account limits retained."
+  "privacy": "Isolated public synthetic world and selected facts only. Key remains Electron-main/session-only, removed before exit; no key, prompts/completions, raw provider errors or account limits retained.",
+  "budget_policy": "Retained receipt is also a minimum at runner acquisition. Missing/stale local artifacts cannot renew the allocation in a fresh checkout; malformed receipts still fail before applying that minimum. No more paid requests permitted."
 }

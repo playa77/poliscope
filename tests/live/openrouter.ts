@@ -157,10 +157,12 @@ async function main() {
   check(process.env.POLISCOPE_LIVE_OPENROUTER === '1' && key.length > 10, 'Secure key/opt-in missing');
   // A durable count prevents repeated runner starts silently renewing the budget.
   // Removing this file to renew a live run requires a new explicit authorization.
-  budget = await LiveBudget.acquire(directory, MODEL);
+  const retained = JSON.parse(await readFile(resolve('docs/roadmap/execution/WP-055-live-review.json'), 'utf8')).dispatch_receipt;
+  budget = await LiveBudget.acquire(directory, MODEL, {posts: retained.posts, units: retained.reserved_policy_units ?? retained.posts * 5});
   posts = budget.posts;
   report.initial_reserved_policy_units = budget.units;
   report.remaining_bounded_dispatches = 100 - budget.units;
+  check(authenticatedPreflight || 100 - budget.units >= 5, 'Lifetime allocation cannot fund another complete live run; no paid request sent');
   privateDirectory = await mkdtemp(join(tmpdir(), 'poliscope-live-private-'));
   providers = new ProviderController(privateDirectory, {
     isEncryptionAvailable: () => false, encryptString: () => { throw new Error('No key persistence'); }, decryptString: () => { throw new Error('No key persistence'); },
