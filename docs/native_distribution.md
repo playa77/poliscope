@@ -102,5 +102,7 @@ run URL, commit, OS/version, signing status, and results for each target.
    actual signing/install outcomes. Do not infer Windows behavior from Linux.
 
 Native outcomes and signing remain unverified until the owner records them under
-the project-wide [native-validation waiver](platform_scope.md). Cumulative G7/M7
-and public release authorization are separate from WP-054 implementation.
+the project-wide [native-validation waiver](platform_scope.md). WP-055 records cumulative G7 acceptance within its declared scope; real owner
+desktop/signing checks and public release authorization remain separate. See the
+[current candidate handoff](releases/0.1.0-rc.1/README.md) for frozen identities
+and exact Windows/Linux CI artifact checksums.

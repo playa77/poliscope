@@ -1526,3 +1526,13 @@ The cumulative auditor inventories every leaf, exact subcase, RT obligation and
 twelve-domain source coverage without promoting historical plans to passes.
 See [actual validation](WP-055-validation.json). Route:
 **solo-validated; agent review deferred**. WP-056 is not ready.
+
+## Full WP-056 release handoff
+
+[WP-056](WP-056.md) prepares the [0.1.0-rc.1 candidate](../../releases/0.1.0-rc.1/README.md),
+freezing exact product/build/evidence inputs and native artifact identities.
+Current setup, contribution, inquiry/report and recovery guides replace obsolete
+scaffold instructions. Functional/model/security/product scope, deferred review,
+owner-run native/signing work, performance limits and rollback/triage are explicit.
+The prior live allocation remains exhausted. Release preparation does not publish
+a release or authorize a merge. Route: **solo-validated; agent review deferred**.

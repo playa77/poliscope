@@ -1,0 +1,98 @@
+{
+  "version": 1,
+  "package": "WP-056",
+  "baseline": "8244afb73a6bc91c7d49c654428c4fd1af8271cc",
+  "scope": "Release tooling/documentation only; runtime, schemas, models, content, dependencies and product build inputs unchanged.",
+  "checks": [
+    {
+      "command": "uv run --frozen pytest tests/roadmap tests/harness/test_delivery_workflow.py tests/harness/test_gate_evidence.py -q --junitxml=artifacts/wp-056-checks.xml",
+      "status": "passed",
+      "tests": 76,
+      "subtests": 82,
+      "new_tests": 7,
+      "report": "docs/roadmap/execution/evidence/WP-056/checks.xml.gz",
+      "sha256": "d354c3c0b0075592ba3425956ee85e670e9e8c2bceb8c588b8afdd4c02957171",
+      "uncompressed_sha256": "e0298380d3911b8b61902cc0343c8992f94524b2b1565c8c75e364897b9749b1"
+    },
+    {
+      "command": "npm run content:validate",
+      "status": "passed"
+    },
+    {
+      "command": "npm run contracts:check",
+      "status": "passed"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "passed"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_roadmap.py",
+      "status": "passed"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_baseline.py",
+      "status": "passed"
+    },
+    {
+      "command": "uv run --frozen python scripts/freeze_release.py --check",
+      "status": "passed"
+    },
+    {
+      "command": "git diff --check",
+      "status": "passed"
+    },
+    {
+      "command": "Verify all retained WP-055 compressed/raw report hashes and all changed-guide local links",
+      "status": "passed",
+      "reports": 25,
+      "local_links": 51
+    },
+    {
+      "command": "uv run --frozen pytest tests/roadmap/test_release_freeze.py -q",
+      "status": "passed",
+      "tests": 7,
+      "subtests": 6,
+      "scope": "Final affected rerun after adding root license to frozen inputs; overlaps the full 76-case report."
+    }
+  ],
+  "native_artifact_identity": "docs/releases/0.1.0-rc.1/artifacts.json",
+  "inventory": "docs/releases/0.1.0-rc.1/inventory.json",
+  "limitations": [
+    "No new full engine/unit/packaged run: no product/build inputs changed; reuse exact WP-055 identities with source equality and retained acceptance.",
+    "Frozen install commands reviewed against pinned manifests and native CI setup evidence; existing valid environment reused rather than repeating installs.",
+    "No new live calls; prior USD 10 allocation remains exhausted.",
+    "Unsigned native CI outcomes do not certify owner desktop/keychain/proxy/signing or scientific/human usability review."
+  ],
+  "development_failure": {
+    "issue": "First freeze attempt could not read dict(...) calendar identity; it left an empty new receipt.",
+    "resolution": "Bounded static AST dictionary support added; generation now constructs identity before exclusive output creation. Empty receipt removed before successful generation. No prior receipt overwritten."
+  },
+  "inspection": "Separate author pass checked path inventory additions/deletions, commit and byte equality, metadata/provenance, private runtime exclusion, immutable receipt creation and publication boundary; solo-validated; agent review deferred.",
+  "diff_accounting_before_final_receipt_note": {
+    "documentation/evidence": {
+      "added": 683,
+      "removed": 225
+    },
+    "generated inventory": {
+      "added": 3347,
+      "removed": 0
+    },
+    "release tooling": {
+      "added": 150,
+      "removed": 0
+    },
+    "tests/helpers": {
+      "added": 94,
+      "removed": 0
+    },
+    "handwritten engine/desktop": {
+      "added": 0,
+      "removed": 0
+    },
+    "generated contracts/content": {
+      "added": 0,
+      "removed": 0
+    }
+  }
+}

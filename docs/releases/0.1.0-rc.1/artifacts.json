@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "candidate": "0.1.0-rc.1",
+  "publication": "unpublished unsigned CI candidates",
+  "observed_date": "2026-11-01",
+  "repository": "playa77/poliscope",
+  "workflow_run": 41333014228,
+  "source_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+  "source_comparison": {
+    "against": "8244afb73a6bc91c7d49c654428c4fd1af8271cc",
+    "scope": "All frozen product/build paths excluding docs/evidence and workflow YAML; compares actual bytes using git show",
+    "paths_compared": 579,
+    "differences": []
+  },
+  "checksum_scope": "SHA-256 of the complete GitHub Actions ZIP wrapper as returned by authenticated GitHub artifact metadata. Inner distribution hashes and payload identity receipts remain inside each wrapper; no signature or bit-for-bit rebuild claim.",
+  "expires_at": "2027-01-30",
+  "artifacts": [
+    {
+      "target": "Windows x64",
+      "id": 13094103140,
+      "name": "native-candidate-windows-2022-64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+      "bytes": 174767781,
+      "sha256": "023790c4c91f5711d95c6d2181e5dc4bb311bde4c6719e50a67e1b45462c65b1",
+      "url": "https://github.com/playa77/poliscope/actions/runs/41333014228/artifacts/13094103140",
+      "job": 124926897996,
+      "conclusion": "success"
+    },
+    {
+      "target": "Linux x64",
+      "id": 13093629933,
+      "name": "native-candidate-ubuntu-24.04-64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+      "bytes": 154244143,
+      "sha256": "fc6089583e898994ef5df7da0b816686a854ab174ef59a12284279d27d54cda1",
+      "url": "https://github.com/playa77/poliscope/actions/runs/41333014228/artifacts/13093629933",
+      "job": 124926898201,
+      "conclusion": "success"
+    }
+  ],
+  "owner_validation": "Real desktop sandbox/keychain/proxy/signing owner-run and unverified; see docs/platform_scope.md"
+}

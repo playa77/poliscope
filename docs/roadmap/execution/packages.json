@@ -503,7 +503,7 @@
       "acceptance_dependencies": "WP-055",
       "acceptance": "a new contributor can install/run/test from documented commands, and a native end user needs neither Python nor an AI account for core tasks. Release inventory and evidence identify the same frozen candidate; publication status is reported accurately. Complete-product delivery requires all roadmap gates, not only a downloadable package. Release notes distinguish specified fixes from implemented and executed validation; no documentation-only evidence certifies application behavior.",
       "source": "docs/roadmap/work_packages.md",
-      "status": "not started"
+      "status": "complete"
     },
     "DOM-01": {
       "title": "I. Resource & Material Base (`provisioning`)",

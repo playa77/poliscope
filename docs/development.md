@@ -1,120 +1,105 @@
-# Scaffold development
+# Development and validation
 
-Node **24.19.0**, npm **11.9.0**, Python **3.12.14**, uv **0.12.23**.
-Use your Node version manager with `.nvmrc`; install the pinned uv release via
-its documented installer or `pipx install uv==0.12.23`. No global Forge, Vite,
-pytest or PyInstaller is needed. The root package/uv locks pin dependencies.
-Run `npm ci`, then `uv sync --frozen --python 3.12` from the repository root.
-
-| Path | Responsibility |
-|---|---|
-| desktop/main | Electron lifecycle, managed Python child, future protected integrations |
-| desktop/preload | Named validated renderer bridge |
-| desktop/renderer | React presentation only |
-| engine/poliscope_engine | Python authority, with world/domains/simulation/storage/explanation namespaces |
-| contracts | Canonical generated boundary artifacts (production generation pending WP-005) |
-| content | Versioned content packs (pending WP-025) |
-| tests | Roadmap, engine, desktop unit and actual Electron smoke tests |
-| packaging | Native engine entry/build inputs |
-
-`npm run dev` runs Forge/Vite and launches the absolute repository `.venv`
-Python through main, with no shell. It needs a graphical desktop. Main owns one
-child, negotiates the protocol-1 handshake before reporting readiness, and sends
-a runtime shutdown request with bounded TERM/KILL fallbacks. Health, status and
-cancellation primitives are available; world/evidence services remain unavailable.
-The renderer reports actual startup status, with no automatic civic choices.
-
-Private runtime files belong under Electron's OS user-data directory. Optional
-`POLISCOPE_USER_DATA` selects an **absolute** isolated development/test location.
-See `.env.example`; no dotenv loader or application key support is implemented.
-Never put personal data in content/contracts/tests or Git. Packaged execution
-uses only its native bundled engine, never a system Python fallback.
-
-Development and packaging target Windows x64 and Linux x64 only.
-
-On Linux install GTK3, NSS, ALSA, GBM and the normal Chromium desktop libraries
-(e.g. Debian `libgtk-3-0t64 libnss3 libasound2t64 libgbm1`) and use an active X11
-or Wayland session. Headless checks need `xvfb` and `xauth`:
-`xvfb-run -a npm run test:desktop`. On Windows use x64 Node/Python and allow the
-Python executable to run.
-PyInstaller needs the host's native binary tools (Linux binutils, Windows native runtime). Never cross-package an engine.
-
-`npm run package` builds a one-directory PyInstaller engine then invokes Forge.
-The native engine directory is copied outside ASAR as `resources/poliscope-engine`.
-Outputs are unsigned **scaffold** applications, not playable release artifacts.
-No makers or signing keys are configured; native feasibility and
-release distribution remain WP-004/WP-054. Each OS/architecture must be verified
-on its own runner. `npm run test:desktop` packages first and launches the actual
-application with Playwright in a temporary user-data directory, without providers.
-For a constrained development container, pass explicit Chromium flags with
-`npm run dev -- -- --no-sandbox`; use the normal command on a native desktop.
-Its explicit test-only Chromium `--no-sandbox` argument accommodates restricted
-Linux containers; production launch retains Electron sandboxing.
-
-`content:validate` and `contracts:check` validate the versioned inventories and
-fail if unregistered files appear. Empty inventories are reported as empty;
-these checks do not certify future packs or a wire schema generator. `npm test`
-runs bootstrap desktop unit tests and the existing roadmap tests. Python tests
-use `uv run --frozen pytest`. WP-003 adds the full evidence/CI harness; no
-milestone gate selection is passed by the bootstrap checks alone.
-
-## Candidate-bound validation evidence
-
-WP-003 adds an evidence runner; it does not certify an application milestone.
-From the repository root, use a **new** output directory for each invocation:
+Use **Node 24.19.0**, **npm 11.9.0**, **Python 3.12.14** and **uv 0.12.23**.
+`.nvmrc`, `.python-version`, `package-lock.json` and `uv.lock` pin the toolchain
+and dependencies. Install uv using its official installer or
+`pipx install uv==0.12.23`; no global Forge, pytest or PyInstaller is needed.
+From a fresh clone's root:
 
 ```sh
-uv run --frozen python scripts/evidence.py engine --output artifacts/engine
-uv run --frozen python scripts/evidence.py unit --output artifacts/unit
-npm run package
-# On headless Linux, prefix the next command with xvfb-run -a.
-uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop
-uv run --frozen python scripts/evidence.py verify --output artifacts/engine
+npm ci
+uv sync --frozen --python 3.12
+npm run dev
 ```
 
-Each directory contains JUnit and evidence JSON: command/exit, collected test
-identities/counts, skip/expected-failure reasons, runtimes, synthetic fixture hash,
-source candidate hash, start/end and unique run ID. Output directories cannot be
-reused. Verification rejects candidate drift, report modification, zero tests,
-failures and skips. Reports use synthetic data only; never upload personal data
-or secrets. `POLISCOPE_USER_DATA` is temporary per run; Electron adds its own
-per-test directory. Python fixtures offer isolated paths for future databases.
-The provider fixture is an in-memory full-payload sink with an invalid hostname
-and synthetic key; it makes no network requests. Its tests establish fixture
-behavior, not production sharing enforcement. The exact Fraction oracle detects
-Decimal precision loss without reimplementing Decimal arithmetic.
+Development targets Windows x64 and Linux x64. Use x64 Node/Python on Windows.
+On Linux install normal Electron desktop dependencies (Debian/Ubuntu: GTK3, NSS,
+ALSA, GBM and X11/Wayland libraries; e.g. `libgtk-3-0t64 libnss3 libasound2t64
+libgbm1`). Use an active graphical session. Headless Linux additionally needs
+Xvfb/xauth: `xvfb-run -a npm run test:desktop`. PyInstaller needs native binary
+tools (Linux binutils/Windows runtime); engines cannot be cross-packaged.
 
-For full milestone runs, use `scripts/check_gate_evidence.py SELECTION DIR...`.
-Selection retains the version-1 gate manifest format, but `tests` now identifies
-exact JUnit testcase names prefixed by the case ID and a space or colon. Every
-target must occur exactly once across fresh passing reports. Missing mandatory
-cases and premature future cases fail. Production-service declarations still
-require code inspection; naming a test cannot establish production integration.
-No application selection is committed while production prerequisites are absent.
+Forge/Vite launches React and one managed Python process using the repository's
+absolute `.venv` executable, without a shell. Main negotiates protocol 1 and owns
+lifecycle, files, OS-protected keys and provider networking. Preload exposes named
+validated calls. The renderer has no Node/filesystem/SQLite/provider access.
+Python owns canonical quantities, models, shared accounts, transitions and storage.
+Generated schemas/types in `contracts/` come from canonical Python contracts.
 
-GitHub Validation runs frozen setup, validators, type checks, pytest, Vitest and
-packaged Electron on Linux. PR merge candidates and merge-group candidates must
-contain fetched current main, rechecked at completion. Maintainers must make
-`Validation / checks` a required check and use an up-to-date branch or merge queue;
-this workflow does not change repository protection or create independent review
-identities. New code requires fresh evidence and the package review route.
-Native Windows jobs await WP-004/WP-054 runner verification. The empty
-content inventory fails closed. WP-005-wire/world now provide generated schemas,
-TypeScript/tool inputs and shared positive/negative compatibility fixtures;
-`npm run contracts:check` checks regeneration and registered artifacts.
-See `contracts/README.md` for the runtime/world boundary and service limitations.
+The engine provides world/design/history, timeline/experiment, exploration,
+notes/targets, archive/report/recovery and bounded assistant-context services.
+Read [contribution rules](model_contributions.md) before changing these contracts.
+The current [release candidate](releases/0.1.0-rc.1/README.md) records actual
+coverage and remaining scientific, performance, native and provider limits.
 
-CI artifacts use run ID/attempt and include current reports even on failure.
-Future integration, recovery and performance evidence belongs under
-`artifacts/integration`, `artifacts/recovery` and `artifacts/performance` with the
-same candidate/runtime identity rules and the benchmark contract. These paths
-are evidence locations, not claims those scenarios have run.
+## Private development data
 
-## Pinned society source import
+Use Electron's normal user-data directory or set `POLISCOPE_USER_DATA` to an
+absolute **isolated test** directory. Select a separate synthetic civilization
+folder. Do not point tests at personal stores. `.env.example` describes options;
+there is no dotenv loader. Configure real optional keys through the app's protected
+BYOK settings, never in source, fixtures, shell history or a database dump.
+Packaged execution uses the bundled engine with no system-Python fallback.
 
-`uv run --frozen python scripts/import_society.py /path/to/society /path/to/new-output`
-reads the pinned Git revision and creates a data-only reference pack plus inventory.
-It requires no network and refuses an existing output directory. This is a corpus
-review candidate; it does not install content or select player policies. See the
-[importer boundary](../engine/poliscope_engine/corpus/README.md) and
-[pinned source review](roadmap/execution/society/review.md) before using its claims.
+## Checks
+
+```sh
+npm run content:validate
+npm run contracts:check
+npm run typecheck
+uv run --frozen pytest
+npm test
+npm run test:desktop
+```
+
+Content checks validate the immutable release artifacts and attribution inventory;
+contract checks reject regeneration/registration drift. Pytest covers engine,
+roadmap and harness invariants; npm test covers desktop units and roadmap tests.
+Packaged tests build the native engine and actual Electron app and exercise
+main/preload/child/SQLite paths with isolated synthetic data. Provider responses
+are mocked unless a separately authorized live command is explicitly invoked.
+`npm run test:providers` runs the exact deterministic capability/privacy/spending
+selection. It incurs no paid generation. The WP-055 USD 10 allocation is exhausted;
+a release check must never reset it or start another paid dispatch.
+
+Use affected suites during development. At the package boundary retain exact
+candidate/report identity and relevant full regression evidence. To run the
+candidate-bound harness, choose fresh output directories:
+
+```sh
+uv run --frozen python scripts/evidence.py engine --output artifacts/engine-new
+uv run --frozen python scripts/evidence.py unit --output artifacts/unit-new
+npm run package
+uv run --frozen python scripts/evidence.py desktop --output artifacts/desktop-new
+uv run --frozen python scripts/evidence.py verify --output artifacts/engine-new
+```
+
+On headless Linux prefix the desktop evidence command with `xvfb-run -a`.
+The harness rejects stale candidates, reused output directories, changed reports,
+zero tests, failures and skips. Only synthetic report data may be retained.
+Exact milestone selection validation uses
+`scripts/check_gate_evidence.py SELECTION DIR...`; targets must occur exactly once.
+Separate production-service/model inspection is still required. Existing full and
+affected WP-055 reports retain original identities; they are not a single new
+identical-candidate run.
+
+## Packaging and CI
+
+`npm run package` builds the native PyInstaller directory and Forge application;
+`npm run dist` also creates a checksummed per-user installer archive in `release/`.
+Neither publishes. See [native distribution](native_distribution.md) for signing,
+upgrades and rollback. Native end users need neither Python nor an AI account.
+The normal Chromium sandbox remains enabled; explicit test-only `--no-sandbox`
+flags are restricted to isolated cloud runners, never ordinary installations.
+
+Validation CI uses frozen installs and a fail-closed aggregate `checks` job.
+PR/merge candidates must contain current main. Main pushes run a bounded engine
+smoke; manual/weekly and authoritative candidate runs retain full scope. The
+manual native workflow builds and installs Windows/Linux candidates and runs
+packaged workflows. Owner desktop/keychain/signing checks remain owner-run under
+[platform scope](platform_scope.md); remote CI does not imply owner results.
+
+A frozen release input change must fail
+`uv run --frozen python scripts/freeze_release.py --check`. Review affected
+behavior/evidence, then prepare a separately named inventory; retain prior receipts.
+See [release handoff](releases/0.1.0-rc.1/handoff.md) for release authority and triage.
