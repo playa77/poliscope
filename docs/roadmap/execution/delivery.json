@@ -22,7 +22,7 @@
     {
       "id": "integrated-product-gate",
       "status": "pending",
-      "evidence": "Full baseline engine: 4,990 passed. Vitest: 444 passed / 1 failed; isolated rerun remains failed. Final roadmap/audit: 58 passed. Direct ASAR positive/negative checks pass. Fresh package and Electron G7 blocked."
+      "evidence": "Environment repaired. Full unit rerun 445 passed, fresh Forge package succeeds, graphical Xorg :99 running; complete packaged suite in progress. Engine baseline 4990 passed; no Python production changes."
     },
     {
       "id": "model-and-coverage-audit",
@@ -32,15 +32,12 @@
     {
       "id": "provider-and-native-evidence",
       "status": "pending",
-      "evidence": "WP-050 live acceptance remains open; no credentials/credits or bounded live authorization. Native checks owner-run under project waiver; no native/signing claim."
+      "evidence": "User authorized up to USD 10; DeepSeek V3.2 selected; secure key binding requested after native TLS/catalog preflight passed. Native owner checks remain waived for agent delivery and unclaimed."
     }
   ],
   "blockers": [
-    "WP-050 live-provider prerequisite remains incomplete.",
-    "Proxy unreachable: current baseline fetch and fresh Forge Electron download failed.",
-    "No working display server for packaged Electron checks.",
-    "Current leaf and exact G7 workflow evidence not yet complete.",
-    "Full Vitest retains one repeatable subprocess-output harness failure; direct ASAR checks pass."
+    "Secure OPENROUTER_API_KEY binding pending; live test authorization already granted up to USD 10.",
+    "Current inspected leaf/G7/RT evidence mapping and final candidate validation remain in progress."
   ],
   "previous_delivery": {
     "package": "WP-054",
@@ -50,5 +47,19 @@
   },
   "validation": "docs/roadmap/execution/WP-055-validation.json",
   "kind": "work_package",
-  "scope": "Full WP-055 remains assigned. Adds fail-closed cumulative evidence audit and records actual regression outcomes; acceptance is blocked, not delivered as an authorized child or maintenance."
+  "scope": "Full WP-055 remains assigned. Adds fail-closed cumulative evidence audit and records actual regression outcomes; acceptance is blocked, not delivered as an authorized child or maintenance.",
+  "live_authorization": {
+    "source": "user",
+    "budget_usd": "10",
+    "model": "deepseek/deepseek-v3.2",
+    "maximum_dispatches": 12,
+    "per_dispatch_exposure_usd": "0.5",
+    "maximum_run_exposure_usd": "6",
+    "instruction": "User authorized DeepSeek/GLM live checks with maximum USD 10, requested secure key configuration when ready."
+  },
+  "environment": {
+    "status": "ready",
+    "resolution": "Execution commands require sandbox_permissions=with_additional_permissions and network.enabled=true. Fetch, child process output, Xorg :99, Forge package and native HTTPS catalog preflight now pass.",
+    "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes."
+  }
 }

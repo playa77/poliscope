@@ -330,7 +330,9 @@ export class ProviderController {
     finally { clearTimeout(timer); }
   }
   /** Main-owned, conservative GPT byte-BPE bound, never a renderer receipt.
-   * Unknown tokenizer/compatible catalog entries remain blocked. Full tokenizer
+   * Reviewed DeepSeek V3.2 text uses the same byte-level bound (see
+   * docs/provider_context_bounds.md). Unknown tokenizer/compatible entries remain
+   * blocked. Full tokenizer
    * negotiation remains explicit; tools/history include serialized bytes plus a
    * framing reserve per message/tool. No renderer can provide a budget receipt.
    */
@@ -345,10 +347,15 @@ export class ProviderController {
       // reduce counts. Count every serialized message, call ID/argument, tool
       // description/schema and role, with 1024 reserved per framing unit. The
       // escaped JSON byte count intentionally overestimates ordinary content.
-      if(raw.architecture?.tokenizer!=='GPT' || plan.response_format.type!=='text')return [];
+      const byteLevel = raw.architecture?.tokenizer === 'GPT' ||
+        raw.architecture?.tokenizer === 'DeepSeek' && id === 'deepseek/deepseek-v3.2';
+      if (!byteLevel) return [];
+      // DeepSeek's reviewed bound covers text/tools only, not undocumented media.
+      if (raw.architecture?.tokenizer === 'DeepSeek' && plan.messages.some(
+        message => typeof message.content !== 'string' && message.content.some(part => part.type !== 'text'))) return [];
       let media:number;try{media=mediaTokenBound(plan.messages,id);}catch{return [];}
       const framing=1024*(plan.messages.length+(plan.tools??[]).length+1);
-      const bytes=Buffer.byteLength(JSON.stringify({messages:plan.messages,tools:plan.tools??[]}));
+      const bytes=Buffer.byteLength(JSON.stringify({messages:plan.messages,tools:plan.tools??[],response_format:plan.response_format}));
       return [{model_id:id,input_tokens_upper_bound:bytes+framing+media,payload_sha256:contextPayloadHash(plan),source:'conservative-model-bound' as const}];
     });
     return buildGenerationRequest({profile:row.profile,revision:row.revision,key_status:'missing'},plan,{profile_id:row.profile.id,revision:row.revision,endpoint:row.profile.endpoint,models:cache.models,endpoints:Object.values(cache.endpoints),budgets});

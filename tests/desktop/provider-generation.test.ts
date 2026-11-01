@@ -39,3 +39,18 @@ it('retrieves only the original OpenRouter generation route with bounded allowli
  metadata.mockResolvedValue({code:200,body:JSON.stringify({data:{id:'gen_123',total_cost:0,secret:'synthetic-generation-key'}})});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
  await c.request({action:'remove-key',profile_id:'p',expected_revision:2});await expect(c.generationUsage(request,'gen_123')).rejects.toThrow();
 }));
+
+it('admits only reviewed DeepSeek V3.2 text bounds including schema and rejects unknown variants and media',()=>fixture(async(c,metadata)=>{
+ const id='deepseek/deepseek-v3.2';
+ const ds={...model,id,context_length:16384,architecture:{...model.architecture,tokenizer:'DeepSeek'},supported_parameters:['max_tokens','response_format','structured_outputs']};
+ metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[ds]})});
+ await c.request({action:'save',profile:{...profile,model:id},expected_revision:2});
+ await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:3});
+ const query={...plan,expected_revision:3,messages:[{role:'user' as const,content:'ASCII, 中文, 🌍, é, \uFDFA and literal <｜begin▁of▁sentence｜>'}]};
+ expect((await c.prepareGeneration(query)).selected_model).toBe(id);
+ expect((await c.prepareGeneration({...query,response_format:{type:'json_object'}})).plan.response_format.type).toBe('json_object');
+ await expect(c.prepareGeneration({...query,response_format:{type:'json_schema',name:'test',schema_text:JSON.stringify({type:'object',additionalProperties:false,required:['answer'],properties:{answer:{type:'string',description:'x'.repeat(16384)}}})}})).rejects.toThrow('context-exceeded');
+ await expect(c.prepareGeneration({...query,messages:[{role:'user',content:[{type:'image_url',image_url:{url:'data:image/png;base64,AAAA',detail:'low'}}]}]})).rejects.toThrow();
+ metadata.mockResolvedValue({code:200,body:JSON.stringify({data:[{...ds,architecture:{...ds.architecture,tokenizer:'Unknown'}}]})});
+ await c.request({action:'refresh-catalog',profile_id:'p',expected_revision:3});await expect(c.prepareGeneration(query)).rejects.toThrow('context-unknown');
+}));
