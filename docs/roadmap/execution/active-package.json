@@ -22,7 +22,7 @@
     {
       "id": "integrated-product-gate",
       "status": "pending",
-      "evidence": "Full current engine 4998 passed; full desktop units 447 passed plus focused live-budget/Windows-path regressions; full packaged 30 passed plus six provider and six portability affected cases. Both native CI builds/install/five-scenario jobs pass at fa2ab83. See retained reports."
+      "evidence": "Exact G7 selection covers all 30 subcases; all 29 offline subcases have unique passing executed targets across retained full and affected reports. Nine composed engine cases and eight affected packaged cases pass, including active-stream branch switching. E2E-013 remains unrun. Source impact reviews remain distinct from identical-candidate full-run evidence. See WP-055-gate-review.json."
     },
     {
       "id": "model-and-coverage-audit",
@@ -37,7 +37,7 @@
   ],
   "blockers": [
     "Platform runtime still reports its original revision and no credential bindings, despite user-verified poliscope key entry and repeated publication. User credential step is complete; no further re-entry/publication requested. See WP-055-runtime-attachment.json.",
-    "Final cumulative scenario and per-leaf acceptance aggregation remains assigned to Codex; inspected associations do not certify G7."
+    "Final per-leaf/RT acceptance aggregation and live E2E-013 remain assigned to Codex. Five-minute runtime readiness retries are active; scenario associations do not certify full parent acceptance."
   ],
   "previous_delivery": {
     "package": "WP-054",
@@ -61,6 +61,8 @@
     "status": "ready",
     "resolution": "Execution commands require sandbox_permissions=with_additional_permissions and network.enabled=true. Fetch, child process output, Xorg :99, Forge package and native HTTPS catalog preflight now pass.",
     "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes.",
-    "credential_delivery": "Platform attachment mismatch; original revision 1 still observed after repeated publication. Login/sandbox/parent execution and proxy-injection checks exhausted."
+    "credential_delivery": "Platform attachment mismatch; original revision 1 still observed after repeated publication. Login/sandbox/parent execution and proxy-injection checks exhausted.",
+    "retry_interval_seconds": 300,
+    "retry_policy": "User-directed foreground timer; fresh managed-readiness and Node binding checks, redacted local journal. Continue until configuration delivery permits authorized live validation."
   }
 }
