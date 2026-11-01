@@ -40,13 +40,14 @@
   "validation": "docs/roadmap/execution/WP-056-validation.json",
   "scope": "Full WP-056 release candidate freeze, current setup/contribution/user/recovery guides, native artifact/evidence identity and acceptance/rollback/support handoff; preparation does not publish a release.",
   "publication": {
-    "status": "user-authorized; push and regular PR pending",
+    "status": "published; regular PR open",
     "branch": "codex/wp-056-release-handoff",
     "destination": "https://github.com/playa77/poliscope.git",
     "release": "not authorized; not published",
     "merge": "not authorized; not performed",
     "implementation_commit": "bac1423",
-    "authorization": "User explicitly authorized: push this branch to playa77/poliscope and open a regular PR."
+    "authorization": "User explicitly authorized: push this branch to playa77/poliscope and open a regular PR.",
+    "url": "https://github.com/playa77/poliscope/pull/129"
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
