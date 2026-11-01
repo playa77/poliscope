@@ -358,3 +358,21 @@ def test_import_migration_recovery_does_not_require_installed_model(tmp_path,mon
     monkeypatch.setattr(workspace,'registry',unavailable)
     replay=request(archive,query,target,'one')
     assert replay.status=='complete' and 'no recomputation' in replay.detail
+
+
+def test_backup_flushes_writable_snapshot_without_changing_retained_data(tmp_path, monkeypatch):
+    import stat
+    flush = os.fsync
+    def writable_flush(descriptor):
+        if stat.S_ISREG(os.fstat(descriptor).st_mode):
+            os.write(descriptor, b'')
+        flush(descriptor)
+    monkeypatch.setattr(recovery.os, 'fsync', writable_flush)
+    source = tmp_path / 'source'
+    with Store(source) as store:
+        with store.transaction():
+            store.add_context('retained-probe', '{"value":"17"}')
+        path = recovery.backup(store.path, tmp_path / 'snapshot.sqlite3')
+    with recovery.reader(path) as connection:
+        assert check_schema(connection) == 2
+        assert connection.execute('SELECT metadata FROM contexts WHERE id=?', ('retained-probe',)).fetchone() == ('{"value":"17"}',)

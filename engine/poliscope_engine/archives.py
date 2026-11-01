@@ -471,7 +471,9 @@ def export_archive(service, destination, options=None, *, cancelled=None, archiv
         _cancel(cancelled)
         # Publish a complete same-directory temporary file exclusively. A crash
         # before publication cannot leave a partial archive at the selected path.
-        with temporary.open('rb') as source:
+        # Windows FlushFileBuffers requires a writable descriptor. Reopen the
+        # completed staging file without truncating it before durable publication.
+        with temporary.open('r+b') as source:
             os.fsync(source.fileno())
         _cancel(cancelled)
         os.link(temporary,destination)

@@ -528,3 +528,25 @@ def test_zip_directory_is_bounded_before_eager_zip_parse(tmp_path,attack):
     with Store(tmp_path/'target') as store:
         with pytest.raises(ArchiveError):import_archive(store,path)
         assert store.read_context(ARCHIVES) is None
+
+
+def test_archive_publication_flushes_writable_complete_file(tmp_path, monkeypatch):
+    import os
+    from poliscope_engine import archives
+    flush = os.fsync
+    def writable_flush(descriptor):
+        if stat.S_ISREG(os.fstat(descriptor).st_mode):
+            # Zero-byte writes change no bytes, but reject read-only handles on
+            # Linux too: an independent oracle for Windows FlushFileBuffers.
+            os.write(descriptor, b'')
+        flush(descriptor)
+    monkeypatch.setattr(archives.os, 'fsync', writable_flush)
+    store, service, _ = source(tmp_path / 'source')
+    try:
+        path = tmp_path / 'portable.zip'
+        exported = export_archive(service, path)
+        manifest, items = validate_archive(path)
+        assert manifest.projection_digest == exported.id
+        assert any(isinstance(item, ArchiveRevision) for item in items)
+    finally:
+        store.close()
