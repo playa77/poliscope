@@ -40,11 +40,13 @@
   "validation": "docs/roadmap/execution/WP-056-validation.json",
   "scope": "Full WP-056 release candidate freeze, current setup/contribution/user/recovery guides, native artifact/evidence identity and acceptance/rollback/support handoff; preparation does not publish a release.",
   "publication": {
-    "status": "local implementation; publication pending",
+    "status": "blocked by automatic approval review; local commit retained",
     "branch": "codex/wp-056-release-handoff",
     "destination": "https://github.com/playa77/poliscope.git",
     "release": "not authorized; not published",
-    "merge": "not authorized; not performed"
+    "merge": "not authorized; not performed",
+    "implementation_commit": "bac1423",
+    "blocker": "Push to playa77/poliscope rejected as external transfer of repository contents without explicit destination/branch authorization. No push/PR/release/merge performed. User approval required to push codex/wp-056-release-handoff and open regular PR against main."
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
