@@ -1,0 +1,100 @@
+{
+  "version": 1,
+  "package": "WP-053",
+  "base": "2239711af96f1092a7577945e496fb83d29d5082",
+  "branch": "codex/wp-053-security",
+  "review_route": "solo-validated; agent review deferred",
+  "checks": [
+    {
+      "command": "uv run --frozen pytest --junitxml=work/wp053-engine.xml -q",
+      "result": "passed",
+      "passed": 4985,
+      "subtests_passed": 59,
+      "warnings": 4,
+      "seconds": 274.21,
+      "warning_scope": "Four Pydantic serializer warnings from intentional forged nested DTO regression fixtures; no failures or skips."
+    },
+    {
+      "command": "npm test",
+      "result": "passed",
+      "desktop_units": 442,
+      "desktop_files": 39,
+      "roadmap_units": 52,
+      "scope": "Full suite before the final permission-loss test; runtime implementation unchanged."
+    },
+    {
+      "command": "npx vitest run tests/desktop/transcripts.test.ts",
+      "result": "passed",
+      "passed": 5,
+      "scope": "Final permission-loss addition; overlaps four full-run tests. 443 distinct desktop units across both runs."
+    },
+    {
+      "command": "npm run package",
+      "result": "passed",
+      "scope": "Final cloud Linux x64 bundled engine/Electron rebuild passed after SEC-053-002. Initial sandbox fetch failure superseded by permitted network packaging."
+    },
+    {
+      "command": "xvfb-run -a npx playwright test",
+      "result": "28 passed, 1 failed (SEC-053-002; corrected and superseded by final affected run)",
+      "seconds": 462,
+      "scope": "Broad packaged run before the final workspace focus correction. Original failure retained, not called passing."
+    },
+    {
+      "command": "xvfb-run -a npx playwright test tests/desktop/assistant.spec.ts",
+      "result": "passed",
+      "scope": "Final real HTTP partial-stream disconnect addition; overlaps the broad suite.",
+      "passed": 1,
+      "seconds": 37.7
+    },
+    {
+      "command": "npm run typecheck; npm run contracts:check; npm run content:validate; uv run --frozen python scripts/check_roadmap.py; git diff --check",
+      "result": "passed"
+    },
+    {
+      "command": "xvfb-run -a npx playwright test (8 affected specs: workspace, accessibility, atlas, matrix, interview, security, fault-audit, assistant-content)",
+      "result": "passed",
+      "scope": "Final renderer and tests. Overlaps eight passing broad scenarios and completes the originally failed workspace scenario; 29 distinct packaged scenarios across broad/final runs, not 38 new tests.",
+      "passed": 9,
+      "seconds": 138
+    }
+  ],
+  "sha256": {
+    "desktop/main/transcripts.ts": "2795c60d7f8818926cf69cc974d09e28b698a3aa8f7a51e4b95da587892aa924",
+    "tests/desktop/engine.test.ts": "f3b63aad3cd093fc7f13daa49b1f0d4d74549e2d1f1c4e98728b2752ced5c83f",
+    "tests/desktop/transcripts.test.ts": "779bc0ae8003eda0e928675ead35f98f32135223befeeb6f4442258431d95b1b",
+    "tests/desktop/security.spec.ts": "936cafd326793e853f0a0a1c015c1f1f83b137912c8e143b7ee7c39f6616f793",
+    "tests/desktop/assistant-content.spec.ts": "ae698453919519e7c023dcb7a10899526972e1cc600e75d7c783dbd2eccd4b93",
+    "tests/desktop/assistant.spec.ts": "e2d932cfe365140f5e615d76aa6fa30aa805e2ad2431320abd0d8baec56489f0",
+    "tests/desktop/fault-audit.spec.ts": "fda6da9408101655a19c43e18d41974048bdd1e07723d4d6526e292e2ccd1980",
+    "tests/engine/test_fault_audit.py": "a79c2b004275c04a6af25a0fa81785ecb9f50c698e68d4b54014770c5c2f3628",
+    "desktop/renderer/workspace.tsx": "5fb99b78aff14527a2d312f0e2d997820f619e2072d4408ac83daaa78bdfaca0",
+    "tests/desktop/workspace.spec.ts": "9df7c4142668a7c3ef7726be6e0dc766991034899e4d3e568a876cb2753f5cad"
+  },
+  "findings": [
+    {
+      "id": "SEC-053-001",
+      "severity": "medium",
+      "owner": "desktop transcript owner",
+      "status": "fixed",
+      "retest": "tests/desktop/transcripts.test.ts: interrupted snapshot cleanup and permission loss"
+    },
+    {
+      "id": "SEC-053-002",
+      "severity": "low reliability",
+      "owner": "workspace UI owner",
+      "status": "fixed",
+      "retest": "tests/desktop/workspace.spec.ts and affected packaged navigation paths"
+    }
+  ],
+  "limits": [
+    "Cloud functional checks only; native validation owner-run",
+    "No paid/live provider checks; WP-050 remains separately blocked",
+    "No independent review or cumulative G7/M7 claim",
+    "User-exported files/backups and filesystem recovery are outside active-copy deletion; no secure erasure claim"
+  ],
+  "follow_up_review": "Independent threat/privacy review deferred; native OS checks owner-run; cumulative release gate remains WP-055.",
+  "local_artifacts_sha256": {
+    "out/Poliscope-linux-x64/resources/app.asar": "9846298665ce0f2c06428506aea769493f3e9760934ff94393bc28035af83849",
+    "out/Poliscope-linux-x64/resources/poliscope-engine/poliscope-engine": "978295f42c30a34c6a98f679024c8974440119d5475c1006a26620c9237c1f41"
+  }
+}

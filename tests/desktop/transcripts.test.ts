@@ -37,3 +37,40 @@ it('capacity never silently evicts private text and deletion allows a new snapsh
   store.deleteTurn('t0');store.save(row('seventeenth'));expect(store.list()).toHaveLength(16);
  }finally{await rm(dir,{recursive:true,force:true});}
 });
+
+import { spawnSync } from 'node:child_process';
+import { randomUUID } from 'node:crypto';
+it('cold restart discards only owned interrupted snapshots before listing or deleting private text',async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-snapshot-crash-'));
+ try {
+  const store=new TranscriptStore(dir);store.save(row());
+  const staged=join(dir,randomUUID()+'.tmp'),unrelated=join(dir,'user-draft.tmp');
+  await writeFile(unrelated,'retain unrelated draft');
+  const child=spawnSync(process.execPath,['-e',`require('node:fs').writeFileSync(process.argv[1],process.argv[2],{mode:0o600});process.exit(17)`,staged,'PRIVATE_INTERRUPTED_TRANSCRIPT_CANARY']);
+  expect(child.status).toBe(17);
+  const cold=new TranscriptStore(dir);expect(cold.list()).toEqual([row()]);
+  await expect(stat(staged)).rejects.toHaveProperty('code','ENOENT');
+  // Interruption before the first confirmed snapshot has the same cleanup route.
+  await rm(join(dir,'transcripts.json'));await writeFile(staged,'PRIVATE_UNCONFIRMED_CANARY');
+  expect(new TranscriptStore(dir).list()).toEqual([]);
+  await expect(stat(staged)).rejects.toHaveProperty('code','ENOENT');
+  store.save(row());await writeFile(staged,'PRIVATE_DELETED_DERIVATIVE_CANARY');
+  new TranscriptStore(dir).deleteSaved('a');expect(store.list()).toEqual([]);
+  await expect(stat(staged)).rejects.toHaveProperty('code','ENOENT');
+  expect(await readFile(unrelated,'utf8')).toBe('retain unrelated draft');
+ }finally{await rm(dir,{recursive:true,force:true});}
+});
+
+import { chmod } from 'node:fs/promises';
+it.runIf(process.platform!=='win32'&&process.getuid?.()!==0)('filesystem permission loss preserves the confirmed snapshot and permits a deliberate retry',async()=>{
+ const dir=await mkdtemp(join(tmpdir(),'poliscope-snapshot-permission-'));
+ try {
+  const store=new TranscriptStore(dir);store.save(row());
+  const confirmed=await readFile(join(dir,'transcripts.json'),'utf8');
+  await chmod(dir,0o500);
+  expect(()=>store.save({...row(),text:'UNSAVED_PRIVATE_CANARY'})).toThrow();
+  expect(await readFile(join(dir,'transcripts.json'),'utf8')).toBe(confirmed);
+  await chmod(dir,0o700);store.save({...row(),text:'Retried explicitly'});
+  expect(store.list()[0].text).toBe('Retried explicitly');
+ }finally{await chmod(dir,0o700);await rm(dir,{recursive:true,force:true});}
+});

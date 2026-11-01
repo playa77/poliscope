@@ -1,45 +1,64 @@
 {
   "version": 1,
-  "package": "WP-052",
-  "record": "docs/roadmap/execution/WP-052.md",
-  "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2f623b58af7e17688eb505db19a5c6c623536f79",
-  "branch": "codex/wp-052-usability",
+  "package": "WP-053",
   "status": "complete",
-  "kind": "work_package",
+  "record": "docs/roadmap/execution/WP-053.md",
+  "owner": "Codex /root, controlled by the requesting repository user",
+  "base": "2239711",
+  "branch": "codex/wp-053-security",
+  "execution_unit": "WP-053",
+  "review_route": "solo-validated; agent review deferred",
   "authorization": {
     "source": "user",
-    "scope": "WP-052",
+    "scope": "WP-053",
     "instruction": "implement the next work package."
   },
-  "scope": "Full WP-052: core accessibility and inquiry audit; keyboard focus/return/cancel/preview fixes; scoped table headers, async status announcements, focus contrast and zoom/form reflow; optional neutral offline inquiry guidance; complete learner inquiry/report regression.",
-  "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "keyboard-focus",
+      "id": "trust-boundaries",
       "status": "passed",
-      "evidence": "Core native control semantics audited; skip link, provider return, edit/preview destinations, Apply recovery, cancel restoration, inspector Escape and 200% zoom pass real packaged Electron checks. Fifteen existing broad scenarios pass; four final affected scenarios pass, overlapping three existing cases (sixteen distinct total). Native assistive testing remains owner-run."
+      "evidence": "Production boundary inspection, expanded forged IPC and passive sink probes, combined attachment/prompt/provider/artifact/import attack and grounded tool denial pass. Findings SEC-053-001/002 fixed; final affected packaged run 9 passed."
     },
     {
-      "id": "accessible-equivalents",
+      "id": "privacy-canaries",
       "status": "passed",
-      "evidence": "Every renderer table declares header axes. Existing exact matrix/world/network/distribution/timeline/uncertainty tables preserve graphical information; all related broad packaged scenarios pass. Status text, names, noncolor coverage and authored contrast pairs are inspected in docs/accessibility_usability.md."
+      "evidence": "Raw/encrypted-key archive isolation, actual-child environment exclusion, historical private-copy projections/deletion and complete outgoing payload tests pass. Interrupted transcript staging cleanup and actual permission-loss regressions pass."
     },
     {
-      "id": "educational-inquiry",
+      "id": "fault-recovery",
       "status": "passed",
-      "evidence": "New offline packaged scenario connects expectation, interview preview/apply/deferral, matrix table, retained comparison/fork, observation and opted-in Markdown report. Local exclusion/trace/assumption/source walkthrough and neutral diagnostic/target checks pass overview regression. Student/designer/educator author perspectives recorded; no participant study or G7 claim."
+      "evidence": "Real SQLITE_FULL/SQLITE_READONLY design/timeline rollback and exact cold retry pass; existing staged-write/process-crash/migration/import/export and spending-race tests pass in full Python suite. Forced main exit and real partial-SSE socket disconnect pass packaged checks."
     }
   ],
   "blockers": [],
+  "previous_parent": {
+    "package": "WP-050",
+    "status": "in_progress",
+    "record": "docs/roadmap/execution/WP-050.md",
+    "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
+  },
+  "previous_delivery": {
+    "package": "WP-052",
+    "status": "complete",
+    "merged_pr": 125
+  },
+  "native_validation": {
+    "status": "owner-run",
+    "record": "docs/platform_scope.md",
+    "claim": "Cloud packaged functional checks only; no native OS or screen-reader certification."
+  },
+  "kind": "work_package",
+  "scope": "Full WP-053 threat/privacy/fault audit; interrupted private-transcript staging cleanup and durable staged writes; layout-phase interview focus correction from integrated regression; real SQLite full/read-only rollback, environment and privacy canaries, expanded packaged IPC/combined attacks/socket disconnect/forced-close recovery.",
+  "validation": "docs/roadmap/execution/WP-053-validation.json",
   "publication": {
     "status": "published; regular PR open",
-    "branch": "codex/wp-052-usability",
+    "branch": "codex/wp-053-security",
     "destination": "https://github.com/playa77/poliscope.git",
-    "implementation_commit": "06fb663",
-    "authorization": "User explicitly requested: push codex/wp-052-usability to GitHub and open a PR.",
+    "implementation_commit": "d18e894",
+    "reason": "Automatic approval review rejected git push: implementation authorization does not specifically authorize export of source/history to this external GitHub destination.",
+    "required_authorization": "Explicit user approval to push codex/wp-053-security to playa77/poliscope and open a regular PR against main.",
     "merge": "not authorized; not performed",
-    "url": "https://github.com/playa77/poliscope/pull/125"
-  },
-  "validation": "docs/roadmap/execution/WP-052-validation.json"
+    "authorization": "User explicitly requested pushing this branch to playa77/poliscope and opening its PR.",
+    "url": "https://github.com/playa77/poliscope/pull/126"
+  }
 }
