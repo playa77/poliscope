@@ -5,7 +5,7 @@ import { join, resolve } from 'node:path';
 const expect = baseExpect.configure({ timeout: 20000 });
 const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
 
-test('WP-039 keyboard portable export/import, privacy defaults, historical data and dialog cancel', async () => {
+test('E2E-011 keyboard portable export/import privacy historical data and dialog cancel', async () => {
   test.setTimeout(120000);
   const directory=await mkdtemp(join(tmpdir(),'poliscope-archive-ui-'));
   const source=join(directory,'source'),target=join(directory,'target'),file=join(directory,'portable.poliscope');

@@ -6,7 +6,7 @@ import { join, resolve } from 'node:path';
 async function activate(control: Locator) { await expect(control).toBeEnabled(); await control.press('Enter'); }
 
 // Real packaged UI and production engine; no provider or network is required.
-test('WP-052 keyboard focus, state meaning, preview, navigation and zoom', async () => {
+test('E2E-016.b keyboard learner inquiry report focus navigation and zoom', async () => {
   test.setTimeout(120000);
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-accessibility-'));
   const worlds = join(directory, 'worlds'); await mkdir(worlds);

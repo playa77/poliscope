@@ -5,7 +5,7 @@ import { join, resolve } from 'node:path';
 const expect = baseExpect.configure({ timeout: 20000 });
 const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
 
-test('WP-037 timeline controls retain cancelled boundaries and fork a past state without rewriting the parent', async () => {
+test('E2E-009 timeline controls retain cancelled boundaries and fork a past state without rewriting parent', async () => {
   test.setTimeout(120000);
   const directory = await mkdtemp(join(tmpdir(),'poliscope-timeline-ui-'));
   const worlds = join(directory,'worlds'); await mkdir(worlds);

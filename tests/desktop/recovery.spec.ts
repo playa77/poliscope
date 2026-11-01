@@ -5,7 +5,7 @@ import { join, resolve } from 'node:path';
 const expect = baseExpect.configure({ timeout: 20000 });
 const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
 
-test('WP-041 cold discovery, comparison, backup restore, cancellation and safe diagnostics', async () => {
+test('E2E-015.c cold discovery comparison backup restore cancellation and safe diagnostics', async () => {
   test.setTimeout(120000);
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-recovery-ui-'));
   const source = join(directory, 'source'); await mkdir(source);

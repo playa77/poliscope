@@ -7,7 +7,7 @@ import { createServer } from 'node:http';
 import type { AddressInfo } from 'node:net';
 async function enter(button:Locator) {await expect(button).toBeEnabled();await button.press('Enter');}
 const executablePath=resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform==='win32'?'.exe':''}`);
-test('WP-049 packaged workspace snapshots, spending, restart, cancellation and safe errors',async()=> {
+test('E2E-006.b packaged branch switch streaming snapshots spending restart cancellation and safe errors',async()=> {
  test.setTimeout(120000);
  const dir=await mkdtemp(join(tmpdir(),'poliscope-generation-ui-')), key='synthetic-WP045-never-in-replies';
  await mkdir(join(dir,'worlds'));
@@ -74,6 +74,14 @@ test('WP-049 packaged workspace snapshots, spending, restart, cancellation and s
    await enter(assistant.getByRole('button',{name:'Review a deliberate new request',exact:true}));await enter(assistant.getByRole('button',{name:'Approve sharing and send once',exact:true}));await expect(assistant.getByRole('status')).toContainText('Spending reservation denied');expect(calls).toHaveLength(1);
    await assistant.getByLabel('Profile spending limit',{exact:true}).fill('1');await enter(spending.getByRole('button',{name:'Update spending limits from inputs',exact:true}));await expect(assistant.getByRole('button',{name:'Review a deliberate new request',exact:true})).toBeEnabled();
    mode='slow';await enter(assistant.getByRole('button',{name:'Review a deliberate new request',exact:true}));await enter(assistant.getByRole('button',{name:'Approve sharing and send once',exact:true}));await expect.poll(()=>calls.length).toBe(2);
+   const forked=await page.evaluate(state=>window.poliscope.historyAction({context:state.context,expected_sequence:state.branch.sequence,action:'fork',target_revision_id:null,name:'Streaming alternative'}),original);
+   expect(forked.context.civilization_id).toBe(original.context.civilization_id);
+   expect(forked.context.branch_id).not.toBe(original.context.branch_id);
+   const turns=await page.evaluate(()=>window.poliscope.assistant({action:'workspace',request_id:'workspace'}));
+   const active=turns.turns?.find(turn=>['pending','streaming'].includes(turn.status));
+   expect(active).toBeTruthy();
+   expect(active!.context_json).not.toContain(forked.context.branch_id);
+   await expect(assistant.locator('pre').first()).not.toContainText(forked.context.branch_id);
    const switched=await page.evaluate(()=>window.poliscope.createWorld({name:'Different context',setup:'blank',scope_name:'all',population:null,land_area:null}));
    expect(switched.context.civilization_id).not.toBe(original.context.civilization_id);
    await expect(assistant.locator('pre').first()).toContainText(original.context.civilization_id);

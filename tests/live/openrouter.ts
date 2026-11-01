@@ -267,5 +267,11 @@ main().catch(error => {
   report.finished = new Date().toISOString(); report.dispatches_lifetime = posts;
   await mkdir(directory, { recursive: true });
   await writeFile(join(directory, preflight ? 'preflight.json' : 'evidence.json'), JSON.stringify(report, null, 2) + '\n');
+  if (!preflight) {
+    const target = 'E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation';
+    const failed = report.status !== 'passed';
+    const failure = failed ? '<failure message="Required live workflow did not pass; see redacted evidence.json"/>' : '';
+    await writeFile(join(directory, 'junit.xml'), '<testsuites><testsuite name="WP-055-live" tests="1" failures="' + (failed ? 1 : 0) + '" errors="0" skipped="0"><testcase classname="tests.live.openrouter" name="' + target + '">' + failure + '</testcase></testsuite></testsuites>\n');
+  }
   app.exit(report.status === 'failed' ? 1 : 0);
 });
