@@ -15,7 +15,13 @@ const strings = (v: unknown, limit = 64): string[] | null => {
 };
 const pricing = (value: unknown): Record<string, string> | null => {
   if (value == null) return null;
-  const entries = Object.entries(object(value));
+  const entries = Object.entries(object(value)).filter(([key, rate]) => {
+    // Endpoint discount is a numeric annotation, not a billable token rate.
+    // Preserve it in raw_json without mixing it into normalized rate strings.
+    if (key !== 'discount') return true;
+    if (typeof rate !== 'number' || !Number.isFinite(rate) || rate < 0 || rate > 1) throw new Error('Invalid discount');
+    return false;
+  });
   if (entries.length > 64) throw new Error('Invalid pricing');
   // OpenRouter now supplies structured time-dependent overrides. Retain those
   // in raw_json but withhold a flat estimate: selecting a base price could

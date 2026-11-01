@@ -18,7 +18,7 @@
       "oracle": "Evict all disposable caches; accepted values and explanatory closure survive without old runtime and round-trip normally; reduced evidence is explicit",
       "inspection": "Retained values and transitive explanation closure survive disposable cache deletion, cold reopen and ordinary/reduced archive round trips; absent/reduced evidence remains explicit.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_measurements.py",
@@ -49,7 +49,8 @@
             "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-02",
@@ -62,7 +63,7 @@
       "oracle": "Cold protocol mismatch and safe absent-mechanism archive use trusted reader; unsafe/unreadable structures still reject without mutation",
       "inspection": "Cold protocol mismatch uses the trusted data-only reader; structurally safe absent-mechanism histories are inspectable while unsafe schemas preserve originals with diagnostics.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/desktop/history.test.ts",
@@ -86,7 +87,8 @@
             "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-03",
@@ -98,7 +100,7 @@
       "oracle": "Same-base disjoint/conflicting policy deltas and simultaneous adoptions preserve unrelated configuration and evolved state",
       "inspection": "Disjoint same-base deltas compose; conflicting/stale bindings remain unapplied; same-boundary event/adoption precedence preserves unrelated configuration, stocks and pending cases.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_timeline.py",
@@ -114,7 +116,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-04",
@@ -127,7 +130,7 @@
       "oracle": "Invariant failure/cancel/crash at staging/validation/commit/publication exposes only valid confirmed boundaries",
       "inspection": "Invariant, storage and callback faults plus real pre/post-commit process exits expose only fully confirmed boundaries. No partial candidate is acknowledged or published.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_boundaries.py",
@@ -157,7 +160,8 @@
             "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-05",
@@ -170,7 +174,7 @@
       "oracle": "Identical completed retry after head advancement returns original outcome; changed-payload key reuse conflicts; status and cross-context access are bounded",
       "inspection": "Completed operation retries replay before current-head/runtime checks; changed payload, action and cross-context reuse fail, including uncertain commits and operation-status retrieval.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_headless_slice.py",
@@ -193,7 +197,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-06",
@@ -206,7 +211,7 @@
       "oracle": "Two services each requesting 100 from energy supply 100 report only allocation-supported output; coupled feedback is solved or explicitly unresolved",
       "inspection": "Independent finite contention oracles bind output to actual allocation and shared canonical population/resource budgets. Unsupported coupled components remain unresolved, rather than preserving requested-input output.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_accounts.py",
@@ -236,7 +241,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-07",
@@ -250,7 +256,7 @@
       "oracle": "Historical notes/turns/rationale/excerpts/indexes carry private canaries; omission and deletion cover active owned copies; projection integrity and backup limits are honest",
       "inspection": "Classified historical notes/rationale/derived copies are omitted or deleted across owned stores; accepted physical evidence persists. Projection identity and backup/WAL erasure limits remain distinct.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_workbench.py",
@@ -288,7 +294,8 @@
             "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-08",
@@ -300,7 +307,7 @@
       "oracle": "Injected read-only tools cannot disclose excluded payloads or existence metadata in any subsequent provider request; revocation blocks dispatch",
       "inspection": "Provider-visible continuation sinks reject private/unselected and newly navigated context, including existence metadata; revocation prevents later dispatch, and envelope expansion requires new approval.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/desktop/provider-acceptance.test.ts",
@@ -323,7 +330,9 @@
             "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios",
+      "current_provider_inspection": "Portable unsigned reasoning remains original-model/profile/context-bound data; it grants no disclosure authority. Fresh actual-controller/Python/SQLite regression completes unpinned approved continuation and preserves private-result denial and distinct reservations. Canonical usage aliases require fresh selected catalog identity; unknowns and foreign IDs remain rejected. Live lifetime units preserve all prior exposure and are exhausted at USD 10."
     },
     {
       "id": "RT-09",
@@ -337,7 +346,7 @@
       "oracle": "Controlled sink receives no request from rendering image/media/CSS/SVG/embed/artifact content; unauthorized sender frames fail",
       "inspection": "Actual packaged hostile resource sinks receive no passive request from renderer content; sender/frame enforcement and imported/provider artifact boundaries remain active.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/desktop/security.test.ts",
@@ -359,7 +368,8 @@
             "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-10",
@@ -371,7 +381,7 @@
       "oracle": "Allowance 1 with concurrent estimates 0.6 grants at most one dispatch; continuation, cancellation, duplicate grant and late actuals obey reservations",
       "inspection": "Atomic SQLite scopes admit at most one concurrent 0.6 reservation under allowance 1. Continuations use distinct grants; uncertain cancellation remains charged exposure and late actuals replace once.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_spending.py",
@@ -394,7 +404,9 @@
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios",
+      "current_provider_inspection": "Portable unsigned reasoning remains original-model/profile/context-bound data; it grants no disclosure authority. Fresh actual-controller/Python/SQLite regression completes unpinned approved continuation and preserves private-result denial and distinct reservations. Canonical usage aliases require fresh selected catalog identity; unknowns and foreign IDs remain rejected. Live lifetime units preserve all prior exposure and are exhausted at USD 10."
     },
     {
       "id": "RT-11",
@@ -407,7 +419,7 @@
       "oracle": "`1E29` stock and repeated withdrawals of 1 reject unsupported resolution before mutation or follow an exact declared quantum/residual policy; higher-precision oracle detects rounded-equality false passes",
       "inspection": "Magnitude/resolution cases reject transfers lost at 1E29 and preserve declared quantum/residual rules. Independent exact or higher precision witnesses prevent rounded-equality conservation passes.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_numeric.py",
@@ -437,7 +449,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-12",
@@ -449,7 +462,7 @@
       "oracle": "Same-definition instances in one scope do not collide; unrelated insertion, named draw purposes, fork policy and checkpoint replay preserve the declared realization",
       "inspection": "Stable mechanism-instance/entity/event/purpose/draw identities prevent collisions; unrelated insertion, paired/new-realization forks, restart and checkpoint replay preserve declared realization semantics.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_stochastic.py",
@@ -465,7 +478,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-13",
@@ -478,7 +492,7 @@
       "oracle": "Same variable `x + (1-x)` has exact supported result 1; shared drought creates declared joint shortages; unsupported propagation is qualified",
       "inspection": "Repeated x+(1-x) yields exact 1; common-cause shortage matches the declared joint oracle, and unsupported dependence/propagation is qualified rather than implicitly independent.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/engine/test_uncertainty.py",
@@ -501,7 +515,8 @@
             "docs/roadmap/execution/evidence/WP-055/engine.xml.gz"
           ]
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     },
     {
       "id": "RT-14",
@@ -511,7 +526,7 @@
       "oracle": "Every mandatory subcase has explicit first gate/production prerequisite; missing/zero selection fails; M3 UI and M6 stream cases cannot become hidden M2 prerequisites",
       "inspection": "Manifest/selection tests reject omitted, duplicate, future, wrong/missing or zero executed targets. Source first gates and production prerequisites remain explicit; candidate/artifact/inspection validation fails closed.",
       "route": "solo-validated; agent review deferred",
-      "outcome": "production oracles inspected; final cumulative scenario acceptance pending",
+      "outcome": "accepted after separate obligation/oracle inspection and linked executed scenario review",
       "tests": [
         {
           "path": "tests/roadmap/test_manifest.py",
@@ -533,7 +548,8 @@
           "path": "tests/harness/test_gate_evidence.py",
           "retained_reports": []
         }
-      ]
+      ],
+      "final_scenario_provenance": "docs/roadmap/execution/WP-055-acceptance.json#/scenarios"
     }
   ]
 }

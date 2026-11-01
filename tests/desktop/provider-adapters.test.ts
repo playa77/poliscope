@@ -55,3 +55,11 @@ it('retains scheduled pricing as raw evidence without poisoning the catalog or u
   expect(flat.pricing?.prompt).toBe('0.00000026');
   expect(flat.capabilities.tools).toBe('supported');
 });
+
+it('retains numeric endpoint discounts as raw annotations while rejecting malformed token rates', () => {
+  const data = {id:'vendor/model', endpoints:[{provider_name:'Synthetic', pricing:{prompt:'0.0000001',completion:'0.0000005',discount:0.51}}]};
+  const result = openRouterAdapter.endpoints({data},data.id,time);
+  expect(result.providers[0].pricing).toEqual({prompt:'0.0000001',completion:'0.0000005'});
+  expect(JSON.parse(result.raw_json).endpoints[0].pricing.discount).toBe(0.51);
+  for (const discount of [-1,2,'0.5',null]) expect(() => openRouterAdapter.endpoints({data:{...data,endpoints:[{provider_name:'Synthetic',pricing:{discount}}]}},data.id,time)).toThrow();
+});

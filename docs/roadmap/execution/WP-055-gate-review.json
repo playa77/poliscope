@@ -2,19 +2,14 @@
   "version": 1,
   "package": "WP-055",
   "gate": "G7",
-  "acceptance": "not_established",
+  "acceptance": "accepted within declared scope",
   "selection": "docs/roadmap/execution/WP-055-selection.json",
   "exact_subcases": 30,
   "offline_subcases_with_all_required_targets_executed_once": 29,
-  "unrun": [
-    {
-      "case": "E2E-013",
-      "target": "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation"
-    }
-  ],
+  "unrun": [],
   "duplicates": [],
-  "execution_validator": "rejected as required until live target executes",
-  "rejection": "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation: expected exactly one executed test, got 0",
+  "execution_validator": "Exact selection and each original JUnit target identity/status/hash verified; source-impact reuse separately inspected. Final live check passed source-bound verification before subsequent test/docs-only edits.",
+  "rejection": null,
   "reports": [
     {
       "path": "work/wp-055/engine-final.xml",
@@ -47,5 +42,13 @@
     "Historical unchanged workflows are retained with source impact review; reports do not claim one identical full-source candidate.",
     "Native platform matrix and current affected provider/portability evidence are separate retained receipts; no owner machine/keychain/signing claim.",
     "No live provider pass inferred from public preflight, mocks or missing credentials."
-  ]
+  ],
+  "failed": [],
+  "final_review": "docs/roadmap/execution/WP-055-acceptance.json",
+  "case_counts": {
+    "passed": 30,
+    "failed": 0,
+    "skipped": 0,
+    "unrun": 0
+  }
 }

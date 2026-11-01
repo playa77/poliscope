@@ -1,0 +1,250 @@
+{
+  "workflow": {
+    "version": 1,
+    "package": "WP-055",
+    "prerequisite": "WP-050-live",
+    "model": {
+      "id": "z-ai/glm-5.3-flash",
+      "source": "openrouter:/models",
+      "capabilities": {
+        "text": "supported",
+        "image": "supported",
+        "audio": "unsupported",
+        "video": "supported",
+        "tools": "supported",
+        "structured_output": "supported",
+        "reasoning": "supported"
+      },
+      "pricing": {
+        "prompt": "0.0000000285",
+        "completion": "0.0000000923",
+        "input_cache_read": "0.0000000285"
+      }
+    },
+    "started": "2026-11-01T15:43:21.625Z",
+    "authorized_budget_usd": "10",
+    "per_dispatch_exposure_usd": "0.5",
+    "maximum_dispatches": 20,
+    "maximum_run_reserved_exposure_usd": "10",
+    "privacy": "Isolated synthetic world, selected public facts, no private user data; credential main-only/session-only.",
+    "cases": [
+      {
+        "count": 452,
+        "model": "z-ai/glm-5.3-flash",
+        "id": "native-public-catalog",
+        "status": "passed"
+      },
+      {
+        "key_storage": "session-only",
+        "account_metadata": "allowlisted; account limits not exported",
+        "id": "authenticated-metadata",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "3b8bc44b463bf5bf95870f18f2dd82404d39453603f8486cdcc391ddd35ef67c",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 34,
+          "total_tokens": 62,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 9,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000212"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "response_format": "json_object",
+        "id": "whole-json-generation-and-usage",
+        "status": "passed",
+        "original_candidate": "06c87f081adb52e73a26b0b7a68dd9063004070b75b476056e46f1dd52c0dc37",
+        "reuse": "Verified prior executed check; every production file hash matches the retained checkpoint."
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "287c6408b0e6b359ecd61970f1a6b81f88734b7acfa0515d3091b12e44abeb0b",
+        "usage": {
+          "prompt_tokens": 30,
+          "completion_tokens": 70,
+          "total_tokens": 100,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 20,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000395"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "id": "streaming-generation",
+        "status": "passed",
+        "original_candidate": "06c87f081adb52e73a26b0b7a68dd9063004070b75b476056e46f1dd52c0dc37",
+        "reuse": "Verified prior executed check; every production file hash matches the retained checkpoint."
+      },
+      {
+        "actual_cost_usd": "0.0000212",
+        "usage_source": "generation-metadata",
+        "deduplicated_ledger": true,
+        "id": "generation-metadata-and-durable-usage",
+        "status": "passed",
+        "original_candidate": "06c87f081adb52e73a26b0b7a68dd9063004070b75b476056e46f1dd52c0dc37",
+        "reuse": "Verified prior executed check; every production file hash matches the retained checkpoint."
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "3b8bc44b463bf5bf95870f18f2dd82404d39453603f8486cdcc391ddd35ef67c",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 34,
+          "total_tokens": 62,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 9,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000212"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "strict_schema": "unsupported in authenticated catalog; verified local rejection without dispatch",
+        "json_object": "validated object returned",
+        "shared_dispatch_with": "whole-json-generation-and-usage",
+        "id": "structured-output",
+        "status": "passed",
+        "original_candidate": "06c87f081adb52e73a26b0b7a68dd9063004070b75b476056e46f1dd52c0dc37",
+        "reuse": "Verified prior executed check; every production file hash matches the retained checkpoint."
+      },
+      {
+        "id": "tools-and-separately-approved-continuation",
+        "status": "failed",
+        "diagnostic": "unsupported-control/reasoning_details"
+      }
+    ],
+    "readiness": false,
+    "unsupported_for_selected_model": [
+      "audio"
+    ],
+    "advertised_but_unvalidated_live": [
+      "image/video input: reviewed context accounting is text/tools only"
+    ],
+    "untested_live": [
+      "other models/providers",
+      "OS-protected native keychain",
+      "provider account hard-cap enforcement"
+    ],
+    "reused_check_receipt": "docs/roadmap/execution/evidence/WP-055/live-verified-checkpoint.json",
+    "reuse_production_file_count": 556,
+    "catalog_sha256": "701babe560218dfbd6ffeddf6cc708e426b191d78278c30d81ae8583301756f5",
+    "authenticated_model_capabilities": {
+      "text": "supported",
+      "image": "supported",
+      "audio": "unsupported",
+      "video": "supported",
+      "tools": "supported",
+      "structured_output": "unsupported",
+      "reasoning": "supported"
+    },
+    "authenticated_model_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_k",
+      "top_p"
+    ],
+    "tool_request_observation": {
+      "response_status": "tool-calls",
+      "diagnostic": "none",
+      "selected_model": "z-ai/glm-5.3-flash",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "actual_provider": "Z.AI",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usage": {
+        "prompt_tokens": 1078,
+        "completion_tokens": 131,
+        "total_tokens": 1209,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 59,
+          "audio_tokens": 0,
+          "image_tokens": 0
+        },
+        "cost_observation": "0.0002272"
+      },
+      "exposure_status": "unresolved",
+      "actual_cost": null,
+      "tool_calls": 1
+    },
+    "status": "failed",
+    "finished": "2026-11-01T15:43:36.072Z",
+    "dispatches_lifetime": 19
+  },
+  "source_bound_check": {
+    "version": 1,
+    "suite": "live",
+    "candidate": "cbcf8bd244c5ef860d6510b5707746e98b02028d8ee8ba7db0648f54bb6904fb",
+    "started_at": "2026-11-01T15:43:21.489Z",
+    "finished_at": "2026-11-01T15:43:36.118Z",
+    "exit_code": 1,
+    "status": "failed",
+    "readiness": false,
+    "results": {
+      "tests": 1,
+      "failed": 1,
+      "skipped": 0,
+      "skip_reasons": [],
+      "cases": [
+        {
+          "file": null,
+          "class": "tests.live.openrouter",
+          "name": "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation"
+        }
+      ]
+    },
+    "report_sha256": "466d82cc0dee2c14312a48a9710d332936c3787f1d6330cadf288e657139f916"
+  },
+  "retained_junit": "docs/roadmap/execution/evidence/WP-055/live-attempt-14.xml.gz",
+  "retained_junit_sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b",
+  "verification": "Original candidate, raw JUnit hash and parsed results verified before subsequent source edits; original outcome preserved."
+}

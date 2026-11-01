@@ -1,8 +1,8 @@
 {
   "version": 1,
-  "as_of": "2026-10-26",
+  "as_of": "2026-11-01",
   "package": "WP-050",
-  "kind": "offline-evidence; live acceptance blocked",
+  "kind": "deterministic integration plus bounded guardrailed live evidence",
   "official_contract": "tests/fixtures/providers/openrouter-contract-2026-10-26.json",
   "capabilities": [
     {
@@ -13,13 +13,14 @@
         "tests/desktop/provider-isolation.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Authenticated metadata, session-only key handling/removal pass; real native keychain remains untested.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -30,13 +31,14 @@
         "tests/desktop/provider-generation.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Native and authenticated catalog/endpoint metadata pass; authenticated capability reductions remain authoritative.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -46,13 +48,14 @@
         "tests/desktop/provider-acceptance.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "OpenRouter chooses Z.AI under key guardrails with exact GLM model, no fallbacks, explicit synthetic-data collection and price ceilings. Remote policy compliance is not independently certified.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -63,13 +66,14 @@
         "tests/desktop/provider-stream.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Stream/nonstream and validated JSON object pass. Strict schema is unadvertised in authenticated catalog and verified rejected locally before dispatch.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -80,13 +84,14 @@
         "tests/desktop/provider-acceptance.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "One actual grounded tool call and separately approved completed continuation pass. Fragmented/parallel calls remain deterministic integration evidence.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -97,13 +102,14 @@
         "tests/desktop/assistant-content.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Low effort accepted; portable unsigned reasoning history is supported without provider pinning. Final visible reasoning absent; earlier tool response reported reasoning tokens. Encrypted/signed/provider-specific history remains affinity-bound.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -114,13 +120,14 @@
         "tests/desktop/provider-stream.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "untested",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "GLM image/video accounting is unvalidated and blocked; audio unsupported. Text/tools live only.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -132,13 +139,14 @@
         "tests/desktop/provider-stream.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Actual generation lookup and durable reconciliation pass. Lifetime allocation stays within USD 10; uncertain cancellation/failed charges are not claimed as zero.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -150,13 +158,14 @@
         "tests/desktop/provider-acceptance.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Live model/provider routing failures, abort and key removal recorded. Credit/rate/redirect failure induction remains synthetic.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -168,13 +177,14 @@
         "tests/desktop/provider-acceptance.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "supported-with-limits",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "Live synthetic selected facts and real tools pass; private/other-branch canaries and concurrent gates are deterministic actual-service integration checks.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     },
     {
@@ -185,13 +195,14 @@
         "tests/desktop/provider-generation.test.ts"
       ],
       "live": {
-        "status": "access-blocked",
-        "model": null,
-        "provider": null,
-        "run_at": null,
-        "cost_ceiling_usd": null,
+        "status": "untested",
+        "model": "z-ai/glm-5.3-flash",
+        "provider": "Z.AI (selected by OpenRouter)",
+        "run_at": "2026-11-01T15:51:33.864Z",
+        "cost_ceiling_usd": "10",
         "actual_cost_usd": null,
-        "reason": "User authorized offline evidence only; no configured provider credential or live-run authorization."
+        "reason": "No generic endpoint/model claim; the authorized run uses only OpenRouter and the selected GLM model.",
+        "evidence": "docs/roadmap/execution/WP-055-live-review.json"
       }
     }
   ],

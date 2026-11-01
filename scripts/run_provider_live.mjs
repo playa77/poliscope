@@ -6,7 +6,8 @@ import { resolve } from 'node:path';
 import { mkdir, readFile, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { sourceCandidate } from './source_candidate.mjs';
-const preflight = process.argv.includes('--preflight');
+const authenticatedPreflight = process.argv.includes('--authenticated-preflight');
+const preflight = process.argv.includes('--preflight') || authenticatedPreflight;
 if (!preflight && (process.env.POLISCOPE_LIVE_OPENROUTER !== '1' || !process.env.OPENROUTER_API_KEY)) {
   console.error('Live test requires explicit opt-in and securely configured OPENROUTER_API_KEY. No request sent.');
   process.exit(2);
@@ -22,7 +23,7 @@ const executable = resolve('node_modules/electron/dist/' + (process.platform ===
 const env = { ...process.env }; delete env.ELECTRON_RUN_AS_NODE;
 const before = sourceCandidate();
 const started = new Date().toISOString();
-const child = spawn(executable, ['--no-sandbox', '--user-data-dir=' + directory + '/chromium', directory + '/runner/main.cjs', ...(preflight ? ['--preflight'] : [])], { env, stdio: 'inherit', shell: false });
+const child = spawn(executable, ['--no-sandbox', '--user-data-dir=' + directory + '/chromium', directory + '/runner/main.cjs', ...(authenticatedPreflight ? ['--authenticated-preflight'] : preflight ? ['--preflight'] : [])], { env, stdio: 'inherit', shell: false });
 child.on('error', () => { console.error('Live runner could not start.'); process.exitCode = 1; });
 child.on('exit', async code => {
   process.exitCode = code ?? 1;

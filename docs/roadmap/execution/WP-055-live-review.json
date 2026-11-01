@@ -1,0 +1,176 @@
+{
+  "version": 1,
+  "package": "WP-055",
+  "reviewer": "Codex /root",
+  "route": "solo-validated; agent review deferred",
+  "acceptance": "passed within the dated selected-route scope",
+  "credential_delivery": "Resolved in fresh managed session; observations_current true and OPENROUTER_API_KEY ready, process presence checked without value output; authenticated metadata passes. No credential reconfiguration requested.",
+  "model": "z-ai/glm-5.3-flash",
+  "fallbacks": false,
+  "provider_selection": "OpenRouter chooses within the existing key guardrails. Final actual route Z.AI. No provider ordering/filter inserted. The earlier incorrect DeepInfra experiment remains a failed historical attempt, never a final default.",
+  "attempts": [
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-1.json",
+      "started": "2026-11-01T15:09:19.798Z",
+      "finished": "2026-11-01T15:09:21.648Z",
+      "candidate": "0b62bdeb106e822204a94d5ff5ef4894d3ddc34a1c3fc16c99d890e240f6577c",
+      "status": "failed",
+      "dispatches_lifetime": 0
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-2.json",
+      "started": "2026-11-01T15:10:14.051Z",
+      "finished": "2026-11-01T15:10:16.771Z",
+      "candidate": "2388c9d206ddde86af5ce6f0d6ebd00b4246272e467b463cbf1f3a8c832218e4",
+      "status": "failed",
+      "dispatches_lifetime": 1
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-3.json",
+      "started": "2026-11-01T15:10:55.919Z",
+      "finished": "2026-11-01T15:10:58.185Z",
+      "candidate": "dbe8a5dcfb53aedbb4a659c66315e9672329c2d595442b6e1f396fb8c119063c",
+      "status": "failed",
+      "dispatches_lifetime": 2
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-4.json",
+      "started": "2026-11-01T15:11:59.266Z",
+      "finished": "2026-11-01T15:12:01.921Z",
+      "candidate": "389709e00ea980c39ae64d357275269d8c2d1df6f41ad5110f17553d1dfe7d19",
+      "status": "failed",
+      "dispatches_lifetime": 3
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-5.json",
+      "started": "2026-11-01T15:12:36.105Z",
+      "finished": "2026-11-01T15:12:39.164Z",
+      "candidate": "042bcedf8e11560919ccf68fb20bd3b13545bbe636ddf0f0aa1ebe6394426b6e",
+      "status": "failed",
+      "dispatches_lifetime": 4
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-6.json",
+      "started": "2026-11-01T15:13:17.828Z",
+      "finished": "2026-11-01T15:13:20.426Z",
+      "candidate": "253d86156af3cfdfe3ba7b690c4364c28282c749cb9bfc59515494b013b5eebe",
+      "status": "failed",
+      "dispatches_lifetime": 5
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-7.json",
+      "started": "2026-11-01T15:18:58.445Z",
+      "finished": "2026-11-01T15:19:02.362Z",
+      "candidate": "042bcedf8e11560919ccf68fb20bd3b13545bbe636ddf0f0aa1ebe6394426b6e",
+      "status": "failed",
+      "dispatches_lifetime": 6
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-8.json",
+      "started": "2026-11-01T15:24:28.224Z",
+      "finished": "2026-11-01T15:24:35.404Z",
+      "candidate": "d5c34cb31a3215719c0e669826d00a1f3776ea06ef57026206d5ddc0fb5241ae",
+      "status": "failed",
+      "dispatches_lifetime": 7
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-9.json",
+      "started": "2026-11-01T15:27:39.498Z",
+      "finished": "2026-11-01T15:28:14.188Z",
+      "candidate": "b06952444e76ff601631a51640ff662db2787a9c340ec3a1947088ce6a24a72d",
+      "status": "failed",
+      "dispatches_lifetime": 8
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-10.json",
+      "started": "2026-11-01T15:31:11.338Z",
+      "finished": "2026-11-01T15:31:48.892Z",
+      "candidate": "f48ac026a26bd0405890267d39eb6bbcca78a11961826c519f2a720b5613492f",
+      "status": "failed",
+      "dispatches_lifetime": 9
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-11.json",
+      "started": "2026-11-01T15:33:28.227Z",
+      "finished": "2026-11-01T15:33:40.779Z",
+      "candidate": "4979924159dcbc15af77582c89cb8e9b2615e656e249b827503753757d7f85a5",
+      "status": "failed",
+      "dispatches_lifetime": 11
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-12.json",
+      "started": "2026-11-01T15:36:43.002Z",
+      "finished": "2026-11-01T15:37:08.177Z",
+      "candidate": "1b75ad63f067942a785db08f9071233b8663321e1b4c64fa16c28875439715ef",
+      "status": "failed",
+      "dispatches_lifetime": 15
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-13.json",
+      "started": "2026-11-01T15:40:41.359Z",
+      "finished": "2026-11-01T15:40:55.994Z",
+      "candidate": "06c87f081adb52e73a26b0b7a68dd9063004070b75b476056e46f1dd52c0dc37",
+      "status": "failed",
+      "dispatches_lifetime": 18
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-14.json",
+      "started": "2026-11-01T15:43:21.489Z",
+      "finished": "2026-11-01T15:43:36.118Z",
+      "candidate": "cbcf8bd244c5ef860d6510b5707746e98b02028d8ee8ba7db0648f54bb6904fb",
+      "status": "failed",
+      "dispatches_lifetime": 19
+    },
+    {
+      "record": "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json",
+      "started": "2026-11-01T15:51:06.100Z",
+      "finished": "2026-11-01T15:51:34.070Z",
+      "candidate": "caf59dc9597e46e368246fd776a47920c763cc1c7253c8f19af7ccac6b7f95c8",
+      "status": "passed",
+      "dispatches_lifetime": 24
+    }
+  ],
+  "final_evidence": "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json",
+  "production_identity": "docs/roadmap/execution/evidence/WP-055/live-production-identity.json",
+  "dispatch_receipt": {
+    "posts": 24,
+    "reserved_policy_units": 100,
+    "policy_unit_usd": "0.1",
+    "model": "z-ai/glm-5.3-flash",
+    "per_dispatch_exposure_usd": "0.1",
+    "maximum_reserved_exposure_usd": "10",
+    "authorized_budget_usd": "10"
+  },
+  "remaining_policy_units": 0,
+  "actual_total_cost_usd": null,
+  "maximum_reserved_exposure_usd": "10",
+  "budget_proof": {
+    "legacy_dispatches": 19,
+    "legacy_exposure_each_usd": "0.5",
+    "final_dispatches": 5,
+    "final_exposure_each_usd": "0.1",
+    "input_upper_bound_exclusive": 40000,
+    "output_token_limit": 1024,
+    "prompt_completion_price_ceiling_usd_per_million": "2",
+    "request_price_ceiling_usd": "0",
+    "per_request_cost_upper_bound_usd": "0.082048",
+    "proof": "19*0.50 + 5*0.10 = 10.00. The final bounded text requests cost strictly less than (40000+1024)*2/1000000 = 0.082048. Durable migration retained all prior dispatches as five policy units apiece; no receipt deleted/reset. Python verified the exact bound. Policy units track allocation, not claimed provider actuals."
+  },
+  "conclusion": "Native/authenticated metadata, nonstream/stream generation, actual usage reconciliation, JSON object output, real grounded tool call, separately approved completed continuation, reasoning controls, cancellation and key removal pass. Final run has no reused checks; all nine outcomes pass.",
+  "compatibility_fixes": [
+    "Numeric endpoint discounts are raw annotations, not malformed token rates.",
+    "Empty provider filters are omitted so OpenRouter can choose within guardrails.",
+    "Generation metadata canonical snapshot aliases are accepted only through the fresh selected catalog row; unrelated identities still reject.",
+    "Strict tool schemas are requested only from routes advertising structured output; local arguments remain validated.",
+    "Unsigned standardized reasoning text/summary can continue on the exact model with automatic routing. Encrypted/signed/native-reference or unknown extensions retain provider affinity checks."
+  ],
+  "limits": [
+    "Authenticated Z.AI route advertises JSON object mode but not strict schema; local strict-schema rejection is verified without dispatch, then JSON object output is validated. No server strict-schema certification.",
+    "One live tool and completed continuation tested. Fragmented parallel calls remain deterministic integration evidence, not a live parallel-call claim.",
+    "Low reasoning control accepted; visible reasoning text was not returned in the final run. An earlier real tool response reported 59 reasoning tokens; no reasoning text is retained. Portable reasoning continuation has an additional real-controller/Python regression with synthetic provider output.",
+    "Image/video advertised but current GLM context accounting is text/tools only; audio unsupported. No live media claim.",
+    "Owner OS keychains/signing, provider account hard-cap enforcement, remote privacy promises and other models/providers unverified.",
+    "All 100 allocation units are reserved; no further paid request under this authorization. Actual total includes uncertain failed/cancelled upstream outcomes and is not claimed."
+  ],
+  "privacy": "Isolated public synthetic world and selected facts only. Key remains Electron-main/session-only, removed before exit; no key, prompts/completions, raw provider errors or account limits retained."
+}

@@ -5,7 +5,7 @@
   "owner": "Codex /root, controlled by the requesting repository user",
   "base": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0",
   "branch": "codex/wp-055-product-gate",
-  "status": "in_progress",
+  "status": "complete",
   "execution_unit": "WP-055",
   "authorization": {
     "source": "user",
@@ -16,29 +16,26 @@
   "acceptance": [
     {
       "id": "leaf-trace-and-rt-audit",
-      "status": "pending",
-      "evidence": "Cumulative audit implemented; 1,053 leaf obligations and 30 exact G7 subcases still need candidate-bound production inspection. Historical planning statuses are preserved."
+      "status": "passed",
+      "evidence": "All 1053 immutable leaf IDs retain owner, source hash, exact production/oracle review and evidence links; all 14 specific RT obligations inspected separately. Historical-context leaves and owner-run native scope are explicitly disposed in WP-055-acceptance.json."
     },
     {
       "id": "integrated-product-gate",
-      "status": "pending",
-      "evidence": "Exact G7 selection covers all 30 subcases; all 29 offline subcases have unique passing executed targets across retained full and affected reports. Nine composed engine cases and eight affected packaged cases pass, including active-stream branch switching. E2E-013 remains unrun. Source impact reviews remain distinct from identical-candidate full-run evidence. See WP-055-gate-review.json."
+      "status": "passed",
+      "evidence": "All 30 exact G7 subcases have passing executed targets; E2E-013 now has verified source-bound live pass. Retained 4998 full engine, 447 full units, 30 packaged, composed gate cases and fresh affected provider/unit/package reports have explicit source-impact review, not a fabricated identical-candidate historical run."
     },
     {
       "id": "model-and-coverage-audit",
-      "status": "pending",
-      "evidence": "Author model/coverage inspection retained in WP-055-model-review.json: 12 domains, 453 rows, 51 partial static rows, zero source transition activation. Empirical validity and independent review not claimed."
+      "status": "passed",
+      "evidence": "Twelve domains, 453 coverage rows, 51 partial static rows, zero source-transition activation reviewed against DEC-04; authored hypothetical mechanisms, source gaps, attribution and uncertainty remain explicit. No empirical validity or independent review claim."
     },
     {
       "id": "provider-and-native-evidence",
-      "status": "pending",
-      "evidence": "Exact V4.1 model preparation, 65 provider cases, native HTTPS preflight, six packaged provider cases and both native target workflows pass. No authenticated generation is claimed: the active runtime has no key binding despite completed user setup. No paid request sent."
+      "status": "passed",
+      "evidence": "Guardrailed GLM/OpenRouter-selected Z.AI live workflow, completed tool continuation, cost reconciliation, cancellation and key removal pass within USD 10 lifetime allocation. Existing native Windows/Linux CI pass at ab33636; final Linux package and six affected cases pass. Real owner desktop/keychain/signing remain owner-run under standing waiver; current-source native packages being refreshed."
     }
   ],
-  "blockers": [
-    "Platform runtime still reports its original revision and no credential bindings, despite user-verified poliscope key entry and repeated publication. User credential step is complete; no further re-entry/publication requested. See WP-055-runtime-attachment.json.",
-    "Final per-leaf/RT acceptance aggregation and live E2E-013 remain assigned to Codex. Five-minute runtime readiness retries are active; scenario associations do not certify full parent acceptance."
-  ],
+  "blockers": [],
   "previous_delivery": {
     "package": "WP-054",
     "status": "merged locally",
@@ -49,20 +46,27 @@
   "live_authorization": {
     "source": "user",
     "budget_usd": "10",
-    "model": "deepseek/deepseek-v4.1-flash-1017",
-    "maximum_dispatches": 12,
-    "per_dispatch_exposure_usd": "0.5",
-    "maximum_run_exposure_usd": "6",
-    "instruction": "Use only deepseek/deepseek-v4.1-flash-1017 for live validation; maximum USD 10. Key entered and environment published; proceed.",
-    "model_restriction": "User: use only deepseek/deepseek-v4.1-flash-1017; key is guardrailed to that model.",
-    "credential_configuration": "User confirms correct OPENROUTER_API_KEY value and repeated successful poliscope publication. Current executor has not received that published binding; no further user credential action is requested."
+    "model": "z-ai/glm-5.3-flash",
+    "maximum_dispatches": 100,
+    "per_dispatch_exposure_usd": "0.1",
+    "maximum_run_exposure_usd": "10",
+    "instruction": "Latest user instruction: use z-ai/glm-5.3-flash and let OpenRouter choose the provider; accommodate the existing guardrailed production configuration. Original maximum total USD 10 retained.",
+    "model_restriction": "Latest selected model only, no model fallback. DeepSeek attempts before the explicit model switch remain historical.",
+    "credential_configuration": "Published configuration delivered in this fresh session; observed ready and authenticated. No further user configuration needed."
   },
   "environment": {
     "status": "ready",
     "resolution": "Execution commands require sandbox_permissions=with_additional_permissions and network.enabled=true. Fetch, child process output, Xorg :99, Forge package and native HTTPS catalog preflight now pass.",
     "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes.",
-    "credential_delivery": "Platform attachment mismatch; original revision 1 still observed after repeated publication. Login/sandbox/parent execution and proxy-injection checks exhausted.",
+    "credential_delivery": "Resolved; fresh current observations report OPENROUTER_API_KEY ready and live authentication succeeds.",
     "retry_interval_seconds": 300,
-    "retry_policy": "User-directed foreground timer; fresh managed-readiness and Node binding checks, redacted local journal. Continue until configuration delivery permits authorized live validation."
+    "retry_policy": "No retry timer needed after credential delivery; no further paid requests after exhausted lifetime allocation."
+  },
+  "scope": "Full WP-055: cumulative leaf/RT/model inspection, exact G7 execution, integrated guardrailed live provider compatibility, source-impact regression evidence and native artifact accounting. No child/maintenance substitution.",
+  "publication": {
+    "status": "ready to push and open regular PR",
+    "branch": "codex/wp-055-product-gate",
+    "destination": "https://github.com/playa77/poliscope.git",
+    "merge": "not authorized; not performed"
   }
 }

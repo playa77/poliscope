@@ -57,6 +57,18 @@ export function opaque(value:unknown):Record<string,unknown>[] {
   }
   return structuredClone(value);
 }
+/** Only standardized unsigned text/summary details are provider-independent.
+ * Encrypted/signed data, native references, formats and extensions stay opaque. */
+export function requiresProviderAffinity(value: unknown): boolean {
+  return opaque(value).some(detail => {
+    const field = detail.type === 'reasoning.text' ? 'text' : detail.type === 'reasoning.summary' ? 'summary' : null;
+    if (!field || typeof detail[field] !== 'string') return true;
+    if (detail.data != null || detail.signature != null || detail.id != null) return true;
+    if (detail.format != null && detail.format !== 'unknown') return true;
+    return Object.keys(detail).some(key => !['type','text','summary','index','format','id','signature','data'].includes(key));
+  });
+}
+
 export function wireMessages(messages:GenerationMessage[]) {
   return messages.map(message=> {
     const {reasoning_details_json,...plain}=message;

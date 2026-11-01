@@ -330,7 +330,7 @@ export class ProviderController {
     finally { clearTimeout(timer); }
   }
   /** Main-owned, conservative GPT byte-BPE bound, never a renderer receipt.
-   * Reviewed DeepSeek V3.2 / V4.1 Flash 1017 text uses the same byte-level bound (see
+   * Reviewed DeepSeek V3.2 / V4.1 Flash 1017 and GLM 5.3 Flash text use the same byte-level bound (see
    * docs/provider_context_bounds.md). Unknown tokenizer/compatible entries remain
    * blocked. Full tokenizer
    * negotiation remains explicit; tools/history include serialized bytes plus a
@@ -349,10 +349,11 @@ export class ProviderController {
       // escaped JSON byte count intentionally overestimates ordinary content.
       const byteLevel = raw.architecture?.tokenizer === 'GPT' ||
         raw.architecture?.tokenizer === 'DeepSeek' &&
-          ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v4.1-flash-1017'].includes(id);
+          ['deepseek/deepseek-v3.2', 'deepseek/deepseek-v4.1-flash-1017'].includes(id) ||
+        raw.architecture?.tokenizer === 'Other' && id === 'z-ai/glm-5.3-flash';
       if (!byteLevel) return [];
       // DeepSeek's reviewed bound covers text/tools only, not undocumented media.
-      if (raw.architecture?.tokenizer === 'DeepSeek' && plan.messages.some(
+      if (raw.architecture?.tokenizer !== 'GPT' && plan.messages.some(
         message => typeof message.content !== 'string' && message.content.some(part => part.type !== 'text'))) return [];
       let media:number;try{media=mediaTokenBound(plan.messages,id);}catch{return [];}
       const framing=1024*(plan.messages.length+(plan.tools??[]).length+1);
@@ -400,17 +401,30 @@ export class ProviderController {
       const key=await this.secret(row);if(!key)throw new Error('Provider key unavailable');
       const controller=new AbortController(), active=this.generations.get(row.profile.id)??new Set<AbortController>();
       active.add(controller);this.generations.set(row.profile.id,active);
-      return {key,controller,active};
+      return {key,controller,active,models:(await this.cache(row)).models};
     });
     const key=lease.key,signal=lease.controller.signal;
     try {
       const response=await this.metadata!(request.endpoint+'/generation?id='+encodeURIComponent(id),key,signal);
       if(response.code!==200||response.body.includes(key))throw new Error('Usage lookup unavailable');
       const data=(providerJson(response.body) as {data?:Record<string,unknown>})?.data;
-      if(!data||data.id!==id||data.model&&(typeof data.model!=='string'||!request.allowed_models.includes(data.model)))throw new Error('Usage identity mismatch');
+      if(!data||data.id!==id)throw new Error('Usage identity mismatch');
+      let actualModel = data.model;
+      if(actualModel != null && (typeof actualModel !== 'string' || !request.allowed_models.includes(actualModel))) {
+        // Generation metadata can use the selected catalog row's canonical
+        // snapshot slug. This is an identity alias, never a routing fallback.
+        const aliases = lease.models.filter(model => {
+          if(!request.allowed_models.includes(model.id) || !model.available || model.source !== 'openrouter:/models')return false;
+          const age=Date.now()-Date.parse(model.observed_at);
+          if(!Number.isFinite(age)||age<0||age>CATALOG_TTL)return false;
+          try { return typeof actualModel === 'string' && JSON.parse(model.raw_json).canonical_slug === actualModel; } catch {return false;}
+        });
+        if(aliases.length !== 1)throw new Error('Usage identity mismatch');
+        actualModel=aliases[0].id;
+      }
       const observation:import('../../contracts/spending').UsageObservation={source:'generation-metadata',generation_id:id};
       if(data.total_cost!=null)observation.actual_cost=costText(data.total_cost);
-      if(typeof data.model==='string')observation.actual_model=data.model;
+      if(typeof actualModel==='string')observation.actual_model=actualModel;
       if(typeof data.provider_name==='string'&&data.provider_name.length>0&&data.provider_name.length<=256&&!/[\u0000-\u001f\u007f]/.test(data.provider_name))observation.actual_provider=data.provider_name;
       if(data.cancelled===true)observation.outcome='cancelled';
       for(const [field,target] of [['tokens_prompt','normalized_input_tokens'],['tokens_completion','normalized_output_tokens'],['native_tokens_prompt','input_tokens'],['native_tokens_completion','output_tokens'],['native_tokens_cached','cached_tokens'],['native_tokens_reasoning','reasoning_tokens']] as const)if(data[field]!=null) {

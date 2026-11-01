@@ -1,13 +1,13 @@
 {
   "version": 1,
   "package": "WP-055",
-  "acceptance": "not_established",
-  "scope": "Exact 1,053 leaf-to-production/test-family associations with per-group author inspection, oracle links and retained executed targets. A group review does not assert that every listed test proves every leaf. No final G7 or empirical validity pass is inferred.",
+  "acceptance": "accepted within declared scope",
+  "scope": "Exact immutable leaf-to-production/oracle review, owners, hashed sources and retained executed evidence. Source impact and declared model/native limits are explicit; group test association alone is not the acceptance rationale.",
   "requirements_source_sha256": "04cee60c76506db6117033746ffef7d4d54942588b7848fd6d4133c43029fb57",
   "leaf_count": 1053,
   "groups": {
     "WP-021-preview-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + PRODUCT + QA"
       ],
@@ -107,7 +107,7 @@
       }
     },
     "WP-017-measurements": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -208,7 +208,7 @@
       }
     },
     "WP-049-assistant-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + PRODUCT + QA"
       ],
@@ -253,11 +253,11 @@
         "T-13-5-036"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a",
         "desktop/main/sharing.ts": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d",
@@ -279,13 +279,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/assistant-question.test.ts": {
           "sha256": "8e63590a6a1daf652c3544696d193db972925d40c66cab49b184d49c8f612598",
@@ -344,10 +345,56 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Actual assistant/workspace/transcript tests cover prepare/share/send/cancel lifecycle, original-context replies across navigation, explicit proposals/noncommitting previews, private transcript ownership/deletion and safe usage recovery without resending prompts.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-017-traces": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -418,7 +465,7 @@
       }
     },
     "WP-036-replay": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -506,7 +553,7 @@
       }
     },
     "WP-006-numeric": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -567,7 +614,7 @@
       }
     },
     "WP-039-archive": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -663,7 +710,7 @@
       }
     },
     "WP-007-membership": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -757,7 +804,7 @@
       }
     },
     "WP-007-identities": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -827,7 +874,7 @@
       }
     },
     "WP-015-allocation": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -908,7 +955,7 @@
       }
     },
     "WP-026-coverage": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "MODEL + QA + PRODUCT"
       ],
@@ -1084,7 +1131,7 @@
       }
     },
     "DOM-01-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1162,7 +1209,7 @@
       }
     },
     "DOM-02-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1253,7 +1300,7 @@
       }
     },
     "DOM-03-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1342,7 +1389,7 @@
       }
     },
     "DOM-04-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1433,7 +1480,7 @@
       }
     },
     "DOM-05-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1513,7 +1560,7 @@
       }
     },
     "DOM-06-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1605,7 +1652,7 @@
       }
     },
     "DOM-07-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1699,7 +1746,7 @@
       }
     },
     "DOM-08-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1792,7 +1839,7 @@
       }
     },
     "DOM-09-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1881,7 +1928,7 @@
       }
     },
     "DOM-10-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -1970,7 +2017,7 @@
       }
     },
     "DOM-11-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -2059,7 +2106,7 @@
       }
     },
     "DOM-12-static": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -2148,7 +2195,7 @@
       }
     },
     "WP-013-policy": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -2200,7 +2247,7 @@
       }
     },
     "WP-033-adoption": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -2294,7 +2341,7 @@
       }
     },
     "WP-023-comparison": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA",
         "ENG + MODEL + QA"
@@ -2396,7 +2443,7 @@
       }
     },
     "WP-022-overview": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2458,7 +2505,7 @@
       }
     },
     "WP-028-atlas-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2517,7 +2564,7 @@
       }
     },
     "WP-029-matrix-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -2602,7 +2649,7 @@
       }
     },
     "WP-030-world-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2661,7 +2708,7 @@
       }
     },
     "WP-037-timeline-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA",
         "ENG + DESK + QA"
@@ -2731,7 +2778,7 @@
       }
     },
     "WP-023-history-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2803,7 +2850,7 @@
       }
     },
     "WP-031-evidence-ui": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2865,7 +2912,7 @@
       }
     },
     "WP-020-navigation": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -2949,7 +2996,7 @@
       }
     },
     "WP-008-packs": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA",
         "ENG + QA"
@@ -3057,7 +3104,7 @@
       }
     },
     "WP-035-random": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -3115,7 +3162,7 @@
       }
     },
     "WP-009-repositories": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -3197,7 +3244,7 @@
       }
     },
     "WP-040-reports": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + PRODUCT + QA"
       ],
@@ -3267,7 +3314,7 @@
       }
     },
     "WP-055-product-gate": {
-      "outcome": "parent-acceptance-review-pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "TL + MODEL + PRODUCT + QA"
       ],
@@ -3305,11 +3352,11 @@
         "T-16-024"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a",
         "desktop/main/sharing.ts": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d",
@@ -3359,13 +3406,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/assistant-question.test.ts": {
           "sha256": "8e63590a6a1daf652c3544696d193db972925d40c66cab49b184d49c8f612598",
@@ -3439,12 +3487,58 @@
       "inspection": {
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
-        "finding": "Full baseline actual Python/SQLite and all thirty packaged Electron flows pass; affected provider changes additionally pass six rebuilt packaged scenarios. Exact cumulative scenario/RT aggregation and live-provider dependency remain open; this audit cannot certify itself by its own unit tests.",
+        "finding": "All 30 exact G7 subcases have unique passing executed targets; all 1053 leaves retain owner and original oracles; fourteen RT findings separately inspected. Final guardrailed live and affected provider/service/packaged evidence complete the source-impact review. Software acceptance does not assert empirical validity, independent review or one identical-candidate historical full run.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-010-transport": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -3553,7 +3647,7 @@
       }
     },
     "WP-011-ipc": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA",
         "ENG + DESK + QA"
@@ -3658,7 +3752,7 @@
       }
     },
     "WP-002-commands": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "TL + DESK + ENG + QA"
       ],
@@ -3718,7 +3812,7 @@
       }
     },
     "WP-043-adapter": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -3737,28 +3831,31 @@
         "T-17-008"
       ],
       "source_files": {
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf"
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
+        "desktop/main/providers.ts": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12"
       },
       "tests": {
         "tests/desktop/provider-adapters.test.ts": {
-          "sha256": "6581533419b4e9890d558edc12dae36f2dd21780d746ac96cc97309a1c829126",
+          "sha256": "eb05e31135aefdc9a5915e08c9cde1dacc4b58219d99204085aa3481dcf44492",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 23,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "previous_sha256": "6581533419b4e9890d558edc12dae36f2dd21780d746ac96cc97309a1c829126"
         },
         "tests/desktop/provider-generation.test.ts": {
-          "sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
+          "sha256": "bdd6b539c27949efdbcb53d592969daf8f54b9de4044755abd6b540b1097f2e2",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz"
           ],
           "executed_case_records": 10,
           "failed_case_records": 0,
-          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests."
+          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests.",
+          "previous_sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
+          "historical_sha256": "3428872d029cda24f8e7aea35b937856a582822ea9c13cc566f98948d92221f4"
         },
         "tests/desktop/provider-metadata.spec.ts": {
           "sha256": "30c8031c324ba20ba9e0152ab664610b7f39a0ad91e10515fd8bde98f45d773a",
@@ -3791,10 +3888,45 @@
         "finding": "Catalog/adapters tests cover open model IDs, fresh/stale/removed metadata, capabilities, provider/key endpoints, scheduled-price unknowns and session-only credential leases. Reviewed context bounds reject unknown tokenizer/media; actual native public catalog preflight now passes.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
         "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/providers.ts",
+            "previous_sha256": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+            "current_sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
+            "inspection": "Exact reviewed GLM text/tools byte bound; usage canonical aliases require one fresh selected official catalog row; unrelated identities reject."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-016-evaluation": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -3856,7 +3988,7 @@
       }
     },
     "WP-012-expressions": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -3967,7 +4099,7 @@
       }
     },
     "WP-014-solvers": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -4036,7 +4168,7 @@
       }
     },
     "WP-041-migration": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -4107,7 +4239,7 @@
       }
     },
     "WP-046-envelope": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA",
         "ENG + DESK + QA/security"
@@ -4149,7 +4281,7 @@
       "source_files": {
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
         "desktop/main/grounding.ts": "658c77a57b6c72d003e0ee8b3a475b2b0fcb9ffc77f8bebc07d9e72672b9e65b",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-schema.ts": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37",
         "desktop/main/sharing.ts": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
@@ -4214,10 +4346,45 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Actual Python scoped context and main sharing/tool tests inspect every continuation payload, deny private/unselected/existence metadata, enforce immutable context, revocation and distinct approvals. Read-only retrieval does not confer disclosure permission.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-034-invariants": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -4308,7 +4475,7 @@
       }
     },
     "WP-038-capacity": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -4382,7 +4549,7 @@
       }
     },
     "WP-038-uncertainty": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + MODEL + QA"
       ],
@@ -4463,7 +4630,7 @@
       }
     },
     "WP-018-apply": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA",
         "ENG + QA"
@@ -4574,7 +4741,7 @@
       }
     },
     "WP-018-world": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -4662,7 +4829,7 @@
       }
     },
     "WP-031-notes": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -4724,7 +4891,7 @@
       }
     },
     "WP-046-tools": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -4735,7 +4902,7 @@
       "source_files": {
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
         "desktop/main/grounding.ts": "658c77a57b6c72d003e0ee8b3a475b2b0fcb9ffc77f8bebc07d9e72672b9e65b",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-schema.ts": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37",
         "desktop/main/sharing.ts": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
@@ -4798,10 +4965,45 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Actual Python scoped context and main sharing/tool tests inspect every continuation payload, deny private/unselected/existence metadata, enforce immutable context, revocation and distinct approvals. Read-only retrieval does not confer disclosure permission.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-009-store": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + QA"
       ],
@@ -4864,7 +5066,7 @@
       }
     },
     "WP-041-recovery": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -4935,7 +5137,7 @@
       }
     },
     "WP-010-history-read": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5009,7 +5211,7 @@
       }
     },
     "WP-031-classification": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5077,7 +5279,7 @@
       }
     },
     "WP-042-keys": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA/security"
       ],
@@ -5093,7 +5295,7 @@
       "source_files": {
         "desktop/main/ipc.ts": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+        "desktop/main/providers.ts": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
         "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0"
       },
@@ -5147,10 +5349,28 @@
         "finding": "Provider/key/native-network tests cover temporary key entry, endpoint binding, OS-protection/session fallback, redirect/cookie/auth denial, cancellation and removal. Real owner keychains remain unclaimed; credential never reaches Python.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
         "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/providers.ts",
+            "previous_sha256": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+            "current_sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
+            "inspection": "Exact reviewed GLM text/tools byte bound; usage canonical aliases require one fresh selected official catalog row; unrelated identities reject."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-044-routing": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -5170,8 +5390,8 @@
         "T-13-2-022"
       ],
       "source_files": {
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-schema.ts": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37"
       },
       "tests": {
@@ -5185,13 +5405,15 @@
           "failed_case_records": 0
         },
         "tests/desktop/provider-requests.test.ts": {
-          "sha256": "5f580295c4d8bf45a39e01ed59024caed16052745d0c3103d2db0e6ccb64d109",
+          "sha256": "54b1b1a6c1562ab46515b29fdade9f251a51fe9872cbc7b4aeb8f5adcd8b6e9f",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 92,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "previous_sha256": "5f580295c4d8bf45a39e01ed59024caed16052745d0c3103d2db0e6ccb64d109",
+          "historical_sha256": "1d6efebd6473fc17455206760480668222c632c4ceb7f18b1004df797cbc54ed"
         }
       },
       "positive_oracles": [
@@ -5205,10 +5427,50 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Pure builder and packaged settings tests preserve exact selected routing/privacy/price/output controls, explicit model fallbacks, capability/context revalidation and incompatible/unknown rejection. No silently loosened provider preference is allowed.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-045-stream": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -5231,11 +5493,11 @@
         "T-14-023"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a",
         "desktop/main/sharing.ts": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d",
@@ -5254,13 +5516,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/assistant-question.test.ts": {
           "sha256": "8e63590a6a1daf652c3544696d193db972925d40c66cab49b184d49c8f612598",
@@ -5310,10 +5573,56 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Stream/controller tests cover fragmented SSE/content/reasoning/tool deltas, terminal/usage events, partial/cancel/error responses, model identity and deliberate sends. Paid provider behavior still needs separately authorized live evidence.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-047-reasoning": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -5326,10 +5635,10 @@
         "T-13-4-027"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a"
       },
@@ -5344,13 +5653,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/provider-stream.test.ts": {
           "sha256": "e93738524145233e06a8903352443faaa953501a90e3d8f8b8ba0971822c9c2b",
@@ -5373,10 +5683,56 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Attachment/reasoning/artifact tests cover typed bounded data, explicit sharing, unsupported modalities, opaque continuation compatibility and passive network/executable-content denial. Provider-generated prose/values never become simulation state.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-047-attachments": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5390,10 +5746,10 @@
         "T-13-5-009"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a"
       },
@@ -5408,13 +5764,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/provider-stream.test.ts": {
           "sha256": "e93738524145233e06a8903352443faaa953501a90e3d8f8b8ba0971822c9c2b",
@@ -5437,10 +5794,56 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Attachment/reasoning/artifact tests cover typed bounded data, explicit sharing, unsupported modalities, opaque continuation compatibility and passive network/executable-content denial. Provider-generated prose/values never become simulation state.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-048-reservation": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5466,7 +5869,7 @@
       "source_files": {
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+        "desktop/main/providers.ts": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0",
         "engine/poliscope_engine/contracts/spending.py": "f3b07d32a2bbfe20a33ec6b5746bf40d9df5013590e63bc893cf74336dae2589",
@@ -5474,13 +5877,14 @@
       },
       "tests": {
         "tests/desktop/provider-acceptance.test.ts": {
-          "sha256": "622a84e3f23cba21777311544d99007df86e937c697f9eece90d4ce11e4586b3",
+          "sha256": "c66cb52f21f6f143a1da85d67f25c7d8c9c7a8d2433268e64a5a88891fdbee4e",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 12,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "622a84e3f23cba21777311544d99007df86e937c697f9eece90d4ce11e4586b3"
         },
         "tests/engine/test_spending.py": {
           "sha256": "818b9802f386dc2ba5054130df49afcf37f29729bb125c130e93810e1f12a773",
@@ -5504,10 +5908,28 @@
         "finding": "Actual Python SQLite spending fixtures cover Decimal costs, atomic shared reservations under 0.6+0.6 versus allowance 1, continuation grants, cancellation/uncertainty, deduplicated late actuals and durable restart. Live harness adds a locked persistent 12-dispatch cap.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
         "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/providers.ts",
+            "previous_sha256": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+            "current_sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
+            "inspection": "Exact reviewed GLM text/tools byte bound; usage canonical aliases require one fresh selected official catalog row; unrelated identities reject."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-042-network": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA/security"
       ],
@@ -5521,7 +5943,7 @@
       "source_files": {
         "desktop/main/ipc.ts": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+        "desktop/main/providers.ts": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
         "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0"
       },
@@ -5575,10 +5997,28 @@
         "finding": "Provider/key/native-network tests cover temporary key entry, endpoint binding, OS-protection/session fallback, redirect/cookie/auth denial, cancellation and removal. Real owner keychains remain unclaimed; credential never reaches Python.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
         "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/providers.ts",
+            "previous_sha256": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+            "current_sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
+            "inspection": "Exact reviewed GLM text/tools byte bound; usage canonical aliases require one fresh selected official catalog row; unrelated identities reject."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-051-benchmarks": {
-      "outcome": "evidence-linked; final application inspection pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5663,7 +6103,7 @@
       }
     },
     "WP-054-install": {
-      "outcome": "owner-native-validation-unclaimed",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA"
       ],
@@ -5726,12 +6166,12 @@
       "inspection": {
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
-        "finding": "Cloud Linux fresh distribution/self-test/install/packaged smoke passes. Windows native CI exposed ASAR host path bugs now fixed; further bundled self-test failure is being diagnosed. Owner desktop/keychain/signing checks remain unclaimed under the standing waiver.",
+        "finding": "Both native CI targets built/installed and passed declared packaged smokes at ab33636. Current cloud Linux rebuilt provider paths pass six affected packaged cases. Native owner desktop/keychain/signing remain unclaimed under the standing waiver; refreshed current-source artifacts are tracked separately.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
       }
     },
     "WP-050-live": {
-      "outcome": "live-evidence-pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + QA"
       ],
@@ -5748,12 +6188,12 @@
       ],
       "source_files": {
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-schema.ts": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
-        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+        "desktop/main/providers.ts": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0",
         "engine/poliscope_engine/contracts/generation.py": "5393741770e92e686455da2b16eb7f1e74450294c0ebe52150e26530a96bc329",
@@ -5761,23 +6201,25 @@
       },
       "tests": {
         "tests/desktop/provider-acceptance.test.ts": {
-          "sha256": "622a84e3f23cba21777311544d99007df86e937c697f9eece90d4ce11e4586b3",
+          "sha256": "c66cb52f21f6f143a1da85d67f25c7d8c9c7a8d2433268e64a5a88891fdbee4e",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 12,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "622a84e3f23cba21777311544d99007df86e937c697f9eece90d4ce11e4586b3"
         },
         "tests/desktop/provider-adapters.test.ts": {
-          "sha256": "6581533419b4e9890d558edc12dae36f2dd21780d746ac96cc97309a1c829126",
+          "sha256": "eb05e31135aefdc9a5915e08c9cde1dacc4b58219d99204085aa3481dcf44492",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 23,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "previous_sha256": "6581533419b4e9890d558edc12dae36f2dd21780d746ac96cc97309a1c829126"
         },
         "tests/desktop/provider-fixture.test.ts": {
           "sha256": "f6a3bcf15131c239d7270513cfccdfcbc6147d995999eef3f850170bf4d9afe8",
@@ -5795,13 +6237,15 @@
           "failed_case_records": 0
         },
         "tests/desktop/provider-generation.test.ts": {
-          "sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
+          "sha256": "bdd6b539c27949efdbcb53d592969daf8f54b9de4044755abd6b540b1097f2e2",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz"
           ],
           "executed_case_records": 10,
           "failed_case_records": 0,
-          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests."
+          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests.",
+          "previous_sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
+          "historical_sha256": "3428872d029cda24f8e7aea35b937856a582822ea9c13cc566f98948d92221f4"
         },
         "tests/desktop/provider-isolation.test.ts": {
           "sha256": "078e9194bbf0b9596d6ee5002686bdb0b2254eea79202699443e97e54a3a29c1",
@@ -5849,13 +6293,15 @@
           "failed_case_records": 0
         },
         "tests/desktop/provider-requests.test.ts": {
-          "sha256": "5f580295c4d8bf45a39e01ed59024caed16052745d0c3103d2db0e6ccb64d109",
+          "sha256": "54b1b1a6c1562ab46515b29fdade9f251a51fe9872cbc7b4aeb8f5adcd8b6e9f",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 92,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "previous_sha256": "5f580295c4d8bf45a39e01ed59024caed16052745d0c3103d2db0e6ccb64d109",
+          "historical_sha256": "1d6efebd6473fc17455206760480668222c632c4ceb7f18b1004df797cbc54ed"
         },
         "tests/desktop/provider-stream.test.ts": {
           "sha256": "e93738524145233e06a8903352443faaa953501a90e3d8f8b8ba0971822c9c2b",
@@ -5894,13 +6340,59 @@
       "inspection": {
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
-        "finding": "Offline integrated provider/controller/Python spending evidence passes, and actual native/public catalog preflight passes. Authenticated/generation/tool/usage/cancellation live sequence is authorized at USD 10 but awaits the secure runtime key binding. No live pass is inferred.",
+        "finding": "Existing guardrailed key and automatic OpenRouter routing pass authenticated metadata, GLM nonstream/stream/JSON generation, actual-cost reconciliation, a real tool call and completed separately approved continuation, reasoning controls, cancellation and key removal. The successful final live source/JUnit were verified before test/docs-only edits. No strict-schema/media/other-model/native-keychain or aggregate actual-charge claim.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
         "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          },
+          {
+            "path": "desktop/main/providers.ts",
+            "previous_sha256": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
+            "current_sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12",
+            "inspection": "Exact reviewed GLM text/tools byte bound; usage canonical aliases require one fresh selected official catalog row; unrelated identities reject."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-053-faults": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "ENG + DESK + QA/security"
       ],
@@ -5908,11 +6400,11 @@
         "T-16-015"
       ],
       "source_files": {
-        "desktop/main/assistant-content.ts": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+        "desktop/main/assistant-content.ts": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
         "desktop/main/ipc.ts": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369",
-        "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+        "desktop/main/provider-adapters.ts": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6",
+        "desktop/main/provider-requests.ts": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
         "desktop/main/security.ts": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a",
         "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
@@ -5930,13 +6422,14 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant-content.test.ts": {
-          "sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564",
+          "sha256": "096e475662575fb9375726d6f68f4b34f6d46a8571a83f5be778a4db55c21a0a",
           "reports": [
             "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
             "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
           ],
           "executed_case_records": 22,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "historical_sha256": "e1404f74a7d8cc9b37604d101ade91df24cd7a6099f1d5ea234308c3e72f4564"
         },
         "tests/desktop/fault-audit.spec.ts": {
           "sha256": "fda6da9408101655a19c43e18d41974048bdd1e07723d4d6526e292e2ccd1980",
@@ -5985,10 +6478,56 @@
         "route": "solo-validated; agent review deferred",
         "finding": "Forced-close/disk/permission/import/provider/renderer attack fixtures distinguish confirmed history from unsaved candidates and keep faults transactional. Negative tests are application behavior, not merely documentation dispositions.",
         "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+      },
+      "current_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/provider-adapters.ts",
+            "previous_sha256": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
+            "current_sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
+            "current_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904"
+          }
+        ],
+        "inspection": "Numeric endpoint discount is retained as raw annotation and excluded from billable rate strings; invalid token rates still reject. Empty provider lists are omitted, nonempty explicit routing and privacy/price/fallback controls retain exact values. No numerical world/evidence or sharing operation changed.",
+        "affected_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz"
+        ],
+        "live": "docs/roadmap/execution/WP-055-live-review.json"
+      },
+      "final_source_impact_review": {
+        "reviewer": "Codex /root",
+        "changes": [
+          {
+            "path": "desktop/main/assistant-content.ts",
+            "previous_sha256": "20259285149c87dd6722494a2fdbfd63789f337e9e658060648035d03e98dd52",
+            "current_sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797",
+            "inspection": "Portable reasoning classification validates known text/summary shapes, preserving exact values. Opaque signatures, encrypted data, native references and unknown formats/extensions do not gain automatic-routing authority."
+          },
+          {
+            "path": "desktop/main/provider-requests.ts",
+            "previous_sha256": "aa17f0e56fd58fe3c02e08c2fe94cf37e0f4d56e0df02788323644b85f00a904",
+            "current_sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa",
+            "inspection": "Empty provider filters omitted; strict tool schemas only when advertised; exact-model unsigned standardized text history can retain automatic routing, while encrypted/signed/native-reference/extension history remains affinity-bound. Local schema and payload validation remains required."
+          }
+        ],
+        "current_evidence": [
+          "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+          "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json"
+        ],
+        "scope": "Source/oracle inspection plus actual affected production-service regressions. Original full report identities retained; no unchanged engine/content/contracts source is relabeled."
       }
     },
     "WP-052-accessibility": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "DESK + PRODUCT + QA"
       ],
@@ -6021,7 +6560,7 @@
       }
     },
     "WP-056-handoff": {
-      "outcome": "author-inspected; production evidence linked; cumulative gate acceptance pending",
+      "outcome": "accepted after source/oracle and executed-evidence inspection; declared limits retained",
       "owner": [
         "TPM + TL + QA"
       ],

@@ -63,5 +63,15 @@
     "affected_packaged_cases_passed": 6,
     "native_both_targets": "passed",
     "workflow": "https://github.com/playa77/poliscope/actions/runs/41312619335"
+  },
+  "resolved_in_fresh_session": {
+    "date": "2026-11-01",
+    "observations_current": true,
+    "runtime_variable": "OPENROUTER_API_KEY",
+    "state": "ready",
+    "presence_checked_without_value": true,
+    "authenticated_metadata": "passed",
+    "final_live": "docs/roadmap/execution/WP-055-live-review.json",
+    "configuration_action": "None requested from user; earlier failure retained as history."
   }
 }

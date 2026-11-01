@@ -118,3 +118,21 @@ it.each(['reserve','uncertain'] as const)('cancel while %s response is delayed c
  const next=await f.app.request(query);await f.app.request({action:'send',request_id:next.request_id});const result=await terminal(f.app,next.request_id);
  expect(result.status).toBe(stage==='reserve'?'complete':'failed');expect(result.diagnostic).toBe(stage==='reserve'?'none':'budget');expect(f.sent).toHaveLength(stage==='reserve'?1:0);
 }),30000);
+
+it('guardrailed automatic routing completes a separately approved portable-reasoning tool continuation without inventing a provider pin',()=>fixture(async f=>{
+ await f.providers.request({action:'save',profile:{...profile,routing:{...profile.routing,order:[],only:[],ignore:[]}},expected_revision:2});
+ const selection={scope_id:'home',task:'Inspect the selected synthetic fact',collections:['facts'] as 'facts'[],tools:true};
+ const entry=(await f.world.ground(selection)).manifest.entries[0].id;
+ const reasoning=[{type:'reasoning.text',index:0,format:'unknown',text:'UNVERIFIED-PORTABLE-REASONING'}];
+ f.setResponse(async()=>({code:200,body:JSON.stringify({id:'gen_guardrailed',model,provider:'fixture',choices:[{index:0,message:{content:'',reasoning_details:reasoning,tool_calls:[{id:'call_guardrailed',type:'function',function:{name:'inspect_context',arguments:argumentsJSON(entry)}}]},finish_reason:'tool_calls'}]})}));
+ const initial=await f.app.request({...query,expected_revision:3,exposure:'0.1',grounding:selection});
+ await f.app.request({action:'send',request_id:initial.request_id});expect((await terminal(f.app,initial.request_id)).status).toBe('tool-calls');
+ const next=await f.app.request({action:'continue',request_id:initial.request_id});expect(next.status).toBe('prepared');expect(f.sent).toHaveLength(1);
+ const payload=JSON.parse(next.payload_json);
+ expect(payload.provider).not.toHaveProperty('only');expect(payload.provider).not.toHaveProperty('order');
+ expect(payload.messages.at(-2).reasoning_details).toEqual(reasoning);
+ expect(JSON.parse(payload.messages.at(-1).content).classification).toBe('public-scoped');
+ f.setResponse(async()=>completion('READY'));
+ await f.app.request({action:'send',request_id:next.request_id});expect((await terminal(f.app,next.request_id)).status).toBe('complete');
+ expect(f.sent).toHaveLength(2);expect(f.sent[1]).toBe(next.payload_json);
+}),30000);

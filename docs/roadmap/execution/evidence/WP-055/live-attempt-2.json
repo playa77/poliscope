@@ -1,0 +1,90 @@
+{
+  "workflow": {
+    "version": 1,
+    "package": "WP-055",
+    "prerequisite": "WP-050-live",
+    "model": {
+      "id": "deepseek/deepseek-v4.1-flash-1017",
+      "source": "openrouter:/models",
+      "capabilities": {
+        "text": "supported",
+        "image": "supported",
+        "audio": "unsupported",
+        "video": "unsupported",
+        "tools": "supported",
+        "structured_output": "supported",
+        "reasoning": "supported"
+      },
+      "pricing": null
+    },
+    "started": "2026-11-01T15:10:14.180Z",
+    "authorized_budget_usd": "10",
+    "per_dispatch_exposure_usd": "0.5",
+    "maximum_dispatches": 12,
+    "maximum_run_reserved_exposure_usd": "6",
+    "privacy": "Isolated synthetic world, selected public facts, no private user data; credential main-only/session-only.",
+    "cases": [
+      {
+        "id": "native-public-catalog",
+        "status": "passed",
+        "count": 452,
+        "model": "deepseek/deepseek-v4.1-flash-1017"
+      },
+      {
+        "id": "authenticated-metadata",
+        "status": "passed",
+        "key_storage": "session-only",
+        "account_metadata": "allowlisted; account limits not exported"
+      },
+      {
+        "id": "whole-json-generation-and-usage",
+        "status": "failed",
+        "diagnostic": "Generation did not complete: failed/model"
+      }
+    ],
+    "readiness": false,
+    "unsupported_for_selected_model": [
+      "audio",
+      "video"
+    ],
+    "advertised_but_unvalidated_live": [
+      "image input: reviewed context accounting is text/tools only"
+    ],
+    "untested_live": [
+      "other models/providers",
+      "OS-protected native keychain",
+      "provider account hard-cap enforcement"
+    ],
+    "catalog_sha256": "099c64997bd4dd3d44504700de294faa91bd6d13e78fa99f72758606fad10875",
+    "status": "failed",
+    "finished": "2026-11-01T15:10:16.738Z",
+    "dispatches_lifetime": 1
+  },
+  "source_bound_check": {
+    "version": 1,
+    "suite": "live",
+    "candidate": "2388c9d206ddde86af5ce6f0d6ebd00b4246272e467b463cbf1f3a8c832218e4",
+    "started_at": "2026-11-01T15:10:14.051Z",
+    "finished_at": "2026-11-01T15:10:16.771Z",
+    "exit_code": 1,
+    "status": "failed",
+    "readiness": false,
+    "results": {
+      "tests": 1,
+      "failed": 1,
+      "skipped": 0,
+      "skip_reasons": [],
+      "cases": [
+        {
+          "file": null,
+          "class": "tests.live.openrouter",
+          "name": "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation"
+        }
+      ]
+    },
+    "report_sha256": "466d82cc0dee2c14312a48a9710d332936c3787f1d6330cadf288e657139f916"
+  },
+  "retained_junit": "docs/roadmap/execution/evidence/WP-055/live-attempt-2.xml.gz",
+  "retained_junit_sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b",
+  "verification": "Original candidate, raw JUnit hash and parsed results verified before subsequent source edits; original outcome preserved."
+}

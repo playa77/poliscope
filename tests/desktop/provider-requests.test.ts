@@ -23,7 +23,7 @@ function error(run: () => unknown, code: string, parameter?: string) {
 it('constructs documented literal OpenRouter requests without inventing defaults, headers, keys or routes', () => {
   const f = fixture(), request = f.build();
   expect(request.path).toBe('/chat/completions'); expect(request.method).toBe('POST');
-  expect(JSON.parse(request.json)).toEqual({model:'future/model',messages:[{role:'user',content:'Return the supplied fictional quantity.'}],stream:false,temperature:0.7,top_p:0.9,max_tokens:128,provider:{order:[],only:[],ignore:[],allow_fallbacks:false,require_parameters:true,data_collection:'deny'}});
+  expect(JSON.parse(request.json)).toEqual({model:'future/model',messages:[{role:'user',content:'Return the supplied fictional quantity.'}],stream:false,temperature:0.7,top_p:0.9,max_tokens:128,provider:{allow_fallbacks:false,require_parameters:true,data_collection:'deny'}});
   expect(request.json).not.toMatch(/Authorization|endpoint|key_status|capabilities|expected_revision/);
   f.view.profile.generation.temperature = '1.8'; f.plan.messages[0].content = 'mutated';
   expect(request.plan.messages[0].content).toBe('Return the supplied fictional quantity.'); expect(Object.isFrozen(request.plan.messages)).toBe(true);
@@ -167,4 +167,12 @@ it('retains catalog estimate inputs without doing authoritative money arithmetic
  delete f.evidence.models[0].pricing.request;expect(f.build().catalog).toBeUndefined();
  f.evidence.models[0].pricing.request='0.01';f.evidence.models[0].pricing.image='0.1';expect(f.build().catalog).toBeUndefined();
  f.evidence.models[0].pricing={prompt:'-1',completion:'0'};expect(f.build().catalog).toBeUndefined();
+});
+
+it('does not demand provider-side strict tool schemas from a tool-capable route without structured-output support',()=>{
+ const f=fixture();
+ const raw=JSON.parse(f.evidence.models[0].raw_json);raw.supported_parameters=raw.supported_parameters.filter((p:string)=>p!=='structured_outputs');
+ f.evidence.models=openRouterAdapter.models({data:[raw]},time);
+ f.plan.tools=[{name:'inspect',description:'Read only selected synthetic context',parameters_json:schema}];f.bind();
+ expect(JSON.parse(f.build().json).tools).toEqual([{type:'function',function:{name:'inspect',description:'Read only selected synthetic context',parameters:JSON.parse(schema)}}]);
 });
