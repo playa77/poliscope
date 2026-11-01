@@ -1,5 +1,16 @@
 # WP-055 candidate packages for owner testing
 
+Current implementation packages are built from `64d9aed02f43fc20324d1a6265498d6f1e495ea2` in
+[workflow run 41333014228](https://github.com/playa77/poliscope/actions/runs/41333014228). Download the artifacts named
+`native-candidate-ubuntu-24.04-64d9aed02f43fc20324d1a6265498d6f1e495ea2` and
+`native-candidate-windows-2022-64d9aed02f43fc20324d1a6265498d6f1e495ea2` from that run.
+Their release archives include identity/checksum receipts. The linked job
+conclusions are authoritative; the delivery PR records the completed outcomes.
+Subsequent PR commits update documentation/acceptance metadata only, with no
+application or packaging source change from this package commit.
+
+## Historical comparison packages
+
 Both targets built, installed and passed all five packaged native smoke scenarios
 in [workflow run 41312619335](https://github.com/playa77/poliscope/actions/runs/41312619335)
 at source `ab3363651b322fa747f2d3b3fc22365aa2a69c4b`:

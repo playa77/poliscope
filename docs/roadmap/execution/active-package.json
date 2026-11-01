@@ -32,7 +32,7 @@
     {
       "id": "provider-and-native-evidence",
       "status": "passed",
-      "evidence": "Guardrailed GLM/OpenRouter-selected Z.AI live workflow, completed tool continuation, cost reconciliation, cancellation and key removal pass within USD 10 lifetime allocation. Existing native Windows/Linux CI pass at ab33636; final Linux package and six affected cases pass. Real owner desktop/keychain/signing remain owner-run under standing waiver; current-source native packages being refreshed."
+      "evidence": "Guardrailed GLM/OpenRouter-selected Z.AI live workflow, completed tool continuation, cost reconciliation, cancellation and key removal pass within USD 10 lifetime allocation. Existing native Windows/Linux CI pass at ab33636; final Linux package and six affected cases pass. Real owner desktop/keychain/signing remain owner-run under standing waiver; current-source packages and job conclusions linked in WP-055-owner-checks.md and the delivery PR."
     }
   ],
   "blockers": [],
@@ -64,9 +64,11 @@
   },
   "scope": "Full WP-055: cumulative leaf/RT/model inspection, exact G7 execution, integrated guardrailed live provider compatibility, source-impact regression evidence and native artifact accounting. No child/maintenance substitution.",
   "publication": {
-    "status": "ready to push and open regular PR",
+    "status": "implementation source pushed; regular PR required against main",
     "branch": "codex/wp-055-product-gate",
     "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+    "pr_link_source": "Authoritative GitHub branch PR and Codex task artifact, created after this declaration.",
     "merge": "not authorized; not performed"
   }
 }
