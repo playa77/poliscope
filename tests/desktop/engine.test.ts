@@ -50,3 +50,17 @@ it.runIf(process.platform !== 'win32')('kills an unresponsive child even when it
     await rm(root, { recursive: true, force: true });
   }
 });
+
+import { vi } from 'vitest';
+it.runIf(process.platform !== 'win32')('actual child environment excludes credentials, proxy authorization and code-injection variables',async()=>{
+ const root=await mkdtemp(join(tmpdir(),'poliscope-environment-audit-'));
+ const executable=join(root,'.venv/bin/python');await mkdir(join(root,'.venv/bin'),{recursive:true});
+ const forbidden=['OPENAI_API_KEY','OPENROUTER_API_KEY','AWS_SECRET_ACCESS_KEY','HTTPS_PROXY','NODE_OPTIONS','PYTHONPATH','PYTHONSTARTUP','POLISCOPE_PRIVATE_CANARY'];
+ await writeFile(executable,`#!${resolve('.venv/bin/python')}\nimport os,sys,json\nfrom pathlib import Path\nPath(${JSON.stringify(join(root,'receipt'))}).write_text(json.dumps(dict(forbidden=[k for k in ${JSON.stringify(forbidden)} if k in os.environ],canary=any('SYNTHETIC_ENV_SECRET' in v for v in os.environ.values()))))\nfor line in sys.stdin:\n r=json.loads(line)\n if r['operation']=='runtime.shutdown': break\n print(json.dumps(dict(protocol=1,id=r['id'],kind='result',result=dict(kind='handshake',versions=dict(application='0.1.0',schema_version=1,protocol=1)))),flush=True)\n`);
+ await chmod(executable,0o700);const engine=new BootstrapEngine();
+ try {
+  for(const key of forbidden)vi.stubEnv(key,'SYNTHETIC_ENV_SECRET');
+  engine.start(false,root,'');await expect.poll(()=>engine.status.state).toBe('ready');
+  expect(JSON.parse(await readFile(join(root,'receipt'),'utf8'))).toEqual({forbidden:[],canary:false});
+ }finally{vi.unstubAllEnvs();await engine.stop();await rm(root,{recursive:true,force:true});}
+});

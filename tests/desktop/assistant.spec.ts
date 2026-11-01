@@ -23,6 +23,7 @@ test('WP-049 packaged workspace snapshots, spending, restart, cancellation and s
      if(mode==='json'){res.writeHead(200,{'Content-Type':'application/json'});res.end(JSON.stringify({id:calls.length===1?'gen-first':'gen-'+calls.length,model:'synthetic/gpt',choices:[{index:0,message:{content:'Whole JSON answer'},finish_reason:'stop'}],usage:{total_tokens:8}}));return;}
      res.writeHead(200,{'Content-Type':'text/event-stream','Set-Cookie':'must-not-return=1'});
      res.write(frame('Only the explicitly approved text was shared. 🌍'));
+     if(mode==='disconnect'){setTimeout(()=>res.destroy(),100);return;}
      if(mode==='slow'){res.on('close',()=>{closed=true;});return;}
      res.end(frame('','stop')+'data: '+JSON.stringify({choices:[{index:0,delta:{content:'',role:'assistant'},finish_reason:'stop'}],usage:{total_tokens:9}})+'\n\ndata: [DONE]\n\n');
    });
@@ -134,6 +135,18 @@ test('WP-049 packaged workspace snapshots, spending, restart, cancellation and s
    const accepted=await reopened.evaluate(context=>window.poliscope.interview({context,scope_id:'home',domain_id:'domain:3'}),promoted.context);
    expect(accepted.current_commitment).toContain('Whole JSON answer');expect(accepted.current_commitment).toContain('ai_proposed');expect(accepted.current_commitment).not.toContain('PROMOTION-PROMPT-CANARY');
    expect(JSON.parse(await readFile(join(dir,'assistant-private/transcripts.json'),'utf8'))).toEqual([]);expect(calls).toHaveLength(6);
+
+   // WP-053: tear down a real HTTP socket after partial SSE output. The
+   // production Electron transport must retain uncertainty and never retry.
+   const beforeDisconnect=await reopened.evaluate(()=>window.poliscope.workspaceCatalogue());
+   mode='disconnect';await recovered.getByLabel('Stream response',{exact:true}).check();
+   await recovered.getByLabel('Text to share',{exact:true}).fill('Synthetic disconnected request');
+   await enter(recovered.getByRole('button',{name:/^Review (a deliberate new )?request$/}));
+   await enter(recovered.getByRole('button',{name:'Approve sharing and send once',exact:true}));
+   await expect(recovered.getByRole('status')).toContainText(': incomplete.');
+   expect(calls).toHaveLength(7);
+   expect(await reopened.evaluate(()=>window.poliscope.workspaceCatalogue())).toEqual(beforeDisconnect);
+   expect(await recovered.textContent()).not.toContain(key);
 
  }finally{await app.close();server.closeAllConnections();await new Promise<void>(r=>server.close(()=>r()));await rm(dir,{recursive:true,force:true});}
 });

@@ -35,6 +35,7 @@ test('E2E-002.a unanswered choices editable conditions domain navigation and col
     for (let i = 0; i < 12; i++) {
       await domains.nth(i).focus(); await page.keyboard.press('Enter');
       await expect(domains.nth(i)).toHaveAttribute('aria-pressed', 'true');
+      await expect(page.locator('#selected-interview')).toBeFocused();
       await expect(page.getByRole('region', { name: 'Selected domain' })).toContainText('Open for exploration');
     }
     await page.getByRole('button', { name: 'State inspector', exact: true }).click();

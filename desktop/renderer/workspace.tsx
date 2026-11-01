@@ -49,6 +49,7 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
   const [scope, setScope] = useState('');
   const [view, setView] = useState(VIEWS[0]);
   const [domain, setDomain] = useState('');
+  const [interviewFocus, setInterviewFocus] = useState(0);
   const [atlasFilters, setAtlasFilters] = useState<AtlasFilters>(initialAtlasFilters);
   const [evidenceCollection, setEvidenceCollection] = useState<EvidenceCollection>('results');
   const [worldIdentity, setWorldIdentity] = useState<string | null>(null);
@@ -71,6 +72,14 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
     if (previousView.current !== view) viewHeading.current?.focus();
     previousView.current = view;
   }, [view]);
+  useLayoutEffect(() => {
+    // Complete focus with this selection's commit; a later animation frame can
+    // steal the next keyboard activation after another control has focus.
+    if (interviewFocus) document.getElementById('selected-interview')?.focus();
+  }, [interviewFocus]);
+  function openInterview(domainId: string, question: string | null = null) {
+    setDomain(domainId); setQuestionId(question); setInterviewFocus(n => n + 1);
+  }
   const scopes = useQuery({ queryKey: state ? contextKey(state, 'all', 'scope-directory') : ['no-world-scopes'],
     enabled: Boolean(state), retry: false,
     queryFn: ({ signal }) => pages(state!, 'all', 'scopes', signal) as Promise<ScopeDTO[]> });
@@ -158,11 +167,11 @@ export function Workspace({ onDraftChange, onProviders, onAskAssistant }: { onDr
             {view === 'Civilization overview' && selectedScope && <Overview key={JSON.stringify([state.context, selectedScope, state.versions])} state={state} scope={selectedScope} />}
             {view === 'History and comparison' && <DesignHistory key={JSON.stringify(state.context)} state={state} disabled={loading} onSelected={async next => { selectState(next); setCatalogue(await window.poliscope.workspaceCatalogue()); await client.invalidateQueries({ queryKey: ['world'] }); }} />}
             {selectedScope && <div hidden={view !== 'Decision atlas'}><Atlas state={state} scope={selectedScope} active={view === 'Decision atlas'} disabled={dirty} filters={atlasFilters} setFilters={setAtlasFilters}
-              onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} onHistory={() => setView('History and comparison')} /></div>}
+              onInterview={query => { openInterview(query.domain_id, query.question_id ?? null); }} onHistory={() => setView('History and comparison')} /></div>}
             {view === 'World and institutions' && selectedScope && <World key={JSON.stringify([state.context, selectedScope, worldIdentity])} state={state} scope={selectedScope} initialIdentity={worldIdentity} onDirty={draftChanged} onSelected={next => { setState(next); setWorldIdentity(null); void client.invalidateQueries({ queryKey: ['world'] }); }} onMatrix={() => { setMatrixFilters({ ...initialMatrixFilters, axis: 'scope' }); setView('Dependency matrix'); }} onDecisions={() => setView('Decision atlas')} />}
             {view === 'Dependency matrix' && selectedScope && <Matrix onWorld={identity => { setWorldIdentity(identity); setView('World and institutions'); }} state={state} scope={selectedScope} disabled={dirty} filters={matrixFilters} setFilters={setMatrixFilters}
-              onInterview={query => { setDomain(query.domain_id); setQuestionId(query.question_id ?? null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }} />}
-            <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { setDomain(d.id); setQuestionId(null); requestAnimationFrame(() => document.getElementById('selected-interview')?.focus()); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
+              onInterview={query => { openInterview(query.domain_id, query.question_id ?? null); }} />}
+            <h4>Enter a domain</h4><div className="domain-grid">{catalogue.domains.map(d => <button key={d.id} disabled={dirty} aria-pressed={domain === d.id} onClick={() => { openInterview(d.id); }}>{d.name}<small>Synthetic interview · social mechanisms not supplied</small></button>)}</div>
             {domain && <section aria-label="Selected domain" id="selected-interview" tabIndex={-1}><h4>{catalogue.domains.find(d => d.id === domain)?.name ?? 'Source question · domain mapping unresolved'}</h4><p>Open for exploration. Select a draft, inspect it, then preview before Apply.</p>
               {selectedScope && <Interview key={JSON.stringify([state.context, selectedScope, domain, questionId])}
                 query={{ context: state.context, scope_id: selectedScope, domain_id: domain, question_id: questionId }} versions={state.versions}

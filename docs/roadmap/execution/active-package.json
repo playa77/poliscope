@@ -1,33 +1,33 @@
 {
   "version": 1,
-  "package": "WP-052",
+  "package": "WP-053",
   "status": "complete",
-  "record": "docs/roadmap/execution/WP-052.md",
+  "record": "docs/roadmap/execution/WP-053.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2f623b58af7e17688eb505db19a5c6c623536f79",
-  "branch": "codex/wp-052-usability",
-  "execution_unit": "WP-052",
+  "base": "2239711",
+  "branch": "codex/wp-053-security",
+  "execution_unit": "WP-053",
   "review_route": "solo-validated; agent review deferred",
   "authorization": {
     "source": "user",
-    "scope": "WP-052",
+    "scope": "WP-053",
     "instruction": "implement the next work package."
   },
   "acceptance": [
     {
-      "id": "keyboard-focus",
+      "id": "trust-boundaries",
       "status": "passed",
-      "evidence": "Core native control semantics audited; skip link, provider return, edit/preview destinations, Apply recovery, cancel restoration, inspector Escape and 200% zoom pass real packaged Electron checks. Fifteen existing broad scenarios pass; four final affected scenarios pass, overlapping three existing cases (sixteen distinct total). Native assistive testing remains owner-run."
+      "evidence": "Production boundary inspection, expanded forged IPC and passive sink probes, combined attachment/prompt/provider/artifact/import attack and grounded tool denial pass. Findings SEC-053-001/002 fixed; final affected packaged run 9 passed."
     },
     {
-      "id": "accessible-equivalents",
+      "id": "privacy-canaries",
       "status": "passed",
-      "evidence": "Every renderer table declares header axes. Existing exact matrix/world/network/distribution/timeline/uncertainty tables preserve graphical information; all related broad packaged scenarios pass. Status text, names, noncolor coverage and authored contrast pairs are inspected in docs/accessibility_usability.md."
+      "evidence": "Raw/encrypted-key archive isolation, actual-child environment exclusion, historical private-copy projections/deletion and complete outgoing payload tests pass. Interrupted transcript staging cleanup and actual permission-loss regressions pass."
     },
     {
-      "id": "educational-inquiry",
+      "id": "fault-recovery",
       "status": "passed",
-      "evidence": "New offline packaged scenario connects expectation, interview preview/apply/deferral, matrix table, retained comparison/fork, observation and opted-in Markdown report. Local exclusion/trace/assumption/source walkthrough and neutral diagnostic/target checks pass overview regression. Student/designer/educator author perspectives recorded; no participant study or G7 claim."
+      "evidence": "Real SQLITE_FULL/SQLITE_READONLY design/timeline rollback and exact cold retry pass; existing staged-write/process-crash/migration/import/export and spending-race tests pass in full Python suite. Forced main exit and real partial-SSE socket disconnect pass packaged checks."
     }
   ],
   "blockers": [],
@@ -38,24 +38,20 @@
     "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
   },
   "previous_delivery": {
-    "package": "WP-051",
+    "package": "WP-052",
     "status": "complete",
-    "record": "docs/roadmap/execution/WP-051.md",
-    "merged_pr": 124,
-    "deferred": "Owner accepted prototype performance; PERF-DYNAMIC-001 and final annual/preview measurements remain deferred, not measured passes."
+    "merged_pr": 125
   },
   "native_validation": {
     "status": "owner-run",
     "record": "docs/platform_scope.md",
     "claim": "Cloud packaged functional checks only; no native OS or screen-reader certification."
   },
+  "validation": "docs/roadmap/execution/WP-053-validation.json",
   "publication": {
-    "status": "published; regular PR open",
-    "branch": "codex/wp-052-usability",
+    "status": "implementation complete; commit and regular PR publication pending",
+    "branch": "codex/wp-053-security",
     "destination": "https://github.com/playa77/poliscope.git",
-    "implementation_commit": "06fb663",
-    "authorization": "User explicitly requested: push codex/wp-052-usability to GitHub and open a PR.",
-    "merge": "not authorized; not performed",
-    "url": "https://github.com/playa77/poliscope/pull/125"
+    "merge": "not authorized; not performed"
   }
 }
