@@ -1521,7 +1521,7 @@ The user authorized [WP-050-offline](WP-050-offline.md): deterministic provider 
 **WP-055 start, 2026-11-01:** [Whole-product gate](WP-055.md) is allocated on
 `codex/wp-055-product-gate` from local merge `d02db9e`. Acceptance remains open:
 WP-050 live-provider prerequisites and current frozen leaf/G7 evidence are
-incomplete; proxy/download and display failures block fresh packaged checks.
+incomplete. The initial proxy/display/subprocess blockers are repaired; full engine/unit/packaged runs and both native target workflows pass. Secure live-provider key binding is still pending.
 The cumulative auditor inventories every leaf, exact subcase, RT obligation and
 twelve-domain source coverage without promoting historical plans to passes.
 See [actual validation](WP-055-validation.json). Route:

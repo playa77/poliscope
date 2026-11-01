@@ -156,7 +156,67 @@
     "reason": "Full parent acceptance is incomplete; existing delivery gate deliberately rejects incomplete feature deliveries. No merge performed."
   },
   "reports": {
-    "location": "Local ignored work/wp-055. User-facing archive export unavailable: configured /codex output root does not exist on this executor and /codex is read-only. Reports remain in the shared workspace.",
+    "location": "Durable compressed synthetic JUnit reports now retained in docs/roadmap/execution/evidence/WP-055 with both compressed and raw SHA-256; local originals remain under ignored work/wp-055.",
     "privacy": "Synthetic isolated fixtures only; no environment values or private runtime databases exported."
+  },
+  "continuation": {
+    "date": "2026-11-01",
+    "environment": "ready; correct sandbox network permission repairs proxy, Xorg and child process output",
+    "baseline": "Fetched origin/main at d02db9e; matches package base",
+    "unit_full_final": {
+      "passed": 447,
+      "failed": 0,
+      "scope": "Full selection including two provider regressions; new standalone live-budget and Windows path regression additionally pass affected suites."
+    },
+    "desktop_full": {
+      "passed": 30,
+      "failed": 0,
+      "scope": "Fresh bundled baseline cloud Linux candidate; unchanged core retained after provider patch."
+    },
+    "desktop_provider_final": {
+      "passed": 6,
+      "failed": 0,
+      "scope": "Rebuilt final provider changes; actual packaged native transport/controllers."
+    },
+    "live_preflight": {
+      "status": "passed",
+      "billable_requests": 0,
+      "model": "deepseek/deepseek-v3.2",
+      "credential": "Secure binding still absent; readiness inspection reports no secrets and the runtime variable is absent. User authorization USD 10 is already granted, no new budget approval needed."
+    },
+    "native_workflows": [
+      "https://github.com/playa77/poliscope/actions/runs/41297699757",
+      "https://github.com/playa77/poliscope/actions/runs/41298001921"
+    ],
+    "windows_fixes": "ASAR listing/lookup normalization plus writable fsync descriptors for archive export and backup. All fixes now pass both native CI jobs. Prior failures retained as superseded defect evidence.",
+    "retained_reports": "docs/roadmap/execution/evidence/WP-055/reports.json",
+    "engine_final": {
+      "passed": 4998,
+      "failed": 0,
+      "warnings": 4,
+      "seconds": "300.61",
+      "scope": "Full integrated current Python selection after archive/backup implementation fix; includes six audit cases and two writable-flush regressions."
+    },
+    "portability_final": {
+      "passed": 6,
+      "failed": 0,
+      "scope": "Fresh bundled current engine, ordinary/reduced archive/recovery and complete offline workflows."
+    },
+    "native_final": {
+      "url": "https://github.com/playa77/poliscope/actions/runs/41306934907",
+      "source": "fa2ab8370abb8138d18b04fe901db99851a2b97f",
+      "linux": "passed build, per-user install and five packaged smoke scenarios",
+      "windows": "passed build, per-user install and five packaged smoke scenarios",
+      "signing": "unsigned; not claimed",
+      "real_owner_desktop": "owner-run/unverified",
+      "windows_artifact": 13083861466,
+      "linux_artifact": 13083661963
+    },
+    "review_records": [
+      "docs/roadmap/execution/WP-055-trace-review.json",
+      "docs/roadmap/execution/WP-055-RT-review.json",
+      "docs/roadmap/execution/WP-055-model-review.json",
+      "docs/roadmap/execution/WP-055-owner-checks.md"
+    ]
   }
 }

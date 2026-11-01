@@ -1,5 +1,6 @@
 """Product audit rejects stale, tampered and incomplete evidence."""
 import hashlib
+import gzip
 from pathlib import Path
 import sys
 import tempfile
@@ -39,6 +40,10 @@ class ProductGateTests(unittest.TestCase):
                 candidate='frozen', production_inspection='Actual SQLite mutation/restart inspected',
                 tests=['production workflow'], artifacts=[dict(path='report.xml', format='junit', sha256=hashlib.sha256(path.read_bytes()).hexdigest())])
             validate_evidence(entry, 'frozen', root)
+            compressed = root / 'report.xml.gz'
+            compressed.write_bytes(gzip.compress(path.read_bytes(), mtime=0))
+            compressed_entry = dict(entry, artifacts=[dict(path=compressed.name, format='junit-gzip', sha256=hashlib.sha256(compressed.read_bytes()).hexdigest())])
+            validate_evidence(compressed_entry, 'frozen', root)
             for changes in ({'candidate': 'old'}, {'artifacts': []}, {'production_inspection': ''},
                             {'outcome': 'success'}, {'owner': ''}, {'tests': []},
                             {'tests': ['absent']}, {'tests': ['production workflow'] * 2},

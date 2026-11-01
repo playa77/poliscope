@@ -7,6 +7,7 @@ Only candidate-bound, inspected evidence can satisfy a production obligation.
 import argparse
 from collections import Counter
 import hashlib
+import gzip
 import json
 from pathlib import Path
 import re
@@ -47,12 +48,19 @@ def validate_evidence(entry, candidate, root):
         if not entry.get('production_inspection'):
             raise ValueError('Passing evidence needs production-service inspection')
         targets = entry.get('tests', [])
-        reports = [a for a in artifacts if a.get('format') == 'junit']
+        reports = [a for a in artifacts if a.get('format') in {'junit', 'junit-gzip'}]
         if not targets or len(set(targets)) != len(targets) or not reports:
             raise ValueError('Passing production evidence needs exact executed JUnit targets')
         executed = []
         for artifact in reports:
-            tree = ET.parse(root / artifact['path'])
+            if artifact['format'] == 'junit-gzip':
+                with gzip.open(root / artifact['path'], 'rb') as report:
+                    data = report.read(16 * 1024 * 1024 + 1)
+                if len(data) > 16 * 1024 * 1024:
+                    raise ValueError('JUnit report exceeds audit limit')
+                tree = ET.ElementTree(ET.fromstring(data))
+            else:
+                tree = ET.parse(root / artifact['path'])
             if any(int(s.get('errors', '0')) for s in tree.iter('testsuite')):
                 raise ValueError('Report contains collection errors')
             executed.extend(tree.iter('testcase'))

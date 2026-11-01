@@ -1,0 +1,150 @@
+{
+  "version": 1,
+  "scope": "Actual synthetic test reports. Testcase/subtest counts overlap between full and affected reruns; do not sum them as features. Historical failed runs remain in the earlier validation record. See WP-055.md for source reuse and limitations.",
+  "reports": [
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/engine.xml.gz",
+      "compression": "gzip",
+      "sha256": "8ec53671dd9ee4e7718db9adaa8fc01a8b56fceead019a27b08037ba6bb5d3ca",
+      "uncompressed_sha256": "627c915ec144a91ba433d604d2809d55109967efd490dda0f0fbd2279ef8a937",
+      "results": {
+        "tests": 4990,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz",
+      "compression": "gzip",
+      "sha256": "8d344d9b7106222f261f01465550d2d1cfd7eb3740872adec8a455cbef6401f7",
+      "uncompressed_sha256": "d2e0463b000c29fa60516369bec126ed79ef25176d847be8eaaca460c611ea91",
+      "results": {
+        "tests": 445,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "f4309f883937c7913566393d3eb11912ff04f6b8ba31025532bc0a76bc3fbde3",
+      "uncompressed_sha256": "925fa11d04f1a2340ac1084096171cf6e87db9c1453d7b5f3d9074304b05b6d2",
+      "results": {
+        "tests": 447,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
+      "compression": "gzip",
+      "sha256": "d1aa669866d88d70402b77f9d0c4fc5799d4585101405c1a2cc3af34eff313ee",
+      "uncompressed_sha256": "e6a818f7278c5bcbe244ef1ed53112612123de1f1d30d06959c9cc86a2cc6211",
+      "results": {
+        "tests": 30,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "b3fe184ddd9054d2092be0c770120439885ec44c248970e8c786715c3adf7d3d",
+      "uncompressed_sha256": "34ea0903d038591ad1e5845591262cab5f27afc0fd349695c99ea3b261f5679d",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
+      "compression": "gzip",
+      "sha256": "f67f4b1c6e3b1aeef6b4393bdb3c05d735b436837a3d50c1e8951aabad0dfda5",
+      "uncompressed_sha256": "1dbb7e30ef7d950bbe3a97dc887bd2ad1d29b5af40c725f1fb1671fd6849ad2a",
+      "results": {
+        "tests": 17,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/windows-extract-regression.xml.gz",
+      "compression": "gzip",
+      "sha256": "3190e240928d65572fb35a7d5c2c6eb9d9d50377e0a4ef9272ec3fc4d4372ea5",
+      "uncompressed_sha256": "63de1a4352fc441804ba70ad642d097365f4354b1b882b716c5b6a8f3b400885",
+      "results": {
+        "tests": 3,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/roadmap-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "fc236d60eb5fb674ab611e924e04f3a71f1561935b2f2ee37d6f464da4f51b33",
+      "uncompressed_sha256": "de1e7b083930052fe570c11bfeec00483fe39b01e3a39a05613f346040a5a099",
+      "results": {
+        "tests": 58,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/engine-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "67a5dc4c25aa105630a42de44e336187c4ae4ac9fd76442d46086d546962faf7",
+      "uncompressed_sha256": "1fd3993915a162b16c4d4f45f52f4e51ca1c8930b73190fdc4ae6081f6c7ac92",
+      "results": {
+        "tests": 4998,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "1141a4086d209aa93a67bf1599350c0939d8b9d2aa738aba96ea74ca1c109ed4",
+      "uncompressed_sha256": "12df6043c6e020af456908a0781390ebd5a916e85b85869c8748d18b8b22afbb",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/windows-flush-regression.xml.gz",
+      "compression": "gzip",
+      "sha256": "d568d98a73f311052caa5d38724d74d9158d9827383000020f42fef02da3bd25",
+      "uncompressed_sha256": "7f7b2b2f5879028438fbb0bb2bd5475ede000465c51cd55d999f3d92908c88bb",
+      "results": {
+        "tests": 68,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/audit-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "91354919126be802fe396142b5fe9fbb3623db82395d7ed9ff0499f9e001f050",
+      "uncompressed_sha256": "a9cf36287802f3af2e9e9d8b907f77d31fd127709299e3722e815c1b124f584f",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    }
+  ]
+}

@@ -22,22 +22,22 @@
     {
       "id": "integrated-product-gate",
       "status": "pending",
-      "evidence": "Environment repaired. Full unit rerun 445 passed, fresh Forge package succeeds, graphical Xorg :99 running; complete packaged suite in progress. Engine baseline 4990 passed; no Python production changes."
+      "evidence": "Full current engine 4998 passed; full desktop units 447 passed plus focused live-budget/Windows-path regressions; full packaged 30 passed plus six provider and six portability affected cases. Both native CI builds/install/five-scenario jobs pass at fa2ab83. See retained reports."
     },
     {
       "id": "model-and-coverage-audit",
       "status": "pending",
-      "evidence": "Current twelve-domain coverage is inventoried separately from authored synthetic behavior. Independent model review remains deferred."
+      "evidence": "Author model/coverage inspection retained in WP-055-model-review.json: 12 domains, 453 rows, 51 partial static rows, zero source transition activation. Empirical validity and independent review not claimed."
     },
     {
       "id": "provider-and-native-evidence",
       "status": "pending",
-      "evidence": "User authorized up to USD 10; DeepSeek V3.2 selected; secure key binding requested after native TLS/catalog preflight passed. Native owner checks remain waived for agent delivery and unclaimed."
+      "evidence": "User USD 10 authorization retained; DeepSeek V3.2 native/public preflight passes; secure key binding absent, so no billable call sent. Native CI both targets pass; real owner desktop/keychain/signing remain owner-run/unclaimed."
     }
   ],
   "blockers": [
-    "Secure OPENROUTER_API_KEY binding pending; live test authorization already granted up to USD 10.",
-    "Current inspected leaf/G7/RT evidence mapping and final candidate validation remain in progress."
+    "Secure OPENROUTER_API_KEY runtime binding is absent; authenticated live-provider evidence cannot run until supplied. Budget USD 10 is already authorized.",
+    "Final cumulative scenario and per-leaf acceptance aggregation remains assigned to Codex; inspected associations do not certify G7."
   ],
   "previous_delivery": {
     "package": "WP-054",
