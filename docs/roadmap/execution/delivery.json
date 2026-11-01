@@ -51,13 +51,14 @@
   "scope": "Full WP-053 threat/privacy/fault audit; interrupted private-transcript staging cleanup and durable staged writes; layout-phase interview focus correction from integrated regression; real SQLite full/read-only rollback, environment and privacy canaries, expanded packaged IPC/combined attacks/socket disconnect/forced-close recovery.",
   "validation": "docs/roadmap/execution/WP-053-validation.json",
   "publication": {
-    "status": "explicitly authorized; publication pending",
+    "status": "published; regular PR open",
     "branch": "codex/wp-053-security",
     "destination": "https://github.com/playa77/poliscope.git",
     "implementation_commit": "d18e894",
     "reason": "Automatic approval review rejected git push: implementation authorization does not specifically authorize export of source/history to this external GitHub destination.",
     "required_authorization": "Explicit user approval to push codex/wp-053-security to playa77/poliscope and open a regular PR against main.",
     "merge": "not authorized; not performed",
-    "authorization": "User explicitly requested pushing this branch to playa77/poliscope and opening its PR."
+    "authorization": "User explicitly requested pushing this branch to playa77/poliscope and opening its PR.",
+    "url": "https://github.com/playa77/poliscope/pull/126"
   }
 }

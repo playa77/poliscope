@@ -6,7 +6,8 @@ synthetic canaries, the interrupted-transcript privacy fix, a corrected keyboard
 focus race and recovery matrix. [Validation](WP-053-validation.json): 4,985 Python
 tests plus 59 subtests, 443 distinct desktop units, 52 roadmap tests and 29 distinct
 packaged scenarios across broad/final affected runs. Implementation is committed at `d18e894`; the user explicitly authorized
-pushing this branch and opening its PR; publication is in progress.
+pushing this branch and opening its PR. Published as regular
+[PR #126](https://github.com/playa77/poliscope/pull/126); no merge performed.
 Route: **solo-validated; agent review deferred**. Native validation is owner-run;
 WP-050 live acceptance and deferred WP-051 performance remain separate.
 
