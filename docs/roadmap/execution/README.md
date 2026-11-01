@@ -5,7 +5,8 @@ fetched main `2239711` (merged WP-052 / PR #125). The
 synthetic canaries, the interrupted-transcript privacy fix, a corrected keyboard
 focus race and recovery matrix. [Validation](WP-053-validation.json): 4,985 Python
 tests plus 59 subtests, 443 distinct desktop units, 52 roadmap tests and 29 distinct
-packaged scenarios across broad/final affected runs. Publication is pending.
+packaged scenarios across broad/final affected runs. Implementation is committed at `d18e894`; automatic approval review blocked
+publication pending explicit user authorization to push this branch and open its PR.
 Route: **solo-validated; agent review deferred**. Native validation is owner-run;
 WP-050 live acceptance and deferred WP-051 performance remain separate.
 

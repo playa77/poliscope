@@ -49,9 +49,12 @@
   },
   "validation": "docs/roadmap/execution/WP-053-validation.json",
   "publication": {
-    "status": "implementation complete; commit and regular PR publication pending",
+    "status": "blocked by automatic approval review; implementation complete and committed",
     "branch": "codex/wp-053-security",
     "destination": "https://github.com/playa77/poliscope.git",
+    "implementation_commit": "d18e894",
+    "reason": "Automatic approval review rejected git push: implementation authorization does not specifically authorize export of source/history to this external GitHub destination.",
+    "required_authorization": "Explicit user approval to push codex/wp-053-security to playa77/poliscope and open a regular PR against main.",
     "merge": "not authorized; not performed"
   }
 }
