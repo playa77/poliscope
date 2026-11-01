@@ -297,13 +297,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant.spec.ts": {
-          "sha256": "e2d932cfe365140f5e615d76aa6fa30aa805e2ad2431320abd0d8baec56489f0",
+          "sha256": "821a6a812cb76c92ec555eea8621bf4c1f6b008e9e05da58e706016f351a0db2",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/assistant.test.ts": {
           "sha256": "e36bfc3d9f097f79d31e108d06a24696d0d3747bead2db9138eeb1fd6626668d",
@@ -621,13 +621,13 @@
       },
       "tests": {
         "tests/desktop/archives.spec.ts": {
-          "sha256": "aac006c440a38d1a9e45fe8b88600c457a7b1da9cbb7dfa08dd615482f1d5e0b",
+          "sha256": "520f9789a4b4a962512b5fa378fa8b9f992c2e79ec0f3aa9c31afb938f3c0a2d",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/archives.test.ts": {
           "sha256": "fa8499662309dfa4bbd542cef89eaddaf8c39d1c2b79c8d2634ba8ffb6f7d580",
@@ -2690,12 +2690,13 @@
       },
       "tests": {
         "tests/desktop/timeline.spec.ts": {
-          "sha256": "16955ab1b95b9aa61fa16ea658996fdce785613d3985a90e7bfeedc5e2a54bab",
+          "sha256": "68f686335b49d73cb78902a2c5889471153c3dbcdfec560e38b2f27f774e6e23",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
           "executed_case_records": 1,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/timeline.test.ts": {
           "sha256": "6f792b88af5a3984cbcc099d0c48e048f322e7e66e4f112fb3588bea0c8d2a2f",
@@ -3340,12 +3341,13 @@
       },
       "tests": {
         "tests/desktop/accessibility.spec.ts": {
-          "sha256": "81fb341996d256f17595bb880dfcc53b39bf6ba5a107cc81fa74c7eedc34678c",
+          "sha256": "22e55616e7a2c7849ad29e8d7dcea38e0f734be6bd1cc231edc2172a7fad8ddb",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
           "executed_case_records": 1,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/assistant-content.spec.ts": {
           "sha256": "ae698453919519e7c023dcb7a10899526972e1cc600e75d7c783dbd2eccd4b93",
@@ -3375,13 +3377,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant.spec.ts": {
-          "sha256": "e2d932cfe365140f5e615d76aa6fa30aa805e2ad2431320abd0d8baec56489f0",
+          "sha256": "821a6a812cb76c92ec555eea8621bf4c1f6b008e9e05da58e706016f351a0db2",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/assistant.test.ts": {
           "sha256": "e36bfc3d9f097f79d31e108d06a24696d0d3747bead2db9138eeb1fd6626668d",
@@ -3736,7 +3738,7 @@
       ],
       "source_files": {
         "desktop/main/provider-adapters.ts": "4e99742a91431fa55c9dc5f84397297998ca2a8d674b40fa357e45cfe6d4fda5",
-        "desktop/main/providers.ts": "cb5b18739d02cb48c818f0c5ef79f5891f85c6fca3e392cbaed5284360f77557"
+        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf"
       },
       "tests": {
         "tests/desktop/provider-adapters.test.ts": {
@@ -3750,14 +3752,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/provider-generation.test.ts": {
-          "sha256": "b1ea9ee52ce333dbd6be2bc3e1dd382959354b52e07eb96a6117e7b1cd9118fa",
+          "sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz"
           ],
-          "executed_case_records": 23,
-          "failed_case_records": 0
+          "executed_case_records": 10,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests."
         },
         "tests/desktop/provider-metadata.spec.ts": {
           "sha256": "30c8031c324ba20ba9e0152ab664610b7f39a0ad91e10515fd8bde98f45d773a",
@@ -3788,7 +3789,8 @@
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
         "finding": "Catalog/adapters tests cover open model IDs, fresh/stale/removed metadata, capabilities, provider/key endpoints, scheduled-price unknowns and session-only credential leases. Reviewed context bounds reject unknown tokenizer/media; actual native public catalog preflight now passes.",
-        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
+        "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
       }
     },
     "WP-016-evaluation": {
@@ -4063,13 +4065,13 @@
       },
       "tests": {
         "tests/desktop/recovery.spec.ts": {
-          "sha256": "6b153c6d2d00f2f743d273275729afd5d0da4e009116f3cfb819b99d28ed3735",
+          "sha256": "99159f5544a8469741d530dccf06567ac83a1075e4095dcf8d80cfd43ac29996",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/recovery.test.ts": {
           "sha256": "7584dc568909dc487f119fb4deea41cfcd97491de0048beec64b87c986bbd63b",
@@ -4172,13 +4174,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/grounding.spec.ts": {
-          "sha256": "21d0f3aa664c26c046df0cd4d270d1481f4bc7e38e7363171b7fd78e119d2fcb",
+          "sha256": "21530d835f3b3b39155c4ee338321cefd73a7a9d3273c4f60432205aa3249754",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/grounding.test.ts": {
           "sha256": "8efb4e80208621f6a74f2f93375b8e32a9ca2f68f5a5278d1e9aa2f8d7e6d78e",
@@ -4330,12 +4332,13 @@
       },
       "tests": {
         "tests/desktop/uncertainty.spec.ts": {
-          "sha256": "2c52563d166382c559f60c2cb7d2eec060b9ad66c6e9490a1baafffd892b2137",
+          "sha256": "35b05f458e3dd57aebd48c95f2e12d30b78cc73020cbabe40d34b9e433361788",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
           "executed_case_records": 1,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/uncertainty.test.ts": {
           "sha256": "58f63d3a3c2bd3594ba84d8e55394e9ea79afeb2b83e664f8343ccf204f29274",
@@ -4410,12 +4413,13 @@
       },
       "tests": {
         "tests/desktop/uncertainty.spec.ts": {
-          "sha256": "2c52563d166382c559f60c2cb7d2eec060b9ad66c6e9490a1baafffd892b2137",
+          "sha256": "35b05f458e3dd57aebd48c95f2e12d30b78cc73020cbabe40d34b9e433361788",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
           "executed_case_records": 1,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/uncertainty.test.ts": {
           "sha256": "58f63d3a3c2bd3594ba84d8e55394e9ea79afeb2b83e664f8343ccf204f29274",
@@ -4756,13 +4760,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/grounding.spec.ts": {
-          "sha256": "21d0f3aa664c26c046df0cd4d270d1481f4bc7e38e7363171b7fd78e119d2fcb",
+          "sha256": "21530d835f3b3b39155c4ee338321cefd73a7a9d3273c4f60432205aa3249754",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/grounding.test.ts": {
           "sha256": "8efb4e80208621f6a74f2f93375b8e32a9ca2f68f5a5278d1e9aa2f8d7e6d78e",
@@ -4889,13 +4893,13 @@
       },
       "tests": {
         "tests/desktop/recovery.spec.ts": {
-          "sha256": "6b153c6d2d00f2f743d273275729afd5d0da4e009116f3cfb819b99d28ed3735",
+          "sha256": "99159f5544a8469741d530dccf06567ac83a1075e4095dcf8d80cfd43ac29996",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/recovery.test.ts": {
           "sha256": "7584dc568909dc487f119fb4deea41cfcd97491de0048beec64b87c986bbd63b",
@@ -5089,7 +5093,7 @@
       "source_files": {
         "desktop/main/ipc.ts": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "cb5b18739d02cb48c818f0c5ef79f5891f85c6fca3e392cbaed5284360f77557",
+        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
         "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0"
       },
@@ -5141,7 +5145,8 @@
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
         "finding": "Provider/key/native-network tests cover temporary key entry, endpoint binding, OS-protection/session fallback, redirect/cookie/auth denial, cancellation and removal. Real owner keychains remain unclaimed; credential never reaches Python.",
-        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
+        "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
       }
     },
     "WP-044-routing": {
@@ -5267,13 +5272,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/assistant.spec.ts": {
-          "sha256": "e2d932cfe365140f5e615d76aa6fa30aa805e2ad2431320abd0d8baec56489f0",
+          "sha256": "821a6a812cb76c92ec555eea8621bf4c1f6b008e9e05da58e706016f351a0db2",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/assistant.test.ts": {
           "sha256": "e36bfc3d9f097f79d31e108d06a24696d0d3747bead2db9138eeb1fd6626668d",
@@ -5461,7 +5466,7 @@
       "source_files": {
         "desktop/main/assistant.ts": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "cb5b18739d02cb48c818f0c5ef79f5891f85c6fca3e392cbaed5284360f77557",
+        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0",
         "engine/poliscope_engine/contracts/spending.py": "f3b07d32a2bbfe20a33ec6b5746bf40d9df5013590e63bc893cf74336dae2589",
@@ -5497,7 +5502,8 @@
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
         "finding": "Actual Python SQLite spending fixtures cover Decimal costs, atomic shared reservations under 0.6+0.6 versus allowance 1, continuation grants, cancellation/uncertainty, deduplicated late actuals and durable restart. Live harness adds a locked persistent 12-dispatch cap.",
-        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
+        "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
       }
     },
     "WP-042-network": {
@@ -5515,7 +5521,7 @@
       "source_files": {
         "desktop/main/ipc.ts": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369",
         "desktop/main/provider-network.ts": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508",
-        "desktop/main/providers.ts": "cb5b18739d02cb48c818f0c5ef79f5891f85c6fca3e392cbaed5284360f77557",
+        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
         "desktop/main/shell.ts": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0"
       },
@@ -5567,7 +5573,8 @@
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
         "finding": "Provider/key/native-network tests cover temporary key entry, endpoint binding, OS-protection/session fallback, redirect/cookie/auth denial, cancellation and removal. Real owner keychains remain unclaimed; credential never reaches Python.",
-        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
+        "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
       }
     },
     "WP-051-benchmarks": {
@@ -5672,13 +5679,13 @@
       },
       "tests": {
         "tests/desktop/native.spec.ts": {
-          "sha256": "f15aba8e178b04db8ed878882944afdde8c351f2960cca19ba370fc6aeff10a0",
+          "sha256": "b0bd8cc86b66a7f8ea1a1b6f508aa556cce2d248238c4d8023cf7d01908128be",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
-          "executed_case_records": 2,
-          "failed_case_records": 0
+          "executed_case_records": 1,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         },
         "tests/desktop/packaging.test.ts": {
           "sha256": "d8c0b414d05cf8ecd03adde20bd6456485daa1479e63ed85255a72db29425572",
@@ -5746,7 +5753,7 @@
         "desktop/main/provider-requests.ts": "100c7cd05ce25b3758497ef6d8221b4373424f46ff50daf2123355ff57b1e011",
         "desktop/main/provider-schema.ts": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37",
         "desktop/main/provider-stream.ts": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b",
-        "desktop/main/providers.ts": "cb5b18739d02cb48c818f0c5ef79f5891f85c6fca3e392cbaed5284360f77557",
+        "desktop/main/providers.ts": "c04a72dc80c015aa2cb36f2b858e0aeadeba66d48a7d440bd59fb101ee92afdf",
         "desktop/main/spending.ts": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89",
         "desktop/main/workspace.ts": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0",
         "engine/poliscope_engine/contracts/generation.py": "5393741770e92e686455da2b16eb7f1e74450294c0ebe52150e26530a96bc329",
@@ -5788,14 +5795,13 @@
           "failed_case_records": 0
         },
         "tests/desktop/provider-generation.test.ts": {
-          "sha256": "b1ea9ee52ce333dbd6be2bc3e1dd382959354b52e07eb96a6117e7b1cd9118fa",
+          "sha256": "e28cdc430b1d98d988fe946a143061bfebd20841ae9c280fe894fa7f905613a2",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
-            "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz"
           ],
-          "executed_case_records": 23,
-          "failed_case_records": 0
+          "executed_case_records": 10,
+          "failed_case_records": 0,
+          "source_impact_review": "Exact authorized V4.1 whitelist, schema-byte accounting and rejection of unknown model variants verified in affected provider tests."
         },
         "tests/desktop/provider-isolation.test.ts": {
           "sha256": "078e9194bbf0b9596d6ee5002686bdb0b2254eea79202699443e97e54a3a29c1",
@@ -5889,7 +5895,8 @@
         "reviewer": "Codex /root",
         "route": "solo-validated; agent review deferred",
         "finding": "Offline integrated provider/controller/Python spending evidence passes, and actual native/public catalog preflight passes. Authenticated/generation/tool/usage/cancellation live sequence is authorized at USD 10 but awaits the secure runtime key binding. No live pass is inferred.",
-        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately."
+        "claim_limit": "Suite association and author inspection; exact scenario aggregation, native/provider limits and independent review are tracked separately.",
+        "source_impact_review": "Exact reviewed DeepSeek V4.1 Flash 1017 was added to the text/tools context whitelist in ab33636. Unknown models/media still reject; 65 affected provider/unit cases and six rebuilt packaged provider cases passed. Actual provider behavior remains live-unvalidated."
       }
     },
     "WP-053-faults": {
@@ -5991,12 +5998,13 @@
       "source_files": {},
       "tests": {
         "tests/desktop/accessibility.spec.ts": {
-          "sha256": "81fb341996d256f17595bb880dfcc53b39bf6ba5a107cc81fa74c7eedc34678c",
+          "sha256": "22e55616e7a2c7849ad29e8d7dcea38e0f734be6bd1cc231edc2172a7fad8ddb",
           "reports": [
-            "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz"
+            "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz"
           ],
           "executed_case_records": 1,
-          "failed_case_records": 0
+          "failed_case_records": 0,
+          "source_impact_review": "Exact G7 case identity added; assistant scenario additionally switches branches during an active stream and checks captured context. All eight affected packaged scenarios passed."
         }
       },
       "positive_oracles": [

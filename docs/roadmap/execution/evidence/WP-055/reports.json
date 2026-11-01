@@ -145,6 +145,30 @@
         "skipped": 0,
         "skip_reasons": []
       }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/release-gate.xml.gz",
+      "compression": "gzip",
+      "sha256": "27e96bfa275f7ec3d6dd5d33a50e4c250e6c404ad381933684a3dc34770d6cd6",
+      "uncompressed_sha256": "59f0a5d46b21781e67bfc34fc8b656483b0d2be8f093a1337091061f1dc1600b",
+      "results": {
+        "tests": 9,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz",
+      "compression": "gzip",
+      "sha256": "841dc8e900d0d18003145654e5125a518b042c5fc4efcb2db3afc01213550f9b",
+      "uncompressed_sha256": "002f625d285b03ff8f0bc6cb76631736d8ce7ae073849d0e82779d8e692953d5",
+      "results": {
+        "tests": 8,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
     }
   ]
 }
