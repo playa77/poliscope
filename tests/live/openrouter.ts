@@ -157,6 +157,8 @@ async function main() {
     check(accepted.status === 'test-accepted', 'Key test failed: ' + accepted.status);
     const catalog = await providers!.request({ action: 'refresh-catalog', profile_id: 'live', expected_revision: 2 });
     check(catalog.status === 'metadata-ready', 'Catalog failed: ' + catalog.status);
+    const endpoints = await providers!.request({ action: 'model-endpoints', profile_id: 'live', expected_revision: 2, model_id: MODEL });
+    check(endpoints.status === 'metadata-ready' && endpoints.endpoints?.providers.length, 'Provider endpoint metadata unavailable');
     const status = await providers!.request({ action: 'key-status', profile_id: 'live', expected_revision: 2 });
     check(status.status === 'metadata-ready', 'Account status unavailable');
     return { key_storage: 'session-only', account_metadata: 'allowlisted; account limits not exported' };
@@ -236,6 +238,7 @@ async function main() {
     await controller!.request({ action: 'send', request_id: prepared.request_id });
     const until = Date.now() + 10000;
     while (Date.now() < until && posts === before) await pause(50);
+    check(posts > before, 'Cancellation check did not reach native transport');
     await controller!.request({ action: 'cancel', request_id: prepared.request_id });
     const cancelled = await terminal(prepared.request_id);
     check(cancelled.status === 'cancelled', 'Cancellation did not retain terminal state');
