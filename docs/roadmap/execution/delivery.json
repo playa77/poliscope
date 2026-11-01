@@ -45,6 +45,6 @@
   },
   "validation": "docs/roadmap/execution/WP-054-validation.json",
   "kind": "work_package",
-  "scope": "Full WP-054 implementation under the owner-run native waiver: native x64 admission; per-user Windows/Linux installers; external signing interfaces; ASAR/binary/dependency/identity checks; checksummed receipts; bundled known answers and cold replay; manual native workflow and owner guide.",
+  "scope": "Full WP-054 implementation under the owner-run native waiver: native x64 admission; per-user Windows/Linux installers; external signing interfaces; ASAR/binary/dependency/identity checks; checksummed receipts; bundled known answers and cold replay; manual native workflow and owner guide. CI follow-up moves ASAR regression to the Node-equipped desktop suite and sets a scoped 30-second integration-test deadline; full engine/unit evidence passes without changing production or CI gates.",
   "blockers": []
 }

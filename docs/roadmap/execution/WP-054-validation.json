@@ -338,5 +338,67 @@
     "No paid/live provider checks; WP-050 and deferred WP-051 performance unchanged",
     "Artifact built before implementation commit, source_dirty=true; exact source and payload hashes retained, no reproducible-build claim",
     "No independent review, release publication or merge"
-  ]
+  ],
+  "ci_follow_up": {
+    "scope": "Move ASAR admission regression into Node-equipped desktop suite; scope 30-second deadline to multi-process grounding integration test. Aggregate CI gate and production limits unchanged.",
+    "provided_ci_failure": {
+      "engine": "4990 passed, 1 failed: Node package missing in Python-only engine job",
+      "unit": "443 passed, 1 failed: grounding test exceeded 5000 ms"
+    },
+    "restricted_local_attempt": "444 unit cases passed; ASAR subprocess denied with EPERM; superseded by permitted full rerun",
+    "runs": [
+      {
+        "suite": "engine",
+        "command": [
+          "uv",
+          "run",
+          "--frozen",
+          "pytest",
+          "--junitxml=/workspace/poliscope/artifacts/wp054-ci-engine/junit.xml"
+        ],
+        "status": "passed",
+        "candidate": "87f7ef7d86c0d9960354923bb8c778d6f2e4e7b7711d852d38cd4a42bb493070",
+        "head": "60c87dfc3a407c8e1c40edda9e0d766a863a15ca",
+        "source_dirty": true,
+        "passed": 4990,
+        "failed": 0,
+        "skipped": 0,
+        "run_id": "a0951ed7-c11f-4e8e-8871-30c2cd331da8",
+        "report_sha256": "3ddc9fecb81ea2c30284c8d561f65981df31f6b0706112a4aa9b600d09793402",
+        "evidence_sha256": "1c2402e7e67731acfe0c7d5faa10bddd32096b145e274b396f9abf5762d842ae",
+        "verified": true
+      },
+      {
+        "suite": "unit",
+        "command": [
+          "npm",
+          "exec",
+          "--",
+          "vitest",
+          "run",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile=/workspace/poliscope/artifacts/wp054-ci-unit-permitted/junit.xml"
+        ],
+        "status": "passed",
+        "candidate": "87f7ef7d86c0d9960354923bb8c778d6f2e4e7b7711d852d38cd4a42bb493070",
+        "head": "60c87dfc3a407c8e1c40edda9e0d766a863a15ca",
+        "source_dirty": true,
+        "passed": 445,
+        "failed": 0,
+        "skipped": 0,
+        "run_id": "f4c7f5ce-8589-4860-824b-a84ffdeb6735",
+        "report_sha256": "a92ed2a324b687eb820497213aa6c8366d6e082d2755c62e9132d7f7d9fe738b",
+        "evidence_sha256": "02bedb8c6ffdbe3effbc635c24b88d0e2676a03382c1c2d49cbc7477b4f3524c",
+        "verified": true
+      }
+    ],
+    "source_sha256": {
+      "tests/desktop/grounding.test.ts": "8efb4e80208621f6a74f2f93375b8e32a9ca2f68f5a5278d1e9aa2f8d7e6d78e",
+      "tests/desktop/packaging.test.ts": "e7160fe0183bba71e00af6be7eef306917ac0db0ec6cbc741dba55f7d93e444d",
+      "tests/harness/test_distribution.py": "d10ca323837800b93540e8d7d925ab165ccd0c1cececf093803bea0ed2e34d10"
+    },
+    "typecheck": "passed",
+    "hosted_ci": "pending push; no hosted pass claimed"
+  }
 }

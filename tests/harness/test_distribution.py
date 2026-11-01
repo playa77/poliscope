@@ -5,38 +5,12 @@ from pathlib import Path
 import shutil
 import subprocess
 import sys
-import json
 import pytest
 
 ROOT = Path(__file__).resolve().parents[2]
 spec = importlib.util.spec_from_file_location('distribution', ROOT / 'scripts/distribution.py')
 distribution = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(distribution)
-
-
-def test_asar_identity_and_private_file_admission(tmp_path):
-    source = tmp_path / 'source'; source.mkdir()
-    (source / 'package.json').write_text((ROOT / 'package.json').read_text())
-    for name in ('.vite/build/main.cjs', '.vite/build/preload.cjs', '.vite/renderer/main_window/index.html'):
-        path = source / name; path.parent.mkdir(parents=True, exist_ok=True); path.write_text('synthetic fixture')
-    archive = tmp_path / 'app.asar'
-    def pack():
-        subprocess.run(['node', '--input-type=module', '-e',
-            "import {createPackage} from '@electron/asar'; await createPackage(process.argv[1],process.argv[2]);",
-            str(source), str(archive)], cwd=ROOT, check=True)
-    def inspect():
-        return subprocess.run(['node', str(ROOT / 'scripts/check_bundle.mjs'), str(archive)],
-            cwd=ROOT, capture_output=True, text=True)
-    pack()
-    assert json.loads(inspect().stdout)['version'] == '0.1.0'
-    (source / '.env').write_text('SYNTHETIC_PRIVATE_CANARY')
-    pack()
-    denied = inspect()
-    assert denied.returncode != 0 and 'SYNTHETIC_PRIVATE_CANARY' not in denied.stderr
-    (source / '.env').unlink()
-    package = json.loads((source / 'package.json').read_text()); package['version'] = '999.0.0'
-    (source / 'package.json').write_text(json.dumps(package)); pack()
-    assert inspect().returncode != 0
 
 
 def test_reject_wrong_architecture_and_non_binary(tmp_path):
