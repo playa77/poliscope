@@ -6,7 +6,7 @@ prototype candidate. The application still identifies itself as **0.1.0**; the
 No public release, signing, upload to a release channel or merge is authorized by
 preparation. The repository owner decides release authorization separately.
 
-[The inventory](inventory.json) freezes every product, generated schema, catalog,
+[The current inventory](inventory.ci-history.json) freezes every product, generated schema, catalog,
 model, numeric runtime, lock, packaging input, WP-055 acceptance receipt and
 retained test report by path, size and SHA-256. Its source commit identifies the
 merged baseline; the WP-056 delivery commit versions these guides and tooling.
@@ -75,3 +75,10 @@ security and human usability signoff is not claimed. Validation route:
 - [BYOK, sharing and spending](../../provider_settings.md) and [context bounds](../../provider_context_bounds.md).
 - [Developer setup and checks](../../development.md) and [model contributions](../../model_contributions.md).
 - [Privacy/security audit](../../security_privacy_audit.md) and [accessibility review](../../accessibility_usability.md).
+
+The [initial inventory](inventory.json) remains immutable. The current receipt
+adds full-history checkout configuration for the engine, desktop and docs CI jobs
+so the pinned source tree and ancestry can be verified. Application, packaging,
+locks, content and WP-055 evidence bytes are unchanged; the new receipt names
+the exact CI correction commit. This is an affected CI revision of the same
+application candidate, not a new binary or a replacement of past evidence.

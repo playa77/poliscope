@@ -1,6 +1,7 @@
 """A release freeze must catch changed, removed and newly introduced inputs."""
 import copy
 import json
+import shutil
 from pathlib import Path
 import subprocess
 import sys
@@ -46,6 +47,21 @@ class ReleaseFreezeTests(unittest.TestCase):
         subprocess.run(['git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
                         'commit', '-qm', 'Guide'], cwd=self.root, check=True)
         self.assertEqual(verify(self.record, self.root), len(self.record['files']))
+
+    def test_shallow_checkout_requires_baseline_history_then_verifies_after_fetch(self):
+        # Match Actions' depth-one checkout: a later guide commit is present,
+        # while the immutable baseline commit is absent.
+        (self.root / 'README.md').write_text('Later guide')
+        subprocess.run(['git', 'add', '.'], cwd=self.root, check=True)
+        subprocess.run(['git', '-c', 'user.name=Fixture', '-c', 'user.email=fixture@example.invalid',
+                        'commit', '-qm', 'Guide descendant'], cwd=self.root, check=True)
+        clone = self.root.parent / (self.root.name + '-shallow')
+        self.addCleanup(shutil.rmtree, clone, True)
+        subprocess.run(['git', 'clone', '--quiet', '--depth=1', self.root.as_uri(), str(clone)], check=True)
+        with self.assertRaises(subprocess.CalledProcessError):
+            verify(self.record, clone)
+        subprocess.run(['git', 'fetch', '--quiet', '--unshallow'], cwd=clone, check=True)
+        self.assertEqual(verify(self.record, clone), len(self.record['files']))
 
     def test_changed_and_removed_frozen_inputs_fail(self):
         path = self.root / 'package.json'

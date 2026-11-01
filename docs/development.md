@@ -75,6 +75,11 @@ uv run --frozen python scripts/evidence.py verify --output artifacts/engine-new
 ```
 
 On headless Linux prefix the desktop evidence command with `xvfb-run -a`.
+CI jobs running roadmap/release checks use a full-history checkout (`fetch-depth: 0`).
+The release guard requires its pinned baseline commit/tree and ancestry locally;
+for a shallow contributor clone, run `git fetch --unshallow` before release checks.
+Missing Git history is a setup failure, never permission to skip source verification.
+
 The harness rejects stale candidates, reused output directories, changed reports,
 zero tests, failures and skips. Only synthetic report data may be retained.
 Exact milestone selection validation uses

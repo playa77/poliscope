@@ -12,7 +12,7 @@ from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'docs/releases/0.1.0-rc.1/inventory.json'
+DEFAULT = ROOT / 'docs/releases/0.1.0-rc.1/inventory.ci-history.json'
 PRODUCT_DIRS = ('desktop/', 'engine/', 'contracts/', 'content/', 'packaging/')
 PRODUCT_FILES = ('LICENSE', 'package.json', 'package-lock.json', 'pyproject.toml', 'uv.lock',
                  '.nvmrc', '.python-version', 'forge.config.cjs', 'tsconfig.json',

@@ -40,6 +40,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Release verification checks the pinned baseline tree and ancestry.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -66,6 +69,9 @@ jobs:
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Release verification checks the pinned baseline tree and ancestry.
+          fetch-depth: 0
       - uses: actions/setup-node@v4
         with:
           node-version-file: .nvmrc
@@ -96,6 +102,9 @@ jobs:
     runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
+        with:
+          # Release verification checks the pinned baseline tree and ancestry.
+          fetch-depth: 0
       - uses: astral-sh/setup-uv@v6
         with:
           version: '0.12.23'
