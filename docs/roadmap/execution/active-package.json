@@ -32,11 +32,11 @@
     {
       "id": "provider-and-native-evidence",
       "status": "pending",
-      "evidence": "User USD 10 authorization retained; DeepSeek V3.2 native/public preflight passes; secure key binding absent, so no billable call sent. Native CI both targets pass; real owner desktop/keychain/signing remain owner-run/unclaimed."
+      "evidence": "Exact V4.1 model preparation, 65 provider cases, native HTTPS preflight, six packaged provider cases and both native target workflows pass. No authenticated generation is claimed: the active runtime has no key binding despite completed user setup. No paid request sent."
     }
   ],
   "blockers": [
-    "Secure OPENROUTER_API_KEY runtime binding is absent; authenticated live-provider evidence cannot run until supplied. Budget USD 10 is already authorized.",
+    "Platform runtime still reports its original revision and no credential bindings, despite user-verified poliscope key entry and repeated publication. User credential step is complete; no further re-entry/publication requested. See WP-055-runtime-attachment.json.",
     "Final cumulative scenario and per-leaf acceptance aggregation remains assigned to Codex; inspected associations do not certify G7."
   ],
   "previous_delivery": {
@@ -53,13 +53,14 @@
     "maximum_dispatches": 12,
     "per_dispatch_exposure_usd": "0.5",
     "maximum_run_exposure_usd": "6",
-    "instruction": "User authorized DeepSeek/GLM live checks with maximum USD 10, requested secure key configuration when ready.",
+    "instruction": "Use only deepseek/deepseek-v4.1-flash-1017 for live validation; maximum USD 10. Key entered and environment published; proceed.",
     "model_restriction": "User: use only deepseek/deepseek-v4.1-flash-1017; key is guardrailed to that model.",
-    "credential_configuration": "User confirms key entered and poliscope configuration published. Active instance still reports original revision/no bindings; attachment refresh pending."
+    "credential_configuration": "User confirms correct OPENROUTER_API_KEY value and repeated successful poliscope publication. Current executor has not received that published binding; no further user credential action is requested."
   },
   "environment": {
     "status": "ready",
     "resolution": "Execution commands require sandbox_permissions=with_additional_permissions and network.enabled=true. Fetch, child process output, Xorg :99, Forge package and native HTTPS catalog preflight now pass.",
-    "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes."
+    "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes.",
+    "credential_delivery": "Platform attachment mismatch; original revision 1 still observed after repeated publication. Login/sandbox/parent execution and proxy-injection checks exhausted."
   }
 }

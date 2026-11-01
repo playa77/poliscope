@@ -227,10 +227,15 @@
     "typecheck": "passed",
     "native_https_public_preflight": "passed",
     "billable_dispatches": 0,
-    "runtime_configuration": "Original attached configuration revision 1 still reports no secrets. User confirms key entered and poliscope configuration published; attachment/apply requested through UI because available environment tools are read-only.",
+    "runtime_configuration": "User verified correct key and repeatedly published poliscope; old runtime remains revision 1/no bindings in all execution contexts. No further credential setup is requested.",
     "report": "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz",
     "report_sha256": "dd89f54fd2bc6d9c4dec412f4bcdd7322e3bda9ef8cc775da5d12427d42b5347",
     "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
-    "tokenizer_bytes": 6367257
+    "tokenizer_bytes": 6367257,
+    "affected_packaged_cases": 6,
+    "native_both_targets": "passed",
+    "native_workflow": "https://github.com/playa77/poliscope/actions/runs/41312619335",
+    "native_source": "ab3363651b322fa747f2d3b3fc22365aa2a69c4b",
+    "diagnostic_record": "docs/roadmap/execution/WP-055-runtime-attachment.json"
   }
 }

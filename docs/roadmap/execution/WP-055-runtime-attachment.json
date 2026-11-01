@@ -1,0 +1,67 @@
+{
+  "version": 1,
+  "package": "WP-055",
+  "classification": "runtime configuration delivery/attachment blocker",
+  "user_completed_steps": [
+    "OPENROUTER_API_KEY entered with correct value, verified by user",
+    "poliscope environment published repeatedly",
+    "exact model restricted to deepseek/deepseek-v4.1-flash-1017",
+    "USD 10 maximum already authorized"
+  ],
+  "observations": {
+    "observations_current": true,
+    "observed_spec_revision": "1",
+    "secret_bindings_reported": 0,
+    "outbound_identities_reported": 0,
+    "openrouter_variable_reported": false
+  },
+  "checks": [
+    {
+      "context": "default execution",
+      "credential_variable_present": false
+    },
+    {
+      "context": "network-enabled execution",
+      "credential_variable_present": false
+    },
+    {
+      "context": "shell startup disabled",
+      "credential_variable_present": false
+    },
+    {
+      "context": "parent execution context",
+      "credential_variable_present": false
+    },
+    {
+      "context": "native Chromium HTTPS public model catalog",
+      "status": "passed"
+    },
+    {
+      "context": "non-billable authenticated metadata without explicit Authorization",
+      "http_status": 401
+    },
+    {
+      "context": "retained environment diagnostics",
+      "records": 0
+    },
+    {
+      "context": "available environment APIs",
+      "capability": "status and diagnostics only; no configuration apply/restart operation"
+    },
+    {
+      "context": "installed CLI tooling",
+      "capability": "local daemon/cloud-task commands and executor connection registration; no attached managed-configuration refresh operation"
+    }
+  ],
+  "billable_generation_requests": 0,
+  "live_cost_usd": "0",
+  "model": "deepseek/deepseek-v4.1-flash-1017",
+  "disposition": "User credential setup is complete. Published configuration has not reached this running executor. No further key entry or publication is requested. Live calls remain blocked until the platform delivers the binding; no bypass or invented credential is used.",
+  "prepared_work": {
+    "source": "ab33636",
+    "provider_cases_passed": 65,
+    "affected_packaged_cases_passed": 6,
+    "native_both_targets": "passed",
+    "workflow": "https://github.com/playa77/poliscope/actions/runs/41312619335"
+  }
+}

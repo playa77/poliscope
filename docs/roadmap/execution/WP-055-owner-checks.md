@@ -1,11 +1,11 @@
 # WP-055 candidate packages for owner testing
 
 Both targets built, installed and passed all five packaged native smoke scenarios
-in [workflow run 41306934907](https://github.com/playa77/poliscope/actions/runs/41306934907)
-at source `fa2ab8370abb8138d18b04fe901db99851a2b97f`:
+in [workflow run 41312619335](https://github.com/playa77/poliscope/actions/runs/41312619335)
+at source `ab3363651b322fa747f2d3b3fc22365aa2a69c4b`:
 
-- [Windows x64 artifact](https://github.com/playa77/poliscope/actions/runs/41306934907/artifacts/13083861466)
-- [Linux x64 artifact](https://github.com/playa77/poliscope/actions/runs/41306934907/artifacts/13083661963)
+- [Windows x64 artifact](https://github.com/playa77/poliscope/actions/runs/41312619335/artifacts/13086261993)
+- [Linux x64 artifact](https://github.com/playa77/poliscope/actions/runs/41312619335/artifacts/13085822906)
 
 These are unsigned test candidates, not a published release. Download requires
 GitHub access to the repository. The artifact names end in the exact source hash
