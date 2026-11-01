@@ -1,64 +1,50 @@
 {
   "version": 1,
-  "package": "WP-053",
-  "status": "complete",
-  "record": "docs/roadmap/execution/WP-053.md",
+  "package": "WP-054",
+  "record": "docs/roadmap/execution/WP-054.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2239711",
-  "branch": "codex/wp-053-security",
-  "execution_unit": "WP-053",
-  "review_route": "solo-validated; agent review deferred",
+  "base": "2529225a0410c669e1f33b3735b3f75cbb588fb3",
+  "branch": "codex/wp-054-native-packaging",
+  "status": "complete",
   "authorization": {
     "source": "user",
-    "scope": "WP-053",
+    "scope": "WP-054",
     "instruction": "implement the next work package."
   },
+  "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "trust-boundaries",
+      "id": "native-build-and-identity",
       "status": "passed",
-      "evidence": "Production boundary inspection, expanded forged IPC and passive sink probes, combined attachment/prompt/provider/artifact/import attack and grounded tool denial pass. Findings SEC-053-001/002 fixed; final affected packaged run 9 passed."
+      "evidence": "Native x64 admission, external engine resources, ASAR identity/private-file and binary/dependency checks implemented; unsigned cloud Linux package and distribution pass. Windows build is owner-run under docs/platform_scope.md; no Windows native claim."
     },
     {
-      "id": "privacy-canaries",
+      "id": "install-upgrade-and-data",
       "status": "passed",
-      "evidence": "Raw/encrypted-key archive isolation, actual-child environment exclusion, historical private-copy projections/deletion and complete outgoing payload tests pass. Interrupted transcript staging cleanup and actual permission-loss regressions pass."
+      "evidence": "Both per-user installers implemented; final Linux extraction/install into spaces passes. Synthetic upgrade/tamper/failure tests preserve previous launcher, installation and user data. Windows execution owner-run."
     },
     {
-      "id": "fault-recovery",
+      "id": "signing-and-artifact-evidence",
       "status": "passed",
-      "evidence": "Real SQLITE_FULL/SQLITE_READONLY design/timeline rollback and exact cold retry pass; existing staged-write/process-crash/migration/import/export and spending-race tests pass in full Python suite. Forced main exit and real partial-SSE socket disconnect pass packaged checks."
+      "evidence": "External certificate-store Authenticode and detached GPG signing/verification routes implemented and inspected. Unsigned artifact manifest and final checksum retained in WP-054-validation.json. Real signing unverified/owner-run; no signed distribution claim."
+    },
+    {
+      "id": "bundled-runtime-and-offline-smoke",
+      "status": "passed",
+      "evidence": "Bundled known-answer, cold SQLite operation replay and archive round-trip pass with empty PATH; installed Electron cold restart and four additional packaged archive/provider/recovery/timeline scenarios pass. Real keychain/proxy/native checks remain owner-run."
     }
   ],
-  "blockers": [],
-  "previous_parent": {
-    "package": "WP-050",
-    "status": "in_progress",
-    "record": "docs/roadmap/execution/WP-050.md",
-    "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
-  },
-  "previous_delivery": {
-    "package": "WP-052",
-    "status": "complete",
-    "merged_pr": 125
-  },
-  "native_validation": {
-    "status": "owner-run",
-    "record": "docs/platform_scope.md",
-    "claim": "Cloud packaged functional checks only; no native OS or screen-reader certification."
-  },
-  "kind": "work_package",
-  "scope": "Full WP-053 threat/privacy/fault audit; interrupted private-transcript staging cleanup and durable staged writes; layout-phase interview focus correction from integrated regression; real SQLite full/read-only rollback, environment and privacy canaries, expanded packaged IPC/combined attacks/socket disconnect/forced-close recovery.",
-  "validation": "docs/roadmap/execution/WP-053-validation.json",
   "publication": {
     "status": "published; regular PR open",
-    "branch": "codex/wp-053-security",
+    "branch": "codex/wp-054-native-packaging",
     "destination": "https://github.com/playa77/poliscope.git",
-    "implementation_commit": "d18e894",
-    "reason": "Automatic approval review rejected git push: implementation authorization does not specifically authorize export of source/history to this external GitHub destination.",
-    "required_authorization": "Explicit user approval to push codex/wp-053-security to playa77/poliscope and open a regular PR against main.",
-    "merge": "not authorized; not performed",
-    "authorization": "User explicitly requested pushing this branch to playa77/poliscope and opening its PR.",
-    "url": "https://github.com/playa77/poliscope/pull/126"
-  }
+    "implementation_commit": "506a7ba",
+    "authorization": "User explicitly requested: push codex/wp-054-native-packaging to playa77/poliscope and open a PR.",
+    "url": "https://github.com/playa77/poliscope/pull/127",
+    "merge": "not authorized; not performed"
+  },
+  "validation": "docs/roadmap/execution/WP-054-validation.json",
+  "kind": "work_package",
+  "scope": "Full WP-054 implementation under the owner-run native waiver: native x64 admission; per-user Windows/Linux installers; external signing interfaces; ASAR/binary/dependency/identity checks; checksummed receipts; bundled known answers and cold replay; manual native workflow and owner guide. CI follow-up moves ASAR regression to the Node-equipped desktop suite and sets a scoped 30-second integration-test deadline; full engine/unit evidence passes without changing production or CI gates.",
+  "blockers": []
 }

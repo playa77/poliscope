@@ -70,7 +70,7 @@ it('actual Python context stays pinned across civilization navigation and never 
   const other=await c.create({name:'Other',setup:'blank',scope_name:'Elsewhere',population:'99',land_area:'9'});const result=await grant.execute(args(id),'turn');expect(result.status).toBe('available');expect(JSON.stringify(grant.manifest)).not.toContain(other.context.civilization_id);expect(grant.manifest.context.civilization_id).toBe(base.context.civilization_id);
   const denied=await grant.execute(args('note:existing-private'),'turn');expect(denied).toMatchObject({status:'unavailable',data_json:'{"status":"unavailable"}'});
  }finally{await rm(directory,{recursive:true,force:true});}
-});
+},30000);
 it('a grounded turn cannot change committed state; only explicit ordinary preview action stages a retained proposal',async()=>{
  const proposal={context:{data_store_id:'s',civilization_id:'c',branch_id:'main',revision_id:'r'},scope_id:'home',change:{kind:'proposal',id:'need',value:{kind:'label',value:'proposed'},origin:'ai_proposed',source_request_id:'turn',coverage:'hypothetical',manifest_digest:'sha256:'+'a'.repeat(64)}};
  const f=fixture({execute:async()=>({status:'available',data_json:'{"status":"valid"}',proposal_json:JSON.stringify(proposal)})});

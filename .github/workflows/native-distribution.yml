@@ -1,0 +1,57 @@
+name: Native distribution candidates (owner-run)
+on:
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  candidate:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-24.04, windows-2022]
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+      - uses: astral-sh/setup-uv@v6
+        with:
+          version: '0.12.23'
+      - run: uv sync --frozen --python 3.12
+      - run: npm ci
+      - run: npm run typecheck
+      - run: npm run dist
+      - name: Install Linux candidate as an ordinary user
+        if: runner.os == 'Linux'
+        shell: bash
+        run: |
+          mkdir -p work/native-bundle
+          tar -xzf release/Poliscope-*-linux-x64.tar.gz -C work/native-bundle --strip-components=1
+          sh work/native-bundle/install-linux.sh "$GITHUB_WORKSPACE/work/native-installed"
+          echo "POLISCOPE_NATIVE_APP=$GITHUB_WORKSPACE/work/native-installed" >> "$GITHUB_ENV"
+      - name: Install Windows candidate as an ordinary user
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $archive = Get-ChildItem release/Poliscope-*-win32-x64.zip
+          Expand-Archive -LiteralPath $archive.FullName -DestinationPath work/native-bundle
+          $installer = Get-ChildItem work/native-bundle -Recurse -Filter install-windows.ps1
+          & $installer.FullName -Destination "$env:GITHUB_WORKSPACE/work/native-installed"
+          "POLISCOPE_NATIVE_APP=$env:GITHUB_WORKSPACE/work/native-installed" >> $env:GITHUB_ENV
+      - name: Linux packaged offline workflows
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npx playwright test tests/desktop/native.spec.ts tests/desktop/archives.spec.ts tests/desktop/recovery.spec.ts tests/desktop/providers.spec.ts tests/desktop/timeline.spec.ts
+      - name: Windows packaged offline workflows
+        if: runner.os == 'Windows'
+        run: npx playwright test tests/desktop/native.spec.ts tests/desktop/archives.spec.ts tests/desktop/recovery.spec.ts tests/desktop/providers.spec.ts tests/desktop/timeline.spec.ts
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: native-candidate-${{ matrix.os }}-${{ github.sha }}
+          path: |
+            release/
+            test-results/
+          if-no-files-found: error

@@ -242,6 +242,10 @@ npm run package
 
 Native packages are built on their target operating system and architecture. Signing uses local or CI configuration, never committed credentials.
 
+`npm run dist` builds a checksummed per-user installer archive for the current
+Windows x64 or Linux x64 target. See [native distribution](docs/native_distribution.md)
+for installation, optional signing, upgrade/rollback and owner-run checks.
+
 Current tests cover roadmap integrity, bootstrap process lifecycle, engine path
 selection and the packaged Electron shell with its bundled engine. Content and
 contract commands validate tracked inventories and generated contracts. Numerical,
