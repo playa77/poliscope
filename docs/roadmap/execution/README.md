@@ -1,3 +1,5 @@
+**Current implementation, 2026-11-01:** Full [WP-054](WP-054.md) adds native x64 admission, per-user Windows/Linux installers, optional external signing, checksummed identity receipts, bundled runtime known answers and an owner-run native workflow. [Validation](WP-054-validation.json) retains five passing cloud packaged scenarios, 111 distinct affected engine/harness cases, unit run failures and focused retests. Windows and real signing remain owner-run/unverified under the project-wide waiver; no signed/native release claim. Route: **solo-validated; agent review deferred**. Publication pending; no merge performed. Next sequential package: WP-055.
+
 **Current local implementation, 2026-11-01:** Full [WP-053](WP-053.md) threat,
 privacy and fault review is complete on `codex/wp-053-security`, based on
 fetched main `2239711` (merged WP-052 / PR #125). The

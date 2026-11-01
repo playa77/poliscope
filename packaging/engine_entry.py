@@ -1,6 +1,9 @@
 import sys
 
-if '--spending' in sys.argv[1:]:
+if sys.argv[1:] == ['--self-test']:
+    from poliscope_engine.native_probe import main
+    sys.argv.remove('--self-test')
+elif '--spending' in sys.argv[1:]:
     from poliscope_engine.spending_host import main
     sys.argv.remove('--spending')
 elif '--recovery' in sys.argv[1:]:
