@@ -17,6 +17,7 @@
   "include": [
     "desktop",
     "tests/desktop",
+    "tests/live",
     "*.mts",
     "playwright.config.ts"
   ]

@@ -1,65 +1,75 @@
 {
   "version": 1,
-  "package": "WP-054",
-  "status": "complete",
-  "record": "docs/roadmap/execution/WP-054.md",
+  "package": "WP-055",
+  "record": "docs/roadmap/execution/WP-055.md",
   "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "2529225a0410c669e1f33b3735b3f75cbb588fb3",
-  "branch": "codex/wp-054-native-packaging",
-  "execution_unit": "WP-054",
-  "review_route": "solo-validated; agent review deferred",
+  "base": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0",
+  "branch": "codex/wp-055-product-gate",
+  "status": "complete",
+  "execution_unit": "WP-055",
   "authorization": {
     "source": "user",
-    "scope": "WP-054",
-    "instruction": "implement the next work package."
+    "scope": "WP-055",
+    "instruction": "implement Wp-055."
   },
+  "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "native-build-and-identity",
+      "id": "leaf-trace-and-rt-audit",
       "status": "passed",
-      "evidence": "Native x64 admission, external engine resources, ASAR identity/private-file and binary/dependency checks implemented; unsigned cloud Linux package and distribution pass. Windows build is owner-run under docs/platform_scope.md; no Windows native claim."
+      "evidence": "All 1053 immutable leaf IDs retain owner, source hash, exact production/oracle review and evidence links; all 14 specific RT obligations inspected separately. Historical-context leaves and owner-run native scope are explicitly disposed in WP-055-acceptance.json."
     },
     {
-      "id": "install-upgrade-and-data",
+      "id": "integrated-product-gate",
       "status": "passed",
-      "evidence": "Both per-user installers implemented; final Linux extraction/install into spaces passes. Synthetic upgrade/tamper/failure tests preserve previous launcher, installation and user data. Windows execution owner-run."
+      "evidence": "All 30 exact G7 subcases have passing executed targets; E2E-013 now has verified source-bound live pass. Retained 4998 full engine, 447 full units, 30 packaged, composed gate cases and fresh affected provider/unit/package reports have explicit source-impact review, not a fabricated identical-candidate historical run."
     },
     {
-      "id": "signing-and-artifact-evidence",
+      "id": "model-and-coverage-audit",
       "status": "passed",
-      "evidence": "External certificate-store Authenticode and detached GPG signing/verification routes implemented and inspected. Unsigned artifact manifest and final checksum retained in WP-054-validation.json. Real signing unverified/owner-run; no signed distribution claim."
+      "evidence": "Twelve domains, 453 coverage rows, 51 partial static rows, zero source-transition activation reviewed against DEC-04; authored hypothetical mechanisms, source gaps, attribution and uncertainty remain explicit. No empirical validity or independent review claim."
     },
     {
-      "id": "bundled-runtime-and-offline-smoke",
+      "id": "provider-and-native-evidence",
       "status": "passed",
-      "evidence": "Bundled known-answer, cold SQLite operation replay and archive round-trip pass with empty PATH; installed Electron cold restart and four additional packaged archive/provider/recovery/timeline scenarios pass. Real keychain/proxy/native checks remain owner-run."
+      "evidence": "Guardrailed GLM/OpenRouter-selected Z.AI live workflow, completed tool continuation, cost reconciliation, cancellation and key removal pass within USD 10 lifetime allocation. Existing native Windows/Linux CI pass at ab33636; final Linux package and six affected cases pass. Real owner desktop/keychain/signing remain owner-run under standing waiver; current-source packages and job conclusions linked in WP-055-owner-checks.md and the delivery PR."
     }
   ],
   "blockers": [],
-  "previous_parent": {
-    "package": "WP-050",
-    "status": "in_progress",
-    "record": "docs/roadmap/execution/WP-050.md",
-    "blocker": "Separately authorized bounded live provider validation and configured credentials/credits remain unavailable; offline work merged in PR #121."
-  },
   "previous_delivery": {
-    "package": "WP-053",
-    "status": "complete",
-    "merged_pr": 126
+    "package": "WP-054",
+    "status": "merged locally",
+    "merged_pr": 127,
+    "merge_commit": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0"
   },
-  "native_validation": {
-    "status": "owner-run",
-    "record": "docs/platform_scope.md",
-    "claim": "Cloud Linux functional checks only. Windows, real signing and native OS/keychain/proxy/sandbox acceptance are owner-run/unverified."
+  "validation": "docs/roadmap/execution/WP-055-validation.json",
+  "live_authorization": {
+    "source": "user",
+    "budget_usd": "10",
+    "model": "z-ai/glm-5.3-flash",
+    "maximum_dispatches": 100,
+    "per_dispatch_exposure_usd": "0.1",
+    "maximum_run_exposure_usd": "10",
+    "instruction": "Latest user instruction: use z-ai/glm-5.3-flash and let OpenRouter choose the provider; accommodate the existing guardrailed production configuration. Original maximum total USD 10 retained.",
+    "model_restriction": "Latest selected model only, no model fallback. DeepSeek attempts before the explicit model switch remain historical.",
+    "credential_configuration": "Published configuration delivered in this fresh session; observed ready and authenticated. No further user configuration needed."
   },
-  "validation": "docs/roadmap/execution/WP-054-validation.json",
+  "environment": {
+    "status": "ready",
+    "resolution": "Execution commands require sandbox_permissions=with_additional_permissions and network.enabled=true. Fetch, child process output, Xorg :99, Forge package and native HTTPS catalog preflight now pass.",
+    "baseline": "origin/main matches local baseline d02db9e; no merge conflict or upstream changes.",
+    "credential_delivery": "Resolved; fresh current observations report OPENROUTER_API_KEY ready and live authentication succeeds.",
+    "retry_interval_seconds": 300,
+    "retry_policy": "No retry timer needed after credential delivery; no further paid requests after exhausted lifetime allocation."
+  },
+  "scope": "Full WP-055: cumulative leaf/RT/model inspection, exact G7 execution, integrated guardrailed live provider compatibility, source-impact regression evidence and native artifact accounting. No child/maintenance substitution.",
   "publication": {
     "status": "published; regular PR open",
-    "branch": "codex/wp-054-native-packaging",
+    "branch": "codex/wp-055-product-gate",
     "destination": "https://github.com/playa77/poliscope.git",
-    "implementation_commit": "506a7ba",
-    "authorization": "User explicitly requested: push codex/wp-054-native-packaging to playa77/poliscope and open a PR.",
-    "url": "https://github.com/playa77/poliscope/pull/127",
-    "merge": "not authorized; not performed"
+    "implementation_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+    "pr_link_source": "Authoritative GitHub branch PR and Codex task artifact, created after this declaration.",
+    "merge": "not authorized; not performed",
+    "url": "https://github.com/playa77/poliscope/pull/128"
   }
 }

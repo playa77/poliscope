@@ -1,0 +1,344 @@
+{
+  "version": 1,
+  "package": "WP-055",
+  "status": "complete",
+  "acceptance": "accepted within declared software/model/native scope",
+  "date": "2026-11-01",
+  "base": "d02db9eca2453f9c1437b0da44bb2c8fc6b000f0",
+  "branch": "codex/wp-055-product-gate",
+  "review_route": "solo-validated; agent review deferred",
+  "source_identity": {
+    "scope": "Historical initial-run identity, preserved without relabeling. Current production source identity is evidence/WP-055/live-production-identity.json; final source-impact acceptance is separate.",
+    "git_objects": {
+      "engine": "6045e46fb6ca63573cbcb4fc2957b4bf36478fdc",
+      "desktop": "6d7e34d5c5584fba8a5107f6aeba879fcbd68b32",
+      "content": "be627d79cab62630296f6c9c36ce8e49869ba86d",
+      "contracts": "289d5bc0e94e602a91cba22eb418dd029e29ba97",
+      "package.json": "9fa473efbc322fc10dd09ffc95b9180715136c25",
+      "package-lock.json": "3ebdc6cf2bd83193e8e337457c01f97cbc6f3fcb",
+      "uv.lock": "bb11d80b5ab64890a68dbfcfa0c6e1068a804a88",
+      "pyproject.toml": "b677130599902d0eea611cb815fafb0e5a861767",
+      "forge.config.cjs": "ab8e9b18c6f99151cb1113a1c24ecd0fc85ed95b"
+    }
+  },
+  "checks": [
+    {
+      "command": "uv run --frozen pytest --junitxml=work/wp-055/engine.xml",
+      "results": {
+        "tests": 4990,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/engine.xml",
+      "sha256": "627c915ec144a91ba433d604d2809d55109967efd490dda0f0fbd2279ef8a937",
+      "status": "passed"
+    },
+    {
+      "command": "npm exec -- vitest run --maxWorkers=2 --reporter=default --reporter=junit --outputFile=work/wp-055/unit.xml",
+      "results": {
+        "tests": 445,
+        "failed": 1,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/unit.xml",
+      "sha256": "7eaf345db7e684de5ff69cc91ce62dfb2a071152d485d72d6b37688cb113a2b1",
+      "status": "failed"
+    },
+    {
+      "command": "npm exec -- vitest run tests/desktop/packaging.test.ts --maxWorkers=1 --reporter=junit --outputFile=work/wp-055/packaging-retest.xml",
+      "results": {
+        "tests": 2,
+        "failed": 1,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/packaging-retest.xml",
+      "sha256": "85c18626a0ba21c21316a952b29b735f4f82e933a3221089f3c6bd31734bf9de",
+      "status": "failed"
+    },
+    {
+      "command": "uv run --frozen pytest tests/roadmap -q --junitxml=work/wp-055/roadmap-final.xml",
+      "results": {
+        "tests": 58,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      },
+      "report": "work/wp-055/roadmap-final.xml",
+      "sha256": "c056f5440780a4cd89503147a2680b69a309c1584f86092dbdc5a31ea89cf9c1",
+      "status": "passed"
+    },
+    {
+      "command": "npm run typecheck",
+      "status": "passed",
+      "log_sha256": "0e777127ef0f72d6269b9005e023f998d2f416ed28690e90de8e03d7e0291125"
+    },
+    {
+      "command": "npm run content:validate",
+      "status": "passed",
+      "log_sha256": "b40a0eeb11ab1039e95d894e2009c35bcef08e26c0cef7d0b8ae36b1f061e6c2"
+    },
+    {
+      "command": "npm run contracts:check",
+      "status": "passed",
+      "log_sha256": "3f625556283c69e9a210f81677f4f4bbacbbb4edea0b5995a9a79fb894036cab"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_baseline.py",
+      "status": "passed",
+      "log_sha256": "da1bd9b69528e27ded4a3fbbc8c90ac157f2e06eebdb8c5a9c755ede16fa3f63"
+    },
+    {
+      "command": "uv run --frozen python scripts/check_roadmap.py",
+      "status": "passed",
+      "log_sha256": "611764fbb18f1feebd7a6bc3d490ab683a65f60b09e1b7808cd67ab23fd64b36"
+    },
+    {
+      "command": "uv run --frozen python scripts/audit_static_readiness.py --check",
+      "status": "passed",
+      "log_sha256": "ccc7c15e40ad617e48835f4627261e53febcb4f71a07a868153da97718d1cda8"
+    },
+    {
+      "command": "npm run package",
+      "status": "failed",
+      "log_sha256": "80d7ef5c3c4f741cb38e9aaf3e53750b7b6b0dbef5a64b0264b6019277dcd903"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/valid.asar",
+      "status": "passed",
+      "observed_exit": 0,
+      "expected_exit": 0,
+      "log_sha256": "66a6eaa6866d15d758aca9167b89d3a34627e35764d134d8f3460ef5e3e61015",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/private.asar",
+      "status": "passed",
+      "observed_exit": 1,
+      "expected_exit": 1,
+      "log_sha256": "6e0607f3b0e9101377e01256ccbf466ab6843defd433ed942e7970ec1f5556cf",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    },
+    {
+      "command": "node scripts/check_bundle.mjs work/wp-055/asar/mismatch.asar",
+      "status": "passed",
+      "observed_exit": 1,
+      "expected_exit": 1,
+      "log_sha256": "b171f260ef3f65992cfed3f132a00187261e4753508f2f05ebc1fbcd6354c2c0",
+      "scope": "Direct isolated synthetic checker only; does not replace failed Vitest harness or packaged G7"
+    }
+  ],
+  "new_tests": 6,
+  "expected_failures": 0,
+  "required_g7_unrun": 30,
+  "leaf_production_evidence_unmapped": 1053,
+  "rt_obligations_without_current_inspected_evidence": 14,
+  "defects": [
+    {
+      "classification": "test harness/environment",
+      "test": "rejects private ASAR files and mismatched packaged identity",
+      "result": "Repeated empty subprocess stdout, including trivial child Node script; synchronous probe reported EPERM despite status zero. Direct checker positive/private/identity cases pass. No application defect established; original test retained.",
+      "disposition": "Unresolved full unit failure; not waived or marked passed."
+    }
+  ],
+  "limitations": [
+    "Fresh package failed at Electron download through unreachable proxy after engine freeze/Vite build.",
+    "No usable X display; dummy Xorg could not establish sockets; packaged suite unrun.",
+    "WP-050 live-provider prerequisite incomplete; no live request made.",
+    "Native tests/signing owner-run under existing project waiver; no native claims.",
+    "Full leaf/scenario/RT production inspection incomplete. Historical plans are not evidence.",
+    "Independent model/product review deferred. Twelve-domain structural coverage reconciliation is not empirical validation."
+  ],
+  "publication": {
+    "status": "not attempted",
+    "reason": "Full parent acceptance is incomplete; existing delivery gate deliberately rejects incomplete feature deliveries. No merge performed."
+  },
+  "reports": {
+    "location": "Durable compressed synthetic JUnit reports now retained in docs/roadmap/execution/evidence/WP-055 with both compressed and raw SHA-256; local originals remain under ignored work/wp-055.",
+    "privacy": "Synthetic isolated fixtures only; no environment values or private runtime databases exported."
+  },
+  "continuation": {
+    "date": "2026-11-01",
+    "environment": "ready; correct sandbox network permission repairs proxy, Xorg and child process output",
+    "baseline": "Fetched origin/main at d02db9e; matches package base",
+    "unit_full_final": {
+      "passed": 447,
+      "failed": 0,
+      "scope": "Full selection including two provider regressions; new standalone live-budget and Windows path regression additionally pass affected suites."
+    },
+    "desktop_full": {
+      "passed": 30,
+      "failed": 0,
+      "scope": "Fresh bundled baseline cloud Linux candidate; unchanged core retained after provider patch."
+    },
+    "desktop_provider_final": {
+      "passed": 6,
+      "failed": 0,
+      "scope": "Rebuilt final provider changes; actual packaged native transport/controllers."
+    },
+    "live_preflight": {
+      "status": "passed",
+      "billable_requests": 0,
+      "model": "deepseek/deepseek-v3.2",
+      "credential": "Secure binding still absent; readiness inspection reports no secrets and the runtime variable is absent. User authorization USD 10 is already granted, no new budget approval needed."
+    },
+    "native_workflows": [
+      "https://github.com/playa77/poliscope/actions/runs/41297699757",
+      "https://github.com/playa77/poliscope/actions/runs/41298001921"
+    ],
+    "windows_fixes": "ASAR listing/lookup normalization plus writable fsync descriptors for archive export and backup. All fixes now pass both native CI jobs. Prior failures retained as superseded defect evidence.",
+    "retained_reports": "docs/roadmap/execution/evidence/WP-055/reports.json",
+    "engine_final": {
+      "passed": 4998,
+      "failed": 0,
+      "warnings": 4,
+      "seconds": "300.61",
+      "scope": "Full integrated current Python selection after archive/backup implementation fix; includes six audit cases and two writable-flush regressions."
+    },
+    "portability_final": {
+      "passed": 6,
+      "failed": 0,
+      "scope": "Fresh bundled current engine, ordinary/reduced archive/recovery and complete offline workflows."
+    },
+    "native_final": {
+      "url": "https://github.com/playa77/poliscope/actions/runs/41306934907",
+      "source": "fa2ab8370abb8138d18b04fe901db99851a2b97f",
+      "linux": "passed build, per-user install and five packaged smoke scenarios",
+      "windows": "passed build, per-user install and five packaged smoke scenarios",
+      "signing": "unsigned; not claimed",
+      "real_owner_desktop": "owner-run/unverified",
+      "windows_artifact": 13083861466,
+      "linux_artifact": 13083661963
+    },
+    "review_records": [
+      "docs/roadmap/execution/WP-055-trace-review.json",
+      "docs/roadmap/execution/WP-055-RT-review.json",
+      "docs/roadmap/execution/WP-055-model-review.json",
+      "docs/roadmap/execution/WP-055-owner-checks.md"
+    ]
+  },
+  "restricted_model_continuation": {
+    "model": "deepseek/deepseek-v4.1-flash-1017",
+    "authorization": "User restricted the key and live validation to this exact model; USD 10 maximum retained.",
+    "source": "ab33636",
+    "affected_provider_cases": 65,
+    "typecheck": "passed",
+    "native_https_public_preflight": "passed",
+    "billable_dispatches": 0,
+    "runtime_configuration": "User verified correct key and repeatedly published poliscope; old runtime remains revision 1/no bindings in all execution contexts. No further credential setup is requested.",
+    "report": "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz",
+    "report_sha256": "dd89f54fd2bc6d9c4dec412f4bcdd7322e3bda9ef8cc775da5d12427d42b5347",
+    "tokenizer_sha256": "c90dfa01249db1be4245780a052ede752e1361c612ac6d08e2bdada7d599476b",
+    "tokenizer_bytes": 6367257,
+    "affected_packaged_cases": 6,
+    "native_both_targets": "passed",
+    "native_workflow": "https://github.com/playa77/poliscope/actions/runs/41312619335",
+    "native_source": "ab3363651b322fa747f2d3b3fc22365aa2a69c4b",
+    "diagnostic_record": "docs/roadmap/execution/WP-055-runtime-attachment.json"
+  },
+  "final_gate_continuation": {
+    "offline_g7_subcases_with_unique_executed_targets": 29,
+    "total_g7_subcases": 30,
+    "live_case_unrun": "E2E-013",
+    "selection": "docs/roadmap/execution/WP-055-selection.json",
+    "execution_review": "docs/roadmap/execution/WP-055-gate-review.json",
+    "engine_composed_cases_passed": 9,
+    "affected_packaged_cases_passed": 8,
+    "inspection": "Source/test hashes refreshed with affected passing reports; unchanged production runtime reviewed separately from test title updates. No identical-candidate full-run inference.",
+    "typecheck": "passed",
+    "roadmap": "58 tests and 76 subtests passed",
+    "retry_interval_seconds": 300,
+    "timer_journal": "artifacts/wp-055-retry/attempts.jsonl",
+    "user_credential_step": "complete; no re-entry or republication requested",
+    "paid_dispatches": 0,
+    "acceptance": "not_established"
+  },
+  "final_continuation": {
+    "live": "docs/roadmap/execution/WP-055-live-review.json",
+    "acceptance_review": "docs/roadmap/execution/WP-055-acceptance.json",
+    "final_reports": [
+      "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+      "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+      "docs/roadmap/execution/evidence/WP-055/portable-history.xml.gz",
+      "docs/roadmap/execution/evidence/WP-055/glm-preparation.xml.gz",
+      "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz"
+    ],
+    "source_reuse": "No engine/contracts/content runtime changed from pushed 569965b. Provider compatibility changes have fresh affected tests and rebuilt packaged evidence. Original full-run candidates and historical failures are retained, not relabeled. Final live source-bound evidence was verified before test/docs-only edits.",
+    "remaining_limits": "Model/source gaps match DEC-04; prototype throughput limitations retain prior owner disposition. Native owner keychains/signing and independent review remain unclaimed.",
+    "paid_requests": "24 lifetime dispatches preserved; legacy 19 at USD 0.50 and final five at USD 0.10 reserve exactly the authorized USD 10 maximum. Actual total charge unclaimed.",
+    "final_roadmap": "docs/roadmap/execution/evidence/WP-055/roadmap-final-acceptance.xml.gz",
+    "declaration_and_integrity": "check_review_record, check_roadmap exact selection, check_baseline, audit_static_readiness --check and git diff --check pass",
+    "completeness_audit": {
+      "requirements": {
+        "passed": 1053,
+        "failed": 0,
+        "skipped": 0,
+        "unrun": 0
+      },
+      "scenarios": {
+        "passed": 30,
+        "failed": 0,
+        "skipped": 0,
+        "unrun": 0
+      },
+      "regressions": {
+        "passed": 14
+      },
+      "exact_selected_targets": 40,
+      "source_bound_input": "artifacts/wp055-final-audit-input.json",
+      "output": "artifacts/wp055-final-audit.json",
+      "interpretation": "The completeness auditor intentionally returns acceptance=not_established even with complete evidence. Separate source/oracle/model/native-scope review supplies the acceptance decision in WP-055-acceptance.json; counts alone do not."
+    },
+    "current_native_packages": {
+      "run": "https://github.com/playa77/poliscope/actions/runs/41333014228",
+      "implementation_commit": "64d9aed02f43fc20324d1a6265498d6f1e495ea2",
+      "artifacts": "docs/roadmap/execution/WP-055-owner-checks.md",
+      "conclusions": "Both Windows and Linux native build/install/five-scenario jobs passed. Later documentation/live-test-only changes leave installed application and packaging source identical; authoritative workflow outcomes and artifact links are in the PR."
+    },
+    "retained_budget_floor": {
+      "report": "docs/roadmap/execution/evidence/WP-055/retained-budget-floor.xml.gz",
+      "tests": 2,
+      "result": "passed; malformed legacy state fails before minimum reconciliation, fresh workspace honors exhausted committed allocation",
+      "scope": "Live-test allocation guard only; no application/packaging runtime change or paid rerun."
+    }
+  },
+  "diff_accounting": {
+    "engine_runtime": {
+      "added": 6,
+      "removed": 2,
+      "binary_files": 0
+    },
+    "desktop_runtime": {
+      "added": 73,
+      "removed": 13,
+      "binary_files": 0
+    },
+    "tests_and_helpers": {
+      "added": 1056,
+      "removed": 12,
+      "binary_files": 0
+    },
+    "fixtures": {
+      "added": 606,
+      "removed": 68,
+      "binary_files": 0
+    },
+    "generated_contracts": {
+      "added": 0,
+      "removed": 0,
+      "binary_files": 0
+    },
+    "documentation_and_evidence": {
+      "added": 26044,
+      "removed": 154,
+      "binary_files": 41
+    },
+    "build_and_configuration": {
+      "added": 5,
+      "removed": 0,
+      "binary_files": 0
+    }
+  }
+}

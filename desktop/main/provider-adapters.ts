@@ -15,9 +15,25 @@ const strings = (v: unknown, limit = 64): string[] | null => {
 };
 const pricing = (value: unknown): Record<string, string> | null => {
   if (value == null) return null;
-  const entries = Object.entries(object(value));
-  if (entries.length > 64 || entries.some(([k,v]) => { text(k); return typeof v !== 'string' || !/^-?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/.test(v) || v.length > 256; })) throw new Error('Invalid pricing');
-  return Object.fromEntries(entries) as Record<string,string>;
+  const entries = Object.entries(object(value)).filter(([key, rate]) => {
+    // Endpoint discount is a numeric annotation, not a billable token rate.
+    // Preserve it in raw_json without mixing it into normalized rate strings.
+    if (key !== 'discount') return true;
+    if (typeof rate !== 'number' || !Number.isFinite(rate) || rate < 0 || rate > 1) throw new Error('Invalid discount');
+    return false;
+  });
+  if (entries.length > 64) throw new Error('Invalid pricing');
+  // OpenRouter now supplies structured time-dependent overrides. Retain those
+  // in raw_json but withhold a flat estimate: selecting a base price could
+  // understate exposure at another time. Unknown structured extensions likewise
+  // cannot invalidate unrelated catalog rows or silently become a price.
+  let structured = false;
+  for (const [key, rate] of entries) {
+    text(key);
+    if (rate !== null && typeof rate === 'object') { structured = true; continue; }
+    if (typeof rate !== 'string' || !/^-?[0-9]+(?:\.[0-9]+)?(?:[eE][+-]?[0-9]+)?$/.test(rate) || rate.length > 256) throw new Error('Invalid pricing');
+  }
+  return structured ? null : Object.fromEntries(entries) as Record<string,string>;
 };
 const unknown = (): ModelMetadata['capabilities'] => ({ text:'unknown', image:'unknown', audio:'unknown', video:'unknown', tools:'unknown', structured_output:'unknown', reasoning:'unknown' });
 const has = (values: string[] | null, value: string): 'unknown' | 'supported' | 'unsupported' => values === null ? 'unknown' : values.includes(value) ? 'supported' : 'unsupported';

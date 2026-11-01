@@ -1,0 +1,322 @@
+{
+  "workflow": {
+    "version": 1,
+    "package": "WP-055",
+    "prerequisite": "WP-050-live",
+    "model": {
+      "id": "z-ai/glm-5.3-flash",
+      "source": "openrouter:/models",
+      "capabilities": {
+        "text": "supported",
+        "image": "supported",
+        "audio": "unsupported",
+        "video": "supported",
+        "tools": "supported",
+        "structured_output": "supported",
+        "reasoning": "supported"
+      },
+      "pricing": {
+        "prompt": "0.0000000285",
+        "completion": "0.0000000923",
+        "input_cache_read": "0.0000000285"
+      }
+    },
+    "started": "2026-11-01T15:51:06.336Z",
+    "authorized_budget_usd": "10",
+    "per_dispatch_exposure_usd": "0.1",
+    "maximum_dispatches": 100,
+    "maximum_run_reserved_exposure_usd": "10",
+    "privacy": "Isolated synthetic world, selected public facts, no private user data; credential main-only/session-only.",
+    "cases": [
+      {
+        "count": 452,
+        "model": "z-ai/glm-5.3-flash",
+        "id": "native-public-catalog",
+        "status": "passed"
+      },
+      {
+        "key_storage": "session-only",
+        "account_metadata": "allowlisted; account limits not exported",
+        "id": "authenticated-metadata",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "05282a437eade666c9d1575fb1e0302e6201074e9354ea9d421a9d0633edca1a",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 40,
+          "total_tokens": 68,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 4,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000242"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "response_format": "json_object",
+        "id": "whole-json-generation-and-usage",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "60cdb5c7eab50c47b071a5356a967432d48c414f460115be943da2a25651d8ba",
+        "usage": {
+          "prompt_tokens": 30,
+          "completion_tokens": 42,
+          "total_tokens": 72,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000255"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "id": "streaming-generation",
+        "status": "passed"
+      },
+      {
+        "actual_cost_usd": "0.0000242",
+        "usage_source": "generation-metadata",
+        "deduplicated_ledger": true,
+        "id": "generation-metadata-and-durable-usage",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "05282a437eade666c9d1575fb1e0302e6201074e9354ea9d421a9d0633edca1a",
+        "usage": {
+          "prompt_tokens": 28,
+          "completion_tokens": 40,
+          "total_tokens": 68,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 4,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000242"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "strict_schema": "unsupported in authenticated catalog; verified local rejection without dispatch",
+        "json_object": "validated object returned",
+        "shared_dispatch_with": "whole-json-generation-and-usage",
+        "id": "structured-output",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "c2e3ac47f4a325469c1a2d5f117e463ec943c721986d5d9f09ac4540b7d80526",
+        "usage": {
+          "prompt_tokens": 1184,
+          "completion_tokens": 3,
+          "total_tokens": 1187,
+          "prompt_tokens_details": {
+            "cached_tokens": 1088,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.00004854"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "initial_tools": 1,
+        "separate_dispatch": true,
+        "id": "tools-and-separately-approved-continuation",
+        "status": "passed"
+      },
+      {
+        "response_status": "complete",
+        "diagnostic": "none",
+        "selected_model": "z-ai/glm-5.3-flash",
+        "actual_model": "z-ai/glm-5.3-flash",
+        "actual_provider": "Z.AI",
+        "output_sha256": "60cdb5c7eab50c47b071a5356a967432d48c414f460115be943da2a25651d8ba",
+        "usage": {
+          "prompt_tokens": 30,
+          "completion_tokens": 42,
+          "total_tokens": 72,
+          "prompt_tokens_details": {
+            "cached_tokens": 0,
+            "cache_write_tokens": 0,
+            "audio_tokens": 0,
+            "video_tokens": 0
+          },
+          "completion_tokens_details": {
+            "reasoning_tokens": 0,
+            "audio_tokens": 0,
+            "image_tokens": 0
+          },
+          "cost_observation": "0.0000255"
+        },
+        "exposure_status": "unresolved",
+        "actual_cost": null,
+        "requested_effort": "low",
+        "reasoning_present": false,
+        "shared_dispatch_with": "streaming-generation",
+        "limitation": "Accepted reasoning control does not guarantee that a provider returns visible reasoning text.",
+        "id": "explicit-reasoning",
+        "status": "passed"
+      },
+      {
+        "response_status": "cancelled",
+        "exposure_status": "unresolved",
+        "key_removed": true,
+        "id": "cancel-stream-and-remove-key",
+        "status": "passed"
+      }
+    ],
+    "readiness": false,
+    "unsupported_for_selected_model": [
+      "audio"
+    ],
+    "advertised_but_unvalidated_live": [
+      "image/video input: reviewed context accounting is text/tools only"
+    ],
+    "untested_live": [
+      "other models/providers",
+      "OS-protected native keychain",
+      "provider account hard-cap enforcement"
+    ],
+    "catalog_sha256": "a032b0e7487deb97ff8806e08292052318919714a9b0bb72231c68a2ec5a7fdf",
+    "initial_reserved_policy_units": 95,
+    "remaining_bounded_dispatches": 5,
+    "authenticated_model_capabilities": {
+      "text": "supported",
+      "image": "supported",
+      "audio": "unsupported",
+      "video": "supported",
+      "tools": "supported",
+      "structured_output": "unsupported",
+      "reasoning": "supported"
+    },
+    "authenticated_model_parameters": [
+      "include_reasoning",
+      "max_tokens",
+      "reasoning",
+      "reasoning_effort",
+      "response_format",
+      "temperature",
+      "tool_choice",
+      "tools",
+      "top_k",
+      "top_p"
+    ],
+    "generation_metadata_diagnostic": {
+      "code": 200,
+      "id_matches": true,
+      "model_matches": false,
+      "canonical_model_matches": true,
+      "model_absent": false,
+      "cost_present": true
+    },
+    "usage_lookup_failures": [
+      "Usage lookup unavailable"
+    ],
+    "response_ledger_actual_cost": "0.0000242",
+    "response_ledger_status": "complete",
+    "tool_request_observation": {
+      "response_status": "tool-calls",
+      "diagnostic": "none",
+      "selected_model": "z-ai/glm-5.3-flash",
+      "actual_model": "z-ai/glm-5.3-flash",
+      "actual_provider": "Z.AI",
+      "output_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "usage": {
+        "prompt_tokens": 1102,
+        "completion_tokens": 72,
+        "total_tokens": 1174,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "cache_write_tokens": 0,
+          "audio_tokens": 0,
+          "video_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "image_tokens": 0
+        },
+        "cost_observation": "0.0002013"
+      },
+      "exposure_status": "unresolved",
+      "actual_cost": null,
+      "tool_calls": 1
+    },
+    "status": "passed",
+    "finished": "2026-11-01T15:51:33.864Z",
+    "dispatches_lifetime": 24,
+    "reserved_policy_units": 100
+  },
+  "source_bound_check": {
+    "version": 1,
+    "suite": "live",
+    "candidate": "caf59dc9597e46e368246fd776a47920c763cc1c7253c8f19af7ccac6b7f95c8",
+    "started_at": "2026-11-01T15:51:06.100Z",
+    "finished_at": "2026-11-01T15:51:34.070Z",
+    "exit_code": 0,
+    "status": "passed",
+    "readiness": false,
+    "results": {
+      "tests": 1,
+      "failed": 0,
+      "skipped": 0,
+      "skip_reasons": [],
+      "cases": [
+        {
+          "file": null,
+          "class": "tests.live.openrouter",
+          "name": "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation"
+        }
+      ]
+    },
+    "report_sha256": "eb7baba92dcc40c01aff18baab27721ec6ddf9e7553b403970a51b2059159141"
+  },
+  "retained_junit": "docs/roadmap/execution/evidence/WP-055/live-attempt-15.xml.gz",
+  "retained_junit_sha256": "83a89a32a9d66428be63e22822d5bb02ac5fa62c7e3f9f625bf40930d201db8d",
+  "verification": "Original candidate, raw JUnit hash and parsed results verified before subsequent source edits; original outcome preserved."
+}

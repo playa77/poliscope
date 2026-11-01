@@ -1,4 +1,4 @@
-import { wireMessages, mediaTokenBound } from './assistant-content';
+import { wireMessages, mediaTokenBound, requiresProviderAffinity } from './assistant-content';
 /** Pure main-only construction. This module cannot obtain keys or dispatch.
  * WP-045 consumes these plans only after sharing and spend gates are available.
  */
@@ -76,7 +76,13 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
   if(outputs.includes('image'))fail('unsupported-control','image-api-required');
   if(outputs.includes('audio')&&ids.some(id=>!['openai/gpt-4o-audio-preview','openai/gpt-4o-mini-audio-preview','openai/gpt-audio'].includes(id)))fail('unsupported-control','audio-format-unverified');
   if(outputs.includes('audio')&&(compatible||!input.stream||input.tools?.length||input.response_format.type!=='text'))fail('unsupported-control','audio-stream-required');
-  if(input.messages.some(m=>m.reasoning_details_json!=null)&&(compatible||ids.length!==1||r.allow_fallbacks||r.only.length!==1))fail('unsupported-control','reasoning_details');
+  const history = input.messages.flatMap(m => m.reasoning_details_json == null ? [] : [m.reasoning_details_json]);
+  if (history.length) {
+    if (compatible || ids.length !== 1 || r.allow_fallbacks) fail('unsupported-control','reasoning_details');
+    let affinity: boolean;
+    try { affinity = history.some(text => requiresProviderAffinity(JSON.parse(text))); } catch { fail('invalid-plan'); }
+    if (affinity! && r.only.length !== 1) fail('unsupported-control','reasoning_details');
+  }
   for(const id of ids)try{mediaTokenBound(input.messages,id);}catch{fail('unsupported-control','media-accounting');}
   const body: Record<string,unknown> = { model:p.model, messages:wireMessages(input.messages), stream:input.stream };
   const parameters = new Set<string>();
@@ -115,7 +121,9 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
     selected('tools',tools.map(t => {
       const schema = parseSchema(t.parameters_json);
       if (schema.type !== 'object') fail('invalid-control','tools');
-      return {type:'function',function:{name:t.name,description:t.description,parameters:schema,strict:true}};
+      // Tool calling and strict schema enforcement are separate capabilities.
+      const strict = ids.every(id => evidence.models.find(m => m.id === id)?.capabilities.structured_output === 'supported');
+      return {type:'function',function:{name:t.name,description:t.description,parameters:schema,...(strict ? {strict:true} : {})}};
     }));
     if (!['auto','none','required'].includes(choice) && !tools.some(t => t.name === choice)) fail('invalid-control','tool_choice');
     selected('tool_choice',['auto','none','required'].includes(choice) ? choice : {type:'function',function:{name:choice}});
@@ -130,7 +138,9 @@ export function buildGenerationRequest(view: ProviderView, plan: GenerationPlan,
   }
   if (!compatible) {
     if (!r.require_parameters && parameters.size) fail('parameter-enforcement-required','require_parameters');
-    const provider: Record<string,unknown> = {order:r.order,only:r.only,ignore:r.ignore,allow_fallbacks:r.allow_fallbacks,require_parameters:r.require_parameters};
+    const provider: Record<string,unknown> = {allow_fallbacks:r.allow_fallbacks,require_parameters:r.require_parameters};
+    // An empty selection means no user restriction, not an empty provider set.
+    for (const field of ['order','only','ignore'] as const) if (r[field].length) provider[field] = r[field];
     if (r.data_collection !== 'unknown') provider.data_collection = r.data_collection;
     if (r.zdr != null) provider.zdr = r.zdr;
     if (r.sort != null) provider.sort = r.sort;

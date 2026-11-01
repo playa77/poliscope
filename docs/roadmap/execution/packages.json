@@ -449,7 +449,7 @@
       "acceptance_dependencies": "WP-043, WP-044, WP-045, WP-046, WP-047, WP-048, WP-049",
       "acceptance": "all required application-side capability paths pass mock/integration checks; live evidence supports the stated compatibility claims. Missing credentials/credits or a denied capability is recorded as a concrete external prerequisite, not quietly marked passed. A full OpenRouter claim is blocked by required unverified live behavior; offline capability remains separately demonstrable. Concurrent dispatch and continuation cannot bypass granted spend or sharing scope even under cancellation and late metadata.",
       "source": "docs/roadmap/work_packages.md",
-      "status": "not started"
+      "status": "verified within dated live compatibility scope; completed with WP-055; solo-validated; agent review deferred"
     },
     "WP-051": {
       "title": "Scale fixtures, dependency caching and responsiveness budgets",
@@ -494,7 +494,7 @@
       "acceptance_dependencies": "WP-032, WP-037, WP-038, WP-040, WP-041, WP-050, WP-051, WP-052, WP-053, WP-054; full DOM-01\u2013DOM-12",
       "acceptance": "every requirement row has a current evidence link and owner; all required gates pass with no unexplained failures/unrun required checks. Coverage gaps are honestly named and match DEC-04; no trivial unit/format check substitutes for the intended functional workflow. Confirmed application defects remain separate from missing model mechanisms or external test prerequisites. Gate manifests and retained evidence identify the same candidate, including explicit redaction/unavailability and declared deferred review.",
       "source": "docs/roadmap/work_packages.md",
-      "status": "not started"
+      "status": "verified; solo-validated; agent review deferred; publication pending"
     },
     "WP-056": {
       "title": "Release candidate freeze, documentation and handoff",

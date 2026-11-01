@@ -85,3 +85,15 @@ it('opaque tool history is included only in an explicitly reviewed continuation;
  const child=await app.request({action:'continue',request_id:root.request_id});expect(sent).toHaveLength(1);expect(JSON.parse(child.payload_json).messages.at(-2).reasoning_details).toEqual([{type:'reasoning.encrypted',index:0,data:'OPAQUE-CANARY'}]);expect(child.reasoning).toBe('');
  await app.request({action:'delete',request_id:root.request_id});for(const id of [root.request_id,child.request_id])await expect(app.request({action:'send',request_id:id})).rejects.toThrow();expect(sent).toHaveLength(1);
 });
+
+it('automatic OpenRouter routing preserves portable reasoning text while opaque authority still requires provider affinity',()=>{
+ const plain=[{type:'reasoning.text',index:0,format:'unknown',text:'Unverified reasoning; never a world fact'},{type:'reasoning.summary',index:1,summary:'Unverified summary'}];
+ const f=builder();f.view.profile.routing.only=[];
+ f.plan.messages=[{role:'assistant',content:' ',reasoning_details_json:JSON.stringify(plain)},{role:'user',content:'Continue on this exact model'}];
+ expect(JSON.parse(f.build().json).messages[0].reasoning_details).toEqual(plain);
+ expect(JSON.parse(f.build().json).provider).not.toHaveProperty('only');
+ for(const extra of [{type:'reasoning.encrypted',data:'opaque'},{...plain[0],signature:'signed'},{...plain[0],id:'provider-reference'},{...plain[0],format:'provider-native'},{...plain[0],extension:'unknown'},{...plain[0],data:'opaque'}]) {
+  f.plan.messages[0].reasoning_details_json=JSON.stringify([plain[0],extra]);expect(f.build).toThrow('unsupported-control');
+ }
+ f.plan.messages[0].reasoning_details_json=JSON.stringify(plain);f.view.profile.routing.allow_fallbacks=true;expect(f.build).toThrow('unsupported-control');
+});

@@ -1517,3 +1517,12 @@ No scientific, Windows or G5/M5 acceptance is inferred.
 ## WP-050 authorized offline evidence
 
 The user authorized [WP-050-offline](WP-050-offline.md): deterministic provider checks, dated official contract inspection and the public compatibility table. The [full WP-050 parent](WP-050.md) remains active; live harness/run and G6/M6 acceptance are blocked pending separately authorized bounded checks with securely configured credentials. No live model/provider support is certified.
+
+**WP-055 start, 2026-11-01:** [Whole-product gate](WP-055.md) is allocated on
+`codex/wp-055-product-gate` from local merge `d02db9e`. Acceptance remains open:
+WP-050 live-provider prerequisites and current frozen leaf/G7 evidence are
+incomplete. The initial proxy/display/subprocess blockers are repaired; full engine/unit/packaged runs and both native target workflows pass. Secure live-provider key binding is still pending.
+The cumulative auditor inventories every leaf, exact subcase, RT obligation and
+twelve-domain source coverage without promoting historical plans to passes.
+See [actual validation](WP-055-validation.json). Route:
+**solo-validated; agent review deferred**. WP-056 is not ready.

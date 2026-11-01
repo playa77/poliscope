@@ -44,3 +44,22 @@ it('rejects incomplete listings and counts raw UTF-8 bytes without discarding pr
   expect(() => openRouterAdapter.models({data:[{id:'unicode',extension:'語'.repeat(12000)}]},time)).toThrow('too large');
   expect(() => openRouterAdapter.endpoints({data:{id:'vendor/model',endpoints:[],extension:'語'.repeat(50000)}},'vendor/model',time)).toThrow('too large');
 });
+
+it('retains scheduled pricing as raw evidence without poisoning the catalog or understating a flat estimate', async () => {
+  const { default: current } = await import('../fixtures/providers/openrouter-live-catalog-2026-11-01.json');
+  const models = openRouterAdapter.models(current, time);
+  const scheduled = models.find(m => m.id === 'deepseek/deepseek-v4.1-flash-1017')!;
+  const flat = models.find(m => m.id === 'deepseek/deepseek-v3.2')!;
+  expect(scheduled.pricing).toBeNull();
+  expect(JSON.parse(scheduled.raw_json).pricing.overrides.length).toBeGreaterThan(0);
+  expect(flat.pricing?.prompt).toBe('0.00000026');
+  expect(flat.capabilities.tools).toBe('supported');
+});
+
+it('retains numeric endpoint discounts as raw annotations while rejecting malformed token rates', () => {
+  const data = {id:'vendor/model', endpoints:[{provider_name:'Synthetic', pricing:{prompt:'0.0000001',completion:'0.0000005',discount:0.51}}]};
+  const result = openRouterAdapter.endpoints({data},data.id,time);
+  expect(result.providers[0].pricing).toEqual({prompt:'0.0000001',completion:'0.0000005'});
+  expect(JSON.parse(result.raw_json).endpoints[0].pricing.discount).toBe(0.51);
+  for (const discount of [-1,2,'0.5',null]) expect(() => openRouterAdapter.endpoints({data:{...data,endpoints:[{provider_name:'Synthetic',pricing:{discount}}]}},data.id,time)).toThrow();
+});

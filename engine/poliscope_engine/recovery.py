@@ -75,7 +75,9 @@ def backup(source, destination):
                 check_schema(target)
             finally:
                 target.close()
-        with destination.open('rb') as stream:
+        # The newly created snapshot is ours; Windows cannot flush a read-only
+        # descriptor. r+b preserves all bytes while permitting durable flush.
+        with destination.open('r+b') as stream:
             os.fsync(stream.fileno())
         if os.name != 'nt':
             descriptor = os.open(destination.parent, os.O_RDONLY)

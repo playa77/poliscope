@@ -88,7 +88,12 @@ Only a successfully completed response can supply continuation details.
 The main registry retains these details; renderer cannot supply arbitrary message
 history or opaque authority. A tool continuation requires the original model's
 reported identity, the same endpoint/profile revision, one selected model and
-one explicitly pinned provider with fallbacks disabled. Opaque details occur in
+fallbacks disabled. Standardized unsigned `reasoning.text`/`reasoning.summary`
+details without native references, signatures, data, extensions or provider
+formats can retain automatic OpenRouter routing on that exact model. Encrypted,
+signed or provider-specific details additionally require one explicitly pinned
+provider; unknown formats remain bound. This preserves production key guardrails
+without choosing a provider on behalf of the player. Opaque details occur in
 the assistant history message, separately from content, and their exact serialized
 bytes are included in the next payload review and disclosure accounting. Unknown
 identity or incompatible routing is a new-request requirement. Model/profile

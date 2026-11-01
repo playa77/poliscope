@@ -45,3 +45,15 @@ it('rejects private ASAR files and mismatched packaged identity', async () => {
     expect(mismatch.stderr).toContain('Packaged application identity mismatch');
   } finally { await rm(directory, { recursive: true, force: true }); }
 }, 30000);
+
+it('accepts host-form ASAR paths on Windows and Linux without admitting private or prefix-lookalike entries', () => {
+  const { bundlePathsAreSafe } = createRequire(import.meta.url)('../../scripts/bundle_paths.mjs');
+  for (const separator of ['/', String.fromCharCode(92)]) {
+    const paths = ['/package.json', '/.vite', '/.vite/build/main.cjs'].map(p => p.replaceAll('/', separator));
+    expect(bundlePathsAreSafe(paths, separator)).toBe(true);
+    for (const denied of ['/.env', '/node_modules/private', '/.vite-private/key', '/desktop/main.ts']) {
+      expect(bundlePathsAreSafe([...paths, denied.replaceAll('/', separator)], separator)).toBe(false);
+    }
+  }
+  expect(bundlePathsAreSafe(['/package.json'], ':')).toBe(false);
+});

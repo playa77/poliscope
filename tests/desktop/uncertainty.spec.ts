@@ -5,7 +5,7 @@ import { join, resolve } from 'node:path';
 const expect = baseExpect.configure({ timeout: 20000 });
 const executablePath = resolve(`out/Poliscope-${process.platform}-${process.arch}/poliscope${process.platform === 'win32' ? '.exe' : ''}`);
 
-test('WP-038 keyboard uncertainty, explicit probability and sensitivity keep saved inputs intact', async () => {
+test('E2E-010.b keyboard uncertainty explicit probability and sensitivity keep saved inputs intact', async () => {
   test.setTimeout(120000);
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-uncertainty-ui-'));
   const worlds = join(directory, 'worlds'); await mkdir(worlds);

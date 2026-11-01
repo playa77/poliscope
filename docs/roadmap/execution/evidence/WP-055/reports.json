@@ -1,0 +1,306 @@
+{
+  "version": 1,
+  "scope": "Actual executed synthetic reports, with raw and compressed digests. Full and affected counts overlap; historical failures remain separately retained. Source impact reuse is explicit.",
+  "reports": [
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/engine.xml.gz",
+      "compression": "gzip",
+      "sha256": "8ec53671dd9ee4e7718db9adaa8fc01a8b56fceead019a27b08037ba6bb5d3ca",
+      "uncompressed_sha256": "627c915ec144a91ba433d604d2809d55109967efd490dda0f0fbd2279ef8a937",
+      "results": {
+        "tests": 4990,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz",
+      "compression": "gzip",
+      "sha256": "8d344d9b7106222f261f01465550d2d1cfd7eb3740872adec8a455cbef6401f7",
+      "uncompressed_sha256": "d2e0463b000c29fa60516369bec126ed79ef25176d847be8eaaca460c611ea91",
+      "results": {
+        "tests": 445,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "f4309f883937c7913566393d3eb11912ff04f6b8ba31025532bc0a76bc3fbde3",
+      "uncompressed_sha256": "925fa11d04f1a2340ac1084096171cf6e87db9c1453d7b5f3d9074304b05b6d2",
+      "results": {
+        "tests": 447,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
+      "compression": "gzip",
+      "sha256": "d1aa669866d88d70402b77f9d0c4fc5799d4585101405c1a2cc3af34eff313ee",
+      "uncompressed_sha256": "e6a818f7278c5bcbe244ef1ed53112612123de1f1d30d06959c9cc86a2cc6211",
+      "results": {
+        "tests": 30,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "b3fe184ddd9054d2092be0c770120439885ec44c248970e8c786715c3adf7d3d",
+      "uncompressed_sha256": "34ea0903d038591ad1e5845591262cab5f27afc0fd349695c99ea3b261f5679d",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
+      "compression": "gzip",
+      "sha256": "f67f4b1c6e3b1aeef6b4393bdb3c05d735b436837a3d50c1e8951aabad0dfda5",
+      "uncompressed_sha256": "1dbb7e30ef7d950bbe3a97dc887bd2ad1d29b5af40c725f1fb1671fd6849ad2a",
+      "results": {
+        "tests": 17,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/windows-extract-regression.xml.gz",
+      "compression": "gzip",
+      "sha256": "3190e240928d65572fb35a7d5c2c6eb9d9d50377e0a4ef9272ec3fc4d4372ea5",
+      "uncompressed_sha256": "63de1a4352fc441804ba70ad642d097365f4354b1b882b716c5b6a8f3b400885",
+      "results": {
+        "tests": 3,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/roadmap-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "fc236d60eb5fb674ab611e924e04f3a71f1561935b2f2ee37d6f464da4f51b33",
+      "uncompressed_sha256": "de1e7b083930052fe570c11bfeec00483fe39b01e3a39a05613f346040a5a099",
+      "results": {
+        "tests": 58,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/engine-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "67a5dc4c25aa105630a42de44e336187c4ae4ac9fd76442d46086d546962faf7",
+      "uncompressed_sha256": "1fd3993915a162b16c4d4f45f52f4e51ca1c8930b73190fdc4ae6081f6c7ac92",
+      "results": {
+        "tests": 4998,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz",
+      "compression": "gzip",
+      "sha256": "1141a4086d209aa93a67bf1599350c0939d8b9d2aa738aba96ea74ca1c109ed4",
+      "uncompressed_sha256": "12df6043c6e020af456908a0781390ebd5a916e85b85869c8748d18b8b22afbb",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/windows-flush-regression.xml.gz",
+      "compression": "gzip",
+      "sha256": "d568d98a73f311052caa5d38724d74d9158d9827383000020f42fef02da3bd25",
+      "uncompressed_sha256": "7f7b2b2f5879028438fbb0bb2bd5475ede000465c51cd55d999f3d92908c88bb",
+      "results": {
+        "tests": 68,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/audit-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "91354919126be802fe396142b5fe9fbb3623db82395d7ed9ff0499f9e001f050",
+      "uncompressed_sha256": "a9cf36287802f3af2e9e9d8b907f77d31fd127709299e3722e815c1b124f584f",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/release-gate.xml.gz",
+      "compression": "gzip",
+      "sha256": "27e96bfa275f7ec3d6dd5d33a50e4c250e6c404ad381933684a3dc34770d6cd6",
+      "uncompressed_sha256": "59f0a5d46b21781e67bfc34fc8b656483b0d2be8f093a1337091061f1dc1600b",
+      "results": {
+        "tests": 9,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz",
+      "compression": "gzip",
+      "sha256": "841dc8e900d0d18003145654e5125a518b042c5fc4efcb2db3afc01213550f9b",
+      "uncompressed_sha256": "002f625d285b03ff8f0bc6cb76631736d8ce7ae073849d0e82779d8e692953d5",
+      "results": {
+        "tests": 8,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "67b622e77d64726aeb01a7a1d618fec5314c0b1462155aa969c70724a4ea3bdf",
+      "uncompressed_sha256": "8b142cae7053da30e2ce1847c8c8618b0d160a9badd7561e73b68d7364214115",
+      "results": {
+        "tests": 198,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-focused-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "fb626001bee26348951a7830d6df2d08fd918688e03811af1631abc0c675820e",
+      "uncompressed_sha256": "64a2f2bc2865de1dfb16ee80ce9835bbdabc6f3b5ec061a682bd64453623a297",
+      "results": {
+        "tests": 66,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "7878179449993cd6e61e2a172d3757d1b1013429f5551ddfa6a0c75a9dc60f77",
+      "uncompressed_sha256": "2a1061e532ae920f6e278fda654e478b6a3b730f2eb577e9f73144337eca5359",
+      "results": {
+        "tests": 5,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz",
+      "compression": "gzip",
+      "sha256": "2633db634f408ec7ffb18ed1ec6f753cf531e9c1b4b984324fc9b6fa1feb5281",
+      "uncompressed_sha256": "ed1d5f0276e6371614b8beeecec1f617bd6d728b7370b4261475bb083473ede7",
+      "results": {
+        "tests": 1,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+      "compression": "gzip",
+      "sha256": "d12644cc4ceb20794a1db70af779d6b9fd3cba34ef8b8bc319612a5be8f583bb",
+      "uncompressed_sha256": "df29b07de5f0fe96aaf7b8f5f0ee7898d8d3ae0846dc51a72ddb8f4f3aa53e56",
+      "results": {
+        "tests": 203,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+      "compression": "gzip",
+      "sha256": "06f7ea76596b7fd5173152641b95ecbb07ceef0a30d67336b8d908ac23f503a8",
+      "uncompressed_sha256": "8a7d502c3797acfacab55b6f0303e31bf9195daac7767d1a00ccba722ef21429",
+      "results": {
+        "tests": 20,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/portable-history.xml.gz",
+      "compression": "gzip",
+      "sha256": "a2fa1d103354d1b54b91015fe4efbe292fa89f5e719cf368f05a04e85893b432",
+      "uncompressed_sha256": "6c5d9d0a943f4e2f6b4e86611b42eae7743382ec17fbf41f1ff044678de86fbd",
+      "results": {
+        "tests": 60,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/glm-preparation.xml.gz",
+      "compression": "gzip",
+      "sha256": "f0ea3334c112a79cc7476426f2b60eacb75bbffd0f75ddde413cbfc2fae539cc",
+      "uncompressed_sha256": "6edb4bf0897cbafaa3b770b5eefc4a87aa446b397fcdafb5998a512dd85f2abb",
+      "results": {
+        "tests": 14,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+      "compression": "gzip",
+      "sha256": "e6aa3a82aec61dc164186d3f64a9a789b2db24425fc7d6ab0b1c3d94ea13c546",
+      "uncompressed_sha256": "c790ec0ffe2359fba26ebe3f5058fa875f62de47dce65473043846cc14e56a10",
+      "results": {
+        "tests": 6,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/roadmap-final-acceptance.xml.gz",
+      "compression": "gzip",
+      "sha256": "64bec728eb41cb3e678428c2868b50542846bee8e030243db0b3b7ced638bcbb",
+      "uncompressed_sha256": "fb1b4f137496c9d4f1685d85d072c7c058cfada16974c9b96b40f3eb1dffaa53",
+      "results": {
+        "tests": 58,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    },
+    {
+      "report": "docs/roadmap/execution/evidence/WP-055/retained-budget-floor.xml.gz",
+      "compression": "gzip",
+      "sha256": "06f951a56332d1288c2423951b19fda2263a863d665b21ead760f600465825ca",
+      "uncompressed_sha256": "18f29fa870fbe8c984b0b99eb9e0514d318ad3c12614061c8bc0875c914b7ff7",
+      "results": {
+        "tests": 2,
+        "failed": 0,
+        "skipped": 0,
+        "skip_reasons": []
+      }
+    }
+  ]
+}

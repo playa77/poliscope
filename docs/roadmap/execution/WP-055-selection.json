@@ -1,0 +1,226 @@
+{
+  "version": 1,
+  "gate": "G7",
+  "cases": [
+    {
+      "id": "E2E-001",
+      "service": "production",
+      "tests": [
+        "E2E-001 offline keyboard production create preview cancel apply fork compare trace and reopen"
+      ]
+    },
+    {
+      "id": "E2E-002.a",
+      "service": "production",
+      "tests": [
+        "E2E-002.a unanswered choices editable conditions domain navigation and cold reopen"
+      ]
+    },
+    {
+      "id": "E2E-002.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-002.b target observations leave allocation unchanged]"
+      ]
+    },
+    {
+      "id": "E2E-002.c",
+      "service": "production",
+      "tests": [
+        "E2E-002.c persisted goals and private notes preserve physics, historical classification and active deletion"
+      ]
+    },
+    {
+      "id": "E2E-003.a",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-003.a finite stock labor loss reservation import access and precision]"
+      ]
+    },
+    {
+      "id": "E2E-003.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-003.b all-domain finite production access and independent shortages]"
+      ]
+    },
+    {
+      "id": "E2E-004.a",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-004.a canonical overlap and unresolved policies are order invariant]"
+      ]
+    },
+    {
+      "id": "E2E-004.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-004.b all-domain canonical overlap and unresolved authority conflicts]"
+      ]
+    },
+    {
+      "id": "E2E-005",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-005 stale tampered duplicate lost reply status cross context and retained futures]",
+        "E2E-005 packaged undo redo retained futures historical fork and cold reopen",
+        "E2E-005 packaged interview cancel apply stale rejection qualitative proposal and reopen"
+      ]
+    },
+    {
+      "id": "E2E-006.a",
+      "service": "production",
+      "tests": [
+        "E2E-006.a actual child crash failed save confirmed identity and restart",
+        "E2E-006.a cold protocol mismatch preserves store and enables only trusted historical reads",
+        "E2E-006.a packaged navigation binds branch retained revision and scope"
+      ]
+    },
+    {
+      "id": "E2E-006.b",
+      "service": "production",
+      "tests": [
+        "E2E-006.b packaged branch switch streaming snapshots spending restart cancellation and safe errors"
+      ]
+    },
+    {
+      "id": "E2E-006.c",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-006.c disk-full across actual revision timeline archive and recovery paths]",
+        "test_offline_gate[E2E-006.c read-only across actual revision timeline archive and recovery paths]",
+        "E2E-006.c forced application exit after rejected import and failed export preserves confirmed history"
+      ]
+    },
+    {
+      "id": "E2E-007",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-007 mixed rates authored events named stochastic draws crashes and checkpoint replay]"
+      ]
+    },
+    {
+      "id": "E2E-008",
+      "service": "production",
+      "tests": [
+        "E2E-008 all-domain education retained quantities atlas matrix world and source share one revision"
+      ]
+    },
+    {
+      "id": "E2E-009",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-009 approved future deltas conflicts disruptions and retrospective forks preserve state]",
+        "E2E-009 timeline controls retain cancelled boundaries and fork a past state without rewriting parent"
+      ]
+    },
+    {
+      "id": "E2E-010.a",
+      "service": "production",
+      "tests": [
+        "E2E-010.a compatible incompatible and unavailable retained comparisons"
+      ]
+    },
+    {
+      "id": "E2E-010.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-010.b actual sensitivity capacity repeated variables common cause and qualified gaps]",
+        "E2E-010.b keyboard uncertainty explicit probability and sensitivity keep saved inputs intact"
+      ]
+    },
+    {
+      "id": "E2E-011",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-011 ordinary reduced archives historical privacy and Markdown CSV round trip]",
+        "E2E-011 keyboard portable export/import privacy historical data and dialog cancel"
+      ]
+    },
+    {
+      "id": "E2E-012.a",
+      "service": "production",
+      "tests": [
+        "E2E-012.a packaged sender schema and passive hostile resources"
+      ]
+    },
+    {
+      "id": "E2E-012.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-012.b trusted registry bounded expressions units operators and state writes]"
+      ]
+    },
+    {
+      "id": "E2E-012.c",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-012.c archive paths types hashes bounds and interrupted import reject transactionally]"
+      ]
+    },
+    {
+      "id": "E2E-012.d",
+      "service": "production",
+      "tests": [
+        "E2E-012.d combined hostile attachment prompt provider artifact import and recovery"
+      ]
+    },
+    {
+      "id": "E2E-013",
+      "service": "production",
+      "tests": [
+        "E2E-013 authenticated exact-model metadata generation streaming schema tools reasoning usage and cancellation"
+      ]
+    },
+    {
+      "id": "E2E-014",
+      "service": "production",
+      "tests": [
+        "E2E-014 packaged grounded manifest private injection denial parallel tools and gated continuation"
+      ]
+    },
+    {
+      "id": "E2E-015.a",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-015.a retained closure survives cache eviction and absent runtime]"
+      ]
+    },
+    {
+      "id": "E2E-015.b",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-015.b timeline evidence and completed outcomes survive eviction checkpoint changes and reopen]"
+      ]
+    },
+    {
+      "id": "E2E-015.c",
+      "service": "production",
+      "tests": [
+        "test_offline_gate[E2E-015.c absent mechanisms legacy schemas model migration and interrupted restore preserve originals]",
+        "E2E-015.c cold discovery comparison backup restore cancellation and safe diagnostics"
+      ]
+    },
+    {
+      "id": "E2E-016.a",
+      "service": "production",
+      "tests": [
+        "E2E-016.a offline keyboard production create preview cancel apply fork compare trace and reopen"
+      ]
+    },
+    {
+      "id": "E2E-016.b",
+      "service": "production",
+      "tests": [
+        "E2E-016.b keyboard learner inquiry report focus navigation and zoom"
+      ]
+    },
+    {
+      "id": "E2E-017",
+      "service": "production",
+      "tests": [
+        "E2E-017 packaged runtime without interpreter PATH preserves data across cold restart"
+      ]
+    }
+  ]
+}

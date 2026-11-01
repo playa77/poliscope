@@ -4,7 +4,7 @@ import { mkdtemp, rm } from 'node:fs/promises';
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 
-test('WP-054 packaged runtime without interpreter PATH preserves data across cold restart', async () => {
+test('E2E-017 packaged runtime without interpreter PATH preserves data across cold restart', async () => {
   test.setTimeout(90000);
   const directory = await mkdtemp(join(tmpdir(), 'poliscope-native space-'));
   const base = resolve(process.env.POLISCOPE_NATIVE_APP ?? `out/Poliscope-${process.platform}-x64`);
