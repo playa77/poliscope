@@ -78,30 +78,40 @@ function App() {
   }
   const saved = result && 'result' in result ? result.result : undefined;
   const engineText = status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine';
+  const statusNode = (
+    <div className="flex items-start gap-2 px-2 py-1">
+      <span aria-hidden className={status.isError ? 'mt-1.5 size-2 shrink-0 rounded-full bg-destructive' : 'mt-1.5 size-2 shrink-0 rounded-full bg-success'} />
+      <p role="status" className="min-w-0 break-words text-[11px] leading-tight text-muted-foreground">{engineText}</p>
+    </div>
+  );
+  const navigationNode = (
+    <>
+      {NAV.map((section) => (
+        <NavGroup key={section.group} label={section.group}>
+          {section.items.map((item) => (
+            <NavItem key={item.view} label={item.label} accessibleName={item.name} icon={item.icon} active={view === item.view}
+              disabled={draft} onSelect={() => setView(item.view)} />
+          ))}
+        </NavGroup>
+      ))}
+    </>
+  );
   return (
     <AppShell
       skipLink={<a className="skip-link" href="#sandbox-heading" onClick={event => { event.preventDefault(); document.getElementById('sandbox-heading')?.focus(); }}>Skip to society workspace</a>}
       brand={<Brand title="Poliscope" subtitle="Local society sandbox" icon={Globe2} />}
-      navigation={
-        <>
-          {NAV.map((section) => (
-            <NavGroup key={section.group} label={section.group}>
-              {section.items.map((item) => (
-                <NavItem key={item.view} label={item.label} accessibleName={item.name} icon={item.icon} active={view === item.view}
-                  disabled={draft} onSelect={() => setView(item.view)} />
-              ))}
-            </NavGroup>
-          ))}
-        </>
-      }
-      status={
-        <div className="flex items-start gap-2 px-2 py-1">
-          <span aria-hidden className={status.isError ? 'mt-1.5 size-2 shrink-0 rounded-full bg-destructive' : 'mt-1.5 size-2 shrink-0 rounded-full bg-success'} />
-          <p role="status" className="min-w-0 break-words text-[11px] leading-tight text-muted-foreground">{engineText}</p>
-        </div>
-      }
+      navigation={navigationNode}
+      status={statusNode}
     >
       <main className="flex min-w-0 flex-col gap-5 pb-10">
+        {/* The floating rail is hidden below the lg breakpoint; keep the same
+            navigation and engine status reachable in the content column so the
+            status element and every workspace control stay present at any
+            window width or zoom level. */}
+        <div className="mb-1 flex flex-col gap-2 rounded-card bg-card p-3 shadow-[var(--shadow-card)] lg:hidden">
+          <nav aria-label="Workspaces" className="flex flex-col gap-3">{navigationNode}</nav>
+          {statusNode}
+        </div>
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0">
             <p className="text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Poliscope</p>

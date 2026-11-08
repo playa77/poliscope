@@ -58,6 +58,10 @@ or treating planned behavior as implemented behavior.
   push the branch, and open a regular (non-draft) PR against `main` before handing
   back. Report the PR URL, actual scope, checks and limitations. Do not merge
   without user authorization or label an uncommitted workspace as delivered.
+- Once the user has merged a delivery PR, return the checkout to synced `main`:
+  fast-forward local `main` to `origin/main`, delete the merged local branch, and
+  leave nothing pulling against a remote ref that GitHub deleted with the merge
+  (`remote.origin.prune` is enabled for this).
 - Finish the full allocated work package before handing back. When the request
   covers a planning parent, complete its necessary children and parent acceptance;
   decomposition is not a reason to stop after one child. If completion is blocked,
