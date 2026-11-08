@@ -140,7 +140,7 @@ function App() {
         </details>
 
         {saved && (
-          <Panel title="Stored historical evidence — read only" description="Read from the retained SQLite store. Nothing here re-runs a simulation."
+          <Panel title={<h2 className="text-sm font-semibold tracking-tight">Stored historical evidence — read only</h2>} description="Read from the retained SQLite store. Nothing here re-runs a simulation."
             action={<span className="rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground">Read only</span>}>
             <dl className="grid gap-x-6 gap-y-3 sm:grid-cols-2 xl:grid-cols-3">
               {Object.entries({ ...saved.context, ...saved.versions, result_id: saved.result_id, scope_id: saved.scope_id,
@@ -163,7 +163,7 @@ function App() {
             <div className="mt-4 flex flex-wrap items-end gap-3">
               <div className="flex w-56 flex-col gap-1.5">
                 <Label htmlFor="history-collection">Evidence collection</Label>
-                <NativeSelect id="history-collection" value={collection} onChange={event => setCollection(event.target.value as HistoryRequest['collection'])}>
+                <NativeSelect bare id="history-collection" value={collection} onChange={event => setCollection(event.target.value as HistoryRequest['collection'])}>
                   {['summary', 'outputs', 'findings', 'sources', 'assumptions', 'traces'].map(value => <option key={value} value={value}>{value}</option>)}
                 </NativeSelect>
               </div>

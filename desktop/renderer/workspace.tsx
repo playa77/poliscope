@@ -113,7 +113,7 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
     setState(next); setScope(''); setConditionInspector(undefined);
   }
   const selectedScopeLabel = scopes.data?.find(s => s.id === selectedScope)?.label;
-  return <div className="legacy-ui flex flex-col gap-5">
+  return <div className="flex flex-col gap-5">
     <header className="flex flex-wrap items-end justify-between gap-3">
       <div className="min-w-0">
         <p className="mb-1 text-[11px] font-semibold uppercase tracking-[0.14em] text-primary">Local sandbox</p>

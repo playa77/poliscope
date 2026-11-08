@@ -222,6 +222,8 @@ export function Providers({locked=false,onApplied,interviewDraft}:{locked?:boole
         <Hint>Limit: {metadata.key_metadata.limit ?? 'unknown/unlimited'}; remaining: {metadata.key_metadata.limit_remaining ?? 'unknown/unlimited'}; usage: {metadata.key_metadata.usage ?? 'unknown'}; free tier: {String(metadata.key_metadata.is_free_tier ?? 'unknown')}.</Hint>
       </div>}
     </Panel>}
-    <Assistant interviewDraft={interviewDraft} view={row} onApplied={onApplied} disabled={locked || busy || testing || changed} />
+    {/* The optional assistant is the one remaining screen on the transitional
+        element layer; it migrates in its own package. */}
+    <div className="legacy-ui"><Assistant interviewDraft={interviewDraft} view={row} onApplied={onApplied} disabled={locked || busy || testing || changed} /></div>
   </section>;
 }

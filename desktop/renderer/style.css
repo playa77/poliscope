@@ -296,9 +296,9 @@
 }
 
 /*
-  Transitional element styling for screens that have not been rebuilt on the
-  component set yet. Every rule here reads a design token, so untouched screens
-  already take the new palette. Delete this layer once the last screen migrates.
+  Transitional element styling for the one screen still outside the component
+  set: the optional assistant. Every rule reads a design token, so it already
+  takes the current palette. Delete this layer when the assistant migrates.
 */
 @layer components {
   .legacy-ui :is(button, input, select, textarea) {
