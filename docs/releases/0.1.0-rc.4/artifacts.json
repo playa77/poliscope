@@ -1,0 +1,42 @@
+{
+  "version": 1,
+  "candidate": "0.1.0-rc.4",
+  "publication": "unpublished unsigned CI candidates",
+  "observed_date": "2026-11-08",
+  "repository": "playa77/poliscope",
+  "workflow_run": 42509885922,
+  "source_commit": "17fce27a3967bbe86e4a205d7991178dc24ddc11",
+  "source_comparison": {
+    "against": "1f3aa72964fe4fdd33681815327f9ac6b78323c6",
+    "scope": "All 686 frozen product/build inputs of the rc.4 inventory (the rc.3 scope plus the shipped components/, lib/ and components.json sources); excludes docs/evidence and the release tooling placed outside the frozen whitelist; compares actual bytes using git show.",
+    "paths_compared": 686,
+    "differences": [
+      "desktop/renderer/src.tsx"
+    ]
+  },
+  "checksum_scope": "SHA-256 of the complete GitHub Actions ZIP wrapper as returned by authenticated GitHub artifact metadata. Inner distribution hashes and payload identity receipts remain inside each wrapper; no signature or bit-for-bit rebuild claim.",
+  "expires_at": "2027-02-06",
+  "artifacts": [
+    {
+      "target": "Windows x64",
+      "id": 13628629878,
+      "name": "native-candidate-windows-2022-17fce27a3967bbe86e4a205d7991178dc24ddc11",
+      "bytes": 175030717,
+      "sha256": "7ec0aa00f420e3f40918c74d335853f9a92d6451294f108ac13f98cd1ddabff4",
+      "url": "https://github.com/playa77/poliscope/actions/runs/42509885922/artifacts/13628629878",
+      "job": 128820434608,
+      "conclusion": "success"
+    },
+    {
+      "target": "Linux x64",
+      "id": 13629320609,
+      "name": "native-candidate-ubuntu-24.04-17fce27a3967bbe86e4a205d7991178dc24ddc11",
+      "bytes": 154514983,
+      "sha256": "4023d7dd75e8cab8cf1a9f0672baf9eac54a3d47c58b0c40cdc2b0b103f77af3",
+      "url": "https://github.com/playa77/poliscope/actions/runs/42509885922/artifacts/13629320609",
+      "job": 128820434420,
+      "conclusion": "success"
+    }
+  ],
+  "owner_validation": "Real desktop sandbox/keychain/proxy/signing owner-run and unverified; see docs/platform_scope.md"
+}

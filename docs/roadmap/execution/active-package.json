@@ -45,12 +45,14 @@
   "validation": "docs/roadmap/execution/WP-059.md",
   "scope": "Bounded corrective maintenance: width-gated shell status/navigation reachability, freeze whitelist completion for the shipped component sources, the rc.3 built-candidate record, and the 0.1.0-rc.4 candidate preparation. No engine, content, contract, dependency-lock or runtime-identity bytes changed.",
   "publication": {
-    "status": "branch pushed; regular pull request open against main",
+    "status": "branch pushed; regular pull request #132 open against main",
     "branch": "codex/wp-059-shell-rail-a11y",
     "destination": "https://github.com/playa77/poliscope.git",
     "release": "not authorized; not published",
     "merge": "not authorized; not performed",
-    "url": "docs/roadmap/execution/WP-059.md records the pull request URL at handback"
+    "implementation_commit": "17fce27",
+    "authorization": "User asked for two packaged release candidates to test and approximately upload; merging was not requested.",
+    "url": "https://github.com/playa77/poliscope/pull/132"
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",

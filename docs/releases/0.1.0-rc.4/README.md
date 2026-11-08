@@ -53,3 +53,10 @@ and the publication boundary follow
 change accounting live in the
 [execution ledger](../../roadmap/execution/README.md) and
 [WP-059](../../roadmap/execution/WP-059.md).
+
+Update 2026-11-08, later the same day: the owner-run native workflow
+([run 42509885922](https://github.com/playa77/poliscope/actions/runs/42509885922))
+built unsigned CI candidates at source `17fce27` with **both platform jobs
+successful**, including the five packaged offline workflows on Windows;
+[exact candidate artifacts](artifacts.json) record both wrappers with digests
+verified against GitHub artifact metadata. Receipts stay immutable.

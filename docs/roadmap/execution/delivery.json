@@ -6,9 +6,15 @@
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "1f3aa72964fe4fdd33681815327f9ac6b78323c6",
   "branch": "codex/wp-059-shell-rail-a11y",
-  "status": "complete; native package handback attached at merge time",
+  "status": "complete; both packaged candidates verified at handback",
   "execution_unit": "WP-059",
-  "last_commit": "updated by the final evidence commit",
+  "last_commit": "17fce27",
+  "branch_state": {
+    "commits_ahead_of_base": "two commits on top of 1f3aa72 in the code/record layer; `git log main..HEAD` is authoritative",
+    "head": "17fce27 is the code and record head; the rc.4 artifacts.json evidence and README build note ride on top and the handback push is a fast-forward",
+    "upstream": "origin/codex/wp-059-shell-rail-a11y — pushed; PR #132 stays open against main",
+    "instruction": "A resuming session continues codex/wp-059-shell-rail-a11y until the PR is merged, then resets the checkout to synced main and deletes the merged branch per AGENTS.md."
+  },
   "owner_locked_decisions": {
     "note": "The WP-058 owner-locked rendering identity (violet canvas, Lifted elevation, primary #2207D4) is carried unchanged; see docs/roadmap/execution/delivery.json in the WP-058 record and its merges."
   },
@@ -37,7 +43,7 @@
     {
       "id": "rc4-candidate-prepared",
       "status": "passed",
-      "evidence": "0.1.0-rc.4 release directory, README and fresh inventory created at the corrective delivery commit; no artifact claimed built until the evidence commit; publication, signing and merge remain unauthorized."
+      "evidence": "0.1.0-rc.4 release directory, README and fresh inventory created at the corrective delivery commit; artifacts.json records both wrappers of run 42509885922 (digests verified against GitHub artifact metadata; both jobs success); publication, signing and merge remain unauthorized."
     }
   ],
   "blockers": [],
@@ -56,9 +62,11 @@
   "scope": "Bounded corrective maintenance: width-gated shell status/navigation reachability, freeze whitelist completion for the shipped component sources, the rc.3 built-candidate record, and the 0.1.0-rc.4 candidate preparation. No engine, content, contract, dependency-lock or runtime-identity bytes changed.",
   "dependencies_introduced": [],
   "publication": {
-    "status": "branch pushed; regular pull request open against main",
+    "status": "branch pushed; regular pull request #132 open against main",
     "branch": "codex/wp-059-shell-rail-a11y",
     "destination": "https://github.com/playa77/poliscope.git",
+    "pull_request": 132,
+    "url": "https://github.com/playa77/poliscope/pull/132",
     "release": "not authorized; the owner-run native workflow artifacts are delivered as files for owner testing",
     "merge": "not authorized; not performed",
     "authorization": "User asked for two packaged release candidates to test and approximately upload; merging was not requested."
