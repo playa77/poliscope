@@ -69,7 +69,8 @@ changed, so full/native evidence reuses WP-055/056 identities and the PR CI
 candidate is authoritative. Route: **solo-validated; agent review deferred**.
 The active feature parent WP-056 stays complete; native rc.2 artifact build
 and release remain owner-run decisions.
-Published as regular PR (URL in [delivery.json](delivery.json)); no merge.
+Published as regular
+[PR #130](https://github.com/playa77/poliscope/pull/130); no merge.
 
 # Implementation execution ledger
 

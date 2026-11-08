@@ -59,7 +59,7 @@
     "merge": "not authorized; not performed",
     "implementation_commit": "f773c6a077378fa1e1bee0270384473a953bb0e6",
     "authorization": "User explicitly authorized the WP-057 maintenance delivery and its push/PR.",
-    "url": "recorded on publication in the final record commit"
+    "url": "https://github.com/playa77/poliscope/pull/130"
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
