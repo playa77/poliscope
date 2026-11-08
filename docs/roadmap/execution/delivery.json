@@ -6,13 +6,13 @@
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "77602b097f4739e4fd18567297d57f66f19db9eb",
   "branch": "codex/wp-058-ui-rebuild",
-  "status": "in progress, paused between sessions; foundation, shell, palette and elevation delivered, screen rebuild outstanding",
+  "status": "in progress; screen rebuild delivered and green under the packaged desktop specs; the 0.1.0-rc.3 freeze is outstanding",
   "execution_unit": "WP-058",
-  "last_commit": "aa3f824",
+  "last_commit": "3642769",
   "branch_state": {
-    "commits_ahead_of_base": "eight code commits plus the record updates that follow them; `git log main..HEAD` is authoritative",
-    "head": "00410c9 was the code head when the branch was pushed; the record update rides on top",
-    "upstream": "origin/codex/wp-058-ui-rebuild — pushed, no PR",
+    "commits_ahead_of_base": "twenty-four commits on top of 77602b0; `git log main..HEAD` is authoritative",
+    "head": "3642769 is the code head; the record update rides on top and the push is a fast-forward",
+    "upstream": "origin/codex/wp-058-ui-rebuild — pushed before this session; this session's commits are pushed at handback, no PR",
     "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
   },
   "owner_locked_decisions": {
@@ -43,13 +43,13 @@
     },
     {
       "id": "screens-rebuilt-on-the-component-set",
-      "status": "outstanding",
-      "evidence": "Eleven screens still render through the transitional element layer: overview, matrix, atlas, world, evidence, uncertainty, timeline, design-history, archives, interview, providers, recovery."
+      "status": "passed",
+      "evidence": "All eleven screens rebuilt on the component set, one commit each: overview, matrix, atlas, world, evidence, uncertainty, timeline, design-history, archives, interview, providers, recovery. components/app/form.tsx supplies Field/CheckField/Toolbar/Actions/DataTable/Disclosure/Hint/SubHeading; Panel gained a landmark label, NavItem an accessible name, AppShell a skipLink slot and NativeSelect a bare variant. The transitional .legacy-ui layer now scopes to the optional assistant only. npx tsc --noEmit clean at every commit; npx vitest run 41 files / 459 tests."
     },
     {
       "id": "desktop-playwright-gate",
-      "status": "not run",
-      "evidence": "npm run test:desktop requires npm run package and a native Electron launch; not executed in this environment."
+      "status": "passed",
+      "evidence": "Packaged build (npx node@24.19.0 scripts/desktop.mjs package, because the guard requires Node 24 and the host has 22.23.4) and xvfb-run npx playwright test: 30 of 30 specs passing after the shell-smoke repairs. Per-screen specs were also run as each screen landed."
     },
     {
       "id": "candidate-freeze",
@@ -70,7 +70,7 @@
     "merge_commit": "77602b097f4739e4fd18567297d57f66f19db9eb"
   },
   "validation": "docs/roadmap/execution/WP-058.md",
-  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the violet/indigo identity, a floating navigation rail and page blocks, and the shell rebuilt on them. Screen-by-screen rebuild, the packaged Playwright gate and the 0.1.0-rc.3 freeze remain outstanding. Next action for a resuming session: rebuild overview first, then the remaining ten screens, one commit each, keeping the DOM contracts listed in the record. No engine, content, contract, IPC or runtime-identity bytes changed.",
+  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the violet/indigo identity, a floating navigation rail and page blocks, and every screen rebuilt on the component set. The packaged Playwright gate was run screen by screen and then in full. The 0.1.0-rc.3 freeze, and the optional assistant's migration off the transitional layer, remain outstanding. No engine, content, contract, IPC or runtime-identity bytes changed.",
   "dependencies_introduced": [
     "tailwindcss, @tailwindcss/vite (build-time CSS only)",
     "@fontsource-variable/inter (bundled font, no runtime fetch)",
