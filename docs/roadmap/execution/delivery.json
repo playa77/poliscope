@@ -77,14 +77,14 @@
     "cn, lucide-react, class-variance-authority, radix-ui (component primitives, bundled)"
   ],
   "publication": {
-    "status": "branch pushed; no PR opened",
+    "status": "branch pushed; regular pull request opened against main",
     "branch": "codex/wp-058-ui-rebuild",
     "destination": "https://github.com/playa77/poliscope.git",
+    "pull_request": 131,
+    "url": "https://github.com/playa77/poliscope/pull/131",
     "release": "not authorized; not built; not published",
     "merge": "not authorized; not performed",
-    "authorization": "User explicitly authorized pushing codex/wp-058-ui-rebuild with no pull request.",
-    "pushed_commit": "00410c95039277235f46e08bca5ab90a30ccf22e",
-    "url": "https://github.com/playa77/poliscope/tree/codex/wp-058-ui-rebuild"
+    "authorization": "User asked for a regular pull request against main; merging was not requested."
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
