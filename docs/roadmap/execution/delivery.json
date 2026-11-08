@@ -10,9 +10,9 @@
   "execution_unit": "WP-058",
   "last_commit": "aa3f824",
   "branch_state": {
-    "commits_ahead_of_base": 8,
-    "head": "44588a8",
-    "upstream": "none — the branch is local only and has not been pushed",
+    "commits_ahead_of_base": "eight code commits plus the record updates that follow them; `git log main..HEAD` is authoritative",
+    "head": "00410c9 was the code head when the branch was pushed; the record update rides on top",
+    "upstream": "origin/codex/wp-058-ui-rebuild — pushed, no PR",
     "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
   },
   "owner_locked_decisions": {
@@ -77,12 +77,14 @@
     "cn, lucide-react, class-variance-authority, radix-ui (component primitives, bundled)"
   ],
   "publication": {
-    "status": "not pushed; no PR opened",
+    "status": "branch pushed; no PR opened",
     "branch": "codex/wp-058-ui-rebuild",
     "destination": "https://github.com/playa77/poliscope.git",
     "release": "not authorized; not built; not published",
     "merge": "not authorized; not performed",
-    "authorization": "Push/PR not yet authorized for this package."
+    "authorization": "User explicitly authorized pushing codex/wp-058-ui-rebuild with no pull request.",
+    "pushed_commit": "00410c95039277235f46e08bca5ab90a30ccf22e",
+    "url": "https://github.com/playa77/poliscope/tree/codex/wp-058-ui-rebuild"
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
