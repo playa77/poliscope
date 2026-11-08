@@ -32,12 +32,12 @@
     {
       "id": "desktop-playwright-gate",
       "status": "passed",
-      "evidence": "Packaged build and full Playwright suite: 30 of 30 specs passing (7.0 min) under xvfb, after each screen's spec was run as it landed. Two specs updated with recorded reasons: the focus ring follows the theme token (#2207d4 at 10.2:1 instead of the retired amber at 1.6:1), and the shell smoke opens the collapsed evidence reader and measures injected markup instead of the shell's own icons."
+      "evidence": "Packaged build and full Playwright suite: 30 of 30 specs passing under xvfb after each screen's spec was run as it landed. CI caught a narrow-window overflow the local run missed (a Hint carrying a revision hash at 200% zoom); hints now break anywhere and the zoom assertion polls the settled geometry. Two specs updated with recorded reasons: the focus ring follows the theme token, and the shell smoke opens the collapsed evidence reader and measures injected markup."
     },
     {
       "id": "candidate-freeze",
       "status": "passed",
-      "evidence": "0.1.0-rc.3 prepared from source 2c5ce62 with 665 frozen inputs; scripts/freeze_release.py --check verifies the checkout; the rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. RetainedReleaseTests and the full roadmap suite pass (67 tests)."
+      "evidence": "0.1.0-rc.3 prepared from source b9d14aa with 665 frozen inputs; scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. Roadmap suite 67 tests passing including RetainedReleaseTests."
     }
   ],
   "blockers": [],
@@ -55,7 +55,7 @@
     "destination": "https://github.com/playa77/poliscope.git",
     "release": "not authorized; not built; not published",
     "merge": "not authorized; not performed",
-    "implementation_commit": "2c5ce62",
+    "implementation_commit": "b9d14aa",
     "authorization": "User asked for a regular pull request against main; merging was not requested.",
     "url": "https://github.com/playa77/poliscope/pull/131"
   },

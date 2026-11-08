@@ -8,10 +8,10 @@
   "branch": "codex/wp-058-ui-rebuild",
   "status": "complete",
   "execution_unit": "WP-058",
-  "last_commit": "2c5ce62",
+  "last_commit": "b9d14aa",
   "branch_state": {
-    "commits_ahead_of_base": "twenty-six commits on top of 77602b0; `git log main..HEAD` is authoritative",
-    "head": "2c5ce62 is the code head; the record and rc.3 freeze ride on top and the push is a fast-forward",
+    "commits_ahead_of_base": "twenty-eight commits on top of 77602b0; `git log main..HEAD` is authoritative",
+    "head": "b9d14aa is the code head; the rc.3 receipt and record ride on top and the push is a fast-forward",
     "upstream": "origin/codex/wp-058-ui-rebuild \u2014 pushed before this session; this session's commits are pushed at handback, no PR",
     "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
   },
@@ -49,12 +49,12 @@
     {
       "id": "desktop-playwright-gate",
       "status": "passed",
-      "evidence": "Packaged build (npx node@24.19.0 scripts/desktop.mjs package, because the guard requires Node 24 and the host has 22.23.4) and xvfb-run npx playwright test: 30 of 30 specs passing after the shell-smoke repairs. Per-screen specs were also run as each screen landed."
+      "evidence": "Packaged build and full Playwright suite: 30 of 30 specs passing (7.8 min) under xvfb, after each screen's spec was run as it landed. CI then caught a narrow-window overflow the local run missed: a Hint carrying a full revision hash overflowed its box at 200% zoom. Hints break anywhere now and the zoom assertion polls the settled geometry. Two specs were updated with recorded reasons: the focus ring follows the theme token (#2207d4 at 10.2:1 instead of the retired amber at 1.6:1), and the shell smoke opens the collapsed evidence reader and measures injected markup instead of the shell's icons."
     },
     {
       "id": "candidate-freeze",
       "status": "passed",
-      "evidence": "0.1.0-rc.3 prepared from source 2c5ce62 with 665 frozen inputs; uv run --frozen python scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. RetainedReleaseTests and the full roadmap suite pass (67 tests)."
+      "evidence": "0.1.0-rc.3 prepared from source b9d14aa with 665 frozen inputs; uv run --frozen python scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. RetainedReleaseTests and the full roadmap suite pass (67 tests)."
     }
   ],
   "blockers": [],

@@ -2,10 +2,10 @@
   "version": 1,
   "release_candidate": "0.1.0-rc.3",
   "app_version": "0.1.0",
-  "source_commit": "2c5ce6280669a2f297d9eadfb1726355a5a8e5f2",
+  "source_commit": "b9d14aa99de9582c89bd9813590e5f8d3e9c2c79",
   "status": "prepared; not authorized for release publication",
   "identity_scope": "Exact product/build inputs, WP-055 evidence and requirement sources; release guides and this inventory are versioned by the delivery commit.",
-  "fingerprint": "58f3c7d4be3ff3807b7b44d0514073fb1b3919096ddfa730e3d6adafc61f20fd",
+  "fingerprint": "d5383e4c6c2579df6972c26153559f41cb13830c73f58059825c038a40802516",
   "files": [
     {
       "path": ".github/workflows/native-distribution.yml",
@@ -1204,8 +1204,8 @@
     },
     {
       "path": "desktop/renderer/style.css",
-      "bytes": 12296,
-      "sha256": "243680daf43f49c4984922d0f14fbf4fd1d5b1d3e00d4948ef5ab0cb8a4c9885"
+      "bytes": 12608,
+      "sha256": "37bb79859fcfdc62e4f1c91175f1185b8c3b7f58cc73a5c695c843c1c9f0fe7d"
     },
     {
       "path": "desktop/renderer/timeline.tsx",
@@ -1224,8 +1224,8 @@
     },
     {
       "path": "desktop/renderer/workspace.tsx",
-      "bytes": 28637,
-      "sha256": "682b9a090ca403d801af5e57990136a9599aecd4d66143be8e3d97cf4bf90488"
+      "bytes": 28663,
+      "sha256": "94598ef4e6ede974e64d0947fc46e1f50da22c08d7ed23eb0c61a1f425182e50"
     },
     {
       "path": "desktop/renderer/world.tsx",
