@@ -48,6 +48,14 @@ class ReleaseFreezeTests(unittest.TestCase):
                         'commit', '-qm', 'Guide'], cwd=self.root, check=True)
         self.assertEqual(verify(self.record, self.root), len(self.record['files']))
 
+    def test_labeled_candidates_and_rejected_labels(self):
+        forged = copy.deepcopy(self.record)
+        forged['release_candidate'] = '0.1.0-rc.two'
+        with self.assertRaisesRegex(ValueError, 'Unsupported'):
+            verify(forged, self.root)
+        other = freeze(self.root, '0.1.0-rc.2')
+        self.assertEqual(verify(other, self.root), len(other['files']))
+
     def test_shallow_checkout_requires_baseline_history_then_verifies_after_fetch(self):
         # Match Actions' depth-one checkout: a later guide commit is present,
         # while the immutable baseline commit is absent.

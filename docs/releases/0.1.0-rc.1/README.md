@@ -6,6 +6,11 @@ prototype candidate. The application still identifies itself as **0.1.0**; the
 No public release, signing, upload to a release channel or merge is authorized by
 preparation. The repository owner decides release authorization separately.
 
+Update 2026-11-08: corrective maintenance WP-057 prepared the next candidate
+[`0.1.0-rc.2`](../0.1.0-rc.2/README.md) over these bytes. The rc.1 frozen
+inventory and retained artifacts stay unchanged as the record of this candidate;
+its receipts are historical, not the active one.
+
 [The current inventory](inventory.ci-history.json) freezes every product, generated schema, catalog,
 model, numeric runtime, lock, packaging input, WP-055 acceptance receipt and
 retained test report by path, size and SHA-256. Its source commit identifies the

@@ -3,16 +3,24 @@
 Product inputs and upstream evidence are separate from mutable release notes.
 Git supplies the path inventory (including new unignored files); bytes come from
 this checkout. No environment, saves, keys or ignored build output is inspected.
+
+The default output path is the active receipt of the current label. A new
+candidate label (--label) must be written to a separately named release
+directory; prior receipts are never overwritten or relabeled in place.
 """
 import argparse
 import ast
 import hashlib
 import json
+import re
 from pathlib import Path
 import subprocess
 
 ROOT = Path(__file__).resolve().parents[1]
-DEFAULT = ROOT / 'docs/releases/0.1.0-rc.1/inventory.ci-history.json'
+# The active receipt lives in the current label's release directory; keep this
+# path and the label on the release README in step when preparing a candidate.
+DEFAULT = ROOT / 'docs/releases/0.1.0-rc.2/inventory.ci-history.json'
+LABEL = re.compile(r'0\.1\.0-rc\.\d+')
 PRODUCT_DIRS = ('desktop/', 'engine/', 'contracts/', 'content/', 'packaging/')
 PRODUCT_FILES = ('LICENSE', 'package.json', 'package-lock.json', 'pyproject.toml', 'uv.lock',
                  '.nvmrc', '.python-version', 'forge.config.cjs', 'tsconfig.json',
@@ -90,14 +98,14 @@ def verify_source_commit(root, commit, files):
                    cwd=root, check=True)
 
 
-def freeze(root=ROOT):
+def freeze(root=ROOT, label='0.1.0-rc.1'):
     files = inputs(root)
     commit = subprocess.check_output(['git', 'rev-parse', 'HEAD'], cwd=root, text=True).strip()
     verify_source_commit(root, commit, files)
     package = json.loads((root / 'package.json').read_text())
     release = json.loads((root / 'content/release-v1/release.json').read_text())
     source = json.loads((root / 'content/release-v1/society.inventory.json').read_text())
-    return dict(version=1, release_candidate='0.1.0-rc.1', app_version=package['version'],
+    return dict(version=1, release_candidate=label, app_version=package['version'],
                 source_commit=commit,
                 status='prepared; not authorized for release publication',
                 identity_scope='Exact product/build inputs, WP-055 evidence and requirement sources; release guides and this inventory are versioned by the delivery commit.',
@@ -108,13 +116,14 @@ def freeze(root=ROOT):
 
 
 def verify(record, root=ROOT):
-    if record.get('version') != 1 or record.get('release_candidate') != '0.1.0-rc.1':
+    label = record.get('release_candidate')
+    if record.get('version') != 1 or not (isinstance(label, str) and LABEL.fullmatch(label)):
         raise ValueError('Unsupported release inventory')
     current = inputs(root)
     if record.get('files') != current or record.get('fingerprint') != fingerprint(current):
         raise ValueError('Frozen input drift: review affected evidence and prepare a new candidate')
     # Prevent edited summary metadata from disagreeing with the frozen bytes.
-    expected = freeze(root)
+    expected = freeze(root, label)
     for key in ('app_version', 'versions', 'catalogs', 'source_revision', 'source_archive_digest'):
         if record.get(key) != expected[key]:
             raise ValueError(f'Release identity mismatch: {key}')
@@ -127,7 +136,10 @@ def verify(record, root=ROOT):
 
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument('--output', type=Path, default=DEFAULT)
+    parser.add_argument('--output', type=Path, default=DEFAULT,
+        help='Receipt path; use the target label release directory to keep labels and paths in step')
+    parser.add_argument('--label', default='0.1.0-rc.1',
+        help='Release candidate label recorded in a newly prepared inventory')
     parser.add_argument('--check', action='store_true')
     args = parser.parse_args()
     try:
@@ -137,7 +149,7 @@ def main():
         else:
             args.output.parent.mkdir(parents=True, exist_ok=True)
             # Build first: an invalid identity must not leave a partial receipt.
-            encoded = json.dumps(freeze(), indent=2) + '\n'
+            encoded = json.dumps(freeze(label=args.label), indent=2) + '\n'
             # Exclusive creation preserves an existing candidate and its evidence.
             with args.output.open('x') as output:
                 output.write(encoded)

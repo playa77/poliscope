@@ -24,12 +24,62 @@ the installer does not bypass it. The default is
 `%LOCALAPPDATA%/Programs/Poliscope/<version>`, with a Start menu shortcut. An optional
 `-Destination` selects a new absolute path. On Linux, extract the tarball and run
 `sh install-linux.sh`; default installation is
-`~/.local/opt/poliscope/<version>` with a user desktop launcher. An absolute first
+`~/.local/opt/poliscope/<version>` with a user desktop launcher that is updated
+on every candidate install and includes the bundled launcher icon
+(`packaging/icons`, installed into the user's hicolor icon directory). An
+absolute first
 argument selects another directory. Launch normally from the shortcut. Do not use
 `--no-sandbox` for ordinary installation; that flag is only for cloud test runners.
 Some Linux systems require a configured unprivileged user-namespace sandbox or an
 administrator-installed Chromium sandbox helper. Never make an unreviewed bundle
 setuid to work around a launch failure.
+
+## Linux user-namespace restrictions (Ubuntu 24.04 and similar)
+
+On systems that restrict unprivileged user namespaces with AppArmor — Ubuntu
+24.04 and later, including Xubuntu — the installer completes normally but the
+application refuses to launch: the Electron sandbox needs user namespaces, and
+the bundled `chrome-sandbox` helper ships without setuid bits. A menu click
+then silently opens nothing; launching from a terminal prints
+`FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc ... You need to make
+sure that .../chrome-sandbox is owned by root and has mode 4755.`
+`install-linux.sh` detects the restriction and prints a non-fatal NOTE during
+installation describing this remedy.
+
+Two explicit administrator remedies exist; the installer never elevates:
+
+1. Give this installation user namespaces through a scoped AppArmor profile —
+   the same pattern Ubuntu ships for chromium, chrome and brave. Install
+   `/etc/apparmor.d/poliscope` as root, with contents adjusted to the
+   installation home:
+
+   ```text
+   # This profile allows everything and only exists to give the
+   # application a name instead of having the label "unconfined"
+
+   abi <abi/5.0>,
+   include <tunables/global>
+
+   profile poliscope "/home/<user>/.local/opt/poliscope/*/poliscope" flags=(unconfined) {
+     userns,
+     @{exec_path} mr,
+
+     # Site-specific additions and overrides. See local/README for details.
+     include if exists <local/poliscope>
+   }
+   ```
+
+   Then load it: `sudo apparmor_parser -r /etc/apparmor.d/poliscope`. The
+   profile covers all versioned subdirectories, so later candidates launch
+   without another change. [WP-057](roadmap/execution/WP-057.md) records this
+   exact profile validated on one Xubuntu 26.04 installation.
+2. Or mark the bundled helper root-owned setuid in a reviewed bundle:
+   `sudo chown root:root ~/.local/opt/poliscope/<version>/chrome-sandbox &&
+   sudo chmod 4755 ~/.local/opt/poliscope/<version>/chrome-sandbox`. This must
+   be repeated for every version directory because installs never overwrite.
+
+Never setuid an unreviewed bundle, and keep `--no-sandbox` restricted to
+isolated cloud test runners as stated above.
 
 Close Poliscope before upgrading. A destination that exists is never overwritten;
 when installing another candidate with the same app version, choose a fresh path.
