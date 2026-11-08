@@ -430,7 +430,9 @@
 @layer components {
   .data-table table {
     width: 100%;
-    min-width: 32rem;
+    /* Wide evidence still scrolls inside this frame, but a narrow window must
+       not be forced past its own width while the table lays out. */
+    min-width: min(32rem, 100%);
     border-collapse: collapse;
     text-align: left;
     font-size: 0.8125rem;
@@ -457,7 +459,9 @@
     letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--muted-foreground);
-    white-space: nowrap;
+    /* Headers wrap rather than forcing a minimum table width: at 200% zoom a
+       nowrap header alone made the document wider than the window. */
+    overflow-wrap: anywhere;
   }
 
   .data-table tbody :is(th, td) {

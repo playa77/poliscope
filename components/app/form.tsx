@@ -141,7 +141,11 @@ export function Disclosure({
 /** Small descriptive paragraph used under headings and around controls. */
 export function Hint({ children, className }: { children: ReactNode; className?: string }) {
   return (
-    <p className={cn("text-xs leading-relaxed text-muted-foreground", className)}>{children}</p>
+    // Identities, hashes and property ids appear inline in hints; they must wrap
+    // rather than widen the card at narrow widths.
+    <p className={cn("text-xs leading-relaxed text-muted-foreground [overflow-wrap:anywhere]", className)}>
+      {children}
+    </p>
   );
 }
 

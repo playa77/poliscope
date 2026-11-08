@@ -113,7 +113,9 @@ test('E2E-016.b keyboard learner inquiry report focus navigation and zoom', asyn
     // Browser zoom uses the same Electron webContents path as desktop zoom.
     await app.evaluate(({ BrowserWindow }) => { BrowserWindow.getAllWindows()[0].webContents.setZoomFactor(2); });
     await expect(page.locator('.workspace-layout')).toHaveCSS('grid-template-columns', /\d/);
-    expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
+    // A zoom change relayouts the page; polling asserts the settled geometry
+    // instead of whichever frame the evaluate happens to land in.
+    await expect.poll(() => page.evaluate(() => document.documentElement.scrollWidth - window.innerWidth)).toBeLessThanOrEqual(1);
     const focusColor = await page.locator('#workspace-view-heading').evaluate(el => getComputedStyle(el).outlineColor);
     // The focus ring follows the theme's ring token. On the light violet canvas the
     // dark indigo (#2207d4) is the 10.2:1 indicator; the retired dark theme's amber

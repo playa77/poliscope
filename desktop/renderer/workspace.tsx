@@ -268,7 +268,7 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
           <p className="text-xs text-muted-foreground">Saved revisions remain attached to their original state.</p>
         </div>
 
-        <div className="workspace-layout grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
+        <div className="workspace-layout grid min-w-0 grid-cols-[minmax(0,1fr)] gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
           <article className="flex min-w-0 flex-col gap-4 rounded-card bg-card px-5 py-4 shadow-[var(--shadow-card)]" aria-labelledby="workspace-view-heading">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 id="workspace-view-heading" ref={viewHeading} tabIndex={-1} className="text-base font-semibold tracking-tight">{view}</h3>
