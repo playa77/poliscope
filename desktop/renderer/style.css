@@ -22,15 +22,16 @@
   color-scheme: light;
 
   /*
-    Canvas sampled from the owner's reference image (ui.webp), not estimated:
+    Canvas sampled from the owner's reference image (ui.webp), used unchanged:
     the leftmost three columns over the card-free top and bottom bands read
-    #F1EDFC; the same band on the right reads #B4DCFF. The right stop is then
-    lightened 33 % toward white — 180+(255-180)*0.33 = 205, 220+(255-220)*0.33
-    = 232, 255 → #CDE8FF — so the wash runs lavender → pale sky blue.
+    #F1EDFC and the same band on the right reads #B4DCFF, so the wash runs pale
+    lavender → light sky blue at the reference's own strength.
   */
   --canvas-from: #f1edfc;
-  --canvas-to: #cde8ff;
-  --canvas-mid: #dfeafd;
+  --canvas-to: #b4dcff;
+  /* The right stop doubles as the flat fallback: the scrollbar gutter sits at
+     the right edge, so a mid-point tint would show as a stripe beside it. */
+  --canvas-mid: #b4dcff;
 
   /* Flat surface for controls that must sit on a card, not on the canvas. */
   --background: #fbfaff;
@@ -91,7 +92,7 @@
   /* Same wash, transposed to a night palette: plum on the left, deep sea on the right. */
   --canvas-from: #191433;
   --canvas-to: #14304a;
-  --canvas-mid: #16233f;
+  --canvas-mid: #14304a;
 
   --background: #1a1636;
   --background-tint: #1e1a3c;
