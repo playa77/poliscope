@@ -19,7 +19,7 @@ import subprocess
 ROOT = Path(__file__).resolve().parents[1]
 # The active receipt lives in the current label's release directory; keep this
 # path and the label on the release README in step when preparing a candidate.
-DEFAULT = ROOT / 'docs/releases/0.1.0-rc.2/inventory.ci-history.json'
+DEFAULT = ROOT / 'docs/releases/0.1.0-rc.3/inventory.ci-history.json'
 LABEL = re.compile(r'0\.1\.0-rc\.\d+')
 PRODUCT_DIRS = ('desktop/', 'engine/', 'contracts/', 'content/', 'packaging/')
 PRODUCT_FILES = ('LICENSE', 'package.json', 'package-lock.json', 'pyproject.toml', 'uv.lock',

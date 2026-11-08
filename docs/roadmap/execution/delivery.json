@@ -2,17 +2,17 @@
   "version": 1,
   "package": "WP-058",
   "record": "docs/roadmap/execution/WP-058.md",
-  "kind": "feature",
+  "kind": "work_package",
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "77602b097f4739e4fd18567297d57f66f19db9eb",
   "branch": "codex/wp-058-ui-rebuild",
-  "status": "in progress; screen rebuild delivered and green under the packaged desktop specs; the 0.1.0-rc.3 freeze is outstanding",
+  "status": "complete",
   "execution_unit": "WP-058",
-  "last_commit": "3642769",
+  "last_commit": "2c5ce62",
   "branch_state": {
-    "commits_ahead_of_base": "twenty-four commits on top of 77602b0; `git log main..HEAD` is authoritative",
-    "head": "3642769 is the code head; the record update rides on top and the push is a fast-forward",
-    "upstream": "origin/codex/wp-058-ui-rebuild — pushed before this session; this session's commits are pushed at handback, no PR",
+    "commits_ahead_of_base": "twenty-six commits on top of 77602b0; `git log main..HEAD` is authoritative",
+    "head": "2c5ce62 is the code head; the record and rc.3 freeze ride on top and the push is a fast-forward",
+    "upstream": "origin/codex/wp-058-ui-rebuild \u2014 pushed before this session; this session's commits are pushed at handback, no PR",
     "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
   },
   "owner_locked_decisions": {
@@ -20,7 +20,7 @@
     "warm_neutral_dark_with_amber": "rejected",
     "blue_canvas_from_reference": "rejected as pastel",
     "canvas": "violet, primary family: #F4EFFE to #BFA6E6, curve shape measured from the reference, hue replaced (owner picked option A from a rendered comparison sheet)",
-    "elevation": "\"Lifted\" — 0 1px 2px /0.08, 0 12px 28px -10px /0.10, 0 40px 90px -32px /0.18 on rgb(24 20 48) (owner picked option C)",
+    "elevation": "\"Lifted\" \u2014 0 1px 2px /0.08, 0 12px 28px -10px /0.10, 0 40px 90px -32px /0.18 on rgb(24 20 48) (owner picked option C)",
     "primary": "#2207D4, sampled from the reference at hue 248 deg, sat 0.97",
     "note": "A later session must treat these as fixed requirements and not re-derive them from the reference image."
   },
@@ -53,8 +53,8 @@
     },
     {
       "id": "candidate-freeze",
-      "status": "outstanding",
-      "evidence": "The retained 0.1.0-rc.2 receipt no longer verifies against a tree with changed source, so test_release_freeze.RetainedReleaseTests fails by design. A labelled 0.1.0-rc.3 receipt is frozen at package completion, following the WP-057 pattern."
+      "status": "passed",
+      "evidence": "0.1.0-rc.3 prepared from source 2c5ce62 with 665 frozen inputs; uv run --frozen python scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. RetainedReleaseTests and the full roadmap suite pass (67 tests)."
     }
   ],
   "blockers": [],
@@ -77,7 +77,7 @@
     "cn, lucide-react, class-variance-authority, radix-ui (component primitives, bundled)"
   ],
   "publication": {
-    "status": "branch pushed; regular pull request opened against main",
+    "status": "branch pushed; regular pull request #131 open against main",
     "branch": "codex/wp-058-ui-rebuild",
     "destination": "https://github.com/playa77/poliscope.git",
     "pull_request": 131,
