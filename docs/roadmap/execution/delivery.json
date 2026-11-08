@@ -2,11 +2,11 @@
   "version": 1,
   "package": "WP-059",
   "record": "docs/roadmap/execution/WP-059.md",
-  "kind": "corrective_maintenance",
+  "kind": "maintenance",
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "1f3aa72964fe4fdd33681815327f9ac6b78323c6",
   "branch": "codex/wp-059-shell-rail-a11y",
-  "status": "complete; both packaged candidates verified at handback",
+  "status": "complete",
   "execution_unit": "WP-059",
   "last_commit": "17fce27",
   "branch_state": {
