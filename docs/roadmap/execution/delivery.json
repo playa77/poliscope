@@ -6,8 +6,18 @@
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "77602b097f4739e4fd18567297d57f66f19db9eb",
   "branch": "codex/wp-058-ui-rebuild",
-  "status": "in progress; foundation delivered, screen rebuild outstanding",
+  "status": "in progress, paused between sessions; foundation, shell, palette and elevation delivered, screen rebuild outstanding",
   "execution_unit": "WP-058",
+  "last_commit": "aa3f824",
+  "owner_locked_decisions": {
+    "green_palette": "dropped",
+    "warm_neutral_dark_with_amber": "rejected",
+    "blue_canvas_from_reference": "rejected as pastel",
+    "canvas": "violet, primary family: #F4EFFE to #BFA6E6, curve shape measured from the reference, hue replaced (owner picked option A from a rendered comparison sheet)",
+    "elevation": "\"Lifted\" — 0 1px 2px /0.08, 0 12px 28px -10px /0.10, 0 40px 90px -32px /0.18 on rgb(24 20 48) (owner picked option C)",
+    "primary": "#2207D4, sampled from the reference at hue 248 deg, sat 0.97",
+    "note": "A later session must treat these as fixed requirements and not re-derive them from the reference image."
+  },
   "authorization": {
     "source": "user",
     "scope": "WP-058",
@@ -23,7 +33,7 @@
     {
       "id": "shell-and-regression-suite",
       "status": "passed",
-      "evidence": "Floating navigation rail, page blocks and a native select that preserves the desktop DOM contract. npx vitest run: 41 files, 459 tests passing. Built index.html rendered in a real browser at 1280x577 and inspected: rail 256 px wide, canvas rgb(238,240,251), Inter applied, skip link off-canvas until focused, primary action solid indigo."
+      "evidence": "Floating navigation rail, page blocks and a native select that preserves the desktop DOM contract. npx vitest run: 41 files, 459 tests passing. Built index.html rendered in a real browser at 1440x900 and inspected: rail 256 px, ten nav items with no clipping, violet canvas gradient applied, primary button and active nav pill rgb(34, 7, 212) with white text, skip link off-canvas and transparent until focused."
     },
     {
       "id": "screens-rebuilt-on-the-component-set",
@@ -54,7 +64,7 @@
     "merge_commit": "77602b097f4739e4fd18567297d57f66f19db9eb"
   },
   "validation": "docs/roadmap/execution/WP-058.md",
-  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the indigo/lavender identity, a floating navigation rail and page blocks, and the shell rebuilt on them. Screen-by-screen rebuild, the packaged Playwright gate and the 0.1.0-rc.3 freeze remain outstanding. No engine, content, contract, IPC or runtime-identity bytes changed.",
+  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the violet/indigo identity, a floating navigation rail and page blocks, and the shell rebuilt on them. Screen-by-screen rebuild, the packaged Playwright gate and the 0.1.0-rc.3 freeze remain outstanding. Next action for a resuming session: rebuild overview first, then the remaining ten screens, one commit each, keeping the DOM contracts listed in the record. No engine, content, contract, IPC or runtime-identity bytes changed.",
   "dependencies_introduced": [
     "tailwindcss, @tailwindcss/vite (build-time CSS only)",
     "@fontsource-variable/inter (bundled font, no runtime fetch)",
