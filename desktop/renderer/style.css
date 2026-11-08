@@ -21,8 +21,20 @@
 :root {
   color-scheme: light;
 
-  --background: #eef0fb;
-  --background-tint: #f6f7ff;
+  /*
+    Canvas sampled from the owner's reference image (ui.webp), not estimated:
+    the leftmost three columns over the card-free top and bottom bands read
+    #F1EDFC; the same band on the right reads #B4DCFF. The right stop is then
+    lightened 33 % toward white — 180+(255-180)*0.33 = 205, 220+(255-220)*0.33
+    = 232, 255 → #CDE8FF — so the wash runs lavender → pale sky blue.
+  */
+  --canvas-from: #f1edfc;
+  --canvas-to: #cde8ff;
+  --canvas-mid: #dfeafd;
+
+  /* Flat surface for controls that must sit on a card, not on the canvas. */
+  --background: #fbfaff;
+  --background-tint: #f6f5ff;
   --foreground: #20233a;
 
   --card: #ffffff;
@@ -30,17 +42,21 @@
   --popover: #ffffff;
   --popover-foreground: #20233a;
 
-  --primary: #5b5bf0;
+  /*
+    Primary sampled from the reference: the saturated indigo cluster reads
+    #2207D4 (hue 248°, sat 0.97). White on it is 10.2:1.
+  */
+  --primary: #2207d4;
   --primary-foreground: #ffffff;
-  --primary-deep: #4f46e5;
-  --primary-soft: #d9dbff;
-  --primary-wash: #eeeffe;
+  --primary-deep: #1b05b0;
+  --primary-soft: #d3cdf6;
+  --primary-wash: #e9e6fb;
 
-  --secondary: #f1f3fc;
+  --secondary: #f1effc;
   --secondary-foreground: #20233a;
-  --muted: #f6f7ff;
-  --muted-foreground: #5d6480;
-  --accent: #e9ebfa;
+  --muted: #f6f4ff;
+  --muted-foreground: #4a4f6d;
+  --accent: #e9e6fb;
   --accent-foreground: #20233a;
 
   --destructive: #dc4b52;
@@ -49,22 +65,22 @@
   --success-foreground: #0c6b49;
   --warning: #c98511;
   --warning-foreground: #7a4e00;
-  --info: #5b5bf0;
-  --info-foreground: #3a3f9e;
-  --focus: #5b5bf0;
+  --info: #2207d4;
+  --info-foreground: #2a1a9e;
+  --focus: #2207d4;
   --focus-foreground: #ffffff;
   --invert: #20233a;
   --invert-foreground: #f7f8fd;
 
-  --border: #e5e8f5;
-  --input: #dfe3f2;
-  --ring: #5b5bf0;
+  --border: #e6e4f6;
+  --input: #dedbf2;
+  --ring: #2207d4;
 
   --radius: 0.75rem;
   --radius-card: 1.375rem;
 
-  --shadow-card: 0 18px 45px -22px rgb(35 39 90 / 0.28), 0 3px 10px -4px rgb(35 39 90 / 0.10);
-  --shadow-float: 0 24px 60px -28px rgb(35 39 90 / 0.35), 0 4px 14px -6px rgb(35 39 90 / 0.12);
+  --shadow-card: 0 0 0 1px rgb(34 7 120 / 0.05), 0 18px 45px -22px rgb(34 7 120 / 0.26), 0 3px 10px -4px rgb(34 7 120 / 0.10);
+  --shadow-float: 0 0 0 1px rgb(34 7 120 / 0.06), 0 24px 60px -28px rgb(34 7 120 / 0.34), 0 4px 14px -6px rgb(34 7 120 / 0.12);
 
   --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -72,8 +88,13 @@
 .dark {
   color-scheme: dark;
 
-  --background: #131529;
-  --background-tint: #191c34;
+  /* Same wash, transposed to a night palette: plum on the left, deep sea on the right. */
+  --canvas-from: #191433;
+  --canvas-to: #14304a;
+  --canvas-mid: #16233f;
+
+  --background: #1a1636;
+  --background-tint: #1e1a3c;
   --foreground: #eceefb;
 
   --card: #1b1e38;
@@ -81,11 +102,11 @@
   --popover: #1f2340;
   --popover-foreground: #eceefb;
 
-  --primary: #8b8bff;
-  --primary-foreground: #14162b;
-  --primary-deep: #6f6cf6;
-  --primary-soft: #2c2f5e;
-  --primary-wash: #222544;
+  --primary: #9a8cff;
+  --primary-foreground: #17093f;
+  --primary-deep: #7f6dff;
+  --primary-soft: #2f2a5e;
+  --primary-wash: #241f49;
 
   --secondary: #232647;
   --secondary-foreground: #eceefb;
@@ -100,19 +121,19 @@
   --success-foreground: #8ff0c4;
   --warning: #f0b552;
   --warning-foreground: #ffd9a1;
-  --info: #8b8bff;
-  --info-foreground: #c9c9ff;
-  --focus: #8b8bff;
-  --focus-foreground: #14162b;
+  --info: #9a8cff;
+  --info-foreground: #cdc6ff;
+  --focus: #9a8cff;
+  --focus-foreground: #17093f;
   --invert: #eceefb;
   --invert-foreground: #131529;
 
   --border: #2b2f52;
   --input: #32365c;
-  --ring: #8b8bff;
+  --ring: #9a8cff;
 
-  --shadow-card: 0 20px 50px -24px rgb(4 6 24 / 0.75), 0 3px 10px -4px rgb(4 6 24 / 0.5);
-  --shadow-float: 0 28px 70px -30px rgb(4 6 24 / 0.85), 0 5px 16px -6px rgb(4 6 24 / 0.55);
+  --shadow-card: 0 0 0 1px rgb(120 140 220 / 0.10), 0 20px 50px -24px rgb(4 6 24 / 0.75), 0 3px 10px -4px rgb(4 6 24 / 0.5);
+  --shadow-float: 0 0 0 1px rgb(120 140 220 / 0.12), 0 28px 70px -30px rgb(4 6 24 / 0.85), 0 5px 16px -6px rgb(4 6 24 / 0.55);
 }
 
 @theme inline {
@@ -162,6 +183,12 @@
   --shadow-float: var(--shadow-float);
 }
 
+@utility bg-canvas {
+  background-image: linear-gradient(90deg, var(--canvas-from) 0%, var(--canvas-to) 100%);
+  background-attachment: fixed;
+  background-color: var(--canvas-mid);
+}
+
 @layer base {
   html {
     font-family: var(--font-sans);
@@ -171,7 +198,9 @@
 
   body {
     margin: 0;
-    background: var(--background);
+    background-color: var(--canvas-mid);
+    background-image: linear-gradient(90deg, var(--canvas-from) 0%, var(--canvas-to) 100%);
+    background-attachment: fixed;
     color: var(--foreground);
     font-size: 0.875rem;
     line-height: 1.45;

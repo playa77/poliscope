@@ -20,7 +20,7 @@ export function AppShell({
   children: ReactNode;
 }) {
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-canvas">
       <div className="mx-auto flex w-full max-w-[104rem] gap-6 px-4 py-4 lg:px-8 lg:py-8">
         <aside className="sticky top-4 hidden h-[calc(100vh-2rem)] w-64 shrink-0 flex-col rounded-card bg-card p-3 shadow-[var(--shadow-card)] lg:top-8 lg:flex lg:h-[calc(100vh-4rem)]">
           {brand}
@@ -57,7 +57,7 @@ export function Brand({
 
 export function NavGroup({ label, children }: { label: string; children: ReactNode }) {
   return (
-    <div className="mb-4 last:mb-0">
+    <div className="mb-3 last:mb-0">
       <p className="px-3 pb-1 text-[11px] font-semibold uppercase tracking-[0.08em] text-muted-foreground">
         {label}
       </p>
@@ -89,7 +89,7 @@ export function NavItem({
         disabled={disabled}
         onClick={onSelect}
         className={cn(
-          "group flex w-full items-center gap-2.5 rounded-full px-3 py-2 text-left text-sm transition-colors",
+          "group flex w-full items-center gap-2.5 rounded-full px-3 py-1.5 text-left text-sm transition-colors",
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring",
           active
             ? "bg-primary font-medium text-primary-foreground shadow-sm"

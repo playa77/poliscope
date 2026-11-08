@@ -91,9 +91,6 @@ function App() {
               ))}
             </NavGroup>
           ))}
-          <NavGroup label="Assistant">
-            <NavItem label="Provider settings" icon={Plug} onSelect={openProviders} />
-          </NavGroup>
         </>
       }
       status={
@@ -176,7 +173,7 @@ function App() {
         )}
 
         <Panel title="Recovery" description="Reopen a folder, inspect confirmed worlds, or reset what this session holds.">
-          <Recovery locked={busy || draft} />
+          <div className="legacy-ui"><Recovery locked={busy || draft} /></div>
         </Panel>
       </main>
 
