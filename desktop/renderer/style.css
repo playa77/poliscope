@@ -306,7 +306,7 @@
     color: inherit;
   }
 
-  .legacy-ui :is(input, select, textarea) {
+  .legacy-ui :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]) {
     display: block;
     max-width: 100%;
     border: 1px solid var(--input);
@@ -419,6 +419,65 @@
 
   .legacy-ui :is(article, section, td, th) {
     overflow-wrap: anywhere;
+  }
+}
+
+/*
+  The evidence table rhythm. It lives here rather than in each screen: every
+  table in the app carries dense decimal strings, so cells wrap instead of
+  forcing the panel wide, and headers stay legible at 11px uppercase.
+*/
+@layer components {
+  .data-table table {
+    width: 100%;
+    min-width: 32rem;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.8125rem;
+  }
+
+  .data-table caption {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .data-table thead {
+    background: var(--muted);
+  }
+
+  .data-table thead th {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    white-space: nowrap;
+  }
+
+  .data-table tbody :is(th, td) {
+    padding: 0.55rem 0.75rem;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .data-table tbody th {
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  .data-table tbody tr:hover {
+    background: color-mix(in oklab, var(--muted) 55%, var(--card));
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
   }
 }
 

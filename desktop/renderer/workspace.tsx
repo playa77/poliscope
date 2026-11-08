@@ -14,8 +14,10 @@ import { Building2, ChevronRight, FolderOpen, Layers, PanelRightClose, PanelRigh
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Textarea } from '@/components/ui/textarea';
 import { NativeSelect } from '@/components/app/native-select';
 import { EmptyState, ErrorNote, KeyValue, LoadingRows, Panel } from '@/components/app/blocks';
+import { Field } from '@/components/app/form';
 import type { CreateOptions, WorkspaceCatalogue, WorkspaceState, ScopeDTO, WorkspacePage, WorkspacePageRequest } from '../../contracts/workspace';
 
 export function contextKey(state: WorkspaceState, scope: string, view: string) {
@@ -139,7 +141,7 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
     {dirty && <p role="status" className="rounded-xl bg-warning/10 px-4 py-3 text-sm text-warning-foreground">Unsaved revision draft: Apply, cancel or defer before changing the selected state.</p>}
 
     {catalogue && <>
-      <details className="rounded-card bg-card px-5 py-4 shadow-[var(--shadow-card)]">
+      <details className="inquiry-guide rounded-card bg-card px-5 py-4 shadow-[var(--shadow-card)]">
         <summary className="text-sm font-medium">Explore a question without AI</summary>
         <p className="mt-2 text-sm text-muted-foreground">Begin in any domain. There is no required order or overall society score.</p>
         <ol className="mt-2 flex list-decimal flex-col gap-2 pl-5 text-sm leading-relaxed text-foreground/90">
@@ -191,6 +193,9 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
                   </div>
                 </div>
                 {options.setup !== 'blank' && <p className="text-xs text-muted-foreground">Explicit reference selection: synthetic conditions, editable above. No civic arrangements or goals are selected.</p>}
+                <Field label="Purpose (optional, stays in this session)">
+                  <Textarea maxLength={4096} placeholder="What would you like to explore?" />
+                </Field>
                 <p className="text-xs text-muted-foreground">Blank quantities remain unknown. Purpose does not create a target or policy.</p>
                 <div><Button type="submit" disabled={loading}>Create sandbox</Button></div>
               </fieldset>
@@ -234,13 +239,13 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
               <span className="rounded-full bg-muted px-2.5 py-1 text-[11px] text-muted-foreground tabular-nums">Tick {state.effective_time.tick}</span>
             </div>
           </div>
+          <p className="text-xs tabular-nums text-muted-foreground">{state.goal_count} declared goals · {state.policy_count} selected policies · {state.mechanism_count} registered mechanisms</p>
           <KeyValue items={[
             { label: 'Branch', value: state.context.branch_id },
             { label: 'Revision', value: state.context.revision_id },
             { label: 'Model', value: state.versions.model_id },
             { label: 'Calendar', value: state.effective_time.calendar_id },
-            { label: 'Scope', value: selectedScopeLabel ? `${selectedScopeLabel} (${scopes.data?.find(s => s.id === selectedScope)?.scope_kind})` : 'Loading scope' },
-            { label: 'Goals · policies · mechanisms', value: `${state.goal_count} · ${state.policy_count} · ${state.mechanism_count}` },
+            { label: 'Scope identity', value: selectedScopeLabel ? `${selectedScopeLabel} (${scopes.data?.find(s => s.id === selectedScope)?.scope_kind})` : 'Loading scope' },
           ]} />
           <div className="grid gap-3 sm:grid-cols-2">
             <div className="flex flex-col gap-1.5">
@@ -263,7 +268,7 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
           <p className="text-xs text-muted-foreground">Saved revisions remain attached to their original state.</p>
         </div>
 
-        <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
+        <div className="workspace-layout grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1fr)_18rem]">
           <article className="flex min-w-0 flex-col gap-4 rounded-card bg-card px-5 py-4 shadow-[var(--shadow-card)]" aria-labelledby="workspace-view-heading">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <h3 id="workspace-view-heading" ref={viewHeading} tabIndex={-1} className="text-base font-semibold tracking-tight">{view}</h3>
@@ -286,13 +291,13 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
 
             <section aria-labelledby="domains-heading" className="mt-1">
               <h4 id="domains-heading" className="mb-2 text-sm font-semibold">Enter a domain</h4>
-              <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
+              <div className="domain-grid grid gap-2 sm:grid-cols-2 xl:grid-cols-3">
                 {catalogue.domains.map(d => (
                   <button key={d.id} type="button" disabled={dirty} aria-pressed={domain === d.id} onClick={() => { openInterview(d.id); }}
                     className="group flex min-w-0 items-center justify-between gap-2 rounded-xl bg-muted/70 px-3 py-2.5 text-left text-sm transition-colors hover:bg-accent aria-pressed:bg-primary aria-pressed:text-primary-foreground">
                     <span className="min-w-0">
-                      <span className="block truncate font-medium">{d.name}</span>
-                      <small className="block truncate text-[11px] font-normal text-muted-foreground group-aria-pressed:text-primary-foreground/80">Synthetic interview · social mechanisms not supplied</small>
+                      <span className="block font-medium break-words">{d.name}</span>
+                      <small className="block text-[11px] font-normal leading-relaxed text-muted-foreground group-aria-pressed:text-primary-foreground/80">Synthetic interview · social mechanisms not supplied</small>
                     </span>
                     <ChevronRight aria-hidden className="size-4 shrink-0 opacity-60" />
                   </button>
@@ -320,7 +325,9 @@ export function Workspace({ view, onView, onDraftChange, onProviders, onAskAssis
                   <table className="w-full text-sm">
                     <caption className="sr-only">Authored conditions for the selected revision and scope</caption>
                     <thead><tr className="bg-muted/60 text-left text-[11px] uppercase tracking-wide text-muted-foreground"><th scope="col" className="px-3 py-2">Condition</th><th scope="col" className="px-3 py-2">Value</th><th scope="col" className="px-3 py-2">Meaning</th></tr></thead>
-                    <tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id} className="border-t border-border"><th scope="row" className="px-3 py-2 text-left font-medium">{v.property_id}</th><td className="px-3 py-2"><button type="button" title="Inspect authored condition" className="rounded-md px-2 py-1 text-left text-primary underline-offset-4 hover:underline" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td className="px-3 py-2 text-muted-foreground">{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}</tbody>
+                    <tbody>{values.data?.filter(v => 'value' in v && v.partition === 'conditions').map(v => 'value' in v && <tr key={v.id} className="border-t border-border"><th scope="row" className="px-3 py-2 text-left font-medium">{v.property_id}</th><td className="px-3 py-2"><button type="button" title="Inspect authored condition" className="rounded-md px-2 py-1 text-left text-primary underline-offset-4 hover:underline" onClick={() => setConditionInspector(v.id)}>{v.value.kind === 'unknown' ? 'Unknown' : v.value.kind === 'quantity' ? `${v.value.value} ${v.value.unit_id}` : v.value.kind === 'label' ? v.value.value : v.value.entity_id}</button></td><td className="px-3 py-2 text-muted-foreground">{v.value.kind === 'unknown' ? v.value.reason : 'Player-supplied starting condition'}</td></tr>)}
+                      {!values.isFetching && values.data?.filter(v => 'value' in v && v.partition === 'conditions').length === 0 && <tr><td colSpan={3} className="px-3 py-4 text-muted-foreground">No authored conditions are recorded for this scope. Unknown stays unknown; nothing is substituted.</td></tr>}
+                    </tbody>
                   </table>
                 </div>
               )}

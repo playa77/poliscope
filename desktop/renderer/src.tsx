@@ -19,11 +19,11 @@ import { Label } from '@/components/ui/label';
 import './style.css';
 declare global { interface Window { poliscope: ShellAPI } }
 
-const NAV: { group: string; items: { view: string; label: string; icon: typeof Globe2 }[] }[] = [
+const NAV: { group: string; items: { view: string; label: string; name?: string; icon: typeof Globe2 }[] }[] = [
   {
     group: 'Understand',
     items: [
-      { view: 'Civilization overview', label: 'Overview', icon: LayoutDashboard },
+      { view: 'Civilization overview', label: 'Overview', name: 'Civilization overview', icon: LayoutDashboard },
       { view: 'Society map', label: 'Society map', icon: Map },
       { view: 'Decision atlas', label: 'Decision atlas', icon: Compass },
       { view: 'Dependency matrix', label: 'Dependency matrix', icon: Grid3x3 },
@@ -33,8 +33,8 @@ const NAV: { group: string; items: { view: string; label: string; icon: typeof G
   {
     group: 'Interpret',
     items: [
-      { view: 'Uncertainty and sensitivity', label: 'Uncertainty', icon: Globe2 },
-      { view: 'Timeline and experiments', label: 'Timeline', icon: History },
+      { view: 'Uncertainty and sensitivity', label: 'Uncertainty', name: 'Uncertainty and sensitivity', icon: Globe2 },
+      { view: 'Timeline and experiments', label: 'Timeline', name: 'Timeline and experiments', icon: History },
       { view: 'History and comparison', label: 'History and comparison', icon: GitCompare },
       { view: 'Evidence and models', label: 'Evidence and models', icon: Database },
     ],
@@ -80,13 +80,14 @@ function App() {
   const engineText = status.isError ? 'Local engine unavailable' : status.data?.detail ?? 'Starting local engine';
   return (
     <AppShell
+      skipLink={<a className="skip-link" href="#sandbox-heading" onClick={event => { event.preventDefault(); document.getElementById('sandbox-heading')?.focus(); }}>Skip to society workspace</a>}
       brand={<Brand title="Poliscope" subtitle="Local society sandbox" icon={Globe2} />}
       navigation={
         <>
           {NAV.map((section) => (
             <NavGroup key={section.group} label={section.group}>
               {section.items.map((item) => (
-                <NavItem key={item.view} label={item.label} icon={item.icon} active={view === item.view}
+                <NavItem key={item.view} label={item.label} accessibleName={item.name} icon={item.icon} active={view === item.view}
                   disabled={draft} onSelect={() => setView(item.view)} />
               ))}
             </NavGroup>
@@ -100,7 +101,6 @@ function App() {
         </div>
       }
     >
-      <a className="skip-link" href="#sandbox-heading" onClick={event => { event.preventDefault(); document.getElementById('sandbox-heading')?.focus(); }}>Skip to society workspace</a>
       <main className="flex min-w-0 flex-col gap-5 pb-10">
         <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="min-w-0">

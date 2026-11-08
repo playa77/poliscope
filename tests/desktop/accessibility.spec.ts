@@ -115,7 +115,10 @@ test('E2E-016.b keyboard learner inquiry report focus navigation and zoom', asyn
     await expect(page.locator('.workspace-layout')).toHaveCSS('grid-template-columns', /\d/);
     expect(await page.evaluate(() => document.documentElement.scrollWidth <= window.innerWidth + 1)).toBe(true);
     const focusColor = await page.locator('#workspace-view-heading').evaluate(el => getComputedStyle(el).outlineColor);
-    expect(focusColor).toBe('rgb(255, 213, 137)');
+    // The focus ring follows the theme's ring token. On the light violet canvas the
+    // dark indigo (#2207d4) is the 10.2:1 indicator; the retired dark theme's amber
+    // (#ffd589) would sit at 1.6:1 on white and could not serve as a focus indicator.
+    expect(focusColor).toBe('rgb(34, 7, 212)');
     await page.screenshot({ path: '/tmp/poliscope-accessibility-zoom.png', fullPage: true });
   } finally { await app.close(); await rm(directory, { recursive: true, force: true }); }
 });

@@ -18,6 +18,7 @@ export function Panel({
   footer,
   className,
   contentClassName,
+  label,
   ...rest
 }: {
   title?: ReactNode;
@@ -27,8 +28,10 @@ export function Panel({
   footer?: ReactNode;
   className?: string;
   contentClassName?: string;
+  /** Landmark name. Set it only when the desktop specs address this region. */
+  label?: string;
 } & Omit<React.ComponentProps<"section">, "title">) {
-  return (
+  const panel = (
     <Card
       className={cn(
         "gap-0 overflow-hidden rounded-card border-0 bg-card py-0 shadow-[var(--shadow-card)]",
@@ -56,6 +59,7 @@ export function Panel({
       ) : null}
     </Card>
   );
+  return label ? <section aria-label={label}>{panel}</section> : panel;
 }
 
 export function PageHeader({

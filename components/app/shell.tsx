@@ -12,15 +12,19 @@ export function AppShell({
   brand,
   navigation,
   status,
+  skipLink,
   children,
 }: {
   brand: ReactNode;
   navigation: ReactNode;
   status?: ReactNode;
+  skipLink?: ReactNode;
   children: ReactNode;
 }) {
   return (
     <div className="min-h-screen bg-canvas">
+      {/* The skip link is first in the DOM so it is the very first tab stop. */}
+      {skipLink}
       <div className="mx-auto flex w-full max-w-[104rem] gap-6 px-4 py-4 lg:px-8 lg:py-8">
         <aside className="sticky top-4 hidden h-[calc(100vh-2rem)] w-64 shrink-0 flex-col rounded-card bg-card p-3 shadow-[var(--shadow-card)] lg:top-8 lg:flex lg:h-[calc(100vh-4rem)]">
           {brand}
@@ -68,6 +72,7 @@ export function NavGroup({ label, children }: { label: string; children: ReactNo
 
 export function NavItem({
   label,
+  accessibleName,
   icon: Icon,
   active,
   disabled,
@@ -75,6 +80,7 @@ export function NavItem({
   onSelect,
 }: {
   label: string;
+  accessibleName?: string;
   icon: LucideIcon;
   active?: boolean;
   disabled?: boolean;
@@ -85,6 +91,7 @@ export function NavItem({
     <li>
       <button
         type="button"
+        aria-label={accessibleName}
         aria-current={active ? "page" : undefined}
         disabled={disabled}
         onClick={onSelect}
