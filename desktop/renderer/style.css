@@ -22,36 +22,29 @@
   color-scheme: light;
 
   /*
-    Canvas measured from the owner's reference image (ui.webp), not estimated.
-
-    The backdrop is NOT a two-stop linear ramp: sampling the card-free top band
-    row by row shows it holding near #E6EAFF for the first two thirds and only
-    then accelerating into blue. A straight interpolation between the two edge
-    colours is off by up to 28 RGB units (at 70% width) — visibly too blue too
-    early. The stops below are the measured curve, dense enough that the
-    piecewise-linear fit stays within 3 units of every sampled column.
+    Canvas: a violet wash in the primary's own hue family, no blue. Measured
+    curve shape kept from the reference (it holds pale for most of the width and
+    deepens late); only the hue moved, so the backdrop belongs to the indigo.
   */
   --canvas-gradient: linear-gradient(
     90deg,
-    #f1edfc 0%,
-    #f0ecfb 5%,
-    #eeeefe 15%,
-    #e9eaff 25%,
-    #e9eaff 32%,
-    #e6eaff 45%,
-    #e5ebfd 58%,
-    #e5ebfd 68%,
-    #e1e9ff 75%,
-    #dae6fe 80%,
-    #d5e3fe 85%,
-    #cbdefe 90%,
-    #c0daff 95%,
-    #b7d5fd 100%
+    #f4effe 0%,
+    #f2ecfd 5%,
+    #efe7fc 15%,
+    #ece2fb 25%,
+    #ece2fb 32%,
+    #e9defa 45%,
+    #e6d9f8 58%,
+    #e6d9f8 68%,
+    #e2d4f7 75%,
+    #ded0f6 80%,
+    #d9c9f4 85%,
+    #d2bff1 90%,
+    #c9b3ec 95%,
+    #bfa6e6 100%
   );
 
-  /* The flat fallback is the final stop: the scrollbar gutter sits at the right
-     edge, so a mid-point tint would show as a stripe beside it. */
-  --canvas-mid: #b7d5fd;
+  --canvas-mid: #bfa6e6;
 
   /* Flat surface for controls that must sit on a card, not on the canvas. */
   --background: #fbfaff;
@@ -101,18 +94,18 @@
   --radius-card: 1.375rem;
 
   /*
-    Elevation measured from the reference: just outside a card edge the canvas
-    is about 12 RGB units darker than the open canvas, and the falloff reaches
-    the unshadowed value at roughly 30 px in the 752 px reference — about 57 px
-    at this app's scale. Two layers: a tight contact shadow and a wide, very
-    soft ambient one, both tinted with the sampled indigo rather than neutral.
+    Elevation: three low-opacity layers on a neutral-cool ink rather than the
+    accent, so cards read as lifted paper instead of tinted boxes. Option 2
+    ("floating") from the comparison sheet.
   */
   --shadow-card:
-    0 2px 8px -2px rgb(34 7 120 / 0.04),
-    0 14px 64px -16px rgb(34 7 120 / 0.10);
+    0 1px 2px rgb(24 20 48 / 0.06),
+    0 8px 20px -8px rgb(24 20 48 / 0.08),
+    0 26px 60px -24px rgb(24 20 48 / 0.13);
   --shadow-float:
-    0 6px 18px -6px rgb(34 7 120 / 0.10),
-    0 30px 90px -24px rgb(34 7 120 / 0.26);
+    0 2px 6px rgb(24 20 48 / 0.08),
+    0 14px 34px -12px rgb(24 20 48 / 0.12),
+    0 44px 96px -32px rgb(24 20 48 / 0.20);
 
   --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -120,18 +113,18 @@
 .dark {
   color-scheme: dark;
 
-  /* Same curve, transposed to a night palette: plum → deep sea. */
+  /* Same violet wash at night. */
   --canvas-gradient: linear-gradient(
     90deg,
-    #191433 0%,
-    #181533 15%,
-    #172038 32%,
-    #16263f 50%,
-    #152b44 68%,
-    #142f48 85%,
-    #13304a 100%
+    #1a1430 0%,
+    #1c1634 15%,
+    #1f193a 32%,
+    #231d42 50%,
+    #27214a 68%,
+    #2b2452 85%,
+    #2f2758 100%
   );
-  --canvas-mid: #13304a;
+  --canvas-mid: #2f2758;
 
   --background: #1a1636;
   --background-tint: #1e1a3c;
