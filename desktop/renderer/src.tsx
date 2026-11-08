@@ -173,7 +173,7 @@ function App() {
         )}
 
         <Panel title="Recovery" description="Reopen a folder, inspect confirmed worlds, or reset what this session holds.">
-          <div className="legacy-ui"><Recovery locked={busy || draft} /></div>
+          <Recovery locked={busy || draft} />
         </Panel>
       </main>
 
