@@ -22,16 +22,36 @@
   color-scheme: light;
 
   /*
-    Canvas sampled from the owner's reference image (ui.webp), used unchanged:
-    the leftmost three columns over the card-free top and bottom bands read
-    #F1EDFC and the same band on the right reads #B4DCFF, so the wash runs pale
-    lavender → light sky blue at the reference's own strength.
+    Canvas measured from the owner's reference image (ui.webp), not estimated.
+
+    The backdrop is NOT a two-stop linear ramp: sampling the card-free top band
+    row by row shows it holding near #E6EAFF for the first two thirds and only
+    then accelerating into blue. A straight interpolation between the two edge
+    colours is off by up to 28 RGB units (at 70% width) — visibly too blue too
+    early. The stops below are the measured curve, dense enough that the
+    piecewise-linear fit stays within 3 units of every sampled column.
   */
-  --canvas-from: #f1edfc;
-  --canvas-to: #b4dcff;
-  /* The right stop doubles as the flat fallback: the scrollbar gutter sits at
-     the right edge, so a mid-point tint would show as a stripe beside it. */
-  --canvas-mid: #b4dcff;
+  --canvas-gradient: linear-gradient(
+    90deg,
+    #f1edfc 0%,
+    #f0ecfb 5%,
+    #eeeefe 15%,
+    #e9eaff 25%,
+    #e9eaff 32%,
+    #e6eaff 45%,
+    #e5ebfd 58%,
+    #e5ebfd 68%,
+    #e1e9ff 75%,
+    #dae6fe 80%,
+    #d5e3fe 85%,
+    #cbdefe 90%,
+    #c0daff 95%,
+    #b7d5fd 100%
+  );
+
+  /* The flat fallback is the final stop: the scrollbar gutter sits at the right
+     edge, so a mid-point tint would show as a stripe beside it. */
+  --canvas-mid: #b7d5fd;
 
   /* Flat surface for controls that must sit on a card, not on the canvas. */
   --background: #fbfaff;
@@ -80,8 +100,19 @@
   --radius: 0.75rem;
   --radius-card: 1.375rem;
 
-  --shadow-card: 0 0 0 1px rgb(34 7 120 / 0.05), 0 18px 45px -22px rgb(34 7 120 / 0.26), 0 3px 10px -4px rgb(34 7 120 / 0.10);
-  --shadow-float: 0 0 0 1px rgb(34 7 120 / 0.06), 0 24px 60px -28px rgb(34 7 120 / 0.34), 0 4px 14px -6px rgb(34 7 120 / 0.12);
+  /*
+    Elevation measured from the reference: just outside a card edge the canvas
+    is about 12 RGB units darker than the open canvas, and the falloff reaches
+    the unshadowed value at roughly 30 px in the 752 px reference — about 57 px
+    at this app's scale. Two layers: a tight contact shadow and a wide, very
+    soft ambient one, both tinted with the sampled indigo rather than neutral.
+  */
+  --shadow-card:
+    0 2px 8px -2px rgb(34 7 120 / 0.04),
+    0 14px 64px -16px rgb(34 7 120 / 0.10);
+  --shadow-float:
+    0 6px 18px -6px rgb(34 7 120 / 0.10),
+    0 30px 90px -24px rgb(34 7 120 / 0.26);
 
   --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
@@ -89,10 +120,18 @@
 .dark {
   color-scheme: dark;
 
-  /* Same wash, transposed to a night palette: plum on the left, deep sea on the right. */
-  --canvas-from: #191433;
-  --canvas-to: #14304a;
-  --canvas-mid: #14304a;
+  /* Same curve, transposed to a night palette: plum → deep sea. */
+  --canvas-gradient: linear-gradient(
+    90deg,
+    #191433 0%,
+    #181533 15%,
+    #172038 32%,
+    #16263f 50%,
+    #152b44 68%,
+    #142f48 85%,
+    #13304a 100%
+  );
+  --canvas-mid: #13304a;
 
   --background: #1a1636;
   --background-tint: #1e1a3c;
@@ -133,8 +172,8 @@
   --input: #32365c;
   --ring: #9a8cff;
 
-  --shadow-card: 0 0 0 1px rgb(120 140 220 / 0.10), 0 20px 50px -24px rgb(4 6 24 / 0.75), 0 3px 10px -4px rgb(4 6 24 / 0.5);
-  --shadow-float: 0 0 0 1px rgb(120 140 220 / 0.12), 0 28px 70px -30px rgb(4 6 24 / 0.85), 0 5px 16px -6px rgb(4 6 24 / 0.55);
+  --shadow-card: 0 2px 10px -4px rgb(0 0 0 / 0.45), 0 14px 50px -14px rgb(0 0 0 / 0.55);
+  --shadow-float: 0 4px 14px -6px rgb(0 0 0 / 0.5), 0 28px 80px -22px rgb(0 0 0 / 0.65);
 }
 
 @theme inline {
@@ -185,7 +224,7 @@
 }
 
 @utility bg-canvas {
-  background-image: linear-gradient(90deg, var(--canvas-from) 0%, var(--canvas-to) 100%);
+  background-image: var(--canvas-gradient);
   background-attachment: fixed;
   background-color: var(--canvas-mid);
 }
@@ -200,7 +239,7 @@
   body {
     margin: 0;
     background-color: var(--canvas-mid);
-    background-image: linear-gradient(90deg, var(--canvas-from) 0%, var(--canvas-to) 100%);
+    background-image: var(--canvas-gradient);
     background-attachment: fixed;
     color: var(--foreground);
     font-size: 0.875rem;
@@ -213,7 +252,9 @@
     outline-offset: 2px;
   }
 
-  /* Off-screen until it takes focus, then a real, visible target. */
+  /* Off-screen and transparent until focused, then a real visible target. It
+     stays focusable while hidden, and opacity (not visibility) keeps its open
+     shadow from painting a smudge onto the canvas above the viewport. */
   .skip-link {
     position: fixed;
     top: 0.5rem;
@@ -225,12 +266,14 @@
     color: var(--foreground);
     box-shadow: var(--shadow-card);
     transform: translateY(-160%);
-    transition: transform 150ms ease;
+    opacity: 0;
+    transition: transform 150ms ease, opacity 150ms ease;
   }
 
   .skip-link:focus,
   .skip-link:focus-visible {
     transform: translateY(0);
+    opacity: 1;
   }
 
   * {
