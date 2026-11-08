@@ -2,7 +2,7 @@
   "version": 1,
   "package": "WP-057",
   "record": "docs/roadmap/execution/WP-057.md",
-  "kind": "corrective_maintenance",
+  "kind": "maintenance",
   "owner": "Hermes (default session), controlled by the requesting repository user",
   "base": "51664d0d78169d3b1b6c92089096b0ecb236274b",
   "branch": "codex/wp-057-native-sandbox",
