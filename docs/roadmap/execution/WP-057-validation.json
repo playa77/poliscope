@@ -1,0 +1,57 @@
+{
+  "version": 1,
+  "package": "WP-057",
+  "kind": "corrective_maintenance",
+  "base": "51664d0d78169d3b1b6c92089096b0ecb236274b",
+  "branch": "codex/wp-057-native-sandbox",
+  "implementation_commit": "f773c6a077378fa1e1bee0270384473a953bb0e6",
+  "receipt_commit_scope": "docs/releases/0.1.0-rc.2/inventory.ci-history.json frozen 665 inputs at the implementation commit",
+  "route": "solo-validated; agent review deferred",
+  "local_runs": [
+    {
+      "command": "uv run --frozen pytest tests/harness tests/roadmap -q",
+      "at": "after the 0.1.0-rc.2 receipt commit",
+      "result": "96 passed, 82 subtests passed",
+      "covers": "harness distribution install/upgrade/tamper/failure behavior (including new icon and pickup assertions), release-freeze drift/forgery/label acceptance and rejection, retained cc-checkout inventory check"
+    },
+    {
+      "command": "uv run --frozen pytest tests/harness/test_distribution.py tests/roadmap/test_release_freeze.py -q",
+      "at": "before the implementation commit, pre-receipt",
+      "result": "12 passed, 6 subtests passed, 1 expected failure (retained rc.2 receipt did not exist yet)"
+    },
+    {
+      "command": "python3 scripts/check_roadmap.py && python3 scripts/check_baseline.py",
+      "result": "Roadmap manifest valid: 30 cases, 8 gates; WP-001 baseline valid: 1053 clauses, 68 parents, 178 child scopes; RT-01-14",
+      "note": "application outcomes remain unrun per manifest semantics"
+    },
+    {
+      "command": "uv run --frozen python scripts/freeze_release.py --label 0.1.0-rc.2 --output docs/releases/0.1.0-rc.2/inventory.ci-history.json",
+      "at": "implementation commit f773c6a",
+      "result": "Release inventory prepared; no artifact published"
+    },
+    {
+      "command": "uv run --frozen python scripts/freeze_release.py --check",
+      "result": "665 frozen release inputs verified; publication remains separate"
+    },
+    {
+      "command": "git diff --check (staged and full diff at each commit)",
+      "result": "clean"
+    }
+  ],
+  "owner_machine_evidence": [
+    "0.1.0-rc.1 install reproduction: wrapper SHA-256 fc608958e898994ef5df7da0b816686a854ab174ef59a12284279d27d54cda1 matches docs/releases/0.1.0-rc.1/artifacts.json and authenticated artifact metadata; sidecar SHA verified; installer payload verified; engine self-test status passed",
+    "failure reproduction: menu/desktop off, terminal launch of the packaged poliscope aborts pre-window with FATAL:sandbox/linux/suid/client/setuid_sandbox_host.cc(166), exit 133, core dump; /proc/sys/kernel/apparmor_restrict_unprivileged_userns = 1; bundled chrome-sandbox mode 0755",
+    "remedy verification: scoped AppArmor userns profile /etc/apparmor.d/poliscope (Ubuntu chromium/chrome/brave shape) installed and parsed; relaunch left the window open on :0 with renderer NoNewPrivs+Seccomp 2, Seccomp_filters 1 and a zero-byte error log"
+  ],
+  "reused_evidence": "Application/engine/desktop/content/contract/lock bytes are unchanged from WP-055/056 retained identities; the authoritative full engine/desktop/packaged candidate run comes from the PR CI candidate. Native artifact for 0.1.0-rc.2 is NOT built; retained rc.1 artifacts remain the built candidate bytes.",
+  "not_run": [
+    "npm run test:desktop / typecheck / contracts:check / content:validate — no desktop, contract, content or lock bytes changed locally; PR CI runs the authoritative full lanes",
+    "npm run package + scripts/distribution.py native build — owner-run workflow requirement; rc.2 artifact build remains owner-authorized"
+  ],
+  "limitations": [
+    "Windows icon embedding and Windows InstallShell shortcut icon remain unchanged and owner-run",
+    "AppArmor remedy validated once on the owner's Xubuntu 26.04 machine; other distributions and floors remain unverified per platform scope",
+    "setuid chrome-sandbox remedy is documented but not exercised",
+    "local runs use the repo-pinned uv 0.12.23 installed per development docs; no lockfile changes"
+  ]
+}
