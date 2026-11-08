@@ -95,17 +95,17 @@
 
   /*
     Elevation: three low-opacity layers on a neutral-cool ink rather than the
-    accent, so cards read as lifted paper instead of tinted boxes. Option 2
-    ("floating") from the comparison sheet.
+    accent, so cards read as lifted paper instead of tinted boxes. "Lifted" —
+    the third option on the comparison sheet.
   */
   --shadow-card:
-    0 1px 2px rgb(24 20 48 / 0.06),
-    0 8px 20px -8px rgb(24 20 48 / 0.08),
-    0 26px 60px -24px rgb(24 20 48 / 0.13);
+    0 1px 2px rgb(24 20 48 / 0.08),
+    0 12px 28px -10px rgb(24 20 48 / 0.10),
+    0 40px 90px -32px rgb(24 20 48 / 0.18);
   --shadow-float:
-    0 2px 6px rgb(24 20 48 / 0.08),
-    0 14px 34px -12px rgb(24 20 48 / 0.12),
-    0 44px 96px -32px rgb(24 20 48 / 0.20);
+    0 2px 6px rgb(24 20 48 / 0.10),
+    0 18px 44px -14px rgb(24 20 48 / 0.14),
+    0 56px 120px -40px rgb(24 20 48 / 0.26);
 
   --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
 }
