@@ -97,6 +97,9 @@ def build(output, *, sign=False):
         installer = 'install-windows.ps1' if system == 'win32' else 'install-linux.sh'
         (bundle / installer).write_text((ROOT / 'packaging' / installer).read_text().replace('@VERSION@', version), encoding='utf-8', newline='\n')
         (bundle / installer).chmod(0o755)
+        if system == 'linux':
+            shutil.copyfile(ROOT / 'packaging/sandbox-notice.sh', bundle / 'sandbox-notice.sh')
+            shutil.copytree(ROOT / 'packaging/icons', bundle / 'icons')
         if sign and system == 'win32':
             subprocess.run(['powershell.exe', '-NoProfile', '-File', str(ROOT / 'packaging/sign-windows.ps1'),
                 '-AppDirectory', str(app)], check=True)

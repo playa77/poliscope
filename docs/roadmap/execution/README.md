@@ -54,6 +54,24 @@ Implementation committed at `239f724`; the authorized branch is pushed and
 [regular PR #120](https://github.com/playa77/poliscope/pull/120) is open against `main`.
 No merge was performed.
 
+**WP-057 corrective maintenance, 2026-11-08:** Owner-machine validation of the
+`0.1.0-rc.1` Linux candidate reproduced a silent first-launch failure
+(AppArmor userns restriction + non-setuid bundled helper; engine self-test and
+install hashes all passed) and the missing launcher-icon finding. Full
+[WP-057](WP-057.md) fixes the packaging layer: install-time non-fatal sandbox
+note, documented administrator remedies (validated AppArmor
+`/etc/apparmor.d/poliscope` profile on Xubuntu 26.04), bundled launcher icon
+with `Icon=poliscope`, and labeled `0.1.0-rc.2` release receipts
+([receipt](../../releases/0.1.0-rc.2/README.md); 665 frozen inputs verified).
+[Validation](WP-057-validation.json): 96 tests + 82 subtests locally
+(harness + roadmap), roadmap/baseline scripts pass; no application bytes
+changed, so full/native evidence reuses WP-055/056 identities and the PR CI
+candidate is authoritative. Route: **solo-validated; agent review deferred**.
+The active feature parent WP-056 stays complete; native rc.2 artifact build
+and release remain owner-run decisions.
+Published as regular
+[PR #130](https://github.com/playa77/poliscope/pull/130); no merge.
+
 # Implementation execution ledger
 
 **Current delivery, 2026-10-26:** [WP-048 in full](WP-048.md), on fetched main

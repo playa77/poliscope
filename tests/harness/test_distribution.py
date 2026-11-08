@@ -38,6 +38,8 @@ def test_per_user_install_in_spaces_upgrade_retains_data_and_previous_version(tm
     engine.parent.mkdir(parents=True)
     engine.write_text('#!/bin/sh\ntest "$1" = --self-test\n'); engine.chmod(0o755)
     (bundle / 'app/poliscope').write_text('synthetic app')
+    shutil.copyfile(ROOT / 'packaging/sandbox-notice.sh', bundle / 'sandbox-notice.sh')
+    shutil.copytree(ROOT / 'packaging/icons', bundle / 'icons')
     home = tmp_path / 'home'; home.mkdir()
     data = home / '.config/Poliscope'; data.mkdir(parents=True)
     (data / 'private-canary').write_text('preserve')
@@ -62,6 +64,9 @@ def test_per_user_install_in_spaces_upgrade_retains_data_and_previous_version(tm
     assert (data / 'private-canary').read_text() == 'preserve'
     desktop = (home / 'data/applications/poliscope.desktop').read_text()
     assert f'Exec="{second}/poliscope"' in desktop
+    assert 'Icon=poliscope\n' in desktop
+    assert (home / 'data/icons/hicolor/256x256/apps/poliscope.png').is_file()
+    assert (bundle / 'icons/poliscope-256.png').is_file()
     # Tampered payload is rejected before creating the destination.
     (bundle / 'app/poliscope').write_text('tampered')
     assert subprocess.run(['sh', str(script), str(tmp_path / 'tampered')], env=env).returncode != 0
@@ -71,3 +76,18 @@ def test_per_user_install_in_spaces_upgrade_retains_data_and_previous_version(tm
     checksums()
     assert subprocess.run(['sh', str(script), str(tmp_path / 'failed')], env=env).returncode != 0
     assert (home / 'data/applications/poliscope.desktop').read_text() == desktop
+
+
+@pytest.mark.skipif(sys.platform == 'win32', reason='POSIX installer helper')
+def test_sandbox_notice_prints_guidance_only_for_restricted_systems(tmp_path):
+    helper = ROOT / 'packaging/sandbox-notice.sh'
+    sysctl = tmp_path / 'sysctl'
+    sysctl.write_text('0\n')
+    unrestricted = subprocess.run(['sh', str(helper), str(sysctl), '1'], capture_output=True)
+    assert unrestricted.returncode == 0 and unrestricted.stdout == b''
+    missing = subprocess.run(['sh', str(helper), str(tmp_path / 'absent'), '1'], capture_output=True)
+    assert missing.returncode == 0 and missing.stdout == b''
+    sysctl.write_text('1\n')
+    note = subprocess.run(['sh', str(helper), str(sysctl), '1'], capture_output=True)
+    assert note.returncode == 0
+    assert b'AppArmor' in note.stdout and b'chrome-sandbox' in note.stdout
