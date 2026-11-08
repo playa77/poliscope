@@ -9,6 +9,12 @@
   "status": "in progress, paused between sessions; foundation, shell, palette and elevation delivered, screen rebuild outstanding",
   "execution_unit": "WP-058",
   "last_commit": "aa3f824",
+  "branch_state": {
+    "commits_ahead_of_base": 8,
+    "head": "44588a8",
+    "upstream": "none — the branch is local only and has not been pushed",
+    "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
+  },
   "owner_locked_decisions": {
     "green_palette": "dropped",
     "warm_neutral_dark_with_amber": "rejected",
