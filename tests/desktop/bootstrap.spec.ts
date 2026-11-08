@@ -6,6 +6,9 @@ import { spawn, spawnSync } from 'node:child_process';
 import fixtures from '../../contracts/fixtures.json';
 
 test('packaged shell launches its bundled engine with an isolated secure renderer', async () => {
+  // This smoke spawns a second instance, writes a retained store and reads it
+  // back; the 30s default is below the observed cost of those steps.
+  test.setTimeout(120_000);
   const data = await mkdtemp(join(tmpdir(), 'poliscope-smoke-'));
   const base = resolve(`out/Poliscope-${process.platform}-${process.arch}`);
   const executablePath = process.platform === 'darwin' ? join(base, 'Poliscope.app/Contents/MacOS/poliscope') : join(base, `poliscope${process.platform === 'win32' ? '.exe' : ''}`);
@@ -36,15 +39,22 @@ test('packaged shell launches its bundled engine with an isolated secure rendere
     await app.evaluate(({ dialog }, database) => {
       dialog.showOpenDialog = async () => ({ canceled: false, filePaths: [database] });
     }, join(data, 'poliscope.sqlite3'));
+    // The reader is a collapsed disclosure in the shell; open it before filling.
+    await page.getByText('Read saved historical evidence', { exact: true }).click();
     for (const [name, value] of Object.entries({ storage_context_id: 'selected', ...summary.context, result_id: summary.result_id })) {
       await page.locator(`input[name="${name}"]`).fill(String(value));
     }
+    // The shell renders its own inline icons; what must hold is that untrusted
+    // text introduces no image and no additional svg into the document.
+    const iconsBefore = await page.locator('main svg').count();
     await page.getByRole('button', { name: 'Choose store and read' }).click();
     await expect(page.getByRole('heading', { name: 'Stored historical evidence — read only' })).toBeVisible();
+    // The engine reports the retained-store state through the shell's status line.
     await expect(page.getByRole('status')).toContainText('Stored historical evidence');
     await expect(page.getByText(`Coverage: ${summary.coverage.status}`, { exact: false })).toBeVisible();
     await expect(page.getByText(summary.coverage.explanation, { exact: false })).toBeVisible();
-    await expect(page.locator('main img, main svg')).toHaveCount(0);
+    await expect(page.locator('main img')).toHaveCount(0);
+    expect(await page.locator('main svg').count()).toBe(iconsBefore);
     await page.getByRole('button', { name: 'Read collection' }).click();
     await expect(page.getByText('Collection: outputs', { exact: true })).toBeVisible();
     await page.getByRole('button', { name: 'Reconnect local engine' }).click();

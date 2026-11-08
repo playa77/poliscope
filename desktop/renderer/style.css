@@ -1,80 +1,496 @@
-:root { font-family: system-ui, sans-serif; color: #e8e9dc; background: #172c2a; }
-body { margin: 0; } main { max-width: 82rem; margin: 3vh auto; padding: 2rem; }
-h1 { font-size: clamp(2rem, 5vw, 3.7rem); line-height: 1.1; font-weight: 500; }
-p { line-height: 1.7; } .eyebrow { color: #c5d49a; letter-spacing: .1em; text-transform: uppercase; }
-[role=status] { border-top: 1px solid #697974; padding-top: 1.5rem; }
-section { margin-top: 2rem; } fieldset { border: 1px solid #697974; }
-label { display: block; margin: .8rem 0; } input, select { display: block; padding: .5rem; width: min(90%, 30rem); }
-button { padding: .6rem 1rem; margin: .5rem 0; cursor: pointer; } button:disabled { cursor: wait; }
-dt { margin-top: .5rem; font-weight: bold; } dd { margin-left: 0; overflow-wrap: anywhere; }
-pre { white-space: pre-wrap; overflow-wrap: anywhere; background: #102321; padding: 1rem; }
-[role=alert] { border: 1px solid #e5be86; padding: 1rem; }
-.sandbox { border-block: 1px solid #cad6cb; padding-block: 2rem; margin-block: 1.5rem; }
-.workspace-header { display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-.workspace-header h2 { margin-top: 0; }
-.workspace-layout { display: grid; grid-template-columns: 12rem minmax(0, 1fr); gap: 1.5rem; margin-block: 1.5rem; }
-.workspace-layout nav { display: flex; flex-direction: column; gap: .5rem; }
-.workspace-layout nav button { text-align: left; }
-button[aria-current="page"], button[aria-pressed="true"] { background: #254e3c; color: white; }
-.domain-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr)); gap: .5rem; }
-.domain-grid button { text-align: left; }
-.domain-grid small { display: block; font-weight: normal; margin-top: .4rem; }
-.state-banner { padding: 1rem; background: #203b34; border: 1px solid #b7c9bd; margin-top: 1rem; }
-.state-banner span { display: block; overflow-wrap: anywhere; font-size: .85rem; margin-block: .35rem; }
-.workspace-body { min-width: 0; }
-.workspace-layout aside { grid-column: 2; padding: 1rem; border: 1px solid #b7c9bd; overflow-wrap: anywhere; }
-table { width: 100%; border-collapse: collapse; text-align: left; }
-th, td { padding: .6rem; border-bottom: 1px solid #cad6cb; }
-textarea, select { font: inherit; padding: .5rem; max-width: 100%; }
-:focus-visible { outline: 3px solid #ffd589; outline-offset: 3px; }
-@media (max-width: 760px) { .workspace-layout { grid-template-columns: 1fr; } .workspace-layout aside { grid-column: 1; } .workspace-header { align-items: start; flex-direction: column; } }
-.interview { margin-block: 1.5rem; border-top: 1px solid #54645c; padding-block: 1rem; }
-.interview h5 { font-size: 1.15rem; line-height: 1.55; margin-block: 1rem; }
-.option-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: .8rem; }
-.option-card { border: 1px solid #607068; padding: 1rem; border-radius: .5rem; display: flex; flex-direction: column; gap: .7rem; }
-.option-card:has(input:checked) { outline: 3px solid #94c2ac; }
-.option-card input { width: auto; align-self: flex-start; }
-.interview pre { white-space: pre-wrap; overflow-wrap: anywhere; }
-.overview { border-block: 1px solid #607068; padding-block: 1rem; }
-.indicator-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1rem; }
-.indicator { border: 1px solid #78948b; border-left-width: 7px; border-radius: .4rem; padding: 1rem; margin-top: 1rem; }
-.indicator h5 { font-size: 1.05rem; margin: 0; }
-.indicator p { font-size: .9rem; }
-.tone-green { border-left-color: #85c78c; } .tone-orange { border-left-color: #f4be76; }
-.tone-red { border-left-color: #f59d97; } .tone-gray { border-left-color: #a6aeb1; }
-.tone-neutral { border-left-color: #a0bdcf; }
-.quantity { font-size: 1.15rem; }
-.overview input[type=checkbox] { display: inline; width: auto; margin-right: .5rem; }
-.evidence-inspector { border: 1px solid #a4b9b0; padding: 1rem; margin-block: 1rem; overflow-wrap: anywhere; }
-.evidence-inspector h5 { font-size: 1rem; margin-bottom: .5rem; }
-.evidence-inspector details { margin-block: .5rem; }
-summary { cursor: pointer; padding-block: .4rem; }
+@import "tailwindcss";
+@import "@fontsource-variable/inter";
 
-.design-history { overflow-wrap: anywhere; }
-.design-history table { table-layout: fixed; }
-.design-history td, .design-history th { vertical-align: top; }
+/*
+  The Vite root is desktop/renderer, so class detection must be pointed at the
+  shared component tree that lives outside it.
+*/
+@source "../../components";
+@source "../../lib";
 
-.atlas pre { white-space: pre-wrap; overflow-wrap: anywhere; font: inherit; }
-.atlas fieldset { display: grid; gap: .75rem; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-.atlas li { margin-block: 1rem; }
-.world-exploration svg { width: 100%; max-height: 24rem; }
-.world-exploration svg text { fill: currentColor; font-size: 11px; }
-.world-exploration table { table-layout: fixed; }
-.world-exploration th, .world-exploration td, .world-exploration td button { overflow-wrap: anywhere; }
-.world-exploration td button { max-width: 100%; white-space: normal; }
+@custom-variant dark (&:is(.dark *));
 
-/* Keep keyboard navigation visible at zoom and on narrow classroom displays. */
-:root { color-scheme: dark; }
-button, input, select, textarea { font: inherit; }
-input:is([type="checkbox"], [type="radio"]) { display: inline-block; width: auto; margin-inline-end: .5rem; }
-button { max-width: 100%; white-space: normal; overflow-wrap: anywhere; }
-a { color: #c5e9ff; }
-.skip-link { position: fixed; top: .5rem; left: .5rem; z-index: 10; padding: .8rem; background: #102321; transform: translateY(-200%); }
-.skip-link:focus { transform: translateY(0); }
-fieldset { min-width: 0; }
-article, section, td, th { overflow-wrap: anywhere; }
-.workspace-body { overflow-x: auto; }
-.inquiry-guide { border: 1px solid #b7c9bd; padding: 1rem; }
-.inquiry-guide li { line-height: 1.7; margin-block: .6rem; }
-@media (max-width: 480px) { main { padding: 1rem; } .option-grid, .indicator-grid { grid-template-columns: minmax(0, 1fr); } }
-@media (forced-colors: active) { :focus-visible { outline-color: Highlight; } .indicator { border-left-width: 1px; } }
+/*
+  Poliscope design tokens.
+
+  The identity: a pale lavender canvas, white cards that float on soft
+  indigo-tinted shadows, a single saturated indigo for action, and navy
+  ink instead of black. Every screen is built from these tokens, so the
+  whole app can be re-skinned by editing this block and nothing else.
+*/
+:root {
+  color-scheme: light;
+
+  /*
+    Canvas: a violet wash in the primary's own hue family, no blue. Measured
+    curve shape kept from the reference (it holds pale for most of the width and
+    deepens late); only the hue moved, so the backdrop belongs to the indigo.
+  */
+  --canvas-gradient: linear-gradient(
+    90deg,
+    #f4effe 0%,
+    #f2ecfd 5%,
+    #efe7fc 15%,
+    #ece2fb 25%,
+    #ece2fb 32%,
+    #e9defa 45%,
+    #e6d9f8 58%,
+    #e6d9f8 68%,
+    #e2d4f7 75%,
+    #ded0f6 80%,
+    #d9c9f4 85%,
+    #d2bff1 90%,
+    #c9b3ec 95%,
+    #bfa6e6 100%
+  );
+
+  --canvas-mid: #bfa6e6;
+
+  /* Flat surface for controls that must sit on a card, not on the canvas. */
+  --background: #fbfaff;
+  --background-tint: #f6f5ff;
+  --foreground: #20233a;
+
+  --card: #ffffff;
+  --card-foreground: #20233a;
+  --popover: #ffffff;
+  --popover-foreground: #20233a;
+
+  /*
+    Primary sampled from the reference: the saturated indigo cluster reads
+    #2207D4 (hue 248°, sat 0.97). White on it is 10.2:1.
+  */
+  --primary: #2207d4;
+  --primary-foreground: #ffffff;
+  --primary-deep: #1b05b0;
+  --primary-soft: #d3cdf6;
+  --primary-wash: #e9e6fb;
+
+  --secondary: #f1effc;
+  --secondary-foreground: #20233a;
+  --muted: #f6f4ff;
+  --muted-foreground: #4a4f6d;
+  --accent: #e9e6fb;
+  --accent-foreground: #20233a;
+
+  --destructive: #dc4b52;
+  --destructive-foreground: #ffffff;
+  --success: #17a06d;
+  --success-foreground: #0c6b49;
+  --warning: #c98511;
+  --warning-foreground: #7a4e00;
+  --info: #2207d4;
+  --info-foreground: #2a1a9e;
+  --focus: #2207d4;
+  --focus-foreground: #ffffff;
+  --invert: #20233a;
+  --invert-foreground: #f7f8fd;
+
+  --border: #e6e4f6;
+  --input: #dedbf2;
+  --ring: #2207d4;
+
+  --radius: 0.75rem;
+  --radius-card: 1.375rem;
+
+  /*
+    Elevation: three low-opacity layers on a neutral-cool ink rather than the
+    accent, so cards read as lifted paper instead of tinted boxes. "Lifted" —
+    the third option on the comparison sheet.
+  */
+  --shadow-card:
+    0 1px 2px rgb(24 20 48 / 0.08),
+    0 12px 28px -10px rgb(24 20 48 / 0.10),
+    0 40px 90px -32px rgb(24 20 48 / 0.18);
+  --shadow-float:
+    0 2px 6px rgb(24 20 48 / 0.10),
+    0 18px 44px -14px rgb(24 20 48 / 0.14),
+    0 56px 120px -40px rgb(24 20 48 / 0.26);
+
+  --font-sans: "Inter Variable", "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+
+.dark {
+  color-scheme: dark;
+
+  /* Same violet wash at night. */
+  --canvas-gradient: linear-gradient(
+    90deg,
+    #1a1430 0%,
+    #1c1634 15%,
+    #1f193a 32%,
+    #231d42 50%,
+    #27214a 68%,
+    #2b2452 85%,
+    #2f2758 100%
+  );
+  --canvas-mid: #2f2758;
+
+  --background: #1a1636;
+  --background-tint: #1e1a3c;
+  --foreground: #eceefb;
+
+  --card: #1b1e38;
+  --card-foreground: #eceefb;
+  --popover: #1f2340;
+  --popover-foreground: #eceefb;
+
+  --primary: #9a8cff;
+  --primary-foreground: #17093f;
+  --primary-deep: #7f6dff;
+  --primary-soft: #2f2a5e;
+  --primary-wash: #241f49;
+
+  --secondary: #232647;
+  --secondary-foreground: #eceefb;
+  --muted: #222544;
+  --muted-foreground: #a3a9c7;
+  --accent: #262a4d;
+  --accent-foreground: #eceefb;
+
+  --destructive: #ff6b70;
+  --destructive-foreground: #2a0709;
+  --success: #3ddc97;
+  --success-foreground: #8ff0c4;
+  --warning: #f0b552;
+  --warning-foreground: #ffd9a1;
+  --info: #9a8cff;
+  --info-foreground: #cdc6ff;
+  --focus: #9a8cff;
+  --focus-foreground: #17093f;
+  --invert: #eceefb;
+  --invert-foreground: #131529;
+
+  --border: #2b2f52;
+  --input: #32365c;
+  --ring: #9a8cff;
+
+  --shadow-card: 0 2px 10px -4px rgb(0 0 0 / 0.45), 0 14px 50px -14px rgb(0 0 0 / 0.55);
+  --shadow-float: 0 4px 14px -6px rgb(0 0 0 / 0.5), 0 28px 80px -22px rgb(0 0 0 / 0.65);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-background-tint: var(--background-tint);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary-deep: var(--primary-deep);
+  --color-primary-soft: var(--primary-soft);
+  --color-primary-wash: var(--primary-wash);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
+  --color-focus: var(--focus);
+  --color-focus-foreground: var(--focus-foreground);
+  --color-invert: var(--invert);
+  --color-invert-foreground: var(--invert-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --radius-card: var(--radius-card);
+
+  --font-sans: var(--font-sans);
+
+  --shadow-card: var(--shadow-card);
+  --shadow-float: var(--shadow-float);
+}
+
+@utility bg-canvas {
+  background-image: var(--canvas-gradient);
+  background-attachment: fixed;
+  background-color: var(--canvas-mid);
+}
+
+@layer base {
+  html {
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    margin: 0;
+    background-color: var(--canvas-mid);
+    background-image: var(--canvas-gradient);
+    background-attachment: fixed;
+    color: var(--foreground);
+    font-size: 0.875rem;
+    line-height: 1.45;
+    font-feature-settings: "cv11", "ss01";
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
+  }
+
+  /* Off-screen and transparent until focused, then a real visible target. It
+     stays focusable while hidden, and opacity (not visibility) keeps its open
+     shadow from painting a smudge onto the canvas above the viewport. */
+  .skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 50;
+    padding: 0.7rem 1rem;
+    border-radius: var(--radius);
+    background: var(--card);
+    color: var(--foreground);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-160%);
+    opacity: 0;
+    transition: transform 150ms ease, opacity 150ms ease;
+  }
+
+  .skip-link:focus,
+  .skip-link:focus-visible {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: var(--border) transparent;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  @media (forced-colors: active) {
+    :focus-visible {
+      outline-color: Highlight;
+    }
+  }
+}
+
+/*
+  Transitional element styling for the one screen still outside the component
+  set: the optional assistant. Every rule reads a design token, so it already
+  takes the current palette. Delete this layer when the assistant migrates.
+*/
+@layer components {
+  .legacy-ui :is(button, input, select, textarea) {
+    font: inherit;
+    color: inherit;
+  }
+
+  .legacy-ui :is(input, select, textarea):not([type="checkbox"]):not([type="radio"]) {
+    display: block;
+    max-width: 100%;
+    border: 1px solid var(--input);
+    border-radius: calc(var(--radius) - 2px);
+    background: var(--card);
+    padding: 0.5rem 0.75rem;
+  }
+
+  .legacy-ui label {
+    display: block;
+    margin-block: 0.75rem;
+    color: var(--foreground);
+    font-weight: 500;
+  }
+
+  .legacy-ui :is(button, [role="button"]) {
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    background: var(--card);
+    color: var(--foreground);
+    padding: 0.45rem 0.9rem;
+    font-weight: 500;
+    box-shadow: 0 1px 2px rgb(35 39 90 / 0.05);
+  }
+
+  .legacy-ui :is(button, [role="button"]):hover:not(:disabled) {
+    background: var(--accent);
+  }
+
+  .legacy-ui :is(button, [role="button"]):disabled {
+    cursor: wait;
+    opacity: 0.6;
+  }
+
+  .legacy-ui button[aria-current="page"],
+  .legacy-ui button[aria-pressed="true"] {
+    background: var(--primary);
+    border-color: var(--primary);
+    color: var(--primary-foreground);
+  }
+
+  .legacy-ui table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .legacy-ui :is(th, td) {
+    padding: 0.6rem 0.75rem;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .legacy-ui thead th {
+    color: var(--muted-foreground);
+    font-weight: 600;
+    font-size: 0.75rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+  }
+
+  .legacy-ui pre {
+    white-space: pre-wrap;
+    overflow-wrap: anywhere;
+    background: var(--muted);
+    border: 1px solid var(--border);
+    border-radius: calc(var(--radius) - 2px);
+    padding: 1rem;
+  }
+
+  .legacy-ui fieldset {
+    min-width: 0;
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1rem;
+  }
+
+  .legacy-ui [role="alert"] {
+    border: 1px solid color-mix(in oklab, var(--destructive) 35%, var(--border));
+    background: color-mix(in oklab, var(--destructive) 8%, var(--card));
+    color: var(--destructive);
+    border-radius: var(--radius);
+    padding: 0.9rem 1rem;
+  }
+
+  .legacy-ui [role="status"] {
+    color: var(--muted-foreground);
+  }
+
+  .legacy-ui a {
+    color: var(--primary);
+  }
+
+  .legacy-ui .skip-link {
+    position: fixed;
+    top: 0.5rem;
+    left: 0.5rem;
+    z-index: 50;
+    padding: 0.8rem 1rem;
+    border-radius: var(--radius);
+    background: var(--card);
+    box-shadow: var(--shadow-card);
+    transform: translateY(-200%);
+  }
+
+  .legacy-ui .skip-link:focus {
+    transform: translateY(0);
+  }
+
+  .legacy-ui :is(article, section, td, th) {
+    overflow-wrap: anywhere;
+  }
+}
+
+/*
+  The evidence table rhythm. It lives here rather than in each screen: every
+  table in the app carries dense decimal strings, so cells wrap instead of
+  forcing the panel wide, and headers stay legible at 11px uppercase.
+*/
+@layer components {
+  .data-table table {
+    width: 100%;
+    /* Wide evidence still scrolls inside this frame, but a narrow window must
+       not be forced past its own width while the table lays out. */
+    min-width: min(32rem, 100%);
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 0.8125rem;
+  }
+
+  .data-table caption {
+    padding: 0.65rem 0.75rem;
+    text-align: left;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+  }
+
+  .data-table thead {
+    background: var(--muted);
+  }
+
+  .data-table thead th {
+    padding: 0.5rem 0.75rem;
+    font-size: 0.6875rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--muted-foreground);
+    /* Headers wrap rather than forcing a minimum table width: at 200% zoom a
+       nowrap header alone made the document wider than the window. */
+    overflow-wrap: anywhere;
+  }
+
+  .data-table tbody :is(th, td) {
+    padding: 0.55rem 0.75rem;
+    border-top: 1px solid var(--border);
+    vertical-align: top;
+    overflow-wrap: anywhere;
+  }
+
+  .data-table tbody th {
+    font-weight: 500;
+    color: var(--foreground);
+  }
+
+  .data-table tbody tr:hover {
+    background: color-mix(in oklab, var(--muted) 55%, var(--card));
+  }
+
+  summary::-webkit-details-marker {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}

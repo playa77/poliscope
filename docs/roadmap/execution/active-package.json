@@ -1,63 +1,67 @@
 {
   "version": 1,
-  "package": "WP-056",
-  "record": "docs/roadmap/execution/WP-056.md",
-  "owner": "Codex /root, controlled by the requesting repository user",
-  "base": "8244afb73a6bc91c7d49c654428c4fd1af8271cc",
-  "branch": "codex/wp-056-release-handoff",
+  "package": "WP-058",
+  "record": "docs/roadmap/execution/WP-058.md",
+  "owner": "Hermes (default session), controlled by the requesting repository user",
+  "base": "77602b097f4739e4fd18567297d57f66f19db9eb",
+  "branch": "codex/wp-058-ui-rebuild",
   "status": "complete",
-  "execution_unit": "WP-056",
+  "execution_unit": "WP-058",
   "authorization": {
     "source": "user",
-    "scope": "WP-056",
-    "instruction": "implement the next work package."
+    "scope": "WP-058",
+    "instruction": "install the ReUI agent skill and MCP server, verify them, then rebuild the desktop UI/UX from zero on top of them; the green palette is dropped and the look follows the owner's reference image. Resume the existing branch, rebuild every screen on the component set one commit each, then prepare and open a regular pull request."
   },
   "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "frozen-identities-and-evidence",
+      "id": "rendering-layer-and-design-tokens",
       "status": "passed",
-      "evidence": "662 exact source/build/schema/content/lock and WP-055 evidence inputs frozen with SHA-256 and commit binding; both unsigned native artifact wrapper hashes and successful job IDs retained. Product/build bytes compared to native source 64d9aed with no differences."
+      "evidence": "Tailwind v4 via @tailwindcss/vite; components.json registers @reui on radix-nova; light and dark token sets in desktop/renderer/style.css mapped through @theme inline; Inter bundled locally via @fontsource-variable/inter. Owner-settled identity carried unchanged: violet canvas #F4EFFE to #BFA6E6, Lifted elevation on rgb(24 20 48), primary #2207D4. npx tsc --noEmit clean; packaged renderer build succeeds."
     },
     {
-      "id": "contributor-and-user-guides",
+      "id": "shell-and-regression-suite",
       "status": "passed",
-      "evidence": "Updated actual setup/check/packaging interface; contract/model contribution, offline inquiry/report, policy/precision, privacy/backup/import/historical recovery, installation and rollback guides. Content/contracts/TypeScript and 51 local guide links checked; no application code/lock changes."
+      "evidence": "Floating navigation rail, page blocks and a native select that preserves the desktop DOM contract; skip link rendered before the rail so it is the first tab stop; rail items carry the full view names the specs address. npx vitest run: 41 files, 459 tests passing at every screen commit and at the final state."
     },
     {
-      "id": "acceptance-and-handoff",
+      "id": "screens-rebuilt-on-the-component-set",
       "status": "passed",
-      "evidence": "WP-055 requirement/RT/G7 acceptance and 25 original compressed report digests retained; functional/model/security/product scope and deferred review explicit. Owner native/signing and prototype performance limits preserved; release publication remains separately unauthorized."
+      "evidence": "All eleven screens rebuilt one commit each on components/app/form.tsx plus Panel/StateBadge/EmptyState/ErrorNote/DataTable: overview, matrix, atlas, world, evidence, uncertainty, timeline, design-history, archives, interview, providers, recovery. Four host DOM hooks lost in the earlier rewrite restored (.domain-grid, .inquiry-guide, .workspace-layout, session-only purpose field) with the goals/policies/mechanisms line. Transitional .legacy-ui layer now scopes to the optional assistant only."
+    },
+    {
+      "id": "desktop-playwright-gate",
+      "status": "passed",
+      "evidence": "Packaged build and full Playwright suite: 30 of 30 specs passing under xvfb after each screen's spec was run as it landed. CI caught a narrow-window overflow the local run missed (a Hint carrying a revision hash at 200% zoom); hints now break anywhere and the zoom assertion polls the settled geometry. Two specs updated with recorded reasons: the focus ring follows the theme token, and the shell smoke opens the collapsed evidence reader and measures injected markup."
+    },
+    {
+      "id": "candidate-freeze",
+      "status": "passed",
+      "evidence": "0.1.0-rc.3 prepared from source b9d14aa with 665 frozen inputs; scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. Roadmap suite 67 tests passing including RetainedReleaseTests."
     }
   ],
   "blockers": [],
   "previous_delivery": {
-    "package": "WP-055",
+    "package": "WP-057",
     "status": "merged",
-    "merged_pr": 128,
-    "merge_commit": "8244afb73a6bc91c7d49c654428c4fd1af8271cc"
+    "merged_pr": 130,
+    "merge_commit": "77602b097f4739e4fd18567297d57f66f19db9eb"
   },
-  "validation": "docs/roadmap/execution/WP-056-validation.json",
-  "scope": "Full WP-056 release candidate freeze, current setup/contribution/user/recovery guides, native artifact/evidence identity and acceptance/rollback/support handoff; preparation does not publish a release.",
+  "validation": "docs/roadmap/execution/WP-058.md",
+  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the violet/indigo identity, a floating navigation rail and page blocks, every screen rebuilt on the component set, the packaged Playwright gate, and the 0.1.0-rc.3 candidate freeze. The optional assistant remains on the transitional layer and is scheduled separately. Merge and release publication remain separately unauthorized.",
   "publication": {
-    "status": "published; regular PR open",
-    "branch": "codex/wp-056-release-handoff",
+    "status": "branch pushed; regular pull request open",
+    "branch": "codex/wp-058-ui-rebuild",
     "destination": "https://github.com/playa77/poliscope.git",
-    "release": "not authorized; not published",
+    "release": "not authorized; not built; not published",
     "merge": "not authorized; not performed",
-    "implementation_commit": "bac1423",
-    "authorization": "User explicitly authorized: push this branch to playa77/poliscope and open a regular PR.",
-    "url": "https://github.com/playa77/poliscope/pull/129"
+    "implementation_commit": "b9d14aa",
+    "authorization": "User asked for a regular pull request against main; merging was not requested.",
+    "url": "https://github.com/playa77/poliscope/pull/131"
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",
     "maximum_lifetime_usd": "10",
     "source": "docs/roadmap/execution/WP-055-live-review.json"
-  },
-  "ci_correction": {
-    "record": "docs/roadmap/execution/WP-056-validation.json",
-    "source_commit": "dcf8a3b",
-    "inventory": "docs/releases/0.1.0-rc.1/inventory.ci-history.json",
-    "scope": "CI history setup only; runtime/build/package bytes and release authority unchanged."
   }
 }

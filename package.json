@@ -3,7 +3,7 @@
   "productName": "Poliscope",
   "version": "0.1.0",
   "private": true,
-  "description": "Local society sandbox \u2014 runtime scaffold",
+  "description": "Local society sandbox — runtime scaffold",
   "author": "Poliscope contributors",
   "license": "MIT",
   "main": ".vite/build/main.cjs",
@@ -27,22 +27,29 @@
     "benchmark:scale": "uv run --frozen python scripts/benchmark_scale.py"
   },
   "dependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
+    "@tanstack/react-query": "5.104.4",
+    "class-variance-authority": "^0.7.1",
+    "cn": "^0.5.2",
+    "lucide-react": "^1.70.0",
+    "radix-ui": "^1.8.1",
     "react": "19.3.1",
     "react-dom": "19.3.1",
-    "@tanstack/react-query": "5.104.4",
     "recharts": "3.10.1"
   },
   "devDependencies": {
-    "electron": "44.9.0",
     "@electron-forge/cli": "8.0.1",
     "@electron-forge/plugin-vite": "8.0.1",
-    "vite": "8.3.4",
-    "@vitejs/plugin-react": "6.1.2",
-    "typescript": "7.0.2",
+    "@playwright/test": "1.64.1",
+    "@tailwindcss/vite": "^4.1.0",
     "@types/node": "24.19.2",
     "@types/react": "19.3.0",
     "@types/react-dom": "19.3.0",
-    "vitest": "5.0.5",
-    "@playwright/test": "1.64.1"
+    "@vitejs/plugin-react": "6.1.2",
+    "electron": "44.9.0",
+    "tailwindcss": "^4.1.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.4",
+    "vitest": "5.0.5"
   }
 }
