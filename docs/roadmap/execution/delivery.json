@@ -1,60 +1,49 @@
 {
   "version": 1,
-  "package": "WP-058",
-  "record": "docs/roadmap/execution/WP-058.md",
-  "kind": "work_package",
+  "package": "WP-059",
+  "record": "docs/roadmap/execution/WP-059.md",
+  "kind": "maintenance",
   "owner": "Hermes (default session), controlled by the requesting repository user",
-  "base": "77602b097f4739e4fd18567297d57f66f19db9eb",
-  "branch": "codex/wp-058-ui-rebuild",
+  "base": "1f3aa72964fe4fdd33681815327f9ac6b78323c6",
+  "branch": "codex/wp-059-shell-rail-a11y",
   "status": "complete",
-  "execution_unit": "WP-058",
-  "last_commit": "b9d14aa",
+  "execution_unit": "WP-059",
+  "last_commit": "17fce27",
   "branch_state": {
-    "commits_ahead_of_base": "twenty-eight commits on top of 77602b0; `git log main..HEAD` is authoritative",
-    "head": "b9d14aa is the code head; the rc.3 receipt and record ride on top and the push is a fast-forward",
-    "upstream": "origin/codex/wp-058-ui-rebuild \u2014 pushed before this session; this session's commits are pushed at handback, no PR",
-    "instruction": "A resuming session must continue codex/wp-058-ui-rebuild. A PR from this branch against main carries every commit listed in the record; nothing from the earlier session is omitted as long as the branch is reused rather than recreated from main."
+    "commits_ahead_of_base": "two commits on top of 1f3aa72 in the code/record layer; `git log main..HEAD` is authoritative",
+    "head": "17fce27 is the code and record head; the rc.4 artifacts.json evidence and README build note ride on top and the handback push is a fast-forward",
+    "upstream": "origin/codex/wp-059-shell-rail-a11y — pushed; PR #132 stays open against main",
+    "instruction": "A resuming session continues codex/wp-059-shell-rail-a11y until the PR is merged, then resets the checkout to synced main and deletes the merged branch per AGENTS.md."
   },
   "owner_locked_decisions": {
-    "green_palette": "dropped",
-    "warm_neutral_dark_with_amber": "rejected",
-    "blue_canvas_from_reference": "rejected as pastel",
-    "canvas": "violet, primary family: #F4EFFE to #BFA6E6, curve shape measured from the reference, hue replaced (owner picked option A from a rendered comparison sheet)",
-    "elevation": "\"Lifted\" \u2014 0 1px 2px /0.08, 0 12px 28px -10px /0.10, 0 40px 90px -32px /0.18 on rgb(24 20 48) (owner picked option C)",
-    "primary": "#2207D4, sampled from the reference at hue 248 deg, sat 0.97",
-    "note": "A later session must treat these as fixed requirements and not re-derive them from the reference image."
+    "note": "The WP-058 owner-locked rendering identity (violet canvas, Lifted elevation, primary #2207D4) is carried unchanged; see docs/roadmap/execution/delivery.json in the WP-058 record and its merges."
   },
   "authorization": {
     "source": "user",
-    "scope": "WP-058",
-    "instruction": "install the ReUI agent skill and MCP server, verify them, then rebuild the desktop UI/UX from zero on top of them; the green palette is dropped and the look follows the owner's reference image."
+    "scope": "two packaged release candidates (Linux x64 and Windows x64) from the corrected sources so the owner can test the rebuilt GUI, with the failed Windows job understood and fixed rather than handed over",
+    "instruction": "produce and package two new release candidates (linux and windows) for in-depth GUI testing and later upload; the owner's 'as rc2' mapped to label 0.1.0-rc.4 because rc.2/rc.3 receipts are immutable and rc.3's Windows evidence is recorded as failed."
   },
   "review_route": "solo-validated; agent review deferred",
   "acceptance": [
     {
-      "id": "rendering-layer-and-design-tokens",
+      "id": "windows-shell-reachability",
       "status": "passed",
-      "evidence": "Tailwind v4 via @tailwindcss/vite; components.json registers @reui on radix-nova; light and dark token sets in desktop/renderer/style.css mapped through @theme inline; Inter bundled locally via @fontsource-variable/inter. npx tsc --noEmit clean; npx vite build --config vite.renderer.config.mts succeeds with 80.2 kB emitted CSS; @source was required because the Vite root is desktop/renderer and the component tree lives outside it."
+      "evidence": "Root cause pinned by width, not platform: the uncorrected binary passed archives E2E-011 at 1280x900 and failed with the exact CI shape at 1000x760; with the corrective width-gated strip the same three specs (E2E-011, E2E-017, E2E-009) pass at 1000x760 and twelve shell-sensitive packaged specs pass at 1280x900. npx tsc --noEmit clean; vitest suite passing."
     },
     {
-      "id": "shell-and-regression-suite",
+      "id": "freeze-coverage-completion",
       "status": "passed",
-      "evidence": "Floating navigation rail, page blocks and a native select that preserves the desktop DOM contract. npx vitest run: 41 files, 459 tests passing. Built index.html rendered in a real browser at 1440x900 and inspected: rail 256 px, ten nav items with no clipping, violet canvas gradient applied, primary button and active nav pill rgb(34, 7, 212) with white text, skip link off-canvas and transparent until focused."
+      "evidence": "PRODUCT_DIRS gained components/ and lib/ and PRODUCT_FILES gained components.json; the rc.4 freeze carries 686 inputs (previously 665 while 686 shipped/build sources existed); uv run --frozen python scripts/freeze_release.py --check verifies the checkout; earlier receipts remain immutable."
     },
     {
-      "id": "screens-rebuilt-on-the-component-set",
+      "id": "rc3-record",
       "status": "passed",
-      "evidence": "All eleven screens rebuilt on the component set, one commit each: overview, matrix, atlas, world, evidence, uncertainty, timeline, design-history, archives, interview, providers, recovery. components/app/form.tsx supplies Field/CheckField/Toolbar/Actions/DataTable/Disclosure/Hint/SubHeading; Panel gained a landmark label, NavItem an accessible name, AppShell a skipLink slot and NativeSelect a bare variant. The transitional .legacy-ui layer now scopes to the optional assistant only. npx tsc --noEmit clean at every commit; npx vitest run 41 files / 459 tests."
+      "evidence": "docs/releases/0.1.0-rc.3/artifacts.json records both wrappers of run 42507025760 with SHA-256 verified against GitHub artifact metadata (windows 2a6b506b…, linux 2e1ce320…), the Linux job 128811756804 success and Windows job 128811757010 failure with analysis; README gains the dated update."
     },
     {
-      "id": "desktop-playwright-gate",
+      "id": "rc4-candidate-prepared",
       "status": "passed",
-      "evidence": "Packaged build and full Playwright suite: 30 of 30 specs passing (7.8 min) under xvfb, after each screen's spec was run as it landed. CI then caught a narrow-window overflow the local run missed: a Hint carrying a full revision hash overflowed its box at 200% zoom. Hints break anywhere now and the zoom assertion polls the settled geometry. Two specs were updated with recorded reasons: the focus ring follows the theme token (#2207d4 at 10.2:1 instead of the retired amber at 1.6:1), and the shell smoke opens the collapsed evidence reader and measures injected markup instead of the shell's icons."
-    },
-    {
-      "id": "candidate-freeze",
-      "status": "passed",
-      "evidence": "0.1.0-rc.3 prepared from source b9d14aa with 665 frozen inputs; uv run --frozen python scripts/freeze_release.py --check verifies the checkout; rc.1 and rc.2 receipts remain immutable; publication, signing and merge remain unauthorized. RetainedReleaseTests and the full roadmap suite pass (67 tests)."
+      "evidence": "0.1.0-rc.4 release directory, README and fresh inventory created at the corrective delivery commit; artifacts.json records both wrappers of run 42509885922 (digests verified against GitHub artifact metadata; both jobs success); publication, signing and merge remain unauthorized."
     }
   ],
   "blockers": [],
@@ -64,27 +53,23 @@
     "record": "docs/roadmap/execution/WP-056.md"
   },
   "previous_delivery": {
-    "package": "WP-057",
+    "package": "WP-058",
     "status": "merged",
-    "merged_pr": 130,
-    "merge_commit": "77602b097f4739e4fd18567297d57f66f19db9eb"
+    "merged_pr": 131,
+    "merge_commit": "1f3aa72964fe4fdd33681815327f9ac6b78323c6"
   },
-  "validation": "docs/roadmap/execution/WP-058.md",
-  "scope": "Replacement of the desktop rendering layer: Tailwind v4 plus the ReUI registry, design tokens for the violet/indigo identity, a floating navigation rail and page blocks, and every screen rebuilt on the component set. The packaged Playwright gate was run screen by screen and then in full. The 0.1.0-rc.3 freeze, and the optional assistant's migration off the transitional layer, remain outstanding. No engine, content, contract, IPC or runtime-identity bytes changed.",
-  "dependencies_introduced": [
-    "tailwindcss, @tailwindcss/vite (build-time CSS only)",
-    "@fontsource-variable/inter (bundled font, no runtime fetch)",
-    "cn, lucide-react, class-variance-authority, radix-ui (component primitives, bundled)"
-  ],
+  "validation": "docs/roadmap/execution/WP-059.md",
+  "scope": "Bounded corrective maintenance: width-gated shell status/navigation reachability, freeze whitelist completion for the shipped component sources, the rc.3 built-candidate record, and the 0.1.0-rc.4 candidate preparation. No engine, content, contract, dependency-lock or runtime-identity bytes changed.",
+  "dependencies_introduced": [],
   "publication": {
-    "status": "branch pushed; regular pull request #131 open against main",
-    "branch": "codex/wp-058-ui-rebuild",
+    "status": "branch pushed; regular pull request #132 open against main",
+    "branch": "codex/wp-059-shell-rail-a11y",
     "destination": "https://github.com/playa77/poliscope.git",
-    "pull_request": 131,
-    "url": "https://github.com/playa77/poliscope/pull/131",
-    "release": "not authorized; not built; not published",
+    "pull_request": 132,
+    "url": "https://github.com/playa77/poliscope/pull/132",
+    "release": "not authorized; the owner-run native workflow artifacts are delivered as files for owner testing",
     "merge": "not authorized; not performed",
-    "authorization": "User asked for a regular pull request against main; merging was not requested."
+    "authorization": "User asked for two packaged release candidates to test and approximately upload; merging was not requested."
   },
   "live_budget": {
     "status": "exhausted; no paid dispatch authorized",

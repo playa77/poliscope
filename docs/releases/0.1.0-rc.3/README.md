@@ -8,6 +8,16 @@ educational prototype candidate. No release, signing, upload to a release
 channel or merge is authorized by preparation, and no native artifact has been
 built for this label; the owner-run native workflow decides that separately.
 
+Update 2026-11-08, later the same day: the owner-run native workflow
+(run 42507025760) built unsigned CI candidates at source `1f3aa72` and
+[exact candidate artifacts](artifacts.json) record both wrappers, whose
+digests were verified against GitHub artifact metadata. Linux verified end to
+end; the Windows job's distribution proved sound while three packaged offline
+workflows failed with the shell's status element and navigation absent below
+the `lg` breakpoint — [WP-059](../../roadmap/execution/WP-059.md) corrects the
+shell and prepares [`0.1.0-rc.4`](../0.1.0-rc.4/README.md). The rc.3 receipts
+stay immutable.
+
 ## What changed relative to rc.2
 
 1. The desktop presentation layer was rebuilt from zero: Tailwind v4 through
