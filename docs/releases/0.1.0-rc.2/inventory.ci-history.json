@@ -1,0 +1,3362 @@
+{
+  "version": 1,
+  "release_candidate": "0.1.0-rc.2",
+  "app_version": "0.1.0",
+  "source_commit": "f773c6a077378fa1e1bee0270384473a953bb0e6",
+  "status": "prepared; not authorized for release publication",
+  "identity_scope": "Exact product/build inputs, WP-055 evidence and requirement sources; release guides and this inventory are versioned by the delivery commit.",
+  "fingerprint": "982e03d855d530bf5a339b5fb937840c67ac1fbcb69848bc0e4ebac69e1c43f4",
+  "files": [
+    {
+      "path": ".github/workflows/native-distribution.yml",
+      "bytes": 2725,
+      "sha256": "35457d638da683245f6f94af74028493ff4fa27dc3453fae4ec3d14a7d1dc8df"
+    },
+    {
+      "path": ".github/workflows/stochastic-portability.yml",
+      "bytes": 564,
+      "sha256": "7b4e777f7d41328b225828e4e04ea6c77e87bb32e46f5bf24f309681b8313fb9"
+    },
+    {
+      "path": ".github/workflows/validation.yml",
+      "bytes": 5596,
+      "sha256": "66ce3bdb76d0dcd31d12e352fe6a7c4e5b126577b61d7d17467fb0eddd92450a"
+    },
+    {
+      "path": ".nvmrc",
+      "bytes": 8,
+      "sha256": "7e8a2fa94951112b894a3dbe3d05efef5e9263741fa49125f0a70f40fedab4cc"
+    },
+    {
+      "path": ".python-version",
+      "bytes": 8,
+      "sha256": "f50159fad3f4319868eb38717b91d55843c41e9803014c8de05e116a6d0bcfdc"
+    },
+    {
+      "path": "LICENSE",
+      "bytes": 1064,
+      "sha256": "c6e9b9abd35fbf5c0ba4af0b013503874108b4771708f7a99be8989c5f52f0d7"
+    },
+    {
+      "path": "content/README.md",
+      "bytes": 3387,
+      "sha256": "801b49bbe960a54a8726618773c0358c65ad50f58a240e0994266232b1e778c7"
+    },
+    {
+      "path": "content/communication/README.md",
+      "bytes": 298,
+      "sha256": "1ff4ea74eede41d1b16f4dac7abf5c10d763eb3c670ca54a2b0ac25c4cac286e"
+    },
+    {
+      "path": "content/communication/coverage-v1.json",
+      "bytes": 30143,
+      "sha256": "eb3cbadd7c4591065d157b49e0d0b75a77d67301a2788fffa55183413b7a55af"
+    },
+    {
+      "path": "content/economy/README.md",
+      "bytes": 797,
+      "sha256": "26ed4b8ee58a8d41f2571ebe3539c3ce7f1d00e52d1243a17cd3a8cc1f62d0c3"
+    },
+    {
+      "path": "content/economy/coverage-v1.json",
+      "bytes": 36598,
+      "sha256": "1205e8bca94b1a0dc19ce91731ff12d4db551b8b45e0e1f2b60ac0ffd8262cc1"
+    },
+    {
+      "path": "content/environment/README.md",
+      "bytes": 268,
+      "sha256": "a4419d9f37955367e333d19462af975043a477a4d651556550c3ae1ce5de3bfe"
+    },
+    {
+      "path": "content/environment/coverage-v1.json",
+      "bytes": 29363,
+      "sha256": "e73f37abe2b0d3a061fab5287d0f88f6a3747d82909f49ed90627d1b48261ee7"
+    },
+    {
+      "path": "content/governance/README.md",
+      "bytes": 743,
+      "sha256": "9790a55eb623898699f5093059ee61152f3e44f55147035031722b6f027747e5"
+    },
+    {
+      "path": "content/governance/coverage-v1.json",
+      "bytes": 32175,
+      "sha256": "34071983361d59f3e9311250d073453836718d7bb47779b01bfa2b1b99b9a050"
+    },
+    {
+      "path": "content/health/README.md",
+      "bytes": 334,
+      "sha256": "d581c5ada5ceb1dca5fd5fe3431171b557208f382dfa2a32cc817aa78489d7eb"
+    },
+    {
+      "path": "content/health/coverage-v1.json",
+      "bytes": 29128,
+      "sha256": "23e1f18506317a5dafdac926ae1259d1ef1ac778310ec8c08a13f30e7454fd89"
+    },
+    {
+      "path": "content/infrastructure/README.md",
+      "bytes": 244,
+      "sha256": "3718a063d5887eb07fb89409e05a39f726509b257b60713a6e56a0ea9e0968b6"
+    },
+    {
+      "path": "content/infrastructure/coverage-v1.json",
+      "bytes": 28599,
+      "sha256": "82dc974360468a38dc893efe10351b776c83972bfc94d9dd27ae44d41749a431"
+    },
+    {
+      "path": "content/inventory.json",
+      "bytes": 628,
+      "sha256": "57d0105a3835335fa1de3823c58414087dca0e96cc25ee1eff0fcae42b49d56f"
+    },
+    {
+      "path": "content/knowledge-culture/README.md",
+      "bytes": 274,
+      "sha256": "0ff880d5ccd6c63d1b6549f7288aec44aa8e73a2d433d59b8c3cee4afa264ec9"
+    },
+    {
+      "path": "content/knowledge-culture/coverage-v1.json",
+      "bytes": 29216,
+      "sha256": "d46325c59084db8675ba1a064be51efd14bb1a95a715f29aad91fd0a9b44b655"
+    },
+    {
+      "path": "content/law-conflict/README.md",
+      "bytes": 343,
+      "sha256": "3d7150a6333a3a90fa470c876fa8bcfd69a7125c2f5dedfadc658e7edd067994"
+    },
+    {
+      "path": "content/law-conflict/coverage-v1.json",
+      "bytes": 33000,
+      "sha256": "cb6e42f42c6ed2f1fa8a6e1c1a4f5208a94346970fd53ae116c4bcbf75c4d531"
+    },
+    {
+      "path": "content/meaning-identity/README.md",
+      "bytes": 362,
+      "sha256": "8608e40ec3211d1f534154e0b25272c9184488e11f4a25c9cfd11c823325dff6"
+    },
+    {
+      "path": "content/meaning-identity/coverage-v1.json",
+      "bytes": 30029,
+      "sha256": "beecdbb854dbe1ab358e02f8878ff2acd5ce796b3e15f63efc00275285b37785"
+    },
+    {
+      "path": "content/provisioning/README.md",
+      "bytes": 1476,
+      "sha256": "3dfad9dd3959db25936f1c2283dc2c57f261eef72483948a43993b0e6b0c56ac"
+    },
+    {
+      "path": "content/provisioning/coverage-v1.json",
+      "bytes": 34264,
+      "sha256": "25db8fd893c06ef172c36fe000ddbf28276ee5e1af620d2187bb37eed4a989ae"
+    },
+    {
+      "path": "content/release-v1/interview.pack.json",
+      "bytes": 37265,
+      "sha256": "56b75d3517da476df32d2dca3ec33356a20a073e5dec65bb4a0f552c52ed8fc3"
+    },
+    {
+      "path": "content/release-v1/release.json",
+      "bytes": 124658,
+      "sha256": "649c5fa88d40f4c7ced00558621b635cfe3bebc1c0050a12a1dfb71185557e7a"
+    },
+    {
+      "path": "content/release-v1/society.inventory.json",
+      "bytes": 89830,
+      "sha256": "e8fc14dca6660ab50356cd2b2e4b9e7f6cc33d9085e06896dd78ce8c69840e25"
+    },
+    {
+      "path": "content/release-v1/society.pack.json",
+      "bytes": 920319,
+      "sha256": "94e5d602b6d06511747483b59bc744683b05ac9043ccb0561e21b18263b07faf"
+    },
+    {
+      "path": "content/release-v1/source-review.md",
+      "bytes": 8489,
+      "sha256": "c6167209f85541cd93f861afba7c5cc6e00f080ea6ac64afede8b9eee7b7b13a"
+    },
+    {
+      "path": "content/security-risk/README.md",
+      "bytes": 353,
+      "sha256": "3ec975ef51398fb55caa13d1d5640d04df8813cce2fd9aa8fbd4380f33501109"
+    },
+    {
+      "path": "content/security-risk/coverage-v1.json",
+      "bytes": 28105,
+      "sha256": "9e0c1644aa24ea34f72b8129c087ff3acc4a1f44923d25ddb7350c09a932b761"
+    },
+    {
+      "path": "content/social-organization/README.md",
+      "bytes": 505,
+      "sha256": "6fb6368e72ded714917446fea580bbbe41af6787c48bf1ffdf67d9666bb37035"
+    },
+    {
+      "path": "content/social-organization/coverage-v1.json",
+      "bytes": 30183,
+      "sha256": "fb98612364bbfb7d6897c9309b356b79f91e09e95fc0c32820368319a7639720"
+    },
+    {
+      "path": "contracts/README.md",
+      "bytes": 38628,
+      "sha256": "25354c7f0cc30a45e3da8fd5ca74eef967a3f898237098a9197417083d9817fd"
+    },
+    {
+      "path": "contracts/account.schema.json",
+      "bytes": 12303,
+      "sha256": "9f2fd6fd689a72a9ea07a90275897240f8444ab3bdf7657a877f982a8948d5d6"
+    },
+    {
+      "path": "contracts/account.ts",
+      "bytes": 1607,
+      "sha256": "8bd9d09363199c483474487d52030a916aa26441a3245779728d954c8130b7a8"
+    },
+    {
+      "path": "contracts/adjudication-care.schema.json",
+      "bytes": 74463,
+      "sha256": "c36842d6b003b3c9aa7ef6852b75ee1ab2361abf75cca4e0ef75ae83bcadd133"
+    },
+    {
+      "path": "contracts/adjudication-care.ts",
+      "bytes": 10717,
+      "sha256": "c686c5839883e0395978d16a77b09105614ab915f56f816573a0d3fdb55ae9f6"
+    },
+    {
+      "path": "contracts/adjudication-communication.schema.json",
+      "bytes": 76398,
+      "sha256": "cc880d09b96632cb6e9ce579cc9171a03a358a10ddc5b0ecd4fcba111732f944"
+    },
+    {
+      "path": "contracts/adjudication-communication.ts",
+      "bytes": 11144,
+      "sha256": "4cf846e929f6c0cf4c0e6ee980042a3f72582deb480f2d705a9aec6d4b262855"
+    },
+    {
+      "path": "contracts/adjudication-continuity.schema.json",
+      "bytes": 76517,
+      "sha256": "dbae2f25d5e54167d1614a28ddcc9e8ac7f1f34d8f57f531a4170d55e72ade3a"
+    },
+    {
+      "path": "contracts/adjudication-continuity.ts",
+      "bytes": 11321,
+      "sha256": "79b0aa6f7bfb5a82aafcd4e63f93c998ada96f19391f25ba6a0c9f71bea4fc5b"
+    },
+    {
+      "path": "contracts/adjudication-education.schema.json",
+      "bytes": 75713,
+      "sha256": "c133892046f7585e733c595653f5f99ffe4da0fa49caea19ad57a4d03a6b2604"
+    },
+    {
+      "path": "contracts/adjudication-education.ts",
+      "bytes": 11047,
+      "sha256": "d200c434600a1f9a22ae596fc9baf2d54ff2b3cefaccccec2943a03affb01604"
+    },
+    {
+      "path": "contracts/adjudication-health.schema.json",
+      "bytes": 75591,
+      "sha256": "21bb90c177df32a43c9c4d1dd008a2ea35688f9eae343d2b4bb2cdba4c85e815"
+    },
+    {
+      "path": "contracts/adjudication-health.ts",
+      "bytes": 10964,
+      "sha256": "d629977992f1bc85ddf78b1017abd42e9f644b3030cbe379a921523b105d446f"
+    },
+    {
+      "path": "contracts/adjudication-participation.schema.json",
+      "bytes": 75234,
+      "sha256": "ead07f2271c8e0771b8148ab03d62b9d523134ac6c0909f1f2f04901935daae5"
+    },
+    {
+      "path": "contracts/adjudication-participation.ts",
+      "bytes": 11079,
+      "sha256": "b8b8da1bc2de8a65c2ed9f0f2cb4f171a719e224a60fdb3adb93168f3ed52ec4"
+    },
+    {
+      "path": "contracts/allocation.schema.json",
+      "bytes": 20624,
+      "sha256": "b1ae2d5412512e6877fcf612f08cacb865599958382f7404519aacf2cb5ee115"
+    },
+    {
+      "path": "contracts/allocation.ts",
+      "bytes": 2842,
+      "sha256": "90b71d79e0cb6067404cdfb353285c5493b49ecb1623a1d128f001dfb3d13399"
+    },
+    {
+      "path": "contracts/archive.schema.json",
+      "bytes": 202919,
+      "sha256": "87eaa80a99ad865bd5ce8a82ef33ebf04ffc348e86d681c4208f6984b70a0a5d"
+    },
+    {
+      "path": "contracts/archive.ts",
+      "bytes": 30680,
+      "sha256": "ed4de46d3a02f13bcfd515ca03983de348b37e3b816c5983ffe69bee05cbaa47"
+    },
+    {
+      "path": "contracts/assistant.schema.json",
+      "bytes": 51893,
+      "sha256": "236eac4d260fa8353e55d2cf866a24daf69c2adf4dce7a11bac07aad3f67e5de"
+    },
+    {
+      "path": "contracts/assistant.ts",
+      "bytes": 7993,
+      "sha256": "278b17c34d7a7349fc438e666a05dc38fcb5557e8d23f13b1bf0d06dfeb1cfec"
+    },
+    {
+      "path": "contracts/atlas.schema.json",
+      "bytes": 23668,
+      "sha256": "671a54d4faeb973214777e00f47393144266621bc8cf3b6f4890a1de19de6a56"
+    },
+    {
+      "path": "contracts/atlas.ts",
+      "bytes": 3590,
+      "sha256": "9e58bb353a823cfd1139048c35114bd972cb987df37b39a26074ce81a5811d34"
+    },
+    {
+      "path": "contracts/boundaries.schema.json",
+      "bytes": 161920,
+      "sha256": "24b2517d9af7291b86d4e8ad58201f60db05c2a80cb8beda2c5801d398abf234"
+    },
+    {
+      "path": "contracts/boundaries.ts",
+      "bytes": 24594,
+      "sha256": "4aec552d55f8a44197e1fa0cb09093ea3dbba77a9d4702bc607d5552929c171f"
+    },
+    {
+      "path": "contracts/care-education.schema.json",
+      "bytes": 76474,
+      "sha256": "fa66e945020dd6dabf5e166c8a96f15d74d8d6a6cf2940f4dbe9c26139466dfe"
+    },
+    {
+      "path": "contracts/care-education.ts",
+      "bytes": 11043,
+      "sha256": "1ea379bade758c4502a1db78a614ec10087aeeccd2fc1b542bfdaa4e7caf786e"
+    },
+    {
+      "path": "contracts/communication.schema.json",
+      "bytes": 50504,
+      "sha256": "995464e3f61ad6c471e1ff997ce51e6cb2e4945ce19bd64af2ad8df565b6ff5d"
+    },
+    {
+      "path": "contracts/communication.ts",
+      "bytes": 7485,
+      "sha256": "3347910b36a3d70f25b8dfb3b35f88a4649d30c550a0fc43ce90006c62814d52"
+    },
+    {
+      "path": "contracts/comparison.schema.json",
+      "bytes": 30475,
+      "sha256": "757a42f86712f3528caae2c10f20f068370ba1a3fe89f347b7f830f68a80a918"
+    },
+    {
+      "path": "contracts/comparison.ts",
+      "bytes": 4810,
+      "sha256": "b24204222dbffc7755d6775f2d3e0bfd6603917137a9e314a0909b2636e660d6"
+    },
+    {
+      "path": "contracts/content.schema.json",
+      "bytes": 26227,
+      "sha256": "e215783ee3f7e90e909ddded2a428afa38d425ee750de40ad93169c8809d9330"
+    },
+    {
+      "path": "contracts/content.ts",
+      "bytes": 3759,
+      "sha256": "6b26c77d5af8c95f9900a82a6ff5aa3eacf54c4795448b025a8843ef114e4b41"
+    },
+    {
+      "path": "contracts/dependency.schema.json",
+      "bytes": 9309,
+      "sha256": "2aa87cee4a73a368113ef8e6022e4b197adf7e41d3b5f2a9d7ac34ad8f773b1d"
+    },
+    {
+      "path": "contracts/dependency.ts",
+      "bytes": 1471,
+      "sha256": "cefd6303543dd87c84b0aa4e933eb6d7dc97a6dbf9e054b5c7eca3223471ec19"
+    },
+    {
+      "path": "contracts/domain.schema.json",
+      "bytes": 15673,
+      "sha256": "ebf6637212bc5af02e3d6b9e1dfdb43286c2b6150024b8449fb2bcbe996c19a0"
+    },
+    {
+      "path": "contracts/domain.ts",
+      "bytes": 3447,
+      "sha256": "85643b06081adecae91ec674040d23a384fb917dde028773e247bd5c62f5e9c1"
+    },
+    {
+      "path": "contracts/economy-adjudication.schema.json",
+      "bytes": 65135,
+      "sha256": "2b100adf41a7359574ca8ce818a2b3ebccdff28c83e4b5d1244258dedd6b8919"
+    },
+    {
+      "path": "contracts/economy-adjudication.ts",
+      "bytes": 9374,
+      "sha256": "718e1629a270e85dcce3c32f8dfd7e12f578f1600b0e3221ba9b6780c75edb8b"
+    },
+    {
+      "path": "contracts/economy-care.schema.json",
+      "bytes": 48172,
+      "sha256": "f5d8875f7b75513a942b051d57699ce94ddc2e23f6464ebd0be6ff6d9971a4a3"
+    },
+    {
+      "path": "contracts/economy-care.ts",
+      "bytes": 6968,
+      "sha256": "59fba3ef62a7b3b25585bd3ae9e70dcc5f0762ab7f5db7da12b08a840d120179"
+    },
+    {
+      "path": "contracts/economy-education.schema.json",
+      "bytes": 67003,
+      "sha256": "013c560cb6578a3a2240a17e031725dbe4b79e184d44462dca71c66dbd6b59e7"
+    },
+    {
+      "path": "contracts/economy-education.ts",
+      "bytes": 9688,
+      "sha256": "a426d0d7c09d09bd3c8e446e8441a339c894f115b8e55abd8a9ea5278320faff"
+    },
+    {
+      "path": "contracts/economy-governance.schema.json",
+      "bytes": 54140,
+      "sha256": "635eb4c2cfd7a3b43d9933a0d32e0abd60ad4dcefe233755019dfc3c7bfad19c"
+    },
+    {
+      "path": "contracts/economy-governance.ts",
+      "bytes": 7841,
+      "sha256": "65b70c1182a15d73c8aba1ae5308dcf4ea06356fa5177226681d85443c783e5e"
+    },
+    {
+      "path": "contracts/economy-health.schema.json",
+      "bytes": 66893,
+      "sha256": "c633ea249b82397c48cce089164c7a1b34c12f93ce4fbf47e7ab8bd3beca9fd2"
+    },
+    {
+      "path": "contracts/economy-health.ts",
+      "bytes": 9614,
+      "sha256": "d41045e00cc8c0cadbf199a13f16b5fcee12b6b7f9b2109a0335461d0b1f7101"
+    },
+    {
+      "path": "contracts/economy-infrastructure.schema.json",
+      "bytes": 41469,
+      "sha256": "81a2735f16d77f752ad70e1d6e528ba3054484c09dae77a40a4e15548de82a76"
+    },
+    {
+      "path": "contracts/economy-infrastructure.ts",
+      "bytes": 6125,
+      "sha256": "d1615a75c3f8c24e1a6a81b48751fcc31e6fe71e88abf91af2017bd0ef9f537b"
+    },
+    {
+      "path": "contracts/economy.schema.json",
+      "bytes": 52648,
+      "sha256": "b054b5f977d0d5995459a794e5bcb7baa64beba7670e8d28e7dda54dc7273f97"
+    },
+    {
+      "path": "contracts/economy.ts",
+      "bytes": 7745,
+      "sha256": "bd0d27a18c54e39fc65a086019c7d200d68e62c3744433aedeae00d52877c96b"
+    },
+    {
+      "path": "contracts/environment.schema.json",
+      "bytes": 49334,
+      "sha256": "98cee178367710a44cf334e9286d2f389cfd860557450f8f4bee455d19f7a770"
+    },
+    {
+      "path": "contracts/environment.ts",
+      "bytes": 7357,
+      "sha256": "dbd27b2c89fad83311c03bd11e678fc2b4b72fbe883ee3fe9c9960cc6e52ecc9"
+    },
+    {
+      "path": "contracts/evaluation.schema.json",
+      "bytes": 65825,
+      "sha256": "62b275f17b5db199133befaaaf710a0342c8696903a39b0d71e66a949030f866"
+    },
+    {
+      "path": "contracts/evaluation.ts",
+      "bytes": 9131,
+      "sha256": "e6613b4a7c44a25437199730035755de04cb596651cf256891e3a2cf692aa5f4"
+    },
+    {
+      "path": "contracts/experiment.schema.json",
+      "bytes": 55236,
+      "sha256": "b7d9b0f80f6ce45e63046ab4e1cae58bd70bbe46752f20710de284044f02c7a2"
+    },
+    {
+      "path": "contracts/experiment.ts",
+      "bytes": 8099,
+      "sha256": "c8078ab3f303fadf943ba02b7d442b8d94bb76f5eb2b0bd59e368b726c09405e"
+    },
+    {
+      "path": "contracts/exploration.schema.json",
+      "bytes": 27783,
+      "sha256": "969b736b7ac5e71d2e87909fd0712b854dfcbcb0de0685f6c201d9fcfc93a6fd"
+    },
+    {
+      "path": "contracts/exploration.ts",
+      "bytes": 4680,
+      "sha256": "5d0badeb12b77baddb4cf7a7c97c20f88062790fcdabcfafc6cb1806a469ccf5"
+    },
+    {
+      "path": "contracts/expression.schema.json",
+      "bytes": 7168,
+      "sha256": "c6afd27b773f5a11cd320b5969a83c524124708f2d0957fe7cf0498702f88ec7"
+    },
+    {
+      "path": "contracts/expression.ts",
+      "bytes": 1145,
+      "sha256": "ddc3fd7b42b7b63cfe0043f4d87c840280c33c0bd23fc5d8e824524c8bb5ae20"
+    },
+    {
+      "path": "contracts/fixtures.json",
+      "bytes": 308502,
+      "sha256": "18a43d0a507b5088cd517e0e3417232017d6c23b83fbe13757d7e2bc1c753b9d"
+    },
+    {
+      "path": "contracts/generation.schema.json",
+      "bytes": 11753,
+      "sha256": "f65dd3e1dfa4e7c9970fe4d352518fc13322d45afca9639eafea26b232e29581"
+    },
+    {
+      "path": "contracts/generation.ts",
+      "bytes": 1787,
+      "sha256": "b77f97e3a1fc4de9723b5ea91a71437bdfc4071587ad209c0d8e36c770cd7c75"
+    },
+    {
+      "path": "contracts/governance-adjudication.schema.json",
+      "bytes": 70203,
+      "sha256": "2fec2c23e1e1c345827d21865a6ec69e9e042da55fee63d642a1defcca838988"
+    },
+    {
+      "path": "contracts/governance-adjudication.ts",
+      "bytes": 10247,
+      "sha256": "d8cfacd359fa0cfc95aba8dc87f1ba32d7a283877603216f5963a37a27d009ba"
+    },
+    {
+      "path": "contracts/governance-communication.schema.json",
+      "bytes": 66246,
+      "sha256": "5e33aada5836eedb4f8ae88c16d713894da8c5b24a4f1e937ccc0ee71cdc1362"
+    },
+    {
+      "path": "contracts/governance-communication.ts",
+      "bytes": 9769,
+      "sha256": "ae6d54a6b75d8abb91d0d66d7d1f36619833effb687ba8b683c0d64c79f7527f"
+    },
+    {
+      "path": "contracts/governance-continuity.schema.json",
+      "bytes": 66365,
+      "sha256": "dcb766458ba2c9df5d31011f514486739032dda4c97abc30f36249d0da0b8152"
+    },
+    {
+      "path": "contracts/governance-continuity.ts",
+      "bytes": 9946,
+      "sha256": "ba995e566448c5124f3a6cf0f2b26ac384cf86dbc0c087f2866f26e0f256b3d8"
+    },
+    {
+      "path": "contracts/governance-education.schema.json",
+      "bytes": 73391,
+      "sha256": "4345fd29087d0e22e0d8cffad3559bdd861ffca35e60b11497225b63d6675da7"
+    },
+    {
+      "path": "contracts/governance-education.ts",
+      "bytes": 10757,
+      "sha256": "022dcd1c695bc147d6cb84d8724f172b87ab25ebcddb50a78c7481fe8f299b7c"
+    },
+    {
+      "path": "contracts/governance-infrastructure.schema.json",
+      "bytes": 67259,
+      "sha256": "458f8ff25cfde1209b4a428327f7c5ca45bfb0747d4c236407354cc3623fcd48"
+    },
+    {
+      "path": "contracts/governance-infrastructure.ts",
+      "bytes": 9906,
+      "sha256": "8968b0a68e35a7669675f956c342542e498963a59daa2fce157a18a0a64ec276"
+    },
+    {
+      "path": "contracts/governance-participation.schema.json",
+      "bytes": 65082,
+      "sha256": "50f13b2b9e31ca165030702853e4b4bcbb3257e7fc0bed311ce10157c1a3820c"
+    },
+    {
+      "path": "contracts/governance-participation.ts",
+      "bytes": 9704,
+      "sha256": "c239f028d667b86fa5f6f7eff443099c65880a4362bdd1e52255570425e0543f"
+    },
+    {
+      "path": "contracts/governance.schema.json",
+      "bytes": 75610,
+      "sha256": "0a811c6a610fd41e2cabd51d884f9174d81b272ce8761d9536efe510e3e27d80"
+    },
+    {
+      "path": "contracts/governance.ts",
+      "bytes": 11148,
+      "sha256": "54bd0c94854f1ed731a9500250769176381a6021d4ca26d625fc132f7f7d4c94"
+    },
+    {
+      "path": "contracts/grounding-tools.json",
+      "bytes": 1214,
+      "sha256": "d23e1612edd7caf050571ce39eef1a02869402be62803d2a330753854bd08d89"
+    },
+    {
+      "path": "contracts/grounding.schema.json",
+      "bytes": 8435,
+      "sha256": "c9461eb1489d671f5256ac2260dc241c2a0be2ba6aca10fd34241a298174661d"
+    },
+    {
+      "path": "contracts/grounding.ts",
+      "bytes": 1452,
+      "sha256": "340ac4e89e4c174b0e99e267e66624572f741bd8ca931053599a454584e6d9a8"
+    },
+    {
+      "path": "contracts/health.schema.json",
+      "bytes": 80648,
+      "sha256": "7efe644198e6b14578c9017a927b53ddcd86e69b7b5e850f374ba1fa40eaaeb9"
+    },
+    {
+      "path": "contracts/health.ts",
+      "bytes": 11766,
+      "sha256": "bbc43f173e7f754dc6169d91ac4f8f46c79c06c7f2bab41e65d4dacea5c9a431"
+    },
+    {
+      "path": "contracts/history.schema.json",
+      "bytes": 31686,
+      "sha256": "bb938a385c8991393dab35380b83ac2680c986a0a358724097903ff57057d0f2"
+    },
+    {
+      "path": "contracts/history.ts",
+      "bytes": 4889,
+      "sha256": "4d55d99ca94d13502dda6923017c4c23d54163f7edb20e0cc022473938a219a2"
+    },
+    {
+      "path": "contracts/infrastructure.schema.json",
+      "bytes": 51503,
+      "sha256": "085bce59a25c5a3b2b2a68bdc609eacd3ac4a089b9c5481a8af257b963fcf55e"
+    },
+    {
+      "path": "contracts/infrastructure.ts",
+      "bytes": 7609,
+      "sha256": "de3a5eec9bbd379378391a21b0d424a180a9953ed206cb07b95c8ecedea362ed"
+    },
+    {
+      "path": "contracts/interview.schema.json",
+      "bytes": 28189,
+      "sha256": "c05f26f108a9a164d70354330b5eb5deb8901f2b77c07289755778ddfcc2497d"
+    },
+    {
+      "path": "contracts/interview.ts",
+      "bytes": 4307,
+      "sha256": "971c27a8926aa24eeaabeee8fca6c00912b7e6880ee4d91db6d8aa2c1c33e206"
+    },
+    {
+      "path": "contracts/inventory.json",
+      "bytes": 4724,
+      "sha256": "a500a63578fe898b5f67476fca81ee203e23ecd85ebce7076b834c43417c096a"
+    },
+    {
+      "path": "contracts/knowledge-culture.schema.json",
+      "bytes": 80797,
+      "sha256": "afc7d96eb96eef92c7af1f719723cebccd6d14379fce77981a29b88dcf7445fe"
+    },
+    {
+      "path": "contracts/knowledge-culture.ts",
+      "bytes": 11855,
+      "sha256": "b1174f40aa2424efecb754fa374e95b14f0d1e847001db3a467be8093019b81d"
+    },
+    {
+      "path": "contracts/law-conflict.schema.json",
+      "bytes": 77804,
+      "sha256": "d6a23b4b47baaa69d11f46e483669e1159c6da41e14906c1df2348e48f565fcf"
+    },
+    {
+      "path": "contracts/law-conflict.ts",
+      "bytes": 11406,
+      "sha256": "bdcd7b186a0c0728ee33ad95245524db04de4bd423c1384d742851cc600d0ebb"
+    },
+    {
+      "path": "contracts/logistics.schema.json",
+      "bytes": 28853,
+      "sha256": "723da824b96e550ff94077f9229e764b3c0d32b6ef878fdfb95f16bd1f274c0a"
+    },
+    {
+      "path": "contracts/logistics.ts",
+      "bytes": 4044,
+      "sha256": "0cffa3105e6cd63429a28f5eae0eabdf6da14d57f0036200af8219a6bb6e5eae"
+    },
+    {
+      "path": "contracts/matrix.schema.json",
+      "bytes": 60426,
+      "sha256": "41051e9dff0c0794818035e34eb30492c9aa2b08eb122d72335319ea73df52e2"
+    },
+    {
+      "path": "contracts/matrix.ts",
+      "bytes": 9611,
+      "sha256": "8b3ee7a9f6fe259bd1b4e395ccda3211c76d38d172a15f9cff5e744de9175c3a"
+    },
+    {
+      "path": "contracts/meaning-identity.schema.json",
+      "bytes": 49322,
+      "sha256": "474e1c4585a12b1303c99efa2709411ed84b6dc582c4845ff031a2479560da20"
+    },
+    {
+      "path": "contracts/meaning-identity.ts",
+      "bytes": 7408,
+      "sha256": "a5cdf75506df22e7c8c1989d37b3874e2e1b45758252a0bcce62501327127c15"
+    },
+    {
+      "path": "contracts/measurement.schema.json",
+      "bytes": 62454,
+      "sha256": "14e0e5b66e69692cf605ff546ce5668fc2042486bced1bb8da582ab01e53f9d5"
+    },
+    {
+      "path": "contracts/measurement.ts",
+      "bytes": 9387,
+      "sha256": "a882f04fa92c736192f0f8d52e4381912eba824f9d72ba2d049fa0ec3b2bae6c"
+    },
+    {
+      "path": "contracts/mechanism-fixtures.json",
+      "bytes": 4550,
+      "sha256": "7e841270c72efd8c73bd1be2df2260e0c2178640b505b0446aeee44f4c134f3f"
+    },
+    {
+      "path": "contracts/mechanism-fixtures.ts",
+      "bytes": 4732,
+      "sha256": "cbcc320adf14bc7256c3e57e89b76078a29f620973e1fba0029fe6c53b4d25e8"
+    },
+    {
+      "path": "contracts/mechanism.schema.json",
+      "bytes": 20949,
+      "sha256": "9613e6c793394e1b0496aabaee8aebc7bd4965d5cd4179b16aebdde0c88f8fd8"
+    },
+    {
+      "path": "contracts/mechanism.ts",
+      "bytes": 3879,
+      "sha256": "9ee27e010c8df74d72d5f4e3bbc990ffb5b7a01cdf17ddb78d7dae84cf041768"
+    },
+    {
+      "path": "contracts/overview.schema.json",
+      "bytes": 59467,
+      "sha256": "195e3041c51ec23ff9f3720434b63870ce9f3d9019592ae8b75764e38715257e"
+    },
+    {
+      "path": "contracts/overview.ts",
+      "bytes": 8991,
+      "sha256": "c87e29e44ab6dba09cbad3b4b624e3104330a917a5eefbffcedae9480dd50bb6"
+    },
+    {
+      "path": "contracts/pack.schema.json",
+      "bytes": 26912,
+      "sha256": "ab6d3f2e098ece969b5cfad80a0952a70518f8f7bcd7de5ee21e79d593c9f108"
+    },
+    {
+      "path": "contracts/pack.ts",
+      "bytes": 4103,
+      "sha256": "3165ea0c96709b27f4f2cfd1ff3c92d1124923caa5e5d66b417cb5a7bf4fab70"
+    },
+    {
+      "path": "contracts/policy.schema.json",
+      "bytes": 19598,
+      "sha256": "0e288cb86e86ae16bd9e9fc867954493273c5466be2175d212bd28a51e9e7a9c"
+    },
+    {
+      "path": "contracts/policy.ts",
+      "bytes": 2689,
+      "sha256": "179be3154fa7e07f6bf3336e23fde266c142c4a56f6ff2f450793415fceaee86"
+    },
+    {
+      "path": "contracts/provider.schema.json",
+      "bytes": 28847,
+      "sha256": "a2f94f65efbb591a86e065fe342d082f0228411119654c2c77ddae9fb06ce3c9"
+    },
+    {
+      "path": "contracts/provider.ts",
+      "bytes": 4358,
+      "sha256": "0cabf327d7e399c7b4704b5a3d94178984a8393e6a18243d5da110bb621c1cb8"
+    },
+    {
+      "path": "contracts/provisioning-care.schema.json",
+      "bytes": 68037,
+      "sha256": "e0af876e7f1c96f261230e810536d653f53737d659fd16b6ae191740b1156b29"
+    },
+    {
+      "path": "contracts/provisioning-care.ts",
+      "bytes": 10041,
+      "sha256": "8ec0ec755382e125d0562bf22577a5a2164b851fc2472bfced0e0546b44a21a7"
+    },
+    {
+      "path": "contracts/provisioning-continuity.schema.json",
+      "bytes": 60651,
+      "sha256": "9c599b2f05179e4bc0764c6f9c273ccc9017b2ada24d63f5e0eb7dd7c61a58cd"
+    },
+    {
+      "path": "contracts/provisioning-continuity.ts",
+      "bytes": 9272,
+      "sha256": "3bbd6e3c6480a7f67979b85a88dba676733ea1cfe5480fb997395b447cd77a1b"
+    },
+    {
+      "path": "contracts/provisioning-economy.schema.json",
+      "bytes": 46068,
+      "sha256": "98e054dae5353ba7acbd2f295fbb4919a3598f28f49166f1662990444fff7a38"
+    },
+    {
+      "path": "contracts/provisioning-economy.ts",
+      "bytes": 6792,
+      "sha256": "1f5c6e52218466f90dff0a45510919900092ce7ead6697d45657b2442c6ea1ca"
+    },
+    {
+      "path": "contracts/provisioning-education.schema.json",
+      "bytes": 85138,
+      "sha256": "08888590661fb10941638c7da3bdcb5cb5dd01c0068ca2dcafa936b995df336a"
+    },
+    {
+      "path": "contracts/provisioning-education.ts",
+      "bytes": 12395,
+      "sha256": "72b8030e99e5733de651b7107054545ee50dd389e0606dc91fef99cd6f3f37ed"
+    },
+    {
+      "path": "contracts/provisioning-environment.schema.json",
+      "bytes": 58563,
+      "sha256": "1185cbe0649aafe1615104c341771220264725fecdc9e8a4036e96639ccda117"
+    },
+    {
+      "path": "contracts/provisioning-environment.ts",
+      "bytes": 8723,
+      "sha256": "8b9f217dd5000331f7a0ebd77545b810f7fa24b98f9620d5d3f3d4be8aaa55c0"
+    },
+    {
+      "path": "contracts/provisioning-health.schema.json",
+      "bytes": 85028,
+      "sha256": "74b91edff766ebb35278fe3fa981d1722b2fa44f4ed493ac8648384ce11585a2"
+    },
+    {
+      "path": "contracts/provisioning-health.ts",
+      "bytes": 12321,
+      "sha256": "c294472ff90a3066db3663d5da34d0c3b5b06fd382f765606271165cc8f08e53"
+    },
+    {
+      "path": "contracts/provisioning-infrastructure.schema.json",
+      "bytes": 61503,
+      "sha256": "8c7e5fb896af48d2a7ee21781412a2fce147c3aeeac741864f6a18bf11fef8c2"
+    },
+    {
+      "path": "contracts/provisioning-infrastructure.ts",
+      "bytes": 9204,
+      "sha256": "1b1aaecb65050c996286424584e38776ddcf834e9a3c0087d3f75491eb4bd5a2"
+    },
+    {
+      "path": "contracts/provisioning.schema.json",
+      "bytes": 64574,
+      "sha256": "c713b07985e1999393bdf83db84569549a3ef449403179de1d70784797fe240e"
+    },
+    {
+      "path": "contracts/provisioning.ts",
+      "bytes": 9401,
+      "sha256": "7e886a7da171cd26e6c600aee285cce293b29528d94c8b07bf7d8448dd023b7b"
+    },
+    {
+      "path": "contracts/recovery.schema.json",
+      "bytes": 80675,
+      "sha256": "20310a94684f3898915ae9f1bdd6ba653a4dba3d0c6847d3eb1839dd1fb92a6a"
+    },
+    {
+      "path": "contracts/recovery.ts",
+      "bytes": 12342,
+      "sha256": "e3b5d2721b31208d8b31ac7b43d6096eabedc2cb097c9299dc5a55e47f6c8c8d"
+    },
+    {
+      "path": "contracts/report.schema.json",
+      "bytes": 3652,
+      "sha256": "e9184103c496f4b706054e68ce77c0c4f9fad27211ee6364c99f70a6a396c19d"
+    },
+    {
+      "path": "contracts/report.ts",
+      "bytes": 609,
+      "sha256": "eddf05c6d40663fcb09cfaac6ce85b4af11ddf5c96d38ba083bdfed9f2b54adc"
+    },
+    {
+      "path": "contracts/revision.schema.json",
+      "bytes": 109473,
+      "sha256": "33abd3e02ae52183d5b35fbb1c29d94f3dbd99bede9fe012810e5b2e2b1ed387"
+    },
+    {
+      "path": "contracts/revision.ts",
+      "bytes": 16489,
+      "sha256": "bf071be86cc0a737fe337c1daf1d4f1dad26e0137b5a8d523b8e6202776c317f"
+    },
+    {
+      "path": "contracts/saved-evidence.schema.json",
+      "bytes": 23953,
+      "sha256": "2c67e099854554f42d6762eaa6628510a168b72d2ede35f18dc0df694e7c6acc"
+    },
+    {
+      "path": "contracts/security-risk.schema.json",
+      "bytes": 50593,
+      "sha256": "f7b6c742a2d7f39192354413a5ca23fe2ad8957c69afa48f02bd0c7c35aea358"
+    },
+    {
+      "path": "contracts/security-risk.ts",
+      "bytes": 7653,
+      "sha256": "e2f9c7865ee4010da2dcad8a46c517b16b70ae29cf794acc66bb3cb555073767"
+    },
+    {
+      "path": "contracts/social-organization.schema.json",
+      "bytes": 62816,
+      "sha256": "e5ee8dc14c2b2212e35a7e809e46cbe5b2e1c7175b72ea201b8a0b4aefc17fe5"
+    },
+    {
+      "path": "contracts/social-organization.ts",
+      "bytes": 9248,
+      "sha256": "050ddd2242a6cabc43578f69701ef66332790d48d6958fb4bb40599751bc5225"
+    },
+    {
+      "path": "contracts/solver.schema.json",
+      "bytes": 30473,
+      "sha256": "7b89dfd9b1ab0e15bbf0267b3586ce85b4d8c30e6200062fa38694ae981b2aac"
+    },
+    {
+      "path": "contracts/solver.ts",
+      "bytes": 4255,
+      "sha256": "95785677462aab1b10cdb8187865d6548a9f61e40b2ca9a933e1cd75482ad785"
+    },
+    {
+      "path": "contracts/spending.schema.json",
+      "bytes": 18395,
+      "sha256": "2878c1207cc1f9d2350ab84485f07f41990aba702402f739c2264531e83540d3"
+    },
+    {
+      "path": "contracts/spending.ts",
+      "bytes": 2742,
+      "sha256": "1020c100d8ffedfc779dff8cb221d12507f3ba49ed6a3cae95fe30519938567b"
+    },
+    {
+      "path": "contracts/static-system.schema.json",
+      "bytes": 187560,
+      "sha256": "e542c46d5a5a5ecb522b7a4b6c864568d1066266ff4a40a670d265ac85652c5a"
+    },
+    {
+      "path": "contracts/static-system.ts",
+      "bytes": 28418,
+      "sha256": "92448cf3eb560efaf278fce1cf1c75267f1548ade8a4e6387db58f8b91e64370"
+    },
+    {
+      "path": "contracts/stochastic.schema.json",
+      "bytes": 10573,
+      "sha256": "c8428b4e600b0c48cb368b6defecd95ac57811ea76f67613b436f9e34965baa1"
+    },
+    {
+      "path": "contracts/stochastic.ts",
+      "bytes": 1546,
+      "sha256": "8b3c65e7e7d09e5c6ae7805add412ab97057a880bc2d0a0ce226ec619f9c2987"
+    },
+    {
+      "path": "contracts/timeline-workspace.schema.json",
+      "bytes": 35750,
+      "sha256": "4fbe9705dffc21e4a532f96b156dd4f2e5a284e3a1bf97fcd3dbf90b3945f39b"
+    },
+    {
+      "path": "contracts/timeline-workspace.ts",
+      "bytes": 5307,
+      "sha256": "cb8446c485b49145a5695527e40bb1077d3c51a2da359e7a2a91358a86b79ebb"
+    },
+    {
+      "path": "contracts/timeline.schema.json",
+      "bytes": 20170,
+      "sha256": "caa6d9ce5891f2194e00534a6f2118abbb2f41d70a5fcb26bb97c6830c68d2bb"
+    },
+    {
+      "path": "contracts/timeline.ts",
+      "bytes": 2862,
+      "sha256": "5602700be636450fa93f628fd3e843fcf38e492cadc9d4f70a6ad83b46918df9"
+    },
+    {
+      "path": "contracts/tool-inputs.json",
+      "bytes": 62766,
+      "sha256": "fba8dcf7547163858b6dca4113e73e963b9cd0c0c0a975cb152869c099ae52df"
+    },
+    {
+      "path": "contracts/transitions.schema.json",
+      "bytes": 80882,
+      "sha256": "62498c7ae68b941c9846feaae6df5e8bbaa1e78128fcf588be913b5cb40a8810"
+    },
+    {
+      "path": "contracts/transitions.ts",
+      "bytes": 12417,
+      "sha256": "3e0158d223cd8a7f3c9b5a63b810f568e1e01819986756c60752951784d14fa2"
+    },
+    {
+      "path": "contracts/uncertainty.schema.json",
+      "bytes": 59849,
+      "sha256": "80b00e756cc8407a620ff2354f6fbb092d6d6fb98b550623f9dec7fe1ce482b3"
+    },
+    {
+      "path": "contracts/uncertainty.ts",
+      "bytes": 8594,
+      "sha256": "937f1cda1e816ee9daf6c89d5a3bc6bf145401e7fbd6d0c46048daa70405d0e1"
+    },
+    {
+      "path": "contracts/wire.schema.json",
+      "bytes": 62777,
+      "sha256": "5b0f32b8c1039507caa8c0097589a3e18da6975d93c1e6ee574cf3f78cd2cd1b"
+    },
+    {
+      "path": "contracts/wire.ts",
+      "bytes": 10265,
+      "sha256": "60aedfa7ffe0d1ea411e4188b37f31b88d143361eb54bdf5a20999330c6bf306"
+    },
+    {
+      "path": "contracts/workbench.schema.json",
+      "bytes": 34850,
+      "sha256": "463be0c15eb2b575586cbcde4ea01292244b6b91f215927b622b86ef8d52fda7"
+    },
+    {
+      "path": "contracts/workbench.ts",
+      "bytes": 5281,
+      "sha256": "b0e411f42392490b6b41b108d070f7d6cb1b6c05652d410ccd12b817f9e7efd9"
+    },
+    {
+      "path": "contracts/workspace.schema.json",
+      "bytes": 32210,
+      "sha256": "c732734d5e707ab11bf29132a5e67995f272c59ed742fd755a7ff843b5c9b9c8"
+    },
+    {
+      "path": "contracts/workspace.ts",
+      "bytes": 5274,
+      "sha256": "fd49b775e537e5d0f2c51fa2640c7b2f00a41b3bfd95788106554df5a0fd2466"
+    },
+    {
+      "path": "desktop/env.d.ts",
+      "bytes": 112,
+      "sha256": "663c645381ffd9192c29e33a194cb7a5bc0f093ed82cd6ca7d6e243d95e8469a"
+    },
+    {
+      "path": "desktop/main/assistant-content.ts",
+      "bytes": 8395,
+      "sha256": "eb90a39ae299fc683c8b8e92592e7c3afa98e5dbf0bdce3f8e98a38b98e20797"
+    },
+    {
+      "path": "desktop/main/assistant.ts",
+      "bytes": 25714,
+      "sha256": "9f86fee80474f6bd3fec325bec0b0541d4b413bf5305d486e8e3c79ab26707e3"
+    },
+    {
+      "path": "desktop/main/engine.ts",
+      "bytes": 3490,
+      "sha256": "802086f88bbc20aa273fcce603f5ec4ae2210eba46adea2105cf67fdc4e7b7c1"
+    },
+    {
+      "path": "desktop/main/grounding.ts",
+      "bytes": 674,
+      "sha256": "658c77a57b6c72d003e0ee8b3a475b2b0fcb9ffc77f8bebc07d9e72672b9e65b"
+    },
+    {
+      "path": "desktop/main/history.ts",
+      "bytes": 4400,
+      "sha256": "a2b0d27d092ddc93a180720551a7d66433e6d47893af8a122823a932da5b1630"
+    },
+    {
+      "path": "desktop/main/index.ts",
+      "bytes": 6691,
+      "sha256": "9a8e99c004a96309c923869cc7a80823ed8ea182f56162e5128b342c7fe1494e"
+    },
+    {
+      "path": "desktop/main/ipc.ts",
+      "bytes": 9893,
+      "sha256": "dcf4990f9e2d71d544e6ccb4923184f561e55786f056eefaf1b982f6dc7ae369"
+    },
+    {
+      "path": "desktop/main/provider-adapters.ts",
+      "bytes": 8309,
+      "sha256": "320a032bc0258e4b606ddc4a4dcb29d40c6e14a7bbb2e18f8e33cec1bca011a6"
+    },
+    {
+      "path": "desktop/main/provider-network.ts",
+      "bytes": 6659,
+      "sha256": "1a9714add73a293cd270d15a9588d4335a217f1b80d496ff4cf78339c6697508"
+    },
+    {
+      "path": "desktop/main/provider-requests.ts",
+      "bytes": 18386,
+      "sha256": "24a9c55843e36e58474e635a243010219a44d3bfeb5f1eceb38b8a6182acf0fa"
+    },
+    {
+      "path": "desktop/main/provider-schema.ts",
+      "bytes": 5834,
+      "sha256": "f32982bf876d7f3ca776e0ad55e4c13e7d3e19a26678a1ab3b955e249b591d37"
+    },
+    {
+      "path": "desktop/main/provider-stream.ts",
+      "bytes": 15523,
+      "sha256": "54f44f747dd7153ed3f7daa4441d76896515f7672eb7b35654447e23b381f74b"
+    },
+    {
+      "path": "desktop/main/providers.ts",
+      "bytes": 30860,
+      "sha256": "09ddf11f93e373097d601135eb33151e65a6dff9cda6302e01b0e97ff7762c12"
+    },
+    {
+      "path": "desktop/main/query-work.ts",
+      "bytes": 1127,
+      "sha256": "d30c3a210210c78f13e03b643e128b4e9c730edb6f9d7c21753f00b4065f915c"
+    },
+    {
+      "path": "desktop/main/recovery.ts",
+      "bytes": 4676,
+      "sha256": "ff4272f2e46f4bb6737d1a45d7e7b47ee93c1295ed9b883c9eda93358f757f54"
+    },
+    {
+      "path": "desktop/main/security.ts",
+      "bytes": 3684,
+      "sha256": "46c1a68c7952214d0f0977d3c414d3ca1f35ad6d0dff53214ba014934395740a"
+    },
+    {
+      "path": "desktop/main/sharing.ts",
+      "bytes": 2906,
+      "sha256": "3b26c686c430beed64de6ec3d6ba711602cb4932b9a6bdb1f532e52c8050541d"
+    },
+    {
+      "path": "desktop/main/shell.ts",
+      "bytes": 10314,
+      "sha256": "1926541ba059a10f1ca53a84a8fa8e6ee606b521177c370d1a71439e02440767"
+    },
+    {
+      "path": "desktop/main/spending.ts",
+      "bytes": 2088,
+      "sha256": "553dcee48b9bf7db3230cead2439cf985b2bbf2c9629b45148b59f331e64ef89"
+    },
+    {
+      "path": "desktop/main/transcripts.ts",
+      "bytes": 2989,
+      "sha256": "2795c60d7f8818926cf69cc974d09e28b698a3aa8f7a51e4b95da587892aa924"
+    },
+    {
+      "path": "desktop/main/transport.ts",
+      "bytes": 4620,
+      "sha256": "1bc55efafb37894481388516c6f03062d27deea8f26056babdab5af537de90c4"
+    },
+    {
+      "path": "desktop/main/wire.ts",
+      "bytes": 4266,
+      "sha256": "497a8c581974742e5aada4d9bc22c02d5021bed2c24ae8c8833150a7a064c43c"
+    },
+    {
+      "path": "desktop/main/workspace.ts",
+      "bytes": 40856,
+      "sha256": "3cfa5124ee515abf16fe440839510a49dd4fd564a06d3050ea5e71fe1e02b2a0"
+    },
+    {
+      "path": "desktop/preload/index.ts",
+      "bytes": 3580,
+      "sha256": "def9e4979ca07d62ecb82655f12f517ce8642637e175037d88c4357448a5dcec"
+    },
+    {
+      "path": "desktop/renderer/archives.tsx",
+      "bytes": 7407,
+      "sha256": "3c3bdb6e7ef7927e77ee3ef1177bd8bf866f97f714e3b6ee4011534bf8ceea20"
+    },
+    {
+      "path": "desktop/renderer/assistant-question.ts",
+      "bytes": 900,
+      "sha256": "7690ba736ab8dd82e75ec0a9d98996a300a14d359961c16f53a3f73a5510077d"
+    },
+    {
+      "path": "desktop/renderer/assistant.tsx",
+      "bytes": 26801,
+      "sha256": "a416c8b11f5fe51d8153252817bd17df78d8b5ccd862be46ec9dcd9e35f5f779"
+    },
+    {
+      "path": "desktop/renderer/atlas.tsx",
+      "bytes": 8711,
+      "sha256": "3a9ee6f356e744067d566c6cf0581a12a9c122e345182a81bba6be15448f54de"
+    },
+    {
+      "path": "desktop/renderer/design-history.tsx",
+      "bytes": 9010,
+      "sha256": "f2118cfb8daec4289e68845d41c347e8be32c6de312d6c4a7bcc28841b880eec"
+    },
+    {
+      "path": "desktop/renderer/evidence.tsx",
+      "bytes": 15534,
+      "sha256": "44f9c39137e5953eebabc2339662b817537f91291ab965042c6d86b091125533"
+    },
+    {
+      "path": "desktop/renderer/index.html",
+      "bytes": 250,
+      "sha256": "e7cb4c4af24a8d2fb7050e8831ec55ab667a56776920bbf92a1177a1c0afe504"
+    },
+    {
+      "path": "desktop/renderer/interview.tsx",
+      "bytes": 11256,
+      "sha256": "25fed77ee6ef097b13413690df627259b5fdd453c56ffc1e83fa24caf97f4151"
+    },
+    {
+      "path": "desktop/renderer/matrix.tsx",
+      "bytes": 11308,
+      "sha256": "6b0a2c5560e8992e700cd4e20e70d57daffad4a6399abeedc300db763b7f37b9"
+    },
+    {
+      "path": "desktop/renderer/overview.tsx",
+      "bytes": 23336,
+      "sha256": "0b9948bfacebfff6341ddaf542d5318d63cffa759574681ff73d3ee5bbe92398"
+    },
+    {
+      "path": "desktop/renderer/providers.tsx",
+      "bytes": 20543,
+      "sha256": "96b6a3ae8fc7a089e21c8442300ae30351d5df6378025e4d220c9002bcca81ad"
+    },
+    {
+      "path": "desktop/renderer/recovery.tsx",
+      "bytes": 5654,
+      "sha256": "3f3dbfccae467181730d9b3ac48bd560f1bf7ad204021fe02004f978bba3d4b4"
+    },
+    {
+      "path": "desktop/renderer/src.tsx",
+      "bytes": 6248,
+      "sha256": "d2f631c978bcdadaad0bd3b63195d0335bacde56bbe617c95ea6bf15daa346a8"
+    },
+    {
+      "path": "desktop/renderer/style.css",
+      "bytes": 5915,
+      "sha256": "a43a800f0a4f9ed51cf3619660e338a70db775929d7791eeb207c215ebf87cba"
+    },
+    {
+      "path": "desktop/renderer/timeline.tsx",
+      "bytes": 14708,
+      "sha256": "a0bfa95f6c280502c7ad26fddde813ef5000c7ffac66c87e425c13a171f25235"
+    },
+    {
+      "path": "desktop/renderer/uncertainty.tsx",
+      "bytes": 13075,
+      "sha256": "ac0fda661cf609179e190b563a3fe158f6dbe9e53276ae8e681f9b637e074710"
+    },
+    {
+      "path": "desktop/renderer/work-status.ts",
+      "bytes": 705,
+      "sha256": "252170eb9c00cb64e115596eedcdc6cd77d270752e9076d4553861357697930f"
+    },
+    {
+      "path": "desktop/renderer/workspace.tsx",
+      "bytes": 20035,
+      "sha256": "5fb99b78aff14527a2d312f0e2d997820f619e2072d4408ac83daaa78bdfaca0"
+    },
+    {
+      "path": "desktop/renderer/world.tsx",
+      "bytes": 16974,
+      "sha256": "2e30b812a60b1c8c7e9b79a5453e665eabb4fa5a9eafe1140ab30919d29bd20a"
+    },
+    {
+      "path": "desktop/shell.ts",
+      "bytes": 4589,
+      "sha256": "1a6ef952c790457234401d96e1136d9c1695a18669f2de6bd53648206ca01139"
+    },
+    {
+      "path": "docs/design_doc.md",
+      "bytes": 32403,
+      "sha256": "85ca48eebfe112982edff802911356ea6c9a144e4d17eaaacda1a93b6aee1335"
+    },
+    {
+      "path": "docs/platform_scope.md",
+      "bytes": 1562,
+      "sha256": "b0fa6da031e3169ce09db332a514bdbf483ca2a5727ef4e15d7483e472df184f"
+    },
+    {
+      "path": "docs/provider_compatibility.md",
+      "bytes": 4883,
+      "sha256": "189b0acc2c5bbe1bbf2a9f97eba7e7ac5871554b216e6cb5821b28801ba333ea"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-RT-review.json",
+      "bytes": 25197,
+      "sha256": "7a0bbc265127dce6035f11e12abd892387fa3758279a1a811b59c3641ae54287"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-acceptance.json",
+      "bytes": 1107020,
+      "sha256": "427847166777a3932b8a1acad5aa5084182efc466e2b7c3b74b6a37521e7ac8e"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-gate-review.json",
+      "bytes": 2087,
+      "sha256": "1e5dbd79425d619063a5206e47ee1e0ece47104d8b75978ca502da343ec6e8ec"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-live-review.json",
+      "bytes": 9488,
+      "sha256": "802bc5e2d68d5ad04f6f7336391b4daacd2802ce53d7ec93ed2158e8f37a8c99"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-model-review.json",
+      "bytes": 10048,
+      "sha256": "12c4d69164d0aff36e79f6f2aa4b55a1e535b9d880fee4a258048ca88b3ec1d9"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-owner-checks.md",
+      "bytes": 3929,
+      "sha256": "3453d8353fdce92ebbffbf48875bcebde3aaea66390a50b8a33f7763ac731927"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-runtime-attachment.json",
+      "bytes": 2702,
+      "sha256": "3d783836624478a7b5b718646f75fb438d5772e1e9e676cfa7bb8935c5c9e534"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-selection.json",
+      "bytes": 6988,
+      "sha256": "7e4356ff57c3bd25f37769dcf5fade9732e6e8c5994bd76b3042edd8b59cff2f"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-trace-review.json",
+      "bytes": 367953,
+      "sha256": "9cc5063052f290f87ce1f4458a0e02e8ad3da673e2a59304712671f8ca225668"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-v41-preflight.json",
+      "bytes": 1435,
+      "sha256": "e9811f8efca6ceb4574433990acd5b5d8dd76b02f992a7f2f0b709866ace08ac"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055-validation.json",
+      "bytes": 15807,
+      "sha256": "21cfe74c963f452f821134e549cb775a4a9e61f6304431feb7fabb5747504843"
+    },
+    {
+      "path": "docs/roadmap/execution/WP-055.md",
+      "bytes": 7081,
+      "sha256": "713db07f3fd6b3d6e4f1093fb004c9dbc61cf10f144a74d16576b78c09a962b7"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/audit-current.xml.gz",
+      "bytes": 435,
+      "sha256": "91354919126be802fe396142b5fe9fbb3623db82395d7ed9ff0499f9e001f050"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/desktop-ready.xml.gz",
+      "bytes": 1950,
+      "sha256": "d1aa669866d88d70402b77f9d0c4fc5799d4585101405c1a2cc3af34eff313ee"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/engine-final.xml.gz",
+      "bytes": 79407,
+      "sha256": "67a5dc4c25aa105630a42de44e336187c4ae4ac9fd76442d46086d546962faf7"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/engine.xml.gz",
+      "bytes": 79258,
+      "sha256": "8ec53671dd9ee4e7718db9adaa8fc01a8b56fceead019a27b08037ba6bb5d3ca"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/g7-packaged.xml.gz",
+      "bytes": 711,
+      "sha256": "841dc8e900d0d18003145654e5125a518b042c5fc4efcb2db3afc01213550f9b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/glm-preparation.xml.gz",
+      "bytes": 935,
+      "sha256": "f0ea3334c112a79cc7476426f2b60eacb75bbffd0f75ddde413cbfc2fae539cc"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/guardrailed-integration.xml.gz",
+      "bytes": 1528,
+      "sha256": "06f7ea76596b7fd5173152641b95ecbb07ceef0a30d67336b8d908ac23f503a8"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-1.json",
+      "bytes": 2766,
+      "sha256": "00e7ab007c1a288563dde219f0d1fd3f8b1c8698a43fbf5cfadc2d29eba4c2a8"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-1.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-10.json",
+      "bytes": 5419,
+      "sha256": "e2003e5c99e3147b0c1f78817a69e7aec0a591224d00b4e82d6050a8c7f735ac"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-10.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-11.json",
+      "bytes": 5508,
+      "sha256": "07571dbf35484e81460a43f33c426c8511a60c1be91125ffc21f59d894582e5c"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-11.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-12.json",
+      "bytes": 7546,
+      "sha256": "eefb0431c1074f33338c0473a9622e3c545d033b8ace558920c82c7e2e27d3f4"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-12.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-13.json",
+      "bytes": 8007,
+      "sha256": "be26697330f12cf0354ba521f833c8c0c2eb3c07b1187041a03b731532a7979d"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-13.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-14.json",
+      "bytes": 8756,
+      "sha256": "3f1282c3bc1836eeef5b538e1c94ca2e2c67f7b238d0c522f41e29345d271a56"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-14.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-15.json",
+      "bytes": 10520,
+      "sha256": "b6daad5d49dc2c9a5e7eae563f09a2cf3a2b1f952bae27c03ca4e2e14141417e"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-15.xml.gz",
+      "bytes": 201,
+      "sha256": "83a89a32a9d66428be63e22822d5bb02ac5fa62c7e3f9f625bf40930d201db8d"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-2.json",
+      "bytes": 2973,
+      "sha256": "d79944c4129314c593fb4bf13017797310064658b7313809780c1a8949b3d052"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-2.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-3.json",
+      "bytes": 3102,
+      "sha256": "c7df45edca30f1edb51c9fc3807cc50ab93520bbd0db0b5fb0b9caf03fe904f4"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-3.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-4.json",
+      "bytes": 3358,
+      "sha256": "0c9149526e886fb5da143efad93ba4be0fceb56120e58833545717d741b87ab8"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-4.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-5.json",
+      "bytes": 3205,
+      "sha256": "b903b217531bf61734ecc2fb48e3d8b6bd7d9a8680eca04ab92198e0ac0650e3"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-5.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-6.json",
+      "bytes": 3358,
+      "sha256": "f19e1625e9b2413ddefdd5729432600c16243ed2b743996e6de122f40f178442"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-6.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-7.json",
+      "bytes": 3205,
+      "sha256": "762d63155e24e4c9fedc5b9a1e843e4e449c838afff27f7ed1ca199c348482e5"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-7.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-8.json",
+      "bytes": 3966,
+      "sha256": "c1b9eaa5c57048591cdd7428492d8b4d5055200e8c938f31d1530010c6d1419e"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-8.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-9.json",
+      "bytes": 5064,
+      "sha256": "8d3dcef1c02f087af972d1a5f42e1ee3af02a8d5105321cc1084b6b8b3ea1198"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-attempt-9.xml.gz",
+      "bytes": 252,
+      "sha256": "1f91d36681b402fecc26be7ccf6e812f30cfe7b1917f5ba07ed3e9fa7a231a4b"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-production-identity.json",
+      "bytes": 66730,
+      "sha256": "6441a4cbf2ff19a30c591fa1728610c321a60319acf0038ff45b69c8ea0bed7f"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-safety.xml.gz",
+      "bytes": 1141,
+      "sha256": "f67f4b1c6e3b1aeef6b4393bdb3c05d735b436837a3d50c1e8951aabad0dfda5"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/live-verified-checkpoint.json",
+      "bytes": 74368,
+      "sha256": "b87367f5a3ff85d052d23820a48c89b76b7117ec06414a2c65cac8b6e84c0c2c"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/portability-final.xml.gz",
+      "bytes": 537,
+      "sha256": "1141a4086d209aa93a67bf1599350c0939d8b9d2aa738aba96ea74ca1c109ed4"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/portable-history.xml.gz",
+      "bytes": 2752,
+      "sha256": "a2fa1d103354d1b54b91015fe4efbe292fa89f5e719cf368f05a04e85893b432"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-final-matrix.xml.gz",
+      "bytes": 7768,
+      "sha256": "d12644cc4ceb20794a1db70af779d6b9fd3cba34ef8b8bc319612a5be8f583bb"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-focused-current.xml.gz",
+      "bytes": 2830,
+      "sha256": "fb626001bee26348951a7830d6df2d08fd918688e03811af1631abc0c675820e"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-matrix-current.xml.gz",
+      "bytes": 7547,
+      "sha256": "67b622e77d64726aeb01a7a1d618fec5314c0b1462155aa969c70724a4ea3bdf"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-packaged-current.xml.gz",
+      "bytes": 569,
+      "sha256": "7878179449993cd6e61e2a172d3757d1b1013429f5551ddfa6a0c75a9dc60f77"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-packaged-final-guardrailed.xml.gz",
+      "bytes": 638,
+      "sha256": "e6aa3a82aec61dc164186d3f64a9a789b2db24425fc7d6ab0b1c3d94ea13c546"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/provider-packaged-final.xml.gz",
+      "bytes": 628,
+      "sha256": "b3fe184ddd9054d2092be0c770120439885ec44c248970e8c786715c3adf7d3d"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/release-gate.xml.gz",
+      "bytes": 680,
+      "sha256": "27e96bfa275f7ec3d6dd5d33a50e4c250e6c404ad381933684a3dc34770d6cd6"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/reports.json",
+      "bytes": 10863,
+      "sha256": "e87540d923458f31bc759f8a624d42a054be43c1be72338a7b5048d0bea99fba"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/requests-packaged-current.xml.gz",
+      "bytes": 261,
+      "sha256": "2633db634f408ec7ffb18ed1ec6f753cf531e9c1b4b984324fc9b6fa1feb5281"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/retained-budget-floor.xml.gz",
+      "bytes": 369,
+      "sha256": "06f951a56332d1288c2423951b19fda2263a863d665b21ead760f600465825ca"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/roadmap-current.xml.gz",
+      "bytes": 1454,
+      "sha256": "fc236d60eb5fb674ab611e924e04f3a71f1561935b2f2ee37d6f464da4f51b33"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/roadmap-final-acceptance.xml.gz",
+      "bytes": 1450,
+      "sha256": "64bec728eb41cb3e678428c2868b50542846bee8e030243db0b3b7ced638bcbb"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/unit-final.xml.gz",
+      "bytes": 13860,
+      "sha256": "f4309f883937c7913566393d3eb11912ff04f6b8ba31025532bc0a76bc3fbde3"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/unit-ready.xml.gz",
+      "bytes": 13749,
+      "sha256": "8d344d9b7106222f261f01465550d2d1cfd7eb3740872adec8a455cbef6401f7"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/v41-packaged.xml.gz",
+      "bytes": 632,
+      "sha256": "225f502aa670b6721fdb67058fabd934f26b28fc4eea49f8541aab7a7b9eec3a"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/v41-provider-final.xml.gz",
+      "bytes": 2792,
+      "sha256": "dd89f54fd2bc6d9c4dec412f4bcdd7322e3bda9ef8cc775da5d12427d42b5347"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/windows-extract-regression.xml.gz",
+      "bytes": 416,
+      "sha256": "3190e240928d65572fb35a7d5c2c6eb9d9d50377e0a4ef9272ec3fc4d4372ea5"
+    },
+    {
+      "path": "docs/roadmap/execution/evidence/WP-055/windows-flush-regression.xml.gz",
+      "bytes": 1902,
+      "sha256": "d568d98a73f311052caa5d38724d74d9158d9827383000020f42fef02da3bd25"
+    },
+    {
+      "path": "docs/roadmap/execution/gates.json",
+      "bytes": 10010,
+      "sha256": "1d6388330cf03f41cbd9bbf6fb9cb202def9a418eda02eac2533a58b50c9c3f0"
+    },
+    {
+      "path": "docs/roadmap/execution/regressions.json",
+      "bytes": 9715,
+      "sha256": "3fc7303aeb6509bed9664ff04f0ab2af0b49b2f9e9d603414ea067bf41ae6e6c"
+    },
+    {
+      "path": "docs/roadmap/execution/requirements.json",
+      "bytes": 1031708,
+      "sha256": "04cee60c76506db6117033746ffef7d4d54942588b7848fd6d4133c43029fb57"
+    },
+    {
+      "path": "docs/roadmap/verification_matrix.md",
+      "bytes": 45050,
+      "sha256": "9259d8e3f2c60d3ec19d16dfd4860b2e5b6ccf2e6319188344123b047858e837"
+    },
+    {
+      "path": "docs/tech_spec.md",
+      "bytes": 58840,
+      "sha256": "acbe5859afe98d1fc9c9a77a522c7c56f972534b27a016d6774dd5193813ece1"
+    },
+    {
+      "path": "engine/poliscope_engine/ARCHIVES.md",
+      "bytes": 5641,
+      "sha256": "650561c466843919fd288e272513a444768f4b160c1dd862472dd83f537bfece"
+    },
+    {
+      "path": "engine/poliscope_engine/INTERVIEWS.md",
+      "bytes": 2263,
+      "sha256": "65864b95ec1d630583d0ef6368d57ec8e6f80835a25846c58fb73ffec3d4a412"
+    },
+    {
+      "path": "engine/poliscope_engine/REPORTS.md",
+      "bytes": 4881,
+      "sha256": "9bcbf6a9f22bb4d48bb78a2d1a9cfe2e0d2711f7bd417594fc28c1c0e5270efd"
+    },
+    {
+      "path": "engine/poliscope_engine/UNCERTAINTY.md",
+      "bytes": 6731,
+      "sha256": "98fa8a19137363f423408b4878fccd933a86c1bc6f364a0986306cd3a55cb933"
+    },
+    {
+      "path": "engine/poliscope_engine/__init__.py",
+      "bytes": 72,
+      "sha256": "8b7a4f34f0e93c35cc62ab368bffd8889f23c18f020a8a72be2e7cae42e82085"
+    },
+    {
+      "path": "engine/poliscope_engine/__main__.py",
+      "bytes": 2392,
+      "sha256": "6f93bb7a738d1eb0f24ef946e9ed261ad7c3f29adac29fe1281d3df542ee088a"
+    },
+    {
+      "path": "engine/poliscope_engine/accounts/README.md",
+      "bytes": 4127,
+      "sha256": "ce6515de1cad806f6062176d80df8184800306e310a282e22b6e590e20cebc47"
+    },
+    {
+      "path": "engine/poliscope_engine/accounts/__init__.py",
+      "bytes": 9658,
+      "sha256": "421c1d5b7116b12cf2023419b2eba7f439632d5846795603423fff52773dc7b6"
+    },
+    {
+      "path": "engine/poliscope_engine/allocations/README.md",
+      "bytes": 3422,
+      "sha256": "e94713b769bb7093502880ebb5a575c30cc98da1aaf42dbdeb39a4a8d361765f"
+    },
+    {
+      "path": "engine/poliscope_engine/allocations/__init__.py",
+      "bytes": 8928,
+      "sha256": "e1e4f1c7461e29887abc757a838e21117c53e61a2e8605dc7ee5ba878845bdd7"
+    },
+    {
+      "path": "engine/poliscope_engine/archive_host.py",
+      "bytes": 2289,
+      "sha256": "48a248c988fad741ec490c59dcbfbb0b2827eb6143efafa1159ecaa3441ce4e9"
+    },
+    {
+      "path": "engine/poliscope_engine/archives.py",
+      "bytes": 44676,
+      "sha256": "1132aff96b286ef50e1defbe917eca31abcf0b7c78c715611fe8c675d9fabd7d"
+    },
+    {
+      "path": "engine/poliscope_engine/atlas.py",
+      "bytes": 11462,
+      "sha256": "023c4cc48a32d88a3abc6f6a1dd2e7809b358dee5c7c66a324f3d6afe048973b"
+    },
+    {
+      "path": "engine/poliscope_engine/boundaries/README.md",
+      "bytes": 3423,
+      "sha256": "56b6248dc8149f92629c4ab1cb1645f2b1f9c02008255250e934112afa2b16b8"
+    },
+    {
+      "path": "engine/poliscope_engine/boundaries/__init__.py",
+      "bytes": 30470,
+      "sha256": "3a4daf289da3126a33d56f7d48838bfb89ae768a3fa24bce89cd8a5e4a9e76f0"
+    },
+    {
+      "path": "engine/poliscope_engine/comparison.py",
+      "bytes": 10338,
+      "sha256": "48d10b62ae098bec2fa5f1081a7fa9248299dd6a0cbc9f4335ae2e10d6603150"
+    },
+    {
+      "path": "engine/poliscope_engine/content/README.md",
+      "bytes": 1216,
+      "sha256": "ef942be32ea0ec3381de4ef8b7800c555750c99a98aa028ec1e08d17b33587a4"
+    },
+    {
+      "path": "engine/poliscope_engine/content/__init__.py",
+      "bytes": 18780,
+      "sha256": "e158dbd2f2be12a8ecf7aac7c7f0f7bd63a8990c47711c30fbafff84f4b27753"
+    },
+    {
+      "path": "engine/poliscope_engine/content/build.py",
+      "bytes": 8803,
+      "sha256": "06c314fce19a8e92ab4952b094bd90de4e07b4ef1bba1bb667f29802fc9ef8fd"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/__init__.py",
+      "bytes": 4862,
+      "sha256": "ff5f1cc3a316da246c185426cadd08aa17feefb5f11e6905e28c235b01030487"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/accounts.py",
+      "bytes": 3404,
+      "sha256": "5547f895aaabb28425728ade0f99740afa5ae0d4e1e6e155f7120beb535e646c"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_care.py",
+      "bytes": 1196,
+      "sha256": "04132ac2aa1049a930ed00c396f91b4c0778777d647e5a4e1ba4a3568a7f59a9"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_communication.py",
+      "bytes": 1526,
+      "sha256": "907feaae2f8638849430e0f8b4f7304b44ad4c1b82f1cd89fe62c3bffbf13f95"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_continuity.py",
+      "bytes": 1491,
+      "sha256": "4fb29f3be78cb952869311d0b3c859beb6983848aaf7da088be232ef85ff0829"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_education.py",
+      "bytes": 1198,
+      "sha256": "1842bcc4c866fd6f27b8ef36ad31b43d68275100a6d8b8caec2abadddc0d4da0"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_health.py",
+      "bytes": 1146,
+      "sha256": "a3bc8a6b98c1ba5b5da54e8f5f545f5fc329cfb6ca44d22b03ce7a5070d0bf1a"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/adjudication_participation.py",
+      "bytes": 1549,
+      "sha256": "bb30188762c07b81d6dface10e3ae89f2af0fd317da6ef54b06b7d184dd6b8f6"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/allocations.py",
+      "bytes": 2120,
+      "sha256": "3d2f5e47dd553f2a1da3ae81738560665e7317ab5914343ea0edc15bd7d4cb82"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/annotations.py",
+      "bytes": 396,
+      "sha256": "79df18dcccd6a62b016e5e901f14869261882ba25744c63408806334ef476245"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/archives.py",
+      "bytes": 7794,
+      "sha256": "cc24de110a69c7835ccb1b64ea05d30a326927281e588ab8663fa4a22aefd4a1"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/assistant.py",
+      "bytes": 4440,
+      "sha256": "25edd9b62b5237faab02e625f9a2ee57ceb195c547f8ca5ff3ca497aabdd5857"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/atlas.py",
+      "bytes": 2442,
+      "sha256": "062507e801ea1e7c6a0fadea4d5c04db6ec227f5d65a0e671d02de3639f6cad8"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/base.py",
+      "bytes": 331,
+      "sha256": "81b836dc6c7377432cc0d4c7a0b90e18e64cf3f8e480415814546fd6e56d7a72"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/boundaries.py",
+      "bytes": 3036,
+      "sha256": "a588c1ca1c9e4d04d2170ece4bc374c9bf942af546a4dcdf349bc7047bef3bff"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/care_education.py",
+      "bytes": 820,
+      "sha256": "d7f8a240e5d85b730d709fa25e3acb2112ecd6ece279a0e19539f773e323e46c"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/communication.py",
+      "bytes": 4589,
+      "sha256": "3c6a088d216e00dfd626faa86f4d0158c3f376d0446a2bf1e156cea9e70c1859"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/comparison.py",
+      "bytes": 2994,
+      "sha256": "d6475632e474477d0f84f90f3d748d76652dc57d25f76748575a6015e0d697ac"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/content.py",
+      "bytes": 3286,
+      "sha256": "5c5c90ca8e7cf30ab8fb27c949122be11bedf6b6c4a1e5cb5253447333c0f64d"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/dependencies.py",
+      "bytes": 1557,
+      "sha256": "92c73d2bab09e601dbe02e2702680015e3323ed9e2d10a098c520718dda4515b"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/domains.py",
+      "bytes": 5400,
+      "sha256": "02acdbbc64017a872581bf0606d8ddf48dd8ccdc844dc47a7213647aa7caf997"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy.py",
+      "bytes": 5219,
+      "sha256": "155c8e7b6166308fa07f6433969fe2d492f83f2c90e22fb93f6040f861da6fad"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_adjudication.py",
+      "bytes": 1227,
+      "sha256": "19203acef4a90215226ad8fac7d98b206f2ab0f30278b831b86f9c5b85ee6544"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_care.py",
+      "bytes": 795,
+      "sha256": "a68b9120f9a9fa270eb27c7b60fe4fb5a6ccba00e3b7f2aa910426a2a3d99032"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_education.py",
+      "bytes": 852,
+      "sha256": "c182703aa5cf4aee3bdc92de38e0ce0bf2cab08b3737ecc571f9c845b02800cb"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_governance.py",
+      "bytes": 1080,
+      "sha256": "d0bf17f01e67b1edb8906923b28a8d1925c5223046aaf3201cceb2f5642e833e"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_health.py",
+      "bytes": 808,
+      "sha256": "341540a146a036c45f013213b1b13d9993821795394dc002fda67866a7724bae"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/economy_infrastructure.py",
+      "bytes": 1265,
+      "sha256": "353e022a057f954f0dcf20e91b7474a1e6677a06b54d670ae51749337a432e6a"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/environment.py",
+      "bytes": 4622,
+      "sha256": "7681b0de96f4fd97b459a31f149bbcd2114d013fc3fa3f58cec155038d76d7f4"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/evaluation.py",
+      "bytes": 3320,
+      "sha256": "83be43b30540f5bcde932a9c3e862917005675e26356bbe44467f13c8e90fc55"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/evidence.py",
+      "bytes": 4865,
+      "sha256": "a7a503326216cd72ffc557cc3b5040e91ed27672004cf22dd6d8556313bb6006"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/experiments.py",
+      "bytes": 2013,
+      "sha256": "c43c1420f174bf7c284cd67c7a4d177c805919c3d2b68fceb43eb370131fef4a"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/exploration.py",
+      "bytes": 2285,
+      "sha256": "f2400290e504c1f0852afbf0f45b6ab7a290010746550177aca2cfa9ae76cf83"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/expressions.py",
+      "bytes": 1120,
+      "sha256": "c6b2c126a9fa91026f09344f96e1fc19904eb24c8f0006db2f92ebab29f8e259"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/generation.py",
+      "bytes": 3960,
+      "sha256": "5393741770e92e686455da2b16eb7f1e74450294c0ebe52150e26530a96bc329"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance.py",
+      "bytes": 3864,
+      "sha256": "066c2d8dc69c66071eee79e175c844fa2e8b24e6f90950e80a88064f5e380a3e"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_adjudication.py",
+      "bytes": 1146,
+      "sha256": "e1cbc91309f5606c96509de492f4015629c77de9710ca88c9e6550f07a36d04c"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_communication.py",
+      "bytes": 1704,
+      "sha256": "6beef3979c07b0a7a13a515dd05fe483a87a9df0f02f6cf293ac4469a629193a"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_continuity.py",
+      "bytes": 1680,
+      "sha256": "32ef8d1aa0eda277616d3653c4649194ee2a8d706585a1c71211deabf81133ec"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_education.py",
+      "bytes": 1140,
+      "sha256": "604bd66d07632f14092d9154906c6f291dca15319fc38b78758f7c26540a4a6c"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_infrastructure.py",
+      "bytes": 1741,
+      "sha256": "02526d04b73ce8276090add623ee6c16061bb5f1d449bfebea2a5af354693c8c"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/governance_participation.py",
+      "bytes": 1737,
+      "sha256": "294e4040b2abc49f439891a88a2bbe64ca8804f119a3538c5065262dc478a3d8"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/grounding.py",
+      "bytes": 2128,
+      "sha256": "16c1c4488b4b5fa75708a0dad5bba1e133b0708c77cb52e72363cb12cb117ddb"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/health.py",
+      "bytes": 4935,
+      "sha256": "8dfd0ee2f285a92ca235caaec62cfc84dfbb5ff01c0803f471fed29477dfb94d"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/history.py",
+      "bytes": 1521,
+      "sha256": "253f0fe4e72a51e2e895ad197b326cb3c329ee52739392d9a3138f62215c16b3"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/infrastructure.py",
+      "bytes": 4838,
+      "sha256": "a77a858d387a89154d3e14dc2856787bdb1a615487b5b75fb36a0dea828d5037"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/interview.py",
+      "bytes": 2878,
+      "sha256": "a4248d6792cb0a19c876049b9e281ea630d3d90cf98ab43068679f3c842dcea0"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/knowledge_culture.py",
+      "bytes": 4892,
+      "sha256": "ae5cb512323135a0eebf36b74f87d7f7d2e784e094a9dcb2d3f35b1be795043f"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/law_conflict.py",
+      "bytes": 4270,
+      "sha256": "78e94d6f05ece6132f0780a2c2c1c96c5fe67e270508cc059fda612b6f6daa57"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/logistics.py",
+      "bytes": 2246,
+      "sha256": "98c7e20f4796fa85c4667af52628fd89d51805f5bb99a442b612019dda2f0bd3"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/matrix.py",
+      "bytes": 4285,
+      "sha256": "ea8aa2a26ac55ee8f355370cf551b562522f1c3bb485e269e875a1f15996cbeb"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/meaning_identity.py",
+      "bytes": 4414,
+      "sha256": "eac33389021c13e450fc06a2f697bb3e19d6f94c9be2f6de5cacb53fcec0f248"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/measurements.py",
+      "bytes": 6865,
+      "sha256": "60fa0ad03d990184fd8aac1b4ef763238942f6b843716ee7c6d03ea51d4327c3"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/mechanisms.py",
+      "bytes": 8103,
+      "sha256": "666458d21d6a27bd20391191a653b878fa5d24f5e12e8853612dc81df7bc7a91"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/overview.py",
+      "bytes": 4040,
+      "sha256": "998f1a1679d88d7c8685e75c4456ae57b264bd9a7e6109a14816998f07f8e441"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/packs.py",
+      "bytes": 4316,
+      "sha256": "440c3f63cb82dbc630e3ecde1aa531b304ce24332cb53e35b242e1dcfefab7bc"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/policies.py",
+      "bytes": 3095,
+      "sha256": "8f603d26d9eb5062f5e2b5c10f874960df5d4416d34bda2fa68b97fd78e1a60f"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/providers.py",
+      "bytes": 7018,
+      "sha256": "2cc0b1c3885edff01087d8b13be9271fd31861599613ff7eba2ee76bf857a2f1"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning.py",
+      "bytes": 6086,
+      "sha256": "c0d55eed0a95897a5ed70b0d27549280e166257006375a6b426073acb535f278"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_care.py",
+      "bytes": 894,
+      "sha256": "e18c912ce9a1c0f53d4f4aef5c0e8c377617e396477d457872b7e18d6290f387"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_continuity.py",
+      "bytes": 1358,
+      "sha256": "98bc603a20332d2b4a58227637984c57865355f59bb5be0586e433593f34f257"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_economy.py",
+      "bytes": 1301,
+      "sha256": "b24dfb231b7244fb3d80d462f86cf209d641cff77795533ff125343afc5eeb27"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_education.py",
+      "bytes": 1044,
+      "sha256": "8751ca23b431dbf5ed7a6fce79e9abcc9d982a53e7eb73e03d861658ea1fce19"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_environment.py",
+      "bytes": 1719,
+      "sha256": "609918a8cf8b929dbcbe7bd1e7771f8aede6bd7cd1a82d558e393a63af3918d4"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_health.py",
+      "bytes": 1002,
+      "sha256": "a6e99a4c72bd8d0ee121423bba77189b325ae9f40558df2388a73adece842e76"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/provisioning_infrastructure.py",
+      "bytes": 1394,
+      "sha256": "9b55d3c2f04ff8038d3aa7b3f8e7c6e6206714509c598c8e7784196814d6bfbd"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/recovery.py",
+      "bytes": 1992,
+      "sha256": "f2d9acc64247c8b0e6b64d125b409cfe188e3ee8c4e09115f295099532932457"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/reports.py",
+      "bytes": 902,
+      "sha256": "24677b41bbf6d106ca0d067df6a8c5d1957e71f0979841da5bc253013e54cf48"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/revisions.py",
+      "bytes": 5370,
+      "sha256": "281dc5fc21d5cac84bef4213bba67b9eb1b36647cbd1166645452f8f453dc9bb"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/security_risk.py",
+      "bytes": 4696,
+      "sha256": "404a0e74d5839c29561bf309f1a2613e84a5abe1c3e531fbe076c6e6d370cb72"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/social_organization.py",
+      "bytes": 4255,
+      "sha256": "db94711e128db77b82912e6575769d812d7dda3ff4607b33d97305bdc79f4f52"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/solvers.py",
+      "bytes": 2039,
+      "sha256": "002cdca194c27ef799204e0ec6f48e3695a14183fccffad1417663e9f88b86d3"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/spending.py",
+      "bytes": 4425,
+      "sha256": "f3b07d32a2bbfe20a33ec6b5746bf40d9df5013590e63bc893cf74336dae2589"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/static_system.py",
+      "bytes": 4947,
+      "sha256": "1d70af0d3a062999d4822b3ca393c7d482f572432eaa51bce7d64718011d5d60"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/stochastic.py",
+      "bytes": 4488,
+      "sha256": "045e4bfc976de5c9334acd57bb48a81422705373a52d4173f8ea25afded7c597"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/timeline.py",
+      "bytes": 4495,
+      "sha256": "9b4870e7b68138d93b71b3ae21006a945c8e75c28ec1dda614612b827c7554db"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/timeline_workspace.py",
+      "bytes": 2374,
+      "sha256": "bc4874da7b16df6ccdb631f15b8d2c593e3044ebd9a71a1ec86f88d3a5a51c3a"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/transitions.py",
+      "bytes": 6677,
+      "sha256": "eee5946d30f453041a90868e67ab754f522b3911ebc8526fefaa687431c76afc"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/uncertainty.py",
+      "bytes": 6621,
+      "sha256": "4f24c2eb9615c6fa72c6ff323a569b6a657236424b75d9db0a88d7b4cebeb537"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/workbench.py",
+      "bytes": 3316,
+      "sha256": "e69e76a1f96db3d5f54cb85d5590563e384ea2d0cbd56ea16111f372ec97ca87"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/workspace.py",
+      "bytes": 2450,
+      "sha256": "67e572b2809af6756d4bdc827eb8a72f0745c576ac2d114727622675dabfe510"
+    },
+    {
+      "path": "engine/poliscope_engine/contracts/world.py",
+      "bytes": 5625,
+      "sha256": "26716b011c97e880d9f4d2f3d65b559d0661284ab5ac88240619a9bb94fdc365"
+    },
+    {
+      "path": "engine/poliscope_engine/corpus/README.md",
+      "bytes": 1864,
+      "sha256": "2235089b90c63c1d0f271d4b8e7b0de48ca008d40435ca8c2fa5cda2b976760d"
+    },
+    {
+      "path": "engine/poliscope_engine/corpus/__init__.py",
+      "bytes": 18720,
+      "sha256": "46a6ae33fa45ec550249967b7046b3c0afcff703e929607c4cbff7f1a629fbf3"
+    },
+    {
+      "path": "engine/poliscope_engine/dependencies/README.md",
+      "bytes": 6293,
+      "sha256": "c122b83a5463ab2c6cfeee7a93969d435d4547097721709f1b3661cdbe774093"
+    },
+    {
+      "path": "engine/poliscope_engine/dependencies/__init__.py",
+      "bytes": 14208,
+      "sha256": "70e197b13dd3e37d3aa10f0a2debb2d960b6e3aedc3ae623b0fdc4c90433b1ba"
+    },
+    {
+      "path": "engine/poliscope_engine/dependencies/solvers.py",
+      "bytes": 22306,
+      "sha256": "89ec0c5394f3a8c20fc40abf72184cc0f4bbb8110a845a3a2a00f868841c6a38"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/README.md",
+      "bytes": 7041,
+      "sha256": "d21743881cbb5053862ffde6ea34d4b257d5c57061f650d5c1046dc824d78b70"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/__init__.py",
+      "bytes": 10706,
+      "sha256": "65bbd3199ce5855113167b63694ad5852fb5c543871b52fe309445126b3ea6ca"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/catalog-v1.json",
+      "bytes": 78664,
+      "sha256": "89975bd4df912b35355f9ddee08666945f47477e594f08beec38ca0322135473"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/communication/README.md",
+      "bytes": 2617,
+      "sha256": "c0905564dd7266cf2057dc58730a59db078640767d07b9a654545430b5482c39"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/communication/__init__.py",
+      "bytes": 6729,
+      "sha256": "1f5e226e44da49e566f81f9a0c8d809b72a19b8aa182aba68b803600cbfebae1"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/communication/coverage.py",
+      "bytes": 2238,
+      "sha256": "ceb944c6fd12b6263ff1f7356c9f1dd169afb8dd5105aff760a7c585dac387fc"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/communication/exploration.py",
+      "bytes": 4194,
+      "sha256": "d1cbb58b6848f92c95af97eeab0b1a72696444f119edd2304f41cd18ed59dee8"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/communication/prerequisites-v1.json",
+      "bytes": 1916,
+      "sha256": "714a4676e408b0de7bdd6b66cb21df08096348ff861234e17d3c2743685074c5"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/conformance.py",
+      "bytes": 6874,
+      "sha256": "abd4e6ded35709f1467c7b02b87580b3965b76b24516e20696891a0ec4626ca6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/counterpart_declarations.py",
+      "bytes": 2528,
+      "sha256": "d5ae82097cff3326d566c730165c09ae8deade36daf3d972f5eb386c8d405dca"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/README.md",
+      "bytes": 10425,
+      "sha256": "2658cec198c59264061462fb24c11f27366f081e43ccd8334be346ae3c0d42e3"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/__init__.py",
+      "bytes": 4243,
+      "sha256": "9fd607f9742703e4882737bf7a636df3499b503a2022c532b84e73b14eb97114"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/access-work-v1.json",
+      "bytes": 3265,
+      "sha256": "2b7323c121e935114a38c80a548936e57b36377620a407e6c1ab3f8912d66d14"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/adjudication-counterpart-v1.json",
+      "bytes": 5467,
+      "sha256": "68c375222d3ac1c69f10bda882ddaf29c02c9d5c7bf44cc5992160132e59d0b6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/adjudication.py",
+      "bytes": 6279,
+      "sha256": "a073e4df1bd7c217e9bb070cd3256f51ccc61095bb37d1cfc5087c56058d1c55"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/adjudication_counterpart.py",
+      "bytes": 6315,
+      "sha256": "eb50dfd6c2952a0040ca0e70f543246c327e92dfb71220e8ae2595cb697aa4e8"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/care-counterpart-v1.json",
+      "bytes": 3527,
+      "sha256": "40e8fe56cba28a0dfb8a8aa6478f8f7cb8691230b8920ef98a1e8c0b1ff0538f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/care.py",
+      "bytes": 2713,
+      "sha256": "cc5781209c10426c3954d13cdf14e6e17b128b299f1db10ce968be68bb773827"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/care_counterpart.py",
+      "bytes": 5433,
+      "sha256": "c6b148f6b2fc9f9254b7ed5dd5c7ea1be107f5abd2f6a3e78d49c99ae81fa136"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/coverage.py",
+      "bytes": 2199,
+      "sha256": "fe7e007cf8d547ef9a0c88ae70bcccbd07b505df28ba2524f3f88584fe6527ee"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/education-counterpart-v1.json",
+      "bytes": 5273,
+      "sha256": "36453db60bf4f729dcc2ddf5d769772a2982f708580873274b55023e222b08ea"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/education.py",
+      "bytes": 3217,
+      "sha256": "229780c3abcee1f3d503bd64a6b5e86d6bf106f97a2050da9ea31a16048161a2"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/education_counterpart.py",
+      "bytes": 6255,
+      "sha256": "e82bb8b48da519297161a1f7909ba12db160c7af481aedd194d7c2935542643f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/exploration.py",
+      "bytes": 6407,
+      "sha256": "906d24ac4f241089323b9722eabb1b8fc061f4e478091de318a46aaaa6e7ba3f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/governance-counterpart-v1.json",
+      "bytes": 5427,
+      "sha256": "8fa148a0d0b93431b89a9a0f89237660a558d8f01a6b87df515f5edae834d16c"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/governance.py",
+      "bytes": 5491,
+      "sha256": "ee57743faefccd45a2d6631da8d27eb0c226fc0b9da9e93d831cdb7c75371a55"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/governance_counterpart.py",
+      "bytes": 6292,
+      "sha256": "1ee0ae0c682e7e2634127421459a299eecfcbbf52e1632d30f69d682daba01cb"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/health-counterpart-v1.json",
+      "bytes": 5245,
+      "sha256": "a0beb0efcf454b800786907c8f132dd50143d3422cbb96dd2c5eff1fb7412f78"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/health.py",
+      "bytes": 3137,
+      "sha256": "1b2791c53bf67b7d4604b0852940de38b50861ff559d035993a1ffe1054f95e9"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/health_counterpart.py",
+      "bytes": 6202,
+      "sha256": "f0657ac87c2e03e2e6100b726d2702f212943a05b90d011c92c27eb424edbbf8"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/infrastructure-counterpart-v1.json",
+      "bytes": 3716,
+      "sha256": "f64bde5110536e87cbeaeed35f4e83339af7afe67eea5142d3c5e9fb5159097a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/infrastructure.py",
+      "bytes": 4944,
+      "sha256": "3e0e4832b08cc15c6dbbe305282ffcdae532789a3d36b8e0845b4790af7c0257"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/economy/infrastructure_counterpart.py",
+      "bytes": 6431,
+      "sha256": "5fc0bdc433f8e4068fb77015737ce33725f680c11a437ee51ab0204d8ad1c370"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/environment/README.md",
+      "bytes": 2845,
+      "sha256": "a5bc2b295c5648340784955f1b1804069aa10c8b3bfd62c01281c3aab7405a7e"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/environment/__init__.py",
+      "bytes": 9003,
+      "sha256": "da391c3b075a87e7b88f6bcf3e0e4e69898c0439ab4c50e72bc3ac6a0a2e27eb"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/environment/coverage.py",
+      "bytes": 2239,
+      "sha256": "f6c9f0b79a37d408407cd2b45f176180e485947ca5c8cfb4dec2b86b66f0235a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/environment/exploration.py",
+      "bytes": 4132,
+      "sha256": "e1038a3068ed8cef7d36c0e07381ba847d97f1af54c2955f4a14bbc34b600337"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/environment/prerequisites-v1.json",
+      "bytes": 1835,
+      "sha256": "d59ea992634410fd9957b3a76bde7ffd2a3084abc799580e1e33d509860b4ffc"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/README.md",
+      "bytes": 8501,
+      "sha256": "71763fcc9858e627db927c98bea59b530bf33f801409a11dd530824f5f19652f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/__init__.py",
+      "bytes": 4766,
+      "sha256": "b8ecabdd0c48b886bee9d49a20e26e914d194211f449fd6aad614abf467ed7aa"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/adjudication-counterpart-v1.json",
+      "bytes": 5447,
+      "sha256": "89a562571c0a28b1870b3655cfedd9c092d9a708f46411972e878526073b64b2"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/adjudication.py",
+      "bytes": 6006,
+      "sha256": "10e4772e0775b2461060565cf5beee92852a3ab645b64f928517e885620b96c5"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/adjudication_counterpart.py",
+      "bytes": 6349,
+      "sha256": "bd5fc4b5da4d0a01e04bc79dc19bd836b7e403cff28b8e8cb684d5ee167e1ffe"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/communication-counterpart-v1.json",
+      "bytes": 5760,
+      "sha256": "80a2e4674f55c9e14847abc615bde6bf47aec00d22ded51de70a2fc62949dd9e"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/communication.py",
+      "bytes": 6223,
+      "sha256": "9c39d6887b65421e4daeb00bb567be627825068ba08229f52fc63a47d6689d89"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/communication_counterpart.py",
+      "bytes": 6366,
+      "sha256": "bd974f01a9c296b689a3a5a315010124aeae8cfac6b6667a68032b4929726e0f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/continuity-counterpart-v1.json",
+      "bytes": 5934,
+      "sha256": "b511088043215048b29723e9ab3b29e4629865265020887a0253868a087fa503"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/continuity.py",
+      "bytes": 5965,
+      "sha256": "44286bf3384aa7b3f3f1ca93389743810495c95a4027be8eb2e3d45ce3ce4676"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/continuity_counterpart.py",
+      "bytes": 6327,
+      "sha256": "f337cc9223a4ec7886d32d77eb1552a9b689af0abb172a44ea2d6a98977e85a9"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/coverage.py",
+      "bytes": 2188,
+      "sha256": "924c65f0603668e6c6245dedb590af3a52c867d3cb9291128370e97201acd815"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/decision-procedure-v1.json",
+      "bytes": 2043,
+      "sha256": "2829f725bd525c7841c0e7c5ba9608b8192aaaba0be913b1042b0c9fdad1c15a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/education-counterpart-v1.json",
+      "bytes": 5499,
+      "sha256": "3f2c425920446518d041573be2e8bc923d3f59b845640f9237bec42fec4f414f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/education.py",
+      "bytes": 7022,
+      "sha256": "27b4ad6cbf6e7726442b0923a52a5627a2b8626a16f297053bd9455a757cff02"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/education_counterpart.py",
+      "bytes": 6310,
+      "sha256": "179e250cc843daf378234348bfa2be4dd4aaa77e6fe1834d98dc3285ea1d9909"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/exploration.py",
+      "bytes": 5422,
+      "sha256": "25c3bf7109989dab206f466a802daa5cb73bd01530a725d505160355fc464817"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/infrastructure-counterpart-v1.json",
+      "bytes": 6004,
+      "sha256": "725e632948f58ad3a3b7f3ece87eab31067d8a3a5dc2fa51c6edbf9e4fdf43bd"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/infrastructure.py",
+      "bytes": 6313,
+      "sha256": "9f998948f43ad42385ac2fabc5cbc19ea434f70f87b7b35ceb95ae18d9da5ea7"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/infrastructure_counterpart.py",
+      "bytes": 6379,
+      "sha256": "2b1ff568817f77787359a2fb9a3af0ac17b38c0838eb640318127ce130d02910"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/participation-counterpart-v1.json",
+      "bytes": 5928,
+      "sha256": "df78fba6160736310abc10ac1270ef5f3a8fc35a5106f201bd05dd97fe2030d9"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/participation.py",
+      "bytes": 6118,
+      "sha256": "38c6204e547a9b90ae4985f133db4cf0cdb4644dbd17cf6879feb2f64ea5027a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/governance/participation_counterpart.py",
+      "bytes": 6366,
+      "sha256": "791712c3c0c60cce0edef20ec73522c67f31ae8082c9026e2c1da57e7ed78e4f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/health/README.md",
+      "bytes": 3302,
+      "sha256": "454af6b749d3f799de07d70ad96072eacddc9b9600265ad277a53da7f038232f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/health/__init__.py",
+      "bytes": 550,
+      "sha256": "219fa672bf37b52bd34be64f7d57989f2cbb47393671c71c8ed72e489af06098"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/health/coverage.py",
+      "bytes": 2133,
+      "sha256": "65891a58933920d1e73b64f3f34217038e04eb4a96ba32696dd63e1ed3fe8483"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/health/exploration.py",
+      "bytes": 5571,
+      "sha256": "d4b3f911c67dd99aec11b77a688873deb7917a9eaad31e51f730e26e1d942637"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/health/health-v1.json",
+      "bytes": 2215,
+      "sha256": "f25143d60651007cfacb64a64ca8b98da131e34640e339225a130dfaf4092296"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/infrastructure/README.md",
+      "bytes": 3445,
+      "sha256": "057217900df68f79c275c106824633f65e287d24b9e6fa03f8326ada524f7c6c"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/infrastructure/__init__.py",
+      "bytes": 7606,
+      "sha256": "17ee65b3ea3f120af173430aaf7ff5b6f9b16f28e12420c8b55a2f39df49875a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/infrastructure/coverage.py",
+      "bytes": 2206,
+      "sha256": "47197ebd7940ee0c41b22b2657284defa7bc972d64855b7c762b8f1e8db58475"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/infrastructure/exploration.py",
+      "bytes": 4147,
+      "sha256": "736c2752f7e3a64250cecb3035e0f99d4429ed7909e3976d85e9c82f0f09442a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/infrastructure/reach-v1.json",
+      "bytes": 2002,
+      "sha256": "892d6e3c0ac9ac1bf3b117e131ae94e5a7e08096ff38c3f1073bb251d5133c00"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/knowledge_culture/README.md",
+      "bytes": 5320,
+      "sha256": "4df3ea4ca4bfe737a1ec4aff842b5085000ee89cf61d226c7e798f7c1b4f86be"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/knowledge_culture/__init__.py",
+      "bytes": 585,
+      "sha256": "c06ffc7e758555859c6d2764bf800a81b91a29336851fb55a5de560f0a4dd671"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/knowledge_culture/coverage.py",
+      "bytes": 2229,
+      "sha256": "8d1e1ed21cd3fb53f99589f649ab3ed1e17b6606fdf85ac8830827cc17ce6247"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/knowledge_culture/education-v1.json",
+      "bytes": 2192,
+      "sha256": "43bade39325232a719f844fdf9e4cef44b56e611a6b2c311ebe902c71f7ba0e9"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/knowledge_culture/exploration.py",
+      "bytes": 5663,
+      "sha256": "3b53c54f9700b116f3eca2e626fdf8e69f32354a2803dcd5b99534571bdd6707"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/README.md",
+      "bytes": 10319,
+      "sha256": "7eb2146a0f76d01297bd10c9f4a779f603c30277764358dbf39bd9297fb36fab"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/__init__.py",
+      "bytes": 4977,
+      "sha256": "f22e0212f389b156cd6f8cc846d2a6df4a76c2a0f9cb778e35554a27c11be829"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/adjudication-v1.json",
+      "bytes": 2276,
+      "sha256": "ec3cc7e678267c323ebb31bf44f9c4f1f9f85072acd85b92ea32ed914825ab7b"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/care-counterpart-v1.json",
+      "bytes": 5441,
+      "sha256": "4d5a31fb17dfa460bc8a32dd63403966fce729d1b15de842b21e31be0486ebba"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/care.py",
+      "bytes": 6130,
+      "sha256": "be5ca20e8465789b335feef7463b5f3d8b9adacc896a98a428958e2b0136c081"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/care_counterpart.py",
+      "bytes": 6087,
+      "sha256": "257338d04bd1f0d63e5e7b609645ac98cda160c609568cbf7b9a12cd6df91ae1"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/communication-counterpart-v1.json",
+      "bytes": 5843,
+      "sha256": "11ecd44f6c3720b5366fba8c4d725d9d01cfcf4c53e160651dbca73fda976949"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/communication.py",
+      "bytes": 6812,
+      "sha256": "5ec3aab08c0d761aea377f83214afcd1adf8539d2362011a22ec1969b55f2ce7"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/communication_counterpart.py",
+      "bytes": 6387,
+      "sha256": "93ec70f3609b203e180e7218b131d4f408fd215f1a485a2923f833639d8eba64"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/continuity-counterpart-v1.json",
+      "bytes": 5801,
+      "sha256": "acb63f1a21d8f6fbb17ad79955e388434a3cf9c8ddd29cc83c77be75e8772b2a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/continuity.py",
+      "bytes": 6555,
+      "sha256": "74fd47b8fe0d85113352f39b18e341a469a584f5cba1e1cbe8ece3bd617d938b"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/continuity_counterpart.py",
+      "bytes": 6348,
+      "sha256": "294e78310a6b346c389596bdbfd6e52f9ddf5ebb843bc37da7b57e2ace2fe94d"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/coverage.py",
+      "bytes": 2160,
+      "sha256": "9d1bbd97d99e5747803f2a0f81d9f659ae7339c0361fb9a156561f47190be710"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/education-counterpart-v1.json",
+      "bytes": 5565,
+      "sha256": "5d68a2368579ae196a6acd0d0081ac60b2982a7bf8131d55f53ab628751e6bbf"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/education.py",
+      "bytes": 7584,
+      "sha256": "cfcf0881114cb8c15f88a443f0620d4ebe805095e4ac9d7792277331e5ec1aee"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/education_counterpart.py",
+      "bytes": 6152,
+      "sha256": "53d3a498123df37519ecba8479289069f52582ec64da9c770fb82a252ae87a17"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/exploration.py",
+      "bytes": 5710,
+      "sha256": "23b7a637555d2c43e2b7384d2dc101e7d63cd3bb96b3a6da4d7c4b19d6d23763"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/health-counterpart-v1.json",
+      "bytes": 5524,
+      "sha256": "757998047c52493761650941a388bb406cfb7edccf84573f8c12a8a1ee5afc4e"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/health.py",
+      "bytes": 7737,
+      "sha256": "5c899c2509eadc4bd875ac0de71eff5882997bddeec156fb87c1130555a8f741"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/health_counterpart.py",
+      "bytes": 6113,
+      "sha256": "5a44c0790462d3c8c426764e9a9564f4693946d752ec38fab9befb74029d5461"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/participation-counterpart-v1.json",
+      "bytes": 5849,
+      "sha256": "71bb9c3798efb29414698a5a69308a11b3a03bf62cd000788022eeb361d89f9d"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/participation.py",
+      "bytes": 6704,
+      "sha256": "640b8255aeba1a64c6fa4c30426083fda05d55516c03df21e83cad9d306c602b"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/law_conflict/participation_counterpart.py",
+      "bytes": 6387,
+      "sha256": "186bbe76b3c38cc8792dfd032e92f04fa1edfd9b137009c4abbab8e0dc5fe217"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/meaning_identity/README.md",
+      "bytes": 3549,
+      "sha256": "a5f6371d5b0f729172f96112674a001f228f8ca41dfb74de4707fe3173ca1b40"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/meaning_identity/__init__.py",
+      "bytes": 6565,
+      "sha256": "1c5de830e33e37e226c155c13fa232c75d92c8f159f32d99249790989325e583"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/meaning_identity/coverage.py",
+      "bytes": 2270,
+      "sha256": "cc885abe47e3524bdd421e967303d944e8c974a9dbcfb4baddc94025f5c81f60"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/meaning_identity/exploration.py",
+      "bytes": 4237,
+      "sha256": "0a88d9459ea2109bfbae7947d6515ab4a7bcecd4afbdb1e2e96598f336086323"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/meaning_identity/prerequisites-v1.json",
+      "bytes": 1653,
+      "sha256": "31bc205cac19620677263eab59e89b5f5c3d3b716b65995ea849908b0739efd9"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/README.md",
+      "bytes": 20775,
+      "sha256": "a08c2868b9c127c75107a059ab5d1fb4cea7d02edf3eea11b24de3ccbd1feb44"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/__init__.py",
+      "bytes": 83,
+      "sha256": "f3709d05cb76d09d75d7fa0f33875827e0023fa0fa7bf09472067fbc3d897172"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/care-counterpart-v1.json",
+      "bytes": 3634,
+      "sha256": "254584cee772eb64b4b1853a3e42cb9762f73979cc3a92b1008f9e275ca84bca"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/care.py",
+      "bytes": 1947,
+      "sha256": "b180bb5f6902b8977a4b9b5b81310a9f3c01e58f7a53793ed701c08d0531335f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/care_counterpart.py",
+      "bytes": 5272,
+      "sha256": "c519e595c5d62fd83b99955aafb348d3574deec9467acb0b38a24520dbbf2808"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/chain.py",
+      "bytes": 5585,
+      "sha256": "93587cf9512d4945dd406e1b2ce6f70a083e7cae477bc88174b2c06d0c9f97ac"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/context.py",
+      "bytes": 2018,
+      "sha256": "228df38755ed8f1d1e978c0265fe0875f218b058e9f344c43852728a52c81de6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/continuity-counterpart-v1.json",
+      "bytes": 3860,
+      "sha256": "93878444af02ddc4ecf16dbec21f8bdfc9f58e37a6c2e45731effd47fa6104e4"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/continuity.py",
+      "bytes": 4493,
+      "sha256": "966b73d2fd931aaf8a508cd97af68370a00845f800655434d4697949a9f5d695"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/continuity_counterpart.py",
+      "bytes": 6231,
+      "sha256": "00c9594487a888d6e35861740740ce64dc9efa36c2d1839a4f505955aad7541d"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/counterpart-catalog-v1.json",
+      "bytes": 261419,
+      "sha256": "e76f8ce2fa1f7191f7a3d4631b96c23b5e0be29382146361a5002861437a34be"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/counterpart-v1.json",
+      "bytes": 3698,
+      "sha256": "ef2f6353fc24b89165e9cfabe59c92e34cb48053bb4ffbd40cc8900e85cc79eb"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/counterpart.py",
+      "bytes": 6865,
+      "sha256": "684f49ead8280c01f695fa35463df8f50728067a386fd8acca357cb1b9dd6011"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/coverage.py",
+      "bytes": 1853,
+      "sha256": "ef0a5199f9dc7ee64caff1f5984986e0080af2ba53dd6b7f512b237067514309"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/economy.py",
+      "bytes": 6427,
+      "sha256": "db52f2a39cc786fee721a49db7164c859caf65cae6d5e1fb77d4027c785824a6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/education-counterpart-v1.json",
+      "bytes": 5483,
+      "sha256": "aebb9245a214e7b558a3a18adff5b8e7145570c246a03e2ab1c5da0fd3dbeb39"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/education.py",
+      "bytes": 3875,
+      "sha256": "2d2d9b38bf15e5aa72b39015261437bad950f5287ad93a54da8023869b3c62d1"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/education_counterpart.py",
+      "bytes": 6131,
+      "sha256": "c69d8d793c5a8410360b4474cc2f7b5b5b112a6d06835c6071ea8667c61d7de7"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/environment-counterpart-v1.json",
+      "bytes": 3868,
+      "sha256": "013a0968c24e356264fadf584633f851eff00e4b7507b4deb8a867cc448a93a3"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/environment.py",
+      "bytes": 10020,
+      "sha256": "57b275625717551458bb39ca8c6b8da6838c91e6cbfeb25c2666b215b45488ed"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/environment_counterpart.py",
+      "bytes": 6159,
+      "sha256": "8dac55eabc0cc9025113da7427d5a41c1cce3a7842c1f0ba59cb19cac9bb903d"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/exploration.py",
+      "bytes": 7721,
+      "sha256": "a4a7a4e75e7125c72dae4b0501cdfd1f266482692a169dda2b4799ed88039ad7"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/freight-v1.json",
+      "bytes": 1822,
+      "sha256": "a3791684512c8c84b49e9ab00be3f57901c0f9b1aabfb64e22cbe25ed0092161"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/health-counterpart-v1.json",
+      "bytes": 5395,
+      "sha256": "83ad5e1ed416c363260db54868c6e54da18dcd37f53c4202c0fa98086b30adbc"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/health.py",
+      "bytes": 4343,
+      "sha256": "1a6ea226ceb6b2ac813117f94d9d21b1b0efec7d3cdcc96cb7e0ab41c74c7c35"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/health_counterpart.py",
+      "bytes": 6057,
+      "sha256": "cf73608d6a7ab02ccbe787bff3ae56f9e649415f5ef23af4cfe58b3e1411bf5a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/infrastructure-counterpart-v1.json",
+      "bytes": 3861,
+      "sha256": "80e2c599aecaf0a2527106ef2a5f1a9279830366ee35ebf73ca0e8dbedffdf91"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/infrastructure.py",
+      "bytes": 4607,
+      "sha256": "81220e84130422cddf1909364fe54ac78b7cc9d74cc447eca6be850ea16e1b85"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/infrastructure_counterpart.py",
+      "bytes": 6472,
+      "sha256": "fff205b59d2d49b6fa0cc9ae3a30d18f678445b436aec86527d6821c3bbcb849"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/logistics.py",
+      "bytes": 6710,
+      "sha256": "e5a00928da57938e94d948e8e76c1826e9f8e15bf3c7a5974123a3b7085a1436"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/provisioning/production-use-v1.json",
+      "bytes": 3300,
+      "sha256": "5b1746f198f9a5595533d0bd3cb6dac3ef4167a25a34d0bdd8a52893d6c2e814"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/security_risk/README.md",
+      "bytes": 4140,
+      "sha256": "c700ca7bece82d93100f3ed0fddbfcba04e97a783ba71e28f57de49f659632e3"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/security_risk/__init__.py",
+      "bytes": 7140,
+      "sha256": "e1e301fe67bb6c37640776675b34353e5bc9f30d299b78b43f93e02a6a8f65a1"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/security_risk/coverage.py",
+      "bytes": 2267,
+      "sha256": "4fea9969b717e8393e893c857da723d9ed4d20d2ef9c39433ec2c81924a5583f"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/security_risk/exploration.py",
+      "bytes": 4198,
+      "sha256": "02e203cee89eb2c0083fbdef705f51e8f27e9f66364d5dc8454c24bcaeca7c98"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/security_risk/prerequisites-v1.json",
+      "bytes": 1574,
+      "sha256": "153b801306e30918f0e3074c92b700a5b5837dc25fae16bb891532c07a4378e0"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/service_capacity.py",
+      "bytes": 7595,
+      "sha256": "c14e71d2d82698ca20f2bc1ed730c844d03f83aa34dde346ca2c53cfef35b0d6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/README.md",
+      "bytes": 5844,
+      "sha256": "998ff755773f6d99e6aab7445125589d514bf9c3055144d036ca4b3dab60ab9e"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/__init__.py",
+      "bytes": 6153,
+      "sha256": "39b506c13a0ef5d4bdc316a775b33c9278947934976f5896475813bfda880785"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/care-v1.json",
+      "bytes": 1822,
+      "sha256": "d267c3d46cbf842fb4abd357d610b53c33f2f25046e291407a34152d70ee5124"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/coverage.py",
+      "bytes": 2256,
+      "sha256": "845eccfd08b79b9508a72db7ec40aaa855538ff8a2db99fbe8b181597d3fca56"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/education-counterpart-v1.json",
+      "bytes": 5562,
+      "sha256": "a5c00c824aee2006a1e09a523c1fc94f9bccd5b03fe7c254fb68ba05c4aed29a"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/education.py",
+      "bytes": 3497,
+      "sha256": "b5b7be907ebc52313ad0bbc269c6315387ebb72eca4985b5f5eaab4c29ccaf56"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/education_counterpart.py",
+      "bytes": 6196,
+      "sha256": "301e3258305cf6211357c652496b98ac95306f1cf8d0927b2a3eadc54965b8f1"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/social_organization/exploration.py",
+      "bytes": 4473,
+      "sha256": "7ad1d6801a4babfd498ac56506a16ad1ac4e2c3f67f5dea43422f205e01e6ef6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/static-ledger-v1.json",
+      "bytes": 33271,
+      "sha256": "6ea452c5fd4771158a10073b84b2b0fb53d240e7a1a380f60cf05d0c58efd35e"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/static-system-v1.json",
+      "bytes": 26703,
+      "sha256": "a17265aeccf8c886141a111c5da11dc513d4a64b2280a0fe736c9fd348b816f6"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/static_host.py",
+      "bytes": 9793,
+      "sha256": "6069415b49795500d33eb38d6083f71b4d38581600b318e16ca7e83704ec6d08"
+    },
+    {
+      "path": "engine/poliscope_engine/domains/static_system.py",
+      "bytes": 15234,
+      "sha256": "08257be549a4babd6ea047a5aa08e4c68e0151f666ee4ac48f893786b8a997d1"
+    },
+    {
+      "path": "engine/poliscope_engine/evaluation/README.md",
+      "bytes": 5391,
+      "sha256": "85131f8ad7c6fc8587e7c3a9234a8e5314125c4d41d37f64ba42e3d74f831328"
+    },
+    {
+      "path": "engine/poliscope_engine/evaluation/__init__.py",
+      "bytes": 16221,
+      "sha256": "f4e1db3de10e46a9713e150fa8220ed73a97137ede6edf16ea46b8b554f0888a"
+    },
+    {
+      "path": "engine/poliscope_engine/evaluation/canonical.py",
+      "bytes": 9573,
+      "sha256": "da6efb797c362230eeba7cba3f20063598cd05170ba0fef009e7f20f30d1c7d0"
+    },
+    {
+      "path": "engine/poliscope_engine/evaluation/conditions.py",
+      "bytes": 2755,
+      "sha256": "8f9bd92fd4488199a3afcedbcbe8536d41b617a72b991d7c43baa21f5bf56aa0"
+    },
+    {
+      "path": "engine/poliscope_engine/evaluation/identity.py",
+      "bytes": 3413,
+      "sha256": "a81f98d9696a47ba1fa0d7b575f42ce3e43a86d10f4deb5bd3a2ed2538694dbb"
+    },
+    {
+      "path": "engine/poliscope_engine/experiments.py",
+      "bytes": 19577,
+      "sha256": "52ef4cce11d0df836b00b1db776b56f56626e31219fad961d9b7d037fb24a84e"
+    },
+    {
+      "path": "engine/poliscope_engine/explanation/__init__.py",
+      "bytes": 19621,
+      "sha256": "0ec55e0e5d64fa5c7a5f03a91ccc9dba476176ae9541c5236dba1420eb498db4"
+    },
+    {
+      "path": "engine/poliscope_engine/exploration.py",
+      "bytes": 11973,
+      "sha256": "778788d0391f52ae61a8fa464f587a7f0a200c171e43d7ebec09a22a1e51f3c5"
+    },
+    {
+      "path": "engine/poliscope_engine/grounding.py",
+      "bytes": 10045,
+      "sha256": "72bf54c146b799d64530ea6ac63715a03020a8cb3e993c0ffc30b7f3960cfd9a"
+    },
+    {
+      "path": "engine/poliscope_engine/history.py",
+      "bytes": 5204,
+      "sha256": "35939137474adbe195cb8bc2692c5bdef4a7b0b6e3bf9ac291392ca3f286c1e8"
+    },
+    {
+      "path": "engine/poliscope_engine/ingestion.py",
+      "bytes": 2705,
+      "sha256": "3d3ccde930a8d53e861fdd757f24a8d488cf5d3a07c23533a3249c474793996b"
+    },
+    {
+      "path": "engine/poliscope_engine/interviews.py",
+      "bytes": 22818,
+      "sha256": "a4532d38dd06516ede6117ecf08772b4f96b48f7e0f5dda62054ff56e94eb238"
+    },
+    {
+      "path": "engine/poliscope_engine/matrix.py",
+      "bytes": 20518,
+      "sha256": "375e8c9482d6a2d0386966e99751a4b04bbbc58c065e9a7498668077ed219a09"
+    },
+    {
+      "path": "engine/poliscope_engine/measurements/README.md",
+      "bytes": 6371,
+      "sha256": "dd1e9416c75f505c76c208ac32984ac334a4dc4fda534c89e36b08781758f078"
+    },
+    {
+      "path": "engine/poliscope_engine/measurements/__init__.py",
+      "bytes": 16156,
+      "sha256": "fc88640cb09d0a0369a10a50d510888cf311a1ff5884c0c63a4caf822d51ea6d"
+    },
+    {
+      "path": "engine/poliscope_engine/mechanisms/README.md",
+      "bytes": 5696,
+      "sha256": "8723714b338d3ab564b3c87f4ae1e74b0c43fc4127944139c9f0f2c9259a8f6b"
+    },
+    {
+      "path": "engine/poliscope_engine/mechanisms/__init__.py",
+      "bytes": 14048,
+      "sha256": "28605d73c30260bd0dc5ad3d7edda97ff2dfc21b56d33506bf2c585e77c05c57"
+    },
+    {
+      "path": "engine/poliscope_engine/mechanisms/expressions.py",
+      "bytes": 6802,
+      "sha256": "7a470a9434a9e52a7affae26fcfb6647e8fe1dac3d7e8a51ab935446121164ba"
+    },
+    {
+      "path": "engine/poliscope_engine/native_probe.py",
+      "bytes": 3836,
+      "sha256": "c482b6a1d0c16cac2c0239b30ab76e5cefbb52c266ea413e76663e1fd579b261"
+    },
+    {
+      "path": "engine/poliscope_engine/numeric/README.md",
+      "bytes": 4464,
+      "sha256": "9daae7e7cbb4d9fba251e52786845273ac479774d33097c711858eb121ac27a1"
+    },
+    {
+      "path": "engine/poliscope_engine/numeric/__init__.py",
+      "bytes": 13688,
+      "sha256": "ae82782a01b2c4eeab2724a8f80e5b09d453b8866f7c81d825a84fd86504f34a"
+    },
+    {
+      "path": "engine/poliscope_engine/overview.py",
+      "bytes": 9346,
+      "sha256": "05ef52b10514d1cfb88eec4a6fc3bcd3b7b2a90d00818f62ecd583bf69b48ddb"
+    },
+    {
+      "path": "engine/poliscope_engine/packs/README.md",
+      "bytes": 2385,
+      "sha256": "98b0577fe7fd87c0439a0707444bbba73add04286496ce317ae1946c3e9d71e7"
+    },
+    {
+      "path": "engine/poliscope_engine/packs/__init__.py",
+      "bytes": 14677,
+      "sha256": "ec6018e14612e102a960cd0ca4bc60d7c6c640d85f3775c6dea4129ffeaacec1"
+    },
+    {
+      "path": "engine/poliscope_engine/policies/README.md",
+      "bytes": 3869,
+      "sha256": "23b62caea3b82633169b68294930d8d6ffdaa6cb033d8a154e9b86a87748d583"
+    },
+    {
+      "path": "engine/poliscope_engine/policies/__init__.py",
+      "bytes": 9553,
+      "sha256": "ad451a594806b35c8d7ca9d64ddf7e77d9cb0d5d9fbca0d4f4a8c9e27da58b43"
+    },
+    {
+      "path": "engine/poliscope_engine/private_notes.py",
+      "bytes": 4968,
+      "sha256": "5f32a5db5baae036dc57994a6db98de8d4db0ef330e444075b6647bdf22b696a"
+    },
+    {
+      "path": "engine/poliscope_engine/readonly.py",
+      "bytes": 2394,
+      "sha256": "d629fc9ec0a66b5bcd37033f964a6b506a79a01835160b7751eb4ad18f26f851"
+    },
+    {
+      "path": "engine/poliscope_engine/recovery.py",
+      "bytes": 7695,
+      "sha256": "014c5721063bb654ed84f99fe5353f569f831b331d718416b42cf089074dab95"
+    },
+    {
+      "path": "engine/poliscope_engine/recovery_host.py",
+      "bytes": 10230,
+      "sha256": "4e3c05f1dfb44c6e05a392347aa21ac8b72491869ee0ebbb1d1b2149ef46a0db"
+    },
+    {
+      "path": "engine/poliscope_engine/report_host.py",
+      "bytes": 1246,
+      "sha256": "709636e19aa313b4409b8a8559d7b28136c438f7b104316023069c9b67d34f8c"
+    },
+    {
+      "path": "engine/poliscope_engine/reports.py",
+      "bytes": 19595,
+      "sha256": "03019733da5a1f80e29c31469370b62f7e1a5eae3537ef7daa39364e3ac0d596"
+    },
+    {
+      "path": "engine/poliscope_engine/revisions/README.md",
+      "bytes": 5989,
+      "sha256": "888315b0eeec840f74c60ad8ba224ddfa83e9511d4ef27d7c5c992910d253c39"
+    },
+    {
+      "path": "engine/poliscope_engine/revisions/__init__.py",
+      "bytes": 40902,
+      "sha256": "6ad579ce0af7f944f7250481a5ef1506031a2b4132a4a3138625454b8c17eff4"
+    },
+    {
+      "path": "engine/poliscope_engine/simulation/README.md",
+      "bytes": 6931,
+      "sha256": "2a8d5b31836f274fcc2ebbba5485342c2cc21c9704be78fb8d2c45e61ea7359e"
+    },
+    {
+      "path": "engine/poliscope_engine/simulation/__init__.py",
+      "bytes": 41977,
+      "sha256": "ec442c952ae82a9ff41e28e9e229d815b5fa2ffcba49d27c6551cdac206ab96d"
+    },
+    {
+      "path": "engine/poliscope_engine/spending.py",
+      "bytes": 15921,
+      "sha256": "3de850c919bc37a476c110855d4c19cebdf632fc4b748c1a1374df6e9cb3ce58"
+    },
+    {
+      "path": "engine/poliscope_engine/spending_host.py",
+      "bytes": 969,
+      "sha256": "0100eb964e0c4cf64da5b7c030af3ec2740946cad5b1a564238280ffc5687527"
+    },
+    {
+      "path": "engine/poliscope_engine/stochastic/README.md",
+      "bytes": 6179,
+      "sha256": "f4998428af4e126012bb5665f31f36be7f950cce9e7104edf2fe41b9d13a54b9"
+    },
+    {
+      "path": "engine/poliscope_engine/stochastic/__init__.py",
+      "bytes": 6074,
+      "sha256": "35123decbd5d2f5871f7ab0e228919657bad3c760fa15db317221190a1458e31"
+    },
+    {
+      "path": "engine/poliscope_engine/storage/README.md",
+      "bytes": 5751,
+      "sha256": "c870b14c69b6393a4b46f68369eb86cc9b450ce5f9a90846517a36f20623c92c"
+    },
+    {
+      "path": "engine/poliscope_engine/storage/__init__.py",
+      "bytes": 193,
+      "sha256": "1f917c88864217e5f8112f6838891ff5be10f5c742d1c38455a9c72155214dd7"
+    },
+    {
+      "path": "engine/poliscope_engine/storage/blobs.py",
+      "bytes": 4442,
+      "sha256": "1a1f8fbce3d97d5335e0995ed75e4c3f464a4aa481afbb06200c2848173c3046"
+    },
+    {
+      "path": "engine/poliscope_engine/storage/store.py",
+      "bytes": 14616,
+      "sha256": "66106aab0a38655de0d6c4cc463b6ee221f8b82ff18c1f99155393197d2d7d11"
+    },
+    {
+      "path": "engine/poliscope_engine/timeline/EXPERIMENTS.md",
+      "bytes": 2492,
+      "sha256": "c33601963f9c403b5cd11b0cfae95fe2185f060bc6a4dddac8af784347de24a7"
+    },
+    {
+      "path": "engine/poliscope_engine/timeline/README.md",
+      "bytes": 2382,
+      "sha256": "07b5aa85f10a76d854673134569c377de93fc90c01e95753039d7027d4318400"
+    },
+    {
+      "path": "engine/poliscope_engine/timeline/__init__.py",
+      "bytes": 10376,
+      "sha256": "b6484d8ba9fe1cab93f6e97fe7ea435f89064386623234b246d1198b2afdd80f"
+    },
+    {
+      "path": "engine/poliscope_engine/timeline_workspace.py",
+      "bytes": 14035,
+      "sha256": "34dbb150188abf599e683b75883e1fc90ca97fae94cdb5b752977f59cacce2eb"
+    },
+    {
+      "path": "engine/poliscope_engine/uncertainty.py",
+      "bytes": 10319,
+      "sha256": "84bc1be63aa45bba27e6833a9cc10d5de0c6f27e11cc4844512a7d90b3d63e3a"
+    },
+    {
+      "path": "engine/poliscope_engine/uncertainty_service.py",
+      "bytes": 12917,
+      "sha256": "b1e796b4c984bb778d2fa36e657beb7f36f700438ea0d4d7f5945417f7ae40f1"
+    },
+    {
+      "path": "engine/poliscope_engine/verification.py",
+      "bytes": 1154,
+      "sha256": "2ba6c8ee58b66c87e40536126d0e1e545de5bbbb02b037cc0d1cb76b250245cb"
+    },
+    {
+      "path": "engine/poliscope_engine/work_limits.py",
+      "bytes": 1970,
+      "sha256": "1613ae18ddb5d349e69b300b37035accff5a671f035df497c869701eeeaf01d3"
+    },
+    {
+      "path": "engine/poliscope_engine/workbench.py",
+      "bytes": 13308,
+      "sha256": "7830f7660ae7c244c8b920a76daa24280f0c9463c115ec0d7591857f686768ea"
+    },
+    {
+      "path": "engine/poliscope_engine/workspace.py",
+      "bytes": 12044,
+      "sha256": "6ef428ed7becaaf559a01bed0f2512a334dc922b3cb17da8f7609ed3df48d7fa"
+    },
+    {
+      "path": "engine/poliscope_engine/world/README.md",
+      "bytes": 3803,
+      "sha256": "758f5eb45e932cc23a76a38beb00537673b1d8f133e86d54340f2d3c08c3a2bd"
+    },
+    {
+      "path": "engine/poliscope_engine/world/__init__.py",
+      "bytes": 11296,
+      "sha256": "d60e895ffc689f9d4a38192c1162d0fdf44adac4f59658a51b3361517117da25"
+    },
+    {
+      "path": "engine/poliscope_engine/world/membership.py",
+      "bytes": 8898,
+      "sha256": "8eded3d0125ae59b1efb97cb4609262d9ddfbd0e7263d6c48a2479d2c446a132"
+    },
+    {
+      "path": "forge.config.cjs",
+      "bytes": 891,
+      "sha256": "07c9a1e522b384f81afc50e3192285b354f733d18f3efa51ccdbd028b8ef95df"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 130579,
+      "sha256": "09dec66b257ac029322af730551b904dbe55dcfe584edf8a2cbb380aae35a495"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1933,
+      "sha256": "0fd9ac499a367dba3f1d5e3a70299f7cb577745c663c74d1a104c2621018210d"
+    },
+    {
+      "path": "packaging/engine_entry.py",
+      "bytes": 961,
+      "sha256": "3a4eebe8c09332bda96ab5262d00f37c590090b28ad3ef777634585d2f4bc441"
+    },
+    {
+      "path": "packaging/icons/poliscope-256.png",
+      "bytes": 1908,
+      "sha256": "b1bc8e057d3080003ed53054d26471aa59f0e906f0f6f3482ec5755800a393e0"
+    },
+    {
+      "path": "packaging/icons/poliscope.svg",
+      "bytes": 289,
+      "sha256": "1c9539329b0b8f0dd1badbd0753257bb0837e0c28edbdf42b061d96a97ac8857"
+    },
+    {
+      "path": "packaging/install-linux.sh",
+      "bytes": 1798,
+      "sha256": "f82e492dcbe16d5fe607020b825afbef03def3afa97bec6599113eda47c22bb8"
+    },
+    {
+      "path": "packaging/install-windows.ps1",
+      "bytes": 1654,
+      "sha256": "1829e15fc7d930ddf20409cc5d59ee3370ae017cd4f1bbdf61ac1624184e052e"
+    },
+    {
+      "path": "packaging/sandbox-notice.sh",
+      "bytes": 1036,
+      "sha256": "5384b1483efdaa60f60ada0b546204e4b146a47a61704e62396e9b2460c8a277"
+    },
+    {
+      "path": "packaging/sign-windows.ps1",
+      "bytes": 922,
+      "sha256": "bc3a6149a9b2a8a4ee7d1511b6d08ff67c23ecd11264df94b4e5e112e1f55eb1"
+    },
+    {
+      "path": "pyproject.toml",
+      "bytes": 590,
+      "sha256": "2a5b2c84934b05320b03c49e5402e9ac67fd7880a8aba9aba7f94dea24723a95"
+    },
+    {
+      "path": "scripts/build_content.py",
+      "bytes": 6040,
+      "sha256": "b3869c426f400bfca0854d78bd08f43ad585ab221c36fbda27a3d136d6653d7f"
+    },
+    {
+      "path": "scripts/build_engine.py",
+      "bytes": 936,
+      "sha256": "0e415c7a1905439f0bd4af7cacaf18f132a2f7cb318c3e2dbdeac3d8411b3895"
+    },
+    {
+      "path": "scripts/bundle_paths.mjs",
+      "bytes": 380,
+      "sha256": "c5aa51ab637a1b0be435cda8473df47deb489413929584043295aab20c57065c"
+    },
+    {
+      "path": "scripts/check_bundle.mjs",
+      "bytes": 1217,
+      "sha256": "e78fe87849f8d922cdc42e4094ef55396387cfc85784776eea2dd8c3d8fea3a9"
+    },
+    {
+      "path": "scripts/desktop.mjs",
+      "bytes": 929,
+      "sha256": "d881c6ca80fc786dc31619eaa3c9c600b035fe7fb4179a75cc0a75d9af0ffd08"
+    },
+    {
+      "path": "scripts/distribution.py",
+      "bytes": 8316,
+      "sha256": "bf1e32430e56341cb844a6a3222575b279d7732fdf7978e85a629cf85173186e"
+    },
+    {
+      "path": "scripts/generate_contracts.py",
+      "bytes": 42750,
+      "sha256": "3286816b47b0a31c36153aa36e246701ff6ab81e90bce953e46f6fdc53108ea7"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 433,
+      "sha256": "b66c4e456c5b20b07a9cbad79fd3174ed0d9296fe12262f30847638ac232666f"
+    },
+    {
+      "path": "uv.lock",
+      "bytes": 28272,
+      "sha256": "ccaf20d37f484b97ada727a8fba2f3b12715ba693436c36410920777e490f82b"
+    },
+    {
+      "path": "vite.main.config.mts",
+      "bytes": 168,
+      "sha256": "0a77886f6ab4fb8c119cb2bd4f1dcefd48be255fa485b38e9c0c0a5b1f622872"
+    },
+    {
+      "path": "vite.preload.config.mts",
+      "bytes": 143,
+      "sha256": "0459ecf4c78d91b9e43e0bfb5ccccbefe7d0cffc7a97d0f4b8ddcdc95c0f9ac7"
+    },
+    {
+      "path": "vite.renderer.config.mts",
+      "bytes": 569,
+      "sha256": "7980514d0b2fa4360ced0491bb2eb58d9d148be98aa1bd29c1caab43f0ea937a"
+    }
+  ],
+  "versions": {
+    "protocol": 1,
+    "wire_schema": 1,
+    "sqlite_schema": 2,
+    "numeric_runtime": "decimal28-half-even-exact-v1",
+    "workspace_model": [
+      "workspace:unmodeled",
+      "v1"
+    ],
+    "calendar": "fixed-364-v1",
+    "content_release": "v1"
+  },
+  "catalogs": [
+    {
+      "artifact": "society.pack.json",
+      "pack_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164",
+      "role": "reference"
+    },
+    {
+      "artifact": "interview.pack.json",
+      "pack_digest": "sha256:fdb61ccba0d05dcd3febed44e18fc419dd94b09a9fa283d57c13113a93014d23",
+      "role": "authored"
+    }
+  ],
+  "source_revision": "9ff539997dbd1bd3fa99deabcf6bc5907602df60",
+  "source_archive_digest": "sha256:779dcec09f70f81902c0f1b2e70eb6fd17d219656ab35f0f41b4ffce28e47164"
+}
