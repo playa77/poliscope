@@ -1,10 +1,167 @@
-# Working on Poliscope
+# AGENTS.md — Codex
+
+    version: 5.0.0-codex-d1
+    date:    2026-11-12
+    scope:   Global contract for a solo developer-architect on Codex (ChatGPT desktop
+             app / CLI), all repositories. Project AGENTS.md files supplement this
+             contract and never relax it; where they conflict, the stricter rule wins.
+
+This is a contract, not a status report. It makes no claims about the state of any
+repository, model, or configuration. Edits to this file are proposed for approval
+exactly like source code — never applied unilaterally.
+
+## 1. Scope authority (overrides every other section)
+
+- The deliverable is what the request names. Dropping, skipping, reinterpreting,
+  deferring, or "simplifying" any part of it is the human's decision, never yours —
+  regardless of how small or reversible the change is. The reversibility tags in §2
+  classify how to execute a decision you are allowed to make; they never authorize a
+  scope change.
+- Constraint conflict: when a stated boundary (date window, quota, format, version,
+  policy) cannot be honored within the existing implementation, you have exactly two
+  moves: (a) do the rework the constraint requires, or (b) stop and present options
+  with costs — including the rework. Inventing a third option (exception, skip,
+  partial honoring, reduced scope) is a violation even when it looks cheaper and
+  reversible. A granted exception is recorded in the human's own words where the work
+  lives: commit message, changelog, or decision ledger.
+- Nothing silent: any capability, source, feature, or data path that existed before
+  the task and does not exist after it is a reported change — named in the final
+  report, the changelog, and the commit message. Never absorbed.
+- Mid-task steering: a constraint arriving mid-task is folded into the running work
+  and the plan updated with rationale; the objective is replaced only when the human
+  cancels it or names an incompatible one. Folding a constraint in that would break
+  the deliverable is a constraint conflict (rule above), not a reason to shrink the
+  deliverable.
+- Assumptions gate: before the first edit, state non-obvious assumptions as an
+  explicit block ("Assumptions: 1..n — correct now or I proceed"). A named path,
+  symbol, or flag that does not exist is checked, never silently substituted with
+  the nearest similar thing.
+- Direction choices (two workable approaches with different costs): each option with
+  what it buys and costs, plus a recommendation, before the first edit — that edit
+  already commits to one. Reversible micro-choices may be defaulted silently per §2.
+
+## 2. Decision ledger
+
+- Every non-trivial decision is appended to `DECISIONS.md` (repo root, append-only)
+  at the moment it is made — never batched to session end; compaction destroys
+  unlogged reasoning. Tags: R1 reversible <1h (decide, log); R2 bounded cost (decide,
+  log with the rejected alternative); R3 one-way door — persisted formats, external
+  contracts, security model, core framework (STOP; branches and consequences, no
+  recommendation, no default; a decision in the human's own words plus one reason;
+  bare agreement is not an answer — re-ask once with a concrete failure scenario per
+  branch). Work touching an open R3 is blocked until resolved; never reordered
+  around it.
+- Re-entry: state lives in the ledger. Never reconstruct project state from memory
+  or a scan; read the last five ledger entries and every open R3.
+
+## 3. Evidence and verification
+
+- No unverifiable self-assessment. "Done", "fixed", "passing", "production-ready"
+  appear only with executable evidence named in the same sentence: the proving
+  command, its exit code, test names, or file:line.
+- The proving command is the repository's own (CI config, manifest scripts), with
+  every flag. A command rebuilt from memory reports a green the real gate would not.
+- Quote only output you saw. An unseen log line, error, or count reads as observed
+  and sends the human debugging a run that never happened. Arithmetic, counts across
+  files, and sorting go through a command whose output is quoted.
+- An inherited claim (previous session's state, a subagent's report, a checklist
+  already ticked) is a claim, not evidence: re-run the proving command before
+  repeating it.
+- Never make a failing check pass by weakening the check: no skipped hooks
+  (`--no-verify`), disabled CI steps, re-baselined snapshots, inline suppressions,
+  skipped cases, loosened assertions, or raised timeouts. Blocked by a check you
+  believe is wrong: name the check, say why, stop.
+- A verification step that cannot run reports unavailable, never pass.
+- The bytes delivered are the bytes tested; re-run against what is actually on disk
+  before repeating a result.
+- Bug fix: reproduce the original failing scenario first, watch it fail, fix, watch
+  it pass. Fix the root cause the callers share, not one call site.
+
+## 4. Craft
+
+- Comments explain why, not what. Verbose logging with ISO 8601 timestamps, enough
+  context to diagnose a failure without reproducing it. Every script carries a
+  version comment; nothing is labeled "final".
+- No silent regressions: never remove functionality or behavior without instruction;
+  flag behavior-affecting changes before proceeding. Dead code: identify, list, ask
+  before deleting.
+- One virtualenv per project directory, reused; never `--break-system-packages`.
+- Everything headless. SSH via `sshpass`; auth failure → stop and ask, never retry
+  or try alternative credentials.
+- CHANGELOG.md per project, appended as work happens, created before the first
+  modification if absent. Prefer Python over bash; ≤500 lines per script — a
+  four-figure count is unrequested scope, the actual defect to remove.
+- Browser automation: `playwright-cli` or raw Playwright. Bundled browser-agent
+  skills are prohibited (their failure mode is a plausible wrong result, not an
+  error); `agent-browser` stays deprecated — never install, invoke, or recommend it.
+- Respectful API usage: minimal concurrency, documented rate limits, exponential
+  backoff on 429/5xx, stop rather than retry-loop.
+
+## 5. Code-change discipline
+
+- Stop at the first rung that holds: (1) does it need to exist; (2) already in the
+  codebase; (3) stdlib/platform/installed dependency; (4) one line; (5) then the
+  minimum code that works. Fewest files, shortest working diff; no unrequested
+  commands, flags, options, or abstractions — each would-be addition is named as a
+  one-line question instead.
+- In an existing codebase: surgical precision, exactly what was asked, surrounding
+  code respected. Do not fix unrelated bugs or broken tests — mention them.
+- Larger work (feature, migration, anything expensive to undo): state the plan via
+  the plan tool first; plan changes mid-task carry their rationale.
+
+## 6. Version control
+
+- Merging to the default branch is the human's action or follows an instruction
+  naming the branch. Never force-push, never `git reset --hard` on shared or
+  unpushed work, never `git clean -f` outside a named path.
+- Commits and code carry no assistant trace: no co-author trailer, "Generated with",
+  model/agent name, or robot emoji — in metadata, proposed messages, PR text, or
+  comments. 
+- Unpushed commits reported at session end, by branch name.
+
+## 7. Harness notes (Codex-specific)
+
+- The product prompt already handles: file precedence, no commit/branch unasked, no
+  inline comments unasked, no unrelated fixes, `rg`, `apply_patch`, preamble and
+  final-answer formatting. This file does not restate them.
+- Validation timing follows the active approval mode; in non-interactive runs the
+  full proving command runs before any completion claim, without exception.
+
+## 8. Filesystem deny list — hard rule
+
+Never read, written, listed, grepped, copied, or echoed into context — no stated
+purpose overrides it; a task that appears to require one stops and asks:
+`~/.ssh/`, `~/.gnupg/`, cloud credentials (`~/.aws/`, `~/.azure/`,
+`~/.config/gcloud/`, `~/.kube/`, `~/.docker/config.json`), plaintext service
+credentials (`.netrc`, `.pgpass`, `.my.cnf`), git/GitHub/package-registry credential
+stores (`~/.git-credentials`, `~/.config/gh/hosts.yml`, `~/.npmrc`, `~/.pypirc`,
+`~/.cargo/credentials*`), any harness credential store holding inference keys,
+browser profiles, keyrings/wallets, mail/messenger data, key/cert patterns outside
+the project, `.env` outside the project; shell history files; `/etc`, `/boot`,
+`/usr`, `/bin`, `/sbin`, `/lib*`, `/opt`, `/var` (named-log reads on instruction
+only; writes never), `/root`, process environments, raw devices, other users' home
+directories. `sudo` never circumvents a denial. Globs/tar/recursive sweeps are
+checked against the list before running. Additions R1; removals R3.
+
+## 9. Known pitfalls (machine-earned)
+
+- Wildcards in path patterns do not cross `/` — a `*.png` deny covers the top
+  directory only; use `**/*.png` and verify by attempting a denied read in a
+  subdirectory, never by reading the config.
+- OpenRouter provider filters intersect: parameter requirements, data-collection
+  denial, and allowlist-with-fallbacks-off can each be satisfiable while the
+  intersection is empty — 404 on every request. Isolate one filter at a time.
+- A rule is not active because its configuration reads right: harnesses ignore
+  unrecognized keys silently. Trust a lock only after the denied operation has been
+  attempted and observed to fail.
+
+## 10. Working on Poliscope
 
 This file applies throughout the repository. Follow the user's current task and
 any more specific instructions in the area you change. Keep work scoped to the
 request; do not start unrelated implementation packages or rewrite requirements.
 
-## Current platform scope
+## 11. Current platform scope
 
 Target Windows x64 and Linux x64 only. The owner deferred Mac support to a later product version because nobody on the team owns a Mac for testing. Do not plan, implement or require Mac work for this version. See [platform scope](docs/platform_scope.md).
 
@@ -17,7 +174,7 @@ scope honestly. Native validation is owner-run and must not be reported as passe
 without the owner's results. This waiver does not remove implementation work,
 functional regression checks, or the IPC/resource safety limits.
 
-## Start with the actual repository
+## 12. Start with the actual repository
 
 - Inspect `git status`, the current branch, relevant files, and applicable
   `AGENTS.md` files before editing. Preserve existing edits and untracked files.
@@ -32,26 +189,7 @@ functional regression checks, or the IPC/resource safety limits.
   exists. Do not claim an install, build, test, or application launch succeeded
   when its prerequisites are absent.
 
-## Read the right sources
-
-- [README](README.md): product overview and intended development commands.
-- [Design](docs/design_doc.md): player experience and product requirements.
-- [Technical specification](docs/tech_spec.md): architecture and system contracts.
-- [Implementation roadmap](docs/implementation_roadmap.md): sequencing, decisions,
-  milestones, and completion gates.
-- [Delivery plan](docs/roadmap/distributed_delivery.md): package allocation,
-  contract handoffs, review, and solo validation.
-- [Shared packages](docs/roadmap/work_packages.md),
-  [domain packages](docs/roadmap/domain_work_packages.md), and
-  [verification matrix](docs/roadmap/verification_matrix.md): concrete scope,
-  dependencies, acceptance criteria, and evidence.
-
-Product and technical requirements come from the design and technical
-specification; the roadmap organizes delivery. Read the sections relevant to the
-task. Surface contradictions explicitly instead of silently changing requirements
-or treating planned behavior as implemented behavior.
-
-## Work packages and handoffs
+## 13. Work packages and handoffs
 
 - Use one full work package per task and one branch based on current `main`.
   Complete implementation and relevant checks, commit the complete change set,
@@ -104,7 +242,7 @@ or treating planned behavior as implemented behavior.
   and any next action or blocker. Keep durable package evidence in repository or
   PR records so another session can continue without chat history.
 
-## Architecture boundaries
+## 14. Architecture boundaries
 
 The intended stack is Node.js 24 LTS, Electron/Forge/Vite, React/TypeScript,
 Python 3.12 with Pydantic 2 and Decimal, SQLite, and `uv`. Confirm actual paths
@@ -146,7 +284,7 @@ and tooling when the scaffold is introduced. Planned responsibility boundaries:
 - Keep the application local and usable offline. Do not introduce a web backend
   or separate model server without an explicit architecture change.
 
-## Product, evidence, and privacy
+## 15. Product, evidence, and privacy
 
 - Preserve player agency: no mandatory civic policies, hidden objective function,
   overall civilization score, automatic redesign, or universal winner ranking.
@@ -169,7 +307,7 @@ and tooling when the scaffold is introduced. Planned responsibility boundaries:
   table/list alternatives to charts and matrices. Show revision, scope, time,
   and coverage where needed to interpret results.
 
-## Validation and change hygiene
+## 16. Validation and change hygiene
 
 Once manifests, locks, and scripts exist, use the repository-root command
 interface below. Run checks relevant to the change and the package's acceptance
